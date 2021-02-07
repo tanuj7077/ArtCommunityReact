@@ -1,0 +1,152 @@
+.sideNav {
+    background-color: black;
+    grid-column: sideNav-start / sideNav-end;
+    grid-row: 1 / -1;
+
+    //position: sticky;
+    //top: 0;
+
+    display: grid;
+    grid-template-rows: 7.5vh repeat(7, 8vh);
+    align-items: stretch;
+    justify-items: stretch;
+    text-align: center;
+
+    color: white;
+
+    &--ham {
+        position: sticky;
+        top: 0;
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            color: #6ecf86;
+            cursor: pointer;
+        }
+    }
+    &--home {
+        position: sticky;
+        top: 7.5vh;
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            color: #6ecf86;
+            cursor: pointer;
+            background-color: #424242;
+        }
+    }
+    &--followed {
+        position: sticky;
+        top: 15.5vh;
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            color: #6ecf86;
+            cursor: pointer;
+            background-color: #424242;
+        }
+    }
+    &--daily {
+        position: sticky;
+        top: 23.5vh;
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            color: #6ecf86;
+            cursor: pointer;
+            background-color: #424242;
+        }
+    }
+    &--topic {
+        position: sticky;
+        top: 31.5vh;
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            color: #6ecf86;
+            cursor: pointer;
+            background-color: #424242;
+        }
+    }
+    &--popular {
+        position: sticky;
+        top: 39.5vh;
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            color: #6ecf86;
+            cursor: pointer;
+            background-color: #424242;
+        }
+    }
+    &--new {
+        position: sticky;
+        top: 47.5vh;
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            color: #6ecf86;
+            cursor: pointer;
+            background-color: #424242;
+        }
+    }
+    &--poll {
+        position: sticky;
+        top: 55.5vh;
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            color: #6ecf86;
+            cursor: pointer;
+            background-color: #424242;
+        }
+    }
+}

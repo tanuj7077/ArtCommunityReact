@@ -1,0 +1,6 @@
+.Container {
+    background-color: black;
+    display: grid;
+    grid-template-rows: 7.5vh 8vh min-content minmax(75vh, max-content);
+    grid-template-columns: [sideNav-start] 7rem [sideNav-end] repeat(12, [col-start] 1fr [col-end]);
+}

@@ -1,0 +1,187 @@
+.topNav {
+    background-color: rgb(0, 0, 0);
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    display: grid;
+    grid-template-columns: repeat(18, 1fr) 2px 2fr;
+
+    align-items: stretch;
+    justify-items: stretch;
+    text-align: center;
+
+    color: white;
+    font-size: 2rem;
+
+    &--logo {
+        grid-column: 1 / 2;
+        background-color: black;
+
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &--search {
+        position: relative;
+        grid-column: 9 / 13;
+        //background-color: rgb(43, 69, 73);
+        
+        display: grid;
+        grid-template-columns: 3rem repeat(5, 1fr);
+
+        align-items: stretch;
+        justify-items: stretch;
+        text-align: left;
+
+        &-icon {
+            grid-column: 1 / 2;
+            //background-color: red;
+
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+        &-text {
+            //background-color: green;
+            grid-column: 2 / -1;
+            font-size: 1.4rem;
+            font-weight: 300;
+
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+        
+        
+    }
+    &--chat {
+        grid-column: 16 / 17;
+        background-color: black;
+
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 5.2vh;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: red;
+                height: 3px;
+                width: 0%;
+                opacity: 0;
+                transition: all .3s ease;
+                z-index: 20;    
+            }
+        }
+        &:hover span::after{
+            width: 100%;
+            opacity: 1; 
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &--notification {
+        grid-column: 17 / 18;
+        background-color: black;
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 5.2vh;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: red;
+                height: 3px;
+                width: 0%;
+                opacity: 0;
+                transition: all .3s ease;
+                z-index: 20;    
+            }
+        }
+        &:hover span::after{
+            width: 100%;
+            opacity: 1; 
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &--account {
+        grid-column: 18 / 19;
+        background-color: black;
+
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 5.2vh;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: red;
+                height: 3px;
+                width: 0%;
+                opacity: 0;
+                transition: all .3s ease;
+                z-index: 20;    
+            }
+        }
+        &:hover span::after{
+            width: 100%;
+            opacity: 1; 
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &--separator {
+        grid-column: 19 / 20;
+
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 2px;
+            height: 5vh;
+            background-color: #424242;
+        }
+    }
+    &--submit {
+        grid-column: 20 / -1;
+        background-color: black;
+
+        cursor: pointer;
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #6ECF86;
+
+        }
+    }
+}
+
+
+
+
