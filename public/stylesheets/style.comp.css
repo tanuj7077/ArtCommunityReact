@@ -171,7 +171,7 @@ body {
 
 .grid-item {
   margin-bottom: 7px;
-  width: calc(25% - 7px); }
+  width: 100%; }
   @media only screen and (max-width: 56.25em) {
     .grid-item {
       width: calc(33.33% - 7px); } }

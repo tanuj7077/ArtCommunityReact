@@ -4,14 +4,19 @@ import SingleTag from "./SingleTag";
 
 const Explore = () => {
   return (
-    <main>
-      <h2>Explore Section</h2>
-      <SingleTag />
-      <SingleTag />
-      <SingleTag />
-      <SingleTag />
-      <SingleTag />
-    </main>
+    <section className="explore">
+      <div className="subHeading">Explore Topics</div>
+      <div className="exploreGrid">
+        <SingleTag />
+        <SingleTag />
+        <SingleTag />
+        <SingleTag />
+        <SingleTag />
+        <SingleTag />
+        <SingleTag />
+        <SingleTag />
+      </div>
+    </section>
   );
 };
 

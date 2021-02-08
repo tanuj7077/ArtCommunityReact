@@ -1,31 +1,32 @@
 .sideNavTopic {
-    grid-column: 2 / -1;
-    grid-row: 2 / 3;
+  //grid-column: 2 / -1;
+  grid-column: 3 / -1;
+  grid-row: 2 / 3;
 
-    position: sticky;
-    top: 7.5vh;
-    z-index: 10;
+  position: sticky;
+  top: 7.5vh;
+  z-index: 9;
 
-    color: white;
-    background-color: rgba(#171C21 ,0.95);
+  color: white;
+  background-color: rgba(#171c21, 0.95);
 
-    //display: grid;
-    //grid-template-columns: 30% repeat(12,1fr);
+  //display: grid;
+  //grid-template-columns: 30% repeat(12,1fr);
 
-    &-container {
-        margin: auto;
-        width: 95%;
+  &-container {
+    margin: auto;
+    width: 95%;
 
-        display: grid;
-        grid-template-columns: 30% repeat(12,1fr);
-    }
-    
-    &--title {
-        font-size: 2.5rem;
-        font-weight: 500;
+    display: grid;
+    grid-template-columns: 30% repeat(12, 1fr);
+  }
 
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+  &--title {
+    font-size: 2.5rem;
+    font-weight: 500;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
