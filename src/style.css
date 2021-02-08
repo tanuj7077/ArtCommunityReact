@@ -628,7 +628,8 @@ body {
         padding: 1rem 3rem;
         align-self: stretch;
         text-align: left;
-        border-bottom: 1px solid #444040; }
+        border-bottom: 1px solid #444040;
+        color: #444040; }
       .topNav--notification-dropdown .all {
         font-size: 2.5rem;
         align-self: stretch;
@@ -679,7 +680,12 @@ body {
         padding: 1.5rem 3rem;
         color: #72c272; }
       .topNav--account-dropdown .account-settings {
-        padding: 1rem 3rem; }
+        padding: 1rem 3rem;
+        align-self: stretch;
+        text-align: left; }
+        .topNav--account-dropdown .account-settings:hover {
+          color: #72c272;
+          background-color: white; }
     .topNav--account:hover .topNav--account-dropdown {
       visibility: visible; }
   .topNav--separator {

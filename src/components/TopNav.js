@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { account, notifications } from "../data";
+
 const TopNav = () => {
   return (
     <section className="topNav">
@@ -35,15 +37,13 @@ const TopNav = () => {
         <span className="material-icons">notifications</span>
         <div class="topNav--notification-dropdown">
           <div class="title">Notifications</div>
-          <a href="#" class="notification">
-            Content
-          </a>
-          <a href="#" class="notification">
-            Content
-          </a>
-          <a href="#" class="notification">
-            Content
-          </a>
+          {notifications.map((item) => {
+            return (
+              <p key={item.id} className="notification">
+                <b>{item.sub}</b> {item.name}
+              </p>
+            );
+          })}
           <div class="all">See All</div>
         </div>
       </div>
@@ -54,15 +54,13 @@ const TopNav = () => {
             <div class="profilePic"></div>
             <div class="profileName">UserName</div>
           </div>
-          <a href="#" class="account-settings">
-            Account Settings
-          </a>
-          <a href="#" class="account-settings">
-            Theme
-          </a>
-          <a href="#" class="account-settings">
-            Logout
-          </a>
+          {account.map((item) => {
+            return (
+              <a key={item.id} href={item.link} className="account-settings">
+                {item.name}
+              </a>
+            );
+          })}
         </div>
       </div>
       <div className="topNav--separator">

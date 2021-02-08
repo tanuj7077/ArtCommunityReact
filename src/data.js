@@ -1,73 +1,124 @@
 import React from "react";
-import {
-  FaBehance,
-  FaFacebook,
-  FaLinkedin,
-  FaTwitter,
-  FaSketch,
-  FaHome,
-  FaUserFriends,
-  FaFolderOpen,
-  FaCalendarAlt,
-  FaWpforms,
-} from "react-icons/fa";
-export const links = [
+
+import car from "./tagImage/car.jpg";
+import city from "./tagImage/city.jpg";
+import insect from "./tagImage/insect.jpg";
+import monochrome from "./tagImage/monochrome.jpg";
+import landscape from "./tagImage/landscape.jpg";
+import summer from "./tagImage/summer.jpg";
+import river from "./tagImage/river.jpg";
+import sky from "./tagImage/sky.jpg";
+
+import fanart from "./tagImage/fanart.jpg";
+import photography from "./tagImage/photography.jpg";
+import snow from "./tagImage/snow.jpg";
+import tree from "./tagImage/tree.jpg";
+import waterColor from "./tagImage/waterColor.jpg";
+
+export const tags = [
   {
-    id: 1,
-    url: "/",
-    text: "home",
-    icon: <FaHome />,
+    id: "1tag",
+    image: car,
+    name: "Car",
   },
   {
-    id: 2,
-    url: "/team",
-    text: "team",
-    icon: <FaUserFriends />,
+    id: "2tag",
+    image: city,
+    name: "City",
   },
   {
-    id: 3,
-    url: "/projects",
-    text: "projects",
-    icon: <FaFolderOpen />,
+    id: "3tag",
+    image: insect,
+    name: "Insect",
   },
   {
-    id: 4,
-    url: "/calendar",
-    text: "calendar",
-    icon: <FaCalendarAlt />,
+    id: "4tag",
+    image: monochrome,
+    name: "Monochrome",
   },
   {
-    id: 5,
-    url: "/documents",
-    text: "documents",
-    icon: <FaWpforms />,
+    id: "5tag",
+    image: landscape,
+    name: "Landscapes",
+  },
+  {
+    id: "6tag",
+    image: summer,
+    name: "Summer",
+  },
+  {
+    id: "7tag",
+    image: river,
+    name: "River",
+  },
+  {
+    id: "8tag",
+    image: sky,
+    name: "Sky",
   },
 ];
 
-export const social = [
+export const posts = [
+  { image: car, name: "car", author: "author", likes: 5, comments: 3 },
+  { image: city, name: "city", author: "author", likes: 7, comments: 2 },
+  { image: fanart, name: "fanart", author: "author", likes: 9, comments: 3 },
   {
-    id: 1,
-    url: "https://www.twitter.com",
-    icon: <FaFacebook />,
+    image: landscape,
+    name: "landscape",
+    author: "author",
+    likes: 10,
+    comments: 7,
   },
   {
-    id: 2,
-    url: "https://www.twitter.com",
-    icon: <FaTwitter />,
+    image: photography,
+    name: "photography",
+    author: "author",
+    likes: 5,
+    comments: 2,
+  },
+  { image: snow, name: "snow", author: "author", likes: 20, comments: 7 },
+  { image: tree, name: "tree", author: "author", likes: 5, comments: 3 },
+  {
+    image: waterColor,
+    name: "waterColor",
+    author: "author",
+    likes: 8,
+    comments: 4,
+  },
+];
+
+export const account = [
+  {
+    id: "1acc",
+    name: "Account Settings",
+    link: "#",
   },
   {
-    id: 3,
-    url: "https://www.twitter.com",
-    icon: <FaLinkedin />,
+    id: "2acc",
+    name: "Theme",
+    link: "#",
   },
   {
-    id: 4,
-    url: "https://www.twitter.com",
-    icon: <FaBehance />,
+    id: "3acc",
+    name: "Logout",
+    link: "#",
+  },
+];
+
+export const notifications = [
+  {
+    id: "1not",
+    name: "has sent you a friend request",
+    sub: "Skank707",
   },
   {
-    id: 5,
-    url: "https://www.twitter.com",
-    icon: <FaSketch />,
+    id: "2not",
+    name: "got you 1k likes",
+    sub: "Beautiful Nature",
+  },
+  {
+    id: "3not",
+    name: "now follows you",
+    sub: "DwayneJohn",
   },
 ];
