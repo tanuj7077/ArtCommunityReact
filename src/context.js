@@ -3,7 +3,10 @@ import React, { useState, useContext, useEffect } from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  return <AppContext.Provider value="">{children}</AppContext.Provider>;
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  return (
+    <AppContext.Provider value={{ isLoggedIn }}>{children}</AppContext.Provider>
+  );
 };
 
 export const useGlobalContext = () => {

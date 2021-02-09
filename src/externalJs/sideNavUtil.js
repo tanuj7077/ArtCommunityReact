@@ -1,175 +1,263 @@
-//--------------------------Home--------------------------
-const sideNavHover = () => {
+export const LoggedInSideNavHover = () => {
   document
-    .getElementsByClassName("sideNav--home")[0]
+    .getElementsByClassName("sideNav--1")[0]
     .addEventListener("mouseover", function () {
-      mouseOverIcon("home");
+      mouseOverIcon("1");
     });
   document
-    .getElementsByClassName("sideNav--home")[0]
+    .getElementsByClassName("sideNav--1")[0]
     .addEventListener("mouseout", function () {
-      mouseOutIcon("home");
+      mouseOutIcon("1");
     });
   document
-    .getElementsByClassName("sideNav-expansion--home")[0]
+    .getElementsByClassName("sideNav-expansion--1")[0]
     .addEventListener("mouseover", function () {
-      mouseOverTitle("home");
+      mouseOverTitle("1");
     });
   document
-    .getElementsByClassName("sideNav-expansion--home")[0]
+    .getElementsByClassName("sideNav-expansion--1")[0]
     .addEventListener("mouseout", function () {
-      mouseOutTitle("home");
+      mouseOutTitle("1");
     });
   //--------------------------Followed--------------------------
   document
-    .getElementsByClassName("sideNav--followed")[0]
+    .getElementsByClassName("sideNav--2")[0]
     .addEventListener("mouseover", function () {
-      mouseOverIcon("followed");
+      mouseOverIcon("2");
     });
   document
-    .getElementsByClassName("sideNav--followed")[0]
+    .getElementsByClassName("sideNav--2")[0]
     .addEventListener("mouseout", function () {
-      mouseOutIcon("followed");
+      mouseOutIcon("2");
     });
   document
-    .getElementsByClassName("sideNav-expansion--followed")[0]
+    .getElementsByClassName("sideNav-expansion--2")[0]
     .addEventListener("mouseover", function () {
-      mouseOverTitle("followed");
+      mouseOverTitle("2");
     });
   document
-    .getElementsByClassName("sideNav-expansion--followed")[0]
+    .getElementsByClassName("sideNav-expansion--2")[0]
     .addEventListener("mouseout", function () {
-      mouseOutTitle("followed");
+      mouseOutTitle("2");
     });
   //--------------------------Daily--------------------------
   document
-    .getElementsByClassName("sideNav--daily")[0]
+    .getElementsByClassName("sideNav--3")[0]
     .addEventListener("mouseover", function () {
-      mouseOverIcon("daily");
+      mouseOverIcon("3");
     });
   document
-    .getElementsByClassName("sideNav--daily")[0]
+    .getElementsByClassName("sideNav--3")[0]
     .addEventListener("mouseout", function () {
-      mouseOutIcon("daily");
+      mouseOutIcon("3");
     });
   document
-    .getElementsByClassName("sideNav-expansion--daily")[0]
+    .getElementsByClassName("sideNav-expansion--3")[0]
     .addEventListener("mouseover", function () {
-      mouseOverTitle("daily");
+      mouseOverTitle("3");
     });
   document
-    .getElementsByClassName("sideNav-expansion--daily")[0]
+    .getElementsByClassName("sideNav-expansion--3")[0]
     .addEventListener("mouseout", function () {
-      mouseOutTitle("daily");
+      mouseOutTitle("3");
     });
   //--------------------------Explore--------------------------
   document
-    .getElementsByClassName("sideNav--topic")[0]
+    .getElementsByClassName("sideNav--4")[0]
     .addEventListener("mouseover", function () {
-      mouseOverIcon("topic");
+      mouseOverIcon("4");
     });
   document
-    .getElementsByClassName("sideNav--topic")[0]
+    .getElementsByClassName("sideNav--4")[0]
     .addEventListener("mouseout", function () {
-      mouseOutIcon("topic");
+      mouseOutIcon("4");
     });
   document
-    .getElementsByClassName("sideNav-expansion--topic")[0]
+    .getElementsByClassName("sideNav-expansion--4")[0]
     .addEventListener("mouseover", function () {
-      mouseOverTitle("topic");
+      mouseOverTitle("4");
     });
   document
-    .getElementsByClassName("sideNav-expansion--topic")[0]
+    .getElementsByClassName("sideNav-expansion--4")[0]
     .addEventListener("mouseout", function () {
-      mouseOutTitle("topic");
+      mouseOutTitle("4");
     });
   //--------------------------Popular--------------------------
   document
-    .getElementsByClassName("sideNav--popular")[0]
+    .getElementsByClassName("sideNav--5")[0]
     .addEventListener("mouseover", function () {
-      mouseOverIcon("popular");
+      mouseOverIcon("5");
     });
   document
-    .getElementsByClassName("sideNav--popular")[0]
+    .getElementsByClassName("sideNav--5")[0]
     .addEventListener("mouseout", function () {
-      mouseOutIcon("popular");
+      mouseOutIcon("5");
     });
   document
-    .getElementsByClassName("sideNav-expansion--popular")[0]
+    .getElementsByClassName("sideNav-expansion--5")[0]
     .addEventListener("mouseover", function () {
-      mouseOverTitle("popular");
+      mouseOverTitle("5");
     });
   document
-    .getElementsByClassName("sideNav-expansion--popular")[0]
+    .getElementsByClassName("sideNav-expansion--5")[0]
     .addEventListener("mouseout", function () {
-      mouseOutTitle("popular");
+      mouseOutTitle("5");
     });
   //--------------------------New--------------------------
   document
-    .getElementsByClassName("sideNav--new")[0]
+    .getElementsByClassName("sideNav--6")[0]
     .addEventListener("mouseover", function () {
-      mouseOverIcon("new");
+      mouseOverIcon("6");
     });
   document
-    .getElementsByClassName("sideNav--new")[0]
+    .getElementsByClassName("sideNav--6")[0]
     .addEventListener("mouseout", function () {
-      mouseOutIcon("new");
+      mouseOutIcon("6");
     });
   document
-    .getElementsByClassName("sideNav-expansion--new")[0]
+    .getElementsByClassName("sideNav-expansion--6")[0]
     .addEventListener("mouseover", function () {
-      mouseOverTitle("new");
+      mouseOverTitle("6");
     });
   document
-    .getElementsByClassName("sideNav-expansion--new")[0]
+    .getElementsByClassName("sideNav-expansion--6")[0]
     .addEventListener("mouseout", function () {
-      mouseOutTitle("new");
+      mouseOutTitle("6");
     });
   //---------------------Poll---------------------
   document
-    .getElementsByClassName("sideNav--poll")[0]
+    .getElementsByClassName("sideNav--7")[0]
     .addEventListener("mouseover", function () {
-      mouseOverIcon("poll");
+      mouseOverIcon("7");
     });
   document
-    .getElementsByClassName("sideNav--poll")[0]
+    .getElementsByClassName("sideNav--7")[0]
     .addEventListener("mouseout", function () {
-      mouseOutIcon("poll");
+      mouseOutIcon("7");
     });
   document
-    .getElementsByClassName("sideNav-expansion--poll")[0]
+    .getElementsByClassName("sideNav-expansion--7")[0]
     .addEventListener("mouseover", function () {
-      mouseOverTitle("poll");
+      mouseOverTitle("7");
     });
   document
-    .getElementsByClassName("sideNav-expansion--poll")[0]
+    .getElementsByClassName("sideNav-expansion--7")[0]
     .addEventListener("mouseout", function () {
-      mouseOutTitle("poll");
+      mouseOutTitle("7");
     });
-
-  //-------------------------functions-------------------------
-  function mouseOverIcon(elem) {
-    document
-      .getElementsByClassName("sideNav-expansion--" + elem)[0]
-      .classList.toggle("sideNavTitle-hover");
-  }
-
-  function mouseOutIcon(elem) {
-    document
-      .getElementsByClassName("sideNav-expansion--" + elem)[0]
-      .classList.toggle("sideNavTitle-hover");
-  }
-
-  function mouseOverTitle(elem) {
-    document
-      .getElementsByClassName("sideNav--" + elem)[0]
-      .classList.toggle("sideNavIcon-hover");
-  }
-
-  function mouseOutTitle(elem) {
-    document
-      .getElementsByClassName("sideNav--" + elem)[0]
-      .classList.toggle("sideNavIcon-hover");
-  }
 };
-export default sideNavHover;
+
+export const SideNavHover = () => {
+  document
+    .getElementsByClassName("sideNav--1")[0]
+    .addEventListener("mouseover", function () {
+      mouseOverIcon("1");
+    });
+  document
+    .getElementsByClassName("sideNav--1")[0]
+    .addEventListener("mouseout", function () {
+      mouseOutIcon("1");
+    });
+  document
+    .getElementsByClassName("sideNav-expansion--1")[0]
+    .addEventListener("mouseover", function () {
+      mouseOverTitle("1");
+    });
+  document
+    .getElementsByClassName("sideNav-expansion--1")[0]
+    .addEventListener("mouseout", function () {
+      mouseOutTitle("1");
+    });
+  //--------------------------Followed--------------------------
+  document
+    .getElementsByClassName("sideNav--2")[0]
+    .addEventListener("mouseover", function () {
+      mouseOverIcon("2");
+    });
+  document
+    .getElementsByClassName("sideNav--2")[0]
+    .addEventListener("mouseout", function () {
+      mouseOutIcon("2");
+    });
+  document
+    .getElementsByClassName("sideNav-expansion--2")[0]
+    .addEventListener("mouseover", function () {
+      mouseOverTitle("2");
+    });
+  document
+    .getElementsByClassName("sideNav-expansion--2")[0]
+    .addEventListener("mouseout", function () {
+      mouseOutTitle("2");
+    });
+  //--------------------------Daily--------------------------
+  document
+    .getElementsByClassName("sideNav--3")[0]
+    .addEventListener("mouseover", function () {
+      mouseOverIcon("3");
+    });
+  document
+    .getElementsByClassName("sideNav--3")[0]
+    .addEventListener("mouseout", function () {
+      mouseOutIcon("3");
+    });
+  document
+    .getElementsByClassName("sideNav-expansion--3")[0]
+    .addEventListener("mouseover", function () {
+      mouseOverTitle("3");
+    });
+  document
+    .getElementsByClassName("sideNav-expansion--3")[0]
+    .addEventListener("mouseout", function () {
+      mouseOutTitle("3");
+    });
+  //--------------------------Explore--------------------------
+  document
+    .getElementsByClassName("sideNav--4")[0]
+    .addEventListener("mouseover", function () {
+      mouseOverIcon("4");
+    });
+  document
+    .getElementsByClassName("sideNav--4")[0]
+    .addEventListener("mouseout", function () {
+      mouseOutIcon("4");
+    });
+  document
+    .getElementsByClassName("sideNav-expansion--4")[0]
+    .addEventListener("mouseover", function () {
+      mouseOverTitle("4");
+    });
+  document
+    .getElementsByClassName("sideNav-expansion--4")[0]
+    .addEventListener("mouseout", function () {
+      mouseOutTitle("4");
+    });
+};
+
+//-------------------------functions-------------------------
+
+function mouseOverIcon(elem) {
+  document
+    .getElementsByClassName("sideNav-expansion--" + elem)[0]
+    .classList.toggle("sideNavTitle-hover");
+}
+
+function mouseOutIcon(elem) {
+  document
+    .getElementsByClassName("sideNav-expansion--" + elem)[0]
+    .classList.toggle("sideNavTitle-hover");
+}
+
+function mouseOverTitle(elem) {
+  document
+    .getElementsByClassName("sideNav--" + elem)[0]
+    .classList.toggle("sideNavIcon-hover");
+}
+
+function mouseOutTitle(elem) {
+  document
+    .getElementsByClassName("sideNav--" + elem)[0]
+    .classList.toggle("sideNavIcon-hover");
+}
+//export default sideNavHover;
+
+//--------------------------Home--------------------------

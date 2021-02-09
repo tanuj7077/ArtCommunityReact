@@ -7,7 +7,7 @@
   //top: 0;
 
   display: grid;
-  grid-template-rows: 7.5vh repeat(7, 8vh);
+  grid-template-rows: 7.5vh repeat(8, 8vh);
   align-items: stretch;
   justify-items: stretch;
   text-align: center;
@@ -32,7 +32,7 @@
       cursor: pointer;
     }
   }
-  &--home {
+  &--1 {
     position: sticky;
     top: 7.5vh;
 
@@ -49,7 +49,7 @@
       background-color: #424242;
     }
   }
-  &--followed {
+  &--2 {
     position: sticky;
     top: 15.5vh;
 
@@ -66,7 +66,7 @@
       background-color: #424242;
     }
   }
-  &--daily {
+  &--3 {
     position: sticky;
     top: 23.5vh;
 
@@ -83,7 +83,7 @@
       background-color: #424242;
     }
   }
-  &--topic {
+  &--4 {
     position: sticky;
     top: 31.5vh;
 
@@ -100,7 +100,7 @@
       background-color: #424242;
     }
   }
-  &--popular {
+  &--5 {
     position: sticky;
     top: 39.5vh;
 
@@ -117,7 +117,7 @@
       background-color: #424242;
     }
   }
-  &--new {
+  &--6 {
     position: sticky;
     top: 47.5vh;
 
@@ -134,7 +134,7 @@
       background-color: #424242;
     }
   }
-  &--poll {
+  &--7 {
     position: sticky;
     top: 55.5vh;
 
@@ -167,7 +167,7 @@
   background-color: rgb(0, 0, 0);
 
   display: grid;
-  grid-template-rows: repeat(7, 8vh);
+  grid-template-rows: repeat(8, 8vh);
   transform: translate(-100%);
   letter-spacing: 0.6rem;
   font-weight: 700;
@@ -175,7 +175,7 @@
   transition: 0.3s ease;
   z-index: 10;
 
-  &--home {
+  &--1 {
     position: sticky;
     top: 7.5vh;
     &-title {
@@ -191,7 +191,7 @@
       background-color: #424242;
     }
   }
-  &--followed {
+  &--2 {
     position: sticky;
     top: 15.5vh;
     &-title {
@@ -207,7 +207,7 @@
       background-color: #424242;
     }
   }
-  &--daily {
+  &--3 {
     position: sticky;
     top: 23.5vh;
     &-title {
@@ -223,7 +223,7 @@
       background-color: #424242;
     }
   }
-  &--topic {
+  &--4 {
     position: sticky;
     top: 31.5vh;
     &-title {
@@ -239,7 +239,7 @@
       background-color: #424242;
     }
   }
-  &--popular {
+  &--5 {
     position: sticky;
     top: 39.5vh;
     &-title {
@@ -255,7 +255,7 @@
       background-color: #424242;
     }
   }
-  &--new {
+  &--6 {
     position: sticky;
     top: 47.5vh;
     &-title {
@@ -271,7 +271,7 @@
       background-color: #424242;
     }
   }
-  &--poll {
+  &--7 {
     position: sticky;
     top: 55.5vh;
     &-title {

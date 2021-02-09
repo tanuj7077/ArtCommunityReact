@@ -23,6 +23,7 @@ html {
 
 body {
   box-sizing: border-box;
+  text-transform: capitalize;
   //overflow: hidden;
 
   @include respond(tab-port) {
