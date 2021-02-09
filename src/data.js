@@ -129,6 +129,7 @@ export const LoggedInSideNavItems = [
     classname: "1",
     name: "home",
     icon: "home",
+    link: "",
   },
   {
     id: "side2",
@@ -136,6 +137,7 @@ export const LoggedInSideNavItems = [
     classname: "2",
     name: "followed",
     icon: "people",
+    link: "followed",
   },
   {
     id: "side3",
@@ -143,6 +145,7 @@ export const LoggedInSideNavItems = [
     classname: "3",
     name: "daily",
     icon: "today",
+    link: "daily",
   },
   {
     id: "side4",
@@ -150,6 +153,7 @@ export const LoggedInSideNavItems = [
     classname: "4",
     name: "topic",
     icon: "image_search",
+    link: "explore",
   },
   {
     id: "side5",
@@ -157,6 +161,7 @@ export const LoggedInSideNavItems = [
     classname: "5",
     name: "popular",
     icon: "new_releases",
+    link: "popular",
   },
   {
     id: "side6",
@@ -164,6 +169,7 @@ export const LoggedInSideNavItems = [
     classname: "6",
     name: "new",
     icon: "fiber_new",
+    link: "new",
   },
   {
     id: "side7",
@@ -171,6 +177,7 @@ export const LoggedInSideNavItems = [
     classname: "7",
     name: "poll",
     icon: "poll",
+    link: "poll",
   },
 ];
 export const SideNavItems = [
@@ -180,6 +187,7 @@ export const SideNavItems = [
     classname: "1",
     name: "home",
     icon: "home",
+    link: "",
   },
   {
     id: "side2",
@@ -187,6 +195,7 @@ export const SideNavItems = [
     classname: "2",
     name: "topic",
     icon: "image_search",
+    link: "explore",
   },
   {
     id: "side3",
@@ -194,6 +203,7 @@ export const SideNavItems = [
     classname: "3",
     name: "popular",
     icon: "new_releases",
+    link: "popular",
   },
   {
     id: "side4",
@@ -201,6 +211,7 @@ export const SideNavItems = [
     classname: "4",
     name: "new",
     icon: "fiber_new",
+    link: "new",
   },
 ];
 

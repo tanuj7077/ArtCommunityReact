@@ -23,11 +23,11 @@ const SideNav = () => {
       });
 
     console.log(isLoggedIn);
-    return () =>
+    /*return () =>
       document
         .getElementsByClassName("sideNav--ham")[0]
         .removeEventListener("click", expansion);
-
+*/
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -46,23 +46,28 @@ const SideNav = () => {
         </div>
         {items.map((item) => {
           return (
-            <div key={item.id} className={`sideNav--${item.classname}`}>
+            <Link
+              to={`/${item.link}`}
+              key={item.id}
+              className={`sideNav--${item.classname}`}
+            >
               <span className="material-icons">{item.icon}</span>
-            </div>
+            </Link>
           );
         })}
       </section>
       <section className="sideNav-expansion">
         {items.map((item) => {
           return (
-            <div
+            <Link
+              to={`/${item.link}`}
               key={item.id2}
               className={`sideNav-expansion--${item.classname}`}
             >
               <span className={`sideNav-expansion--${item.classname}-title`}>
                 {item.name}
               </span>
-            </div>
+            </Link>
           );
         })}
       </section>
