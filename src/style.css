@@ -155,6 +155,46 @@ body {
     .exploreGrid .grid-item--exploreCard:hover {
       cursor: pointer; }
 
+.explorePage {
+  background-color: black;
+  grid-column: 3 / -1;
+  grid-row: 3 / -1;
+  padding-top: 5rem;
+  margin: auto;
+  width: 95%; }
+  .explorePage--grid-item {
+    margin-bottom: 7px;
+    width: calc(100% - 10px); }
+    .explorePage--grid-item--card {
+      width: 100%;
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden; }
+      .explorePage--grid-item--card-img {
+        filter: hue-rotate(0deg);
+        width: 100%;
+        transition: all 0.2s ease-in;
+        border-radius: 1rem; }
+      .explorePage--grid-item--card-title {
+        color: white;
+        font-size: 2.5rem;
+        z-index: 1;
+        transition: all 0.2s ease-in;
+        font-weight: 700;
+        letter-spacing: 0.4rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); }
+        .explorePage--grid-item--card-title:hover {
+          text-decoration: none;
+          color: white;
+          font-size: 2.6rem; }
+      .explorePage--grid-item--card:hover .explorePage--grid-item--card-img {
+        opacity: 0.6;
+        filter: hue-rotate(90deg);
+        transform: scale(1.04); }
+
 .main {
   background-color: black;
   grid-column: 3 / -1;

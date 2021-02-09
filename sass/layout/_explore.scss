@@ -65,3 +65,62 @@
     }
   }
 }
+.explorePage {
+  background-color: black;
+  //grid-column: 2 / -1;
+  grid-column: 3 / -1;
+  grid-row: 3 / -1;
+
+  //overflow: hidden;
+  padding-top: 5rem;
+
+  margin: auto;
+  width: 95%;
+
+  &--grid-item {
+    margin-bottom: 7px;
+    width: calc(100% - 10px);
+
+    &--card {
+      width: 100%;
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+
+      &-img {
+        //opacity: 0.6;
+        //filter: grayscale(100%);
+        filter: hue-rotate(0deg);
+        width: 100%;
+        transition: all 0.2s ease-in;
+        border-radius: 1rem;
+      }
+      &-title {
+        color: white;
+        font-size: 2.5rem;
+        z-index: 1;
+        transition: all 0.2s ease-in;
+        font-weight: 700;
+        letter-spacing: 0.4rem;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        &:hover {
+          text-decoration: none;
+          color: white;
+          font-size: 2.6rem;
+        }
+      }
+
+      &:hover &-img {
+        opacity: 0.6;
+        //filter: grayscale(0);
+        filter: hue-rotate(90deg);
+        transform: scale(1.04);
+      }
+    }
+  }
+}

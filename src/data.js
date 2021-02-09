@@ -226,6 +226,8 @@ export const ExploreTags = [
     image: city,
     name: "City",
   },
+  { id: "9tag", image: city, name: "city" },
+  { id: "10tag", image: fanart, name: "fanart" },
   {
     id: "3tag",
     image: insect,
@@ -246,6 +248,12 @@ export const ExploreTags = [
     image: summer,
     name: "Summer",
   },
+  { id: "14tag", image: tree, name: "tree" },
+  {
+    id: "15tag",
+    image: waterColor,
+    name: "waterColor",
+  },
   {
     id: "7tag",
     image: river,
@@ -256,8 +264,6 @@ export const ExploreTags = [
     image: sky,
     name: "Sky",
   },
-  { id: "9tag", image: city, name: "city" },
-  { id: "10tag", image: fanart, name: "fanart" },
   {
     id: "11tag",
     image: landscape,
@@ -269,10 +275,4 @@ export const ExploreTags = [
     name: "photography",
   },
   { id: "13tag", image: snow, name: "snow" },
-  { id: "14tag", image: tree, name: "tree" },
-  {
-    id: "15tag",
-    image: waterColor,
-    name: "waterColor",
-  },
 ];
