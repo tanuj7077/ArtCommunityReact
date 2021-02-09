@@ -11,7 +11,7 @@ const Home = () => {
     <div className="Container">
       <TopNav />
       <SideNav />
-      <SideNavTopic />
+      <SideNavTopic topic="Home" />
       <Explore />
       <PostList />
     </div>

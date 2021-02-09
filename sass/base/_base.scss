@@ -24,6 +24,7 @@ html {
 body {
   box-sizing: border-box;
   text-transform: capitalize;
+  background-color: black;
   //overflow: hidden;
 
   @include respond(tab-port) {

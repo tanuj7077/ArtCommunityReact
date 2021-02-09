@@ -1,10 +1,16 @@
 import React from "react";
 
+import TopNav from "../components/TopNav";
+import SideNav from "../components/SideNav";
+import SideNavTopic from "../components/SideNavTopic";
+
 const NewPage = () => {
   return (
-    <main>
-      <h1>New Page</h1>
-    </main>
+    <div className="Container">
+      <TopNav />
+      <SideNav />
+      <SideNavTopic topic="New" />
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ const ExplorePage = () => {
     <div className="Container">
       <TopNav />
       <SideNav />
-      <SideNavTopic />
+      <SideNavTopic topic="Explore" />
     </div>
   );
 };
