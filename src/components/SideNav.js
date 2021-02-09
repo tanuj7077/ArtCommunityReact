@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { LoggedInSideNavHover, SideNavHover } from "../externalJs/sideNavUtil";
 import { LoggedInSideNavItems, SideNavItems } from "../data";
 import { useGlobalContext } from "../context";
@@ -46,28 +46,42 @@ const SideNav = () => {
         </div>
         {items.map((item) => {
           return (
-            <Link
-              to={`/${item.link}`}
-              key={item.id}
-              className={`sideNav--${item.classname}`}
-            >
-              <span className="material-icons">{item.icon}</span>
-            </Link>
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/${item.link}`);
+                  }}
+                  key={item.id}
+                  className={`sideNav--${item.classname}`}
+                >
+                  <span className="material-icons">{item.icon}</span>
+                </div>
+              )}
+            />
           );
         })}
       </section>
       <section className="sideNav-expansion">
         {items.map((item) => {
           return (
-            <Link
-              to={`/${item.link}`}
-              key={item.id2}
-              className={`sideNav-expansion--${item.classname}`}
-            >
-              <span className={`sideNav-expansion--${item.classname}-title`}>
-                {item.name}
-              </span>
-            </Link>
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/${item.link}`);
+                  }}
+                  key={item.id2}
+                  className={`sideNav-expansion--${item.classname}`}
+                >
+                  <span
+                    className={`sideNav-expansion--${item.classname}-title`}
+                  >
+                    {item.name}
+                  </span>
+                </div>
+              )}
+            />
           );
         })}
       </section>

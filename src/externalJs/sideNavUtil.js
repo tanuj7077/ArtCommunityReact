@@ -3,21 +3,25 @@ export const LoggedInSideNavHover = () => {
     .getElementsByClassName("sideNav--1")[0]
     .addEventListener("mouseover", function () {
       mouseOverIcon("1");
+      return false;
     });
   document
     .getElementsByClassName("sideNav--1")[0]
     .addEventListener("mouseout", function () {
       mouseOutIcon("1");
+      return false;
     });
   document
     .getElementsByClassName("sideNav-expansion--1")[0]
     .addEventListener("mouseover", function () {
       mouseOverTitle("1");
+      return false;
     });
   document
     .getElementsByClassName("sideNav-expansion--1")[0]
     .addEventListener("mouseout", function () {
       mouseOutTitle("1");
+      return false;
     });
   //--------------------------Followed--------------------------
   document
@@ -233,30 +237,113 @@ export const SideNavHover = () => {
     });
 };
 
+//--------------------------reset--------------------------
+export const ResetHoverClass = (l) => {
+  if (l === 7) {
+    document
+      .getElementsByClassName("sideNav--1")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--1")[0]
+      .classList.remove("sideNavTitle-hover");
+    document
+      .getElementsByClassName("sideNav--2")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--2")[0]
+      .classList.remove("sideNavTitle-hover");
+    document
+      .getElementsByClassName("sideNav--3")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--3")[0]
+      .classList.remove("sideNavTitle-hover");
+    document
+      .getElementsByClassName("sideNav--4")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--4")[0]
+      .classList.remove("sideNavTitle-hover");
+    document
+      .getElementsByClassName("sideNav--5")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--5")[0]
+      .classList.remove("sideNavTitle-hover");
+    document
+      .getElementsByClassName("sideNav--6")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--6")[0]
+      .classList.remove("sideNavTitle-hover");
+    document
+      .getElementsByClassName("sideNav--7")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--7")[0]
+      .classList.remove("sideNavTitle-hover");
+  }
+  if (l === 4) {
+    document
+      .getElementsByClassName("sideNav--1")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--1")[0]
+      .classList.remove("sideNavTitle-hover");
+    document
+      .getElementsByClassName("sideNav--2")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--2")[0]
+      .classList.remove("sideNavTitle-hover");
+    document
+      .getElementsByClassName("sideNav--3")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--3")[0]
+      .classList.remove("sideNavTitle-hover");
+    document
+      .getElementsByClassName("sideNav--4")[0]
+      .classList.remove("sideNavIcon-hover");
+    document
+      .getElementsByClassName("sideNav-expansion--4")[0]
+      .classList.remove("sideNavTitle-hover");
+  }
+};
+
+export const RemoveClass = (name) => {
+  document
+    .getElementsByClassName("sideNav--" + name)[0]
+    .classList.remove("sideNavIcon-hover");
+  document
+    .getElementsByClassName("sideNav-expansion--" + name)[0]
+    .classList.remove("sideNavTitle-hover");
+};
+
 //-------------------------functions-------------------------
 
 function mouseOverIcon(elem) {
   document
     .getElementsByClassName("sideNav-expansion--" + elem)[0]
-    .classList.toggle("sideNavTitle-hover");
+    .classList.add("sideNavTitle-hover");
 }
 
 function mouseOutIcon(elem) {
   document
     .getElementsByClassName("sideNav-expansion--" + elem)[0]
-    .classList.toggle("sideNavTitle-hover");
+    .classList.remove("sideNavTitle-hover");
 }
 
 function mouseOverTitle(elem) {
   document
     .getElementsByClassName("sideNav--" + elem)[0]
-    .classList.toggle("sideNavIcon-hover");
+    .classList.add("sideNavIcon-hover");
 }
 
 function mouseOutTitle(elem) {
   document
     .getElementsByClassName("sideNav--" + elem)[0]
-    .classList.toggle("sideNavIcon-hover");
+    .classList.remove("sideNavIcon-hover");
 }
 //export default sideNavHover;
 
