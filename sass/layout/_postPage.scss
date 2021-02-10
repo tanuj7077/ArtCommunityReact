@@ -1,0 +1,86 @@
+.postPage {
+  grid-column: 3/ -1;
+  grid-row: 2 / -1;
+  padding-top: 5rem;
+  margin: auto;
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(17, 1fr);
+  //grid-template-rows: 40vh 40vh max-content;
+  grid-template-rows: repeat(4, min-content);
+  color: white;
+
+  .postContent {
+    grid-column: 1 / 13;
+    @include respond(tab-land) {
+      grid-column: 1 / -1;
+    }
+    //   @include respond(phone) {
+    //     grid-template-columns: repeat(2, 1fr);
+    //   }
+    grid-row: 1 / 3;
+    background-color: #2e2e2e;
+
+    &--image {
+      text-align: center;
+      background-color: #ce8a8a;
+      width: 100%;
+      height: 33vw;
+      @include respond(tab-land) {
+        height: 45vw;
+      }
+      @include respond(phone) {
+        height: 75vw;
+      }
+      &-img {
+        width: auto;
+        height: 100%;
+      }
+    }
+    &--info {
+      background-color: rgb(96, 151, 133);
+      width: 100%;
+    }
+  }
+  .comments {
+    grid-column: 1 / 13;
+    grid-row: 3 / -1;
+
+    @include respond(tab-land) {
+      grid-column: 1 / 12;
+    }
+    @include respond(phone) {
+      grid-column: 1 / -1;
+      grid-row: 3 / 4;
+    }
+    background-color: rgb(142, 132, 185);
+  }
+  .otherContent {
+    grid-column: 14 / -1;
+    grid-row: 1 / 3;
+    @include respond(tab-land) {
+      grid-row: 3 / -1;
+      grid-column: 13 / -1;
+    }
+    @include respond(phone) {
+      grid-row: 4 / -1;
+      grid-column: 1 / -1;
+    }
+    background-color: #5e5858;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-rows: repeat(2, 1fr);
+
+    &--user {
+      background-color: #303030;
+      height: 100%;
+    }
+    &--recommend {
+      background-color: #3a3a3a;
+      height: 100%;
+    }
+  }
+}

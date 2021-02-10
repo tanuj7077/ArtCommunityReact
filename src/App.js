@@ -45,9 +45,6 @@ function App() {
       <Route path="/tagSearch/:name">
         <TagSearchPage />
       </Route>
-      <Route path="/postPage/:id">
-        <PostPage />
-      </Route>
       <Route path="/user/:id">
         <User />
       </Route>

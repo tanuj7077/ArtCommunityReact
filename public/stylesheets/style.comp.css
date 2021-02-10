@@ -294,6 +294,16 @@ body {
     .grid-item--card:hover .grid-item--card-icons {
       opacity: 1; }
 
+.postPage {
+  grid-column: 3/ -1;
+  grid-row: 3 / -1;
+  padding-top: 5rem;
+  margin: auto;
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 35vh 35vh 1fr; }
+
 .sideNav {
   background-color: black;
   grid-column: sideNav-start / sideNav-end;
