@@ -11,7 +11,7 @@ const TagSearchPage = () => {
     <div className="Container">
       <TopNav />
       <SideNav />
-      <SideNavTopic topic={name} />
+      <SideNavTopic topic={`Tag : ${name}`} />
       <TagSearchList />
     </div>
   );

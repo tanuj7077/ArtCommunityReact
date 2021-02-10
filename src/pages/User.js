@@ -1,9 +1,14 @@
 import React from "react";
+
+import TopNav from "../components/TopNav";
+import SideNav from "../components/SideNav";
+
 const User = () => {
   return (
-    <main>
-      <h1>User Page</h1>
-    </main>
+    <div className="Container">
+      <TopNav />
+      <SideNav />
+    </div>
   );
 };
 

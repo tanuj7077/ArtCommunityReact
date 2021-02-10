@@ -1,10 +1,14 @@
 import React from "react";
 
+import TopNav from "../components/TopNav";
+import SideNav from "../components/SideNav";
+
 const PostPage = () => {
   return (
-    <main>
-      <h1>Post Page</h1>
-    </main>
+    <div className="Container">
+      <TopNav />
+      <SideNav />
+    </div>
   );
 };
 

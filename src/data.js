@@ -277,3 +277,86 @@ export const ExploreTags = [
   },
   { id: "13tag", image: snow, name: "snow" },
 ];
+
+export const Users = [
+  {
+    id: "u1",
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg",
+    username: "maria ferguson",
+    gender: "female",
+    following: ["u2", "u3", "u4", "u5", "u6", "u7", "u8"],
+    likedPost: [...Posts],
+    posts: [Posts[1], Posts[2], Posts[3]],
+  },
+  {
+    id: "u2",
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg",
+    username: "john doe",
+    gender: "male",
+    following: ["u3", "u4", "u6", "u8"],
+    likedPost: [...Posts],
+    posts: [Posts[5], Posts[7], Posts[3]],
+  },
+  {
+    id: "u3",
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959121/person-1_aufeoq.jpg",
+    username: "peter smith",
+    gender: "male",
+    following: ["u2", "u4", "u5", "u6", "u7", "u8"],
+    likedPost: [...Posts],
+    posts: [Posts[1], Posts[2], Posts[3], Posts[4]],
+  },
+  {
+    id: "u4",
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
+    username: "susan andersen",
+    gender: "female",
+    following: ["u2", "u3", "u5", "u6", "u7", "u8"],
+    likedPost: [...Posts],
+    posts: [Posts[1], Posts[2], Posts[3]],
+  },
+  {
+    id: "u5",
+    username: "susan smith",
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
+    gender: "female",
+    following: ["u2", "u3", "u4", "u6", "u7", "u8"],
+    likedPost: [...Posts],
+    posts: [Posts[1], Posts[2], Posts[3]],
+  },
+  {
+    id: "u6",
+    username: "anna johnson",
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883409/person-2_np9x5l.jpg",
+    gender: "female",
+    following: ["u2", "u3", "u4", "u5", "u7", "u8"],
+    likedPost: [...Posts],
+    posts: [Posts[1], Posts[2], Posts[3]],
+  },
+  {
+    id: "u7",
+    username: "peter jones",
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg",
+    gender: "female",
+    following: ["u2", "u3", "u4", "u5", "u6", "u8"],
+    likedPost: [...Posts],
+    posts: [Posts[1], Posts[2], Posts[3]],
+  },
+  {
+    id: "u8",
+    username: "bill anderson",
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883423/person-4_t9nxjt.jpg",
+    gender: "female",
+    following: ["u2", "u3", "u4", "u5", "u6", "u7"],
+    likedPost: [...Posts],
+    posts: [Posts[1], Posts[2], Posts[3]],
+  },
+];
