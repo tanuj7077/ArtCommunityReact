@@ -168,12 +168,14 @@
 
   display: grid;
   grid-template-rows: repeat(8, 8vh);
-  transform: translate(-100%);
+  transform: translate(-77%);
   letter-spacing: 0.6rem;
   font-weight: 700;
 
   transition: 0.3s ease;
   z-index: 10;
+
+  border-right: 2px solid rgba(#171c21, 0.95);
 
   &--1 {
     position: sticky;

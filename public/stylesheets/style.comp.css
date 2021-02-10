@@ -33,7 +33,9 @@ html {
       font-size: 75%; } }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  text-transform: capitalize;
+  background-color: black; }
   @media only screen and (max-width: 56.25em) {
     body {
       padding: 0; } }
@@ -42,7 +44,7 @@ body {
   body::-webkit-scrollbar-track {
     background: #23222c; }
   body::-webkit-scrollbar-thumb {
-    background: #6ECF86;
+    background: #6ecf86;
     border-radius: 2px; }
 
 ::selection {
@@ -50,7 +52,8 @@ body {
   color: #fff; }
 
 a:link, a:visited, a:hover, a:active {
-  text-decoration: none; }
+  text-decoration: none;
+  color: white; }
 
 /*
 body::-webkit-scrollbar {
@@ -101,7 +104,7 @@ body {
   padding-right: 2rem !important; }
 
 .explore {
-  grid-column: 2 / -1;
+  grid-column: 3 / -1;
   grid-row: 3 / 4;
   display: grid;
   grid-template-rows: 1fr min-content;
@@ -152,16 +155,55 @@ body {
     .exploreGrid .grid-item--exploreCard:hover {
       cursor: pointer; }
 
+.explorePage {
+  background-color: black;
+  grid-column: 3 / -1;
+  grid-row: 3 / -1;
+  padding-top: 5rem;
+  margin: auto;
+  width: 95%; }
+  .explorePage--grid-item {
+    margin-bottom: 7px;
+    width: calc(100% - 10px); }
+    .explorePage--grid-item--card {
+      width: 100%;
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden; }
+      .explorePage--grid-item--card-img {
+        filter: hue-rotate(0deg);
+        width: 100%;
+        transition: all 0.2s ease-in;
+        border-radius: 1rem; }
+      .explorePage--grid-item--card-title {
+        color: white;
+        font-size: 2.5rem;
+        z-index: 1;
+        transition: all 0.2s ease-in;
+        font-weight: 700;
+        letter-spacing: 0.4rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); }
+        .explorePage--grid-item--card-title:hover {
+          text-decoration: none;
+          color: white;
+          font-size: 2.6rem; }
+      .explorePage--grid-item--card:hover .explorePage--grid-item--card-img {
+        opacity: 0.5;
+        filter: hue-rotate(90deg);
+        transform: scale(1.04); }
+
 .main {
   background-color: black;
-  grid-column: 2 / -1;
+  grid-column: 3 / -1;
   grid-row: 4 / -1;
   padding-top: 5rem;
-  margin: 2rem auto;
+  margin: auto;
   width: 95%;
   display: grid;
-  grid-template-rows: 1fr min-content;
-  align-items: start; }
+  grid-template-rows: 1fr min-content; }
 
 .subHeading {
   color: white;
@@ -171,13 +213,7 @@ body {
 
 .grid-item {
   margin-bottom: 7px;
-  width: 100%; }
-  @media only screen and (max-width: 56.25em) {
-    .grid-item {
-      width: calc(33.33% - 7px); } }
-  @media only screen and (max-width: 37.5em) {
-    .grid-item {
-      width: calc(50% - 7px); } }
+  width: calc(100% - 10px); }
   .grid-item--card {
     width: 100%;
     position: relative;
@@ -258,25 +294,21 @@ body {
     .grid-item--card:hover .grid-item--card-icons {
       opacity: 1; }
 
-/* clearfix */
-.grid:after {
-  content: "";
-  display: block;
-  clear: both; }
-
 .sideNav {
   background-color: black;
   grid-column: sideNav-start / sideNav-end;
   grid-row: 1 / -1;
   display: grid;
-  grid-template-rows: 7.5vh repeat(7, 8vh);
+  grid-template-rows: 7.5vh repeat(8, 8vh);
   align-items: stretch;
   justify-items: stretch;
   text-align: center;
-  color: white; }
+  color: white;
+  z-index: 11; }
   .sideNav--ham {
     position: sticky;
-    top: 0; }
+    top: 0;
+    z-index: 100; }
     .sideNav--ham span {
       position: absolute;
       left: 50%;
@@ -285,97 +317,221 @@ body {
     .sideNav--ham:hover {
       color: #6ecf86;
       cursor: pointer; }
-  .sideNav--home {
+  .sideNav--1 {
     position: sticky;
     top: 7.5vh; }
-    .sideNav--home span {
+    .sideNav--1 span {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%); }
-    .sideNav--home:hover {
+    .sideNav--1:hover {
       color: #6ecf86;
       cursor: pointer;
       background-color: #424242; }
-  .sideNav--followed {
+  .sideNav--2 {
     position: sticky;
     top: 15.5vh; }
-    .sideNav--followed span {
+    .sideNav--2 span {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%); }
-    .sideNav--followed:hover {
+    .sideNav--2:hover {
       color: #6ecf86;
       cursor: pointer;
       background-color: #424242; }
-  .sideNav--daily {
+  .sideNav--3 {
     position: sticky;
     top: 23.5vh; }
-    .sideNav--daily span {
+    .sideNav--3 span {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%); }
-    .sideNav--daily:hover {
+    .sideNav--3:hover {
       color: #6ecf86;
       cursor: pointer;
       background-color: #424242; }
-  .sideNav--topic {
+  .sideNav--4 {
     position: sticky;
     top: 31.5vh; }
-    .sideNav--topic span {
+    .sideNav--4 span {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%); }
-    .sideNav--topic:hover {
+    .sideNav--4:hover {
       color: #6ecf86;
       cursor: pointer;
       background-color: #424242; }
-  .sideNav--popular {
+  .sideNav--5 {
     position: sticky;
     top: 39.5vh; }
-    .sideNav--popular span {
+    .sideNav--5 span {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%); }
-    .sideNav--popular:hover {
+    .sideNav--5:hover {
       color: #6ecf86;
       cursor: pointer;
       background-color: #424242; }
-  .sideNav--new {
+  .sideNav--6 {
     position: sticky;
     top: 47.5vh; }
-    .sideNav--new span {
+    .sideNav--6 span {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%); }
-    .sideNav--new:hover {
+    .sideNav--6:hover {
       color: #6ecf86;
       cursor: pointer;
       background-color: #424242; }
-  .sideNav--poll {
+  .sideNav--7 {
     position: sticky;
     top: 55.5vh; }
-    .sideNav--poll span {
+    .sideNav--7 span {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%); }
-    .sideNav--poll:hover {
+    .sideNav--7:hover {
       color: #6ecf86;
       cursor: pointer;
       background-color: #424242; }
 
+.sideNav-expansion {
+  grid-row: 2 / -1;
+  grid-column: 1 / 5;
+  width: 100%;
+  font-size: 1.8rem;
+  color: white;
+  background-color: black;
+  display: grid;
+  grid-template-rows: repeat(8, 8vh);
+  transform: translate(-77%);
+  letter-spacing: 0.6rem;
+  font-weight: 700;
+  transition: 0.3s ease;
+  z-index: 10;
+  border-right: 2px solid rgba(23, 28, 33, 0.95); }
+  .sideNav-expansion--1 {
+    position: sticky;
+    top: 7.5vh; }
+    .sideNav-expansion--1-title {
+      position: absolute;
+      left: 7.5rem;
+      top: 50%;
+      font-size: 1.6rem;
+      transform: translateY(-50%); }
+    .sideNav-expansion--1:hover {
+      cursor: pointer;
+      background-color: #424242; }
+  .sideNav-expansion--2 {
+    position: sticky;
+    top: 15.5vh; }
+    .sideNav-expansion--2-title {
+      position: absolute;
+      left: 7.5rem;
+      top: 50%;
+      font-size: 1.6rem;
+      transform: translateY(-50%); }
+    .sideNav-expansion--2:hover {
+      cursor: pointer;
+      background-color: #424242; }
+  .sideNav-expansion--3 {
+    position: sticky;
+    top: 23.5vh; }
+    .sideNav-expansion--3-title {
+      position: absolute;
+      left: 7.5rem;
+      top: 50%;
+      font-size: 1.6rem;
+      transform: translateY(-50%); }
+    .sideNav-expansion--3:hover {
+      cursor: pointer;
+      background-color: #424242; }
+  .sideNav-expansion--4 {
+    position: sticky;
+    top: 31.5vh; }
+    .sideNav-expansion--4-title {
+      position: absolute;
+      left: 7.5rem;
+      top: 50%;
+      font-size: 1.6rem;
+      transform: translateY(-50%); }
+    .sideNav-expansion--4:hover {
+      cursor: pointer;
+      background-color: #424242; }
+  .sideNav-expansion--5 {
+    position: sticky;
+    top: 39.5vh; }
+    .sideNav-expansion--5-title {
+      position: absolute;
+      left: 7.5rem;
+      top: 50%;
+      font-size: 1.6rem;
+      transform: translateY(-50%); }
+    .sideNav-expansion--5:hover {
+      cursor: pointer;
+      background-color: #424242; }
+  .sideNav-expansion--6 {
+    position: sticky;
+    top: 47.5vh; }
+    .sideNav-expansion--6-title {
+      position: absolute;
+      left: 7.5rem;
+      top: 50%;
+      font-size: 1.6rem;
+      transform: translateY(-50%); }
+    .sideNav-expansion--6:hover {
+      cursor: pointer;
+      background-color: #424242; }
+  .sideNav-expansion--7 {
+    position: sticky;
+    top: 55.5vh; }
+    .sideNav-expansion--7-title {
+      position: absolute;
+      left: 7.5rem;
+      top: 50%;
+      font-size: 1.6rem;
+      transform: translateY(-50%); }
+    .sideNav-expansion--7:hover {
+      cursor: pointer;
+      background-color: #424242; }
+
+.sideNavIcon-hover {
+  color: #6ecf86;
+  cursor: pointer;
+  background-color: #424242; }
+
+.sideNavTitle-hover {
+  color: #fff;
+  cursor: pointer;
+  background-color: #424242; }
+
+.expanded {
+  transform: translate(0); }
+
+.current::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 95%;
+  transform: translateY(-50%);
+  height: 100%;
+  width: 3px;
+  background-color: red; }
+
 .sideNavTopic {
-  grid-column: 2 / -1;
+  grid-column: 3 / -1;
   grid-row: 2 / 3;
   position: sticky;
   top: 7.5vh;
-  z-index: 10;
+  z-index: 9;
   color: white;
   background-color: rgba(23, 28, 33, 0.95); }
   .sideNavTopic-container {
@@ -392,11 +548,11 @@ body {
 
 .topNav {
   background-color: black;
-  grid-column: 2 / -1;
+  grid-column: 3 / -1;
   grid-row: 1 / 2;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   display: grid;
   grid-template-columns: repeat(18, 1fr) 2px 2fr;
   align-items: stretch;
@@ -432,6 +588,7 @@ body {
       top: 50%;
       transform: translate(0, -50%); }
   .topNav--chat {
+    position: relative;
     grid-column: 16 / 17;
     background-color: black; }
     .topNav--chat span {
@@ -449,14 +606,26 @@ body {
         height: 3px;
         width: 0%;
         opacity: 0;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
         z-index: 20; }
     .topNav--chat:hover span::after {
-      width: 100%;
+      width: 150%;
       opacity: 1; }
     .topNav--chat:hover {
       cursor: pointer; }
+    .topNav--chat-dropdown {
+      visibility: hidden;
+      position: absolute;
+      top: 106%;
+      right: 0;
+      width: 30rem;
+      background-color: #e9e5e5;
+      display: flex;
+      flex-flow: column; }
+    .topNav--chat:hover .topNav--chat-dropdown {
+      visibility: visible; }
   .topNav--notification {
+    position: relative;
     grid-column: 17 / 18;
     background-color: black; }
     .topNav--notification span {
@@ -474,14 +643,46 @@ body {
         height: 3px;
         width: 0%;
         opacity: 0;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
         z-index: 20; }
     .topNav--notification:hover span::after {
-      width: 100%;
+      width: 150%;
       opacity: 1; }
     .topNav--notification:hover {
       cursor: pointer; }
+    .topNav--notification-dropdown {
+      visibility: hidden;
+      position: absolute;
+      top: 106%;
+      right: 0;
+      width: 30rem;
+      background-color: #e9e5e5;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start; }
+      .topNav--notification-dropdown .title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        align-self: stretch;
+        padding: 1.5rem 1.5rem;
+        border-bottom: 1px solid #444040;
+        color: #252424; }
+      .topNav--notification-dropdown .notification {
+        padding: 1rem 3rem;
+        align-self: stretch;
+        text-align: left;
+        border-bottom: 1px solid #444040;
+        color: #444040; }
+      .topNav--notification-dropdown .all {
+        font-size: 2.5rem;
+        align-self: stretch;
+        padding: 1.5rem 1.5rem;
+        border-top: 1px solid #444040;
+        color: #3a3a3a; }
+    .topNav--notification:hover .topNav--notification-dropdown {
+      visibility: visible; }
   .topNav--account {
+    position: relative;
     grid-column: 18 / 19;
     background-color: black; }
     .topNav--account span {
@@ -499,13 +700,37 @@ body {
         height: 3px;
         width: 0%;
         opacity: 0;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
         z-index: 20; }
     .topNav--account:hover span::after {
-      width: 100%;
+      width: 150%;
       opacity: 1; }
     .topNav--account:hover {
       cursor: pointer; }
+    .topNav--account-dropdown {
+      visibility: hidden;
+      position: absolute;
+      top: 106%;
+      right: 0%;
+      width: 30rem;
+      background-color: #e9e5e5;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start; }
+      .topNav--account-dropdown .accountName {
+        font-size: 3rem;
+        font-weight: 700;
+        padding: 1.5rem 3rem;
+        color: #72c272; }
+      .topNav--account-dropdown .account-settings {
+        padding: 1rem 3rem;
+        align-self: stretch;
+        text-align: left; }
+        .topNav--account-dropdown .account-settings:hover {
+          color: #72c272;
+          background-color: white; }
+    .topNav--account:hover .topNav--account-dropdown {
+      visibility: visible; }
   .topNav--separator {
     grid-column: 19 / 20; }
     .topNav--separator span {
@@ -525,10 +750,10 @@ body {
       transform: translate(-50%, -50%);
       font-weight: 700;
       font-size: 1.6rem;
-      color: #6ECF86; }
+      color: #6ecf86; }
 
 .Container {
   background-color: black;
   display: grid;
-  grid-template-rows: 7.5vh 8vh min-content minmax(75vh, max-content);
-  grid-template-columns: [sideNav-start] 7rem [sideNav-end] repeat(12, [col-start] 1fr [col-end]); }
+  grid-template-rows: 7.5vh 8vh max-content max-content;
+  grid-template-columns: 0rem [sideNav-start] 7rem [sideNav-end] repeat(12, [col-start] 1fr [col-end]); }

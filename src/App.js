@@ -10,6 +10,7 @@ import FollowedPage from "./pages/FollowedPage";
 import NewPage from "./pages/NewPage";
 import PollPage from "./pages/PollPage";
 import PopularPage from "./pages/PopularPage";
+import TagSearchPage from "./pages/TagSearchPage";
 function App() {
   return (
     <Switch>
@@ -39,6 +40,10 @@ function App() {
       </Route>
       <Route path="/popular">
         <PopularPage />
+      </Route>
+
+      <Route path="/tagSearch/:name">
+        <TagSearchPage />
       </Route>
     </Switch>
   );

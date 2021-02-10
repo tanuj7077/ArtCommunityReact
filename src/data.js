@@ -14,6 +14,7 @@ import photography from "./tagImage/photography.jpg";
 import snow from "./tagImage/snow.jpg";
 import tree from "./tagImage/tree.jpg";
 import waterColor from "./tagImage/waterColor.jpg";
+import bird from "./tagImage//bird.jpg";
 
 export const tags = [
   {
@@ -58,7 +59,7 @@ export const tags = [
   },
 ];
 
-export const posts = [
+export const Posts = [
   { image: car, name: "car", author: "author", likes: 5, comments: 3 },
   { image: city, name: "city", author: "author", likes: 7, comments: 2 },
   { image: fanart, name: "fanart", author: "author", likes: 9, comments: 3 },
@@ -219,34 +220,33 @@ export const ExploreTags = [
   {
     id: "1tag",
     image: car,
-    name: "Car",
+    name: "car",
   },
   {
     id: "2tag",
     image: city,
-    name: "City",
+    name: "city",
   },
-  { id: "9tag", image: city, name: "city" },
   { id: "10tag", image: fanart, name: "fanart" },
   {
     id: "3tag",
     image: insect,
-    name: "Insect",
+    name: "insect",
   },
   {
     id: "4tag",
     image: monochrome,
-    name: "Monochrome",
+    name: "monochrome",
   },
   {
     id: "5tag",
     image: landscape,
-    name: "Landscapes",
+    name: "landscapes",
   },
   {
     id: "6tag",
     image: summer,
-    name: "Summer",
+    name: "summer",
   },
   { id: "14tag", image: tree, name: "tree" },
   {
@@ -257,12 +257,13 @@ export const ExploreTags = [
   {
     id: "7tag",
     image: river,
-    name: "River",
+    name: "river",
   },
+  { id: "9tag", image: bird, name: "bird" },
   {
     id: "8tag",
     image: sky,
-    name: "Sky",
+    name: "sky",
   },
   {
     id: "11tag",
