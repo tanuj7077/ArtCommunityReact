@@ -298,14 +298,14 @@ body {
   grid-column: 3/ -1;
   grid-row: 2 / -1;
   padding-top: 5rem;
-  margin: auto;
-  width: 95%;
+  width: 100%;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(17, 1fr);
+  grid-template-columns: repeat(19, 1fr);
   grid-template-rows: repeat(4, min-content);
   color: white; }
   .postPage .postContent {
-    grid-column: 1 / 13;
+    grid-column: 1 / 15;
     grid-row: 1 / 3;
     background-color: #2e2e2e; }
     @media only screen and (max-width: 75em) {
@@ -314,6 +314,7 @@ body {
     .postPage .postContent--image {
       text-align: center;
       background-color: #ce8a8a;
+      padding: 2rem 0;
       width: 100%;
       height: 33vw; }
       @media only screen and (max-width: 75em) {
@@ -323,24 +324,78 @@ body {
         .postPage .postContent--image {
           height: 75vw; } }
       .postPage .postContent--image-img {
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         width: auto;
         height: 100%; }
     .postPage .postContent--info {
+      padding: 2rem 9rem;
       background-color: #609785;
-      width: 100%; }
-  .postPage .comments {
-    grid-column: 1 / 13;
-    grid-row: 3 / -1;
-    background-color: #8e84b9; }
-    @media only screen and (max-width: 75em) {
-      .postPage .comments {
-        grid-column: 1 / 12; } }
-    @media only screen and (max-width: 37.5em) {
-      .postPage .comments {
-        grid-column: 1 / -1;
-        grid-row: 3 / 4; } }
+      width: 100%;
+      display: flex;
+      flex-flow: column; }
+      .postPage .postContent--info-author {
+        display: grid;
+        grid-template-rows: min-content max-content;
+        grid-template-columns: max-content max-content; }
+        .postPage .postContent--info-author-img {
+          grid-column: 1/ 2;
+          grid-row: 1 / 3; }
+        .postPage .postContent--info-author-title {
+          padding-left: 2.5rem;
+          font-size: 4rem;
+          align-self: start; }
+        .postPage .postContent--info-author-name {
+          padding-left: 2.5rem;
+          font-size: 2rem; }
+      .postPage .postContent--info-icons {
+        position: relative;
+        padding: 3rem 0;
+        display: flex; }
+        @media only screen and (max-width: 37.5em) {
+          .postPage .postContent--info-icons {
+            flex-flow: column;
+            gap: 0.7rem; } }
+        .postPage .postContent--info-icons-like {
+          padding-right: 5rem;
+          font-size: 2.4rem;
+          display: flex;
+          gap: 1rem;
+          align-items: center; }
+      .postPage .postContent--info-desc {
+        font-size: 2rem; }
+      .postPage .postContent--info-tags {
+        padding-top: 3rem;
+        font-size: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem; }
+        .postPage .postContent--info-tags .tag {
+          cursor: pointer;
+          background-color: #414141;
+          padding: 0.6rem 1.5rem;
+          letter-spacing: 0.3rem;
+          border-radius: 5px;
+          box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; }
+          .postPage .postContent--info-tags .tag:hover {
+            transform: scale(1.03);
+            transition: all 0.3s ease; }
+    .postPage .postContent--comments {
+      grid-column: 1 / 15;
+      grid-row: 3 / -1;
+      padding: 2rem 9rem;
+      background-color: #8e84b9; }
+      @media only screen and (max-width: 75em) {
+        .postPage .postContent--comments {
+          grid-column: 1 / 12; } }
+      @media only screen and (max-width: 37.5em) {
+        .postPage .postContent--comments {
+          grid-column: 1 / -1;
+          grid-row: 3 / 4; } }
+      .postPage .postContent--comments .subheading {
+        font-size: 3rem; }
   .postPage .otherContent {
-    grid-column: 14 / -1;
+    grid-column: 15 / -1;
     grid-row: 1 / 3;
     background-color: #5e5858;
     width: 100%;
@@ -351,7 +406,7 @@ body {
     @media only screen and (max-width: 75em) {
       .postPage .otherContent {
         grid-row: 3 / -1;
-        grid-column: 13 / -1; } }
+        grid-column: 12 / -1; } }
     @media only screen and (max-width: 37.5em) {
       .postPage .otherContent {
         grid-row: 4 / -1;
@@ -362,6 +417,15 @@ body {
     .postPage .otherContent--recommend {
       background-color: #3a3a3a;
       height: 100%; }
+
+.author-image {
+  width: 8rem;
+  height: 8rem; }
+
+.comment-photo {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%; }
 
 .sideNav {
   background-color: black;

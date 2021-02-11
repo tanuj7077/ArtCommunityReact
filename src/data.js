@@ -69,6 +69,9 @@ export const Posts = [
     comments: 3,
     commentArr: ["c1", "c2", "c3"],
     likesArr: ["u3", "u2", "u4", "u7"],
+    tags: ["nature", "photography", "winter"],
+    desc:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, eos veritatis illo molestias quod minima architecto maxime dolore unde eum soluta, quae doloremque, veniam dolorum? Harum nisi blanditiis deserunt nulla temporibus sapiente, facere soluta impedit beatae recusandae placeat. Deserunt dolore nemo quasi architecto quidem, possimus officia laudantium saepe illum dolorem.",
   },
   {
     id: "Post2",
@@ -79,6 +82,9 @@ export const Posts = [
     comments: 2,
     commentArr: ["c1", "c2"],
     likesArr: ["u3", "u1", "u4", "u7", "u5"],
+    tags: ["nature", "photography", "winter"],
+    desc:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, eos veritatis illo molestias quod minima architecto maxime dolore unde eum soluta, quae doloremque, veniam dolorum? Harum nisi blanditiis deserunt nulla temporibus sapiente, facere soluta impedit beatae recusandae placeat. Deserunt dolore nemo quasi architecto quidem, possimus officia laudantium saepe illum dolorem.",
   },
   {
     id: "Post3",
@@ -89,6 +95,9 @@ export const Posts = [
     comments: 3,
     commentArr: ["c1", "c2", "c3"],
     likesArr: ["u3", "u2", "u4", "u7"],
+    tags: ["nature", "photography", "winter"],
+    desc:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, eos veritatis illo molestias quod minima architecto maxime dolore unde eum soluta, quae doloremque, veniam dolorum? Harum nisi blanditiis deserunt nulla temporibus sapiente, facere soluta impedit beatae recusandae placeat. Deserunt dolore nemo quasi architecto quidem, possimus officia laudantium saepe illum dolorem.",
   },
   {
     id: "Post4",
@@ -99,6 +108,9 @@ export const Posts = [
     comments: 2,
     commentArr: ["c1", "c2"],
     likesArr: ["u3", "u2", "u4", "u7"],
+    tags: ["nature", "photography", "winter"],
+    desc:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, eos veritatis illo molestias quod minima architecto maxime dolore unde eum soluta, quae doloremque, veniam dolorum? Harum nisi blanditiis deserunt nulla temporibus sapiente, facere soluta impedit beatae recusandae placeat. Deserunt dolore nemo quasi architecto quidem, possimus officia laudantium saepe illum dolorem.",
   },
   {
     id: "Post5",
@@ -109,6 +121,9 @@ export const Posts = [
     comments: 2,
     commentArr: ["c1", "c2"],
     likesArr: ["u3", "u2", "u4", "u7"],
+    tags: ["nature", "photography", "winter"],
+    desc:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, eos veritatis illo molestias quod minima architecto maxime dolore unde eum soluta, quae doloremque, veniam dolorum? Harum nisi blanditiis deserunt nulla temporibus sapiente, facere soluta impedit beatae recusandae placeat. Deserunt dolore nemo quasi architecto quidem, possimus officia laudantium saepe illum dolorem.",
   },
   {
     id: "Post6",
@@ -119,6 +134,9 @@ export const Posts = [
     comments: 3,
     commentArr: ["c1", "c5", "c6"],
     likesArr: ["u3", "u2", "u4", "u7"],
+    tags: ["nature", "photography", "winter"],
+    desc:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, eos veritatis illo molestias quod minima architecto maxime dolore unde eum soluta, quae doloremque, veniam dolorum? Harum nisi blanditiis deserunt nulla temporibus sapiente, facere soluta impedit beatae recusandae placeat. Deserunt dolore nemo quasi architecto quidem, possimus officia laudantium saepe illum dolorem.",
   },
   {
     id: "Post7",
@@ -129,6 +147,9 @@ export const Posts = [
     comments: 3,
     commentArr: ["c1", "c2", "c8"],
     likesArr: ["u3", "u2", "u4", "u7"],
+    tags: ["nature", "photography", "winter"],
+    desc:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, eos veritatis illo molestias quod minima architecto maxime dolore unde eum soluta, quae doloremque, veniam dolorum? Harum nisi blanditiis deserunt nulla temporibus sapiente, facere soluta impedit beatae recusandae placeat. Deserunt dolore nemo quasi architecto quidem, possimus officia laudantium saepe illum dolorem.",
   },
   {
     id: "Post8",
@@ -139,6 +160,9 @@ export const Posts = [
     comments: 2,
     commentArr: ["c1", "c2"],
     likesArr: ["u3", "u2", "u4", "u7"],
+    tags: ["nature", "photography", "winter"],
+    desc:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, eos veritatis illo molestias quod minima architecto maxime dolore unde eum soluta, quae doloremque, veniam dolorum? Harum nisi blanditiis deserunt nulla temporibus sapiente, facere soluta impedit beatae recusandae placeat. Deserunt dolore nemo quasi architecto quidem, possimus officia laudantium saepe illum dolorem.",
   },
 ];
 
