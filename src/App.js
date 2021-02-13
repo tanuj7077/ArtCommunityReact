@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import User from "./pages/User";
+import UserPage from "./pages/UserPage";
 import PostPage from "./pages/PostPage";
 import ExplorePage from "./pages/ExplorePage";
 import DailyPage from "./pages/DailyPage";
@@ -18,7 +18,7 @@ function App() {
         <Home />
       </Route>
       <Route path="/user/:id">
-        <User />
+        <UserPage />
       </Route>
       <Route path="/post/:id">
         <PostPage />
@@ -44,9 +44,6 @@ function App() {
 
       <Route path="/tagSearch/:name">
         <TagSearchPage />
-      </Route>
-      <Route path="/user/:id">
-        <User />
       </Route>
     </Switch>
   );

@@ -50,16 +50,35 @@ const PostPagePost = ({ id }) => {
           </div>
         </div>
       </div>
+
       <div className="postContent--comments">
         <span className="subheading">Comments</span>
         <CommentList commentArr={Post.commentArr} />
       </div>
+
       <div className="otherContent">
         <div className="otherContent--user">
-          <h1>By User</h1>
+          <span className="otherContent--subheading">By User</span>
+          <div className="otherContent--thumbnails">
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+          </div>
         </div>
         <div className="otherContent--recommend">
-          <h1>You may Like</h1>
+          <span className="otherContent--subheading">You may like</span>
+          <div className="otherContent--thumbnails">
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+            <img src={url} alt="" className="otherContent--thumbnails-img" />
+          </div>
         </div>
       </div>
     </div>

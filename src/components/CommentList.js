@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import SingleComment from "./SingleComment";
-import { useGlobalContext } from "../context";
 
 const CommentList = ({ commentArr }) => {
   const [comments, setComments] = useState([]);
@@ -21,12 +20,12 @@ const CommentList = ({ commentArr }) => {
     return <h1>Loading</h1>;
   }
   return (
-    <>
+    <div className="postContent--comments-commentList">
       {commentArr &&
         commentArr.map((comment) => {
           return <SingleComment id={comment} />;
         })}
-    </>
+    </div>
   );
 };
 

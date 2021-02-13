@@ -14,10 +14,11 @@ const SingleComment = ({ id }) => {
     fetchComment();
   }, [id]);
   return (
-    <div className="comment">
-      <img src={url} alt="user" className="comment-photo" />
-      <h2 className="comment-user">{comment.user}</h2>
-      <h3 className="comment-text">{comment.text}</h3>
+    <div className="postContent--comments-comment">
+      <img src={url} alt="user" className="postContent--comments-comment-img" />
+      <span className="postContent--comments-comment-user">{comment.user}</span>
+      <span className="postContent--comments-comment-date">{comment.date}</span>
+      <span className="postContent--comments-comment-text">{comment.text}</span>
     </div>
   );
 };
