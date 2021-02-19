@@ -33,7 +33,8 @@
       }
       &-img {
         border-radius: 5px;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+          rgba(0, 0, 0, 0.22) 0px 10px 10px;
         width: auto;
         height: 100%;
       }
@@ -49,6 +50,15 @@
 
       display: flex;
       flex-flow: column;
+
+      &-menu {
+        align-self: flex-end;
+        cursor: pointer;
+        .menu-icon {
+          width: 4rem;
+          height: 4rem;
+        }
+      }
 
       &-author {
         display: grid;
@@ -102,7 +112,8 @@
           padding: 0.6rem 1.5rem;
           letter-spacing: 0.3rem;
           border-radius: 5px;
-          box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+          box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+            rgba(0, 0, 0, 0.05) 0px 5px 10px;
           &:hover {
             transform: scale(1.03);
             transition: all 0.3s ease;
@@ -217,6 +228,12 @@
       }
     }
   }
+}
+
+.menu-item:hover {
+  cursor: pointer;
+  color: #6ecf86;
+  transition: all 0.25s ease;
 }
 .author-image {
   width: 8rem;

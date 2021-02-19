@@ -1,0 +1,146 @@
+.loginModal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1600;
+  //font-size: 7rem;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitForm {
+  display: flex;
+  //display: grid;
+  //grid-template-rows: repeat(3, min-content);
+  flex-flow: column;
+  align-items: center;
+  color: white;
+  width: 50%;
+  height: 80%;
+  background-color: rgb(43, 43, 43);
+  /*background: rgb(35, 37, 35);
+  background: linear-gradient(
+    90deg,
+    rgba(35, 37, 35, 1) 0%,
+    rgba(23, 23, 23, 1) 0%,
+    rgba(129, 129, 129, 1) 100%
+  );*/
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+  //scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #3e3f3e;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+.closeIcon {
+  //align-self: flex-end;
+  position: fixed;
+  top: 11vh;
+  right: 25.5%;
+  color: #6ecf86;
+  &:hover {
+    cursor: pointer;
+  }
+  .Icon {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+.loginToggle {
+  //clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+  margin-top: 6rem;
+  align-self: center;
+  font-size: 3rem;
+  background-color: rgb(34, 34, 34);
+  width: 30vw;
+  height: 6rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  overflow: hidden;
+  justify-content: center;
+  margin-bottom: 4rem;
+  border-radius: 10px;
+  .loginText {
+    grid-column: 1 /2;
+    text-align: center;
+    padding: 0.8rem 0;
+    transition: all 0.7s ease;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .signupText {
+    grid-column: 2 /-1;
+    text-align: center;
+    padding: 0.8rem 0;
+    transition: all 0.7s ease;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.form {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.login {
+  .loginText {
+    color: #6ecf86;
+    transition: all 1s ease;
+  }
+  &::after {
+    content: "";
+    background-color: #6ecf86;
+    transform: translateX(0vw);
+    transition: all 0.4s ease;
+  }
+}
+.signup {
+  .signupText {
+    color: #6ecf86;
+    transition: all 1s ease;
+  }
+  &::after {
+    content: "";
+    background-color: #6ecf86;
+    transform: translateX(15vw);
+    transition: all 0.4s ease;
+  }
+}
+
+.uploadIcon {
+  color: rgb(77, 155, 77);
+  &:hover {
+    cursor: pointer;
+  }
+  .Icon {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+.uploadText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  color: rgb(77, 155, 77);
+}
+
+#fileInput {
+  display: none;
+}

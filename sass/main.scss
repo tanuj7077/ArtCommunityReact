@@ -10,18 +10,21 @@
 @import "components/button";
 @import "components/card";
 @import "components/form";
+@import "components/inputs";
 @import "components/popup";
 @import "components/search";
 @import "components/tooltip";
-@import "components/flickity";
 
 @import "layout/explore";
+
 @import "layout/main";
 @import "layout//postPage";
 @import "layout/sidenav";
 @import "layout/sideNavTopic";
+@import "layout/submitModal";
 @import "layout/topnav";
 @import "layout/userPage";
+@import "layout/loginModal";
 
 @import "pages/author";
 @import "pages/home";

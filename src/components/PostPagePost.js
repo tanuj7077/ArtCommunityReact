@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Route } from "react-router-dom";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Posts, tags } from "../data";
 import CommentList from "./CommentList";
 const url =
@@ -23,6 +24,9 @@ const PostPagePost = ({ id }) => {
           <img className="postContent--image-img" src={Post.image} />
         </div>
         <div className="postContent--info">
+          <div className="postContent--info-menu">
+            <HiOutlineDotsVertical className="menu-icon" />
+          </div>
           <div className="postContent--info-author">
             <div className="postContent--info-author-img">
               <img src={url} alt="" className="author-image" />

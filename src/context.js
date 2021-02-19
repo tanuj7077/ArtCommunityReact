@@ -9,6 +9,9 @@ const AppProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [explorePageTags, setExplorePageTags] = useState([]);
   const [searchTags, setSearchTags] = useState([]);
+  const [submitModal, setsubmitModal] = useState(false);
+  const [loginModal, setloginModal] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   const fetchPosts = async () => {
     setIsLoading(true);
@@ -40,6 +43,29 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const openSubmitModal = () => {
+    setsubmitModal(true);
+  };
+
+  const closeSubmitModal = () => {
+    setsubmitModal(false);
+  };
+
+  const openLoginModal = () => {
+    setloginModal(true);
+  };
+
+  const closeLoginModal = () => {
+    setloginModal(false);
+  };
+
+  const switchToLogin = () => {
+    setIsLogin(true);
+  };
+  const switchToSignup = () => {
+    setIsLogin(false);
+  };
+
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -54,7 +80,22 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ isLoggedIn, posts, explorePageTags, searchTags }}
+      value={{
+        isLoggedIn,
+        posts,
+        explorePageTags,
+        searchTags,
+        setPosts,
+        openSubmitModal,
+        closeSubmitModal,
+        submitModal,
+        openLoginModal,
+        closeLoginModal,
+        loginModal,
+        isLogin,
+        switchToLogin,
+        switchToSignup,
+      }}
     >
       {children}
     </AppContext.Provider>

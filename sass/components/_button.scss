@@ -1,0 +1,14 @@
+.btn {
+  border: none;
+  &-submit {
+    background-color: #5dad71;
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 0.4rem;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}

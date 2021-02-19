@@ -5,9 +5,11 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import SinglePost from "./SinglePost";
 import { Posts } from "../data";
 import { useGlobalContext } from "../context";
+const url = "http://localhost:8000/posts";
 
 const PostList = () => {
   const { posts } = useGlobalContext();
+  console.log(url);
   return (
     <div className="main">
       <div className="subHeading">Discover</div>
