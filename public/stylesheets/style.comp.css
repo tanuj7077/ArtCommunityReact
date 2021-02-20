@@ -87,6 +87,9 @@ body {
 .u-margin-bottom-small {
   margin-bottom: 1.5rem !important; }
 
+.u-margin-top-medium {
+  margin-top: 4rem !important; }
+
 .u-margin-top-big {
   margin-top: 8rem !important; }
 
@@ -142,6 +145,7 @@ body {
       .form__group--basic .form__input:focus:invalid {
         border-bottom: 2px solid red; }
     .form__group--basic .form__label {
+      text-align: left;
       color: #6ecf86;
       position: absolute;
       left: 0.8rem;
@@ -165,6 +169,43 @@ body {
       border-bottom: 2px dashed red;
       background-color: white;
       letter-spacing: 1rem; }
+    .form__group--basic .form__input-textarea {
+      font-size: 2rem;
+      font-family: inherit;
+      letter-spacing: 0.4rem;
+      color: inherit;
+      padding: 0 1rem;
+      padding-top: 1rem;
+      background-color: rgba(128, 128, 128, 0.5);
+      border: none;
+      border-bottom: 2px solid black;
+      width: 30vw;
+      display: block;
+      transition: all 0.4s; }
+      .form__group--basic .form__input-textarea::-webkit-input-placeholder {
+        color: gray; }
+      .form__group--basic .form__input-textarea:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid #6ecf86; }
+      .form__group--basic .form__input-textarea::-webkit-scrollbar {
+        width: 7px; }
+      .form__group--basic .form__input-textarea::-webkit-scrollbar-thumb {
+        background: #3e3f3e;
+        border-radius: 5px; }
+      .form__group--basic .form__input-textarea::-webkit-scrollbar-track {
+        background: transparent; }
+      .form__group--basic .form__input-textarea::-webkit-scrollbar-corner {
+        display: none; }
+      .form__group--basic .form__input-textarea::-webkit-resizer {
+        color: transparent; }
+    .form__group--basic .form__input-textarea:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(1rem);
+      font-size: 1.5rem; }
+    .form__group--basic .form__input-textarea:placeholder-shown {
+      padding: 1.5rem 1rem; }
 
 .explore {
   grid-column: 3 / -1;
@@ -802,136 +843,6 @@ body {
     top: 50%;
     transform: translateY(-50%); }
 
-.submitModal {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1500;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
-.submitForm {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  color: white;
-  width: 50%;
-  height: 80%;
-  background-color: #2b2b2b;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  flex-wrap: nowrap;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; }
-  .submitForm::-webkit-scrollbar {
-    width: 7px; }
-  .submitForm::-webkit-scrollbar-thumb {
-    background: #3e3f3e;
-    border-radius: 5px; }
-  .submitForm::-webkit-scrollbar-track {
-    background: transparent; }
-  .submitForm-title {
-    font-size: 2rem;
-    font-family: inherit;
-    letter-spacing: 0.4rem;
-    color: inherit;
-    padding: 0 1rem;
-    padding-top: 1rem;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    border-bottom: 2px solid black;
-    width: 30vw;
-    height: 5rem;
-    display: block;
-    transition: all 0.4s;
-    margin-bottom: 2.5rem; }
-    .submitForm-title::-webkit-input-placeholder {
-      color: #fff4f4; }
-    .submitForm-title:focus {
-      outline: none;
-      border-bottom: 2px solid red; }
-  .submitForm-imgHolder {
-    width: 100%;
-    height: 30rem;
-    border-radius: 10px;
-    margin-bottom: 2.5rem;
-    border: dashed 2px #4d9b4d;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center; }
-    .submitForm-imgHolder label {
-      cursor: pointer;
-      padding: 0.8rem 0; }
-  .submitForm-image {
-    text-align: center;
-    background-color: #3f3f3f;
-    padding: 2rem 2rem;
-    width: 100%;
-    height: 30rem;
-    border-radius: 10px;
-    margin-bottom: 2.5rem;
-    border: dashed 2px #4d9b4d;
-    overflow: hidden; }
-    .submitForm-image img {
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-      width: auto;
-      height: 100%; }
-  .submitForm-desc {
-    font-size: 2rem;
-    font-family: inherit;
-    letter-spacing: 0.4rem;
-    color: inherit;
-    padding: 1.5rem 1rem;
-    padding-bottom: 0.4rem;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    border-bottom: 2px solid black;
-    width: 30vw;
-    display: block;
-    transition: all 0.4s;
-    margin-bottom: 2.5rem; }
-    .submitForm-desc::-webkit-input-placeholder {
-      color: #fff4f4; }
-    .submitForm-desc:focus {
-      outline: none;
-      border-bottom: 2px solid red; }
-
-.closeIcon {
-  align-self: flex-end;
-  color: #4d9b4d; }
-  .closeIcon:hover {
-    cursor: pointer; }
-  .closeIcon .Icon {
-    width: 6rem;
-    height: 6rem; }
-
-.uploadIcon {
-  color: #4d9b4d; }
-  .uploadIcon:hover {
-    cursor: pointer; }
-  .uploadIcon .Icon {
-    width: 6rem;
-    height: 6rem; }
-
-.uploadText {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.3rem;
-  color: #4d9b4d; }
-
-#fileInput {
-  display: none; }
-
 .topNav {
   background-color: black;
   grid-column: 3 / -1;
@@ -988,7 +899,7 @@ body {
         top: 5.2vh;
         left: 50%;
         transform: translateX(-50%);
-        background-color: red;
+        background-color: #6ecf86;
         height: 3px;
         width: 0%;
         opacity: 0;
@@ -1005,15 +916,14 @@ body {
       top: 106%;
       right: 0;
       width: 30rem;
-      background-color: #e9e5e5;
+      background-color: #353535;
       display: flex;
       flex-flow: column; }
     .topNav--chat:hover .topNav--chat-dropdown {
       visibility: visible; }
   .topNav--notification {
     position: relative;
-    grid-column: 17 / 18;
-    background-color: black; }
+    grid-column: 17 / 18; }
     .topNav--notification span {
       position: absolute;
       top: 50%;
@@ -1025,7 +935,7 @@ body {
         top: 5.2vh;
         left: 50%;
         transform: translateX(-50%);
-        background-color: red;
+        background-color: #6ecf86;
         height: 3px;
         width: 0%;
         opacity: 0;
@@ -1042,7 +952,7 @@ body {
       top: 106%;
       right: 0;
       width: 30rem;
-      background-color: #e9e5e5;
+      background-color: #353535;
       display: flex;
       flex-flow: column;
       align-items: flex-start; }
@@ -1051,26 +961,27 @@ body {
         font-weight: 700;
         align-self: stretch;
         padding: 1.5rem 1.5rem;
-        border-bottom: 1px solid #444040;
-        color: #252424; }
+        border-bottom: 2px solid #9b9b9b;
+        color: white; }
       .topNav--notification-dropdown .notification {
         padding: 1rem 3rem;
         align-self: stretch;
         text-align: left;
-        border-bottom: 1px solid #444040;
-        color: #444040; }
+        border-bottom: 1px solid #686868;
+        color: #bdbdbd; }
       .topNav--notification-dropdown .all {
         font-size: 2.5rem;
         align-self: stretch;
         padding: 1.5rem 1.5rem;
-        border-top: 1px solid #444040;
-        color: #3a3a3a; }
+        border-top: 1px solid #9b9b9b;
+        color: white; }
+        .topNav--notification-dropdown .all:hover {
+          color: #6ecf86; }
     .topNav--notification:hover .topNav--notification-dropdown {
       visibility: visible; }
   .topNav--account {
     position: relative;
-    grid-column: 18 / 19;
-    background-color: black; }
+    grid-column: 18 / 19; }
     .topNav--account span {
       position: absolute;
       top: 50%;
@@ -1082,7 +993,7 @@ body {
         top: 5.2vh;
         left: 50%;
         transform: translateX(-50%);
-        background-color: red;
+        background-color: #6ecf86;
         height: 3px;
         width: 0%;
         opacity: 0;
@@ -1099,7 +1010,7 @@ body {
       top: 106%;
       right: 0%;
       width: 30rem;
-      background-color: #e9e5e5;
+      background-color: #353535;
       display: flex;
       flex-flow: column;
       align-items: flex-start; }
@@ -1113,8 +1024,7 @@ body {
         align-self: stretch;
         text-align: left; }
         .topNav--account-dropdown .account-settings:hover {
-          color: #72c272;
-          background-color: white; }
+          background-color: #696666; }
     .topNav--account:hover .topNav--account-dropdown {
       visibility: visible; }
   .topNav--separator {
@@ -1386,6 +1296,32 @@ body {
     border-radius: 5px; }
   .submitForm::-webkit-scrollbar-track {
     background: transparent; }
+  .submitForm-imgHolder {
+    width: 100%;
+    height: 30rem;
+    border-radius: 10px;
+    border: dashed 2px #6ecf86;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center; }
+    .submitForm-imgHolder label {
+      cursor: pointer;
+      padding: 0.8rem 0; }
+  .submitForm-image {
+    text-align: center;
+    background-color: #3f3f3f;
+    padding: 2rem 2rem;
+    width: 100%;
+    height: 30rem;
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+    border: dashed 2px #4d9b4d;
+    overflow: hidden; }
+    .submitForm-image img {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+      width: auto;
+      height: 100%; }
 
 .closeIcon {
   position: fixed;
@@ -1410,18 +1346,19 @@ body {
   overflow: hidden;
   justify-content: center;
   margin-bottom: 4rem;
-  border-radius: 10px;
-  transition: all 1s ease; }
+  border-radius: 10px; }
   .loginToggle .loginText {
     grid-column: 1 /2;
     text-align: center;
-    padding: 0.8rem 0; }
+    padding: 0.8rem 0;
+    transition: all 0.7s ease; }
     .loginToggle .loginText:hover {
       cursor: pointer; }
   .loginToggle .signupText {
     grid-column: 2 /-1;
     text-align: center;
-    padding: 0.8rem 0; }
+    padding: 0.8rem 0;
+    transition: all 0.7s ease; }
     .loginToggle .signupText:hover {
       cursor: pointer; }
 
@@ -1462,6 +1399,23 @@ body {
   font-weight: 700;
   letter-spacing: 0.3rem;
   color: #4d9b4d; }
+
+#fileInput {
+  display: none; }
+
+.uploadIcon {
+  color: #6ecf86; }
+  .uploadIcon:hover {
+    cursor: pointer; }
+  .uploadIcon .Icon {
+    width: 6rem;
+    height: 6rem; }
+
+.uploadText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  color: #6ecf86; }
 
 #fileInput {
   display: none; }

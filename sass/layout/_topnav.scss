@@ -74,7 +74,8 @@
         top: 5.2vh;
         left: 50%;
         transform: translateX(-50%);
-        background-color: red;
+        //background-color: red;
+        background-color: #6ecf86;
         height: 3px;
         width: 0%;
         opacity: 0;
@@ -95,7 +96,7 @@
       top: 106%;
       right: 0;
       width: 30rem;
-      background-color: rgb(233, 229, 229);
+      background-color: rgb(53, 53, 53);
 
       display: flex;
       flex-flow: column;
@@ -107,7 +108,6 @@
   &--notification {
     position: relative;
     grid-column: 17 / 18;
-    background-color: black;
     span {
       position: absolute;
       top: 50%;
@@ -119,7 +119,8 @@
         top: 5.2vh;
         left: 50%;
         transform: translateX(-50%);
-        background-color: red;
+        //background-color: red;
+        background-color: #6ecf86;
         height: 3px;
         width: 0%;
         opacity: 0;
@@ -140,7 +141,7 @@
       top: 106%;
       right: 0;
       width: 30rem;
-      background-color: rgb(233, 229, 229);
+      background-color: rgb(53, 53, 53);
 
       display: flex;
       flex-flow: column;
@@ -151,22 +152,26 @@
         font-weight: 700;
         align-self: stretch;
         padding: 1.5rem 1.5rem;
-        border-bottom: 1px solid rgb(68, 64, 64);
-        color: rgb(37, 36, 36);
+        border-bottom: 2px solid rgb(155, 155, 155);
+        color: white;
       }
       .notification {
         padding: 1rem 3rem;
         align-self: stretch;
         text-align: left;
-        border-bottom: 1px solid rgb(68, 64, 64);
-        color: rgb(68, 64, 64);
+        border-bottom: 1px solid rgb(104, 104, 104);
+        color: rgb(189, 189, 189);
       }
       .all {
         font-size: 2.5rem;
         align-self: stretch;
         padding: 1.5rem 1.5rem;
-        border-top: 1px solid rgb(68, 64, 64);
-        color: rgb(58, 58, 58);
+        border-top: 1px solid rgb(155, 155, 155);
+        color: white;
+
+        &:hover {
+          color: #6ecf86;
+        }
       }
     }
     &:hover &-dropdown {
@@ -176,7 +181,6 @@
   &--account {
     position: relative;
     grid-column: 18 / 19;
-    background-color: black;
 
     span {
       position: absolute;
@@ -190,7 +194,8 @@
         top: 5.2vh;
         left: 50%;
         transform: translateX(-50%);
-        background-color: red;
+        //background-color: red;
+        background-color: #6ecf86;
         height: 3px;
         width: 0%;
         opacity: 0;
@@ -211,7 +216,7 @@
       top: 106%;
       right: 0%;
       width: 30rem;
-      background-color: rgb(233, 229, 229);
+      background-color: rgb(53, 53, 53);
 
       display: flex;
       flex-flow: column;
@@ -229,8 +234,8 @@
         text-align: left;
 
         &:hover {
-          color: rgb(114, 194, 114);
-          background-color: rgb(255, 255, 255);
+          //color: rgb(114, 194, 114);
+          background-color: rgb(105, 102, 102);
         }
       }
     }

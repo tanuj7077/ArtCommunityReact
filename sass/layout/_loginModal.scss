@@ -14,8 +14,6 @@
 
 .submitForm {
   display: flex;
-  //display: grid;
-  //grid-template-rows: repeat(3, min-content);
   flex-flow: column;
   align-items: center;
   color: white;
@@ -46,6 +44,39 @@
   }
   &::-webkit-scrollbar-track {
     background: transparent;
+  }
+
+  &-imgHolder {
+    width: 100%;
+    height: 30rem;
+    border-radius: 10px;
+    border: dashed 2px #6ecf86;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    label {
+      cursor: pointer;
+      padding: 0.8rem 0;
+    }
+  }
+
+  &-image {
+    text-align: center;
+    background-color: #3f3f3f;
+    padding: 2rem 2rem;
+    width: 100%;
+    height: 30rem;
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+    border: dashed 2px rgb(77, 155, 77);
+    overflow: hidden;
+
+    img {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+      width: auto;
+      height: 100%;
+    }
   }
 }
 .closeIcon {
@@ -139,6 +170,27 @@
   font-weight: 700;
   letter-spacing: 0.3rem;
   color: rgb(77, 155, 77);
+}
+
+#fileInput {
+  display: none;
+}
+
+.uploadIcon {
+  color: #6ecf86;
+  &:hover {
+    cursor: pointer;
+  }
+  .Icon {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+.uploadText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  color: #6ecf86;
 }
 
 #fileInput {

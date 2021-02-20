@@ -61,5 +61,56 @@
       background-color: white;
       letter-spacing: 1rem;
     }
+    .form__input-textarea {
+      font-size: 2rem;
+      font-family: inherit;
+      letter-spacing: 0.4rem;
+      color: inherit;
+      padding: 0 1rem;
+      padding-top: 1rem;
+      background-color: rgba(grey, 0.5);
+      border: none;
+      border-bottom: 2px solid black;
+      width: 30vw;
+      display: block;
+      transition: all 0.4s;
+
+      &::-webkit-input-placeholder {
+        color: gray;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(black, 0.1);
+        border-bottom: 2px solid #6ecf86;
+      }
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #3e3f3e;
+        border-radius: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-corner {
+        display: none;
+      }
+      &::-webkit-resizer {
+        color: transparent;
+      }
+    }
+    .form__input-textarea:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(1rem);
+      font-size: 1.5rem;
+    }
+    .form__input-textarea:placeholder-shown {
+      padding: 1.5rem 1rem;
+    }
   }
 }
