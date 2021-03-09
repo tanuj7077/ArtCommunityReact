@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import SubmitModal from "./SubmitModal";
 import LoginModal from "./LoginModal";
 
-import { IoClose } from "react-icons/io5";
 import { account, notifications } from "../data";
 import { useGlobalContext } from "../context";
 
@@ -30,20 +29,20 @@ const TopNav = () => {
           <>
             <div className="topNav--chat">
               <span className="material-icons">textsms</span>
-              <div class="topNav--chat-dropdown">
-                <a href="#" class="">
+              <div className="topNav--chat-dropdown">
+                <a href="#" className="">
                   Big Content
                 </a>
-                <a href="#" class="">
+                <a href="#" className="">
                   Content
                 </a>
-                <a href="#" class="">
+                <a href="#" className="">
                   Content
                 </a>
-                <a href="#" class="">
+                <a href="#" className="">
                   Content
                 </a>
-                <a href="#" class="">
+                <a href="#" className="">
                   Content
                 </a>
               </div>

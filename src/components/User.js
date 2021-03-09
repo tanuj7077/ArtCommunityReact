@@ -168,6 +168,7 @@ const User = ({ id }) => {
                   <VscChevronRight className="icon" />
                 </span>
               </div>
+              <span className="subheading">Liked Posts</span>
             </div>
             <div className="userPage--home-following">
               <span className="subheading">Following</span>

@@ -9,7 +9,15 @@ const url = "http://localhost:8000/posts";
 
 const PostList = () => {
   const { posts } = useGlobalContext();
-  console.log(url);
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
   return (
     <div className="main">
       <div className="subHeading">Discover</div>

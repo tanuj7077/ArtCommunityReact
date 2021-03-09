@@ -47,6 +47,7 @@ const SideNav = () => {
         {items.map((item) => {
           return (
             <Route
+              key={item.id}
               render={({ history }) => (
                 <div
                   onClick={() => {
@@ -66,6 +67,7 @@ const SideNav = () => {
         {items.map((item) => {
           return (
             <Route
+              key={item.id2}
               render={({ history }) => (
                 <div
                   onClick={() => {
