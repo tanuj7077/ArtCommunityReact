@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+import axios from "axios";
+
+import { useGlobalContext } from "./context";
 
 import Home from "./pages/Home";
 import UserPage from "./pages/UserPage";
@@ -11,13 +14,29 @@ import NewPage from "./pages/NewPage";
 import PollPage from "./pages/PollPage";
 import PopularPage from "./pages/PopularPage";
 import TagSearchPage from "./pages/TagSearchPage";
+
+axios.defaults.withCredentials = true;
 function App() {
+  const { setIsLoggedIn } = useGlobalContext();
+  const getLoggedIn = async () => {
+    const loggedInRes = await axios.get("http://localhost:8000/auth/loggedIn");
+    console.log(loggedInRes);
+    if (loggedInRes.data.loggedIn) {
+      setIsLoggedIn(true);
+      //Initialize all data
+    }
+  };
+
+  useEffect(() => {
+    getLoggedIn();
+  }, []);
+
   return (
     <Switch>
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/user/:id">
+      <Route path="/user/:username">
         <UserPage />
       </Route>
       <Route path="/post/:id">

@@ -22,7 +22,6 @@ const SideNav = () => {
           .classList.toggle("expanded");
       });
 
-    console.log(isLoggedIn);
     /*return () =>
       document
         .getElementsByClassName("sideNav--ham")[0]

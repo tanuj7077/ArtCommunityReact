@@ -22,7 +22,7 @@ const url =
   "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
 
 const User = ({ id }) => {
-  const { posts } = useGlobalContext();
+  const { posts, user } = useGlobalContext();
   const [isHome, setHome] = useState(true);
   const [isGallery, setGallery] = useState(false);
   const [isAbout, setAbout] = useState(false);

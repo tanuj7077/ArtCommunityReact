@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaUpload } from "react-icons/fa";
 import axios from "axios";
@@ -28,7 +28,8 @@ const SubmitModal = () => {
   const [image, setImage] = useState("");
   const [toSendImage, setToSendImage] = useState("");
   const [isUploaded, setIsUploaded] = useState(false);
-  const { closeSubmitModal } = useGlobalContext();
+  const { closeSubmitModal, userId } = useGlobalContext();
+
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
@@ -41,7 +42,7 @@ const SubmitModal = () => {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     let currentImageName = "image-" + Date.now();
     let uploadImage = storage
@@ -75,7 +76,8 @@ const SubmitModal = () => {
           });
       }
     );
-  };
+  }
+
   return (
     <>
       <div className="loginModal">

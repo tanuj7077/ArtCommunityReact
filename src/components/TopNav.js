@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import SubmitModal from "./SubmitModal";
 import LoginModal from "./LoginModal";
+import axios from "axios";
 
 import { account, notifications } from "../data";
 import { useGlobalContext } from "../context";
@@ -9,11 +10,29 @@ import { useGlobalContext } from "../context";
 const TopNav = () => {
   const {
     isLoggedIn,
+    setIsLoggedIn,
     openSubmitModal,
     submitModal,
     openLoginModal,
     loginModal,
+    user,
+    setUser,
   } = useGlobalContext();
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.get("http://localhost:8000/auth/signout").then((res) => {
+        console.log(res.data);
+        if (res.data.success) {
+          setUser("");
+          setIsLoggedIn(false);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -66,19 +85,25 @@ const TopNav = () => {
               <div className="topNav--account-dropdown">
                 <div className="accountName">
                   <div className="profilePic"></div>
-                  <div className="profileName">UserName</div>
+                  <Route
+                    render={({ history }) => (
+                      <div
+                        onClick={() => {
+                          history.push(`/user/${user}`);
+                        }}
+                        className="profileName"
+                      >
+                        {user}
+                      </div>
+                    )}
+                  />
+                  {/* <div className="profileName">{user}</div> */}
                 </div>
-                {account.map((item) => {
-                  return (
-                    <a
-                      key={item.id}
-                      href={item.link}
-                      className="account-settings"
-                    >
-                      {item.name}
-                    </a>
-                  );
-                })}
+                <a className="account-settings">Account Settings</a>
+                <a className="account-settings">Theme</a>
+                <a className="account-settings" onClick={handleLogout}>
+                  Logout
+                </a>
               </div>
             </div>
             <div className="topNav--separator">
