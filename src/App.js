@@ -17,12 +17,14 @@ import TagSearchPage from "./pages/TagSearchPage";
 
 axios.defaults.withCredentials = true;
 function App() {
-  const { setIsLoggedIn } = useGlobalContext();
+  const { setIsLoggedIn, setUserData } = useGlobalContext();
   const getLoggedIn = async () => {
     const loggedInRes = await axios.get("http://localhost:8000/auth/loggedIn");
     console.log(loggedInRes);
     if (loggedInRes.data.loggedIn) {
       setIsLoggedIn(true);
+      setUserData(loggedInRes.data.userData);
+
       //Initialize all data
     }
   };
@@ -30,6 +32,16 @@ function App() {
   useEffect(() => {
     getLoggedIn();
   }, []);
+
+  // var tags;
+  // const fetchTags = async () => {
+  //   tags = await axios.get("http://localhost:8000/tags/fetchTags");
+  //   console.log(tags.data);
+  //   //Initialize all data
+  // };
+  // useEffect(() => {
+  //   fetchTags();
+  // }, []);
 
   return (
     <Switch>

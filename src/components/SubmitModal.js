@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { FaUpload } from "react-icons/fa";
 import axios from "axios";
 import { useGlobalContext } from "../context";
+import Select from "react-select";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";
@@ -24,11 +25,110 @@ if (!firebase.apps.length) {
 }
 var storage = firebase.storage();
 
+//-----------------React Select-----------------
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    //borderBottom: "1px dotted pink",
+    borderBottom: "1px solid #525050",
+    //color: state.isSelected ? "red" : "#80808080",
+    fontSize: 20,
+    letterSpacing: 4,
+    color: "#A8A8A8",
+    //backgroundColor: "#323232",
+    backgroundColor: state.isFocused ? "black" : "#323232",
+    textAlign: "left",
+    cursor: "pointer",
+  }),
+  menu: (base) => ({
+    ...base,
+    backgroundColor: "#323232",
+    border: "1px solid #525050",
+  }),
+  menuList: (base) => ({
+    ...base,
+
+    "::-webkit-scrollbar": {
+      width: "9px",
+    },
+    "::-webkit-scrollbar-track": {
+      background: "black",
+    },
+    "::-webkit-scrollbar-thumb": {
+      //background: "#3e3f3e",
+      background: "#6ecf86",
+      borderRadius: "5px",
+    },
+    "::-webkit-scrollbar-thumb:hover": {
+      background: "#555",
+    },
+  }),
+  container: (base) => ({
+    ...base,
+    width: "100%",
+  }),
+  control: (base, state) => ({
+    ...base,
+    //height: 32,
+    padding: 5,
+    paddingLeft: 10,
+    minHeight: 32,
+    fontSize: 20,
+    letterSpacing: 4,
+    border: "none",
+    boxShadow: "none",
+    width: "100%",
+    textAlign: "left",
+    cursor: "pointer",
+    backgroundColor: "#80808080",
+    color: "gray",
+  }),
+  dropdownIndicator: (base, state) => ({
+    ...base,
+    //display: "none",
+    color: "gray",
+  }),
+  indicatorSeparator: (base) => ({
+    ...base,
+    display: "none",
+  }),
+  valueContainer: (base) => ({
+    ...base,
+    padding: 0,
+    paddingLeft: 2,
+  }),
+  multiValue: (base) => ({
+    ...base,
+    backgroundColor: "black",
+    paddingLeft: 8,
+    marginRight: 7,
+    marginTop: 7,
+  }),
+  multiValueLabel: (base) => ({
+    ...base,
+    color: "white",
+    backgroundColor: "black",
+    padding: 6,
+  }),
+  multiValueRemove: (base) => ({
+    ...base,
+    color: "red",
+    "&:hover": {
+      backgroundColor: "#F87A6E ",
+      color: "white",
+    },
+  }),
+  input: (base) => ({
+    ...base,
+    color: "white",
+  }),
+};
+
 const SubmitModal = () => {
   const [image, setImage] = useState("");
   const [toSendImage, setToSendImage] = useState("");
   const [isUploaded, setIsUploaded] = useState(false);
-  const { closeSubmitModal, userId } = useGlobalContext();
+  const { closeSubmitModal, userData } = useGlobalContext();
 
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -78,6 +178,18 @@ const SubmitModal = () => {
     );
   }
 
+  //----------------Fetch Tags----------------
+  const [tags, setTags] = useState([]);
+  const fetchTags = async () => {
+    await axios
+      .get("http://localhost:8000/tags/fetchTags")
+      .then((res) => setTags(res.data))
+      .then(console.log(tags));
+    //Initialize all data
+  };
+  useEffect(() => {
+    fetchTags();
+  }, []);
   return (
     <>
       <div className="loginModal">
@@ -89,9 +201,9 @@ const SubmitModal = () => {
           <form
             className="form u-margin-top-big"
             onSubmit={handleSubmit}
-            enctype="multipart/form-data"
+            encType="multipart/form-data"
           >
-            <div class="form__group form__group--basic">
+            <div className="form__group form__group--basic">
               <input
                 name="name"
                 type="text"
@@ -104,7 +216,7 @@ const SubmitModal = () => {
                 <span class="form__label__content">Title</span>
               </label>
             </div>
-            <div class="form__group form__group--basic">
+            <div className="form__group form__group--basic">
               <textarea
                 name="desc"
                 id="desc"
@@ -116,9 +228,28 @@ const SubmitModal = () => {
                 placeholder="description"
               ></textarea>
               <label htmlFor="desc" className="form__label">
-                <span class="form__label__content">Description</span>
+                <span className="form__label__content">Description</span>
               </label>
             </div>
+
+            {tags && (
+              <div className="form__group form__group--basic">
+                <Select
+                  className="form__input-select"
+                  id="select"
+                  styles={customStyles}
+                  closeMenuOnSelect={false}
+                  //components={{ IndicatorSeparator }}
+                  // defaultValue={[colourOptions[4], colourOptions[5]]}
+                  isMulti
+                  options={tags}
+                  placeholder={<div>Select Tags...</div>}
+                />
+                <label htmlFor="select" className="form__label">
+                  <span className="form__label__content">Tags</span>
+                </label>
+              </div>
+            )}
 
             {isUploaded ? (
               <>
@@ -147,7 +278,6 @@ const SubmitModal = () => {
               </>
             )}
 
-            <div className="submitForm-tags">Tags</div>
             <button className="btn btn-submit" type="submit">
               Submit
             </button>

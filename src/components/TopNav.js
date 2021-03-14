@@ -4,7 +4,7 @@ import SubmitModal from "./SubmitModal";
 import LoginModal from "./LoginModal";
 import axios from "axios";
 
-import { account, notifications } from "../data";
+import { notifications } from "../data";
 import { useGlobalContext } from "../context";
 
 const TopNav = () => {
@@ -15,8 +15,8 @@ const TopNav = () => {
     submitModal,
     openLoginModal,
     loginModal,
-    user,
-    setUser,
+    userData,
+    setUserData,
   } = useGlobalContext();
 
   const handleLogout = async (e) => {
@@ -25,7 +25,7 @@ const TopNav = () => {
       await axios.get("http://localhost:8000/auth/signout").then((res) => {
         console.log(res.data);
         if (res.data.success) {
-          setUser("");
+          setUserData({});
           setIsLoggedIn(false);
         }
       });
@@ -49,21 +49,11 @@ const TopNav = () => {
             <div className="topNav--chat">
               <span className="material-icons">textsms</span>
               <div className="topNav--chat-dropdown">
-                <a href="#" className="">
-                  Big Content
-                </a>
-                <a href="#" className="">
-                  Content
-                </a>
-                <a href="#" className="">
-                  Content
-                </a>
-                <a href="#" className="">
-                  Content
-                </a>
-                <a href="#" className="">
-                  Content
-                </a>
+                <a className="">Big Content</a>
+                <a className="">Content</a>
+                <a className="">Content</a>
+                <a className="">Content</a>
+                <a className="">Content</a>
               </div>
             </div>
             <div className="topNav--notification">
@@ -89,15 +79,14 @@ const TopNav = () => {
                     render={({ history }) => (
                       <div
                         onClick={() => {
-                          history.push(`/user/${user}`);
+                          history.push(`/user/${userData.username}`);
                         }}
                         className="profileName"
                       >
-                        {user}
+                        {userData.username}
                       </div>
                     )}
                   />
-                  {/* <div className="profileName">{user}</div> */}
                 </div>
                 <a className="account-settings">Account Settings</a>
                 <a className="account-settings">Theme</a>

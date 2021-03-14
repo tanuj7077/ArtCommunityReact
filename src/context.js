@@ -13,8 +13,7 @@ const AppProvider = ({ children }) => {
   const [submitModal, setsubmitModal] = useState(false);
   const [loginModal, setloginModal] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  const [user, setUser] = useState("");
-  const [userId, setUserId] = useState("");
+  const [userData, setUserData] = useState({});
 
   const getLoggedIn = async () => {
     const loggedInRes = await axios.get("http://localhost:3000/auth/loggedIn");
@@ -110,11 +109,8 @@ const AppProvider = ({ children }) => {
         switchToLogin,
         switchToSignup,
         setIsLoggedIn,
-        user,
-        setUser,
-        userId,
-        setUserId,
-        setIsLoggedIn,
+        userData,
+        setUserData,
       }}
     >
       {children}

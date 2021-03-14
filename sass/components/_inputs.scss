@@ -114,5 +114,27 @@
     .form__input-textarea:placeholder-shown {
       padding: 1.5rem 1rem;
     }
+
+    .form__input-select {
+      width: 30vw;
+    }
+    .form__input-select:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(1rem);
+      font-size: 1.5rem;
+    }
+
+    .select__menu-list::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    .select__menu-list::-webkit-scrollbar-thumb {
+      background: #3e3f3e;
+      border-radius: 5px;
+    }
+    .select__menu-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
   }
 }

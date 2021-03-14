@@ -6,12 +6,7 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {
-    closeLoginModal,
-    setIsLoggedIn,
-    setUser,
-    setUserId,
-  } = useGlobalContext();
+  const { closeLoginModal, setIsLoggedIn, setUserData } = useGlobalContext();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -26,8 +21,7 @@ const Signin = () => {
           console.log(res.data);
           if (res.data.success) {
             closeLoginModal();
-            setUser(res.data.message.username);
-            setUserId(res.data.message._id);
+            setUserData(res.data.userData);
             setIsLoggedIn(true);
           }
         });
