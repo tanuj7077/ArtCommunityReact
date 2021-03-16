@@ -125,10 +125,16 @@ const customStyles = {
 };
 
 const SubmitModal = () => {
+  const { closeSubmitModal, userData } = useGlobalContext();
+
   const [image, setImage] = useState("");
   const [toSendImage, setToSendImage] = useState("");
+
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [submittedTags, setSubmittedTags] = useState([]);
+
   const [isUploaded, setIsUploaded] = useState(false);
-  const { closeSubmitModal, userData } = useGlobalContext();
 
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -142,6 +148,14 @@ const SubmitModal = () => {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
+
+  const handleSelectChange = (e) => {
+    setSubmittedTags(Array.isArray(e) ? e.map((x) => x.value) : []);
+  };
+
+  // const handleSelectChange = (e) => {
+  //   setSubmittedTags(Array.isArray(e) ? e.map((x) => x.value) : []);
+  // };
   async function handleSubmit(e) {
     e.preventDefault();
     let currentImageName = "image-" + Date.now();
@@ -161,13 +175,15 @@ const SubmitModal = () => {
           .child(currentImageName)
           .getDownloadURL()
           .then((url) => {
-            const imageUrl = url;
-            const name = document.getElementById("title").value;
-            const desc = document.getElementById("desc").value;
+            //const imageUrl = url;
+            //const name = document.getElementById("title").value;
+            //const desc = document.getElementById("desc").value;
             const post = {
               name: name,
               desc: desc,
-              imageUrl: imageUrl,
+              imageUrl: url,
+              tags: submittedTags,
+              author: { id: userData._id, username: userData.username },
             };
             axios
               .post("http://localhost:8000/posts/newPost", post)
@@ -211,9 +227,10 @@ const SubmitModal = () => {
                 className="form__input"
                 placeholder="title"
                 required
+                onChange={(e) => setName(e.target.value)}
               />
               <label htmlFor="title" className="form__label">
-                <span class="form__label__content">Title</span>
+                <span className="form__label__content">Title</span>
               </label>
             </div>
             <div className="form__group form__group--basic">
@@ -226,6 +243,7 @@ const SubmitModal = () => {
                 autoComplete="off"
                 spellCheck="false"
                 placeholder="description"
+                onChange={(e) => setDesc(e.target.value)}
               ></textarea>
               <label htmlFor="desc" className="form__label">
                 <span className="form__label__content">Description</span>
@@ -239,11 +257,10 @@ const SubmitModal = () => {
                   id="select"
                   styles={customStyles}
                   closeMenuOnSelect={false}
-                  //components={{ IndicatorSeparator }}
-                  // defaultValue={[colourOptions[4], colourOptions[5]]}
                   isMulti
                   options={tags}
                   placeholder={<div>Select Tags...</div>}
+                  onChange={handleSelectChange}
                 />
                 <label htmlFor="select" className="form__label">
                   <span className="form__label__content">Tags</span>

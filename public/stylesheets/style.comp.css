@@ -213,6 +213,13 @@ body {
       visibility: hidden;
       transform: translateY(1rem);
       font-size: 1.5rem; }
+    .form__group--basic .select__menu-list::-webkit-scrollbar {
+      width: 7px; }
+    .form__group--basic .select__menu-list::-webkit-scrollbar-thumb {
+      background: #3e3f3e;
+      border-radius: 5px; }
+    .form__group--basic .select__menu-list::-webkit-scrollbar-track {
+      background: transparent; }
 
 .explore {
   grid-column: 3 / -1;

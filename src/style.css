@@ -456,11 +456,33 @@ body {
         .postPage .postContent--info {
           padding: 3rem 5rem; } }
       .postPage .postContent--info-menu {
+        position: relative;
         align-self: flex-end;
+        text-align: end;
         cursor: pointer; }
         .postPage .postContent--info-menu .menu-icon {
           width: 4rem;
           height: 4rem; }
+        .postPage .postContent--info-menu-dropdown {
+          visibility: hidden;
+          position: absolute;
+          top: 106%;
+          right: 5%;
+          width: 30rem;
+          background-color: #242424;
+          display: flex;
+          flex-flow: column;
+          align-items: flex-start; }
+          .postPage .postContent--info-menu-dropdown .menu-item {
+            padding: 1rem 3rem;
+            align-self: stretch;
+            text-align: left;
+            z-index: 19;
+            font-size: 2rem; }
+            .postPage .postContent--info-menu-dropdown .menu-item:hover {
+              background-color: #696666; }
+        .postPage .postContent--info-menu:hover .postContent--info-menu-dropdown {
+          visibility: visible; }
       .postPage .postContent--info-author {
         display: grid;
         grid-template-rows: min-content max-content;

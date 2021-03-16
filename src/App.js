@@ -33,6 +33,10 @@ function App() {
     getLoggedIn();
   }, []);
 
+  ///-----------IMPORTANT-----------------
+  //we need to add LOADING and Conditional rendering
+  //Otherwise sidenav error
+
   // var tags;
   // const fetchTags = async () => {
   //   tags = await axios.get("http://localhost:8000/tags/fetchTags");
@@ -48,7 +52,7 @@ function App() {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/user/:username">
+      <Route path="/user/:id">
         <UserPage />
       </Route>
       <Route path="/post/:id">

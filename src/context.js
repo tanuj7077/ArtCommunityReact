@@ -15,17 +15,6 @@ const AppProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [userData, setUserData] = useState({});
 
-  const getLoggedIn = async () => {
-    const loggedInRes = await axios.get("http://localhost:3000/auth/loggedIn");
-    console.log(loggedInRes);
-    //setIsLoggedIn(true);
-    //console.log(loggedInRes);
-  };
-
-  useEffect(() => {
-    getLoggedIn();
-  }, []);
-
   const fetchPosts = async () => {
     setIsLoading(true);
     try {

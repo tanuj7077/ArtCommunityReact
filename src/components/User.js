@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import Carousel from "react-elastic-carousel";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { Users } from "../data";
 
@@ -22,7 +21,25 @@ const url =
   "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
 
 const User = ({ id }) => {
-  const { posts, user } = useGlobalContext();
+  let userUrl = "http://localhost:8000/users/user/" + id;
+  const [user, setUser] = useState(null);
+  const [userPost, setUserPost] = useState([]);
+  async function getUser() {
+    try {
+      const response = await fetch(userUrl);
+      const data = await response.json();
+      setUser(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getUser();
+  }, [id]);
+
+  const { posts } = useGlobalContext();
+
   const [isHome, setHome] = useState(true);
   const [isGallery, setGallery] = useState(false);
   const [isAbout, setAbout] = useState(false);
@@ -62,13 +79,17 @@ const User = ({ id }) => {
     setAbout(false);
     setStats(true);
   };
+
+  if (!user) {
+    return <>Hey</>;
+  }
   return (
     <div className="userPage">
       <div className="userPage--background"></div>
       <div className="userPage--top">
         <div className="userPage--top-user">
           <img src={url} alt="" className="userPage--top-user-img" />
-          <span className="userPage--top-user-name">Name</span>
+          <span className="userPage--top-user-name">{user.fullname}</span>
           <span className="userPage--top-user-info">Info</span>
         </div>
         <div className="userPage--top-menu">
