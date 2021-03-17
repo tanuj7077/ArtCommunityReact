@@ -18,19 +18,23 @@ const PostPagePost = ({ id }) => {
   } = useGlobalContext();
   let postUrl = "http://localhost:8000/posts/post/" + id;
   const [Post, setPost] = useState(null);
+  const [totalLikes, setTotalLikes] = useState(0);
+  const [totalComments, setTotalComments] = useState(0);
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
 
   async function getPost() {
     try {
       const response = await fetch(postUrl);
       const data = await response.json();
       setPost(data);
-      if (isLoggedIn && userData.username === data.author.username) {
-      }
+      setTotalLikes(data.likesArray.length);
+      setTotalComments(data.comments.length);
+      setComments(data.comments); //new
     } catch (err) {
       console.log(err);
     }
   }
-
   useEffect(() => {
     getPost();
   }, [id]);
@@ -44,12 +48,26 @@ const PostPagePost = ({ id }) => {
     };
     axios
       .post("http://localhost:8000/posts/post/" + id + "/like", data)
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        console.log(res.data.msg);
+        setTotalLikes(res.data.likes);
+      });
   }
-  const handleComment = () => {
+  const handleComment = async () => {
     if (!isLoggedIn) {
       openLoginModal();
     }
+    const data = {
+      user: userData,
+      comment: comment,
+    };
+    axios
+      .post("http://localhost:8000/posts/post/" + id + "/comment", data)
+      .then((res) => {
+        console.log(res.data);
+        setTotalComments(res.data.commentsCount);
+        setComments(res.data.comments);
+      });
   };
   const handleFollow = () => {
     if (!isLoggedIn) {
@@ -109,23 +127,21 @@ const PostPagePost = ({ id }) => {
             <div className="postContent--info-icons">
               <div className="postContent--info-icons-like">
                 <span className="material-icons like">favorite</span>
-                {/* <span className="count">{Post.likes} Likes</span> */}
-                <span className="count">
-                  {typeof Post.likesArray === "undefined"
-                    ? `0`
-                    : Post.likesArray.length}{" "}
-                  Likes
-                </span>
+                {
+                  <span className="count">
+                    {typeof Post.likesArray === "undefined" ? `0` : totalLikes}{" "}
+                    Likes
+                  </span>
+                }
               </div>
               <div className="postContent--info-icons-like">
                 <span className="material-icons comment">insert_comment</span>
-                {/* <span className="count">{Post.comments} Comments</span> */}
-                <span className="count">
-                  {typeof Post.comments === "undefined"
-                    ? `0`
-                    : Post.comments.length}{" "}
-                  Comments
-                </span>
+                {
+                  <span className="count">
+                    {typeof Post.comments === "undefined" ? `0` : totalComments}{" "}
+                    Comments
+                  </span>
+                }
               </div>
             </div>
             <span className="postContent--info-desc">{Post.desc}</span>
@@ -138,11 +154,32 @@ const PostPagePost = ({ id }) => {
         </div>
         <div className="postContent--comments">
           <span className="subheading">Comments</span>
-          <div className="postContent--comments-addComment">
-            <h1>Add comment</h1>
+          <div className="form__group form__group--basic u-margin-top-small u-margin-bottom-small">
+            <textarea
+              name="desc"
+              id="desc"
+              cols="40"
+              rows="4"
+              className="form__input-textarea-comment"
+              autoComplete="off"
+              spellCheck="false"
+              placeholder="Add a public comment"
+              onChange={(e) => setComment(e.target.value)}
+            ></textarea>
           </div>
-          {typeof Post.comments !== "undefined" && (
+          <button
+            className="btn btn-submit u-margin-bottom-small"
+            type="button"
+            onClick={handleComment}
+          >
+            Submit
+          </button>
+
+          {/* {typeof Post.comments !== "undefined" && (
             <CommentList commentArr={Post.comments} />
+          )} */}
+          {typeof Post.comments !== "undefined" && (
+            <CommentList commentArr={comments} />
           )}
         </div>
 

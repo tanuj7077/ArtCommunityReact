@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import SingleComment from "./SingleComment";
 
 const CommentList = ({ commentArr }) => {
-  const [comments, setComments] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  //const [isLoading, setLoading] = useState(false);
   /*const fetchComments = async () => {
     setComments(
       commentArr.map((item) => {
@@ -16,14 +15,14 @@ const CommentList = ({ commentArr }) => {
     fetchComments();
   }, [commentArr]);*/
 
-  if (isLoading) {
-    return <h1>Loading</h1>;
-  }
+  // if (isLoading) {
+  //   return <h1>Loading</h1>;
+  // }
   return (
     <div className="postContent--comments-commentList">
       {commentArr &&
-        commentArr.map((comment) => {
-          return <SingleComment id={comment} />;
+        commentArr.map((comment_id) => {
+          return <SingleComment id={comment_id} />;
         })}
     </div>
   );
