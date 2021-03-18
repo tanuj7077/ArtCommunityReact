@@ -7,8 +7,11 @@ const url =
 
 const SingleComment = ({ id, postId }) => {
   const { userData, isLoggedIn, openLoginModal } = useGlobalContext();
+  const [editedComment, setEditedComment] = useState("");
   const [comment, setComment] = useState(null);
   const [likes, setLikes] = useState(0);
+
+  const [editState, setEditState] = useState(false);
   let commentUrl = "http://localhost:8000/comments/comment/" + id;
   let commentDeleteUrl =
     "http://localhost:8000/comments/comment/" + id + "/delete";
@@ -44,6 +47,12 @@ const SingleComment = ({ id, postId }) => {
       });
   };
 
+  const editClick = async () => {
+    setEditState(true);
+    //document.getElementById("edit-comment").value = comment.text;
+    setEditedComment(comment.text);
+  };
+
   async function deleteComment() {
     const data = { post_id: postId };
     axios.post(commentDeleteUrl, data).then((res) => {
@@ -63,22 +72,50 @@ const SingleComment = ({ id, postId }) => {
       <span className="postContent--comments-comment-date">
         {comment.datePosted}
       </span>
-      <span className="postContent--comments-comment-text">{comment.text}</span>
+      {!editState ? (
+        <span className="postContent--comments-comment-text">
+          {comment.text}
+        </span>
+      ) : (
+        <span className="postContent--comments-comment-text">
+          <div className="form__group form__group--basic u-margin-top-small u-margin-bottom-small">
+            <textarea
+              name="desc"
+              id="edit-comment"
+              cols="40"
+              rows="4"
+              className="form__input-textarea-comment"
+              autoComplete="off"
+              spellCheck="false"
+              placeholder="Add a public comment"
+              value={editedComment}
+              onChange={(e) => setEditedComment(e.target.value)}
+            ></textarea>
+          </div>
+        </span>
+      )}
       <span className="postContent--comments-comment-controls">
-        {userData.username !== comment.author.username && (
+        {userData.username !== comment.author.username && !editState && (
           <span className="control" onClick={likeComment}>
             {/* {typeof comment.likesArray === "undefined" ? `` : likes} */}
             {likes === 0 ? `` : likes} Like
           </span>
         )}
-        <span className="control">Reply</span>
-        {userData.username === comment.author.username && (
+        {!editState && <span className="control">Reply</span>}
+        {userData.username === comment.author.username && !editState && (
           <>
             <span className="control" onClick={deleteComment}>
               Delete
             </span>
-            <span className="control">Edit</span>
+            <span className="control" onClick={editClick}>
+              Edit
+            </span>
           </>
+        )}
+        {editState && (
+          <span className="control" onClick={() => setEditState(false)}>
+            Cancel
+          </span>
         )}
       </span>
     </div>
