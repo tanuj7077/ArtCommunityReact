@@ -15,15 +15,15 @@ const AppProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [userData, setUserData] = useState({});
 
-  const fetchPosts = async () => {
-    setIsLoading(true);
-    try {
-      setPosts(Posts);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchPosts = async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     setPosts(Posts);
+  //     setIsLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const fetchExploreTags = async () => {
     setIsLoading(true);
@@ -68,9 +68,9 @@ const AppProvider = ({ children }) => {
     setIsLogin(false);
   };
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  // useEffect(() => {
+  //   fetchPosts();
+  // }, []);
 
   useEffect(() => {
     fetchExploreTags();

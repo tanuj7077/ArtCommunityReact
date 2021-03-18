@@ -67,6 +67,8 @@ const PostPagePost = ({ id }) => {
         console.log(res.data);
         setTotalComments(res.data.commentsCount);
         setComments(res.data.comments);
+        setComment("");
+        document.getElementById("desc").value = "";
       });
   };
   const handleFollow = () => {
@@ -95,9 +97,6 @@ const PostPagePost = ({ id }) => {
                   <>
                     <span className="menu-item" onClick={handleLike}>
                       Like Post
-                    </span>
-                    <span className="menu-item" onClick={handleComment}>
-                      Comment
                     </span>
                     <span className="menu-item" onClick={handleFollow}>
                       Follow Author
@@ -179,7 +178,7 @@ const PostPagePost = ({ id }) => {
             <CommentList commentArr={Post.comments} />
           )} */}
           {typeof Post.comments !== "undefined" && (
-            <CommentList commentArr={comments} />
+            <CommentList commentArr={comments} postId={Post._id} />
           )}
         </div>
 
