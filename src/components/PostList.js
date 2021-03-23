@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import SinglePost from "./SinglePost";
@@ -6,7 +6,8 @@ import { useGlobalContext } from "../context";
 const url = "http://localhost:8000/posts";
 
 const PostList = () => {
-  const { posts, setPosts } = useGlobalContext();
+  //const { posts, setPosts } = useGlobalContext();
+  const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
     fetch(url)

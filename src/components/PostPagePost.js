@@ -5,6 +5,7 @@ import { useGlobalContext } from "../context";
 import CommentList from "./CommentList";
 import LoginModal from "./LoginModal";
 import axios from "axios";
+import { Route } from "react-router-dom";
 
 const url =
   "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
@@ -42,34 +43,36 @@ const PostPagePost = ({ id }) => {
   async function handleLike() {
     if (!isLoggedIn) {
       openLoginModal();
+    } else {
+      const data = {
+        user: userData,
+      };
+      axios
+        .post("http://localhost:8000/posts/post/" + id + "/like", data)
+        .then((res) => {
+          console.log(res.data.msg);
+          setTotalLikes(res.data.likes);
+        });
     }
-    const data = {
-      user: userData,
-    };
-    axios
-      .post("http://localhost:8000/posts/post/" + id + "/like", data)
-      .then((res) => {
-        console.log(res.data.msg);
-        setTotalLikes(res.data.likes);
-      });
   }
   const handleComment = async () => {
     if (!isLoggedIn) {
       openLoginModal();
+    } else {
+      const data = {
+        user: userData,
+        comment: comment,
+      };
+      axios
+        .post("http://localhost:8000/posts/post/" + id + "/comment", data)
+        .then((res) => {
+          console.log(res.data);
+          setTotalComments(res.data.commentsCount);
+          setComments(res.data.comments);
+          setComment("");
+          document.getElementById("desc").value = "";
+        });
     }
-    const data = {
-      user: userData,
-      comment: comment,
-    };
-    axios
-      .post("http://localhost:8000/posts/post/" + id + "/comment", data)
-      .then((res) => {
-        console.log(res.data);
-        setTotalComments(res.data.commentsCount);
-        setComments(res.data.comments);
-        setComment("");
-        document.getElementById("desc").value = "";
-      });
   };
   const handleFollow = () => {
     if (!isLoggedIn) {
@@ -146,13 +149,28 @@ const PostPagePost = ({ id }) => {
             <span className="postContent--info-desc">{Post.desc}</span>
             <div className="postContent--info-tags">
               {Post.tags.map((item) => {
-                return <span className="tag">{item}</span>;
+                return (
+                  <Route
+                    render={({ history }) => (
+                      <span
+                        onClick={() => {
+                          history.push(`../tagSearch/${item}`);
+                        }}
+                        className="tag"
+                      >
+                        {item}
+                      </span>
+                    )}
+                  />
+                );
+                // <span className="tag">{item}</span>;
               })}
             </div>
           </div>
         </div>
         <div className="postContent--comments">
           <span className="subheading">Comments</span>
+          <br />
           <div className="form__group form__group--basic u-margin-top-small u-margin-bottom-small">
             <textarea
               name="desc"

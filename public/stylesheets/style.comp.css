@@ -606,6 +606,10 @@ body {
         .postPage .postContent--comments-comment-controls {
           grid-row: 3 / 4;
           grid-column: 2 / -1; }
+          .postPage .postContent--comments-comment-controls .control {
+            font-size: 1.5rem;
+            margin-right: 2rem;
+            cursor: pointer; }
   .postPage .otherContent {
     grid-column: 15 / -1;
     grid-row: 1 / -1;

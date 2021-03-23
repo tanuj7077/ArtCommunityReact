@@ -12,7 +12,7 @@ const TagSearchPage = () => {
       <TopNav />
       <SideNav />
       <SideNavTopic topic={`Tag : ${name}`} />
-      <TagSearchList />
+      <TagSearchList name={name} />
     </div>
   );
 };

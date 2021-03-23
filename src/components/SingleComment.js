@@ -15,6 +15,7 @@ const SingleComment = ({ id, postId }) => {
   let commentUrl = "http://localhost:8000/comments/comment/" + id;
   let commentDeleteUrl =
     "http://localhost:8000/comments/comment/" + id + "/delete";
+  let commentEditUrl = "http://localhost:8000/comments/comment/" + id + "/edit";
 
   async function fetchComment() {
     try {
@@ -49,7 +50,6 @@ const SingleComment = ({ id, postId }) => {
 
   const editClick = async () => {
     setEditState(true);
-    //document.getElementById("edit-comment").value = comment.text;
     setEditedComment(comment.text);
   };
 
@@ -58,6 +58,14 @@ const SingleComment = ({ id, postId }) => {
     axios.post(commentDeleteUrl, data).then((res) => {
       console.log(res.data);
       setComment(null);
+    });
+  }
+  async function editComment() {
+    const data = { edited_comment: editedComment };
+    axios.post(commentEditUrl, data).then((res) => {
+      console.log(res.data);
+      setComment(res.data.comment);
+      setEditState(false);
     });
   }
   if (!comment) {
@@ -113,9 +121,14 @@ const SingleComment = ({ id, postId }) => {
           </>
         )}
         {editState && (
-          <span className="control" onClick={() => setEditState(false)}>
-            Cancel
-          </span>
+          <>
+            <span className="control" onClick={editComment}>
+              Submit
+            </span>
+            <span className="control" onClick={() => setEditState(false)}>
+              Cancel
+            </span>
+          </>
         )}
       </span>
     </div>
