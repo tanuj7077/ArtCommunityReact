@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
+  // let postUrl = "http://localhost:8000/posts/post/" + _id;
+  // const [post, setPost] = useState(null);
+  // async function fetchPost() {
+  //   try {
+  //     const response = await fetch(postUrl);
+  //     await response.json().then((data) => {
+  //       console.log(data);
+  //       setPost(data);
+  //     });
+  //     //setComment(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+  // useEffect(() => {
+  //   fetchPost();
+  // }, [_id]);
   return (
     <Route
       render={({ history }) => (

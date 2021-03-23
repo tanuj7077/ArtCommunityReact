@@ -9,7 +9,6 @@ const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [explorePageTags, setExplorePageTags] = useState([]);
-  const [searchTags, setSearchTags] = useState([]);
   const [submitModal, setsubmitModal] = useState(false);
   const [loginModal, setloginModal] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
@@ -29,16 +28,6 @@ const AppProvider = ({ children }) => {
     setIsLoading(true);
     try {
       setExplorePageTags(ExploreTags);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchSearchTags = async () => {
-    setIsLoading(true);
-    try {
-      setSearchTags(Posts);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -76,17 +65,12 @@ const AppProvider = ({ children }) => {
     fetchExploreTags();
   }, []);
 
-  useEffect(() => {
-    fetchSearchTags();
-  }, []);
-
   return (
     <AppContext.Provider
       value={{
         isLoggedIn,
         posts,
         explorePageTags,
-        searchTags,
         setPosts,
         openSubmitModal,
         closeSubmitModal,
