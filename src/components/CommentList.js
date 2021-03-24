@@ -6,7 +6,9 @@ const CommentList = ({ commentArr, postId }) => {
     <div className="postContent--comments-commentList">
       {commentArr &&
         commentArr.map((comment_id) => {
-          return <SingleComment id={comment_id} postId={postId} />;
+          return (
+            <SingleComment key={comment_id} id={comment_id} postId={postId} />
+          );
         })}
     </div>
   );

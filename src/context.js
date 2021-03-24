@@ -13,6 +13,15 @@ const AppProvider = ({ children }) => {
   const [loginModal, setloginModal] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [userData, setUserData] = useState({});
+  const [submitCoverModal, setSubmitCoverModal] = useState(false);
+
+  const openSubmitCoverModal = () => {
+    setSubmitCoverModal(true);
+  };
+
+  const closeSubmitCoverModal = () => {
+    setSubmitCoverModal(false);
+  };
 
   // const fetchPosts = async () => {
   //   setIsLoading(true);
@@ -84,6 +93,9 @@ const AppProvider = ({ children }) => {
         setIsLoggedIn,
         userData,
         setUserData,
+        submitCoverModal,
+        openSubmitCoverModal,
+        closeSubmitCoverModal,
       }}
     >
       {children}

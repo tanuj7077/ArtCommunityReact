@@ -151,6 +151,7 @@ const PostPagePost = ({ id }) => {
               {Post.tags.map((item) => {
                 return (
                   <Route
+                    key={item}
                     render={({ history }) => (
                       <span
                         onClick={() => {

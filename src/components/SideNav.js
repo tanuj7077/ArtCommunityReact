@@ -6,13 +6,16 @@ import { useGlobalContext } from "../context";
 
 const SideNav = () => {
   const { isLoggedIn } = useGlobalContext();
-
-  useEffect(() => {
+  async function checkLoggedIn() {
     if (isLoggedIn) {
       LoggedInSideNavHover();
     } else {
       SideNavHover();
     }
+  }
+
+  useEffect(() => {
+    checkLoggedIn();
     //--------expansion--------
     const expansion = document
       .getElementsByClassName("sideNav--ham")[0]
@@ -29,6 +32,8 @@ const SideNav = () => {
 */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  setTimeout(checkLoggedIn, 3000);
 
   let items;
   if (isLoggedIn) {

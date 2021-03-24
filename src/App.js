@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import axios from "axios";
 
 import { useGlobalContext } from "./context";
@@ -17,7 +17,7 @@ import TagSearchPage from "./pages/TagSearchPage";
 
 axios.defaults.withCredentials = true;
 function App() {
-  const { setIsLoggedIn, setUserData } = useGlobalContext();
+  const { setIsLoggedIn, setUserData, isLoggedIn } = useGlobalContext();
   const getLoggedIn = async () => {
     const loggedInRes = await axios.get("http://localhost:8000/auth/loggedIn");
     console.log(loggedInRes);
@@ -53,7 +53,7 @@ function App() {
         <Home />
       </Route>
       <Route path="/user/:id">
-        <UserPage />
+        {isLoggedIn ? <UserPage /> : <Redirect to="/" exact />}
       </Route>
       <Route path="/post/:id">
         <PostPage />
