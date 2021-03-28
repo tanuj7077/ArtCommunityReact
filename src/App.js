@@ -53,7 +53,8 @@ function App() {
         <Home />
       </Route>
       <Route path="/user/:id">
-        {isLoggedIn ? <UserPage /> : <Redirect to="/" exact />}
+        {/* {isLoggedIn ? <UserPage /> : <Redirect to="/" exact />} */}
+        <UserPage />
       </Route>
       <Route path="/post/:id">
         <PostPage />

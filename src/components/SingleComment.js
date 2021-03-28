@@ -36,16 +36,17 @@ const SingleComment = ({ id, postId }) => {
   const likeComment = async () => {
     if (!isLoggedIn) {
       openLoginModal();
+    } else {
+      const data = {
+        user: userData,
+      };
+      axios
+        .post("http://localhost:8000/comments/comment/" + id + "/like", data)
+        .then((res) => {
+          console.log(res.data.msg);
+          setLikes(res.data.likes);
+        });
     }
-    const data = {
-      user: userData,
-    };
-    axios
-      .post("http://localhost:8000/comments/comment/" + id + "/like", data)
-      .then((res) => {
-        console.log(res.data.msg);
-        setLikes(res.data.likes);
-      });
   };
 
   const editClick = async () => {

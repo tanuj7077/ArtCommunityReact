@@ -33,7 +33,7 @@ const SideNav = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  setTimeout(checkLoggedIn, 3000);
+  //setTimeout(checkLoggedIn, 3000);
 
   let items;
   if (isLoggedIn) {

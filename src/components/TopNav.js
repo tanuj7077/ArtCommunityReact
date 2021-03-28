@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Redirect } from "react-router-dom";
 import SubmitModal from "./SubmitModal";
 import LoginModal from "./LoginModal";
 import axios from "axios";
@@ -27,6 +27,7 @@ const TopNav = () => {
         if (res.data.success) {
           setUserData({});
           setIsLoggedIn(false);
+          return <Redirect to="/" exact />;
         }
       });
     } catch (err) {

@@ -25,7 +25,7 @@ if (!firebase.apps.length) {
 var storage = firebase.storage();
 
 const SubmitCoverModal = ({ id }) => {
-  const { userData, closeSubmitCoverModal } = useGlobalContext();
+  const { userData, closeSubmitCoverModal, setUserData } = useGlobalContext();
 
   const [coverImage, setCoverImage] = useState("");
   const [toSendCoverImage, setToSendCoverImage] = useState("");
@@ -71,7 +71,12 @@ const SubmitCoverModal = ({ id }) => {
             };
             axios
               .post("http://localhost:8000/users/user/changeCover", User)
-              .then((res) => console.log(res.data));
+              .then((res) => {
+                console.log(res.data);
+                if (userData.username === res.data.username) {
+                  setUserData(res.data);
+                }
+              });
             closeSubmitCoverModal();
           })
           .catch((err) => {

@@ -26,19 +26,26 @@ const User = ({ id }) => {
     submitCoverModal,
     openSubmitCoverModal,
     isLoggedIn,
+    userData,
   } = useGlobalContext();
   let userUrl = "http://localhost:8000/users/user/" + id;
   let postUrl = "http://localhost:8000/posts/postByUser/" + id;
 
   const [user, setUser] = useState(null);
   const [userPosts, setUserPost] = useState([]);
+  const [cover, setCover] = useState("");
+
+  //typeof user.coverPhoto === "undefined" ? `` : user.coverPhoto;
 
   async function getUser() {
     try {
       const userResponse = await fetch(userUrl);
-      const userData = await userResponse.json();
-      console.log(userData);
-      setUser(userData);
+      const userdata = await userResponse.json();
+      console.log(userdata);
+      setUser(userdata);
+      if (typeof userdata.coverPhoto !== "undefined") {
+        setCover(userdata.coverPhoto);
+      }
     } catch (er) {
       console.log(er);
     }
@@ -59,9 +66,9 @@ const User = ({ id }) => {
     getUser();
     getPostByUser();
   }, [id]);
-  useEffect(() => {
-    getPostByUser();
-  }, [id]);
+  // useEffect(() => {
+  //   getPostByUser();
+  // }, [id]);
 
   const [isHome, setHome] = useState(true);
   const [isGallery, setGallery] = useState(false);
@@ -110,11 +117,24 @@ const User = ({ id }) => {
   return (
     <>
       <div className="userPage">
-        <div
-          className="userPage--background"
-          // style={`backgroundImage: ${url}`}
-          style={{ backgroundImage: `url(${insect})` }}
-        ></div>
+        {userData.username === user.username ? (
+          <div
+            className="userPage--background"
+            // style={{ backgroundImage: `url(${cover})` }}
+            style={{
+              backgroundImage: `url(${
+                typeof userData.coverPhoto === "undefined"
+                  ? ``
+                  : userData.coverPhoto
+              })`,
+            }}
+          ></div>
+        ) : (
+          <div
+            className="userPage--background"
+            style={{ backgroundImage: `url(${cover})` }}
+          ></div>
+        )}
         <div className="userPage--top">
           <div className="userPage--top-user">
             <img src={url} alt="" className="userPage--top-user-img" />
@@ -144,7 +164,7 @@ const User = ({ id }) => {
               Stats
             </span>
           </div>
-          {isLoggedIn && (
+          {isLoggedIn && userData.username === user.username && (
             <div className="userPage--top-cover" onClick={openSubmitCoverModal}>
               Change Cover
             </div>

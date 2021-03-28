@@ -35,7 +35,8 @@ html {
 body {
   box-sizing: border-box;
   text-transform: capitalize;
-  background-color: black; }
+  background-color: black;
+  overflow-x: hidden; }
   @media only screen and (max-width: 56.25em) {
     body {
       padding: 0; } }
@@ -360,6 +361,7 @@ body {
   margin-bottom: 1rem; }
 
 .grid-item {
+  position: relative;
   margin-bottom: 7px;
   width: calc(100% - 10px); }
   .grid-item--card {
@@ -441,6 +443,20 @@ body {
       transform: scale(1.04); }
     .grid-item--card:hover .grid-item--card-icons {
       opacity: 1; }
+
+.authorHover {
+  position: absolute;
+  top: -7vw;
+  left: 10rem;
+  width: 25vw;
+  height: 18vw;
+  background-color: cadetblue;
+  border-radius: 1rem;
+  z-index: 8;
+  visibility: hidden; }
+
+.show {
+  visibility: visible; }
 
 .postPage {
   grid-column: 3/ -1;
