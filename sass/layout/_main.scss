@@ -136,20 +136,3 @@
     }
   }
 }
-
-.authorHover {
-  position: absolute;
-  top: -7vw;
-  left: 10rem;
-
-  width: 25vw;
-  height: 18vw;
-  background-color: cadetblue;
-  border-radius: 1rem;
-  z-index: 8;
-  visibility: hidden;
-}
-
-.show {
-  visibility: visible;
-}

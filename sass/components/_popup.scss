@@ -1,0 +1,260 @@
+.authorHover {
+  position: absolute;
+  top: -7vw;
+  left: 10rem;
+  overflow: hidden;
+
+  width: 45rem;
+  height: 40rem;
+  background-color: rgb(43, 43, 43);
+  border-radius: 1rem;
+  z-index: 8;
+  visibility: hidden;
+
+  &--cover {
+    width: 100%;
+    height: 60%;
+    // background-image: linear-gradient(
+    //     to bottom,
+    //     transparent,
+    //     rgba(43, 43, 43, 0.9)
+    //   ),
+    //   url("./tagImage/snow.jpg");
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+  }
+  &--profile {
+    position: absolute;
+    top: 37%;
+    left: 10%;
+    width: 13rem;
+    height: 13rem;
+    background-color: cornflowerblue;
+
+    // background: linear-gradient(270deg, #296c5b, #a5a5a5, #ca6262);
+    // background-size: 600% 600%;
+
+    // -webkit-animation: ProfileAnim 1s ease infinite;
+    // -moz-animation: ProfileAnim 1s ease infinite;
+    // animation: ProfileAnim 1s ease infinite;
+  }
+  &--name {
+    position: absolute;
+    top: 42%;
+    left: 47%;
+    width: 18rem;
+    height: 4rem;
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+    //background-color: rgb(122, 118, 102);
+  }
+  &--info {
+    position: absolute;
+    top: 65%;
+    left: 47%;
+    width: 20rem;
+    height: 2rem;
+    color: white;
+    font-size: 1.7rem;
+    .lineBreak {
+      padding: 0 1rem;
+    }
+  }
+  &--images {
+    position: absolute;
+    top: 95.5%;
+    left: 5%;
+    width: 90%;
+    height: 9rem;
+    background-color: transparent;
+    transform: translate(0, -95%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    .image {
+      width: 9rem;
+      height: 9rem;
+      border-radius: 5px;
+      background-color: darkgray;
+
+      background-size: cover;
+      background-position-x: center;
+      background-position-y: center;
+    }
+  }
+}
+
+.loading {
+  background: linear-gradient(220deg, #141414, #666666, #111111);
+  background-size: 600% 600%;
+  -webkit-animation: CoverAnim 1s ease infinite;
+  -moz-animation: CoverAnim 1s ease infinite;
+  animation: CoverAnim 1s ease infinite;
+}
+.authorHover-loading {
+  &--cover {
+    width: 100%;
+    height: 60%;
+    //background-color: rgb(169, 172, 167);
+    background: linear-gradient(220deg, #000000, #6b6b6b, #000000);
+    background-size: 600% 600%;
+    -webkit-animation: CoverAnim 1s ease infinite;
+    -moz-animation: CoverAnim 1s ease infinite;
+    animation: CoverAnim 1s ease infinite;
+  }
+  &--profile {
+    position: absolute;
+    top: 37%;
+    left: 10%;
+    width: 13rem;
+    height: 13rem;
+
+    background: linear-gradient(270deg, #296c5b, #a5a5a5, #ca6262);
+    background-size: 600% 600%;
+
+    -webkit-animation: ProfileAnim 1s ease infinite;
+    -moz-animation: ProfileAnim 1s ease infinite;
+    animation: ProfileAnim 1s ease infinite;
+  }
+  &--name {
+    position: absolute;
+    top: 42%;
+    left: 47%;
+    width: 18rem;
+    height: 4rem;
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+    //background-color: rgb(122, 118, 102);
+  }
+  &--info {
+    position: absolute;
+    top: 65%;
+    left: 47%;
+    width: 20rem;
+    height: 2rem;
+    color: white;
+    font-size: 1.6rem;
+    //background-color: rgb(77, 75, 67);
+  }
+  &--images {
+    position: absolute;
+    top: 95.5%;
+    left: 5%;
+    width: 90%;
+    height: 9rem;
+    background-color: transparent;
+    transform: translate(0, -95%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    // .info {
+    //     align-self: flex-end;
+    //     font-size: 2.5rem;
+    //     color: white;
+    // }
+    // .lineBreak {
+    //     padding: 0 2rem;
+    // }
+    .image {
+      width: 9rem;
+      height: 9rem;
+      border-radius: 5px;
+      background-color: darkgray;
+    }
+  }
+}
+
+.show {
+  visibility: visible;
+}
+
+/*
+.authorHover {
+    position: absolute;
+    top: -7vw;
+    left: 10rem;
+    overflow: hidden;
+
+    width: 45rem;
+    height: 35rem;
+    background-color: cadetblue;
+    border-radius: 1rem;
+    z-index: 8;
+    visibility: hidden;
+
+    background: linear-gradient(220deg, #141414, #666666, #111111);
+    background-size: 600% 600%;
+    -webkit-animation: CoverAnim 1s ease infinite;
+    -moz-animation: CoverAnim 1s ease infinite;
+    animation: CoverAnim 1s ease infinite;
+
+    &--cover {
+        width: 100%;
+        height: 60%;
+        background-color: rgb(169, 172, 167);
+        background: linear-gradient(220deg, #000000, #6b6b6b, #000000);
+        background-size: 600% 600%;
+        -webkit-animation: CoverAnim 1s ease infinite;
+        -moz-animation: CoverAnim 1s ease infinite;
+        animation: CoverAnim 1s ease infinite;
+    }
+    &--profile {
+        position: absolute;
+        top: 35%;
+        left: 10%;
+        width: 13rem;
+        height: 13rem;
+        background-color: cornflowerblue;
+
+        background: linear-gradient(270deg, #296c5b, #a5a5a5, #ca6262);
+        background-size: 600% 600%;
+
+        -webkit-animation: ProfileAnim 1s ease infinite;
+        -moz-animation: ProfileAnim 1s ease infinite;
+        animation: ProfileAnim 1s ease infinite;
+    }
+    &--name {
+        position: absolute;
+        top: 42%;
+        left: 47%;
+        width: 18rem;
+        height: 4rem;
+        //background-color: rgb(122, 118, 102);
+    }
+    &--info {
+        position: absolute;
+        top: 65%;
+        left: 47%;
+        width: 18rem;
+        height: 2rem;
+        //background-color: rgb(77, 75, 67);
+    }
+    &--images {
+        width: 100%;
+        height: 40%;
+        background-color: transparent;
+        transform: translate(0, -95%);
+        text-align: center;
+        // display: flex;
+        // justify-content: center;
+        // .info {
+        //     align-self: flex-end;
+        //     font-size: 2.5rem;
+        //     color: white;
+        // }
+        // .lineBreak {
+        //     padding: 0 2rem;
+        // }
+    }
+}
+
+.show {
+    visibility: visible;
+}
+
+*/
