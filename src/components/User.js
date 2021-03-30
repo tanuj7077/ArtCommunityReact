@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { Users } from "../data";
 import SubmitCoverModal from "./SubmitCoverModal";
+import SubmitProfilePicModal from "./SubmitProfilePicModal";
 
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import SinglePost from "./SinglePost";
@@ -19,12 +20,14 @@ import photography from "../tagImage/photography.jpg";
 import { useGlobalContext } from "../context";
 
 const url =
-  "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
+  "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
 
 const User = ({ id }) => {
   const {
     submitCoverModal,
     openSubmitCoverModal,
+    submitProfilePicModal,
+    openSubmitProfilePicModal,
     isLoggedIn,
     userData,
   } = useGlobalContext();
@@ -34,6 +37,7 @@ const User = ({ id }) => {
   const [user, setUser] = useState(null);
   const [userPosts, setUserPost] = useState([]);
   const [cover, setCover] = useState("");
+  const [profilePic, setProfilePic] = useState(url);
 
   //typeof user.coverPhoto === "undefined" ? `` : user.coverPhoto;
 
@@ -45,6 +49,9 @@ const User = ({ id }) => {
       setUser(userdata);
       if (typeof userdata.coverPhoto !== "undefined") {
         setCover(userdata.coverPhoto);
+      }
+      if (typeof userdata.profilePic !== "undefined") {
+        setProfilePic(userdata.profilePic);
       }
     } catch (er) {
       console.log(er);
@@ -135,12 +142,35 @@ const User = ({ id }) => {
             style={{ backgroundImage: `url(${cover})` }}
           ></div>
         )}
+
         <div className="userPage--top">
           <div className="userPage--top-user">
-            <img src={url} alt="" className="userPage--top-user-img" />
-            <span className="userPage--top-user-imgOverlay">
-              Update <br /> Picture
-            </span>
+            {userData.username === user.username ? (
+              <div
+                className="userPage--top-user-img"
+                style={{
+                  backgroundImage: `url(${
+                    typeof userData.profilePic === "undefined"
+                      ? url
+                      : userData.profilePic
+                  })`,
+                }}
+              ></div>
+            ) : (
+              <div
+                className="userPage--top-user-img"
+                style={{ backgroundImage: `url(${profilePic})` }}
+              ></div>
+            )}
+            {/* <img src={url} alt="" className="userPage--top-user-img" /> */}
+            {isLoggedIn && userData.username === user.username && (
+              <span
+                className="userPage--top-user-imgOverlay"
+                onClick={openSubmitProfilePicModal}
+              >
+                Update <br /> Picture
+              </span>
+            )}
             <span className="userPage--top-user-name">{user.fullname}</span>
             <div className="userPage--top-user-info">
               <span className="userPostCount">{user.posts.length} Posts</span>
@@ -299,7 +329,8 @@ const User = ({ id }) => {
           {isStats && <div className="userPage--stats">Stats</div>}
         </div>
       </div>
-      {submitCoverModal && <SubmitCoverModal id={id} />}
+      {submitCoverModal && <SubmitCoverModal />}
+      {submitProfilePicModal && <SubmitProfilePicModal />}
     </>
   );
 };

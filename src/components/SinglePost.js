@@ -4,6 +4,8 @@ import axios from "axios";
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   let userUrl = "http://localhost:8000/users/hoverUser/" + author.id;
+  const blankProfileUrl =
+    "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
 
   const AuthorHoverRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -55,6 +57,9 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
       setFollowerCount(res.data.followerCount);
       setCoverPhoto(res.data.coverImage);
       setProfilePic(res.data.profilePic);
+      if (!res.data.profilePic) {
+        setProfilePic(blankProfileUrl);
+      }
     });
   };
 
@@ -115,7 +120,12 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
                       backgroundImage: `linear-gradient(to bottom,transparent,rgba(43, 43, 43, 0.9)), url(${coverPhoto})`,
                     }}
                   ></div>
-                  <div className="authorHover--profile"></div>
+                  <div
+                    className="authorHover--profile"
+                    style={{
+                      backgroundImage: `url(${profilePic})`,
+                    }}
+                  ></div>
                   <div className="authorHover--name">{username}</div>
                   <div className="authorHover--info">
                     <span className="info">{postCount} Posts</span>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaUpload } from "react-icons/fa";
 import axios from "axios";
+import AvatarEditor from "react-avatar-editor";
 import { useGlobalContext } from "../context";
 
 //-----------------------Firebase-----------------------
@@ -24,21 +25,25 @@ if (!firebase.apps.length) {
 }
 var storage = firebase.storage();
 
-const SubmitCoverModal = () => {
-  const { userData, closeSubmitCoverModal, setUserData } = useGlobalContext();
+const SubmitProfilePicModal = () => {
+  const {
+    userData,
+    closeSubmitProfilePicModal,
+    setUserData,
+  } = useGlobalContext();
 
-  const [coverImage, setCoverImage] = useState("");
-  const [toSendCoverImage, setToSendCoverImage] = useState("");
-  const [isCoverUploaded, setIsCoverUploaded] = useState(false);
+  const [profileImage, setProfileImage] = useState("");
+  const [toSendProfileImage, setToSendProfileImage] = useState("");
+  const [isProfileUploaded, setIsProfileUploaded] = useState(false);
 
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
-      setToSendCoverImage(e.target.files[0]);
+      setToSendProfileImage(e.target.files[0]);
 
       reader.onload = (e) => {
-        setCoverImage(e.target.result);
-        setIsCoverUploaded(true);
+        setProfileImage(e.target.result);
+        setIsProfileUploaded(true);
       };
       reader.readAsDataURL(e.target.files[0]);
     }
@@ -49,8 +54,8 @@ const SubmitCoverModal = () => {
     e.preventDefault();
     let currentImageName = "image-" + Date.now();
     let uploadImage = storage
-      .ref(`coverPhotos/${currentImageName}`)
-      .put(toSendCoverImage);
+      .ref(`profilePics/${currentImageName}`)
+      .put(toSendProfileImage);
 
     uploadImage.on(
       "state-changed",
@@ -60,7 +65,7 @@ const SubmitCoverModal = () => {
       },
       () => {
         storage
-          .ref("coverPhotos")
+          .ref("profilePics")
           .child(currentImageName)
           .getDownloadURL()
           .then((url) => {
@@ -70,14 +75,14 @@ const SubmitCoverModal = () => {
               imageUrl: url,
             };
             axios
-              .post("http://localhost:8000/users/user/changeCover", User)
+              .post("http://localhost:8000/users/user/changeProfile", User)
               .then((res) => {
                 console.log(res.data);
                 if (userData.username === res.data.username) {
                   setUserData(res.data);
                 }
               });
-            closeSubmitCoverModal();
+            closeSubmitProfilePicModal();
           })
           .catch((err) => {
             console.log(err);
@@ -90,7 +95,7 @@ const SubmitCoverModal = () => {
       <div className="loginModal">
         <div className="submitForm">
           <span className="closeIcon">
-            <IoClose className="Icon" onClick={closeSubmitCoverModal} />
+            <IoClose className="Icon" onClick={closeSubmitProfilePicModal} />
           </span>
 
           <form
@@ -98,10 +103,10 @@ const SubmitCoverModal = () => {
             onSubmit={handleSubmit}
             encType="multipart/form-data"
           >
-            {isCoverUploaded ? (
+            {isProfileUploaded ? (
               <>
                 <div className="submitForm-image">
-                  <img src={coverImage} alt="coverImg" />
+                  <img src={profileImage} alt="profileImg" />
                 </div>
               </>
             ) : (
@@ -135,4 +140,4 @@ const SubmitCoverModal = () => {
   );
 };
 
-export default SubmitCoverModal;
+export default SubmitProfilePicModal;

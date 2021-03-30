@@ -30,7 +30,11 @@
     left: 10%;
     width: 13rem;
     height: 13rem;
-    background-color: cornflowerblue;
+    background-color: transparent;
+
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
 
     // background: linear-gradient(270deg, #296c5b, #a5a5a5, #ca6262);
     // background-size: 600% 600%;

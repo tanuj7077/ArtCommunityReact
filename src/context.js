@@ -14,6 +14,7 @@ const AppProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [userData, setUserData] = useState({});
   const [submitCoverModal, setSubmitCoverModal] = useState(false);
+  const [submitProfilePicModal, setSubmitProfilePicModal] = useState(false);
 
   const openSubmitCoverModal = () => {
     setSubmitCoverModal(true);
@@ -21,6 +22,15 @@ const AppProvider = ({ children }) => {
 
   const closeSubmitCoverModal = () => {
     setSubmitCoverModal(false);
+  };
+
+  const openSubmitProfilePicModal = () => {
+    console.log("pressed");
+    setSubmitProfilePicModal(true);
+  };
+
+  const closeSubmitProfilePicModal = () => {
+    setSubmitProfilePicModal(false);
   };
 
   // const fetchPosts = async () => {
@@ -94,8 +104,11 @@ const AppProvider = ({ children }) => {
         userData,
         setUserData,
         submitCoverModal,
+        submitProfilePicModal,
         openSubmitCoverModal,
         closeSubmitCoverModal,
+        openSubmitProfilePicModal,
+        closeSubmitProfilePicModal,
       }}
     >
       {children}
