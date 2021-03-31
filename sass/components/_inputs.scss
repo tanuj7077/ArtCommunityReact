@@ -179,3 +179,46 @@
     }
   }
 }
+
+.slider {
+  border-radius: 20px;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 2.5rem;
+  background: white;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  overflow: hidden;
+
+  &:hover {
+    opacity: 1;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgb(138, 241, 138);
+    box-shadow: -100.5vw 0 0 100vw green;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:active {
+      border: solid 5px green;
+      background: white;
+    }
+  }
+  &::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #43e5f7;
+    box-shadow: -101vw 0 0 100vw green;
+    cursor: pointer;
+  }
+}

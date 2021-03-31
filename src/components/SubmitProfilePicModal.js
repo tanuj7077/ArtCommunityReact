@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaUpload } from "react-icons/fa";
 import axios from "axios";
@@ -35,7 +35,9 @@ const SubmitProfilePicModal = () => {
   const [profileImage, setProfileImage] = useState("");
   const [toSendProfileImage, setToSendProfileImage] = useState("");
   const [isProfileUploaded, setIsProfileUploaded] = useState(false);
-
+  const [borderRadius, setBorderRadius] = useState(0);
+  const [angle, setAngle] = useState(0);
+  const [scale, setScale] = useState(1);
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
@@ -49,47 +51,61 @@ const SubmitProfilePicModal = () => {
     }
   };
 
-  async function handleSubmit(e) {
-    console.log("submit pressed");
-    e.preventDefault();
-    let currentImageName = "image-" + Date.now();
-    let uploadImage = storage
-      .ref(`profilePics/${currentImageName}`)
-      .put(toSendProfileImage);
+  let setEditorRef = useRef(null);
 
-    uploadImage.on(
-      "state-changed",
-      (snapshot) => {},
-      (error) => {
-        alert(error);
-      },
-      () => {
-        storage
-          .ref("profilePics")
-          .child(currentImageName)
-          .getDownloadURL()
-          .then((url) => {
-            console.log(url);
-            const User = {
-              userId: userData._id,
-              imageUrl: url,
-            };
-            axios
-              .post("http://localhost:8000/users/user/changeProfile", User)
-              .then((res) => {
-                console.log(res.data);
-                if (userData.username === res.data.username) {
-                  setUserData(res.data);
-                }
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const canvasScaled = setEditorRef.current
+      .getImageScaledToCanvas()
+      .toDataURL("image/jpg");
+
+    let imageURL;
+    fetch(canvasScaled)
+      .then((res) => res.blob())
+      .then((blob) => {
+        imageURL = window.URL.createObjectURL(blob);
+        let currentImageName = "image-" + Date.now();
+        let uploadImage = storage
+          .ref(`profilePics/${currentImageName}`)
+          .put(blob);
+        //.put(toSendProfileImage);
+
+        uploadImage.on(
+          "state-changed",
+          (snapshot) => {},
+          (error) => {
+            alert(error);
+          },
+          () => {
+            storage
+              .ref("profilePics")
+              .child(currentImageName)
+              .getDownloadURL()
+              .then((url) => {
+                console.log(url);
+                const User = {
+                  userId: userData._id,
+                  imageUrl: url,
+                };
+                axios
+                  .post("http://localhost:8000/users/user/changeProfile", User)
+                  .then((res) => {
+                    console.log(res.data);
+                    if (userData.username === res.data.username) {
+                      setUserData(res.data);
+                    }
+                  });
+                closeSubmitProfilePicModal();
+              })
+              .catch((err) => {
+                console.log(err);
               });
-            closeSubmitProfilePicModal();
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    );
+          }
+        );
+      });
   }
+
   return (
     <>
       <div className="loginModal">
@@ -106,7 +122,16 @@ const SubmitProfilePicModal = () => {
             {isProfileUploaded ? (
               <>
                 <div className="submitForm-image">
-                  <img src={profileImage} alt="profileImg" />
+                  <AvatarEditor
+                    ref={setEditorRef}
+                    image={profileImage}
+                    width={250}
+                    height={250}
+                    scale={scale}
+                    borderRadius={borderRadius}
+                    rotate={angle}
+                  />
+                  {/* <img src={profileImage} alt="profileImg" /> */}
                 </div>
               </>
             ) : (
@@ -129,6 +154,35 @@ const SubmitProfilePicModal = () => {
                 </div>
               </>
             )}
+
+            <input
+              type="range"
+              min="0"
+              max="125"
+              value={borderRadius}
+              class="slider"
+              id="borderRadius"
+              onChange={(e) => setBorderRadius(e.target.value)}
+            ></input>
+            <input
+              type="range"
+              min="0"
+              max="360"
+              value={angle}
+              class="slider"
+              id="rotation"
+              onChange={(e) => setAngle(e.target.value)}
+            ></input>
+            <input
+              type="range"
+              min="1"
+              max="2"
+              step="0.01"
+              value={scale}
+              class="slider"
+              id="scale"
+              onChange={(e) => setScale(e.target.value)}
+            ></input>
 
             <button className="btn btn-submit" type="submit">
               Submit
