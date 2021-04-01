@@ -38,6 +38,7 @@ const User = ({ id }) => {
   const [userPosts, setUserPost] = useState([]);
   const [cover, setCover] = useState("");
   const [profilePic, setProfilePic] = useState(url);
+  const [profileBorderRad, setProfileBorderRad] = useState("");
 
   //typeof user.coverPhoto === "undefined" ? `` : user.coverPhoto;
 
@@ -52,6 +53,9 @@ const User = ({ id }) => {
       }
       if (typeof userdata.profilePic !== "undefined") {
         setProfilePic(userdata.profilePic);
+      }
+      if (typeof userdata.profileBorderRad !== "undefined") {
+        setProfileBorderRad(userdata.profileBorderRad + "%");
       }
     } catch (er) {
       console.log(er);
@@ -154,12 +158,20 @@ const User = ({ id }) => {
                       ? url
                       : userData.profilePic
                   })`,
+                  borderRadius: `${
+                    typeof userData.profileBorderRad === "undefined"
+                      ? "0%"
+                      : userData.profileBorderRad + "%"
+                  }`,
                 }}
               ></div>
             ) : (
               <div
                 className="userPage--top-user-img"
-                style={{ backgroundImage: `url(${profilePic})` }}
+                style={{
+                  backgroundImage: `url(${profilePic})`,
+                  borderRadius: `${profileBorderRad}`,
+                }}
               ></div>
             )}
             {/* <img src={url} alt="" className="userPage--top-user-img" /> */}
@@ -167,6 +179,13 @@ const User = ({ id }) => {
               <span
                 className="userPage--top-user-imgOverlay"
                 onClick={openSubmitProfilePicModal}
+                style={{
+                  borderRadius: `${
+                    typeof userData.profileBorderRad === "undefined"
+                      ? "0%"
+                      : userData.profileBorderRad + "%"
+                  }`,
+                }}
               >
                 Update <br /> Picture
               </span>

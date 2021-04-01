@@ -36,6 +36,7 @@ const SubmitProfilePicModal = () => {
   const [toSendProfileImage, setToSendProfileImage] = useState("");
   const [isProfileUploaded, setIsProfileUploaded] = useState(false);
   const [borderRadius, setBorderRadius] = useState(0);
+  const [cssBorderRad, setCssBorderRad] = useState(0);
   const [angle, setAngle] = useState(0);
   const [scale, setScale] = useState(1);
   const handleImage = (e) => {
@@ -87,6 +88,7 @@ const SubmitProfilePicModal = () => {
                 const User = {
                   userId: userData._id,
                   imageUrl: url,
+                  borderRad: cssBorderRad,
                 };
                 axios
                   .post("http://localhost:8000/users/user/changeProfile", User)
@@ -105,6 +107,10 @@ const SubmitProfilePicModal = () => {
         );
       });
   }
+  const handleBorderRad = (e) => {
+    setBorderRadius(e.target.value);
+    setCssBorderRad((e.target.value * 50) / 125);
+  };
 
   return (
     <>
@@ -158,11 +164,12 @@ const SubmitProfilePicModal = () => {
             <input
               type="range"
               min="0"
-              max="125"
+              max="126"
               value={borderRadius}
               class="slider"
               id="borderRadius"
-              onChange={(e) => setBorderRadius(e.target.value)}
+              onChange={(e) => handleBorderRad(e)}
+              //onChange={(e) => setBorderRadius(e.target.value)}
             ></input>
             <input
               type="range"

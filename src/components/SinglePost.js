@@ -15,6 +15,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   const [followerCount, setFollowerCount] = useState(0);
   const [coverPhoto, setCoverPhoto] = useState("");
   const [profilePic, setProfilePic] = useState("");
+  const [profileBorderRad, setProfileBorderRad] = useState("");
 
   const handleMouseEnter = () => {
     //clear all data from previous hover
@@ -25,6 +26,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
       setFollowerCount(0);
       setCoverPhoto("");
       setProfilePic("");
+      setProfileBorderRad("0%");
     }
     setIsHovered(true);
     setTimeout(() => {
@@ -56,9 +58,15 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
       setPostCount(res.data.postCount);
       setFollowerCount(res.data.followerCount);
       setCoverPhoto(res.data.coverImage);
-      setProfilePic(res.data.profilePic);
       if (!res.data.profilePic) {
         setProfilePic(blankProfileUrl);
+      } else {
+        setProfilePic(res.data.profilePic);
+      }
+      if (!res.data.profileBorderRad) {
+        setProfileBorderRad("0%");
+      } else {
+        setProfileBorderRad(res.data.profileBorderRad + "%");
       }
     });
   };
@@ -124,6 +132,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
                     className="authorHover--profile"
                     style={{
                       backgroundImage: `url(${profilePic})`,
+                      borderRadius: `${profileBorderRad}`,
                     }}
                   ></div>
                   <div className="authorHover--name">{username}</div>
