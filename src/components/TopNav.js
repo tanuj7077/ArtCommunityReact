@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link, Route, Redirect } from "react-router-dom";
+import axios from "axios";
+
 import SubmitModal from "./SubmitModal";
 import LoginModal from "./LoginModal";
-import axios from "axios";
+import SearchComponent from "./SearchComponent";
 
 import { notifications } from "../data";
 import { useGlobalContext } from "../context";
@@ -41,10 +43,11 @@ const TopNav = () => {
         <div className="topNav--logo">
           <span className="material-icons">anchor</span>
         </div>
-        <div className="topNav--search">
+        {/* <div className="topNav--search">
           <span className="material-icons topNav--search-icon">search</span>
           <span className="topNav--search-text">SEARCH AND DISCOVER</span>
-        </div>
+        </div> */}
+        <SearchComponent />
         {isLoggedIn ? (
           <>
             <div className="topNav--chat">

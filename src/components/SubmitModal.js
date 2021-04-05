@@ -295,7 +295,10 @@ const SubmitModal = () => {
               </>
             )}
 
-            <button className="btn btn-submit" type="submit">
+            <button
+              className="btn btn-submit u-margin-top-medium"
+              type="submit"
+            >
               Submit
             </button>
           </form>

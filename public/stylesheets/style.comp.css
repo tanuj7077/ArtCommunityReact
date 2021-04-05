@@ -324,41 +324,50 @@ body {
       .form__group--basic .form__input-textarea-comment::-webkit-resizer {
         color: transparent; }
 
-.slider {
-  border-radius: 20px;
-  -webkit-appearance: none;
+.inputSlider {
   width: 100%;
-  height: 2.5rem;
-  background: white;
-  outline: none;
-  opacity: 0.8;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-  overflow: hidden; }
-  .slider:hover {
-    opacity: 1; }
-  .slider::-webkit-slider-thumb {
+  display: flex;
+  flex-flow: column; }
+  .inputSlider--label {
+    font-size: 2.5rem;
+    letter-spacing: 0.35rem;
+    margin-bottom: 0.5rem; }
+  .inputSlider--slider {
+    float: right;
+    border-radius: 20px;
     -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #8af18a;
-    box-shadow: -100.5vw 0 0 100vw green;
-    cursor: pointer;
-    transition: all 0.2s ease; }
-    .slider::-webkit-slider-thumb:active {
-      border: solid 5px green;
-      background: white; }
-  .slider::-moz-range-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #43e5f7;
-    box-shadow: -101vw 0 0 100vw green;
-    cursor: pointer; }
+    width: 50rem;
+    height: 2rem;
+    background: white;
+    outline: none;
+    opacity: 0.8;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    overflow: hidden; }
+    .inputSlider--slider:hover {
+      opacity: 1; }
+    .inputSlider--slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: #8af18a;
+      box-shadow: -100.5vw 0 0 100vw green;
+      cursor: pointer;
+      transition: all 0.2s ease; }
+      .inputSlider--slider::-webkit-slider-thumb:active {
+        border: solid 5px green;
+        background: white; }
+    .inputSlider--slider::-moz-range-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #43e5f7;
+      box-shadow: -101vw 0 0 100vw green;
+      cursor: pointer; }
 
 .authorHover {
   position: absolute;
@@ -580,6 +589,207 @@ body {
 }
 
 */
+.searchForm {
+  width: 100%;
+  height: 6.5vh;
+  background-color: transparent;
+  position: relative; }
+  .searchForm--input {
+    position: absolute;
+    top: 0.5rem;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    font-family: inherit;
+    letter-spacing: 0.4rem;
+    color: gray;
+    padding: 0 1.4rem;
+    background-color: #2c2c2c;
+    border: none;
+    border-radius: 1rem;
+    display: block;
+    transition: all 0.4s; }
+    .searchForm--input::-webkit-input-placeholder {
+      color: gray; }
+    .searchForm--input:focus {
+      outline: none; }
+
+.searchResults {
+  position: absolute;
+  top: 7.7vh;
+  width: 100%;
+  max-height: 55rem;
+  border-radius: 1rem;
+  background-color: #2c2c2c;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-rows: repeat(2, min-content);
+  grid-template-columns: repeat(7, 1fr);
+  overflow: hidden;
+  /*&--authorList {
+    list-style-type: none;
+    max-height: 25rem;
+    grid-row: 1 /2;
+    grid-column: 5 / -1;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #3e3f3e;
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }*/ }
+  .searchResults .subHeading {
+    font-size: 3rem;
+    text-align: start;
+    padding-left: 2.5rem;
+    padding-top: 1rem;
+    color: #6ecf86; }
+  .searchResults--postSection {
+    max-height: min-content;
+    grid-row: 1 /2;
+    grid-column: 1 / 5;
+    width: 90%;
+    display: flex;
+    flex-flow: column;
+    letter-spacing: 0.3rem; }
+    .searchResults--postSection .postList {
+      list-style-type: none;
+      max-height: 25rem;
+      width: 100%;
+      overflow: hidden;
+      overflow-y: scroll;
+      margin-left: 2rem;
+      border-radius: 1rem; }
+      .searchResults--postSection .postList .item {
+        text-align: start;
+        height: 5.5rem;
+        background-color: #3b3b3b;
+        align-self: center;
+        padding-top: 1.5rem;
+        padding-left: 1.5rem;
+        letter-spacing: 0.3rem; }
+        .searchResults--postSection .postList .item:hover {
+          cursor: pointer;
+          background-color: #2b2b2b;
+          color: #6ecf86; }
+        .searchResults--postSection .postList .item:nth-child(even) {
+          background: #363636; }
+          .searchResults--postSection .postList .item:nth-child(even):hover {
+            cursor: pointer;
+            background-color: #2b2b2b;
+            color: #6ecf86; }
+      .searchResults--postSection .postList::-webkit-scrollbar {
+        width: 7px; }
+      .searchResults--postSection .postList::-webkit-scrollbar-thumb {
+        background: #6ecf86;
+        border-radius: 5px; }
+      .searchResults--postSection .postList::-webkit-scrollbar-track {
+        background: #505050; }
+    .searchResults--postSection .notFound {
+      font-size: 2.5rem;
+      color: white;
+      text-align: left;
+      padding-left: 2.5rem; }
+  .searchResults--authorSection {
+    max-height: min-content;
+    grid-row: 1 /2;
+    grid-column: 5 / -1;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    letter-spacing: 0.3rem; }
+    .searchResults--authorSection .subHeading {
+      padding-left: 1rem; }
+    .searchResults--authorSection .authorList {
+      list-style-type: none;
+      max-height: 25rem;
+      width: 89%;
+      overflow: hidden;
+      overflow-y: scroll;
+      margin-left: 1rem;
+      border-radius: 1rem; }
+      .searchResults--authorSection .authorList .item {
+        text-align: start;
+        height: 5.5rem;
+        background-color: #3b3b3b;
+        align-self: center;
+        padding-top: 1.5rem;
+        padding-left: 1.5rem;
+        letter-spacing: 0.3rem; }
+        .searchResults--authorSection .authorList .item:hover {
+          cursor: pointer;
+          background-color: #2b2b2b;
+          color: #6ecf86; }
+        .searchResults--authorSection .authorList .item:nth-child(even) {
+          background: #363636; }
+          .searchResults--authorSection .authorList .item:nth-child(even):hover {
+            cursor: pointer;
+            background-color: #2b2b2b;
+            color: #6ecf86; }
+      .searchResults--authorSection .authorList::-webkit-scrollbar {
+        width: 7px; }
+      .searchResults--authorSection .authorList::-webkit-scrollbar-thumb {
+        background: #6ecf86;
+        border-radius: 5px; }
+      .searchResults--authorSection .authorList::-webkit-scrollbar-track {
+        background: #505050; }
+    .searchResults--authorSection .notFound {
+      font-size: 2.5rem;
+      color: white;
+      text-align: left;
+      padding-left: 1rem; }
+  .searchResults--tagSection {
+    max-height: 25rem;
+    grid-row: 2 /3;
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    letter-spacing: 0.3rem;
+    margin-top: 3rem; }
+    .searchResults--tagSection .tagList {
+      list-style-type: none;
+      max-height: 12rem;
+      width: 97%;
+      overflow: hidden;
+      overflow-y: scroll;
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 2rem;
+      margin-bottom: 2rem; }
+      .searchResults--tagSection .tagList .item {
+        background-color: #181818;
+        border-radius: 1rem;
+        height: 4rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        padding: 0.7rem 1.2rem; }
+        .searchResults--tagSection .tagList .item:hover {
+          cursor: pointer;
+          color: #6ecf86; }
+      .searchResults--tagSection .tagList::-webkit-scrollbar {
+        width: 7px; }
+      .searchResults--tagSection .tagList::-webkit-scrollbar-thumb {
+        background: #6ecf86;
+        border-radius: 5px; }
+      .searchResults--tagSection .tagList::-webkit-scrollbar-track {
+        background: #505050; }
+    .searchResults--tagSection .notFound {
+      font-size: 2.5rem;
+      color: white;
+      text-align: left;
+      padding-left: 2.5rem;
+      margin-bottom: 2.5rem; }
+
 .explore {
   grid-column: 3 / -1;
   grid-row: 3 / 4;
@@ -1451,6 +1661,10 @@ body {
       font-weight: 700;
       font-size: 1.6rem;
       color: #6ecf86; }
+  .topNav--liveSearch {
+    position: relative;
+    grid-column: 6 / 15;
+    grid-row: 1/ 2; }
 
 .userPage {
   grid-column: 3/ -1;

@@ -269,4 +269,10 @@
       color: #6ecf86;
     }
   }
+
+  &--liveSearch {
+    position: relative;
+    grid-column: 6 / 15;
+    grid-row: 1/ 2;
+  }
 }

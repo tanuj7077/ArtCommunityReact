@@ -39,6 +39,7 @@ const SubmitProfilePicModal = () => {
   const [cssBorderRad, setCssBorderRad] = useState(0);
   const [angle, setAngle] = useState(0);
   const [scale, setScale] = useState(1);
+  const [submitEnable, setSubmitEnable] = useState(false);
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
@@ -161,39 +162,57 @@ const SubmitProfilePicModal = () => {
               </>
             )}
 
-            <input
-              type="range"
-              min="0"
-              max="126"
-              value={borderRadius}
-              class="slider"
-              id="borderRadius"
-              onChange={(e) => handleBorderRad(e)}
-              //onChange={(e) => setBorderRadius(e.target.value)}
-            ></input>
-            <input
-              type="range"
-              min="0"
-              max="360"
-              value={angle}
-              class="slider"
-              id="rotation"
-              onChange={(e) => setAngle(e.target.value)}
-            ></input>
-            <input
-              type="range"
-              min="1"
-              max="2"
-              step="0.01"
-              value={scale}
-              class="slider"
-              id="scale"
-              onChange={(e) => setScale(e.target.value)}
-            ></input>
+            {isProfileUploaded && (
+              <>
+                <div className="inputSlider u-margin-bottom-small">
+                  <label htmlFor="borderRadius" className="inputSlider--label">
+                    Border Radius:{" "}
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="126"
+                    value={borderRadius}
+                    className="inputSlider--slider"
+                    id="borderRadius"
+                    onChange={(e) => handleBorderRad(e)}
+                  ></input>
+                </div>
+                <div className="inputSlider u-margin-bottom-small">
+                  <label htmlFor="rotation" className="inputSlider--label">
+                    Rotation:{" "}
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="360"
+                    value={angle}
+                    className="inputSlider--slider"
+                    id="rotation"
+                    onChange={(e) => setAngle(e.target.value)}
+                  ></input>
+                </div>
+                <div className="inputSlider u-margin-bottom-small">
+                  <label htmlFor="scale" className="inputSlider--label">
+                    Scale:{" "}
+                  </label>
+                  <input
+                    type="range"
+                    min="1"
+                    max="2"
+                    step="0.01"
+                    value={scale}
+                    className="inputSlider--slider"
+                    id="scale"
+                    onChange={(e) => setScale(e.target.value)}
+                  ></input>
+                </div>
 
-            <button className="btn btn-submit" type="submit">
-              Submit
-            </button>
+                <button className="btn btn-submit" type="submit">
+                  Submit
+                </button>
+              </>
+            )}
           </form>
         </div>
       </div>

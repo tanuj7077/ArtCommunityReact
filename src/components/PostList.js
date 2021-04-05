@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import axios from "axios";
 
 import SinglePost from "./SinglePost";
 import { useGlobalContext } from "../context";
@@ -20,8 +21,18 @@ const PostList = () => {
       });
   };
 
+  const updatePostsBackend = async () => {
+    const result = await axios.get("http://localhost:8000/posts/updatePosts");
+    const pagination = await axios.get(
+      "http://localhost:8000/posts/p?page=1&limit=5"
+    );
+    console.log(result.data);
+    console.log(pagination.data);
+  };
+
   useEffect(() => {
     fetchPosts();
+    updatePostsBackend();
   }, []);
 
   return (
