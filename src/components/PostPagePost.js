@@ -14,31 +14,44 @@ const PostPagePost = ({ id }) => {
   const {
     isLoggedIn,
     userData,
+    setUserData,
     openLoginModal,
     loginModal,
   } = useGlobalContext();
   let postUrl = "http://localhost:8000/posts/post/" + id;
   const [Post, setPost] = useState(null);
-  const [totalLikes, setTotalLikes] = useState(0);
+  //const [totalLikes, setTotalLikes] = useState(0);
   const [totalComments, setTotalComments] = useState(0);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const [followStat, setFollowStat] = useState("");
 
   async function getPost() {
     try {
       const response = await fetch(postUrl);
       const data = await response.json();
       setPost(data);
-      setTotalLikes(data.likesArray.length);
+      //setTotalLikes(data.likesArray.length);
       setTotalComments(data.comments.length);
       setComments(data.comments); //new
+      console.log(data.likesArray.length);
+      console.log(isLoggedIn, userData);
+      if (isLoggedIn) {
+        if (userData.following.includes(data.author.id)) {
+          console.log("currently following");
+          setFollowStat("Unfollow User");
+        } else {
+          console.log("not followed");
+          setFollowStat("Follow User");
+        }
+      }
     } catch (err) {
       console.log(err);
     }
   }
   useEffect(() => {
     getPost();
-  }, [id]);
+  }, [isLoggedIn, id, userData]);
 
   async function handleLike() {
     if (!isLoggedIn) {
@@ -50,8 +63,9 @@ const PostPagePost = ({ id }) => {
       axios
         .post("http://localhost:8000/posts/post/" + id + "/like", data)
         .then((res) => {
-          console.log(res.data.msg);
-          setTotalLikes(res.data.likes);
+          console.log(res.data);
+          //setTotalLikes(res.data.likes);
+          setPost(res.data.post);
         });
     }
   }
@@ -77,6 +91,22 @@ const PostPagePost = ({ id }) => {
   const handleFollow = () => {
     if (!isLoggedIn) {
       openLoginModal();
+    } else {
+      const data = {
+        user: userData._id,
+        following: Post.author.id,
+      };
+      if (!userData.following.includes(Post.author.id)) {
+        axios.post("http://localhost:8000/users/follow", data).then((res) => {
+          setFollowStat("Unfollow User");
+          setUserData(res.data.user);
+        });
+      } else {
+        axios.post("http://localhost:8000/users/unfollow", data).then((res) => {
+          setFollowStat("Follow User");
+          setUserData(res.data.user);
+        });
+      }
     }
   };
 
@@ -94,9 +124,17 @@ const PostPagePost = ({ id }) => {
             <div className="postContent--info-menu">
               <HiOutlineDotsVertical className="menu-icon" />
               <div className="postContent--info-menu-dropdown">
-                {(!isLoggedIn ||
-                  (isLoggedIn &&
-                    userData.username !== Post.author.username)) && (
+                {isLoggedIn && userData.username !== Post.author.username && (
+                  <>
+                    <span className="menu-item" onClick={handleLike}>
+                      Like Post
+                    </span>
+                    <span className="menu-item" onClick={handleFollow}>
+                      {followStat}
+                    </span>
+                  </>
+                )}
+                {!isLoggedIn && (
                   <>
                     <span className="menu-item" onClick={handleLike}>
                       Like Post
@@ -106,7 +144,6 @@ const PostPagePost = ({ id }) => {
                     </span>
                   </>
                 )}
-
                 {isLoggedIn && userData.username === Post.author.username && (
                   <>
                     <span className="menu-item">Edit</span>
@@ -131,7 +168,9 @@ const PostPagePost = ({ id }) => {
                 <span className="material-icons like">favorite</span>
                 {
                   <span className="count">
-                    {typeof Post.likesArray === "undefined" ? `0` : totalLikes}{" "}
+                    {typeof Post.likesArray === "undefined"
+                      ? `0`
+                      : Post.likesArray.length}{" "}
                     Likes
                   </span>
                 }

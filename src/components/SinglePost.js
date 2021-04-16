@@ -25,7 +25,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
       setPostCount(0);
       setFollowerCount(0);
       setCoverPhoto("");
-      setProfilePic("");
+      setProfilePic(blankProfileUrl);
       setProfileBorderRad("0%");
     }
     setIsHovered(true);
@@ -95,114 +95,114 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   };
 
   return (
-    <Route
-      render={({ history }) => (
+    <div className="grid-item">
+      {isHovered && (
         <div
-          onClick={() => {
-            history.push(`/post/${_id}`);
-          }}
-          className="grid-item"
+          className="authorHover"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          ref={AuthorHoverRef}
+          id="authorHover"
         >
-          {isHovered && (
-            <div
-              className="authorHover"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              ref={AuthorHoverRef}
-              id="authorHover"
-            >
-              {!username && (
-                <>
-                  <div className="authorHover-loading--cover"></div>
-                  <div className="authorHover-loading--profile"></div>
-                  <div className="authorHover-loading--name"></div>
-                  <div className="authorHover-loading--info"></div>
-                  <div className="authorHover-loading--images"></div>
-                </>
-              )}
-              {username && (
-                <>
-                  <div
-                    className="authorHover--cover"
-                    style={{
-                      backgroundImage: `linear-gradient(to bottom,transparent,rgba(43, 43, 43, 0.9)), url(${coverPhoto})`,
-                    }}
-                  ></div>
-                  <div
-                    className="authorHover--profile"
-                    style={{
-                      backgroundImage: `url(${profilePic})`,
-                      borderRadius: `${profileBorderRad}`,
-                    }}
-                  ></div>
-                  <div className="authorHover--name">{username}</div>
-                  <div className="authorHover--info">
-                    <span className="info">{postCount} Posts</span>
-                    <span className="lineBreak">|</span>
-                    <span className="info">{followerCount} Followers</span>
-                  </div>
-                  <div className="authorHover--images">
-                    {/* if images count > 3 add "SEE MORE"*/}
-                    {posts.map((post) => {
-                      return (
-                        <div
-                          className="image"
-                          style={{
-                            backgroundImage: `url(${post.image})`,
-                          }}
-                        ></div>
-                      );
-                    })}
-                  </div>
-                </>
-              )}
-            </div>
+          {!username && (
+            <>
+              <div className="authorHover-loading--cover"></div>
+              <div className="authorHover-loading--profile"></div>
+              <div className="authorHover-loading--name"></div>
+              <div className="authorHover-loading--info"></div>
+              <div className="authorHover-loading--images"></div>
+            </>
           )}
-          {/* <div
-            className={`${isHovered ? `authorHover show` : `authorHover`}`}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            ref={AuthorHoverRef}
-            id="authorHover"
-          ></div> */}
-          <div className="grid-item--card">
-            <img className="grid-item--card-img" src={image} alt="" />
-            <div className="grid-item--card-img-overlay">
-              <div className="grid-item--card-textualInfo">
-                <span className="grid-item--card-title">{name}</span>
+          {username && (
+            <>
+              <div
+                className="authorHover--cover"
+                style={{
+                  backgroundImage: `linear-gradient(to bottom,transparent,rgba(43, 43, 43, 0.9)), url(${coverPhoto})`,
+                }}
+              ></div>
+              <div
+                className="authorHover--profile"
+                style={{
+                  backgroundImage: `url(${profilePic})`,
+                  borderRadius: `${profileBorderRad}`,
+                }}
+              ></div>
+              <div className="authorHover--name">{username}</div>
+              <div className="authorHover--info">
+                <span className="info">{postCount} Posts</span>
+                <span className="lineBreak">|</span>
+                <span className="info">{followerCount} Followers</span>
+              </div>
+              <div className="authorHover--images">
+                {/* if images count > 3 add "SEE MORE"*/}
+                {posts.map((post) => {
+                  return (
+                    <div
+                      className="image"
+                      style={{
+                        backgroundImage: `url(${post.image})`,
+                      }}
+                    ></div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+        </div>
+      )}
+      <div className="grid-item--card">
+        <img className="grid-item--card-img" src={image} alt="" />
+        <div className="grid-item--card-img-overlay">
+          <div className="grid-item--card-textualInfo">
+            <Route
+              render={({ history }) => (
                 <span
+                  onClick={() => {
+                    history.push(`/post/${_id}`);
+                  }}
+                  className="grid-item--card-title"
+                >
+                  {name}
+                </span>
+              )}
+            />
+            <Route
+              render={({ history }) => (
+                <span
+                  onClick={() => {
+                    history.push(`/user/${author.username}`);
+                  }}
                   className="grid-item--card-author"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
                   {author.username}
                 </span>
-              </div>
-              <div className="grid-item--card-icons">
-                <section className="grid-item--card-icons-likes">
-                  <span className="grid-item--card-icons-likes-count">
-                    {typeof likesArray === "undefined"
-                      ? `0`
-                      : likesArray.length}
-                  </span>
-                  <span className="material-icons grid-item--card-icons-likes-icon">
-                    favorite
-                  </span>
-                </section>
-                <section className="grid-item--card-icons-comments">
-                  <span className="grid-item--card-icons-comments-count">
-                    {typeof comments === "undefined" ? `0` : comments.length}
-                  </span>
-                  <span className="material-icons grid-item--card-icons-comments-icon">
-                    insert_comment
-                  </span>
-                </section>
-              </div>
-            </div>
+              )}
+            />
+          </div>
+          <div className="grid-item--card-icons">
+            <section className="grid-item--card-icons-likes">
+              <span className="grid-item--card-icons-likes-count">
+                {typeof likesArray === "undefined" ? `0` : likesArray.length}
+              </span>
+              <span className="material-icons grid-item--card-icons-likes-icon">
+                favorite
+              </span>
+            </section>
+            <section className="grid-item--card-icons-comments">
+              <span className="grid-item--card-icons-comments-count">
+                {typeof comments === "undefined" ? `0` : comments.length}
+              </span>
+              <span className="material-icons grid-item--card-icons-comments-icon">
+                insert_comment
+              </span>
+            </section>
           </div>
         </div>
-      )}
-    />
+      </div>
+    </div>
   );
 };
 

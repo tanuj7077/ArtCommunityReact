@@ -11,7 +11,7 @@ const SingleTag = ({ image, name }) => {
           }}
           className="grid-item--exploreCard"
         >
-          <img className="grid-item--exploreCard-img" src={image}></img>
+          <img className="grid-item--exploreCard-img" src={image} alt=""></img>
           <div className="grid-item--exploreCard-img-overlay">
             <span className="grid-item--exploreCard-title">{name}</span>
           </div>

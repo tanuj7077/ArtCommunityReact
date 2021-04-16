@@ -12,7 +12,11 @@ const ExploreTag = ({ image, name }) => {
           className="explorePage--grid-item"
         >
           <div className="explorePage--grid-item--card">
-            <img className="explorePage--grid-item--card-img" src={image} />
+            <img
+              className="explorePage--grid-item--card-img"
+              src={image}
+              alt=""
+            />
             <span className="explorePage--grid-item--card-title">{name}</span>
           </div>
         </div>

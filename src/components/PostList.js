@@ -4,18 +4,27 @@ import axios from "axios";
 
 import SinglePost from "./SinglePost";
 import { useGlobalContext } from "../context";
-const url = "http://localhost:8000/posts";
 
 const PostList = () => {
-  const { posts, setPosts } = useGlobalContext();
+  const { posts, setPosts, page, setPage } = useGlobalContext();
 
-  const [page, setPage] = useState(1);
+  ///const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
   const [loading, setLoading] = useState(false);
 
+  //to update posts array in the backend
+  /*const updatePostsBackend = async () => {
+    const result = await axios.get("http://localhost:8000/posts/updatePosts");
+    console.log(result.data);
+  };
+
+  useEffect(() => {
+    updatePostsBackend();
+  }, []);*/
+
   const fetchPosts = async () => {
     setLoading(true);
-    let baseUrl = "http://localhost:8000/posts/p";
+    let baseUrl = "http://localhost:8000/posts/postList";
     const urlPage = `?page=${page}`;
     const urlLimit = `&limit=${limit}`;
     let url = `${baseUrl}${urlPage}${urlLimit}`;
@@ -33,6 +42,7 @@ const PostList = () => {
   };
   useEffect(() => {
     fetchPosts();
+    console.log("When page changes to", page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
@@ -40,25 +50,20 @@ const PostList = () => {
     const event = window.addEventListener("scroll", () => {
       if (
         (!loading && window.innerHeight + window.scrollY) >=
-        document.body.scrollHeight - 2
+        document.body.scrollHeight - 10
       ) {
         setPage((oldPage) => {
+          console.log(
+            window.innerHeight,
+            window.scrollY,
+            document.body.scrollHeight
+          );
           return oldPage + 1;
         });
       }
     });
     return () => window.removeEventListener("scroll", event);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  //to update posts array in the backend
-  const updatePostsBackend = async () => {
-    const result = await axios.get("http://localhost:8000/posts/updatePosts");
-    console.log(result.data);
-  };
-
-  useEffect(() => {
-    updatePostsBackend();
   }, []);
 
   return (
@@ -73,7 +78,7 @@ const PostList = () => {
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {loading && <span className="loading">Loading...</span>}
+      {loading && <span className="loadingAnim">Loading...</span>}
     </div>
   );
 };

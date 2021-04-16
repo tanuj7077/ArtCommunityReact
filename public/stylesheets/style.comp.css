@@ -182,6 +182,13 @@ body {
   padding-left: 2rem !important;
   padding-right: 2rem !important; }
 
+.loadingAnim {
+  color: white;
+  font-size: 3rem;
+  letter-spacing: 0.3rem;
+  text-align: center;
+  padding: 3rem; }
+
 .btn {
   border: none; }
   .btn-submit {
