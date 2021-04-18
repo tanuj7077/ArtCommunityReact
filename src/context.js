@@ -43,16 +43,6 @@ const AppProvider = ({ children }) => {
     setSubmitProfilePicModal(false);
   };
 
-  // const fetchPosts = async () => {
-  //   setIsLoading(true);
-  //   try {
-  //     setPosts(Posts);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   const fetchExploreTags = async () => {
     setIsLoading(true);
     try {

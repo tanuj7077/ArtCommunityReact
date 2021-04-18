@@ -20,34 +20,43 @@
   @include respond(tab-land) {
     grid-template-columns: repeat(4, 1fr);
   }
-  @include respond(phone) {
+  @include respond(tab-port) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include respond(removeImg) {
     grid-template-columns: repeat(2, 1fr);
   }
-  grid-gap: 4px;
-
+  @include respond(phone) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  grid-gap: 6px;
+  .tagLoading {
+    width: 100%;
+    padding-top: 70%;
+    border-radius: 1rem;
+    background: linear-gradient(220deg, #141414, #666666, #111111);
+    background-size: 600% 600%;
+    -webkit-animation: CoverAnim 1s ease infinite;
+    -moz-animation: CoverAnim 1s ease infinite;
+    animation: CoverAnim 1s ease infinite;
+  }
   .grid-item--exploreCard {
     width: 100%;
-    position: relative;
     border-radius: 1rem;
     overflow: hidden;
-
+    position: relative;
+    cursor: pointer;
     &-img {
       width: 100%;
-      transition: all 0.2s ease-in;
-      border-radius: 0.5rem;
-      opacity: 0.7;
+      padding-top: 70%;
+      background-size: cover;
+      background-position-x: center;
+      background-position-y: center;
+      transition: all 0.3s ease;
     }
-    &-img-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    &-title {
+    &-text {
       color: white;
       font-size: 2rem;
-      opacity: 1;
       z-index: 1;
       transition: all 0.2s ease-in;
 
@@ -56,22 +65,15 @@
       top: 50%;
       transform: translate(-50%, -50%);
     }
-
     &:hover .grid-item--exploreCard-img {
       transform: scale(1.1);
-    }
-    &:hover {
-      cursor: pointer;
     }
   }
 }
 .explorePage {
   background-color: black;
-  //grid-column: 2 / -1;
   grid-column: 3 / -1;
   grid-row: 3 / -1;
-
-  //overflow: hidden;
   padding-top: 5rem;
 
   margin: auto;
@@ -88,8 +90,6 @@
       overflow: hidden;
 
       &-img {
-        //opacity: 0.6;
-        //filter: grayscale(100%);
         filter: hue-rotate(0deg);
         width: 100%;
         transition: all 0.2s ease-in;
@@ -117,7 +117,6 @@
 
       &:hover &-img {
         opacity: 0.5;
-        //filter: grayscale(0);
         filter: hue-rotate(90deg);
         transform: scale(1.04);
       }

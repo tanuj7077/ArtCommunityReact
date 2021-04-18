@@ -14,7 +14,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   const [postCount, setPostCount] = useState(0);
   const [followerCount, setFollowerCount] = useState(0);
   const [coverPhoto, setCoverPhoto] = useState("");
-  const [profilePic, setProfilePic] = useState("");
+  const [profilePic, setProfilePic] = useState(blankProfileUrl);
   const [profileBorderRad, setProfileBorderRad] = useState("");
 
   const handleMouseEnter = () => {

@@ -11,10 +11,13 @@ const SingleTag = ({ image, name }) => {
           }}
           className="grid-item--exploreCard"
         >
-          <img className="grid-item--exploreCard-img" src={image} alt=""></img>
-          <div className="grid-item--exploreCard-img-overlay">
-            <span className="grid-item--exploreCard-title">{name}</span>
-          </div>
+          <div
+            className="grid-item--exploreCard-img"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(${image})`,
+            }}
+          ></div>
+          <span className="grid-item--exploreCard-text">{name}</span>
         </div>
       )}
     />

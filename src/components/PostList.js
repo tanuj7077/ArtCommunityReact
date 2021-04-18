@@ -11,6 +11,7 @@ const PostList = () => {
   ///const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
   const [loading, setLoading] = useState(false);
+  //const [postLength, setPostLength] = useState(0);
 
   //to update posts array in the backend
   /*const updatePostsBackend = async () => {
@@ -29,10 +30,18 @@ const PostList = () => {
     const urlLimit = `&limit=${limit}`;
     let url = `${baseUrl}${urlPage}${urlLimit}`;
     try {
+      console.log(page);
       const response = await fetch(url);
       const data = await response.json();
       setPosts((oldPhotos) => {
-        return [...oldPhotos, ...data];
+        //return [...oldPhotos, ...data];
+        var arr = [];
+        data.forEach((item) => {
+          if (!oldPhotos.includes(item)) {
+            arr.push(item);
+          }
+        });
+        return [...oldPhotos, ...arr];
       });
       setLoading(false);
     } catch (error) {
@@ -42,8 +51,6 @@ const PostList = () => {
   };
   useEffect(() => {
     fetchPosts();
-    console.log("When page changes to", page);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   useEffect(() => {
@@ -51,13 +58,16 @@ const PostList = () => {
       if (
         (!loading && window.innerHeight + window.scrollY) >=
         document.body.scrollHeight - 10
+        //   &&
+        // posts.length === (page + 1) * limit - limit
       ) {
+        console.log("page = ", page);
+        console.log(
+          "(page + 1) * limit - limit = ",
+          (page + 1) * limit - limit
+        );
+        console.log("postLength = ", posts.length);
         setPage((oldPage) => {
-          console.log(
-            window.innerHeight,
-            window.scrollY,
-            document.body.scrollHeight
-          );
           return oldPage + 1;
         });
       }

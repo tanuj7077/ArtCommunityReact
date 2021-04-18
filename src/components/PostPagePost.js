@@ -32,7 +32,7 @@ const PostPagePost = ({ id }) => {
       const data = await response.json();
       setPost(data);
       //setTotalLikes(data.likesArray.length);
-      setTotalComments(data.comments.length);
+      //setTotalComments(data.comments.length);
       setComments(data.comments); //new
       console.log(data.likesArray.length);
       console.log(isLoggedIn, userData);
@@ -80,8 +80,9 @@ const PostPagePost = ({ id }) => {
       axios
         .post("http://localhost:8000/posts/post/" + id + "/comment", data)
         .then((res) => {
+          setPost(res.data.post); //new
           console.log(res.data);
-          setTotalComments(res.data.commentsCount);
+          //setTotalComments(res.data.commentsCount);
           setComments(res.data.comments);
           setComment("");
           document.getElementById("desc").value = "";
@@ -179,7 +180,9 @@ const PostPagePost = ({ id }) => {
                 <span className="material-icons comment">insert_comment</span>
                 {
                   <span className="count">
-                    {typeof Post.comments === "undefined" ? `0` : totalComments}{" "}
+                    {typeof Post.comments === "undefined"
+                      ? `0`
+                      : Post.comments.length}{" "}
                     Comments
                   </span>
                 }
