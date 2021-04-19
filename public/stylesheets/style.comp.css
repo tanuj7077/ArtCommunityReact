@@ -399,7 +399,7 @@ body {
     left: 10%;
     width: 13rem;
     height: 13rem;
-    background-color: transparent;
+    background-color: black;
     background-size: cover;
     background-position-x: center;
     background-position-y: center; }
@@ -511,91 +511,6 @@ body {
 .show {
   visibility: visible; }
 
-/*
-.authorHover {
-    position: absolute;
-    top: -7vw;
-    left: 10rem;
-    overflow: hidden;
-
-    width: 45rem;
-    height: 35rem;
-    background-color: cadetblue;
-    border-radius: 1rem;
-    z-index: 8;
-    visibility: hidden;
-
-    background: linear-gradient(220deg, #141414, #666666, #111111);
-    background-size: 600% 600%;
-    -webkit-animation: CoverAnim 1s ease infinite;
-    -moz-animation: CoverAnim 1s ease infinite;
-    animation: CoverAnim 1s ease infinite;
-
-    &--cover {
-        width: 100%;
-        height: 60%;
-        background-color: rgb(169, 172, 167);
-        background: linear-gradient(220deg, #000000, #6b6b6b, #000000);
-        background-size: 600% 600%;
-        -webkit-animation: CoverAnim 1s ease infinite;
-        -moz-animation: CoverAnim 1s ease infinite;
-        animation: CoverAnim 1s ease infinite;
-    }
-    &--profile {
-        position: absolute;
-        top: 35%;
-        left: 10%;
-        width: 13rem;
-        height: 13rem;
-        background-color: cornflowerblue;
-
-        background: linear-gradient(270deg, #296c5b, #a5a5a5, #ca6262);
-        background-size: 600% 600%;
-
-        -webkit-animation: ProfileAnim 1s ease infinite;
-        -moz-animation: ProfileAnim 1s ease infinite;
-        animation: ProfileAnim 1s ease infinite;
-    }
-    &--name {
-        position: absolute;
-        top: 42%;
-        left: 47%;
-        width: 18rem;
-        height: 4rem;
-        //background-color: rgb(122, 118, 102);
-    }
-    &--info {
-        position: absolute;
-        top: 65%;
-        left: 47%;
-        width: 18rem;
-        height: 2rem;
-        //background-color: rgb(77, 75, 67);
-    }
-    &--images {
-        width: 100%;
-        height: 40%;
-        background-color: transparent;
-        transform: translate(0, -95%);
-        text-align: center;
-        // display: flex;
-        // justify-content: center;
-        // .info {
-        //     align-self: flex-end;
-        //     font-size: 2.5rem;
-        //     color: white;
-        // }
-        // .lineBreak {
-        //     padding: 0 2rem;
-        // }
-    }
-}
-
-.show {
-    visibility: visible;
-}
-
-*/
 .searchForm {
   width: 100%;
   height: 6.5vh;
@@ -811,33 +726,44 @@ body {
   grid-template-rows: min-content;
   grid-template-columns: repeat(8, 1fr);
   grid-auto-rows: min-content;
-  grid-gap: 4px; }
+  grid-gap: 6px; }
   @media only screen and (max-width: 75em) {
     .exploreGrid {
       grid-template-columns: repeat(4, 1fr); } }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 56.25em) {
+    .exploreGrid {
+      grid-template-columns: repeat(3, 1fr); } }
+  @media only screen and (max-width: 46.125em) {
     .exploreGrid {
       grid-template-columns: repeat(2, 1fr); } }
+  @media only screen and (max-width: 37.5em) {
+    .exploreGrid {
+      grid-template-columns: repeat(1, 1fr); } }
+  .exploreGrid .tagLoading {
+    width: 100%;
+    padding-top: 70%;
+    border-radius: 1rem;
+    background: linear-gradient(220deg, #141414, #666666, #111111);
+    background-size: 600% 600%;
+    -webkit-animation: CoverAnim 1s ease infinite;
+    -moz-animation: CoverAnim 1s ease infinite;
+    animation: CoverAnim 1s ease infinite; }
   .exploreGrid .grid-item--exploreCard {
     width: 100%;
-    position: relative;
     border-radius: 1rem;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative;
+    cursor: pointer; }
     .exploreGrid .grid-item--exploreCard-img {
       width: 100%;
-      transition: all 0.2s ease-in;
-      border-radius: 0.5rem;
-      opacity: 0.7; }
-    .exploreGrid .grid-item--exploreCard-img-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%; }
-    .exploreGrid .grid-item--exploreCard-title {
+      padding-top: 70%;
+      background-size: cover;
+      background-position-x: center;
+      background-position-y: center;
+      transition: all 0.3s ease; }
+    .exploreGrid .grid-item--exploreCard-text {
       color: white;
       font-size: 2rem;
-      opacity: 1;
       z-index: 1;
       transition: all 0.2s ease-in;
       position: absolute;
@@ -846,8 +772,6 @@ body {
       transform: translate(-50%, -50%); }
     .exploreGrid .grid-item--exploreCard:hover .grid-item--exploreCard-img {
       transform: scale(1.1); }
-    .exploreGrid .grid-item--exploreCard:hover {
-      cursor: pointer; }
 
 .explorePage {
   background-color: black;
@@ -911,6 +835,7 @@ body {
   width: calc(100% - 10px); }
   .grid-item--card {
     width: 100%;
+    background-color: black;
     position: relative;
     border-radius: 1rem;
     overflow: hidden; }
@@ -1867,30 +1792,37 @@ body {
       margin: 6rem 0;
       grid-row: 2 / -1;
       grid-column: 1 / 2;
-      width: 42vw;
+      width: 63rem;
       height: 30rem;
-      background-color: #161616; }
-      .userPage--home-following-slider {
+      background-color: #161616;
+      /*&-slider {
         padding: 0.5rem 0;
         position: relative;
         height: 25rem;
         overflow: hidden;
-        display: flex; }
-        .userPage--home-following-slider-slides {
+        display: flex;
+        &-slides {
           display: flex;
           flex-wrap: wrap;
           overflow-y: scroll;
+          //scroll-snap-type: x mandatory;
           scroll-behavior: smooth;
           -webkit-overflow-scrolling: touch;
-          background-color: black; }
-          .userPage--home-following-slider-slides::-webkit-scrollbar {
-            width: 7px; }
-          .userPage--home-following-slider-slides::-webkit-scrollbar-thumb {
+          background-color: black;
+
+          &::-webkit-scrollbar {
+            width: 7px;
+          }
+
+          &::-webkit-scrollbar-thumb {
             background: #3e3f3e;
-            border-radius: 5px; }
-          .userPage--home-following-slider-slides::-webkit-scrollbar-track {
-            background: transparent; }
-        .userPage--home-following-slider .item {
+            border-radius: 5px;
+          }
+          &::-webkit-scrollbar-track {
+            background: transparent;
+          }
+        }
+        .item {
           display: flex;
           flex-wrap: wrap;
           align-items: center;
@@ -1898,6 +1830,47 @@ body {
           height: max-content;
           scroll-snap-align: start;
           flex-shrink: 0;
+          border-radius: 5px;
+          background-color: rgb(49, 48, 48);
+          color: white;
+          margin: 1rem 1rem;
+          padding-left: 0.5rem;
+
+          .img {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            margin: 0.5rem 0;
+          }
+          .username {
+            padding-left: 1rem;
+            font-size: 1.5rem;
+          }
+        }
+      }*/ }
+      .userPage--home-following-slider {
+        padding: 0.5rem 0;
+        position: relative;
+        height: 25rem;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        background-color: black;
+        transition: all 0.3s ease; }
+        .userPage--home-following-slider::-webkit-scrollbar {
+          width: 7px; }
+        .userPage--home-following-slider::-webkit-scrollbar-thumb {
+          background: #3e3f3e;
+          border-radius: 5px; }
+        .userPage--home-following-slider::-webkit-scrollbar-track {
+          background: transparent; }
+        .userPage--home-following-slider .item {
+          position: relative;
+          width: 18.5rem;
+          height: 5rem;
           border-radius: 5px;
           background-color: #313030;
           color: white;
@@ -1910,7 +1883,10 @@ body {
             margin: 0.5rem 0; }
           .userPage--home-following-slider .item .username {
             padding-left: 1rem;
-            font-size: 1.5rem; }
+            font-size: 1.5rem;
+            position: absolute;
+            left: 25%;
+            top: 25%; }
     .userPage--home-about {
       margin: 6rem 0;
       grid-row: 2 / -1;

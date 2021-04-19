@@ -136,21 +136,15 @@
     background-color: rgb(22, 22, 22);
     z-index: 2;
     margin-top: -2px;
-
-    /*.slides::-webkit-scrollbar-button:single-button {
-      background-color: #bbbbbb;
-      display: block;
-      height: 3rem;
-      width: 3rem;
-    }*/
   }
   &--home {
     display: grid;
     grid-template-rows: repeat(2, min-content);
-    grid-template-columns: repeat(2, min-content);
+    grid-template-columns: min-content 1fr;
     column-gap: 2rem;
     align-items: center;
-    justify-content: center;
+    //justify-content: center;
+    margin-left: 5rem;
 
     .subheading {
       font-size: 2.4rem;
@@ -257,8 +251,21 @@
       grid-row: 2 / -1;
       grid-column: 1 / 2;
       width: 42vw;
+      //width: 63rem;
       height: 30rem;
       background-color: rgb(22, 22, 22);
+      @include respond(tab-land) {
+        width: 43rem;
+      }
+      @include respond(tab-port) {
+        width: 25rem;
+      }
+      // @include respond(removeImg) {
+      //   width: 63rem;
+      // }
+      // @include respond(phone) {
+      //   width: 63rem;
+      // }
 
       &-slider {
         padding: 0.5rem 0;
@@ -266,40 +273,36 @@
         height: 25rem;
         overflow: hidden;
         display: flex;
-        &-slides {
-          display: flex;
-          flex-wrap: wrap;
-          overflow-y: scroll;
-          //scroll-snap-type: x mandatory;
-          scroll-behavior: smooth;
-          -webkit-overflow-scrolling: touch;
-          background-color: black;
-
-          &::-webkit-scrollbar {
-            width: 7px;
-          }
-
-          &::-webkit-scrollbar-thumb {
-            background: #3e3f3e;
-            border-radius: 5px;
-          }
-          &::-webkit-scrollbar-track {
-            background: transparent;
-          }
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        background-color: black;
+        transition: all 0.3s ease;
+        justify-content: center;
+        &::-webkit-scrollbar {
+          width: 7px;
         }
+        &::-webkit-scrollbar-thumb {
+          background: #3e3f3e;
+          border-radius: 5px;
+        }
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
         .item {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
           width: 12vw;
-          height: max-content;
-          scroll-snap-align: start;
-          flex-shrink: 0;
+          height: 5rem;
           border-radius: 5px;
           background-color: rgb(49, 48, 48);
           color: white;
           margin: 1rem 1rem;
-          padding-left: 0.5rem;
+          display: flex;
+          flex-flow: row;
+          @include respond(tab-land) {
+            width: 18.5rem;
+          }
 
           .img {
             width: 4rem;
@@ -310,6 +313,7 @@
           .username {
             padding-left: 1rem;
             font-size: 1.5rem;
+            align-self: center;
           }
         }
       }
@@ -318,8 +322,9 @@
       margin: 6rem 0;
       grid-row: 2 / -1;
       grid-column: 2 / -1;
-      width: 42vw;
+      width: 82%;
       height: 30rem;
+      margin-left: 7%;
       background-color: rgb(112, 121, 121);
     }
   }

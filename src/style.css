@@ -1704,20 +1704,14 @@ body {
     width: 100%;
     background-color: #161616;
     z-index: 2;
-    margin-top: -2px;
-    /*.slides::-webkit-scrollbar-button:single-button {
-      background-color: #bbbbbb;
-      display: block;
-      height: 3rem;
-      width: 3rem;
-    }*/ }
+    margin-top: -2px; }
   .userPage--home {
     display: grid;
     grid-template-rows: repeat(2, min-content);
-    grid-template-columns: repeat(2, min-content);
+    grid-template-columns: min-content 1fr;
     column-gap: 2rem;
     align-items: center;
-    justify-content: center; }
+    margin-left: 5rem; }
     .userPage--home .subheading {
       font-size: 2.4rem;
       color: white;
@@ -1795,39 +1789,44 @@ body {
       width: 42vw;
       height: 30rem;
       background-color: #161616; }
+      @media only screen and (max-width: 75em) {
+        .userPage--home-following {
+          width: 43rem; } }
+      @media only screen and (max-width: 56.25em) {
+        .userPage--home-following {
+          width: 25rem; } }
       .userPage--home-following-slider {
         padding: 0.5rem 0;
         position: relative;
         height: 25rem;
         overflow: hidden;
-        display: flex; }
-        .userPage--home-following-slider-slides {
-          display: flex;
-          flex-wrap: wrap;
-          overflow-y: scroll;
-          scroll-behavior: smooth;
-          -webkit-overflow-scrolling: touch;
-          background-color: black; }
-          .userPage--home-following-slider-slides::-webkit-scrollbar {
-            width: 7px; }
-          .userPage--home-following-slider-slides::-webkit-scrollbar-thumb {
-            background: #3e3f3e;
-            border-radius: 5px; }
-          .userPage--home-following-slider-slides::-webkit-scrollbar-track {
-            background: transparent; }
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        background-color: black;
+        transition: all 0.3s ease;
+        justify-content: center; }
+        .userPage--home-following-slider::-webkit-scrollbar {
+          width: 7px; }
+        .userPage--home-following-slider::-webkit-scrollbar-thumb {
+          background: #3e3f3e;
+          border-radius: 5px; }
+        .userPage--home-following-slider::-webkit-scrollbar-track {
+          background: transparent; }
         .userPage--home-following-slider .item {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
           width: 12vw;
-          height: max-content;
-          scroll-snap-align: start;
-          flex-shrink: 0;
+          height: 5rem;
           border-radius: 5px;
           background-color: #313030;
           color: white;
           margin: 1rem 1rem;
-          padding-left: 0.5rem; }
+          display: flex;
+          flex-flow: row; }
+          @media only screen and (max-width: 75em) {
+            .userPage--home-following-slider .item {
+              width: 18.5rem; } }
           .userPage--home-following-slider .item .img {
             width: 4rem;
             height: 4rem;
@@ -1835,13 +1834,15 @@ body {
             margin: 0.5rem 0; }
           .userPage--home-following-slider .item .username {
             padding-left: 1rem;
-            font-size: 1.5rem; }
+            font-size: 1.5rem;
+            align-self: center; }
     .userPage--home-about {
       margin: 6rem 0;
       grid-row: 2 / -1;
       grid-column: 2 / -1;
-      width: 42vw;
+      width: 82%;
       height: 30rem;
+      margin-left: 7%;
       background-color: #707979; }
 
 .loginModal {

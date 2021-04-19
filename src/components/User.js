@@ -3,6 +3,7 @@ import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { Users } from "../data";
 import SubmitCoverModal from "./SubmitCoverModal";
 import SubmitProfilePicModal from "./SubmitProfilePicModal";
+import UserHome from "./UserPage/UserHome";
 
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import SinglePost from "./SinglePost";
@@ -303,19 +304,18 @@ const User = ({ id }) => {
                 </div>
                 <span className="subheading">Liked Posts</span>
               </div>
+
               <div className="userPage--home-following">
                 <span className="subheading">Following</span>
                 <div className="userPage--home-following-slider">
-                  <div className="userPage--home-following-slider-slides">
-                    {Users.map((user, id) => {
-                      return (
-                        <div key={user.username + id} className="item">
-                          <img src={user.image} alt="" className="img" />
-                          <span className="username">{user.username}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {Users.map((user, id) => {
+                    return (
+                      <div key={user.username + id} className="item">
+                        <img src={user.image} alt="" className="img" />
+                        <span className="username">{user.username}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
               <div className="userPage--home-about">
