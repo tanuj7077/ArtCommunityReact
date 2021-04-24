@@ -1,27 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
-import { Users } from "../data";
 import SubmitCoverModal from "./SubmitCoverModal";
 import SubmitProfilePicModal from "./SubmitProfilePicModal";
 import UserHome from "./UserPage/UserHome";
-
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import SinglePost from "./SinglePost";
-import tree from "../tagImage/tree.jpg";
-import city from "../tagImage/city.jpg";
-import insect from "../tagImage/insect.jpg";
-import monochrome from "../tagImage/monochrome.jpg";
-import landscape from "../tagImage/landscape.jpg";
-import summer from "../tagImage/summer.jpg";
-import river from "../tagImage/river.jpg";
-import sky from "../tagImage/sky.jpg";
-import fanart from "../tagImage/fanart.jpg";
-import photography from "../tagImage/photography.jpg";
+import Gallery from "./UserPage/Gallery";
+import blank from "../tagImage/blankProfile.png";
 
 import { useGlobalContext } from "../context";
-
-const url =
-  "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
 
 const User = ({ id }) => {
   const {
@@ -33,15 +17,14 @@ const User = ({ id }) => {
     userData,
   } = useGlobalContext();
   let userUrl = "http://localhost:8000/users/user/" + id;
-  let postUrl = "http://localhost:8000/posts/postByUser/" + id;
 
   const [user, setUser] = useState(null);
-  const [userPosts, setUserPost] = useState([]);
   const [cover, setCover] = useState("");
-  const [profilePic, setProfilePic] = useState(url);
+  const [profilePic, setProfilePic] = useState(blank);
   const [profileBorderRad, setProfileBorderRad] = useState("");
-
-  //typeof user.coverPhoto === "undefined" ? `` : user.coverPhoto;
+  const [following, setFollowing] = useState([]); //for home section
+  const [followers, setFollowers] = useState([]); //for home section
+  const [userPosts, setUserPost] = useState([]); //for gallery section
 
   async function getUser() {
     try {
@@ -63,8 +46,10 @@ const User = ({ id }) => {
     }
   }
 
+  //------------For Gallery Section------------//
   async function getPostByUser() {
     try {
+      const postUrl = "http://localhost:8000/posts/postByUser/" + id;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       console.log(postData);
@@ -74,53 +59,55 @@ const User = ({ id }) => {
     }
   }
 
+  //--------------For Home Section--------------//
+  async function getFollowing() {
+    try {
+      const followingUrl = "http://localhost:8000/users/fetchFollowing/" + id;
+      const userResponse = await fetch(followingUrl);
+      const userdata = await userResponse.json();
+      console.log(userdata);
+      setFollowing(userdata);
+    } catch (er) {
+      console.log(er);
+    }
+  }
+  async function getFollowers() {
+    try {
+      const followingUrl = "http://localhost:8000/users/fetchFollowing/" + id;
+      const userResponse = await fetch(followingUrl);
+      const userdata = await userResponse.json();
+      console.log(userdata);
+      setFollowers(userdata);
+    } catch (er) {
+      console.log(er);
+    }
+  }
+
   useEffect(() => {
     getUser();
     getPostByUser();
+    getFollowing();
+    getFollowers();
   }, [id]);
-  // useEffect(() => {
-  //   getPostByUser();
-  // }, [id]);
 
   const [isHome, setHome] = useState(true);
   const [isGallery, setGallery] = useState(false);
   const [isAbout, setAbout] = useState(false);
-  const [isStats, setStats] = useState(false);
 
-  const handleScroll = (side) => {
-    if (side === "right") {
-      document
-        .getElementsByClassName("userPage--home-posts-slider-slides")[0]
-        .scrollBy(500, 0);
-    } else {
-      document
-        .getElementsByClassName("userPage--home-posts-slider-slides")[0]
-        .scrollBy(-500, 0);
-    }
-  };
   const toHome = () => {
     setHome(true);
     setGallery(false);
     setAbout(false);
-    setStats(false);
   };
   const toGallery = () => {
     setHome(false);
     setGallery(true);
     setAbout(false);
-    setStats(false);
   };
   const toAbout = () => {
     setHome(false);
     setGallery(false);
     setAbout(true);
-    setStats(false);
-  };
-  const toStats = () => {
-    setHome(false);
-    setGallery(false);
-    setAbout(false);
-    setStats(true);
   };
 
   if (!user) {
@@ -156,7 +143,7 @@ const User = ({ id }) => {
                 style={{
                   backgroundImage: `url(${
                     typeof userData.profilePic === "undefined"
-                      ? url
+                      ? blank
                       : userData.profilePic
                   })`,
                   borderRadius: `${
@@ -196,7 +183,7 @@ const User = ({ id }) => {
               <span className="userPostCount">{user.posts.length} Posts</span>
               <span className="lineBreak"> | </span>
               <span className="userFollowerCount">
-                {user.following.length} Followers
+                {user.followers.length} Followers
               </span>
             </div>
           </div>
@@ -210,9 +197,6 @@ const User = ({ id }) => {
             <span className="menu-item" onClick={() => toAbout()}>
               About
             </span>
-            <span className="menu-item" onClick={() => toStats()}>
-              Stats
-            </span>
           </div>
           {isLoggedIn && userData.username === user.username && (
             <div className="userPage--top-cover" onClick={openSubmitCoverModal}>
@@ -220,132 +204,13 @@ const User = ({ id }) => {
             </div>
           )}
         </div>
+
         <div className="userPage--main">
-          {isHome && (
-            <div className="userPage--home">
-              <div className="userPage--home-posts">
-                <span className="subheading">Latest Uploads</span>
-                <div className="userPage--home-posts-slider">
-                  <span
-                    className="userPage--home-posts-slider-leftButton"
-                    onClick={() => handleScroll("left")}
-                  >
-                    <VscChevronLeft className="icon" />
-                  </span>
-                  <div className="userPage--home-posts-slider-slides">
-                    <img
-                      draggable="false"
-                      src={tree}
-                      alt=""
-                      className="slider-img"
-                    />
-                    <img
-                      draggable="false"
-                      src={city}
-                      alt=""
-                      className="slider-img"
-                    />
-                    <img
-                      draggable="false"
-                      src={insect}
-                      alt=""
-                      className="slider-img"
-                    />
-                    <img
-                      draggable="false"
-                      src={monochrome}
-                      alt=""
-                      className="slider-img"
-                    />
-                    <img
-                      draggable="false"
-                      src={landscape}
-                      alt=""
-                      className="slider-img"
-                    />
-                    <img
-                      draggable="false"
-                      src={summer}
-                      alt=""
-                      className="slider-img"
-                    />
-                    <img
-                      draggable="false"
-                      src={river}
-                      alt=""
-                      className="slider-img"
-                    />
-                    <img
-                      draggable="false"
-                      src={sky}
-                      alt=""
-                      className="slider-img"
-                    />
-                    <img
-                      draggable="false"
-                      src={fanart}
-                      alt=""
-                      className="slider-img"
-                    />
-                    <img
-                      draggable="false"
-                      src={photography}
-                      alt=""
-                      className="slider-img"
-                    />
-                  </div>
-
-                  <span
-                    className="userPage--home-posts-slider-rightButton"
-                    onClick={() => handleScroll("right")}
-                  >
-                    <VscChevronRight className="icon" />
-                  </span>
-                </div>
-                <span className="subheading">Liked Posts</span>
-              </div>
-
-              <div className="userPage--home-following">
-                <span className="subheading">Following</span>
-                <div className="userPage--home-following-slider">
-                  {Users.map((user, id) => {
-                    return (
-                      <div key={user.username + id} className="item">
-                        <img src={user.image} alt="" className="img" />
-                        <span className="username">{user.username}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              <div className="userPage--home-about">
-                <span className="subheading">About</span>
-                <div className="userPage--home-about-name">Julian</div>
-                <div className="userPage--home-about-location">New Zealand</div>
-                <div className="userPage--home-about-gender">Female</div>
-                <div className="userPage--home-about-profession">
-                  Digital Artist
-                </div>
-                <div className="userPage--home-about-bio"></div>
-                <div className="userPage--home-about-link"></div>
-              </div>
-            </div>
+          {isHome && following && followers && (
+            <UserHome following={following} followers={followers} />
           )}
-          {isGallery && (
-            <div className="userPage--gallery">
-              <ResponsiveMasonry
-                columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1000: 4 }}
-              >
-                <Masonry>
-                  {userPosts.map((post) => {
-                    return <SinglePost key={post._id} {...post} />;
-                  })}
-                </Masonry>
-              </ResponsiveMasonry>
-            </div>
-          )}
+          {isGallery && userPosts && <Gallery userPosts={userPosts} />}
           {isAbout && <div className="userPage--about">about</div>}
-          {isStats && <div className="userPage--stats">Stats</div>}
         </div>
       </div>
       {submitCoverModal && <SubmitCoverModal />}

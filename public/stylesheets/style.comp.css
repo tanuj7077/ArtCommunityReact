@@ -309,6 +309,7 @@ body {
       padding: 0 1rem;
       padding-top: 1rem;
       background-color: rgba(128, 128, 128, 0.5);
+      white-space: pre;
       border: 2px solid transparent;
       width: 100%;
       display: block;
@@ -947,7 +948,8 @@ body {
         border-radius: 5px;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         width: auto;
-        height: 100%; }
+        max-width: 95%;
+        max-height: 100%; }
     .postPage .postContent--info {
       padding: 3rem 9rem;
       background-color: #2c2c2c;
@@ -1074,7 +1076,8 @@ body {
         .postPage .postContent--comments-comment-text {
           grid-row: 2 / 3;
           grid-column: 2 / -1;
-          font-size: 1.5rem; }
+          font-size: 1.5rem;
+          white-space: pre; }
         .postPage .postContent--comments-comment-controls {
           grid-row: 3 / 4;
           grid-column: 2 / -1; }
@@ -1679,11 +1682,12 @@ body {
       bottom: 0;
       left: 8vw;
       color: white;
-      font-size: 3.3rem;
       letter-spacing: 0.3rem;
       padding: 1rem 0; }
       .userPage--top-menu .menu-item {
-        padding: 0 3rem; }
+        font-size: 3.3rem;
+        padding: 0 5rem;
+        transition: font-size 0.3s ease; }
     .userPage--top-cover {
       opacity: 0.8;
       position: absolute;
@@ -1704,27 +1708,157 @@ body {
     width: 100%;
     background-color: #161616;
     z-index: 2;
-    margin-top: -2px;
-    /*.slides::-webkit-scrollbar-button:single-button {
-      background-color: #bbbbbb;
-      display: block;
-      height: 3rem;
-      width: 3rem;
-    }*/ }
+    margin-top: -2px; }
   .userPage--home {
     display: grid;
-    grid-template-rows: repeat(2, min-content);
-    grid-template-columns: repeat(2, min-content);
+    grid-template-rows: repeat(5, max-content);
+    grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
     align-items: center;
-    justify-content: center; }
+    margin-left: 5rem; }
     .userPage--home .subheading {
       font-size: 2.4rem;
       color: white;
       letter-spacing: 0.3rem; }
+    .userPage--home .aboutName {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 0.3rem; }
+    .userPage--home-about {
+      align-self: start;
+      margin: 6rem 0;
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+      width: 90%; }
+    .userPage--home-aboutInfo {
+      background-color: #3b3b3b;
+      min-height: 55rem;
+      font-size: 2rem;
+      color: #dddddd;
+      text-transform: none;
+      letter-spacing: 0.3rem;
+      padding: 2rem 3rem;
+      display: flex;
+      flex-flow: column; }
+      .userPage--home-aboutInfo-item {
+        margin: 1.5rem 0; }
+      .userPage--home-aboutInfo .group-column {
+        display: flex;
+        flex-flow: row; }
+        .userPage--home-aboutInfo .group-column .item {
+          margin-right: 4rem; }
+      .userPage--home-aboutInfo .group-row {
+        display: flex;
+        flex-flow: column; }
+        .userPage--home-aboutInfo .group-row .item {
+          margin: 0.5rem 0;
+          justify-content: center;
+          display: flex;
+          align-self: flex-start;
+          align-items: center; }
+      .userPage--home-aboutInfo .aboutIcon {
+        margin-right: 1rem;
+        color: #868686; }
+    .userPage--home-spotlight {
+      align-self: start;
+      margin: 6rem 0;
+      grid-row: 1 / 2;
+      grid-column: 2 / -1; }
+      .userPage--home-spotlight .spotlight {
+        width: 90%;
+        height: 55rem;
+        background-color: black;
+        display: grid;
+        grid-template-rows: 90% 10%; }
+        .userPage--home-spotlight .spotlight .spotlight-image {
+          background-color: #3b3b3b;
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+          .userPage--home-spotlight .spotlight .spotlight-image .img-landscape {
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            height: auto;
+            max-width: 90%;
+            max-height: 90%; }
+        .userPage--home-spotlight .spotlight .spotlight-info {
+          grid-row: 2 / -1;
+          background-color: #292929;
+          color: white;
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          .userPage--home-spotlight .spotlight .spotlight-info-name {
+            font-size: 2rem;
+            letter-spacing: 0.3rem;
+            margin-left: 1rem; }
+          .userPage--home-spotlight .spotlight .spotlight-info-actions {
+            font-size: 1.6rem;
+            margin: 0 2rem; }
+    .userPage--home-following {
+      margin: 6rem 0;
+      grid-row: 1 / 2;
+      grid-column: 2 / -1;
+      width: 42vw;
+      background-color: #161616; }
+      @media only screen and (max-width: 75em) {
+        .userPage--home-following {
+          width: 43rem; } }
+      @media only screen and (max-width: 56.25em) {
+        .userPage--home-following {
+          width: 25rem; } }
+      .userPage--home-following-slider {
+        padding: 0.5rem 0;
+        position: relative;
+        height: min-content;
+        max-height: 22rem;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        background-color: black;
+        transition: all 0.3s ease;
+        justify-content: center; }
+        .userPage--home-following-slider::-webkit-scrollbar {
+          width: 7px; }
+        .userPage--home-following-slider::-webkit-scrollbar-thumb {
+          background: #3e3f3e;
+          border-radius: 5px; }
+        .userPage--home-following-slider::-webkit-scrollbar-track {
+          background: transparent; }
+        .userPage--home-following-slider .item {
+          width: 12vw;
+          height: 5rem;
+          border-radius: 5px;
+          background-color: #313030;
+          color: white;
+          margin: 1rem 1rem;
+          display: flex;
+          flex-flow: row; }
+          @media only screen and (max-width: 75em) {
+            .userPage--home-following-slider .item {
+              width: 18.5rem; } }
+          .userPage--home-following-slider .item .img {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            margin: 0.5rem 0; }
+          .userPage--home-following-slider .item .img2 {
+            width: 4rem;
+            height: 4rem;
+            margin: 0.5rem 0.5rem;
+            background-size: cover;
+            background-position-x: center;
+            background-position-y: center; }
+          .userPage--home-following-slider .item .username {
+            padding-left: 1rem;
+            font-size: 1.5rem;
+            align-self: center; }
     .userPage--home-posts {
       margin-top: 4rem;
-      grid-row: 1 / 2;
+      grid-row: 2 / 3;
       grid-column: 1 / -1; }
       .userPage--home-posts-slider {
         position: relative;
@@ -1788,112 +1922,9 @@ body {
             padding: 1rem 0.7rem; }
           .userPage--home-posts-slider-slides::-webkit-scrollbar {
             display: none; }
-    .userPage--home-following {
-      margin: 6rem 0;
-      grid-row: 2 / -1;
-      grid-column: 1 / 2;
-      width: 63rem;
-      height: 30rem;
-      background-color: #161616;
-      /*&-slider {
-        padding: 0.5rem 0;
-        position: relative;
-        height: 25rem;
-        overflow: hidden;
-        display: flex;
-        &-slides {
-          display: flex;
-          flex-wrap: wrap;
-          overflow-y: scroll;
-          //scroll-snap-type: x mandatory;
-          scroll-behavior: smooth;
-          -webkit-overflow-scrolling: touch;
-          background-color: black;
-
-          &::-webkit-scrollbar {
-            width: 7px;
-          }
-
-          &::-webkit-scrollbar-thumb {
-            background: #3e3f3e;
-            border-radius: 5px;
-          }
-          &::-webkit-scrollbar-track {
-            background: transparent;
-          }
-        }
-        .item {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          width: 12vw;
-          height: max-content;
-          scroll-snap-align: start;
-          flex-shrink: 0;
-          border-radius: 5px;
-          background-color: rgb(49, 48, 48);
-          color: white;
-          margin: 1rem 1rem;
-          padding-left: 0.5rem;
-
-          .img {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-            margin: 0.5rem 0;
-          }
-          .username {
-            padding-left: 1rem;
-            font-size: 1.5rem;
-          }
-        }
-      }*/ }
-      .userPage--home-following-slider {
-        padding: 0.5rem 0;
-        position: relative;
-        height: 25rem;
-        overflow: hidden;
-        display: flex;
-        flex-wrap: wrap;
-        overflow-y: scroll;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        background-color: black;
-        transition: all 0.3s ease; }
-        .userPage--home-following-slider::-webkit-scrollbar {
-          width: 7px; }
-        .userPage--home-following-slider::-webkit-scrollbar-thumb {
-          background: #3e3f3e;
-          border-radius: 5px; }
-        .userPage--home-following-slider::-webkit-scrollbar-track {
-          background: transparent; }
-        .userPage--home-following-slider .item {
-          position: relative;
-          width: 18.5rem;
-          height: 5rem;
-          border-radius: 5px;
-          background-color: #313030;
-          color: white;
-          margin: 1rem 1rem;
-          padding-left: 0.5rem; }
-          .userPage--home-following-slider .item .img {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-            margin: 0.5rem 0; }
-          .userPage--home-following-slider .item .username {
-            padding-left: 1rem;
-            font-size: 1.5rem;
-            position: absolute;
-            left: 25%;
-            top: 25%; }
-    .userPage--home-about {
-      margin: 6rem 0;
-      grid-row: 2 / -1;
-      grid-column: 2 / -1;
-      width: 42vw;
-      height: 30rem;
-      background-color: #707979; }
+  .userPage--gallery {
+    width: 90%;
+    margin: 5rem auto; }
 
 .loginModal {
   width: 100%;

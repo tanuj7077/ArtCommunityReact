@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
+import blank from "../tagImage/blankProfile.png";
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   let userUrl = "http://localhost:8000/users/hoverUser/" + author.id;
-  const blankProfileUrl =
-    "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
 
   const AuthorHoverRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -14,7 +13,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   const [postCount, setPostCount] = useState(0);
   const [followerCount, setFollowerCount] = useState(0);
   const [coverPhoto, setCoverPhoto] = useState("");
-  const [profilePic, setProfilePic] = useState(blankProfileUrl);
+  const [profilePic, setProfilePic] = useState(blank);
   const [profileBorderRad, setProfileBorderRad] = useState("");
 
   const handleMouseEnter = () => {
@@ -25,7 +24,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
       setPostCount(0);
       setFollowerCount(0);
       setCoverPhoto("");
-      setProfilePic(blankProfileUrl);
+      setProfilePic(blank);
       setProfileBorderRad("0%");
     }
     setIsHovered(true);
@@ -59,7 +58,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
       setFollowerCount(res.data.followerCount);
       setCoverPhoto(res.data.coverImage);
       if (!res.data.profilePic) {
-        setProfilePic(blankProfileUrl);
+        setProfilePic(blank);
       } else {
         setProfilePic(res.data.profilePic);
       }

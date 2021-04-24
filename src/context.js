@@ -111,6 +111,8 @@ const AppProvider = ({ children }) => {
         closeSubmitProfilePicModal,
         page,
         setPage,
+        //userPosts,
+        //setUserPost,
       }}
     >
       {children}
