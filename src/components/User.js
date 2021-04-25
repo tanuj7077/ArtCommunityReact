@@ -73,8 +73,8 @@ const User = ({ id }) => {
   }
   async function getFollowers() {
     try {
-      const followingUrl = "http://localhost:8000/users/fetchFollowing/" + id;
-      const userResponse = await fetch(followingUrl);
+      const followerUrl = "http://localhost:8000/users/fetchFollowers/" + id;
+      const userResponse = await fetch(followerUrl);
       const userdata = await userResponse.json();
       console.log(userdata);
       setFollowers(userdata);

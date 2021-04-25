@@ -1897,7 +1897,8 @@ body {
       overflow-y: scroll;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      height: 50rem;
+      height: max-content;
+      max-height: 55rem;
       padding-right: 10px; }
       .userPage--home .liked-masonry {
         background-color: black;
@@ -1960,7 +1961,10 @@ body {
         -webkit-overflow-scrolling: touch;
         background-color: black;
         transition: all 0.3s ease;
-        justify-content: center; }
+        justify-content: left; }
+        @media only screen and (max-width: 56.25em) {
+          .userPage--home-following-slider {
+            justify-content: center; } }
         .userPage--home-following-slider::-webkit-scrollbar {
           width: 7px; }
         .userPage--home-following-slider::-webkit-scrollbar-thumb {
@@ -1996,6 +2000,10 @@ body {
             padding-left: 1rem;
             font-size: 1.5rem;
             align-self: center; }
+      .following-section:hover .userPage--home-following-slider::-webkit-scrollbar-thumb {
+        background: #6ecf86; }
+      .follower-section:hover .userPage--home-following-slider::-webkit-scrollbar-thumb {
+        background: #6ecf86; }
   .userPage--gallery {
     width: 90%;
     margin: 5rem auto; }

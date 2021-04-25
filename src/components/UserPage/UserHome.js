@@ -249,46 +249,77 @@ const UserHome = ({ following, followers }) => {
           <span className="subheading">Liked Posts</span>
           <div className="liked">
             <div className="liked-masonry">
-              <img draggable="false" src={tree} alt="" className="liked-img" />
-              <img draggable="false" src={city} alt="" className="liked-img" />
-              <img
-                draggable="false"
-                src={insect}
-                alt=""
-                className="liked-img"
-              />
-              <img
-                draggable="false"
-                src={monochrome}
-                alt=""
-                className="liked-img"
-              />
-              <img
-                draggable="false"
-                src={landscape}
-                alt=""
-                className="liked-img"
-              />
-              <img
-                draggable="false"
-                src={summer}
-                alt=""
-                className="liked-img"
-              />
-              <img draggable="false" src={river} alt="" className="liked-img" />
-              <img draggable="false" src={sky} alt="" className="liked-img" />
-              <img
-                draggable="false"
-                src={fanart}
-                alt=""
-                className="liked-img"
-              />
-              <img
-                draggable="false"
-                src={photography}
-                alt=""
-                className="liked-img"
-              />
+              <div className="liked-masonry-item">
+                {" "}
+                <img
+                  draggable="false"
+                  src={tree}
+                  alt=""
+                  className="liked-img"
+                />
+              </div>
+              <div className="liked-masonry-item">
+                {" "}
+                <img
+                  draggable="false"
+                  src={city}
+                  alt=""
+                  className="liked-img"
+                />
+              </div>
+              <div className="liked-masonry-item">
+                <img
+                  draggable="false"
+                  src={insect}
+                  alt=""
+                  className="liked-img"
+                />
+              </div>
+              <div className="liked-masonry-item">
+                <img
+                  draggable="false"
+                  src={monochrome}
+                  alt=""
+                  className="liked-img"
+                />
+              </div>
+              <div className="liked-masonry-item">
+                <img
+                  draggable="false"
+                  src={landscape}
+                  alt=""
+                  className="liked-img"
+                />
+              </div>
+              <div className="liked-masonry-item">
+                <img
+                  draggable="false"
+                  src={summer}
+                  alt=""
+                  className="liked-img"
+                />
+              </div>
+              <div className="liked-masonry-item">
+                {" "}
+                <img
+                  draggable="false"
+                  src={river}
+                  alt=""
+                  className="liked-img"
+                />
+              </div>
+              <div className="liked-masonry-item">
+                {" "}
+                <img draggable="false" src={sky} alt="" className="liked-img" />
+              </div>
+              <div className="liked-masonry-item">
+                <img
+                  draggable="false"
+                  src={fanart}
+                  alt=""
+                  className="liked-img"
+                />
+              </div>
             </div>
           </div>
         </div>
