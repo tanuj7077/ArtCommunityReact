@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import {
   FaBirthdayCake,
@@ -11,7 +11,6 @@ import {
 import { CgGenderFemale } from "react-icons/cg";
 import { HiLocationMarker } from "react-icons/hi";
 import { AiOutlineLink, AiFillInstagram, AiFillLike } from "react-icons/ai";
-import { Users } from "../../data";
 
 import tree from "../../tagImage/tree.jpg";
 import city from "../../tagImage/city.jpg";
@@ -118,6 +117,7 @@ const UserHome = ({ following, followers }) => {
           </div>
         </section>
       </div>
+
       <div className="userPage--home-following">
         <div className="following-section">
           <span className="subheading">Following</span>
@@ -178,6 +178,7 @@ const UserHome = ({ following, followers }) => {
           </div>
         </div>
       </div>
+
       <div className="userPage--home-posts">
         <div className="popular">
           <span className="subheading">Popular Uploads</span>

@@ -530,4 +530,135 @@
     width: 90%;
     margin: 5rem auto;
   }
+  //for Galler section
+  .l {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    height: max-content;
+    max-height: 40rem;
+    padding-right: 10px;
+    &-m {
+      background-color: black;
+      columns: 4;
+      gap: 1rem;
+      @include respond(tab-land) {
+        columns: 3;
+      }
+      @include respond(tab-port) {
+        columns: 2;
+      }
+
+      .gallery-img {
+        width: 100%;
+        margin: 0.4rem 0;
+        border-radius: 1rem;
+      }
+    }
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #525252;
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
+  .userPage--gallery:hover .l::-webkit-scrollbar-thumb {
+    background: #6ecf86;
+  }
+
+  &--about {
+    width: 70%;
+    margin: 5rem auto;
+    color: rgb(221, 221, 221);
+
+    hr.solid {
+      height: 1px;
+      background-color: #bbb;
+      margin: 7rem 0;
+    }
+
+    &-info {
+      letter-spacing: 0.3rem;
+      //background-color: rgb(68, 68, 68);
+      display: flex;
+      gap: 3rem;
+      flex-flow: column;
+      font-size: 2.5rem;
+      &-name {
+        font-size: 6rem;
+        font-weight: bold;
+      }
+      &-data {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        column-gap: 4rem;
+        .item {
+          margin: 0.25rem 0;
+          display: flex;
+          flex-flow: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          column-gap: 0.8rem;
+        }
+      }
+      &-link {
+        text-transform: none;
+      }
+      &-followMe {
+        .subheading {
+          font-size: 2rem;
+          color: rgb(180, 180, 180);
+        }
+        .items {
+          margin-top: 2rem;
+          display: flex;
+          flex-flow: row;
+          flex-wrap: wrap;
+          gap: 2rem;
+          .item {
+            width: 12rem;
+            height: 12rem;
+            border: 2px solid rgb(221, 221, 221);
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: space-evenly;
+            &:hover {
+              color: #6ecf86;
+              border: 2px solid #6ecf86;
+              cursor: pointer;
+            }
+            .aboutIcon {
+              padding-top: 1rem;
+              font-size: 4.5rem;
+            }
+            .aboutText {
+              font-size: 1.7rem;
+            }
+          }
+        }
+      }
+      &-bio {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-flow: column;
+        .subheading {
+          font-size: 2rem;
+          color: rgb(180, 180, 180);
+        }
+        .bio {
+          margin-top: 1.5rem;
+        }
+      }
+    }
+  }
 }

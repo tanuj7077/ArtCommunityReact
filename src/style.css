@@ -2008,6 +2008,106 @@ body {
   .userPage--gallery {
     width: 90%;
     margin: 5rem auto; }
+  .userPage .l {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    height: max-content;
+    max-height: 40rem;
+    padding-right: 10px; }
+    .userPage .l-m {
+      background-color: black;
+      columns: 4;
+      gap: 1rem; }
+      @media only screen and (max-width: 75em) {
+        .userPage .l-m {
+          columns: 3; } }
+      @media only screen and (max-width: 56.25em) {
+        .userPage .l-m {
+          columns: 2; } }
+      .userPage .l-m .gallery-img {
+        width: 100%;
+        margin: 0.4rem 0;
+        border-radius: 1rem; }
+    .userPage .l::-webkit-scrollbar {
+      width: 7px; }
+    .userPage .l::-webkit-scrollbar-thumb {
+      background: #525252;
+      border-radius: 5px; }
+    .userPage .l::-webkit-scrollbar-track {
+      background: transparent; }
+  .userPage .userPage--gallery:hover .l::-webkit-scrollbar-thumb {
+    background: #6ecf86; }
+  .userPage--about {
+    width: 70%;
+    margin: 5rem auto;
+    color: #dddddd; }
+    .userPage--about hr.solid {
+      height: 1px;
+      background-color: #bbb;
+      margin: 7rem 0; }
+    .userPage--about-info {
+      letter-spacing: 0.3rem;
+      display: flex;
+      gap: 3rem;
+      flex-flow: column;
+      font-size: 2.5rem; }
+      .userPage--about-info-name {
+        font-size: 6rem;
+        font-weight: bold; }
+      .userPage--about-info-data {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        column-gap: 4rem; }
+        .userPage--about-info-data .item {
+          margin: 0.25rem 0;
+          display: flex;
+          flex-flow: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          column-gap: 0.8rem; }
+      .userPage--about-info-link {
+        text-transform: none; }
+      .userPage--about-info-followMe .subheading {
+        font-size: 2rem;
+        color: #b4b4b4; }
+      .userPage--about-info-followMe .items {
+        margin-top: 2rem;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        gap: 2rem; }
+        .userPage--about-info-followMe .items .item {
+          width: 12rem;
+          height: 12rem;
+          border: 2px solid #dddddd;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          justify-content: space-evenly; }
+          .userPage--about-info-followMe .items .item:hover {
+            color: #6ecf86;
+            border: 2px solid #6ecf86;
+            cursor: pointer; }
+          .userPage--about-info-followMe .items .item .aboutIcon {
+            padding-top: 1rem;
+            font-size: 4.5rem; }
+          .userPage--about-info-followMe .items .item .aboutText {
+            font-size: 1.7rem; }
+      .userPage--about-info-bio {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-flow: column; }
+        .userPage--about-info-bio .subheading {
+          font-size: 2rem;
+          color: #b4b4b4; }
+        .userPage--about-info-bio .bio {
+          margin-top: 1.5rem; }
 
 .loginModal {
   width: 100%;

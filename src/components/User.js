@@ -3,6 +3,7 @@ import SubmitCoverModal from "./SubmitCoverModal";
 import SubmitProfilePicModal from "./SubmitProfilePicModal";
 import UserHome from "./UserPage/UserHome";
 import Gallery from "./UserPage/Gallery";
+import About from "./UserPage/About";
 import blank from "../tagImage/blankProfile.png";
 
 import { useGlobalContext } from "../context";
@@ -210,7 +211,7 @@ const User = ({ id }) => {
             <UserHome following={following} followers={followers} />
           )}
           {isGallery && userPosts && <Gallery userPosts={userPosts} />}
-          {isAbout && <div className="userPage--about">about</div>}
+          {isAbout && user && <About user={user} />}
         </div>
       </div>
       {submitCoverModal && <SubmitCoverModal />}
