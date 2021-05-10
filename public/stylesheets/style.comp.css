@@ -377,6 +377,59 @@ body {
       box-shadow: -101vw 0 0 100vw green;
       cursor: pointer; }
 
+.settings-group {
+  display: flex;
+  flex-flow: column; }
+  .settings-group-label {
+    font-size: 1.6rem;
+    color: #888888; }
+  .settings-group-input {
+    margin-top: 0.6rem;
+    height: 4rem;
+    width: 30rem;
+    background-color: #464646;
+    border: 2px solid #585858;
+    border-radius: 10px;
+    color: #a8a8a8;
+    font-size: 2rem;
+    padding: 0 1rem; }
+  .settings-group-input::-webkit-input-placeholder {
+    color: gray; }
+  .settings-group-input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border: 2px solid #a8a8a8; }
+  .settings-group-input::-webkit-calendar-picker-indicator {
+    padding-right: 10px;
+    filter: invert(1) brightness(60%);
+    cursor: pointer; }
+  .settings-group-textarea {
+    margin-top: 0.6rem;
+    background-color: #464646;
+    border: 2px solid #585858;
+    border-radius: 10px;
+    color: #a8a8a8;
+    font-size: 2rem;
+    padding: 1rem 1rem; }
+    .settings-group-textarea::-webkit-scrollbar {
+      height: 80%;
+      width: 10px; }
+    .settings-group-textarea::-webkit-scrollbar-thumb {
+      background: #1b1b1b;
+      border-radius: 5px; }
+    .settings-group-textarea::-webkit-scrollbar-thumb:hover {
+      cursor: pointer; }
+    .settings-group-textarea::-webkit-scrollbar-track {
+      background: #3a3a3a; }
+    .settings-group-textarea::-webkit-scrollbar-corner {
+      display: none; }
+    .settings-group-textarea::-webkit-resizer {
+      color: transparent; }
+  .settings-group-textarea:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border: 2px solid #a8a8a8; }
+
 .authorHover {
   position: absolute;
   top: -7vw;
@@ -843,7 +896,8 @@ body {
     .grid-item--card-img {
       width: 100%;
       transition: all 0.2s ease-in;
-      border-radius: 1rem; }
+      border-radius: 1rem;
+      margin-bottom: -1%; }
     .grid-item--card-title {
       color: white;
       font-size: 2.5rem;
@@ -1897,7 +1951,8 @@ body {
       overflow-y: scroll;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      height: 50rem;
+      height: max-content;
+      max-height: 55rem;
       padding-right: 10px; }
       .userPage--home .liked-masonry {
         background-color: black;
@@ -1921,86 +1976,249 @@ body {
         background: transparent; }
     .userPage--home .likedSection:hover .liked::-webkit-scrollbar-thumb {
       background: #6ecf86; }
-    .userPage--home-following {
-      margin: 6rem 0;
-      grid-row: 3 / 4;
-      grid-column: 1 / -1;
-      width: 86vw;
-      display: flex;
-      flex-flow: row;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      background-color: #161616; }
-      .userPage--home-following .following-section {
-        width: 42vw; }
-        @media only screen and (max-width: 75em) {
-          .userPage--home-following .following-section {
-            width: 43rem; } }
-        @media only screen and (max-width: 56.25em) {
-          .userPage--home-following .following-section {
-            width: 40rem; } }
-      .userPage--home-following .follower-section {
-        width: 42vw; }
-        @media only screen and (max-width: 75em) {
-          .userPage--home-following .follower-section {
-            width: 43rem; } }
-        @media only screen and (max-width: 56.25em) {
-          .userPage--home-following .follower-section {
-            width: 40rem; } }
-      .userPage--home-following-slider {
-        padding: 0.5rem 0;
-        position: relative;
-        height: min-content;
-        max-height: 22rem;
-        overflow: hidden;
-        display: flex;
-        flex-wrap: wrap;
-        overflow-y: scroll;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        background-color: black;
-        transition: all 0.3s ease;
-        justify-content: center; }
-        .userPage--home-following-slider::-webkit-scrollbar {
-          width: 7px; }
-        .userPage--home-following-slider::-webkit-scrollbar-thumb {
-          background: #3e3f3e;
-          border-radius: 5px; }
-        .userPage--home-following-slider::-webkit-scrollbar-track {
-          background: transparent; }
-        .userPage--home-following-slider .item {
-          width: 12vw;
-          height: 5rem;
-          border-radius: 5px;
-          background-color: #313030;
-          color: white;
-          margin: 1rem 1rem;
-          display: flex;
-          flex-flow: row; }
-          @media only screen and (max-width: 75em) {
-            .userPage--home-following-slider .item {
-              width: 18.5rem; } }
-          .userPage--home-following-slider .item .img {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-            margin: 0.5rem 0; }
-          .userPage--home-following-slider .item .img2 {
-            width: 4rem;
-            height: 4rem;
-            margin: 0.5rem 0.5rem;
-            background-size: cover;
-            background-position-x: center;
-            background-position-y: center; }
-          .userPage--home-following-slider .item .username {
-            padding-left: 1rem;
-            font-size: 1.5rem;
-            align-self: center; }
-      .following-section:hover .userPage--home-following-slider::-webkit-scrollbar-thumb {
-        background: #6ecf86; }
   .userPage--gallery {
     width: 90%;
     margin: 5rem auto; }
+  .userPage .l {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    height: max-content;
+    max-height: 40rem;
+    padding-right: 10px; }
+    .userPage .l-m {
+      background-color: black;
+      columns: 4;
+      gap: 1rem; }
+      @media only screen and (max-width: 75em) {
+        .userPage .l-m {
+          columns: 3; } }
+      @media only screen and (max-width: 56.25em) {
+        .userPage .l-m {
+          columns: 2; } }
+      .userPage .l-m .gallery-img {
+        width: 100%;
+        margin: 0.4rem 0;
+        border-radius: 1rem; }
+    .userPage .l::-webkit-scrollbar {
+      width: 7px; }
+    .userPage .l::-webkit-scrollbar-thumb {
+      background: #525252;
+      border-radius: 5px; }
+    .userPage .l::-webkit-scrollbar-track {
+      background: transparent; }
+  .userPage .userPage--gallery:hover .l::-webkit-scrollbar-thumb {
+    background: #6ecf86; }
+  .userPage--about {
+    width: 70%;
+    margin: 5rem auto;
+    color: #dddddd; }
+    .userPage--about hr.solid {
+      height: 1px;
+      background-color: #bbb;
+      margin: 7rem 0; }
+    .userPage--about-info {
+      letter-spacing: 0.3rem;
+      display: flex;
+      gap: 3rem;
+      flex-flow: column;
+      font-size: 2.5rem; }
+      .userPage--about-info-name {
+        font-size: 6rem;
+        font-weight: bold; }
+      .userPage--about-info-data {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        column-gap: 4rem; }
+        .userPage--about-info-data .item {
+          margin: 0.25rem 0;
+          display: flex;
+          flex-flow: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          column-gap: 0.8rem; }
+      .userPage--about-info-link {
+        text-transform: none; }
+      .userPage--about-info-followMe .subheading {
+        font-size: 1.8rem;
+        color: #b4b4b4; }
+      .userPage--about-info-followMe .items {
+        margin-top: 2rem;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        gap: 2rem; }
+        .userPage--about-info-followMe .items .item {
+          width: 12rem;
+          height: 12rem;
+          border: 2px solid #dddddd;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          justify-content: space-evenly; }
+          .userPage--about-info-followMe .items .item:hover {
+            color: #6ecf86;
+            border: 2px solid #6ecf86;
+            cursor: pointer; }
+          .userPage--about-info-followMe .items .item .aboutIcon {
+            padding-top: 1rem;
+            font-size: 4.5rem; }
+          .userPage--about-info-followMe .items .item .aboutText {
+            font-size: 1.7rem; }
+      .userPage--about-info-bio {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-flow: column; }
+        .userPage--about-info-bio .subheading {
+          font-size: 1.8rem;
+          color: #b4b4b4; }
+        .userPage--about-info-bio .bio {
+          margin-top: 1.5rem; }
+    .userPage--about-favourites .item {
+      display: block;
+      margin-bottom: 2rem; }
+      .userPage--about-favourites .item .label {
+        display: block;
+        font-size: 1.8rem;
+        color: #b4b4b4; }
+      .userPage--about-favourites .item .answer {
+        font-size: 2.5rem; }
+    .userPage--about-stats .subheading {
+      font-size: 3rem;
+      font-weight: bold; }
+    .userPage--about-stats .items {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      gap: 2rem; }
+      .userPage--about-stats .items .item {
+        width: 15rem;
+        height: 15rem;
+        border: 2px solid white;
+        position: relative;
+        text-align: center; }
+        .userPage--about-stats .items .item .label {
+          display: block;
+          font-size: 1.6rem;
+          margin-top: 1rem; }
+        .userPage--about-stats .items .item .count {
+          font-size: 3.5rem;
+          font-weight: bold;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
+    .userPage--about-following .subheading {
+      font-size: 3rem;
+      font-weight: bold; }
+    .userPage--about-following .slider {
+      background-color: black;
+      height: min-content;
+      max-height: 22rem;
+      overflow: hidden;
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      justify-content: left; }
+      .userPage--about-following .slider .item {
+        width: 12vw;
+        height: 5rem;
+        border-radius: 5px;
+        background-color: #313030;
+        color: white;
+        margin: 1rem 1rem;
+        display: flex;
+        flex-flow: row; }
+        @media only screen and (max-width: 75em) {
+          .userPage--about-following .slider .item {
+            width: 18.5rem; } }
+        .userPage--about-following .slider .item .img {
+          width: 4rem;
+          height: 4rem;
+          margin: 0.5rem 0.5rem;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center; }
+        .userPage--about-following .slider .item .username {
+          padding-left: 1rem;
+          font-size: 1.5rem;
+          align-self: center; }
+      .userPage--about-following .slider::-webkit-scrollbar {
+        width: 7px; }
+      .userPage--about-following .slider::-webkit-scrollbar-thumb {
+        background: #3e3f3e;
+        border-radius: 5px; }
+      .userPage--about-following .slider::-webkit-scrollbar-track {
+        background: transparent; }
+    .userPage--about-following:hover .slider::-webkit-scrollbar-thumb {
+      background: #6ecf86; }
+    .userPage--about-followers .subheading {
+      font-size: 3rem;
+      font-weight: bold; }
+    .userPage--about-followers .items {
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      row-gap: 1rem;
+      column-gap: 1%; }
+      @media only screen and (max-width: 90em) {
+        .userPage--about-followers .items {
+          column-gap: 1.5%; } }
+      @media only screen and (max-width: 56.25em) {
+        .userPage--about-followers .items {
+          column-gap: 2%; } }
+      .userPage--about-followers .items .item {
+        width: 19%;
+        height: 5.5rem;
+        border-radius: 10px;
+        background-color: #353535;
+        display: grid;
+        grid-template-columns: min-content 1fr; }
+        @media only screen and (max-width: 90em) {
+          .userPage--about-followers .items .item {
+            width: 23%; } }
+        @media only screen and (max-width: 56.25em) {
+          .userPage--about-followers .items .item {
+            width: 32%; } }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--about-followers .items .item {
+            width: 49%; } }
+        .userPage--about-followers .items .item .img {
+          width: 4.5rem;
+          height: 4.5rem;
+          margin: 0.5rem 0.5rem;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center;
+          border: 1px solid #5a5a5a; }
+        .userPage--about-followers .items .item .username {
+          padding-left: 1rem;
+          font-size: 1.6rem;
+          letter-spacing: 0.25rem;
+          align-self: center; }
+    .userPage--about-followers .showMore {
+      cursor: pointer;
+      text-transform: uppercase;
+      color: #888888;
+      background-color: #353535;
+      font-size: 2rem;
+      font-weight: bold;
+      height: 5rem;
+      width: 100%;
+      border-radius: 5px;
+      display: grid;
+      place-items: center; }
 
 .loginModal {
   width: 100%;
@@ -2180,6 +2398,214 @@ body {
 
 #fileInput {
   display: none; }
+
+.settings {
+  grid-column: 3/ -1;
+  grid-row: 2 / -1;
+  display: grid;
+  grid-template-columns: 1.5fr 3fr; }
+  .settings-sideNav {
+    padding-left: 5rem;
+    padding-top: 3.5rem;
+    background-color: #2a2a2c;
+    height: 92.5vh;
+    border-right: 3px solid #3a3a3a;
+    display: flex;
+    flex-flow: column;
+    gap: 1.5rem; }
+    .settings-sideNav .heading {
+      font-size: 4rem;
+      letter-spacing: 0.35rem;
+      color: white; }
+    .settings-sideNav .completion {
+      background-color: #114ec0;
+      height: 100px;
+      width: 350px;
+      border-radius: 15px;
+      display: flex;
+      flex-flow: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px; }
+      .settings-sideNav .completion .percentage {
+        color: white;
+        font-size: 2.5rem;
+        width: 7.5rem;
+        height: 7.5rem;
+        background-color: #5b7dbd;
+        border-radius: 50%;
+        display: grid;
+        place-items: center; }
+      .settings-sideNav .completion .status {
+        font-size: 2rem;
+        color: white; }
+    .settings-sideNav .sideNav-items {
+      margin-top: 5rem;
+      display: flex;
+      flex-flow: column; }
+      .settings-sideNav .sideNav-items .sideNav-item {
+        border-bottom: 3px solid #3a3a3a;
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1rem; }
+        .settings-sideNav .sideNav-items .sideNav-item:last-child {
+          border: none; }
+        .settings-sideNav .sideNav-items .sideNav-item .icon {
+          width: 3rem;
+          height: 3rem;
+          color: #777777; }
+        .settings-sideNav .sideNav-items .sideNav-item .textual {
+          display: flex;
+          flex-flow: column; }
+          .settings-sideNav .sideNav-items .sideNav-item .textual .subheading {
+            font-size: 2.5rem;
+            color: #777777; }
+          .settings-sideNav .sideNav-items .sideNav-item .textual .desc {
+            text-transform: none;
+            font-size: 1.6rem;
+            color: #777777; }
+        .settings-sideNav .sideNav-items .sideNav-item .right-icon {
+          justify-self: flex-end;
+          margin-right: 1rem;
+          width: 2.5rem;
+          height: 2.5rem;
+          color: #777777; }
+        .settings-sideNav .sideNav-items .sideNav-item .active {
+          color: white; }
+        .settings-sideNav .sideNav-items .sideNav-item:hover {
+          cursor: pointer; }
+          .settings-sideNav .sideNav-items .sideNav-item:hover .icon {
+            color: #6ecf86; }
+          .settings-sideNav .sideNav-items .sideNav-item:hover .subheading {
+            color: #e0e0e0; }
+          .settings-sideNav .sideNav-items .sideNav-item:hover .desc {
+            color: #a8a8a8; }
+          .settings-sideNav .sideNav-items .sideNav-item:hover .right-icon {
+            color: #e0e0e0; }
+  .settings-main {
+    padding-left: 10rem;
+    padding-top: 3.5rem;
+    background-color: #2a2a2c;
+    height: 92.5vh;
+    display: flex;
+    flex-flow: column; }
+    .settings-main .heading {
+      font-size: 4rem;
+      letter-spacing: 0.35rem;
+      color: white;
+      height: 8rem;
+      border-bottom: 3px solid #3a3a3a; }
+    .settings-main .profile-items {
+      padding-top: 4rem;
+      display: flex;
+      flex-flow: column;
+      gap: 4rem; }
+      .settings-main .profile-items .photos {
+        display: flex;
+        flex-flow: row;
+        gap: 7rem; }
+        .settings-main .profile-items .photos .profilePhoto-label {
+          font-size: 1.7rem;
+          color: #888888; }
+        .settings-main .profile-items .photos .profilePhoto-photo {
+          margin-top: 0.8rem;
+          width: 25rem;
+          height: 25rem;
+          border: 2px solid #585858;
+          background-color: #464646; }
+        .settings-main .profile-items .photos .coverPhoto-label {
+          font-size: 1.7rem;
+          color: #888888; }
+        .settings-main .profile-items .photos .coverPhoto-photo {
+          margin-top: 0.8rem;
+          width: 43rem;
+          height: 25rem;
+          border: 2px solid #585858;
+          background-color: #464646; }
+      .settings-main .profile-items .inputs {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        column-gap: 5rem;
+        row-gap: 3rem; }
+        .settings-main .profile-items .inputs .settings-group {
+          display: flex;
+          flex-flow: column; }
+          .settings-main .profile-items .inputs .settings-group-label {
+            font-size: 1.6rem;
+            color: #888888; }
+          .settings-main .profile-items .inputs .settings-group-input {
+            margin-top: 0.6rem;
+            height: 4rem;
+            width: 30rem;
+            background-color: #464646;
+            border: 2px solid #585858;
+            border-radius: 10px;
+            color: #a8a8a8;
+            font-size: 2rem;
+            padding-left: 1rem; }
+          .settings-main .profile-items .inputs .settings-group-input::-webkit-input-placeholder {
+            color: gray; }
+          .settings-main .profile-items .inputs .settings-group-input:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+            border: 2px solid #a8a8a8; }
+          .settings-main .profile-items .inputs .settings-group .location-select {
+            width: 30rem; }
+          .settings-main .profile-items .inputs .settings-group .long {
+            width: 65rem; }
+      .settings-main .profile-items .radios {
+        display: flex;
+        flex-flow: row;
+        gap: 4rem; }
+        .settings-main .profile-items .radios .radio-container {
+          margin-top: 0.5rem;
+          display: flex;
+          flex-flow: row;
+          gap: 1rem;
+          align-items: center;
+          font-size: 2rem;
+          color: #a8a8a8;
+          cursor: pointer; }
+          .settings-main .profile-items .radios .radio-container input {
+            display: none; }
+          .settings-main .profile-items .radios .radio-container .checkmark {
+            height: 2rem;
+            width: 2rem;
+            border-radius: 50%;
+            background-color: #464646;
+            border: 2px solid #a8a8a8;
+            display: grid;
+            place-items: center; }
+            .settings-main .profile-items .radios .radio-container .checkmark:after {
+              content: "";
+              width: 0;
+              height: 0;
+              display: none; }
+          .settings-main .profile-items .radios .radio-container input:checked ~ .checkmark:after {
+            display: block; }
+          .settings-main .profile-items .radios .radio-container .checkmark:after {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #a8a8a8; }
+      .settings-main .profile-items .link-label {
+        margin-top: -1rem; }
+      .settings-main .profile-items .add {
+        margin-top: 1rem;
+        width: 8rem;
+        height: 8rem;
+        border: 2px solid #585858;
+        display: grid;
+        place-items: center;
+        cursor: pointer; }
+        .settings-main .profile-items .add .icon {
+          color: #585858;
+          height: 4rem;
+          width: 4rem; }
 
 .Container {
   background-color: black;

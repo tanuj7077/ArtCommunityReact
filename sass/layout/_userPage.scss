@@ -423,107 +423,6 @@
     .likedSection:hover .liked::-webkit-scrollbar-thumb {
       background: #6ecf86;
     }
-    &-following {
-      margin: 6rem 0;
-      grid-row: 3 / 4;
-      grid-column: 1 / -1;
-      width: 86vw;
-      display: flex;
-      flex-flow: row;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      background-color: rgb(22, 22, 22);
-
-      .following-section {
-        width: 42vw;
-        @include respond(tab-land) {
-          width: 43rem;
-        }
-        @include respond(tab-port) {
-          width: 40rem;
-        }
-      }
-      .follower-section {
-        width: 42vw;
-        @include respond(tab-land) {
-          width: 43rem;
-        }
-        @include respond(tab-port) {
-          width: 40rem;
-        }
-      }
-
-      &-slider {
-        padding: 0.5rem 0;
-        position: relative;
-        //height: 25rem;
-        height: min-content;
-        max-height: 22rem;
-        overflow: hidden;
-        display: flex;
-        flex-wrap: wrap;
-        overflow-y: scroll;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        background-color: black;
-        transition: all 0.3s ease;
-        justify-content: left;
-        @include respond(tab-port) {
-          justify-content: center;
-        }
-        &::-webkit-scrollbar {
-          width: 7px;
-        }
-        &::-webkit-scrollbar-thumb {
-          background: #3e3f3e;
-          border-radius: 5px;
-        }
-        &::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        .item {
-          width: 12vw;
-          height: 5rem;
-          border-radius: 5px;
-          background-color: rgb(49, 48, 48);
-          color: white;
-          margin: 1rem 1rem;
-          display: flex;
-          flex-flow: row;
-          @include respond(tab-land) {
-            width: 18.5rem;
-          }
-
-          .img {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-            margin: 0.5rem 0;
-          }
-          .img2 {
-            width: 4rem;
-            height: 4rem;
-            margin: 0.5rem 0.5rem;
-            //padding-left: 0.5rem;
-            background-size: cover;
-            background-position-x: center;
-            background-position-y: center;
-          }
-          .username {
-            padding-left: 1rem;
-            font-size: 1.5rem;
-            align-self: center;
-          }
-        }
-      }
-      .following-section:hover &-slider::-webkit-scrollbar-thumb {
-        background: #6ecf86;
-      }
-      .follower-section:hover &-slider::-webkit-scrollbar-thumb {
-        background: #6ecf86;
-      }
-    }
   }
 
   &--gallery {
@@ -615,7 +514,7 @@
       }
       &-followMe {
         .subheading {
-          font-size: 2rem;
+          font-size: 1.8rem;
           color: rgb(180, 180, 180);
         }
         .items {
@@ -652,12 +551,190 @@
         display: flex;
         flex-flow: column;
         .subheading {
-          font-size: 2rem;
+          font-size: 1.8rem;
           color: rgb(180, 180, 180);
         }
         .bio {
           margin-top: 1.5rem;
         }
+      }
+    }
+    &-favourites {
+      .item {
+        display: block;
+        margin-bottom: 2rem;
+        .label {
+          display: block;
+          font-size: 1.8rem;
+          color: rgb(180, 180, 180);
+        }
+        .answer {
+          font-size: 2.5rem;
+        }
+      }
+    }
+    &-stats {
+      .subheading {
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      .items {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+        .item {
+          width: 15rem;
+          height: 15rem;
+          border: 2px solid white;
+          position: relative;
+          text-align: center;
+          .label {
+            display: block;
+            font-size: 1.6rem;
+            margin-top: 1rem;
+          }
+          .count {
+            font-size: 3.5rem;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+    &-following {
+      .subheading {
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      .slider {
+        background-color: black;
+        height: min-content;
+        max-height: 22rem;
+        overflow: hidden;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        justify-content: left;
+        .item {
+          width: 12vw;
+          height: 5rem;
+          border-radius: 5px;
+          background-color: rgb(49, 48, 48);
+          color: white;
+          margin: 1rem 1rem;
+          display: flex;
+          flex-flow: row;
+          @include respond(tab-land) {
+            width: 18.5rem;
+          }
+          .img {
+            width: 4rem;
+            height: 4rem;
+            margin: 0.5rem 0.5rem;
+            //padding-left: 0.5rem;
+            background-size: cover;
+            background-position-x: center;
+            background-position-y: center;
+          }
+          .username {
+            padding-left: 1rem;
+            font-size: 1.5rem;
+            align-self: center;
+          }
+        }
+        &::-webkit-scrollbar {
+          width: 7px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #3e3f3e;
+          border-radius: 5px;
+        }
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        // &:hover ::-webkit-scrollbar-thumb {
+        //   background: #6ecf86;
+        // }
+      }
+
+      &:hover .slider::-webkit-scrollbar-thumb {
+        background: #6ecf86;
+      }
+    }
+    &-followers {
+      .subheading {
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      .items {
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        row-gap: 1rem;
+        column-gap: 1%;
+        @include respond(medium-desk) {
+          column-gap: 1.5%;
+        }
+        @include respond(tab-port) {
+          column-gap: 2%;
+        }
+        .item {
+          width: 19%;
+          height: 5.5rem;
+          border-radius: 10px;
+          background-color: rgb(53, 53, 53);
+          // display: flex;
+          // flex-flow: row;
+          display: grid;
+          grid-template-columns: min-content 1fr;
+          @include respond(medium-desk) {
+            width: 23%;
+          }
+          @include respond(tab-port) {
+            width: 32%;
+          }
+          @include respond(phone) {
+            width: 49%;
+          }
+          .img {
+            width: 4.5rem;
+            height: 4.5rem;
+            margin: 0.5rem 0.5rem;
+            background-size: cover;
+            background-position-x: center;
+            background-position-y: center;
+            border: 1px solid rgb(90, 90, 90);
+          }
+          .username {
+            padding-left: 1rem;
+            font-size: 1.6rem;
+            letter-spacing: 0.25rem;
+            align-self: center;
+          }
+        }
+      }
+      .showMore {
+        cursor: pointer;
+        text-transform: uppercase;
+        color: rgb(136, 136, 136);
+        background-color: rgb(53, 53, 53);
+        font-size: 2rem;
+        font-weight: bold;
+        height: 5rem;
+        width: 100%;
+        border-radius: 5px;
+        display: grid;
+        place-items: center;
       }
     }
   }

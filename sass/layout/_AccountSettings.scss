@@ -1,0 +1,345 @@
+.settings {
+  grid-column: 3/ -1;
+  grid-row: 2 / -1;
+
+  display: grid;
+  grid-template-columns: 1.5fr 3fr;
+
+  &-sideNav {
+    padding-left: 5rem;
+    padding-top: 3.5rem;
+    background-color: rgb(42, 42, 44);
+    height: 92.5vh;
+    border-right: 3px solid rgb(58, 58, 58);
+
+    display: flex;
+    flex-flow: column;
+    gap: 1.5rem;
+
+    .heading {
+      font-size: 4rem;
+      letter-spacing: 0.35rem;
+      color: white;
+    }
+    .completion {
+      background-color: rgb(17, 78, 192);
+      height: 100px;
+      width: 350px;
+      border-radius: 15px;
+      display: flex;
+      flex-flow: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      .percentage {
+        color: white;
+        font-size: 2.5rem;
+        width: 7.5rem;
+        height: 7.5rem;
+        background-color: rgb(91, 125, 189);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+      }
+      .status {
+        font-size: 2rem;
+        color: white;
+      }
+    }
+
+    .sideNav-items {
+      margin-top: 5rem;
+      display: flex;
+      flex-flow: column;
+      .sideNav-item {
+        border-bottom: 3px solid rgb(58, 58, 58);
+        //background-color: black;
+
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1rem;
+        &:last-child {
+          border: none;
+        }
+
+        .icon {
+          width: 3rem;
+          height: 3rem;
+          color: rgb(119, 119, 119);
+        }
+        .textual {
+          display: flex;
+          flex-flow: column;
+          .subheading {
+            font-size: 2.5rem;
+            color: rgb(119, 119, 119);
+          }
+          .desc {
+            text-transform: none;
+            font-size: 1.6rem;
+            color: rgb(119, 119, 119);
+          }
+        }
+
+        .right-icon {
+          justify-self: flex-end;
+          margin-right: 1rem;
+          width: 2.5rem;
+          height: 2.5rem;
+          color: rgb(119, 119, 119);
+        }
+        .active {
+          color: white;
+        }
+        &:hover {
+          cursor: pointer;
+          .icon {
+            color: #6ecf86;
+          }
+          .subheading {
+            color: rgb(224, 224, 224);
+          }
+          .desc {
+            color: rgb(168, 168, 168);
+          }
+          .right-icon {
+            color: rgb(224, 224, 224);
+          }
+        }
+      }
+    }
+  }
+  &-main {
+    padding-left: 10rem;
+    padding-top: 3.5rem;
+    background-color: rgb(42, 42, 44);
+    height: 92.5vh;
+
+    display: flex;
+    flex-flow: column;
+
+    .heading {
+      font-size: 4rem;
+      letter-spacing: 0.35rem;
+      color: white;
+      height: 8rem;
+      border-bottom: 3px solid rgb(58, 58, 58);
+    }
+    .profile-items {
+      padding-top: 4rem;
+      display: flex;
+      flex-flow: column;
+      gap: 4rem;
+
+      overflow: hidden;
+      overflow-y: scroll;
+      // max-height: 55rem;
+      height: 74vh;
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #6ecf86;
+        border-radius: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #505050;
+      }
+
+      .photos {
+        display: flex;
+        flex-flow: row;
+        gap: 7rem;
+        .profilePhoto {
+          &-label {
+            font-size: 1.7rem;
+            color: rgb(136, 136, 136);
+          }
+          &-photo {
+            margin-top: 0.8rem;
+            width: 25rem;
+            height: 25rem;
+            border: 2px solid rgb(88, 88, 88);
+            background-color: rgb(70, 70, 70);
+
+            display: grid;
+            place-items: center;
+            .icon {
+              color: rgb(88, 88, 88);
+              width: 10rem;
+              height: 10rem;
+            }
+            &:hover .icon {
+              color: rgb(98, 98, 98);
+              transition: all 0.25s ease;
+            }
+            &:hover {
+              cursor: pointer;
+              border: 4px solid rgb(98, 98, 98);
+            }
+          }
+        }
+        .coverPhoto {
+          &-label {
+            font-size: 1.7rem;
+            color: rgb(136, 136, 136);
+          }
+          &-photo {
+            margin-top: 0.8rem;
+            width: 43rem;
+            height: 25rem;
+            border: 2px solid rgb(88, 88, 88);
+            background-color: rgb(70, 70, 70);
+
+            display: grid;
+            place-items: center;
+            .icon {
+              color: rgb(88, 88, 88);
+              width: 10rem;
+              height: 10rem;
+            }
+            &:hover .icon {
+              color: rgb(98, 98, 98);
+              transition: all 0.25s ease;
+            }
+            &:hover {
+              cursor: pointer;
+              //border-color: rgb(98, 98, 98);
+              border: 4px solid rgb(98, 98, 98);
+            }
+          }
+        }
+      }
+      .inputs {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        column-gap: 5rem;
+        row-gap: 3rem;
+        .settings-group {
+          display: flex;
+          flex-flow: column;
+          &-label {
+            font-size: 1.6rem;
+            color: rgb(136, 136, 136);
+          }
+          &-input {
+            margin-top: 0.6rem;
+            height: 4rem;
+            width: 30rem;
+            background-color: rgb(70, 70, 70);
+            border: 2px solid rgb(88, 88, 88);
+            border-radius: 10px;
+            color: rgb(168, 168, 168);
+            font-size: 2rem;
+            padding-left: 1rem;
+          }
+          &-input::-webkit-input-placeholder {
+            color: gray;
+          }
+
+          &-input:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba(black, 0.1);
+            border: 2px solid rgb(168, 168, 168);
+          }
+          .location-select {
+            width: 30rem;
+          }
+          .long {
+            width: 65rem;
+          }
+        }
+      }
+
+      .radios {
+        display: flex;
+        flex-flow: row;
+        gap: 4rem;
+        .radio-container {
+          margin-top: 0.5rem;
+          display: flex;
+          flex-flow: row;
+          gap: 1rem;
+          align-items: center;
+          font-size: 2rem;
+          color: rgb(168, 168, 168);
+          cursor: pointer;
+
+          input {
+            display: none;
+          }
+          .checkmark {
+            height: 2rem;
+            width: 2rem;
+            border-radius: 50%;
+            background-color: rgb(70, 70, 70);
+            border: 2px solid rgb(168, 168, 168);
+            display: grid;
+            place-items: center;
+            &:after {
+              content: "";
+              width: 0;
+              height: 0;
+              display: none;
+            }
+          }
+          //   &:hover input ~ .checkmark {
+          //     //background-color: rgb(168, 168, 168);
+          //   }
+          input:checked ~ .checkmark:after {
+            display: block;
+          }
+          .checkmark:after {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: rgb(168, 168, 168);
+          }
+        }
+      }
+
+      .link-label {
+        margin-top: -1rem;
+      }
+      .add {
+        margin-top: 1rem;
+        width: 8rem;
+        height: 8rem;
+        border: 2px solid rgb(88, 88, 88);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        .icon {
+          color: rgb(88, 88, 88);
+          height: 4rem;
+          width: 4rem;
+        }
+        &:hover {
+          border-color: #6ecf86;
+        }
+        &:hover .icon {
+          color: #6ecf86;
+        }
+      }
+      .btn {
+        font-size: 2rem;
+        color: rgb(134, 134, 134);
+        width: 14rem;
+        height: 5rem;
+        display: grid;
+        place-items: center;
+        background-color: black;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          color: #6ecf86;
+        }
+      }
+    }
+  }
+}

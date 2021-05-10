@@ -118,67 +118,6 @@ const UserHome = ({ following, followers }) => {
         </section>
       </div>
 
-      <div className="userPage--home-following">
-        <div className="following-section">
-          <span className="subheading">Following</span>
-          <div className="userPage--home-following-slider">
-            {following.map((user) => {
-              return (
-                <div key={user.id} className="item">
-                  {!user.image ? (
-                    <div
-                      className="img2"
-                      style={{
-                        backgroundImage: `url(${blank})`,
-                      }}
-                    ></div>
-                  ) : (
-                    <div
-                      className="img2"
-                      style={{
-                        backgroundImage: `url(${user.image})`,
-                        borderRadius: `${user.borderRad}%`,
-                      }}
-                    ></div>
-                  )}
-
-                  <span className="username">{user.username}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className="follower-section">
-          <span className="subheading">Followers</span>
-          <div className="userPage--home-following-slider">
-            {followers.map((user) => {
-              return (
-                <div key={user.id} className="item">
-                  {!user.image ? (
-                    <div
-                      className="img2"
-                      style={{
-                        backgroundImage: `url(${blank})`,
-                      }}
-                    ></div>
-                  ) : (
-                    <div
-                      className="img2"
-                      style={{
-                        backgroundImage: `url(${user.image})`,
-                        borderRadius: `${user.borderRad}%`,
-                      }}
-                    ></div>
-                  )}
-
-                  <span className="username">{user.username}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
       <div className="userPage--home-posts">
         <div className="popular">
           <span className="subheading">Popular Uploads</span>

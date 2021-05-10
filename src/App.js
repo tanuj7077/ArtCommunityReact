@@ -14,6 +14,7 @@ import NewPage from "./pages/NewPage";
 import PollPage from "./pages/PollPage";
 import PopularPage from "./pages/PopularPage";
 import TagSearchPage from "./pages/TagSearchPage";
+import AccountSettingsPage from "./pages/AccountSettingsPage";
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -55,6 +56,9 @@ function App() {
       <Route path="/user/:id">
         {/* {isLoggedIn ? <UserPage /> : <Redirect to="/" exact />} */}
         <UserPage />
+      </Route>
+      <Route path="/account/:id">
+        <AccountSettingsPage />
       </Route>
       <Route path="/post/:id">
         <PostPage />

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Link, Route, Redirect } from "react-router-dom";
 import axios from "axios";
@@ -92,7 +93,18 @@ const TopNav = () => {
                     )}
                   />
                 </div>
-                <a className="account-settings">Account Settings</a>
+                <Route
+                  render={({ history }) => (
+                    <a
+                      onClick={() => {
+                        history.push(`/account/${userData.username}`);
+                      }}
+                      className="account-settings"
+                    >
+                      Account Settings
+                    </a>
+                  )}
+                />
                 <a className="account-settings">Theme</a>
                 <a className="account-settings" onClick={handleLogout}>
                   Logout

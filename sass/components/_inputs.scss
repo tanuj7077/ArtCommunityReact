@@ -234,3 +234,77 @@
     }
   }
 }
+
+.settings-group {
+  display: flex;
+  flex-flow: column;
+  &-label {
+    font-size: 1.6rem;
+    color: rgb(136, 136, 136);
+  }
+  &-input {
+    margin-top: 0.6rem;
+    height: 4rem;
+    width: 30rem;
+    background-color: rgb(70, 70, 70);
+    border: 2px solid rgb(88, 88, 88);
+    border-radius: 10px;
+    color: rgb(168, 168, 168);
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+  &-input::-webkit-input-placeholder {
+    color: gray;
+  }
+  &-input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(black, 0.1);
+    border: 2px solid rgb(168, 168, 168);
+  }
+  &-input::-webkit-calendar-picker-indicator {
+    padding-right: 10px;
+    filter: invert(1) brightness(60%);
+    cursor: pointer;
+  }
+
+  &-textarea {
+    // width: 65rem;
+    // height: 12rem;
+    margin-top: 0.6rem;
+    background-color: rgb(70, 70, 70);
+    border: 2px solid rgb(88, 88, 88);
+    border-radius: 10px;
+    color: rgb(168, 168, 168);
+    font-size: 2rem;
+    padding: 1rem 1rem;
+    // padding-top: 1rem;
+
+    &::-webkit-scrollbar {
+      height: 80%;
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #1b1b1b;
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      cursor: pointer;
+    }
+    &::-webkit-scrollbar-track {
+      background: #3a3a3a;
+      // background: transparent;
+    }
+    &::-webkit-scrollbar-corner {
+      display: none;
+    }
+    &::-webkit-resizer {
+      color: transparent;
+    }
+  }
+  &-textarea:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(black, 0.1);
+    border: 2px solid rgb(168, 168, 168);
+  }
+}

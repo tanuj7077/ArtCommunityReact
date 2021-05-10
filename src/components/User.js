@@ -211,7 +211,9 @@ const User = ({ id }) => {
             <UserHome following={following} followers={followers} />
           )}
           {isGallery && userPosts && <Gallery userPosts={userPosts} />}
-          {isAbout && user && <About user={user} />}
+          {isAbout && user && (
+            <About user={user} following={following} followers={followers} />
+          )}
         </div>
       </div>
       {submitCoverModal && <SubmitCoverModal />}
