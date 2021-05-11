@@ -666,10 +666,12 @@ body {
       .searchResults--postSection .postList::-webkit-scrollbar {
         width: 7px; }
       .searchResults--postSection .postList::-webkit-scrollbar-thumb {
-        background: #6ecf86;
+        background: #222222;
         border-radius: 5px; }
       .searchResults--postSection .postList::-webkit-scrollbar-track {
         background: #505050; }
+    .searchResults--postSection:hover .postList::-webkit-scrollbar-thumb {
+      background: #6ecf86; }
     .searchResults--postSection .notFound {
       font-size: 2.5rem;
       color: white;
@@ -714,10 +716,12 @@ body {
       .searchResults--authorSection .authorList::-webkit-scrollbar {
         width: 7px; }
       .searchResults--authorSection .authorList::-webkit-scrollbar-thumb {
-        background: #6ecf86;
+        background: #222222;
         border-radius: 5px; }
       .searchResults--authorSection .authorList::-webkit-scrollbar-track {
         background: #505050; }
+    .searchResults--authorSection:hover .authorList::-webkit-scrollbar-thumb {
+      background: #6ecf86; }
     .searchResults--authorSection .notFound {
       font-size: 2.5rem;
       color: white;
@@ -755,10 +759,12 @@ body {
       .searchResults--tagSection .tagList::-webkit-scrollbar {
         width: 7px; }
       .searchResults--tagSection .tagList::-webkit-scrollbar-thumb {
-        background: #6ecf86;
+        background: #222222;
         border-radius: 5px; }
       .searchResults--tagSection .tagList::-webkit-scrollbar-track {
         background: #505050; }
+    .searchResults--tagSection:hover .tagList::-webkit-scrollbar-thumb {
+      background: #6ecf86; }
     .searchResults--tagSection .notFound {
       font-size: 2.5rem;
       color: white;
@@ -2403,7 +2409,8 @@ body {
   grid-column: 3/ -1;
   grid-row: 2 / -1;
   display: grid;
-  grid-template-columns: 1.5fr 3fr; }
+  grid-template-columns: 1.5fr 3fr;
+  position: relative; }
   .settings-sideNav {
     padding-left: 5rem;
     padding-top: 3.5rem;
@@ -2647,7 +2654,9 @@ body {
       .settings-main .profile-items .btn {
         font-size: 2rem;
         color: #868686;
-        width: 14rem;
+        text-transform: uppercase;
+        word-spacing: 0.4rem;
+        width: 15rem;
         height: 5rem;
         display: grid;
         place-items: center;
@@ -2656,6 +2665,110 @@ body {
         cursor: pointer; }
         .settings-main .profile-items .btn:hover {
           color: #6ecf86; }
+  .settings .addExtrasModal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1600;
+    background: rgba(0, 0, 0, 0.5);
+    display: grid;
+    place-items: center; }
+    .settings .addExtrasModal .modal {
+      width: 65rem;
+      height: max-content;
+      background-color: #2b2b2b;
+      border-radius: 10px;
+      display: flex;
+      flex-flow: column;
+      gap: 2.5rem;
+      align-items: center; }
+      .settings .addExtrasModal .modal-heading {
+        font-size: 3rem;
+        padding: 2rem 4rem;
+        width: 100%;
+        border-bottom: 2px solid #3a3a3a;
+        color: silver; }
+      .settings .addExtrasModal .modal-grp {
+        display: flex;
+        flex-flow: column; }
+        .settings .addExtrasModal .modal-grp-label {
+          font-size: 1.6rem;
+          color: #888888; }
+        .settings .addExtrasModal .modal-grp-input {
+          margin-top: 0.6rem;
+          height: 4rem;
+          width: 55rem;
+          background-color: #464646;
+          border: 2px solid #585858;
+          border-radius: 10px;
+          color: #a8a8a8;
+          font-size: 2rem;
+          padding-left: 1rem; }
+        .settings .addExtrasModal .modal-grp-input::-webkit-input-placeholder {
+          color: gray; }
+        .settings .addExtrasModal .modal-grp-input:focus {
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+          border: 2px solid #a8a8a8; }
+        .settings .addExtrasModal .modal-grp-textarea {
+          width: 55rem;
+          margin-top: 0.6rem;
+          background-color: #464646;
+          border: 2px solid #585858;
+          border-radius: 10px;
+          color: #a8a8a8;
+          font-size: 2rem;
+          padding: 1rem 1rem; }
+          .settings .addExtrasModal .modal-grp-textarea::-webkit-scrollbar {
+            height: 80%;
+            width: 10px; }
+          .settings .addExtrasModal .modal-grp-textarea::-webkit-scrollbar-thumb {
+            background: #1b1b1b;
+            border-radius: 5px; }
+          .settings .addExtrasModal .modal-grp-textarea::-webkit-scrollbar-thumb:hover {
+            cursor: pointer; }
+          .settings .addExtrasModal .modal-grp-textarea::-webkit-scrollbar-track {
+            background: #3a3a3a; }
+          .settings .addExtrasModal .modal-grp-textarea::-webkit-scrollbar-corner {
+            display: none; }
+          .settings .addExtrasModal .modal-grp-textarea::-webkit-resizer {
+            color: transparent; }
+        .settings .addExtrasModal .modal-grp-textarea:focus {
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+          border: 2px solid #a8a8a8; }
+      .settings .addExtrasModal .modal-buttons {
+        margin-bottom: 3rem;
+        width: 55rem;
+        color: silver;
+        font-size: 2rem;
+        text-transform: uppercase;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        word-spacing: 0.4rem; }
+        .settings .addExtrasModal .modal-buttons .add-btn {
+          display: grid;
+          place-items: center;
+          border-radius: 10px;
+          padding: 1.2rem 2rem;
+          width: 25rem;
+          background-color: black; }
+          .settings .addExtrasModal .modal-buttons .add-btn:hover {
+            color: #6ecf86;
+            cursor: pointer; }
+        .settings .addExtrasModal .modal-buttons .cancel-btn {
+          display: grid;
+          place-items: center;
+          border-radius: 10px;
+          padding: 1rem 2rem;
+          width: 25rem;
+          background-color: black; }
+          .settings .addExtrasModal .modal-buttons .cancel-btn:hover {
+            color: red;
+            cursor: pointer; }
 
 .Container {
   background-color: black;

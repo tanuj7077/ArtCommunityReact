@@ -100,12 +100,15 @@
         width: 7px;
       }
       &::-webkit-scrollbar-thumb {
-        background: #6ecf86;
+        background: #222222;
         border-radius: 5px;
       }
       &::-webkit-scrollbar-track {
         background: #505050;
       }
+    }
+    &:hover .postList::-webkit-scrollbar-thumb {
+      background: #6ecf86;
     }
     .notFound {
       font-size: 2.5rem;
@@ -164,12 +167,15 @@
         width: 7px;
       }
       &::-webkit-scrollbar-thumb {
-        background: #6ecf86;
+        background: #222222;
         border-radius: 5px;
       }
       &::-webkit-scrollbar-track {
         background: #505050;
       }
+    }
+    &:hover .authorList::-webkit-scrollbar-thumb {
+      background: #6ecf86;
     }
     .notFound {
       font-size: 2.5rem;
@@ -239,7 +245,7 @@
       }
       &::-webkit-scrollbar-thumb {
         //background: #505050;
-        background: #6ecf86;
+        background: #222222;
         border-radius: 5px;
       }
       &::-webkit-scrollbar-track {
@@ -247,7 +253,9 @@
         background: #505050;
       }
     }
-
+    &:hover .tagList::-webkit-scrollbar-thumb {
+      background: #6ecf86;
+    }
     .notFound {
       font-size: 2.5rem;
       color: white;

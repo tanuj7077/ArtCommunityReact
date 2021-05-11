@@ -2502,7 +2502,17 @@ body {
       padding-top: 4rem;
       display: flex;
       flex-flow: column;
-      gap: 4rem; }
+      gap: 4rem;
+      overflow: hidden;
+      overflow-y: scroll;
+      height: 74vh; }
+      .settings-main .profile-items::-webkit-scrollbar {
+        width: 7px; }
+      .settings-main .profile-items::-webkit-scrollbar-thumb {
+        background: #6ecf86;
+        border-radius: 5px; }
+      .settings-main .profile-items::-webkit-scrollbar-track {
+        background: #505050; }
       .settings-main .profile-items .photos {
         display: flex;
         flex-flow: row;
@@ -2515,7 +2525,19 @@ body {
           width: 25rem;
           height: 25rem;
           border: 2px solid #585858;
-          background-color: #464646; }
+          background-color: #464646;
+          display: grid;
+          place-items: center; }
+          .settings-main .profile-items .photos .profilePhoto-photo .icon {
+            color: #585858;
+            width: 10rem;
+            height: 10rem; }
+          .settings-main .profile-items .photos .profilePhoto-photo:hover .icon {
+            color: #626262;
+            transition: all 0.25s ease; }
+          .settings-main .profile-items .photos .profilePhoto-photo:hover {
+            cursor: pointer;
+            border: 4px solid #626262; }
         .settings-main .profile-items .photos .coverPhoto-label {
           font-size: 1.7rem;
           color: #888888; }
@@ -2524,7 +2546,19 @@ body {
           width: 43rem;
           height: 25rem;
           border: 2px solid #585858;
-          background-color: #464646; }
+          background-color: #464646;
+          display: grid;
+          place-items: center; }
+          .settings-main .profile-items .photos .coverPhoto-photo .icon {
+            color: #585858;
+            width: 10rem;
+            height: 10rem; }
+          .settings-main .profile-items .photos .coverPhoto-photo:hover .icon {
+            color: #626262;
+            transition: all 0.25s ease; }
+          .settings-main .profile-items .photos .coverPhoto-photo:hover {
+            cursor: pointer;
+            border: 4px solid #626262; }
       .settings-main .profile-items .inputs {
         display: flex;
         flex-flow: row;
@@ -2606,6 +2640,22 @@ body {
           color: #585858;
           height: 4rem;
           width: 4rem; }
+        .settings-main .profile-items .add:hover {
+          border-color: #6ecf86; }
+        .settings-main .profile-items .add:hover .icon {
+          color: #6ecf86; }
+      .settings-main .profile-items .btn {
+        font-size: 2rem;
+        color: #868686;
+        width: 14rem;
+        height: 5rem;
+        display: grid;
+        place-items: center;
+        background-color: black;
+        border-radius: 10px;
+        cursor: pointer; }
+        .settings-main .profile-items .btn:hover {
+          color: #6ecf86; }
 
 .Container {
   background-color: black;

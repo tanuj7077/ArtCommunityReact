@@ -5,6 +5,8 @@
   display: grid;
   grid-template-columns: 1.5fr 3fr;
 
+  position: relative;
+
   &-sideNav {
     padding-left: 5rem;
     padding-top: 3.5rem;
@@ -329,7 +331,9 @@
       .btn {
         font-size: 2rem;
         color: rgb(134, 134, 134);
-        width: 14rem;
+        text-transform: uppercase;
+        word-spacing: 0.4rem;
+        width: 15rem;
         height: 5rem;
         display: grid;
         place-items: center;
@@ -338,6 +342,136 @@
         cursor: pointer;
         &:hover {
           color: #6ecf86;
+        }
+      }
+    }
+  }
+  .addExtrasModal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1600;
+    background: rgba(0, 0, 0, 0.5);
+    display: grid;
+    place-items: center;
+
+    .modal {
+      width: 65rem;
+      height: max-content;
+      background-color: rgb(43, 43, 43);
+      border-radius: 10px;
+      display: flex;
+      flex-flow: column;
+      gap: 2.5rem;
+      align-items: center;
+      &-heading {
+        font-size: 3rem;
+        padding: 2rem 4rem;
+        width: 100%;
+        border-bottom: 2px solid rgb(58, 58, 58);
+        color: rgb(192, 192, 192);
+      }
+      &-grp {
+        display: flex;
+        flex-flow: column;
+        &-label {
+          font-size: 1.6rem;
+          color: rgb(136, 136, 136);
+        }
+        &-input {
+          margin-top: 0.6rem;
+          height: 4rem;
+          width: 55rem;
+          background-color: rgb(70, 70, 70);
+          border: 2px solid rgb(88, 88, 88);
+          border-radius: 10px;
+          color: rgb(168, 168, 168);
+          font-size: 2rem;
+          padding-left: 1rem;
+        }
+        &-input::-webkit-input-placeholder {
+          color: gray;
+        }
+
+        &-input:focus {
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba(black, 0.1);
+          border: 2px solid rgb(168, 168, 168);
+        }
+        &-textarea {
+          width: 55rem;
+          margin-top: 0.6rem;
+          background-color: rgb(70, 70, 70);
+          border: 2px solid rgb(88, 88, 88);
+          border-radius: 10px;
+          color: rgb(168, 168, 168);
+          font-size: 2rem;
+          padding: 1rem 1rem;
+
+          &::-webkit-scrollbar {
+            height: 80%;
+            width: 10px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: #1b1b1b;
+            border-radius: 5px;
+          }
+          &::-webkit-scrollbar-thumb:hover {
+            cursor: pointer;
+          }
+          &::-webkit-scrollbar-track {
+            background: #3a3a3a;
+            // background: transparent;
+          }
+          &::-webkit-scrollbar-corner {
+            display: none;
+          }
+          &::-webkit-resizer {
+            color: transparent;
+          }
+        }
+        &-textarea:focus {
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba(black, 0.1);
+          border: 2px solid rgb(168, 168, 168);
+        }
+      }
+      &-buttons {
+        margin-bottom: 3rem;
+        width: 55rem;
+        color: rgb(192, 192, 192);
+        font-size: 2rem;
+        text-transform: uppercase;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        word-spacing: 0.4rem;
+        .add-btn {
+          display: grid;
+          place-items: center;
+          border-radius: 10px;
+          padding: 1.2rem 2rem;
+          width: 25rem;
+          background-color: black;
+          &:hover {
+            color: #6ecf86;
+            cursor: pointer;
+          }
+        }
+        .cancel-btn {
+          display: grid;
+          place-items: center;
+          border-radius: 10px;
+          padding: 1rem 2rem;
+          width: 25rem;
+          background-color: black;
+          &:hover {
+            color: red;
+            cursor: pointer;
+          }
         }
       }
     }

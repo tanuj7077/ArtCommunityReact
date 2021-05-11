@@ -5,18 +5,28 @@ import blank from "../../tagImage/blankProfile.png";
 import { FaPlus } from "react-icons/fa";
 
 const Profile = () => {
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showCoverModal, setShowCoverModal] = useState(false);
+
+  const toggleProfileModalDisplay = () => {
+    setShowProfileModal(!showProfileModal);
+  };
+  const toggleCoverModalDisplay = () => {
+    setShowCoverModal(!showCoverModal);
+  };
+
   return (
     <>
       <span className="heading">Profile</span>
       <div className="profile-items">
         <div className="photos">
-          <div className="profilePhoto">
+          <div className="profilePhoto" onClick={toggleProfileModalDisplay}>
             <span className="profilePhoto-label">Profile Photo</span>
             <div className="profilePhoto-photo">
               <FaPlus className="icon" />
             </div>
           </div>
-          <div className="coverPhoto">
+          <div className="coverPhoto" onClick={toggleCoverModalDisplay}>
             <span className="profilePhoto-label">Cover Photo</span>
             <div className="coverPhoto-photo">
               <FaPlus className="icon" />
@@ -44,6 +54,42 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      {showProfileModal && (
+        <div className="addExtrasModal">
+          <div className="modal">
+            <span className="modal-heading">Add Profile Photo</span>
+            <div className="modal-grp">
+              <label className="modal-grp-label">Link</label>
+              <input type="text" className="modal-grp-input" />
+            </div>
+
+            <div className="modal-buttons">
+              <span className="add-btn">Add Link</span>
+              <span className="cancel-btn" onClick={toggleProfileModalDisplay}>
+                Cancel
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+      {showCoverModal && (
+        <div className="addExtrasModal">
+          <div className="modal">
+            <span className="modal-heading">Add Cover Photo</span>
+            <div className="modal-grp">
+              <label className="modal-grp-label">Link</label>
+              <input type="text" className="modal-grp-input" />
+            </div>
+
+            <div className="modal-buttons">
+              <span className="add-btn">Add Link</span>
+              <span className="cancel-btn" onClick={toggleCoverModalDisplay}>
+                Cancel
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

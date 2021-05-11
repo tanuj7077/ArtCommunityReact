@@ -83,6 +83,12 @@ const customStyles = {
 };
 
 const Personal = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModalDisplay = () => {
+    setShowModal(!showModal);
+  };
+
   const countries = [
     {
       label: "Afghanistan",
@@ -1125,11 +1131,29 @@ const Personal = () => {
         </div>
         <div className="settings-group link-label">
           <label className="settings-group-label">Links</label>
-          <div className="add">
+          <div className="add" onClick={toggleModalDisplay}>
             <FaPlus className="icon" />
           </div>
         </div>
       </div>
+      {showModal && (
+        <div className="addExtrasModal">
+          <div className="modal">
+            <span className="modal-heading">Add Links</span>
+            <div className="modal-grp">
+              <label className="modal-grp-label">Link</label>
+              <input type="text" className="modal-grp-input" />
+            </div>
+
+            <div className="modal-buttons">
+              <span className="add-btn">Add Link</span>
+              <span className="cancel-btn" onClick={toggleModalDisplay}>
+                Cancel
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
