@@ -2226,7 +2226,10 @@ body {
       display: grid;
       place-items: center; }
 
-.loginModal {
+#fileInput {
+  display: none; }
+
+.addExtrasModal {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -2234,90 +2237,107 @@ body {
   left: 0;
   z-index: 1600;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
-.submitForm {
-  transition: all 0.3s ease;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  color: white;
-  width: 50%;
-  height: 80%;
-  background-color: #2b2b2b;
-  /*background: rgb(35, 37, 35);
-  background: linear-gradient(
-    90deg,
-    rgba(35, 37, 35, 1) 0%,
-    rgba(23, 23, 23, 1) 0%,
-    rgba(129, 129, 129, 1) 100%
-  );*/
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  flex-wrap: nowrap;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; }
-  @media only screen and (max-width: 75em) {
-    .submitForm {
-      width: 70%; } }
-  .submitForm::-webkit-scrollbar {
-    width: 7px; }
-  .submitForm::-webkit-scrollbar-thumb {
-    background: #3e3f3e;
-    border-radius: 5px; }
-  .submitForm::-webkit-scrollbar-track {
-    background: transparent; }
-  .submitForm-imgHolder {
-    transition: all 1s ease;
-    width: 100%;
-    height: 40rem;
+  display: grid;
+  place-items: center; }
+  .addExtrasModal .modal {
+    width: 65rem;
+    height: max-content;
+    background-color: #2b2b2b;
     border-radius: 10px;
-    border: dashed 2px #6ecf86;
     display: flex;
     flex-flow: column;
-    align-items: center;
-    justify-content: center; }
-    .submitForm-imgHolder label {
-      cursor: pointer;
-      padding: 0.8rem 0; }
-  .submitForm-image {
-    transition: all 1s ease;
-    text-align: center;
-    background-color: #3f3f3f;
-    padding: 2rem 2rem;
-    width: 100%;
-    max-width: 70rem;
-    height: 35rem;
-    border-radius: 10px;
-    margin-bottom: 2.5rem;
-    border: dashed 2px #4d9b4d;
-    overflow: hidden; }
-    .submitForm-image img {
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-      width: auto;
-      height: 100%;
-      transition: all 1s ease; }
-
-.coverImageHolder {
-  min-width: 40rem; }
-
-.closeIcon {
-  transition: all 0.3s ease;
-  position: fixed;
-  top: 11vh;
-  right: 25.5%;
-  color: #6ecf86; }
-  @media only screen and (max-width: 75em) {
-    .closeIcon {
-      right: 16%; } }
-  .closeIcon:hover {
-    cursor: pointer; }
-  .closeIcon .Icon {
-    width: 6rem;
-    height: 6rem; }
+    gap: 2.5rem;
+    align-items: center; }
+    .addExtrasModal .modal-heading {
+      font-size: 3rem;
+      padding: 2rem 4rem;
+      width: 100%;
+      border-bottom: 2px solid #3a3a3a;
+      color: silver; }
+    .addExtrasModal .modal-form {
+      width: 55rem;
+      display: flex;
+      flex-flow: column;
+      gap: 2rem; }
+    .addExtrasModal .modal-buttons {
+      margin-bottom: 3rem;
+      width: 55rem;
+      color: silver;
+      font-size: 2rem;
+      text-transform: uppercase;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      word-spacing: 0.4rem; }
+      .addExtrasModal .modal-buttons .add-btn {
+        border: none;
+        color: silver;
+        font-size: 2rem;
+        text-transform: uppercase;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1.2rem 2rem;
+        width: 25rem;
+        background-color: black; }
+        .addExtrasModal .modal-buttons .add-btn:hover {
+          color: #6ecf86;
+          cursor: pointer; }
+      .addExtrasModal .modal-buttons .cancel-btn {
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        width: 25rem;
+        background-color: black; }
+        .addExtrasModal .modal-buttons .cancel-btn:hover {
+          color: red;
+          cursor: pointer; }
+    .addExtrasModal .modal-sliders {
+      width: 55rem;
+      display: flex;
+      flex-flow: column; }
+      .addExtrasModal .modal-sliders .inputSlider {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: space-between; }
+        .addExtrasModal .modal-sliders .inputSlider--label {
+          color: silver; }
+        .addExtrasModal .modal-sliders .inputSlider--slider {
+          width: 30rem; }
+    .addExtrasModal .modal-photo {
+      width: 55rem;
+      height: max-content;
+      padding: 2rem 0;
+      min-height: 30rem;
+      border-radius: 10px;
+      border: dashed 2px #626262;
+      display: grid;
+      place-items: center; }
+      .addExtrasModal .modal-photo-img {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        max-width: 52rem;
+        max-height: 30rem; }
+      .addExtrasModal .modal-photo .uploadLabel {
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+        align-items: center; }
+        .addExtrasModal .modal-photo .uploadLabel .uploadIcon {
+          width: 10rem;
+          height: 10rem;
+          color: #626262; }
+        .addExtrasModal .modal-photo .uploadLabel .uploadText {
+          font-size: 1.5rem;
+          font-weight: 700;
+          letter-spacing: 0.3rem;
+          color: #626262; }
+        .addExtrasModal .modal-photo .uploadLabel:hover,
+        .addExtrasModal .modal-photo .uploadLabel:hover .uploadIcon,
+        .addExtrasModal .modal-photo .uploadLabel:hover .uploadText {
+          color: #6ecf86;
+          cursor: pointer; }
 
 .loginToggle {
   margin-top: 6rem;
@@ -2370,40 +2390,6 @@ body {
   background-color: #6ecf86;
   transform: translateX(15vw);
   transition: all 0.4s ease; }
-
-.uploadIcon {
-  color: #4d9b4d; }
-  .uploadIcon:hover {
-    cursor: pointer; }
-  .uploadIcon .Icon {
-    width: 6rem;
-    height: 6rem; }
-
-.uploadText {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.3rem;
-  color: #4d9b4d; }
-
-#fileInput {
-  display: none; }
-
-.uploadIcon {
-  color: #6ecf86; }
-  .uploadIcon:hover {
-    cursor: pointer; }
-  .uploadIcon .Icon {
-    width: 6rem;
-    height: 6rem; }
-
-.uploadText {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.3rem;
-  color: #6ecf86; }
-
-#fileInput {
-  display: none; }
 
 .settings {
   grid-column: 3/ -1;
@@ -2769,6 +2755,22 @@ body {
           .settings .addExtrasModal .modal-buttons .cancel-btn:hover {
             color: red;
             cursor: pointer; }
+      .settings .addExtrasModal .modal-photo {
+        width: 55rem;
+        height: 30rem;
+        border-radius: 10px;
+        border: dashed 2px #626262;
+        display: grid;
+        place-items: center; }
+        .settings .addExtrasModal .modal-photo .uploadIcon {
+          width: 10rem;
+          height: 10rem;
+          color: #626262; }
+        .settings .addExtrasModal .modal-photo:hover {
+          cursor: pointer;
+          border-color: #6ecf86; }
+        .settings .addExtrasModal .modal-photo:hover .uploadIcon {
+          color: #6ecf86; }
 
 .Container {
   background-color: black;

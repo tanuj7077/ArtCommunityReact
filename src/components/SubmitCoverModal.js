@@ -87,32 +87,38 @@ const SubmitCoverModal = () => {
   }
   return (
     <>
-      <div className="loginModal">
-        <div className="submitForm">
-          <span className="closeIcon">
-            <IoClose className="Icon" onClick={closeSubmitCoverModal} />
-          </span>
+      <div className="addExtrasModal">
+        <div className="modal">
+          <span className="modal-heading">Add Cover Photo</span>
 
           <form
-            className="form u-margin-top-big"
+            className="modal-form"
             onSubmit={handleSubmit}
             encType="multipart/form-data"
           >
             {isCoverUploaded ? (
               <>
-                <div className="submitForm-image">
-                  <img src={coverImage} alt="coverImg" />
+                <div className="modal-photo">
+                  <img
+                    src={coverImage}
+                    alt="coverImg"
+                    className="modal-photo-img"
+                  />
+                </div>
+                <div className="modal-buttons">
+                  <button className="add-btn" type="submit">
+                    Submit
+                  </button>
+                  <span className="cancel-btn" onClick={closeSubmitCoverModal}>
+                    Cancel
+                  </span>
                 </div>
               </>
             ) : (
               <>
-                <div className="submitForm-imgHolder coverImageHolder u-margin-bottom-medium">
-                  <label htmlFor="fileInput">
-                    <span className="uploadIcon">
-                      <FaUpload className="Icon" />
-                    </span>
-                  </label>
-                  <label htmlFor="fileInput">
+                <div className="modal-photo">
+                  <label htmlFor="fileInput" className="uploadLabel">
+                    <FaUpload className="uploadIcon" />
                     <span className="uploadText">Click to Upload</span>
                   </label>
                   <input
@@ -122,12 +128,13 @@ const SubmitCoverModal = () => {
                     onChange={handleImage}
                   />
                 </div>
+                <div className="modal-buttons">
+                  <span className="cancel-btn" onClick={closeSubmitCoverModal}>
+                    Cancel
+                  </span>
+                </div>
               </>
             )}
-
-            <button className="btn btn-submit" type="submit">
-              Submit
-            </button>
           </form>
         </div>
       </div>

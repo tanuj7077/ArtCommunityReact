@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import SubmitCoverModal from "../SubmitCoverModal";
 import SubmitProfilePicModal from "../SubmitProfilePicModal";
 import blank from "../../tagImage/blankProfile.png";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaUpload } from "react-icons/fa";
 
 const Profile = () => {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showCoverModal, setShowCoverModal] = useState(false);
+  const [isProfileUploaded, setIsProfileUploaded] = useState(false);
+  const [isCoverUploaded, setIsCoverUploaded] = useState(false);
 
   const toggleProfileModalDisplay = () => {
     setShowProfileModal(!showProfileModal);
@@ -54,17 +56,16 @@ const Profile = () => {
           </div>
         </div>
       </div>
+
       {showProfileModal && (
         <div className="addExtrasModal">
           <div className="modal">
             <span className="modal-heading">Add Profile Photo</span>
-            <div className="modal-grp">
-              <label className="modal-grp-label">Link</label>
-              <input type="text" className="modal-grp-input" />
+            <div className="modal-photo">
+              {!isProfileUploaded && <FaUpload className="uploadIcon" />}
             </div>
-
             <div className="modal-buttons">
-              <span className="add-btn">Add Link</span>
+              <span className="add-btn">Upload Photo</span>
               <span className="cancel-btn" onClick={toggleProfileModalDisplay}>
                 Cancel
               </span>
@@ -72,13 +73,13 @@ const Profile = () => {
           </div>
         </div>
       )}
+
       {showCoverModal && (
         <div className="addExtrasModal">
           <div className="modal">
             <span className="modal-heading">Add Cover Photo</span>
-            <div className="modal-grp">
-              <label className="modal-grp-label">Link</label>
-              <input type="text" className="modal-grp-input" />
+            <div className="modal-photo">
+              {!isCoverUploaded && <FaUpload className="uploadIcon" />}
             </div>
 
             <div className="modal-buttons">

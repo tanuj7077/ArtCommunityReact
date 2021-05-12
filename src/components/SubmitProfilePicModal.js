@@ -115,7 +115,121 @@ const SubmitProfilePicModal = () => {
 
   return (
     <>
-      <div className="loginModal">
+      <div className="addExtrasModal">
+        <div className="modal">
+          <span className="modal-heading">Add Profile Photo</span>
+          {/* <span className="closeIcon">
+            <IoClose className="Icon" onClick={closeSubmitProfilePicModal} />
+          </span> */}
+
+          <form
+            className="modal-form"
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+          >
+            {isProfileUploaded ? (
+              <>
+                <div className="modal-photo">
+                  <AvatarEditor
+                    ref={setEditorRef}
+                    image={profileImage}
+                    width={250}
+                    height={250}
+                    scale={scale}
+                    borderRadius={borderRadius}
+                    rotate={angle}
+                  />
+                </div>
+                <div className="modal-sliders">
+                  <div className="inputSlider">
+                    <label
+                      htmlFor="borderRadius"
+                      className="inputSlider--label"
+                    >
+                      Border Radius:{" "}
+                    </label>
+                    <input
+                      type="range"
+                      min="0"
+                      max="126"
+                      value={borderRadius}
+                      className="inputSlider--slider"
+                      id="borderRadius"
+                      onChange={(e) => handleBorderRad(e)}
+                    ></input>
+                  </div>
+                  <div className="inputSlider">
+                    <label htmlFor="rotation" className="inputSlider--label">
+                      Rotation:{" "}
+                    </label>
+                    <input
+                      type="range"
+                      min="0"
+                      max="360"
+                      value={angle}
+                      className="inputSlider--slider"
+                      id="rotation"
+                      onChange={(e) => setAngle(e.target.value)}
+                    ></input>
+                  </div>
+                  <div className="inputSlider">
+                    <label htmlFor="scale" className="inputSlider--label">
+                      Scale:{" "}
+                    </label>
+                    <input
+                      type="range"
+                      min="1"
+                      max="2"
+                      step="0.01"
+                      value={scale}
+                      className="inputSlider--slider"
+                      id="scale"
+                      onChange={(e) => setScale(e.target.value)}
+                    ></input>
+                  </div>
+                </div>
+
+                <div className="modal-buttons">
+                  <button className="add-btn" type="submit">
+                    Submit
+                  </button>
+                  <span
+                    className="cancel-btn"
+                    onClick={closeSubmitProfilePicModal}
+                  >
+                    Cancel
+                  </span>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="modal-photo">
+                  <label htmlFor="fileInput" className="uploadLabel">
+                    <FaUpload className="uploadIcon" />
+                    <span className="uploadText">Click to Upload</span>
+                  </label>
+                  <input
+                    id="fileInput"
+                    type="file"
+                    accept=".jpg,.jpeg,.png"
+                    onChange={handleImage}
+                  />
+                </div>
+                <div className="modal-buttons">
+                  <span
+                    className="cancel-btn"
+                    onClick={closeSubmitProfilePicModal}
+                  >
+                    Cancel
+                  </span>
+                </div>
+              </>
+            )}
+          </form>
+        </div>
+      </div>
+      <>
+        {/* <div className="loginModal">
         <div className="submitForm">
           <span className="closeIcon">
             <IoClose className="Icon" onClick={closeSubmitProfilePicModal} />
@@ -138,7 +252,6 @@ const SubmitProfilePicModal = () => {
                     borderRadius={borderRadius}
                     rotate={angle}
                   />
-                  {/* <img src={profileImage} alt="profileImg" /> */}
                 </div>
               </>
             ) : (
@@ -215,7 +328,8 @@ const SubmitProfilePicModal = () => {
             )}
           </form>
         </div>
-      </div>
+      </div> */}
+      </>
     </>
   );
 };

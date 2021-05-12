@@ -1,117 +1,139 @@
-.loginModal {
+#fileInput {
+  display: none;
+}
+.addExtrasModal {
   width: 100%;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1600;
-  //font-size: 7rem;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  display: grid;
+  place-items: center;
 
-.submitForm {
-  transition: all 0.3s ease;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  color: white;
-  width: 50%;
-  @include respond(tab-land) {
-    width: 70%;
-  }
-  height: 80%;
-  background-color: rgb(43, 43, 43);
-  /*background: rgb(35, 37, 35);
-  background: linear-gradient(
-    90deg,
-    rgba(35, 37, 35, 1) 0%,
-    rgba(23, 23, 23, 1) 0%,
-    rgba(129, 129, 129, 1) 100%
-  );*/
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  flex-wrap: nowrap;
-  overflow-y: scroll;
-  //scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    width: 7px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #3e3f3e;
-    border-radius: 5px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &-imgHolder {
-    transition: all 1s ease;
-    width: 100%;
-    height: 40rem;
+  .modal {
+    width: 65rem;
+    height: max-content;
+    background-color: rgb(43, 43, 43);
     border-radius: 10px;
-    border: dashed 2px #6ecf86;
     display: flex;
     flex-flow: column;
+    gap: 2.5rem;
     align-items: center;
-    justify-content: center;
-    label {
-      cursor: pointer;
-      padding: 0.8rem 0;
+    &-heading {
+      font-size: 3rem;
+      padding: 2rem 4rem;
+      width: 100%;
+      border-bottom: 2px solid rgb(58, 58, 58);
+      color: rgb(192, 192, 192);
+    }
+    &-form {
+      width: 55rem;
+      display: flex;
+      flex-flow: column;
+      gap: 2rem;
+    }
+    &-buttons {
+      margin-bottom: 3rem;
+      width: 55rem;
+      color: rgb(192, 192, 192);
+      font-size: 2rem;
+      text-transform: uppercase;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      word-spacing: 0.4rem;
+      .add-btn {
+        border: none;
+        color: rgb(192, 192, 192);
+        font-size: 2rem;
+        text-transform: uppercase;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1.2rem 2rem;
+        width: 25rem;
+        background-color: black;
+        &:hover {
+          color: #6ecf86;
+          cursor: pointer;
+        }
+      }
+      .cancel-btn {
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        width: 25rem;
+        background-color: black;
+        &:hover {
+          color: red;
+          cursor: pointer;
+        }
+      }
+    }
+    &-sliders {
+      width: 55rem;
+      display: flex;
+      flex-flow: column;
+      .inputSlider {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: space-between;
+        &--label {
+          color: rgb(192, 192, 192);
+        }
+        &--slider {
+          width: 30rem;
+        }
+      }
+    }
+    &-photo {
+      width: 55rem;
+      height: max-content;
+      padding: 2rem 0;
+      min-height: 30rem;
+      border-radius: 10px;
+      border: dashed 2px rgb(98, 98, 98); ///#6ecf86;
+      display: grid;
+      place-items: center;
+      &-img {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+          rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        max-width: 52rem;
+        max-height: 30rem;
+      }
+
+      .uploadLabel {
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+        align-items: center;
+        .uploadIcon {
+          width: 10rem;
+          height: 10rem;
+          color: rgb(98, 98, 98);
+        }
+        .uploadText {
+          font-size: 1.5rem;
+          font-weight: 700;
+          letter-spacing: 0.3rem;
+          color: rgb(98, 98, 98);
+        }
+        &:hover,
+        &:hover .uploadIcon,
+        &:hover .uploadText {
+          color: #6ecf86;
+          cursor: pointer;
+        }
+      }
     }
   }
-
-  &-image {
-    transition: all 1s ease;
-    text-align: center;
-    background-color: #3f3f3f;
-    padding: 2rem 2rem;
-    width: 100%;
-    max-width: 70rem;
-    // height: 30rem;
-    height: 35rem;
-    border-radius: 10px;
-    margin-bottom: 2.5rem;
-    border: dashed 2px rgb(77, 155, 77);
-    overflow: hidden;
-
-    img {
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-      width: auto;
-      height: 100%;
-
-      transition: all 1s ease;
-    }
-  }
 }
-.coverImageHolder {
-  min-width: 40rem;
-}
-.closeIcon {
-  transition: all 0.3s ease;
-  //align-self: flex-end;
-  position: fixed;
-  top: 11vh;
-  right: 25.5%;
-  @include respond(tab-land) {
-    right: 16%;
-  }
-  color: #6ecf86;
-  &:hover {
-    cursor: pointer;
-  }
-  .Icon {
-    width: 6rem;
-    height: 6rem;
-  }
-}
+
 .loginToggle {
-  //clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
   margin-top: 6rem;
   align-self: center;
   font-size: 3rem;
@@ -171,45 +193,151 @@
     transition: all 0.4s ease;
   }
 }
+// .loginModal {
+//   width: 100%;
+//   height: 100vh;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   z-index: 1600;
+//   //font-size: 7rem;
+//   background: rgba(0, 0, 0, 0.5);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
-.uploadIcon {
-  color: rgb(77, 155, 77);
-  &:hover {
-    cursor: pointer;
-  }
-  .Icon {
-    width: 6rem;
-    height: 6rem;
-  }
-}
-.uploadText {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.3rem;
-  color: rgb(77, 155, 77);
-}
+// .submitForm {
+//   transition: all 0.3s ease;
+//   display: flex;
+//   flex-flow: column;
+//   align-items: center;
+//   color: white;
+//   width: 50%;
+//   @include respond(tab-land) {
+//     width: 70%;
+//   }
+//   height: 80%;
+//   background-color: rgb(43, 43, 43);
+//   /*background: rgb(35, 37, 35);
+//   background: linear-gradient(
+//     90deg,
+//     rgba(35, 37, 35, 1) 0%,
+//     rgba(23, 23, 23, 1) 0%,
+//     rgba(129, 129, 129, 1) 100%
+//   );*/
+//   border-radius: 10px;
+//   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+//     rgba(0, 0, 0, 0.22) 0px 15px 12px;
+//   flex-wrap: nowrap;
+//   overflow-y: scroll;
+//   //scroll-snap-type: x mandatory;
+//   scroll-behavior: smooth;
+//   -webkit-overflow-scrolling: touch;
+//   &::-webkit-scrollbar {
+//     width: 7px;
+//   }
 
-#fileInput {
-  display: none;
-}
+//   &::-webkit-scrollbar-thumb {
+//     background: #3e3f3e;
+//     border-radius: 5px;
+//   }
+//   &::-webkit-scrollbar-track {
+//     background: transparent;
+//   }
 
-.uploadIcon {
-  color: #6ecf86;
-  &:hover {
-    cursor: pointer;
-  }
-  .Icon {
-    width: 6rem;
-    height: 6rem;
-  }
-}
-.uploadText {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.3rem;
-  color: #6ecf86;
-}
+//   &-imgHolder {
+//     transition: all 1s ease;
+//     width: 100%;
+//     height: 40rem;
+//     border-radius: 10px;
+//     border: dashed 2px #6ecf86;
+//     display: flex;
+//     flex-flow: column;
+//     align-items: center;
+//     justify-content: center;
+//     label {
+//       cursor: pointer;
+//       padding: 0.8rem 0;
+//     }
+//   }
 
-#fileInput {
-  display: none;
-}
+//   &-image {
+//     transition: all 1s ease;
+//     text-align: center;
+//     background-color: #3f3f3f;
+//     padding: 2rem 2rem;
+//     width: 100%;
+//     max-width: 70rem;
+//     // height: 30rem;
+//     height: 35rem;
+//     border-radius: 10px;
+//     margin-bottom: 2.5rem;
+//     border: dashed 2px rgb(77, 155, 77);
+//     overflow: hidden;
+
+//     img {
+//       box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+//         rgba(0, 0, 0, 0.22) 0px 10px 10px;
+//       width: auto;
+//       height: 100%;
+
+//       transition: all 1s ease;
+//     }
+//   }
+// }
+// .coverImageHolder {
+//   min-width: 40rem;
+// }
+// .closeIcon {
+//   transition: all 0.3s ease;
+//   //align-self: flex-end;
+//   position: fixed;
+//   top: 11vh;
+//   right: 25.5%;
+//   @include respond(tab-land) {
+//     right: 16%;
+//   }
+//   color: #6ecf86;
+//   &:hover {
+//     cursor: pointer;
+//   }
+//   .Icon {
+//     width: 6rem;
+//     height: 6rem;
+//   }
+// }
+
+// .uploadIcon {
+//   color: rgb(77, 155, 77);
+//   &:hover {
+//     cursor: pointer;
+//   }
+//   .Icon {
+//     width: 6rem;
+//     height: 6rem;
+//   }
+// }
+// .uploadText {
+//   font-size: 1.5rem;
+//   font-weight: 700;
+//   letter-spacing: 0.3rem;
+//   color: rgb(77, 155, 77);
+// }
+
+// .uploadIcon {
+//   color: #6ecf86;
+//   &:hover {
+//     cursor: pointer;
+//   }
+//   .Icon {
+//     width: 6rem;
+//     height: 6rem;
+//   }
+// }
+// .uploadText {
+//   font-size: 1.5rem;
+//   font-weight: 700;
+//   letter-spacing: 0.3rem;
+//   color: #6ecf86;
+// }

@@ -474,6 +474,27 @@
           }
         }
       }
+      &-photo {
+        width: 55rem;
+        height: 30rem;
+        border-radius: 10px;
+        border: dashed 2px rgb(98, 98, 98); ///#6ecf86;
+        display: grid;
+        place-items: center;
+
+        .uploadIcon {
+          width: 10rem;
+          height: 10rem;
+          color: rgb(98, 98, 98);
+        }
+        &:hover {
+          cursor: pointer;
+          border-color: #6ecf86;
+        }
+        &:hover .uploadIcon {
+          color: #6ecf86;
+        }
+      }
     }
   }
 }
