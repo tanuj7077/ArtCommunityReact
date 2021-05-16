@@ -208,7 +208,108 @@ const SubmitModal = () => {
   }, []);
   return (
     <>
-      <div className="loginModal">
+      <div className="submitModal">
+        <div className="modal">
+          <div className="modal-heading">Add your image</div>
+
+          <form
+            className="modal-form"
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+          >
+            <div className="modal-form-inputs">
+              <div className="form__group form__group--basic">
+                <input
+                  name="name"
+                  type="text"
+                  id="title"
+                  className="form__input modal-form-inputs-input"
+                  placeholder="title"
+                  required
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <label htmlFor="title" className="form__label">
+                  <span className="form__label__content">Title</span>
+                </label>
+              </div>
+              <div className="form__group form__group--basic">
+                <textarea
+                  name="desc"
+                  id="desc"
+                  cols="40"
+                  rows="4"
+                  className="form__input-textarea modal-form-inputs-textarea"
+                  autoComplete="off"
+                  spellCheck="false"
+                  placeholder="description"
+                  onChange={(e) => setDesc(e.target.value)}
+                ></textarea>
+                <label htmlFor="desc" className="form__label">
+                  <span className="form__label__content">Description</span>
+                </label>
+              </div>
+              {tags && (
+                <div className="form__group form__group--basic">
+                  <Select
+                    className="form__input-select modal-form-inputs-select"
+                    id="select"
+                    styles={customStyles}
+                    closeMenuOnSelect={false}
+                    isMulti
+                    options={tags}
+                    placeholder={<div>Select Tags...</div>}
+                    onChange={handleSelectChange}
+                  />
+                  <label htmlFor="select" className="form__label">
+                    <span className="form__label__content">Tags</span>
+                  </label>
+                </div>
+              )}
+            </div>
+
+            {isUploaded ? (
+              <>
+                <div className="modal-form-imgHolder uploadedImg">
+                  <img
+                    src={image}
+                    alt="uploaded pic"
+                    className="modal-form-imgHolder-img"
+                  />
+                </div>
+                <div className="modal-form-buttons">
+                  <button className="add-btn" type="submit">
+                    Submit
+                  </button>
+                  <span className="cancel-btn" onClick={closeSubmitModal}>
+                    Cancel
+                  </span>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="modal-form-imgHolder">
+                  <label htmlFor="fileInput" className="uploadLabel">
+                    <FaUpload className="uploadIcon" />
+                    <span className="uploadText">Click to Upload</span>
+                  </label>
+                  <input
+                    id="fileInput"
+                    type="file"
+                    accept=".jpg,.jpeg,.png"
+                    onChange={handleImage}
+                  />
+                </div>
+                <div className="modal-form-buttons">
+                  <span className="cancel-btn" onClick={closeSubmitModal}>
+                    Cancel
+                  </span>
+                </div>
+              </>
+            )}
+          </form>
+        </div>
+      </div>
+      {/* <div className="loginModal">
         <div className="submitForm">
           <span className="closeIcon">
             <IoClose className="Icon" onClick={closeSubmitModal} />
@@ -271,7 +372,7 @@ const SubmitModal = () => {
             {isUploaded ? (
               <>
                 <div className="submitForm-image">
-                  <img src={image} alt="uploaded image" />
+                  <img src={image} alt="uploaded pic" />
                 </div>
               </>
             ) : (
@@ -303,7 +404,7 @@ const SubmitModal = () => {
             </button>
           </form>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

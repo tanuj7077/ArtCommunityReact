@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
+import { useGlobalContext } from "../../context";
+import axios from "axios";
 
 const customStyles = {
   option: (provided, state) => ({
@@ -22,9 +24,11 @@ const customStyles = {
     ...base,
     backgroundColor: "#323232",
     border: "1px solid #525050",
+    width: "118%",
   }),
   menuList: (base) => ({
     ...base,
+    height: "27rem",
 
     "::-webkit-scrollbar": {
       width: "9px",
@@ -43,7 +47,7 @@ const customStyles = {
   }),
   container: (base) => ({
     ...base,
-    width: "100%",
+    width: "118%",
     height: "4rem",
   }),
   control: (base, state) => ({
@@ -56,7 +60,7 @@ const customStyles = {
     letterSpacing: 4,
     border: "none",
     boxShadow: "none",
-    width: "100%",
+    width: "118%",
     textAlign: "left",
     cursor: "pointer",
     backgroundColor: "#80808080",
@@ -83,11 +87,50 @@ const customStyles = {
 };
 
 const Personal = () => {
+  const { isLoggedIn, userData, setUserData } = useGlobalContext();
+  let url = "http://localhost:8000/users/user/editPersonal/" + userData._id;
   const [showModal, setShowModal] = useState(false);
 
   const toggleModalDisplay = () => {
     setShowModal(!showModal);
   };
+  const [about, setAbout] = useState("");
+  const [dob, setDob] = useState("");
+  const [location, setLocation] = useState(); //dont set initially
+  const [gender, setGender] = useState("");
+
+  const save = () => {
+    var personalInfo = {
+      about: about,
+      dob: dob,
+      location: location.value,
+      gender: gender,
+    };
+    axios.post(url, personalInfo).then((res) => {
+      console.log(res.data);
+      setUserData(res.data);
+    });
+  };
+
+  useEffect(() => {
+    if (userData.personalInfo) {
+      if (userData.personalInfo.about) {
+        setAbout(userData.personalInfo.about);
+      }
+      if (userData.personalInfo.dob) {
+        setDob(userData.personalInfo.dob.substring(0, 10));
+      }
+      if (userData.personalInfo.gender) {
+        setGender(userData.personalInfo.gender);
+      }
+      if (userData.personalInfo.location) {
+        setLocation({
+          label: userData.personalInfo.location,
+          value: userData.personalInfo.location,
+        });
+      }
+    }
+  }, []);
 
   const countries = [
     {
@@ -1066,9 +1109,13 @@ const Personal = () => {
   return (
     <>
       <span className="heading">Personal Info</span>
+      <span className="btn" onClick={save}>
+        Save Changes
+      </span>
+
       <div className="profile-items">
-        <div className="inputs">
-          <div className="settings-group">
+        <div className="inputs inputs-personalInfo">
+          <div className="settings-group settings-group-personalInfo-textarea">
             <label htmlFor="about" className="settings-group-label">
               About
             </label>
@@ -1078,15 +1125,23 @@ const Personal = () => {
               type="text"
               id="about"
               className="settings-group-textarea"
+              value={about}
+              onChange={(e) => setAbout(e.target.value)}
             ></textarea>
           </div>
-          <div className="settings-group dob">
+          <div className="settings-group dob settings-group-personalInfo">
             <label htmlFor="dob" className="settings-group-label">
               Date of Birth
             </label>
-            <input type="date" id="dob" className="settings-group-input" />
+            <input
+              type="date"
+              id="dob"
+              className="settings-group-input"
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
+            />
           </div>
-          <div className="settings-group">
+          <div className="settings-group settings-group-personalInfo">
             <label htmlFor="location" className="settings-group-label">
               Location
             </label>
@@ -1103,30 +1158,46 @@ const Personal = () => {
               isSearchable={true}
               name="color"
               options={countries}
+              value={location}
+              onChange={(e) => {
+                setLocation(e);
+              }}
             />
-            {/* <input type="text" id="location" className="settings-group-input" /> */}
           </div>
           <div className="settings-group">
             <label className="settings-group-label">Gender</label>
-            <div className="radios">
+            <div className="radios" onChange={(e) => setGender(e.target.value)}>
               <label class="radio-container">
-                <input type="radio" name="radio" value="Male" />
+                <input
+                  type="radio"
+                  name="radio"
+                  value="Male"
+                  checked={gender === "Male"}
+                />
                 <span class="checkmark"></span>
                 Male
               </label>
               <label class="radio-container">
-                <input type="radio" name="radio" value="Female" />
+                <input
+                  type="radio"
+                  name="radio"
+                  value="Female"
+                  checked={gender === "Female"}
+                />
                 <span class="checkmark"></span>
                 Female
               </label>
               <label class="radio-container">
-                <input type="radio" name="radio" value="Other" />
+                <input
+                  type="radio"
+                  name="radio"
+                  value="Other"
+                  checked={gender === "Other"}
+                />
                 <span class="checkmark"></span>
                 Other
               </label>
             </div>
-
-            {/* <input type="text" id="gender" className="settings-group-input" /> */}
           </div>
         </div>
         <div className="settings-group link-label">

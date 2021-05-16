@@ -153,9 +153,11 @@
       }
 
       .photos {
+        width: 89%;
+        justify-content: space-between;
         display: flex;
         flex-flow: row;
-        gap: 7rem;
+        gap: 3rem;
         .profilePhoto {
           &-label {
             font-size: 1.7rem;
@@ -168,8 +170,32 @@
             border: 2px solid rgb(88, 88, 88);
             background-color: rgb(70, 70, 70);
 
+            background-size: cover;
+            background-position-x: center;
+            background-position-y: center;
+
             display: grid;
             place-items: center;
+            .overlay {
+              width: 100%;
+              height: 100%;
+              background-color: transparent;
+              display: grid;
+              place-items: center;
+              .text {
+                text-align: center;
+                width: 80%;
+                font-size: 3rem;
+                color: rgb(204, 204, 204);
+                opacity: 0;
+              }
+            }
+            &:hover .overlay {
+              background-color: rgba(37, 37, 37, 0.7);
+            }
+            &:hover .overlay .text {
+              opacity: 1;
+            }
             .icon {
               color: rgb(88, 88, 88);
               width: 10rem;
@@ -197,8 +223,32 @@
             border: 2px solid rgb(88, 88, 88);
             background-color: rgb(70, 70, 70);
 
+            background-size: cover;
+            background-position-x: center;
+            background-position-y: center;
+
             display: grid;
             place-items: center;
+            .overlay {
+              width: 100%;
+              height: 100%;
+              background-color: transparent;
+              display: grid;
+              place-items: center;
+              .text {
+                text-align: center;
+                width: 80%;
+                font-size: 3rem;
+                color: rgb(204, 204, 204);
+                opacity: 0;
+              }
+            }
+            &:hover .overlay {
+              background-color: rgba(37, 37, 37, 0.7);
+            }
+            &:hover .overlay .text {
+              opacity: 1;
+            }
             .icon {
               color: rgb(88, 88, 88);
               width: 10rem;
@@ -217,6 +267,7 @@
         }
       }
       .inputs {
+        width: 89%;
         display: flex;
         flex-flow: row;
         flex-wrap: wrap;
@@ -257,6 +308,36 @@
           }
         }
       }
+      /*--------------------Explicit settings----------*/
+      .inputs-profile {
+        justify-content: space-between;
+        .settings-group-profile {
+          width: 46%;
+          &-input {
+            width: 100%;
+          }
+        }
+      }
+      .settings-group-extras {
+        width: 100%;
+        .settings-group-input {
+          width: 100%;
+        }
+      }
+
+      .inputs-personalInfo {
+        justify-content: space-between;
+        .settings-group-personalInfo-textarea {
+          width: 100%;
+        }
+        .settings-group-personalInfo {
+          width: 46%;
+          input {
+            width: 100%;
+          }
+        }
+      }
+      /*--------------------OVER----------*/
 
       .radios {
         display: flex;
@@ -474,7 +555,7 @@
           }
         }
       }
-      &-photo {
+      /*&-photo {
         width: 55rem;
         height: 30rem;
         border-radius: 10px;
@@ -494,7 +575,7 @@
         &:hover .uploadIcon {
           color: #6ecf86;
         }
-      }
+      }*/
     }
   }
 }

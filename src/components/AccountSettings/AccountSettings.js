@@ -13,6 +13,8 @@ import Appearance from "./Appearance";
 import { useGlobalContext } from "../../context";
 
 const AccountSettings = ({ id }) => {
+  const { isLoggedIn, userData } = useGlobalContext();
+  console.log(userData);
   const [isProfile, setProfile] = useState(true);
   const [isPersonal, setPersonal] = useState(false);
   const [isExtras, setExtras] = useState(false);

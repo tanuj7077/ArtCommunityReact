@@ -193,151 +193,82 @@
     transition: all 0.4s ease;
   }
 }
-// .loginModal {
-//   width: 100%;
-//   height: 100vh;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   z-index: 1600;
-//   //font-size: 7rem;
-//   background: rgba(0, 0, 0, 0.5);
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+.loginModal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1600;
+  //font-size: 7rem;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-// .submitForm {
-//   transition: all 0.3s ease;
-//   display: flex;
-//   flex-flow: column;
-//   align-items: center;
-//   color: white;
-//   width: 50%;
-//   @include respond(tab-land) {
-//     width: 70%;
-//   }
-//   height: 80%;
-//   background-color: rgb(43, 43, 43);
-//   /*background: rgb(35, 37, 35);
-//   background: linear-gradient(
-//     90deg,
-//     rgba(35, 37, 35, 1) 0%,
-//     rgba(23, 23, 23, 1) 0%,
-//     rgba(129, 129, 129, 1) 100%
-//   );*/
-//   border-radius: 10px;
-//   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-//     rgba(0, 0, 0, 0.22) 0px 15px 12px;
-//   flex-wrap: nowrap;
-//   overflow-y: scroll;
-//   //scroll-snap-type: x mandatory;
-//   scroll-behavior: smooth;
-//   -webkit-overflow-scrolling: touch;
-//   &::-webkit-scrollbar {
-//     width: 7px;
-//   }
+.submitForm {
+  transition: all 0.3s ease;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: white;
+  width: 50%;
+  @include respond(tab-land) {
+    width: 70%;
+  }
+  height: 80%;
+  background-color: rgb(43, 43, 43);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
 
-//   &::-webkit-scrollbar-thumb {
-//     background: #3e3f3e;
-//     border-radius: 5px;
-//   }
-//   &::-webkit-scrollbar-track {
-//     background: transparent;
-//   }
+  &::-webkit-scrollbar-thumb {
+    background: #3e3f3e;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+.closeIcon {
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 11vh;
+  right: 25.5%;
+  @include respond(tab-land) {
+    right: 16%;
+  }
+  color: #6ecf86;
+  &:hover {
+    cursor: pointer;
+  }
+  .Icon {
+    width: 6rem;
+    height: 6rem;
+  }
+}
 
-//   &-imgHolder {
-//     transition: all 1s ease;
-//     width: 100%;
-//     height: 40rem;
-//     border-radius: 10px;
-//     border: dashed 2px #6ecf86;
-//     display: flex;
-//     flex-flow: column;
-//     align-items: center;
-//     justify-content: center;
-//     label {
-//       cursor: pointer;
-//       padding: 0.8rem 0;
-//     }
-//   }
-
-//   &-image {
-//     transition: all 1s ease;
-//     text-align: center;
-//     background-color: #3f3f3f;
-//     padding: 2rem 2rem;
-//     width: 100%;
-//     max-width: 70rem;
-//     // height: 30rem;
-//     height: 35rem;
-//     border-radius: 10px;
-//     margin-bottom: 2.5rem;
-//     border: dashed 2px rgb(77, 155, 77);
-//     overflow: hidden;
-
-//     img {
-//       box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-//         rgba(0, 0, 0, 0.22) 0px 10px 10px;
-//       width: auto;
-//       height: 100%;
-
-//       transition: all 1s ease;
-//     }
-//   }
-// }
-// .coverImageHolder {
-//   min-width: 40rem;
-// }
-// .closeIcon {
-//   transition: all 0.3s ease;
-//   //align-self: flex-end;
-//   position: fixed;
-//   top: 11vh;
-//   right: 25.5%;
-//   @include respond(tab-land) {
-//     right: 16%;
-//   }
-//   color: #6ecf86;
-//   &:hover {
-//     cursor: pointer;
-//   }
-//   .Icon {
-//     width: 6rem;
-//     height: 6rem;
-//   }
-// }
-
-// .uploadIcon {
-//   color: rgb(77, 155, 77);
-//   &:hover {
-//     cursor: pointer;
-//   }
-//   .Icon {
-//     width: 6rem;
-//     height: 6rem;
-//   }
-// }
-// .uploadText {
-//   font-size: 1.5rem;
-//   font-weight: 700;
-//   letter-spacing: 0.3rem;
-//   color: rgb(77, 155, 77);
-// }
-
-// .uploadIcon {
-//   color: #6ecf86;
-//   &:hover {
-//     cursor: pointer;
-//   }
-//   .Icon {
-//     width: 6rem;
-//     height: 6rem;
-//   }
-// }
-// .uploadText {
-//   font-size: 1.5rem;
-//   font-weight: 700;
-//   letter-spacing: 0.3rem;
-//   color: #6ecf86;
-// }
+.uploadIcon {
+  color: #6ecf86;
+  &:hover {
+    cursor: pointer;
+  }
+  .Icon {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+.uploadText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  color: #6ecf86;
+}
