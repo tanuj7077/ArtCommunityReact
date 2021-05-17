@@ -3,12 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import { useGlobalContext } from "../../context";
 import axios from "axios";
-import {
-  FaFacebookSquare,
-  FaDiscord,
-  FaPatreon,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaFacebookSquare, FaPatreon, FaYoutube } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { AiFillInstagram } from "react-icons/ai";
 
@@ -124,7 +119,6 @@ const Personal = () => {
       item.includes("facebook.com") ||
       item.includes("instagram.com") ||
       item.includes("patreon.com") ||
-      item.includes("discord.gg") ||
       item.includes("gmail.com") ||
       item.includes("youtube.com")
     ) {
@@ -143,9 +137,6 @@ const Personal = () => {
         } else if (item.includes("patreon.com")) {
           toCheck = "patreon.com";
           linkType = "Patreon";
-        } else if (item.includes("discord.gg")) {
-          toCheck = "discord.gg";
-          linkType = "Discord";
         } else if (item.includes("gmail.com")) {
           toCheck = "gmail.com";
           linkType = "Gmail";
@@ -178,7 +169,6 @@ const Personal = () => {
       item.includes("facebook.com") ||
       item.includes("instagram.com") ||
       item.includes("patreon.com") ||
-      item.includes("discord.gg") ||
       item.includes("gmail.com") ||
       item.includes("youtube.com")
     ) {
@@ -206,9 +196,6 @@ const Personal = () => {
     if (item.includes("patreon.com")) {
       return "patreon";
     }
-    if (item.includes("discord.gg")) {
-      return "discord";
-    }
     if (item.includes("gmail.com")) {
       return "gmail";
     }
@@ -232,8 +219,6 @@ const Personal = () => {
       toRemove = "instagram.com";
     } else if (link.includes("patreon.com")) {
       toRemove = "patreon.com";
-    } else if (link.includes("discord.gg")) {
-      toRemove = "discord.gg";
     } else if (link.includes("gmail.com")) {
       toRemove = "gmail.com";
     } else if (link.includes("youtube.com")) {
@@ -1426,18 +1411,7 @@ const Personal = () => {
                       <FaPatreon className="icon" />
                     </div>
                   )}
-                  {checkLinkType(item) === "discord" && (
-                    <div
-                      className="add"
-                      key={item}
-                      onClick={() => {
-                        setLink(item);
-                        toggleEditModalDisplay();
-                      }}
-                    >
-                      <FaDiscord className="icon" />
-                    </div>
-                  )}
+
                   {checkLinkType(item) === "gmail" && (
                     <div
                       className="add"
