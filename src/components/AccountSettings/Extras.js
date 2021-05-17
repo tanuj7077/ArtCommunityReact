@@ -8,6 +8,9 @@ const Extras = () => {
 
   const [tools, setTools] = useState("");
   const [favCategory, setFavCategory] = useState("");
+  const [extras, setExtras] = useState([]);
+  const [extraLabel, setExtraLabel] = useState("");
+  const [extraValue, setExtraValue] = useState("");
 
   let url = "http://localhost:8000/users/user/editExtras/" + userData._id;
 
@@ -15,11 +18,19 @@ const Extras = () => {
     setShowModal(!showModal);
   };
 
+  const addField = () => {
+    let extra = { label: extraLabel, value: extraValue };
+    var arr = extras;
+    arr.push(extra);
+    setExtras(arr);
+    console.log(extras);
+  };
+
   const save = () => {
     var extrasInfo = {
       tools: tools,
       favCategory: favCategory,
-      extra: [],
+      extra: extras,
     };
     axios.post(url, extrasInfo).then((res) => {
       console.log(res.data.extras);
@@ -33,7 +44,10 @@ const Extras = () => {
         setTools(userData.extras.tools);
       }
       if (userData.extras.favCategory) {
-        setTools(userData.extras.favCategory);
+        setFavCategory(userData.extras.favCategory);
+      }
+      if (userData.extras.extra) {
+        setExtras(userData.extras.extra);
       }
     }
   }, []);
@@ -68,6 +82,22 @@ const Extras = () => {
               onChange={(e) => setFavCategory(e.target.value)}
             />
           </div>
+          {extras.map((item) => {
+            return (
+              <div
+                key={item.label}
+                className="settings-group settings-group-extras"
+              >
+                <label className="settings-group-label">{item.label}</label>
+                <input
+                  type="text"
+                  className="settings-group-input"
+                  value={item.value}
+                  //onChange={(e) => setFavCategory(e.target.value)}
+                />
+              </div>
+            );
+          })}
         </div>
         <span className="btn" onClick={toggleModalDisplay}>
           Add More
@@ -80,7 +110,12 @@ const Extras = () => {
             <span className="modal-heading">Add another Field</span>
             <div className="modal-grp">
               <label className="modal-grp-label">Label</label>
-              <input type="text" className="modal-grp-input" />
+              <input
+                type="text"
+                className="modal-grp-input"
+                value={extraLabel}
+                onChange={(e) => setExtraLabel(e.target.value)}
+              />
             </div>
             <div className="modal-grp">
               <label className="modal-grp-label">Value</label>
@@ -90,10 +125,20 @@ const Extras = () => {
                 cols="45"
                 rows="5"
                 className="modal-grp-textarea"
+                value={extraValue}
+                onChange={(e) => setExtraValue(e.target.value)}
               ></textarea>
             </div>
             <div className="modal-buttons">
-              <span className="add-btn">Add Field</span>
+              <span
+                className="add-btn"
+                onClick={() => {
+                  addField();
+                  toggleModalDisplay();
+                }}
+              >
+                Add Field
+              </span>
               <span className="cancel-btn" onClick={toggleModalDisplay}>
                 Cancel
               </span>

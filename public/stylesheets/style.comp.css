@@ -2700,8 +2700,27 @@ body {
           height: 25rem;
           border: 2px solid #585858;
           background-color: #464646;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center;
           display: grid;
           place-items: center; }
+          .settings-main .profile-items .photos .profilePhoto-photo .overlay {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            display: grid;
+            place-items: center; }
+            .settings-main .profile-items .photos .profilePhoto-photo .overlay .text {
+              text-align: center;
+              width: 80%;
+              font-size: 3rem;
+              color: #cccccc;
+              opacity: 0; }
+          .settings-main .profile-items .photos .profilePhoto-photo:hover .overlay {
+            background-color: rgba(37, 37, 37, 0.7); }
+          .settings-main .profile-items .photos .profilePhoto-photo:hover .overlay .text {
+            opacity: 1; }
           .settings-main .profile-items .photos .profilePhoto-photo .icon {
             color: #585858;
             width: 10rem;
@@ -2721,8 +2740,27 @@ body {
           height: 25rem;
           border: 2px solid #585858;
           background-color: #464646;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center;
           display: grid;
           place-items: center; }
+          .settings-main .profile-items .photos .coverPhoto-photo .overlay {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            display: grid;
+            place-items: center; }
+            .settings-main .profile-items .photos .coverPhoto-photo .overlay .text {
+              text-align: center;
+              width: 80%;
+              font-size: 3rem;
+              color: #cccccc;
+              opacity: 0; }
+          .settings-main .profile-items .photos .coverPhoto-photo:hover .overlay {
+            background-color: rgba(37, 37, 37, 0.7); }
+          .settings-main .profile-items .photos .coverPhoto-photo:hover .overlay .text {
+            opacity: 1; }
           .settings-main .profile-items .photos .coverPhoto-photo .icon {
             color: #585858;
             width: 10rem;
@@ -2821,6 +2859,12 @@ body {
             background-color: #a8a8a8; }
       .settings-main .profile-items .link-label {
         margin-top: -1rem; }
+      .settings-main .profile-items .links {
+        width: 89%;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        gap: 2rem; }
       .settings-main .profile-items .add {
         margin-top: 1rem;
         width: 8rem;
@@ -2893,7 +2937,7 @@ body {
       }*/ }
       .settings .addExtrasModal .modal-heading {
         font-size: 3rem;
-        padding: 2rem 4rem;
+        padding: 2rem 4.6rem;
         width: 100%;
         border-bottom: 2px solid #3a3a3a;
         color: silver; }
@@ -2913,6 +2957,12 @@ body {
           color: #a8a8a8;
           font-size: 2rem;
           padding-left: 1rem; }
+        .settings .addExtrasModal .modal-grp-msg {
+          margin-top: 0.6rem;
+          height: 2rem;
+          font-size: 1.6rem;
+          text-transform: none;
+          color: #eb6161; }
         .settings .addExtrasModal .modal-grp-input::-webkit-input-placeholder {
           color: gray; }
         .settings .addExtrasModal .modal-grp-input:focus {

@@ -389,6 +389,13 @@
       .link-label {
         margin-top: -1rem;
       }
+      .links {
+        width: 89%;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
       .add {
         margin-top: 1rem;
         width: 8rem;
@@ -449,7 +456,7 @@
       align-items: center;
       &-heading {
         font-size: 3rem;
-        padding: 2rem 4rem;
+        padding: 2rem 4.6rem;
         width: 100%;
         border-bottom: 2px solid rgb(58, 58, 58);
         color: rgb(192, 192, 192);
@@ -471,6 +478,13 @@
           color: rgb(168, 168, 168);
           font-size: 2rem;
           padding-left: 1rem;
+        }
+        &-msg {
+          margin-top: 0.6rem;
+          height: 2rem;
+          font-size: 1.6rem;
+          text-transform: none;
+          color: rgb(235, 97, 97);
         }
         &-input::-webkit-input-placeholder {
           color: gray;

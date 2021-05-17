@@ -3,6 +3,14 @@ import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import { useGlobalContext } from "../../context";
 import axios from "axios";
+import {
+  FaFacebookSquare,
+  FaDiscord,
+  FaPatreon,
+  FaYoutube,
+} from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
+import { AiFillInstagram } from "react-icons/ai";
 
 const customStyles = {
   option: (provided, state) => ({
@@ -90,14 +98,160 @@ const Personal = () => {
   const { isLoggedIn, userData, setUserData } = useGlobalContext();
   let url = "http://localhost:8000/users/user/editPersonal/" + userData._id;
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const toggleModalDisplay = () => {
     setShowModal(!showModal);
+  };
+  const toggleEditModalDisplay = () => {
+    setShowEditModal(!showEditModal);
   };
   const [about, setAbout] = useState("");
   const [dob, setDob] = useState("");
   const [location, setLocation] = useState(); //dont set initially
   const [gender, setGender] = useState("");
+  const [links, setLinks] = useState([]);
+  const [linkValid, setLinkValid] = useState(false);
+  const [link, setLink] = useState("");
+  const [message, setMessage] = useState("");
+  const [uneditable, setUneditable] = useState("");
+
+  const validateLink = (e) => {
+    let item = e.target.value;
+    setLink(item);
+    if (
+      item.includes("facebook.com") ||
+      item.includes("instagram.com") ||
+      item.includes("patreon.com") ||
+      item.includes("discord.gg") ||
+      item.includes("gmail.com") ||
+      item.includes("youtube.com")
+    ) {
+      if (links.includes(item)) {
+        setMessage("* This link is already added");
+        setLinkValid(false);
+      } else {
+        var toCheck, linkType;
+        var validity = true;
+        if (item.includes("facebook.com")) {
+          toCheck = "facebook.com";
+          linkType = "Facebook";
+        } else if (item.includes("instagram.com")) {
+          toCheck = "instagram.com";
+          linkType = "Instagram";
+        } else if (item.includes("patreon.com")) {
+          toCheck = "patreon.com";
+          linkType = "Patreon";
+        } else if (item.includes("discord.gg")) {
+          toCheck = "discord.gg";
+          linkType = "Discord";
+        } else if (item.includes("gmail.com")) {
+          toCheck = "gmail.com";
+          linkType = "Gmail";
+        } else if (item.includes("youtube.com")) {
+          toCheck = "youtube.com";
+          linkType = "Youtube";
+        }
+        links.forEach((l) => {
+          if (l.includes(toCheck)) {
+            setMessage("* You have already added your " + linkType + " link");
+            validity = false;
+          }
+        });
+        setLinkValid(validity);
+      }
+    } else {
+      setLinkValid(false);
+      setMessage("");
+    }
+  };
+  const validateEditLink = (e) => {
+    let item = e.target.value;
+    if (item.length <= uneditable.length || !item.includes(uneditable)) {
+      setLink(uneditable);
+    } else {
+      setLink(item);
+    }
+    //setLink(item);
+    if (
+      item.includes("facebook.com") ||
+      item.includes("instagram.com") ||
+      item.includes("patreon.com") ||
+      item.includes("discord.gg") ||
+      item.includes("gmail.com") ||
+      item.includes("youtube.com")
+    ) {
+      if (links.includes(item)) {
+        setMessage(
+          "* This link is already added or you have not edited the link"
+        );
+        setLinkValid(false);
+      } else {
+        setLinkValid(true);
+        setMessage("");
+      }
+    } else {
+      setLinkValid(false);
+      setMessage("");
+    }
+  };
+  const checkLinkType = (item) => {
+    if (item.includes("facebook.com")) {
+      return "fb";
+    }
+    if (item.includes("instagram.com")) {
+      return "insta";
+    }
+    if (item.includes("patreon.com")) {
+      return "patreon";
+    }
+    if (item.includes("discord.gg")) {
+      return "discord";
+    }
+    if (item.includes("gmail.com")) {
+      return "gmail";
+    }
+    if (item.includes("youtube.com")) {
+      return "youtube";
+    }
+  };
+  const addLink = () => {
+    var arr = links;
+    if (!arr.includes(link)) {
+      arr.push(link);
+    }
+    setLinks(arr);
+  };
+  const editLink = () => {
+    var arr = links;
+    var toRemove, indexToRemove;
+    if (link.includes("facebook.com")) {
+      toRemove = "facebook.com";
+    } else if (link.includes("instagram.com")) {
+      toRemove = "instagram.com";
+    } else if (link.includes("patreon.com")) {
+      toRemove = "patreon.com";
+    } else if (link.includes("discord.gg")) {
+      toRemove = "discord.gg";
+    } else if (link.includes("gmail.com")) {
+      toRemove = "gmail.com";
+    } else if (link.includes("youtube.com")) {
+      toRemove = "youtube.com";
+    }
+    arr.forEach((item, i) => {
+      if (item.includes(toRemove)) {
+        indexToRemove = i;
+      }
+    });
+    arr.splice(indexToRemove, 1, link);
+    setLinks(arr);
+  };
+  const uneditablePart = (item) => {
+    var comIndex = item.indexOf(".com");
+    var st = item.substring(0, comIndex + 4);
+    setUneditable(st);
+  };
+  const deleteLink = () => {};
 
   const save = () => {
     var personalInfo = {
@@ -105,6 +259,7 @@ const Personal = () => {
       dob: dob,
       location: location.value,
       gender: gender,
+      links: links,
     };
     axios.post(url, personalInfo).then((res) => {
       console.log(res.data);
@@ -128,6 +283,9 @@ const Personal = () => {
           label: userData.personalInfo.location,
           value: userData.personalInfo.location,
         });
+      }
+      if (userData.personalInfo.links) {
+        setLinks(userData.personalInfo.links);
       }
     }
   }, []);
@@ -1202,8 +1360,99 @@ const Personal = () => {
         </div>
         <div className="settings-group link-label">
           <label className="settings-group-label">Links</label>
-          <div className="add" onClick={toggleModalDisplay}>
-            <FaPlus className="icon" />
+          <div className="links">
+            {links.map((item) => {
+              return (
+                <>
+                  {checkLinkType(item) === "youtube" && (
+                    <div
+                      className="add"
+                      key={item}
+                      onClick={() => {
+                        setLink(item);
+                        uneditablePart(item);
+                        toggleEditModalDisplay();
+                      }}
+                    >
+                      <FaYoutube className="icon" />
+                    </div>
+                  )}
+                  {checkLinkType(item) === "fb" && (
+                    <div
+                      className="add"
+                      key={item}
+                      onClick={() => {
+                        setLink(item);
+                        uneditablePart(item);
+                        toggleEditModalDisplay();
+                      }}
+                    >
+                      <FaFacebookSquare className="icon" />
+                    </div>
+                  )}
+                  {checkLinkType(item) === "insta" && (
+                    <div
+                      className="add"
+                      key={item}
+                      onClick={() => {
+                        setLink(item);
+                        uneditablePart(item);
+                        toggleEditModalDisplay();
+                      }}
+                    >
+                      <AiFillInstagram className="icon" />
+                    </div>
+                  )}
+                  {checkLinkType(item) === "patreon" && (
+                    <div
+                      className="add"
+                      key={item}
+                      onClick={() => {
+                        setLink(item);
+                        uneditablePart(item);
+                        toggleEditModalDisplay();
+                      }}
+                    >
+                      <FaPatreon className="icon" />
+                    </div>
+                  )}
+                  {checkLinkType(item) === "discord" && (
+                    <div
+                      className="add"
+                      key={item}
+                      onClick={() => {
+                        setLink(item);
+                        toggleEditModalDisplay();
+                      }}
+                    >
+                      <FaDiscord className="icon" />
+                    </div>
+                  )}
+                  {checkLinkType(item) === "gmail" && (
+                    <div
+                      className="add"
+                      key={item}
+                      onClick={() => {
+                        setLink(item);
+                        uneditablePart(item);
+                        toggleEditModalDisplay();
+                      }}
+                    >
+                      <SiGmail className="icon" />
+                    </div>
+                  )}
+                </>
+              );
+            })}
+            <div
+              className="add"
+              onClick={() => {
+                setLink("");
+                toggleModalDisplay();
+              }}
+            >
+              <FaPlus className="icon" />
+            </div>
           </div>
         </div>
       </div>
@@ -1213,12 +1462,77 @@ const Personal = () => {
             <span className="modal-heading">Add Links</span>
             <div className="modal-grp">
               <label className="modal-grp-label">Link</label>
-              <input type="text" className="modal-grp-input" />
+              <input
+                type="text"
+                className="modal-grp-input"
+                value={link}
+                onChange={(e) => validateLink(e)}
+              />
+              <span className="modal-grp-msg">{message}</span>
             </div>
 
             <div className="modal-buttons">
-              <span className="add-btn">Add Link</span>
-              <span className="cancel-btn" onClick={toggleModalDisplay}>
+              {linkValid && (
+                <span
+                  className="add-btn"
+                  onClick={() => {
+                    addLink();
+                    toggleModalDisplay();
+                    setMessage("");
+                  }}
+                >
+                  Add Link
+                </span>
+              )}
+              <span
+                className="cancel-btn"
+                onClick={() => {
+                  toggleModalDisplay();
+                  setMessage("");
+                }}
+              >
+                Cancel
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showEditModal && (
+        <div className="addExtrasModal">
+          <div className="modal">
+            <span className="modal-heading">Edit Links</span>
+            <div className="modal-grp">
+              <label className="modal-grp-label">Link</label>
+              <input
+                type="text"
+                className="modal-grp-input"
+                value={link}
+                onChange={(e) => validateEditLink(e)}
+              />
+              <span className="modal-grp-msg">{message}</span>
+            </div>
+
+            <div className="modal-buttons">
+              {linkValid && (
+                <span
+                  className="add-btn"
+                  onClick={() => {
+                    editLink();
+                    toggleEditModalDisplay();
+                    setMessage("");
+                  }}
+                >
+                  Edit Link
+                </span>
+              )}
+              <span
+                className="cancel-btn"
+                onClick={() => {
+                  toggleEditModalDisplay();
+                  setMessage("");
+                }}
+              >
                 Cancel
               </span>
             </div>
