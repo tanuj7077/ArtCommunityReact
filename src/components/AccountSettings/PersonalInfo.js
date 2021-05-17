@@ -115,6 +115,7 @@ const Personal = () => {
   const [link, setLink] = useState("");
   const [message, setMessage] = useState("");
   const [uneditable, setUneditable] = useState("");
+  const [index, setIndex] = useState();
 
   const validateLink = (e) => {
     let item = e.target.value;
@@ -251,13 +252,18 @@ const Personal = () => {
     var st = item.substring(0, comIndex + 4);
     setUneditable(st);
   };
-  const deleteLink = () => {};
+  const deleteLink = (i) => {
+    var arr = links;
+    arr.splice(i, 1);
+    console.log(arr);
+    setLinks(arr);
+  };
 
   const save = () => {
     var personalInfo = {
       about: about,
       dob: dob,
-      location: location.value,
+      location: location ? location.value : "",
       gender: gender,
       links: links,
     };
@@ -1361,7 +1367,7 @@ const Personal = () => {
         <div className="settings-group link-label">
           <label className="settings-group-label">Links</label>
           <div className="links">
-            {links.map((item) => {
+            {links.map((item, i) => {
               return (
                 <>
                   {checkLinkType(item) === "youtube" && (
@@ -1372,6 +1378,7 @@ const Personal = () => {
                         setLink(item);
                         uneditablePart(item);
                         toggleEditModalDisplay();
+                        setIndex(i);
                       }}
                     >
                       <FaYoutube className="icon" />
@@ -1384,6 +1391,7 @@ const Personal = () => {
                       onClick={() => {
                         setLink(item);
                         uneditablePart(item);
+                        setIndex(i);
                         toggleEditModalDisplay();
                       }}
                     >
@@ -1397,6 +1405,7 @@ const Personal = () => {
                       onClick={() => {
                         setLink(item);
                         uneditablePart(item);
+                        setIndex(i);
                         toggleEditModalDisplay();
                       }}
                     >
@@ -1410,6 +1419,7 @@ const Personal = () => {
                       onClick={() => {
                         setLink(item);
                         uneditablePart(item);
+                        setIndex(i);
                         toggleEditModalDisplay();
                       }}
                     >
@@ -1435,6 +1445,7 @@ const Personal = () => {
                       onClick={() => {
                         setLink(item);
                         uneditablePart(item);
+                        setIndex(i);
                         toggleEditModalDisplay();
                       }}
                     >
@@ -1499,8 +1510,8 @@ const Personal = () => {
       )}
 
       {showEditModal && (
-        <div className="addExtrasModal">
-          <div className="modal">
+        <div className="addExtrasModal ">
+          <div className="modal editModal">
             <span className="modal-heading">Edit Links</span>
             <div className="modal-grp">
               <label className="modal-grp-label">Link</label>
@@ -1527,10 +1538,21 @@ const Personal = () => {
                 </span>
               )}
               <span
+                className="delete-btn"
+                onClick={() => {
+                  deleteLink(index);
+                  toggleEditModalDisplay();
+                  setMessage("");
+                }}
+              >
+                Delete
+              </span>
+              <span
                 className="cancel-btn"
                 onClick={() => {
                   toggleEditModalDisplay();
                   setMessage("");
+                  setLinkValid(false);
                 }}
               >
                 Cancel
