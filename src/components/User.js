@@ -23,8 +23,8 @@ const User = ({ id }) => {
   const [cover, setCover] = useState("");
   const [profilePic, setProfilePic] = useState(blank);
   const [profileBorderRad, setProfileBorderRad] = useState("");
-  const [following, setFollowing] = useState([]); //for home section
-  const [followers, setFollowers] = useState([]); //for home section
+  const [following, setFollowing] = useState([]); //for about section
+  const [followers, setFollowers] = useState([]); //for about section
   const [userPosts, setUserPost] = useState([]); //for gallery section
 
   async function getUser() {
@@ -207,11 +207,9 @@ const User = ({ id }) => {
         </div>
 
         <div className="userPage--main">
-          {isHome && following && followers && (
-            <UserHome following={following} followers={followers} />
-          )}
+          {isHome && user && <UserHome user={user} />}
           {isGallery && userPosts && <Gallery userPosts={userPosts} />}
-          {isAbout && user && (
+          {isAbout && user && following && followers && (
             <About user={user} following={following} followers={followers} />
           )}
         </div>

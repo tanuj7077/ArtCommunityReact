@@ -2814,6 +2814,30 @@ body {
         width: 100%; }
         .settings-main .profile-items .settings-group-extras .settings-group-input {
           width: 100%; }
+        .settings-main .profile-items .settings-group-extras .settings-group-label {
+          width: 100%;
+          display: flex;
+          flex-flow: row;
+          flex-wrap: nowrap;
+          justify-content: space-between; }
+          .settings-main .profile-items .settings-group-extras .settings-group-label .label {
+            width: 80%; }
+          .settings-main .profile-items .settings-group-extras .settings-group-label .icons {
+            width: 10%;
+            display: flex;
+            flex-flow: row;
+            gap: 1rem;
+            justify-content: flex-end;
+            align-items: center; }
+            .settings-main .profile-items .settings-group-extras .settings-group-label .icons .edit {
+              width: 2rem;
+              height: 2rem; }
+              .settings-main .profile-items .settings-group-extras .settings-group-label .icons .edit:hover {
+                cursor: pointer;
+                color: #3e82ff; }
+            .settings-main .profile-items .settings-group-extras .settings-group-label .icons .delete:hover {
+              cursor: pointer;
+              color: #dd4c4c; }
       .settings-main .profile-items .inputs-personalInfo {
         justify-content: space-between; }
         .settings-main .profile-items .inputs-personalInfo .settings-group-personalInfo-textarea {
@@ -2947,6 +2971,10 @@ body {
         .settings .addExtrasModal .modal-grp-label {
           font-size: 1.6rem;
           color: #888888; }
+        .settings .addExtrasModal .modal-grp-confirm {
+          font-size: 2.5rem;
+          text-transform: none;
+          color: #888888; }
         .settings .addExtrasModal .modal-grp-input {
           margin-top: 0.6rem;
           height: 4rem;
@@ -3026,6 +3054,43 @@ body {
           .settings .addExtrasModal .modal-buttons .cancel-btn:hover {
             color: red;
             cursor: pointer; }
+    .settings .addExtrasModal .editModal .modal-buttons {
+      font-size: 2rem;
+      text-transform: uppercase;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-evenly;
+      word-spacing: 0.4rem; }
+      .settings .addExtrasModal .editModal .modal-buttons .add-btn {
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1.2rem 2rem;
+        width: 30%;
+        background-color: black; }
+        .settings .addExtrasModal .editModal .modal-buttons .add-btn:hover {
+          color: #6ecf86;
+          cursor: pointer; }
+      .settings .addExtrasModal .editModal .modal-buttons .cancel-btn {
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        width: 30%;
+        background-color: black; }
+        .settings .addExtrasModal .editModal .modal-buttons .cancel-btn:hover {
+          color: #6aafff;
+          cursor: pointer; }
+      .settings .addExtrasModal .editModal .modal-buttons .delete-btn {
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        width: 30%;
+        background-color: black; }
+        .settings .addExtrasModal .editModal .modal-buttons .delete-btn:hover {
+          color: #ff6a6a;
+          cursor: pointer; }
 
 .Container {
   background-color: black;

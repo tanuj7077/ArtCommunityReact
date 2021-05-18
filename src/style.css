@@ -2194,6 +2194,7 @@ body {
           font-size: 1.8rem;
           color: #b4b4b4; }
         .userPage--about-info-bio .bio {
+          text-transform: none;
           margin-top: 1.5rem; }
     .userPage--about-favourites .item {
       display: block;

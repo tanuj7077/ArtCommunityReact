@@ -15,6 +15,8 @@ const Extras = () => {
 
   const [tools, setTools] = useState("");
   const [favCategory, setFavCategory] = useState("");
+  const [profession, setProfession] = useState("");
+  const [link, setLink] = useState("");
   const [extras, setExtras] = useState([]);
   const [extraLabel, setExtraLabel] = useState("");
   const [extraValue, setExtraValue] = useState("");
@@ -43,7 +45,6 @@ const Extras = () => {
     arr[i].value = extraValue;
     setExtras(arr);
   };
-
   const deleteField = (i) => {
     var arr = extras;
     arr.splice(i, 1);
@@ -53,6 +54,8 @@ const Extras = () => {
 
   const save = () => {
     var extrasInfo = {
+      profession: profession,
+      link: link,
       tools: tools,
       favCategory: favCategory,
       extra: extras,
@@ -65,6 +68,12 @@ const Extras = () => {
 
   useEffect(() => {
     if (userData.extras) {
+      if (userData.extras.profession) {
+        setProfession(userData.extras.profession);
+      }
+      if (userData.extras.link) {
+        setLink(userData.extras.link);
+      }
       if (userData.extras.tools) {
         setTools(userData.extras.tools);
       }
@@ -85,6 +94,24 @@ const Extras = () => {
       </span>
       <div className="profile-items">
         <div className="inputs">
+          <div className="settings-group settings-group-extras">
+            <label className="settings-group-label">Profession</label>
+            <input
+              type="text"
+              className="settings-group-input"
+              value={profession}
+              onChange={(e) => setProfession(e.target.value)}
+            />
+          </div>
+          <div className="settings-group settings-group-extras">
+            <label className="settings-group-label">Your Website Link</label>
+            <input
+              type="text"
+              className="settings-group-input"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+            />
+          </div>
           <div className="settings-group settings-group-extras">
             <label className="settings-group-label">
               Preferred production tools
