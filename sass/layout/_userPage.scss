@@ -286,6 +286,7 @@
       //grid-row: 2 / 3;
       //grid-column: 1 / -1;
       &-slider {
+        margin-top: 1.6rem;
         position: relative;
         width: 86vw;
 
@@ -308,7 +309,9 @@
           }
 
           &:hover {
+            cursor: pointer;
             opacity: 1;
+            color: white;
             background: linear-gradient(
               to left,
               transparent 25%,
@@ -333,6 +336,7 @@
             height: 20rem;
           }
           &:hover {
+            cursor: pointer;
             opacity: 1;
             background: linear-gradient(
               to right,
@@ -345,33 +349,26 @@
         }
         &-slides {
           display: flex;
+          flex-flow: row;
+          gap: 1rem;
           overflow-x: scroll;
-          //scroll-snap-type: x mandatory;
           scroll-behavior: smooth;
           -webkit-overflow-scrolling: touch;
-          background-color: black;
+          //background-color: black;
 
           .slider-img {
             height: 20rem;
             width: auto;
             scroll-snap-align: start;
-            flex-shrink: 0;
-            border-radius: 20px;
-            padding: 1rem 0.7rem;
+            border-radius: 10px;
+            &::selection {
+              color: transparent;
+              background: transparent;
+            }
           }
           &::-webkit-scrollbar {
             display: none;
-            //width: 10px;
-            //height: 10px;
           }
-          /*
-          &::-webkit-scrollbar-thumb {
-            background: #6ecf86;
-            border-radius: 10px;
-          }
-          &::-webkit-scrollbar-track {
-            background: transparent;
-          }*/
         }
       }
     }
@@ -423,11 +420,136 @@
     .likedSection:hover .liked::-webkit-scrollbar-thumb {
       background: #6ecf86;
     }
+    .LikedSection {
+      width: 86vw;
+      .Liked {
+        margin-top: 1rem;
+        width: 100%;
+        height: max-content;
+        columns: 4;
+        gap: 1rem;
+        @include respond(tab-land) {
+          columns: 3;
+        }
+        @include respond(tab-port) {
+          columns: 2;
+        }
+        .LikedImage {
+          background-color: black;
+          position: relative;
+          border-radius: 10px;
+          overflow: hidden;
+          margin-bottom: 1rem;
+          .image {
+            width: 100%;
+            display: block;
+            transition: all 0.25s ease;
+          }
+          .info {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            display: flex;
+            flex-flow: column;
+            color: white;
+            opacity: 0;
+            transition: all 0.25s ease;
+            .name {
+              font-size: 2rem;
+              cursor: pointer;
+            }
+            .author {
+              font-size: 1.6rem;
+              cursor: pointer;
+            }
+          }
+          &:hover .info {
+            opacity: 1;
+            transition: all 0.25s ease;
+          }
+          &:hover .image {
+            opacity: 0.5;
+            transform: scale(1.05);
+            transition: all 0.25s ease;
+          }
+        }
+      }
+    }
   }
 
   &--gallery {
     width: 90%;
-    margin: 5rem auto;
+    margin: 8rem auto;
+    .GallerySection {
+      width: 86vw;
+      display: flex;
+      flex-flow: column;
+      .Gallery {
+        margin-top: 1rem;
+        width: 100%;
+        height: max-content;
+        columns: 4;
+        gap: 1rem;
+        @include respond(tab-land) {
+          columns: 3;
+        }
+        @include respond(tab-port) {
+          columns: 2;
+        }
+        .SingleImage {
+          background-color: black;
+          position: relative;
+          border-radius: 10px;
+          overflow: hidden;
+          margin-bottom: 1rem;
+          .image {
+            width: 100%;
+            display: block;
+            transition: all 0.25s ease;
+          }
+          .info {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            display: flex;
+            flex-flow: column;
+            color: white;
+            opacity: 0;
+            .name {
+              font-size: 2rem;
+              cursor: pointer;
+            }
+            .author {
+              font-size: 1.6rem;
+              cursor: pointer;
+            }
+            transition: all 0.25s ease;
+          }
+          &:hover .info {
+            opacity: 1;
+            transition: all 0.25s ease;
+          }
+          &:hover .image {
+            opacity: 0.5;
+            transform: scale(1.05);
+            transition: all 0.25s ease;
+          }
+        }
+      }
+      .more {
+        margin-top: 2rem;
+        width: 100%;
+        font-size: 3rem;
+        font-weight: bold;
+        //text-transform: uppercase;
+        color: rgb(136, 136, 136);
+        background-color: rgb(53, 53, 53);
+        border-radius: 10px;
+        padding: 1.2rem 0;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
   }
   //for Galler section
   .l {

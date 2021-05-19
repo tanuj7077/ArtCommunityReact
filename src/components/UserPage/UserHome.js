@@ -3,7 +3,6 @@ import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import {
   FaBirthdayCake,
   FaFacebookSquare,
-  FaDiscord,
   FaPatreon,
   FaYoutube,
   FaCommentDots,
@@ -13,19 +12,9 @@ import { CgGenderFemale, CgGenderMale } from "react-icons/cg";
 import { HiLocationMarker } from "react-icons/hi";
 import { AiOutlineLink, AiFillInstagram, AiFillLike } from "react-icons/ai";
 
-import tree from "../../tagImage/tree.jpg";
-import city from "../../tagImage/city.jpg";
-import insect from "../../tagImage/insect.jpg";
-import monochrome from "../../tagImage/monochrome.jpg";
-import landscape from "../../tagImage/landscape.jpg";
-import summer from "../../tagImage/summer.jpg";
-import river from "../../tagImage/river.jpg";
-import sky from "../../tagImage/sky.jpg";
 import fanart from "../../tagImage/fanart.jpg";
-import photography from "../../tagImage/photography.jpg";
-import blank from "../../tagImage/blankProfile.png";
 
-const UserHome = ({ user }) => {
+const UserHome = ({ user, popular, liked }) => {
   const handleScroll = (side) => {
     if (side === "right") {
       document
@@ -37,7 +26,6 @@ const UserHome = ({ user }) => {
         .scrollBy(-500, 0);
     }
   };
-  console.log(user);
 
   return (
     <div className="userPage--home">
@@ -165,78 +153,66 @@ const UserHome = ({ user }) => {
       </div>
 
       <div className="userPage--home-posts">
-        <div className="popular">
-          <span className="subheading">Popular Uploads</span>
-          <div className="popular-slider">
-            <span
-              className="popular-slider-leftButton"
-              onClick={() => handleScroll("left")}
-            >
-              <VscChevronLeft className="icon" />
-            </span>
-            <div className="popular-slider-slides">
-              <img draggable="false" src={tree} alt="" className="slider-img" />
-              <img draggable="false" src={city} alt="" className="slider-img" />
-              <img
-                draggable="false"
-                src={insect}
-                alt=""
-                className="slider-img"
-              />
-              <img
-                draggable="false"
-                src={monochrome}
-                alt=""
-                className="slider-img"
-              />
-              <img
-                draggable="false"
-                src={landscape}
-                alt=""
-                className="slider-img"
-              />
-              <img
-                draggable="false"
-                src={summer}
-                alt=""
-                className="slider-img"
-              />
-              <img
-                draggable="false"
-                src={river}
-                alt=""
-                className="slider-img"
-              />
-              <img draggable="false" src={sky} alt="" className="slider-img" />
-              <img
-                draggable="false"
-                src={fanart}
-                alt=""
-                className="slider-img"
-              />
-              <img
-                draggable="false"
-                src={photography}
-                alt=""
-                className="slider-img"
-              />
-            </div>
+        {popular && popular.length > 0 && (
+          <div className="popular">
+            <span className="subheading">Popular Uploads</span>
+            <div className="popular-slider">
+              <span
+                className="popular-slider-leftButton"
+                onClick={() => handleScroll("left")}
+              >
+                <VscChevronLeft className="icon" />
+              </span>
+              <div className="popular-slider-slides">
+                {popular.map((item) => {
+                  return (
+                    <img
+                      draggable="false"
+                      src={item.image}
+                      alt=""
+                      className="slider-img"
+                    />
+                  );
+                })}
+              </div>
 
-            <span
-              className="popular-slider-rightButton"
-              onClick={() => handleScroll("right")}
-            >
-              <VscChevronRight className="icon" />
-            </span>
+              <span
+                className="popular-slider-rightButton"
+                onClick={() => handleScroll("right")}
+              >
+                <VscChevronRight className="icon" />
+              </span>
+            </div>
+          </div>
+        )}
+
+        <div className="LikedSection">
+          <div className="subheading">Liked Posts</div>
+          <div className="Liked">
+            {liked.map((item) => {
+              return (
+                <div className="LikedImage">
+                  <img
+                    draggable="false"
+                    src={item.image}
+                    alt=""
+                    className="image"
+                  />
+                  <div className="info">
+                    <span className="name">{item.name}</span>
+                    <span className="author">{item.author.username}</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        <div className="likedSection">
+        {/* <div className="likedSection">
           <span className="subheading">Liked Posts</span>
           <div className="liked">
             <div className="liked-masonry">
               <div className="liked-masonry-item">
-                {" "}
                 <img
                   draggable="false"
                   src={tree}
@@ -245,7 +221,6 @@ const UserHome = ({ user }) => {
                 />
               </div>
               <div className="liked-masonry-item">
-                {" "}
                 <img
                   draggable="false"
                   src={city}
@@ -253,62 +228,9 @@ const UserHome = ({ user }) => {
                   className="liked-img"
                 />
               </div>
-              <div className="liked-masonry-item">
-                <img
-                  draggable="false"
-                  src={insect}
-                  alt=""
-                  className="liked-img"
-                />
-              </div>
-              <div className="liked-masonry-item">
-                <img
-                  draggable="false"
-                  src={monochrome}
-                  alt=""
-                  className="liked-img"
-                />
-              </div>
-              <div className="liked-masonry-item">
-                <img
-                  draggable="false"
-                  src={landscape}
-                  alt=""
-                  className="liked-img"
-                />
-              </div>
-              <div className="liked-masonry-item">
-                <img
-                  draggable="false"
-                  src={summer}
-                  alt=""
-                  className="liked-img"
-                />
-              </div>
-              <div className="liked-masonry-item">
-                {" "}
-                <img
-                  draggable="false"
-                  src={river}
-                  alt=""
-                  className="liked-img"
-                />
-              </div>
-              <div className="liked-masonry-item">
-                {" "}
-                <img draggable="false" src={sky} alt="" className="liked-img" />
-              </div>
-              <div className="liked-masonry-item">
-                <img
-                  draggable="false"
-                  src={fanart}
-                  alt=""
-                  className="liked-img"
-                />
-              </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -26,12 +26,13 @@ const User = ({ id }) => {
   const [following, setFollowing] = useState([]); //for about section
   const [followers, setFollowers] = useState([]); //for about section
   const [userPosts, setUserPost] = useState([]); //for gallery section
+  const [popularPosts, setPopularPosts] = useState([]); //for home section
+  const [likedPosts, setLikedPosts] = useState([]); //for home section
 
   async function getUser() {
     try {
       const userResponse = await fetch(userUrl);
       const userdata = await userResponse.json();
-      console.log(userdata);
       setUser(userdata);
       if (typeof userdata.coverPhoto !== "undefined") {
         setCover(userdata.coverPhoto);
@@ -53,7 +54,6 @@ const User = ({ id }) => {
       const postUrl = "http://localhost:8000/posts/postByUser/" + id;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
-      console.log(postData);
       setUserPost(postData);
     } catch (err) {
       console.log(err);
@@ -66,7 +66,6 @@ const User = ({ id }) => {
       const followingUrl = "http://localhost:8000/users/fetchFollowing/" + id;
       const userResponse = await fetch(followingUrl);
       const userdata = await userResponse.json();
-      console.log(userdata);
       setFollowing(userdata);
     } catch (er) {
       console.log(er);
@@ -77,19 +76,56 @@ const User = ({ id }) => {
       const followerUrl = "http://localhost:8000/users/fetchFollowers/" + id;
       const userResponse = await fetch(followerUrl);
       const userdata = await userResponse.json();
-      console.log(userdata);
       setFollowers(userdata);
     } catch (er) {
       console.log(er);
     }
   }
+  const getPopularPosts = async () => {
+    try {
+      const num = 8;
+      const url =
+        "http://localhost:8000/posts/getPopularPosts/" + id + "/" + num;
+      const userResponse = await fetch(url);
+      const data = await userResponse.json();
+      setPopularPosts(data);
+    } catch (er) {
+      console.log(er);
+    }
+  };
+  const getLikedPosts = async () => {
+    try {
+      const url = "http://localhost:8000/posts/getLikedPosts/" + id;
+      const userResponse = await fetch(url);
+      const data = await userResponse.json();
+      setLikedPosts(data);
+    } catch (er) {
+      console.log(er);
+    }
+  };
 
   useEffect(() => {
     getUser();
-    getPostByUser();
-    getFollowing();
-    getFollowers();
+    // getPostByUser();
+    // getFollowing();
+    // getFollowers();
+    // getPopularPosts();
   }, [id]);
+  useEffect(() => {
+    getPostByUser();
+  }, [id]);
+  useEffect(() => {
+    getFollowing();
+  }, []);
+  useEffect(() => {
+    getFollowers();
+  }, []);
+  useEffect(() => {
+    getPopularPosts();
+  }, []);
+  useEffect(() => {
+    getLikedPosts();
+  }, []);
 
   const [isHome, setHome] = useState(true);
   const [isGallery, setGallery] = useState(false);
@@ -207,7 +243,9 @@ const User = ({ id }) => {
         </div>
 
         <div className="userPage--main">
-          {isHome && user && <UserHome user={user} />}
+          {isHome && user && popularPosts && (
+            <UserHome user={user} popular={popularPosts} liked={likedPosts} />
+          )}
           {isGallery && userPosts && <Gallery userPosts={userPosts} />}
           {isAbout && user && following && followers && (
             <About user={user} following={following} followers={followers} />
