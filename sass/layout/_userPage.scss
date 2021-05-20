@@ -376,6 +376,8 @@
     .popular:hover .popular-slider-rightButton {
       opacity: 0.5;
     }
+
+    //unused
     .likedSection {
       width: 86vw;
     }
@@ -420,6 +422,8 @@
     .likedSection:hover .liked::-webkit-scrollbar-thumb {
       background: #6ecf86;
     }
+
+    //used
     .LikedSection {
       width: 86vw;
       .Liked {
@@ -551,7 +555,7 @@
       }
     }
   }
-  //for Galler section
+  //for Galler section unused now
   .l {
     width: 100%;
     display: flex;

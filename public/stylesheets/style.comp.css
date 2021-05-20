@@ -2112,7 +2112,8 @@ body {
           margin-bottom: 1rem; }
           .userPage--home .LikedSection .Liked .LikedImage .image {
             width: 100%;
-            display: block; }
+            display: block;
+            transition: all 0.25s ease; }
           .userPage--home .LikedSection .Liked .LikedImage .info {
             position: absolute;
             top: 5%;
@@ -2120,7 +2121,8 @@ body {
             display: flex;
             flex-flow: column;
             color: white;
-            opacity: 0; }
+            opacity: 0;
+            transition: all 0.25s ease; }
             .userPage--home .LikedSection .Liked .LikedImage .info .name {
               font-size: 2rem;
               cursor: pointer; }
@@ -2128,12 +2130,74 @@ body {
               font-size: 1.6rem;
               cursor: pointer; }
           .userPage--home .LikedSection .Liked .LikedImage:hover .info {
-            opacity: 1; }
+            opacity: 1;
+            transition: all 0.25s ease; }
           .userPage--home .LikedSection .Liked .LikedImage:hover .image {
-            opacity: 0.5; }
+            opacity: 0.5;
+            transform: scale(1.05);
+            transition: all 0.25s ease; }
   .userPage--gallery {
     width: 90%;
-    margin: 5rem auto; }
+    margin: 8rem auto; }
+    .userPage--gallery .GallerySection {
+      width: 86vw;
+      display: flex;
+      flex-flow: column; }
+      .userPage--gallery .GallerySection .Gallery {
+        margin-top: 1rem;
+        width: 100%;
+        height: max-content;
+        columns: 4;
+        gap: 1rem; }
+        @media only screen and (max-width: 75em) {
+          .userPage--gallery .GallerySection .Gallery {
+            columns: 3; } }
+        @media only screen and (max-width: 56.25em) {
+          .userPage--gallery .GallerySection .Gallery {
+            columns: 2; } }
+        .userPage--gallery .GallerySection .Gallery .SingleImage {
+          background-color: black;
+          position: relative;
+          border-radius: 10px;
+          overflow: hidden;
+          margin-bottom: 1rem; }
+          .userPage--gallery .GallerySection .Gallery .SingleImage .image {
+            width: 100%;
+            display: block;
+            transition: all 0.25s ease; }
+          .userPage--gallery .GallerySection .Gallery .SingleImage .info {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            display: flex;
+            flex-flow: column;
+            color: white;
+            opacity: 0;
+            transition: all 0.25s ease; }
+            .userPage--gallery .GallerySection .Gallery .SingleImage .info .name {
+              font-size: 2rem;
+              cursor: pointer; }
+            .userPage--gallery .GallerySection .Gallery .SingleImage .info .author {
+              font-size: 1.6rem;
+              cursor: pointer; }
+          .userPage--gallery .GallerySection .Gallery .SingleImage:hover .info {
+            opacity: 1;
+            transition: all 0.25s ease; }
+          .userPage--gallery .GallerySection .Gallery .SingleImage:hover .image {
+            opacity: 0.5;
+            transform: scale(1.05);
+            transition: all 0.25s ease; }
+      .userPage--gallery .GallerySection .more {
+        margin-top: 2rem;
+        width: 100%;
+        font-size: 3rem;
+        font-weight: bold;
+        color: #888888;
+        background-color: #353535;
+        border-radius: 10px;
+        padding: 1.2rem 0;
+        text-align: center;
+        cursor: pointer; }
   .userPage .l {
     width: 100%;
     display: flex;
@@ -2750,7 +2814,8 @@ body {
             height: 100%;
             background-color: transparent;
             display: grid;
-            place-items: center; }
+            place-items: center;
+            transition: all 0.25s ease; }
             .settings-main .profile-items .photos .profilePhoto-photo .overlay .text {
               text-align: center;
               width: 80%;
@@ -2758,7 +2823,8 @@ body {
               color: #cccccc;
               opacity: 0; }
           .settings-main .profile-items .photos .profilePhoto-photo:hover .overlay {
-            background-color: rgba(37, 37, 37, 0.7); }
+            background-color: rgba(37, 37, 37, 0.7);
+            transition: all 0.25s ease; }
           .settings-main .profile-items .photos .profilePhoto-photo:hover .overlay .text {
             opacity: 1; }
           .settings-main .profile-items .photos .profilePhoto-photo .icon {
@@ -2790,7 +2856,8 @@ body {
             height: 100%;
             background-color: transparent;
             display: grid;
-            place-items: center; }
+            place-items: center;
+            transition: all 0.25s ease; }
             .settings-main .profile-items .photos .coverPhoto-photo .overlay .text {
               text-align: center;
               width: 80%;
@@ -2798,7 +2865,8 @@ body {
               color: #cccccc;
               opacity: 0; }
           .settings-main .profile-items .photos .coverPhoto-photo:hover .overlay {
-            background-color: rgba(37, 37, 37, 0.7); }
+            background-color: rgba(37, 37, 37, 0.7);
+            transition: all 0.25s ease; }
           .settings-main .profile-items .photos .coverPhoto-photo:hover .overlay .text {
             opacity: 1; }
           .settings-main .profile-items .photos .coverPhoto-photo .icon {

@@ -189,9 +189,11 @@
                 color: rgb(204, 204, 204);
                 opacity: 0;
               }
+              transition: all 0.25s ease;
             }
             &:hover .overlay {
               background-color: rgba(37, 37, 37, 0.7);
+              transition: all 0.25s ease;
             }
             &:hover .overlay .text {
               opacity: 1;
@@ -235,6 +237,7 @@
               background-color: transparent;
               display: grid;
               place-items: center;
+              transition: all 0.25s ease;
               .text {
                 text-align: center;
                 width: 80%;
@@ -245,6 +248,7 @@
             }
             &:hover .overlay {
               background-color: rgba(37, 37, 37, 0.7);
+              transition: all 0.25s ease;
             }
             &:hover .overlay .text {
               opacity: 1;

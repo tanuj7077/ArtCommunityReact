@@ -86,7 +86,20 @@ const SearchComponent = () => {
                   <>
                     <ul className="postList">
                       {post.map((item) => {
-                        return <li className="item">{item}</li>;
+                        return (
+                          <Route
+                            render={({ history }) => (
+                              <li
+                                className="item"
+                                onClick={() => {
+                                  history.push(`/post/${item.postId}`);
+                                }}
+                              >
+                                {item.post}
+                              </li>
+                            )}
+                          />
+                        );
                       })}
                     </ul>
                   </>
@@ -102,7 +115,21 @@ const SearchComponent = () => {
                   <>
                     <ul className="authorList">
                       {author.map((item) => {
-                        return <li className="item">{item}</li>;
+                        // return <li className="item">{item}</li>;
+                        return (
+                          <Route
+                            render={({ history }) => (
+                              <li
+                                className="item"
+                                onClick={() => {
+                                  history.push(`/user/${item}`);
+                                }}
+                              >
+                                {item}
+                              </li>
+                            )}
+                          />
+                        );
                       })}
                     </ul>
                   </>
@@ -119,7 +146,21 @@ const SearchComponent = () => {
                   <>
                     <ul className="tagList">
                       {tag.map((item) => {
-                        return <li className="item">{item}</li>;
+                        // return <li className="item">{item}</li>;
+                        return (
+                          <Route
+                            render={({ history }) => (
+                              <li
+                                className="item"
+                                onClick={() => {
+                                  history.push(`../tagSearch/${item}`);
+                                }}
+                              >
+                                {item}
+                              </li>
+                            )}
+                          />
+                        );
                       })}
                     </ul>
                   </>

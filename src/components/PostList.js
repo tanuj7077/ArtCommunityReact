@@ -40,7 +40,7 @@ const PostList = () => {
 
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
-    fetch(`http://localhost:8000/posts/postList?page=${pager.page}&limit=8`)
+    fetch(`http://localhost:8000/posts/postList?page=${pager.page}&limit=12`)
       .then((data) => data.json())
       .then((images) => {
         imgDispatch({ type: "STACK_IMAGES", images });
@@ -61,6 +61,7 @@ const PostList = () => {
         entries.forEach((en) => {
           if (en.intersectionRatio > 0) {
             pagerDispatch({ type: "ADVANCE_PAGE" });
+            console.log(pager.page);
           }
         });
       }).observe(node);
@@ -145,7 +146,7 @@ const PostList = () => {
       {imgData.fetching && <span className="loadingAnim">Loading...</span>}
       <div
         id="page-bottom-boundary"
-        //style={{ border: "1px solid red" }}
+        style={{ border: "10px solid transparent" }}
         ref={bottomBoundaryRef}
       ></div>
       {/* <ResponsiveMasonry
