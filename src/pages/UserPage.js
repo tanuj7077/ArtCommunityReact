@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import TopNav from "../components/TopNav";
 import SideNav from "../components/SideNav";
 
-import User from "../components/User";
+import User from "../components/UserPage/User";
 
 const UserPage = () => {
   const { id } = useParams();

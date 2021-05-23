@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import SubmitCoverModal from "./SubmitCoverModal";
-import SubmitProfilePicModal from "./SubmitProfilePicModal";
-import UserHome from "./UserPage/UserHome";
-import Gallery from "./UserPage/Gallery";
-import About from "./UserPage/About";
-import blank from "../tagImage/blankProfile.png";
+import SubmitCoverModal from "../SubmitCoverModal";
+import SubmitProfilePicModal from "../SubmitProfilePicModal";
+import UserHome from "./UserHome";
+import Gallery from "./Gallery";
+import About from "./About";
+import blank from "../../tagImage/blankProfile.png";
 
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../../context";
 
 const User = ({ id }) => {
   const {
@@ -51,7 +51,9 @@ const User = ({ id }) => {
   //------------For Gallery Section------------//
   async function getPostByUser() {
     try {
-      const postUrl = "http://localhost:8000/posts/postByUser/" + id;
+      const LIMIT = -1;
+      const postUrl =
+        "http://localhost:8000/posts/postByUser/" + id + "/" + LIMIT;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setUserPost(postData);

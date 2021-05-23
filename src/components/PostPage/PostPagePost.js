@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../../context";
 import CommentList from "./CommentList";
-import LoginModal from "./LoginModal";
+import LoginModal from "../LoginModal";
 import axios from "axios";
 import { Route } from "react-router-dom";
 
@@ -19,12 +19,13 @@ const PostPagePost = ({ id }) => {
     loginModal,
   } = useGlobalContext();
   let postUrl = "http://localhost:8000/posts/post/" + id;
+
   const [Post, setPost] = useState(null);
-  //const [totalLikes, setTotalLikes] = useState(0);
-  const [totalComments, setTotalComments] = useState(0);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [followStat, setFollowStat] = useState("");
+  const [postsByUser, setPostsByUser] = useState([]);
+  const [recommended, setRecommended] = useState([]);
 
   async function getPost() {
     try {
@@ -36,6 +37,7 @@ const PostPagePost = ({ id }) => {
       setComments(data.comments); //new
       console.log(data.likesArray.length);
       console.log(isLoggedIn, userData);
+
       if (isLoggedIn) {
         if (userData.following.includes(data.author.id)) {
           console.log("currently following");
@@ -49,8 +51,33 @@ const PostPagePost = ({ id }) => {
       console.log(err);
     }
   }
+
+  async function getPostByUser() {
+    try {
+      const LIMIT = 9;
+      const postUrl =
+        "http://localhost:8000/posts/postByUser/" + id + "/" + LIMIT;
+      const PostResponse = await fetch(postUrl);
+      const postData = await PostResponse.json();
+      setPostsByUser(postData);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async function getRecommended() {
+    /*try {
+      const postUrl = "http://localhost:8000/posts/postByUser/" + id;
+      const PostResponse = await fetch(postUrl);
+      const postData = await PostResponse.json();
+      setPostsByUser(postData);
+    } catch (err) {
+      console.log(err);
+    }*/
+  }
   useEffect(() => {
     getPost();
+    getPostByUser();
+    getRecommended();
   }, [isLoggedIn, id, userData]);
 
   async function handleLike() {
