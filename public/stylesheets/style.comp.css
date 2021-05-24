@@ -1150,7 +1150,27 @@ body {
     grid-row: 1 / -1;
     background-color: #1b1b1b;
     display: grid;
-    grid-template-rows: repeat(2, max-content); }
+    grid-template-rows: repeat(2, max-content);
+    /*&--thumbnails {
+      padding-top: 2rem;
+      display: grid;
+      grid-template-rows: repeat(3, min-content);
+      grid-template-columns: repeat(3, min-content);
+      gap: 1rem;
+
+      &-img {
+        width: 7vw;
+        height: 7vw;
+        @include respond(tab-land) {
+          width: 8.5vw;
+          height: 8.5vw;
+        }
+        @include respond(phone) {
+          width: 22vw;
+          height: 22vw;
+        }
+      }
+    }*/ }
     @media only screen and (max-width: 75em) {
       .postPage .otherContent {
         grid-column: 13 / -1;
@@ -1168,21 +1188,48 @@ body {
     .postPage .otherContent--recommend {
       justify-self: center;
       padding: 1.5rem 1.5rem; }
-    .postPage .otherContent--thumbnails {
+    .postPage .otherContent--loading {
+      margin-top: 2rem;
+      width: calc(7vw * 3 + 2rem);
+      height: calc(7vw * 3 + 2rem);
+      border: 1rem solid #666666;
+      background: linear-gradient(220deg, #141414, #666666, #111111);
+      background-size: 300% 300%;
+      -webkit-animation: CoverAnim 1s ease infinite;
+      -moz-animation: CoverAnim 1s ease infinite;
+      animation: CoverAnim 1s ease infinite;
+      display: grid;
+      place-items: center;
+      font-size: 4rem;
+      letter-spacing: 0.3rem; }
+      @media only screen and (max-width: 75em) {
+        .postPage .otherContent--loading {
+          width: calc(8.5vw * 3 + 2rem);
+          height: calc(8.5vw * 3 + 2rem); } }
+      @media only screen and (max-width: 37.5em) {
+        .postPage .otherContent--loading {
+          width: calc(22vw * 3 + 2rem);
+          height: calc(22vw * 3 + 2rem); } }
+    .postPage .otherContent--Thumbnails {
       padding-top: 2rem;
       display: grid;
       grid-template-rows: repeat(3, min-content);
       grid-template-columns: repeat(3, min-content);
       gap: 1rem; }
-      .postPage .otherContent--thumbnails-img {
+      .postPage .otherContent--Thumbnails-img {
+        cursor: pointer;
         width: 7vw;
-        height: 7vw; }
+        height: 7vw;
+        background-color: #666666;
+        background-size: cover;
+        background-position-x: center;
+        background-position-y: center; }
         @media only screen and (max-width: 75em) {
-          .postPage .otherContent--thumbnails-img {
+          .postPage .otherContent--Thumbnails-img {
             width: 8.5vw;
             height: 8.5vw; } }
         @media only screen and (max-width: 37.5em) {
-          .postPage .otherContent--thumbnails-img {
+          .postPage .otherContent--Thumbnails-img {
             width: 22vw;
             height: 22vw; } }
 
@@ -1322,7 +1369,7 @@ body {
   font-weight: 700;
   transition: 0.3s ease;
   z-index: 10;
-  border-right: 2px solid rgba(23, 28, 33, 0.95); }
+  border-right: 4px solid rgba(23, 28, 33, 0.95); }
   .sideNav-expansion--1 {
     position: sticky;
     top: 7.5vh; }

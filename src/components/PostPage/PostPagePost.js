@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useGlobalContext } from "../../context";
-import CommentList from "./CommentList";
+import CommentList from "./Comments/CommentList";
+import PostsByUser from "./PostsByUser/PostsByUser";
+import Recommended from "./Recommended/Recommended";
 import LoginModal from "../LoginModal";
 import axios from "axios";
 import { Route } from "react-router-dom";
@@ -24,8 +26,6 @@ const PostPagePost = ({ id }) => {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [followStat, setFollowStat] = useState("");
-  const [postsByUser, setPostsByUser] = useState([]);
-  const [recommended, setRecommended] = useState([]);
 
   async function getPost() {
     try {
@@ -51,33 +51,8 @@ const PostPagePost = ({ id }) => {
       console.log(err);
     }
   }
-
-  async function getPostByUser() {
-    try {
-      const LIMIT = 9;
-      const postUrl =
-        "http://localhost:8000/posts/postByUser/" + id + "/" + LIMIT;
-      const PostResponse = await fetch(postUrl);
-      const postData = await PostResponse.json();
-      setPostsByUser(postData);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  async function getRecommended() {
-    /*try {
-      const postUrl = "http://localhost:8000/posts/postByUser/" + id;
-      const PostResponse = await fetch(postUrl);
-      const postData = await PostResponse.json();
-      setPostsByUser(postData);
-    } catch (err) {
-      console.log(err);
-    }*/
-  }
   useEffect(() => {
     getPost();
-    getPostByUser();
-    getRecommended();
   }, [isLoggedIn, id, userData]);
 
   async function handleLike() {
@@ -271,29 +246,8 @@ const PostPagePost = ({ id }) => {
         </div>
 
         <div className="otherContent">
-          <div className="otherContent--user">
-            <span className="otherContent--subheading">By User</span>
-            <div className="otherContent--thumbnails">
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-            </div>
-          </div>
-          <div className="otherContent--recommend">
-            <span className="otherContent--subheading">You may like</span>
-            <div className="otherContent--thumbnails">
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-              <img src={url} alt="" className="otherContent--thumbnails-img" />
-            </div>
-          </div>
+          <PostsByUser id={Post.author.username} />
+          <Recommended id={Post.author.username} tags={Post.tags} />
         </div>
       </div>
       {loginModal && <LoginModal />}
