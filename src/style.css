@@ -3247,6 +3247,137 @@ body {
           color: #ff6a6a;
           cursor: pointer; }
 
+.followedList {
+  grid-column: 3 / -1;
+  grid-row: 3 / -1;
+  width: 100%;
+  height: min-content;
+  padding: 2rem 0; }
+
+.followed {
+  width: 95%;
+  height: min-content;
+  margin: 4rem auto;
+  display: flex;
+  flex-flow: column;
+  border-bottom: 2px solid #424242; }
+  .followed:last-child {
+    border: none; }
+  .followed .user {
+    position: relative;
+    height: 7rem;
+    margin-bottom: 2rem; }
+    .followed .user .userImg {
+      position: absolute;
+      top: 50%;
+      left: 0.5rem;
+      transform: translateY(-50%);
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%; }
+    .followed .user .username {
+      position: absolute;
+      top: 0.5rem;
+      left: 7.5rem;
+      color: white;
+      font-size: 3rem; }
+    .followed .user .userFollowers {
+      position: absolute;
+      top: 4rem;
+      left: 7.5rem;
+      color: white;
+      font-size: 1.6rem; }
+  .followed .slider {
+    position: relative;
+    margin-bottom: 5rem;
+    width: 100%;
+    overflow: hidden;
+    display: flex; }
+    .followed .slider .leftButton {
+      z-index: 2;
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 4.5rem;
+      width: 4.5rem;
+      border-radius: 50%;
+      background-color: #636363;
+      display: grid;
+      place-items: center;
+      opacity: 0.4; }
+      .followed .slider .leftButton .icon {
+        color: white;
+        width: 4rem;
+        height: 4rem; }
+      .followed .slider .leftButton:hover {
+        cursor: pointer;
+        opacity: 1; }
+    .followed .slider .rightButton {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 4.5rem;
+      width: 4.5rem;
+      border-radius: 50%;
+      background-color: #636363;
+      display: grid;
+      place-items: center;
+      opacity: 0.4; }
+      .followed .slider .rightButton .icon {
+        color: white;
+        width: 4rem;
+        height: 4rem; }
+      .followed .slider .rightButton:hover {
+        cursor: pointer;
+        opacity: 1; }
+    .followed .slider .followedItems {
+      display: flex;
+      flex-flow: row;
+      gap: 1rem;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch; }
+      .followed .slider .followedItems::-webkit-scrollbar {
+        display: none; }
+      .followed .slider .followedItems .item {
+        scroll-snap-align: start;
+        height: 20rem;
+        width: max-content;
+        border-radius: 5px;
+        background-color: black;
+        position: relative; }
+        .followed .slider .followedItems .item .img {
+          height: 20rem;
+          display: block; }
+          .followed .slider .followedItems .item .img::selection {
+            color: transparent;
+            background: transparent; }
+        .followed .slider .followedItems .item .imgInfo {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          padding: 1rem 1.5rem;
+          display: flex;
+          flex-flow: column;
+          color: white;
+          opacity: 0; }
+          .followed .slider .followedItems .item .imgInfo .name {
+            font-size: 2.5rem; }
+          .followed .slider .followedItems .item .imgInfo .others {
+            font-size: 1.6rem;
+            display: flex;
+            column-gap: 1rem;
+            flex-flow: row;
+            flex-wrap: wrap; }
+        .followed .slider .followedItems .item:hover .img {
+          opacity: 0.6; }
+        .followed .slider .followedItems .item:hover .imgInfo {
+          opacity: 1; }
+
 .Container {
   background-color: black;
   display: grid;
