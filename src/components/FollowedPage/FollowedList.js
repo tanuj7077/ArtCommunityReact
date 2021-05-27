@@ -6,12 +6,15 @@ const FollowedList = () => {
   const { userData } = useGlobalContext();
 
   return (
-    <div className="followedList">
-      <Followed />
-      <Followed />
-      <Followed />
-      <Followed />
-    </div>
+    <>
+      {userData.following && (
+        <div className="followedList">
+          {userData.following.map((userId) => {
+            return <Followed userId={userId} />;
+          })}
+        </div>
+      )}
+    </>
   );
 };
 

@@ -3274,7 +3274,9 @@ body {
       transform: translateY(-50%);
       width: 6rem;
       height: 6rem;
-      border-radius: 50%; }
+      background-size: cover;
+      background-position-x: center;
+      background-position-y: center; }
     .followed .user .username {
       position: absolute;
       top: 0.5rem;
@@ -3350,6 +3352,7 @@ body {
         position: relative; }
         .followed .slider .followedItems .item .img {
           height: 20rem;
+          border-radius: 10px;
           display: block; }
           .followed .slider .followedItems .item .img::selection {
             color: transparent;

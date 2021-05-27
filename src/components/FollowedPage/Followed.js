@@ -1,21 +1,72 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useGlobalContext } from "../../context";
 
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 
 import blank from "../../tagImage/blankProfile.png";
-import fanart from "../../tagImage/fanart.jpg";
-import bridge from "../../tagImage/bridge.jpg";
-import cubism from "../../tagImage/cubism.jpg";
-import flower from "../../tagImage/flower.jpg";
-import insect from "../../tagImage/insect.jpg";
-import waterColor from "../../tagImage/waterColor.jpg";
-import landscape from "../../tagImage/landscape.jpg";
-import macro from "../../tagImage/macro.jpg";
 
-const Followed = () => {
-  const { userData } = useGlobalContext();
+const Followed = (userId) => {
   const sliderRef = useRef(null);
+  const rightBtnRef = useRef(null);
+  const [username, setUsername] = useState("");
+  const [followers, setFollowers] = useState(0);
+  const [profilePic, setProfilePic] = useState("");
+  const [borderRad, setBorderRad] = useState();
+  const [posts, setPosts] = useState([]);
+  const [btnVisibility, setBtnVisibility] = useState(false);
+
+  async function getPostsByUserId() {
+    try {
+      const LIMIT = 9;
+      const postUrl =
+        "http://localhost:8000/posts/postsByUserId/" +
+        userId.userId +
+        "/" +
+        LIMIT;
+      const PostResponse = await fetch(postUrl);
+      const postData = await PostResponse.json();
+      setUsername(postData.username);
+      setFollowers(postData.followers);
+      setProfilePic(postData.profilePic);
+      setBorderRad(postData.profileBorderRad);
+      setPosts(postData.posts);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const setButtonVisibility = () => {
+    if (
+      posts &&
+      sliderRef &&
+      rightBtnRef &&
+      sliderRef.current &&
+      rightBtnRef.current
+    ) {
+      if (sliderRef.current.clientWidth >= rightBtnRef.current.offsetLeft) {
+        setBtnVisibility(true);
+      }
+      if (sliderRef.current.clientWidth < rightBtnRef.current.offsetLeft) {
+        setBtnVisibility(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getPostsByUserId();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setButtonVisibility();
+    }, 2000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+  useEffect(() => {
+    const event = window.addEventListener("resize", setButtonVisibility);
+    return () => window.removeEventListener("resize", event);
+  }, []);
 
   const handleScroll = (side) => {
     if (side === "right") {
@@ -28,97 +79,67 @@ const Followed = () => {
   return (
     <div className="followed">
       <div className="user">
-        <img src={blank} alt="userImg" className="userImg" />
-        <span className="username">Username</span>
-        <span className="userFollowers">35 Followers</span>
+        {/* <img src={blank} alt="userImg" className="userImg" /> */}
+        <div
+          className="userImg"
+          style={{
+            backgroundImage: `url(${
+              typeof profilePic === "undefined" ? blank : profilePic
+            })`,
+            borderRadius: `${
+              typeof borderRad === "undefined" ? "50%" : borderRad + "%"
+            }`,
+          }}
+        ></div>
+        <span className="username">{username}</span>
+        <span className="userFollowers">{followers} Followers</span>
       </div>
       <div className="slider">
-        <span className="leftButton" onClick={() => handleScroll("left")}>
+        <span
+          className="leftButton"
+          onClick={() => handleScroll("left")}
+          style={{
+            visibility: `${btnVisibility ? "visible" : "hidden"}`,
+          }}
+        >
           <VscChevronLeft className="icon" />
         </span>
+
         <div className="followedItems" ref={sliderRef}>
-          <div className="item">
-            <img src={fanart} draggable="false" alt="Img" className="img" />
-            <div className="imgInfo">
-              <span className="name">Fanart</span>
-              <div className="others">
-                <span className="likes">10 Likes</span>
-                <span className="comments">2 comments</span>
-              </div>
-            </div>
-          </div>
-          <div className="item">
-            <img src={bridge} draggable="false" alt="Img" className="img" />
-            <div className="imgInfo">
-              <span className="name">Magnificant Bridge</span>
-              <div className="others">
-                <span className="likes">100 Likes</span>
-                <span className="comments">20 comments</span>
-              </div>
-            </div>
-          </div>
-          <div className="item">
-            <img src={cubism} alt="Img" className="img" />
-            <div className="imgInfo">
-              <span className="name">Cube Art and something</span>
-              <div className="others">
-                <span className="likes">12 Likes</span>
-                <span className="comments">3 comments</span>
-              </div>
-            </div>
-          </div>
-          <div className="item">
-            <img src={flower} draggable="false" alt="Img" className="img" />
-            <div className="imgInfo">
-              <span className="name">Cube Art</span>
-              <div className="others">
-                <span className="likes">12 Likes</span>
-                <span className="comments">3 comments</span>
-              </div>
-            </div>
-          </div>
-          <div className="item">
-            <img src={insect} draggable="false" alt="Img" className="img" />
-            <div className="imgInfo">
-              <span className="name">Cube Art</span>
-              <div className="others">
-                <span className="likes">12 Likes</span>
-                <span className="comments">3 comments</span>
-              </div>
-            </div>
-          </div>
-          <div className="item">
-            <img src={waterColor} draggable="false" alt="Img" className="img" />
-            <div className="imgInfo">
-              <span className="name">Cube Art</span>
-              <div className="others">
-                <span className="likes">12 Likes</span>
-                <span className="comments">3 comments</span>
-              </div>
-            </div>
-          </div>
-          <div className="item">
-            <img src={landscape} draggable="false" alt="Img" className="img" />
-            <div className="imgInfo">
-              <span className="name">Cube Art</span>
-              <div className="others">
-                <span className="likes">12 Likes</span>
-                <span className="comments">3 comments</span>
-              </div>
-            </div>
-          </div>
-          <div className="item">
-            <img src={macro} draggable="false" alt="Img" className="img" />
-            <div className="imgInfo">
-              <span className="name">Cube Art</span>
-              <div className="others">
-                <span className="likes">12 Likes</span>
-                <span className="comments">3 comments</span>
-              </div>
-            </div>
-          </div>
+          {posts &&
+            posts.map((post) => {
+              return (
+                <div className="item">
+                  <img
+                    src={post.image}
+                    draggable="false"
+                    alt="Img"
+                    className="img"
+                  />
+                  <div className="imgInfo">
+                    <span className="name">{post.name}</span>
+                    <div className="others">
+                      <span className="likes">
+                        {post.likesArray.length} Likes
+                      </span>
+                      <span className="comments">
+                        {post.comments.length} comments
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
         </div>
-        <span className="rightButton" onClick={() => handleScroll("right")}>
+
+        <span
+          className="rightButton"
+          ref={rightBtnRef}
+          onClick={() => handleScroll("right")}
+          style={{
+            visibility: `${btnVisibility ? "visible" : "hidden"}`,
+          }}
+        >
           <VscChevronRight className="icon" />
         </span>
       </div>
