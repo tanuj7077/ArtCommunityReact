@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import {
   FaBirthdayCake,
@@ -15,15 +15,39 @@ import { AiOutlineLink, AiFillInstagram, AiFillLike } from "react-icons/ai";
 import fanart from "../../tagImage/fanart.jpg";
 
 const UserHome = ({ user, popular, liked }) => {
+  const sliderRef = useRef(null);
+  const rightBtnRef = useRef(null);
+  const [btnVisibility, setBtnVisibility] = useState(false);
+
+  const setButtonVisibility = () => {
+    if (sliderRef && rightBtnRef && sliderRef.current && rightBtnRef.current) {
+      if (sliderRef.current.clientWidth >= rightBtnRef.current.offsetLeft) {
+        setBtnVisibility(true);
+      }
+      if (sliderRef.current.clientWidth < rightBtnRef.current.offsetLeft) {
+        setBtnVisibility(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setButtonVisibility();
+    }, 2000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+  useEffect(() => {
+    const event = window.addEventListener("resize", setButtonVisibility);
+    return () => window.removeEventListener("resize", event);
+  }, []);
+
   const handleScroll = (side) => {
     if (side === "right") {
-      document
-        .getElementsByClassName("popular-slider-slides")[0]
-        .scrollBy(500, 0);
+      sliderRef.current.scrollBy(500, 0);
     } else {
-      document
-        .getElementsByClassName("popular-slider-slides")[0]
-        .scrollBy(-500, 0);
+      sliderRef.current.scrollBy(-500, 0);
     }
   };
 
@@ -160,10 +184,13 @@ const UserHome = ({ user, popular, liked }) => {
               <span
                 className="popular-slider-leftButton"
                 onClick={() => handleScroll("left")}
+                style={{
+                  visibility: `${btnVisibility ? "visible" : "hidden"}`,
+                }}
               >
                 <VscChevronLeft className="icon" />
               </span>
-              <div className="popular-slider-slides">
+              <div className="popular-slider-slides" ref={sliderRef}>
                 {popular.map((item) => {
                   return (
                     <img
@@ -178,7 +205,11 @@ const UserHome = ({ user, popular, liked }) => {
 
               <span
                 className="popular-slider-rightButton"
+                ref={rightBtnRef}
                 onClick={() => handleScroll("right")}
+                style={{
+                  visibility: `${btnVisibility ? "visible" : "hidden"}`,
+                }}
               >
                 <VscChevronRight className="icon" />
               </span>
