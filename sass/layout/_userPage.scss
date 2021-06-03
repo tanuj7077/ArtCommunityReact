@@ -247,6 +247,9 @@
             font-size: 2rem;
             letter-spacing: 0.3rem;
             margin-left: 1rem;
+            &:hover {
+              cursor: pointer;
+            }
           }
           &-actions {
             font-size: 1.8rem;
@@ -504,19 +507,24 @@
           }
           .info {
             position: absolute;
-            top: 5%;
-            left: 5%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 1.5rem;
             display: flex;
             flex-flow: column;
             color: white;
             opacity: 0;
             .name {
-              font-size: 2rem;
+              font-size: 2.5rem;
               cursor: pointer;
             }
-            .author {
+            .others {
               font-size: 1.6rem;
-              cursor: pointer;
+              display: flex;
+              column-gap: 1rem;
+              flex-flow: row;
+              flex-wrap: wrap;
             }
             transition: all 0.25s ease;
           }

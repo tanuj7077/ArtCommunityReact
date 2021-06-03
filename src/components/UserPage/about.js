@@ -13,7 +13,11 @@ import { AiOutlineLink, AiFillInstagram } from "react-icons/ai";
 import blank from "../../tagImage/blankProfile.png";
 
 const About = ({ user, following, followers }) => {
-  console.log(user);
+  const openInNewTab = (url) => {
+    var newUrl = "//" + url;
+    const newWindow = window.open(newUrl, "_blank");
+    if (newWindow) newWindow.opener = null;
+  };
   return (
     <div className="userPage--about">
       <div className="userPage--about-info">
@@ -68,31 +72,46 @@ const About = ({ user, following, followers }) => {
                   return (
                     <>
                       {link.includes("facebook.com") && (
-                        <span className="item">
+                        <span
+                          className="item"
+                          onClick={() => openInNewTab(link)}
+                        >
                           <FaFacebookSquare className="aboutIcon" />
                           <span className="aboutText">Facebook</span>
                         </span>
                       )}
                       {link.includes("instagram.com") && (
-                        <span className="item">
+                        <span
+                          className="item"
+                          onClick={() => openInNewTab(link)}
+                        >
                           <AiFillInstagram className="aboutIcon" />
                           <span className="aboutText">Instagram</span>
                         </span>
                       )}
                       {link.includes("gmail.com") && (
-                        <span className="item">
+                        <span
+                          className="item"
+                          onClick={() => openInNewTab(link)}
+                        >
                           <SiGmail className="aboutIcon" />
                           <span className="aboutText">Gmail</span>
                         </span>
                       )}
                       {link.includes("patreon.com") && (
-                        <span className="item">
+                        <span
+                          className="item"
+                          onClick={() => openInNewTab(link)}
+                        >
                           <FaPatreon className="aboutIcon" />
                           <span className="aboutText">Patreon</span>
                         </span>
                       )}
                       {link.includes("youtube.com") && (
-                        <span className="item">
+                        <span
+                          className="item"
+                          onClick={() => openInNewTab(link)}
+                        >
                           <FaYoutube className="aboutIcon" />
                           <span className="aboutText">Youtube</span>
                         </span>

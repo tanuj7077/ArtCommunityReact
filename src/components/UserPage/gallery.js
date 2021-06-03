@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import SinglePost from "../SinglePost";
+import { Route } from "react-router-dom";
 
 const Gallery = ({ userPosts }) => {
   const [posts, setPosts] = useState([]);
@@ -23,31 +22,6 @@ const Gallery = ({ userPosts }) => {
 
   return (
     <div className="userPage--gallery">
-      {/* <ResponsiveMasonry
-        columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1000: 4 }}
-      >
-        <Masonry>
-          {userPosts.map((post) => {
-            return <SinglePost key={post._id} {...post} />;
-          })}
-        </Masonry>
-      </ResponsiveMasonry> */}
-      {/* <div className="l">
-        <div className="l-m">
-          {userPosts.map((post) => {
-            return (
-              <div className="gallery-item">
-                <img
-                  draggable="false"
-                  src={post.image}
-                  alt=""
-                  className="gallery-img"
-                />
-              </div>
-            );
-          })}
-        </div>
-      </div> */}
       {posts && (
         <div className="GallerySection">
           <div className="Gallery">
@@ -56,8 +30,26 @@ const Gallery = ({ userPosts }) => {
                 <div className="SingleImage">
                   <img src={post.image} alt="galleryImage" className="image" />
                   <div className="info">
-                    <span className="name">{post.name}</span>
-                    <span className="author">{post.author.username}</span>
+                    <Route
+                      render={({ history }) => (
+                        <span
+                          onClick={() => {
+                            history.push(`/post/${post._id}`);
+                          }}
+                          className="name"
+                        >
+                          {post.name}
+                        </span>
+                      )}
+                    />
+                    <div className="others">
+                      <span className="likes">
+                        {post.likesArray.length} Likes
+                      </span>
+                      <span className="comments">
+                        {post.comments.length} comments
+                      </span>
+                    </div>
                   </div>
                 </div>
               );

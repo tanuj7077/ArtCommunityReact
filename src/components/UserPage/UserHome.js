@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Route } from "react-router-dom";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import {
   FaBirthdayCake,
@@ -14,7 +15,7 @@ import { AiOutlineLink, AiFillInstagram, AiFillLike } from "react-icons/ai";
 
 import fanart from "../../tagImage/fanart.jpg";
 
-const UserHome = ({ user, popular, liked }) => {
+const UserHome = ({ user, popular, liked, spotlight }) => {
   const sliderRef = useRef(null);
   const rightBtnRef = useRef(null);
   const [btnVisibility, setBtnVisibility] = useState(false);
@@ -158,19 +159,35 @@ const UserHome = ({ user, popular, liked }) => {
         </section>
         <section className="spotlight">
           <div className="spotlight-image">
-            <img className="img-landscape" src={fanart} alt="" />
+            <img className="img-landscape" src={spotlight.image} alt="" />
           </div>
           <div className="spotlight-info">
-            <span className="spotlight-info-name">Beautiful image</span>
+            <Route
+              render={({ history }) => (
+                <span
+                  onClick={() => {
+                    history.push(`/post/${spotlight._id}`);
+                  }}
+                  className="spotlight-info-name"
+                >
+                  {spotlight.name}
+                </span>
+              )}
+            />
+            {/* <span className="spotlight-info-name">{spotlight.name}</span> */}
             <div className="spotlight-info-actions">
-              <span className="spotlight-info-actions-like">
-                <AiFillLike class="infoIcon" />
-                <span className="text">50</span>
-              </span>
-              <span className="spotlight-info-actions-comment">
-                <FaCommentDots class="infoIcon" />
-                <span className="text">10</span>
-              </span>
+              {spotlight && spotlight.likesArray && (
+                <span className="spotlight-info-actions-like">
+                  <AiFillLike class="infoIcon" />
+                  <span className="text">{spotlight.likesArray.length}</span>
+                </span>
+              )}
+              {spotlight && spotlight.comments && (
+                <span className="spotlight-info-actions-comment">
+                  <FaCommentDots class="infoIcon" />
+                  <span className="text">{spotlight.comments.length}</span>
+                </span>
+              )}
             </div>
           </div>
         </section>
@@ -230,8 +247,31 @@ const UserHome = ({ user, popular, liked }) => {
                     className="image"
                   />
                   <div className="info">
-                    <span className="name">{item.name}</span>
-                    <span className="author">{item.author.username}</span>
+                    <Route
+                      render={({ history }) => (
+                        <span
+                          onClick={() => {
+                            history.push(`/post/${item._id}`);
+                          }}
+                          className="name"
+                        >
+                          {item.name}
+                        </span>
+                      )}
+                    />
+                    <Route
+                      render={({ history }) => (
+                        <span
+                          onClick={() => {
+                            history.push(`/user/${item.author.username}`);
+                          }}
+                          className="author"
+                        >
+                          {item.author.username}
+                        </span>
+                      )}
+                    />
+                    {/* <span className="author">{item.author.username}</span> */}
                   </div>
                 </div>
               );

@@ -42,6 +42,9 @@
       left: 7.5rem;
       color: white;
       font-size: 3rem;
+      &:hover {
+        cursor: pointer;
+      }
     }
     .userFollowers {
       position: absolute;
@@ -142,6 +145,9 @@
           opacity: 0;
           .name {
             font-size: 2.5rem;
+            &:hover {
+              cursor: pointer;
+            }
           }
           .others {
             font-size: 1.6rem;

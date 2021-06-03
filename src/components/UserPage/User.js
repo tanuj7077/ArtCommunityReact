@@ -28,6 +28,7 @@ const User = ({ id }) => {
   const [userPosts, setUserPost] = useState([]); //for gallery section
   const [popularPosts, setPopularPosts] = useState([]); //for home section
   const [likedPosts, setLikedPosts] = useState([]); //for home section
+  const [spotlight, setSpotlight] = useState({}); //for home section
 
   async function getUser() {
     try {
@@ -91,6 +92,7 @@ const User = ({ id }) => {
       const userResponse = await fetch(url);
       const data = await userResponse.json();
       setPopularPosts(data);
+      setSpotlight(data[0]);
     } catch (er) {
       console.log(er);
     }
@@ -108,26 +110,12 @@ const User = ({ id }) => {
 
   useEffect(() => {
     getUser();
-    // getPostByUser();
-    // getFollowing();
-    // getFollowers();
-    // getPopularPosts();
-  }, [id]);
-  useEffect(() => {
     getPostByUser();
-  }, [id]);
-  useEffect(() => {
     getFollowing();
-  }, []);
-  useEffect(() => {
     getFollowers();
-  }, []);
-  useEffect(() => {
     getPopularPosts();
-  }, []);
-  useEffect(() => {
     getLikedPosts();
-  }, []);
+  }, [id]);
 
   const [isHome, setHome] = useState(true);
   const [isGallery, setGallery] = useState(false);
@@ -246,7 +234,12 @@ const User = ({ id }) => {
 
         <div className="userPage--main">
           {isHome && user && popularPosts && (
-            <UserHome user={user} popular={popularPosts} liked={likedPosts} />
+            <UserHome
+              user={user}
+              popular={popularPosts}
+              liked={likedPosts}
+              spotlight={spotlight}
+            />
           )}
           {isGallery && userPosts && <Gallery userPosts={userPosts} />}
           {isAbout && user && following && followers && (

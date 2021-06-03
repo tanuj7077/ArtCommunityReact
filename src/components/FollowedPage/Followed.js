@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-
+import { Route } from "react-router-dom";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 
 import blank from "../../tagImage/blankProfile.png";
@@ -91,7 +91,19 @@ const Followed = (userId) => {
             }`,
           }}
         ></div>
-        <span className="username">{username}</span>
+        <Route
+          render={({ history }) => (
+            <span
+              onClick={() => {
+                history.push(`/user/${username}`);
+              }}
+              className="username"
+            >
+              {username}
+            </span>
+          )}
+        />
+        {/* <span className="username">{username}</span> */}
         <span className="userFollowers">{followers} Followers</span>
       </div>
       <div className="slider">
@@ -117,7 +129,19 @@ const Followed = (userId) => {
                     className="img"
                   />
                   <div className="imgInfo">
-                    <span className="name">{post.name}</span>
+                    <Route
+                      render={({ history }) => (
+                        <span
+                          onClick={() => {
+                            history.push(`/post/${post._id}`);
+                          }}
+                          className="name"
+                        >
+                          {post.name}
+                        </span>
+                      )}
+                    />
+                    {/* <span className="name">{post.name}</span> */}
                     <div className="others">
                       <span className="likes">
                         {post.likesArray.length} Likes
