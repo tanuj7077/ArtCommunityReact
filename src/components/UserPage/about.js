@@ -2,7 +2,6 @@ import React from "react";
 import {
   FaBirthdayCake,
   FaFacebookSquare,
-  FaDiscord,
   FaPatreon,
   FaYoutube,
 } from "react-icons/fa";

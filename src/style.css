@@ -883,6 +883,11 @@ body {
   display: grid;
   grid-template-rows: 1fr min-content; }
 
+.tagSearchList {
+  grid-row: 3 / -1;
+  padding-top: 0rem;
+  margin: 3rem auto; }
+
 .subHeading {
   color: white;
   font-size: 2rem;

@@ -23,7 +23,7 @@ const TagSearchList = ({ name }) => {
     fetchPosts();
   }, [name]);
   return (
-    <div className="main">
+    <div className="main tagSearchList">
       <ResponsiveMasonry
         columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1000: 4 }}
       >

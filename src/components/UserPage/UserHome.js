@@ -13,8 +13,6 @@ import { CgGenderFemale, CgGenderMale } from "react-icons/cg";
 import { HiLocationMarker } from "react-icons/hi";
 import { AiOutlineLink, AiFillInstagram, AiFillLike } from "react-icons/ai";
 
-import fanart from "../../tagImage/fanart.jpg";
-
 const UserHome = ({ user, popular, liked, spotlight }) => {
   const sliderRef = useRef(null);
   const rightBtnRef = useRef(null);

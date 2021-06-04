@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 
 const Gallery = ({ userPosts, posts, page, setPage }) => {
