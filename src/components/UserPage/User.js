@@ -30,6 +30,24 @@ const User = ({ id }) => {
   const [likedPosts, setLikedPosts] = useState([]); //for home section
   const [spotlight, setSpotlight] = useState({}); //for home section
 
+  //------------Pagination for gallerySection------------
+  const LIMIT = 9;
+  const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(0);
+  const paginate = (postArr, limit, pageNo) => {
+    return postArr.slice((pageNo - 1) * limit, pageNo * limit);
+  };
+  const addPosts = () => {
+    var arr = [];
+    var paginated = paginate(userPosts, LIMIT, page);
+    arr = [...posts, ...paginated];
+    setPosts(arr);
+  };
+
+  useEffect(() => {
+    addPosts();
+  }, [page]);
+
   async function getUser() {
     try {
       const userResponse = await fetch(userUrl);
@@ -241,7 +259,15 @@ const User = ({ id }) => {
               spotlight={spotlight}
             />
           )}
-          {isGallery && userPosts && <Gallery userPosts={userPosts} />}
+          {/* {isGallery && userPosts && <Gallery userPosts={userPosts} />} */}
+          {isGallery && userPosts && (
+            <Gallery
+              userPosts={userPosts}
+              posts={posts}
+              setPage={setPage}
+              page={page}
+            />
+          )}
           {isAbout && user && following && followers && (
             <About user={user} following={following} followers={followers} />
           )}

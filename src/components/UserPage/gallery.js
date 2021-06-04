@@ -1,24 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 
-const Gallery = ({ userPosts }) => {
-  const [posts, setPosts] = useState([]);
-  const [page, setPage] = useState(1);
-  const LIMIT = 12;
-
-  const paginate = (postArr, limit, pageNo) => {
-    return postArr.slice((pageNo - 1) * limit, pageNo * limit);
-  };
-  const addPosts = () => {
-    var arr = [];
-    var paginated = paginate(userPosts, LIMIT, page);
-    arr = [...posts, ...paginated];
-    setPosts(arr);
-  };
-
+const Gallery = ({ userPosts, posts, page, setPage }) => {
   useEffect(() => {
-    addPosts();
-  }, [page]);
+    if (page === 0) {
+      setPage(1);
+    }
+  }, []);
 
   return (
     <div className="userPage--gallery">
