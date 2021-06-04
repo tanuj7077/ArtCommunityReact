@@ -3,9 +3,6 @@
   grid-column: sideNav-start / sideNav-end;
   grid-row: 1 / -1;
 
-  //position: sticky;
-  //top: 0;
-
   display: grid;
   grid-template-rows: 7.5vh repeat(8, 8vh);
   align-items: stretch;
