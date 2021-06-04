@@ -6,6 +6,7 @@ import {
   FaPatreon,
   FaYoutube,
 } from "react-icons/fa";
+import { Route } from "react-router-dom";
 import { SiGmail } from "react-icons/si";
 import { CgGenderFemale, CgGenderMale } from "react-icons/cg";
 import { HiLocationMarker } from "react-icons/hi";
@@ -207,7 +208,36 @@ const About = ({ user, following, followers }) => {
             {following.map((user) => {
               return (
                 <>
-                  <div key={user.id} className="item">
+                  <Route
+                    render={({ history }) => (
+                      <div
+                        onClick={() => {
+                          history.push(`/user/${user.username}`);
+                        }}
+                        className="item"
+                      >
+                        {!user.image ? (
+                          <div
+                            className="img"
+                            style={{
+                              backgroundImage: `url(${blank})`,
+                            }}
+                          ></div>
+                        ) : (
+                          <div
+                            className="img"
+                            style={{
+                              backgroundImage: `url(${user.image})`,
+                              borderRadius: `${user.borderRad}%`,
+                            }}
+                          ></div>
+                        )}
+
+                        <span className="username">{user.username}</span>
+                      </div>
+                    )}
+                  />
+                  {/* <div key={user.id} className="item">
                     {!user.image ? (
                       <div
                         className="img"
@@ -226,7 +256,7 @@ const About = ({ user, following, followers }) => {
                     )}
 
                     <span className="username">{user.username}</span>
-                  </div>
+                  </div> */}
                 </>
               );
             })}
