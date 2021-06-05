@@ -883,6 +883,11 @@ body {
   display: grid;
   grid-template-rows: 1fr min-content; }
 
+.tagSearchList {
+  grid-row: 3 / -1;
+  padding-top: 0rem;
+  margin: 3rem auto; }
+
 .subHeading {
   color: white;
   font-size: 2rem;
@@ -3394,5 +3399,5 @@ body {
 .Container {
   background-color: black;
   display: grid;
-  grid-template-rows: 7.5vh 8vh max-content max-content;
+  grid-template-rows: 7.5vh 8vh max-content minmax(100vh, max-content);
   grid-template-columns: 0rem [sideNav-start] 7rem [sideNav-end] repeat(12, [col-start] 1fr [col-end]); }

@@ -10,6 +10,8 @@ import SearchComponent from "./SearchComponent";
 import { notifications } from "../data";
 import { useGlobalContext } from "../context";
 
+import blank from "../tagImage/blankProfile.png";
+
 const TopNav = () => {
   const {
     isLoggedIn,
@@ -79,7 +81,21 @@ const TopNav = () => {
               <span className="material-icons">portrait</span>
               <div className="topNav--account-dropdown">
                 <div className="accountName">
-                  <div className="profilePic"></div>
+                  <div
+                    className="profilePic"
+                    style={{
+                      backgroundImage: `url(${
+                        typeof userData.profilePic === "undefined"
+                          ? blank
+                          : userData.profilePic
+                      })`,
+                      borderRadius: `${
+                        typeof userData.profileBorderRad === "undefined"
+                          ? "0%"
+                          : userData.profileBorderRad + "%"
+                      }`,
+                    }}
+                  ></div>
                   <Route
                     render={({ history }) => (
                       <div

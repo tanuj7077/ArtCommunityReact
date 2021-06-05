@@ -223,10 +223,22 @@
       align-items: flex-start;
 
       .accountName {
-        font-size: 3rem;
-        font-weight: 700;
+        display: flex;
+        flex-flow: row;
         padding: 1.5rem 3rem;
-        color: rgb(114, 194, 114);
+        gap: 2rem;
+        .profilePic {
+          width: 4.5rem;
+          height: 4.5rem;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center;
+        }
+        .profileName {
+          font-size: 3rem;
+          font-weight: 700;
+          color: rgb(114, 194, 114);
+        }
       }
       .account-settings {
         padding: 1rem 3rem;

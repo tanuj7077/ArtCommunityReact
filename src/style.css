@@ -1786,10 +1786,20 @@ body {
       flex-flow: column;
       align-items: flex-start; }
       .topNav--account-dropdown .accountName {
-        font-size: 3rem;
-        font-weight: 700;
+        display: flex;
+        flex-flow: row;
         padding: 1.5rem 3rem;
-        color: #72c272; }
+        gap: 2rem; }
+        .topNav--account-dropdown .accountName .profilePic {
+          width: 4.5rem;
+          height: 4.5rem;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center; }
+        .topNav--account-dropdown .accountName .profileName {
+          font-size: 3rem;
+          font-weight: 700;
+          color: #72c272; }
       .topNav--account-dropdown .account-settings {
         padding: 1rem 3rem;
         align-self: stretch;
