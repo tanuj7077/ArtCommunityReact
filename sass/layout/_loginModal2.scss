@@ -1,0 +1,109 @@
+.LoginModal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1600;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+
+  &-body {
+    width: 50%;
+    height: 55rem;
+    background-color: rgb(43, 43, 43);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+      rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    &-img {
+      width: 50%;
+      height: 100%;
+      //background-color: wheat;
+      position: relative;
+      overflow: hidden;
+
+      .text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        text-transform: none;
+        padding: 0 3.5rem;
+
+        .content1 {
+          display: block;
+          font-size: 4.5rem;
+          font-weight: 600;
+          letter-spacing: 0.4rem;
+          color: #6ecf86;
+        }
+        .content2 {
+          display: block;
+          font-size: 2.5rem;
+          font-weight: 400;
+          letter-spacing: 0.3rem;
+          color: white;
+        }
+      }
+      .carousel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(44, 44, 44);
+        .carouselItem {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center;
+          opacity: 0;
+          //transition: opacity 0.5s linear;
+          animation: Fade 25s linear infinite;
+        }
+        .item1 {
+          background-image: url("../src/tagImage/sunset.jpg");
+          // animation: FormAnimationItem1 3s linear infinite;
+        }
+        .item2 {
+          background-image: url("../src/tagImage/fanart.jpg");
+          animation-delay: 5s;
+        }
+        .item3 {
+          background-image: url("../src/tagImage/old.jpg");
+          animation-delay: 10s;
+        }
+        .item4 {
+          background-image: url("../src/tagImage/waterColor.jpg");
+          animation-delay: 15s;
+        }
+        .item5 {
+          background-image: url("../src/tagImage/cubism.jpg");
+          animation-delay: 20s;
+        }
+      }
+    }
+    &-form {
+      width: 50%;
+      height: 100%;
+      background-color: rgb(90, 151, 221);
+    }
+  }
+}

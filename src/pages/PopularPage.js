@@ -2,6 +2,7 @@ import React from "react";
 import TopNav from "../components/TopNav";
 import SideNav from "../components/SideNav";
 import SideNavTopic from "../components/SideNavTopic";
+import LoginModal from "../components/Modals/LoginModal";
 
 const PopularPage = () => {
   return (
@@ -9,6 +10,7 @@ const PopularPage = () => {
       <TopNav />
       <SideNav />
       <SideNavTopic topic="Popular" />
+      <LoginModal />
     </div>
   );
 };
