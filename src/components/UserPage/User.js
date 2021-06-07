@@ -162,10 +162,9 @@ const User = ({ id }) => {
   return (
     <>
       <div className="userPage">
-        {userData.username === user.username ? (
+        {/* {userData.username === user.username ? (
           <div
             className="userPage--background"
-            // style={{ backgroundImage: `url(${cover})` }}
             style={{
               backgroundImage: `url(${
                 typeof userData.coverPhoto === "undefined"
@@ -179,6 +178,29 @@ const User = ({ id }) => {
             className="userPage--background"
             style={{ backgroundImage: `url(${cover})` }}
           ></div>
+        )} */}
+        {userData.username === user.username &&
+          typeof userData.coverPhoto !== "undefined" && (
+            <div
+              className="userPage--background"
+              style={{
+                backgroundImage: `url(${userData.coverPhoto})`,
+              }}
+            ></div>
+          )}
+        {userData.username === user.username &&
+          typeof userData.coverPhoto === "undefined" && (
+            <div className="userPage--background noCover"></div>
+          )}
+
+        {userData.username !== user.username && cover && (
+          <div
+            className="userPage--background"
+            style={{ backgroundImage: `url(${cover})` }}
+          ></div>
+        )}
+        {userData.username !== user.username && !cover && (
+          <div className="userPage--background noCover"></div>
         )}
 
         <div className="userPage--top">
