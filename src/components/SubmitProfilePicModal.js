@@ -30,6 +30,7 @@ const SubmitProfilePicModal = () => {
     userData,
     closeSubmitProfilePicModal,
     setUserData,
+    changeAlert,
   } = useGlobalContext();
 
   const [profileImage, setProfileImage] = useState("");
@@ -94,9 +95,9 @@ const SubmitProfilePicModal = () => {
                 axios
                   .post("http://localhost:8000/users/user/changeProfile", User)
                   .then((res) => {
-                    console.log(res.data);
-                    if (userData.username === res.data.username) {
-                      setUserData(res.data);
+                    if (userData.username === res.data.user.username) {
+                      setUserData(res.data.user);
+                      changeAlert(res.data.message);
                     }
                   });
                 closeSubmitProfilePicModal();
