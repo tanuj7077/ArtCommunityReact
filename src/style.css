@@ -3171,6 +3171,22 @@ body {
     height: 92.5vh;
     display: flex;
     flex-flow: column; }
+    .settings-main .headingSection {
+      border-bottom: 3px solid #3a3a3a; }
+      .settings-main .headingSection .heading {
+        font-size: 4rem;
+        letter-spacing: 0.35rem;
+        color: white; }
+      .settings-main .headingSection .saveBtn {
+        float: right;
+        font-size: 2rem;
+        padding: 1rem;
+        margin-right: 10rem;
+        background-color: black;
+        color: white; }
+        .settings-main .headingSection .saveBtn:hover {
+          cursor: pointer;
+          color: #6ecf86; }
     .settings-main .heading {
       font-size: 4rem;
       letter-spacing: 0.35rem;

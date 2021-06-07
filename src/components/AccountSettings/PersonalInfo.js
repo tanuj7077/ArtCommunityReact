@@ -1258,10 +1258,12 @@ const Personal = () => {
   ];
   return (
     <>
-      <span className="heading">Personal Info</span>
-      <span className="btn" onClick={save}>
-        Save Changes
-      </span>
+      <div className="headingSection">
+        <span className="heading">Personal Info</span>
+        <span className="saveBtn" onClick={save}>
+          Save Changes
+        </span>
+      </div>
 
       <div className="profile-items">
         <div className="inputs inputs-personalInfo">

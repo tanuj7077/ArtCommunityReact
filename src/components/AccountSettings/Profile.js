@@ -42,10 +42,12 @@ const Profile = () => {
 
   return (
     <>
-      <span className="heading">Profile</span>
-      <span className="btn" onClick={save}>
-        Save Changes
-      </span>
+      <div className="headingSection">
+        <span className="heading">Profile</span>
+        <span className="saveBtn" onClick={save}>
+          Save Changes
+        </span>
+      </div>
       <div className="profile-items">
         <div className="photos">
           <div className="profilePhoto" onClick={openSubmitProfilePicModal}>

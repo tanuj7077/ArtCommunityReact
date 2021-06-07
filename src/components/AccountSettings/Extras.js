@@ -89,10 +89,12 @@ const Extras = () => {
 
   return (
     <>
-      <span className="heading">Extras</span>
-      <span className="btn" onClick={save}>
-        Save Changes
-      </span>
+      <div className="headingSection">
+        <span className="heading">Extras</span>
+        <span className="saveBtn" onClick={save}>
+          Save Changes
+        </span>
+      </div>
       <div className="profile-items">
         <div className="inputs">
           <div className="settings-group settings-group-extras">
