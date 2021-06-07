@@ -2405,6 +2405,8 @@ body {
           .userPage--home .popular-slider-slides .slider-img::selection {
             color: transparent;
             background: transparent; }
+          .userPage--home .popular-slider-slides .slider-img:hover {
+            cursor: pointer; }
         .userPage--home .popular-slider-slides::-webkit-scrollbar {
           display: none; }
     .userPage--home .likedSection {

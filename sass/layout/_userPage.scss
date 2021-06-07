@@ -359,6 +359,9 @@
               color: transparent;
               background: transparent;
             }
+            &:hover {
+              cursor: pointer;
+            }
           }
           &::-webkit-scrollbar {
             display: none;

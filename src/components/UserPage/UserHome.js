@@ -208,11 +208,18 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
               <div className="popular-slider-slides" ref={sliderRef}>
                 {popular.map((item) => {
                   return (
-                    <img
-                      draggable="false"
-                      src={item.image}
-                      alt=""
-                      className="slider-img"
+                    <Route
+                      render={({ history }) => (
+                        <img
+                          onClick={() => {
+                            history.push(`/post/${item._id}`);
+                          }}
+                          className="slider-img"
+                          src={item.image}
+                          draggable="false"
+                          alt=""
+                        />
+                      )}
                     />
                   );
                 })}
