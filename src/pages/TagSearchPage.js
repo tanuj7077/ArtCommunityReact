@@ -5,6 +5,7 @@ import TopNav from "../components/TopNav";
 import SideNav from "../components/SideNav";
 import SideNavTopic from "../components/SideNavTopic";
 import TagSearchList from "../components/TagSearchList";
+import Alert from "../components/Modals/Alert/Alert";
 const TagSearchPage = () => {
   const { name } = useParams();
   return (
@@ -13,6 +14,7 @@ const TagSearchPage = () => {
       <SideNav />
       <SideNavTopic topic={`Tag : ${name}`} />
       <TagSearchList name={name} />
+      <Alert />
     </div>
   );
 };

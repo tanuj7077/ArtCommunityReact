@@ -6,7 +6,13 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isValid, setIsValid] = useState(1);
-  const { closeLoginModal2, setIsLoggedIn, setUserData } = useGlobalContext();
+  const {
+    closeLoginModal2,
+    setIsLoggedIn,
+    setUserData,
+    changeAlert,
+    alert,
+  } = useGlobalContext();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -18,11 +24,14 @@ const Signin = () => {
       await axios
         .post("http://localhost:8000/auth/signin", loginData)
         .then((res) => {
-          console.log(res.data);
           if (res.data.success) {
             closeLoginModal2();
             setUserData(res.data.userData);
             setIsLoggedIn(true);
+            changeAlert(res.data.message);
+          } else {
+            changeAlert(res.data.message);
+            console.log(alert);
           }
         });
     } catch (err) {

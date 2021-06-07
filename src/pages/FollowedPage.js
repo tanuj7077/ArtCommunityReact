@@ -4,6 +4,7 @@ import TopNav from "../components/TopNav";
 import SideNav from "../components/SideNav";
 import SideNavTopic from "../components/SideNavTopic";
 import FollowedList from "../components/FollowedPage/FollowedList";
+import Alert from "../components/Modals/Alert/Alert";
 
 const FollowedPage = () => {
   return (
@@ -12,6 +13,7 @@ const FollowedPage = () => {
       <SideNav />
       <SideNavTopic topic="Followed" />
       <FollowedList />
+      <Alert />
     </div>
   );
 };

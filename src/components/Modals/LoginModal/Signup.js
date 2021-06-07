@@ -11,7 +11,7 @@ const Signin = ({ toggleLoginMode }) => {
 
   const [isValid, setIsValid] = useState(0);
 
-  const { closeLoginModal } = useGlobalContext();
+  const { closeLoginModal, changeAlert } = useGlobalContext();
 
   async function handleSignup(e) {
     e.preventDefault();
@@ -29,6 +29,9 @@ const Signin = ({ toggleLoginMode }) => {
           console.log(res.data);
           if (res.data.success) {
             toggleLoginMode("login");
+            changeAlert(res.data.message);
+          } else {
+            changeAlert(res.data.message);
           }
         });
     } catch (err) {

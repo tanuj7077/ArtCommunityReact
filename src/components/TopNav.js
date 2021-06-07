@@ -25,6 +25,7 @@ const TopNav = () => {
     openLoginModal2,
     userData,
     setUserData,
+    changeAlert,
   } = useGlobalContext();
 
   const handleLogout = async (e) => {
@@ -35,6 +36,7 @@ const TopNav = () => {
         if (res.data.success) {
           setUserData({});
           setIsLoggedIn(false);
+          changeAlert(res.data.message);
           return <Redirect to="/" exact />;
         }
       });

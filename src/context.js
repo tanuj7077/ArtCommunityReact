@@ -17,6 +17,8 @@ const AppProvider = ({ children }) => {
   const [submitCoverModal, setSubmitCoverModal] = useState(false);
   const [submitProfilePicModal, setSubmitProfilePicModal] = useState(false);
   const [page, setPage] = useState(1);
+  const [alert, setAlert] = useState({});
+  const [showAlert, setShowAlert] = useState(0);
 
   const updatePostsBackend = async () => {
     const result = await axios.get("http://localhost:8000/posts/updatePosts");
@@ -26,6 +28,11 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     updatePostsBackend();
   }, []);
+
+  const changeAlert = (msg) => {
+    setAlert(msg);
+    setShowAlert(1);
+  };
 
   const openSubmitCoverModal = () => {
     setSubmitCoverModal(true);
@@ -119,11 +126,13 @@ const AppProvider = ({ children }) => {
         closeSubmitProfilePicModal,
         page,
         setPage,
-        //userPosts,
-        //setUserPost,
         loginModal2,
         openLoginModal2,
         closeLoginModal2,
+        alert,
+        changeAlert,
+        showAlert,
+        setShowAlert,
       }}
     >
       {children}

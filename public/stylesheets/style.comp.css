@@ -211,8 +211,22 @@ body {
     color: white;
     font-size: 2rem;
     letter-spacing: 0.4rem;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 1rem 2rem; }
+  .btn-login {
+    background-color: black;
+    color: white;
+    font-size: 1.6rem;
+    letter-spacing: 0.3rem;
+    border-radius: 5px;
+    padding: 1rem 1.5rem;
+    margin-top: 2rem; }
+    .btn-login:hover {
+      color: #5dad71; }
+    .btn-login-disabled {
+      color: #a3a2a2; }
+      .btn-login-disabled:hover {
+        color: #a3a2a2; }
   .btn:hover {
     cursor: pointer; }
 
@@ -345,6 +359,266 @@ body {
       .form__group--basic .form__input-textarea-comment::-webkit-scrollbar-corner {
         display: none; }
       .form__group--basic .form__input-textarea-comment::-webkit-resizer {
+        color: transparent; }
+  .form__group--login {
+    margin: 4rem 0rem;
+    margin-bottom: 0; }
+    .form__group--login .form__input {
+      font-size: 1.6rem;
+      font-family: inherit;
+      letter-spacing: 0.4rem;
+      color: inherit;
+      padding: 0 1rem;
+      padding-top: 1rem;
+      background-color: rgba(128, 128, 128, 0.5);
+      color: white;
+      border: none;
+      border-bottom: 2px solid black;
+      width: 100%;
+      height: 4rem;
+      display: block;
+      transition: all 0.4s; }
+      .form__group--login .form__input::-webkit-input-placeholder {
+        color: gray; }
+      .form__group--login .form__input:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid #6ecf86; }
+      .form__group--login .form__input:focus:invalid {
+        border-bottom: 2px solid red; }
+    .form__group--login .form__label {
+      text-align: left;
+      color: #6ecf86;
+      position: absolute;
+      left: 0.8rem;
+      bottom: 0;
+      transform: translateY(-2.2rem);
+      font-size: 1.5rem;
+      letter-spacing: 0.4rem;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      transition: all 0.2s; }
+    .form__group--login .form__input:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(1rem);
+      font-size: 1.5rem; }
+    .form__group--login .form__input:placeholder-shown {
+      padding: 1.5rem 1rem; }
+    .form__group--login .form__input-number {
+      border: none;
+      border-bottom: 2px dashed red;
+      background-color: white;
+      letter-spacing: 1rem; }
+    .form__group--login .form__input-textarea {
+      font-size: 2rem;
+      font-family: inherit;
+      letter-spacing: 0.4rem;
+      color: inherit;
+      padding: 0 1rem;
+      padding-top: 1rem;
+      background-color: rgba(128, 128, 128, 0.5);
+      border: none;
+      border-bottom: 2px solid black;
+      width: 100%;
+      display: block;
+      transition: all 0.4s; }
+      .form__group--login .form__input-textarea::-webkit-input-placeholder {
+        color: gray; }
+      .form__group--login .form__input-textarea:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid #6ecf86; }
+      .form__group--login .form__input-textarea::-webkit-scrollbar {
+        width: 7px; }
+      .form__group--login .form__input-textarea::-webkit-scrollbar-thumb {
+        background: #3e3f3e;
+        border-radius: 5px; }
+      .form__group--login .form__input-textarea::-webkit-scrollbar-track {
+        background: transparent; }
+      .form__group--login .form__input-textarea::-webkit-scrollbar-corner {
+        display: none; }
+      .form__group--login .form__input-textarea::-webkit-resizer {
+        color: transparent; }
+    .form__group--login .form__input-textarea:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(1rem);
+      font-size: 1.5rem; }
+    .form__group--login .form__input-select {
+      width: 30vw; }
+    .form__group--login .form__input-select:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(1rem);
+      font-size: 1.5rem; }
+    .form__group--login .select__menu-list::-webkit-scrollbar {
+      width: 7px; }
+    .form__group--login .select__menu-list::-webkit-scrollbar-thumb {
+      background: #3e3f3e;
+      border-radius: 5px; }
+    .form__group--login .select__menu-list::-webkit-scrollbar-track {
+      background: transparent; }
+    .form__group--login .form__input-textarea-comment {
+      font-size: 2rem;
+      font-family: inherit;
+      letter-spacing: 0.4rem;
+      color: inherit;
+      padding: 0 1rem;
+      padding-top: 1rem;
+      background-color: rgba(128, 128, 128, 0.5);
+      white-space: pre;
+      border: 2px solid transparent;
+      width: 100%;
+      display: block;
+      transition: all 0.1s; }
+      .form__group--login .form__input-textarea-comment::-webkit-input-placeholder {
+        color: gray; }
+      .form__group--login .form__input-textarea-comment:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        border: 2px solid #6ecf86; }
+      .form__group--login .form__input-textarea-comment::-webkit-scrollbar {
+        width: 7px; }
+      .form__group--login .form__input-textarea-comment::-webkit-scrollbar-thumb {
+        background: #3e3f3e;
+        border-radius: 5px; }
+      .form__group--login .form__input-textarea-comment::-webkit-scrollbar-track {
+        background: transparent; }
+      .form__group--login .form__input-textarea-comment::-webkit-scrollbar-corner {
+        display: none; }
+      .form__group--login .form__input-textarea-comment::-webkit-resizer {
+        color: transparent; }
+  .form__group--signup {
+    margin: 4rem 0rem;
+    margin-bottom: 0; }
+    .form__group--signup .form__input {
+      font-size: 1.6rem;
+      font-family: inherit;
+      letter-spacing: 0.4rem;
+      color: inherit;
+      padding: 0 1rem;
+      padding-top: 1rem;
+      background-color: rgba(128, 128, 128, 0.5);
+      color: white;
+      border: none;
+      border-bottom: 2px solid black;
+      width: 100%;
+      height: 4rem;
+      display: block;
+      transition: all 0.4s; }
+      .form__group--signup .form__input::-webkit-input-placeholder {
+        color: gray; }
+      .form__group--signup .form__input:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid #6ecf86; }
+      .form__group--signup .form__input:focus:invalid {
+        border-bottom: 2px solid red; }
+    .form__group--signup .form__label {
+      text-align: left;
+      color: #6ecf86;
+      position: absolute;
+      left: 0.8rem;
+      bottom: 0;
+      transform: translateY(-2.2rem);
+      font-size: 1.5rem;
+      letter-spacing: 0.4rem;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      transition: all 0.2s; }
+    .form__group--signup .form__input:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(1rem);
+      font-size: 1.5rem; }
+    .form__group--signup .form__input:placeholder-shown {
+      padding: 1.5rem 1rem; }
+    .form__group--signup .form__input-number {
+      border: none;
+      border-bottom: 2px dashed red;
+      background-color: white;
+      letter-spacing: 1rem; }
+    .form__group--signup .form__input-textarea {
+      font-size: 2rem;
+      font-family: inherit;
+      letter-spacing: 0.4rem;
+      color: inherit;
+      padding: 0 1rem;
+      padding-top: 1rem;
+      background-color: rgba(128, 128, 128, 0.5);
+      border: none;
+      border-bottom: 2px solid black;
+      width: 100%;
+      display: block;
+      transition: all 0.4s; }
+      .form__group--signup .form__input-textarea::-webkit-input-placeholder {
+        color: gray; }
+      .form__group--signup .form__input-textarea:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid #6ecf86; }
+      .form__group--signup .form__input-textarea::-webkit-scrollbar {
+        width: 7px; }
+      .form__group--signup .form__input-textarea::-webkit-scrollbar-thumb {
+        background: #3e3f3e;
+        border-radius: 5px; }
+      .form__group--signup .form__input-textarea::-webkit-scrollbar-track {
+        background: transparent; }
+      .form__group--signup .form__input-textarea::-webkit-scrollbar-corner {
+        display: none; }
+      .form__group--signup .form__input-textarea::-webkit-resizer {
+        color: transparent; }
+    .form__group--signup .form__input-textarea:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(1rem);
+      font-size: 1.5rem; }
+    .form__group--signup .form__input-select {
+      width: 30vw; }
+    .form__group--signup .form__input-select:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(1rem);
+      font-size: 1.5rem; }
+    .form__group--signup .select__menu-list::-webkit-scrollbar {
+      width: 7px; }
+    .form__group--signup .select__menu-list::-webkit-scrollbar-thumb {
+      background: #3e3f3e;
+      border-radius: 5px; }
+    .form__group--signup .select__menu-list::-webkit-scrollbar-track {
+      background: transparent; }
+    .form__group--signup .form__input-textarea-comment {
+      font-size: 2rem;
+      font-family: inherit;
+      letter-spacing: 0.4rem;
+      color: inherit;
+      padding: 0 1rem;
+      padding-top: 1rem;
+      background-color: rgba(128, 128, 128, 0.5);
+      white-space: pre;
+      border: 2px solid transparent;
+      width: 100%;
+      display: block;
+      transition: all 0.1s; }
+      .form__group--signup .form__input-textarea-comment::-webkit-input-placeholder {
+        color: gray; }
+      .form__group--signup .form__input-textarea-comment:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        border: 2px solid #6ecf86; }
+      .form__group--signup .form__input-textarea-comment::-webkit-scrollbar {
+        width: 7px; }
+      .form__group--signup .form__input-textarea-comment::-webkit-scrollbar-thumb {
+        background: #3e3f3e;
+        border-radius: 5px; }
+      .form__group--signup .form__input-textarea-comment::-webkit-scrollbar-track {
+        background: transparent; }
+      .form__group--signup .form__input-textarea-comment::-webkit-scrollbar-corner {
+        display: none; }
+      .form__group--signup .form__input-textarea-comment::-webkit-resizer {
         color: transparent; }
 
 .inputSlider {
@@ -2131,6 +2405,8 @@ body {
           .userPage--home .popular-slider-slides .slider-img::selection {
             color: transparent;
             background: transparent; }
+          .userPage--home .popular-slider-slides .slider-img:hover {
+            cursor: pointer; }
         .userPage--home .popular-slider-slides::-webkit-scrollbar {
           display: none; }
     .userPage--home .likedSection {
@@ -3428,10 +3704,18 @@ body {
   top: 0;
   left: 0;
   z-index: 1600;
-  background: rgba(0, 0, 0, 0.5);
   display: grid;
   place-items: center; }
+  .LoginModal-outside {
+    z-index: 1601;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6); }
   .LoginModal-body {
+    z-index: 1602;
     width: 50%;
     height: 55rem;
     background-color: #2b2b2b;
@@ -3538,6 +3822,18 @@ body {
         .LoginModal-body-form .heading-signup::after {
           transform: translateX(100%);
           transition: all 0.3s ease; }
+      .LoginModal-body-form .loginForm {
+        margin: 5rem 4rem;
+        display: grid;
+        place-items: center; }
+        .LoginModal-body-form .loginForm .form {
+          width: 100%; }
+      .LoginModal-body-form .signupForm {
+        margin: auto 4rem;
+        display: grid;
+        place-items: center; }
+        .LoginModal-body-form .signupForm .form {
+          width: 100%; }
 
 .Container {
   background-color: black;
