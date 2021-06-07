@@ -18,7 +18,7 @@ import AccountSettingsPage from "./pages/AccountSettingsPage";
 
 axios.defaults.withCredentials = true;
 function App() {
-  const { setIsLoggedIn, setUserData } = useGlobalContext();
+  const { setIsLoggedIn, setUserData, isLoggedIn } = useGlobalContext();
   const getLoggedIn = async () => {
     const loggedInRes = await axios.get("http://localhost:8000/auth/loggedIn");
     console.log(loggedInRes);
@@ -54,11 +54,10 @@ function App() {
         <Home />
       </Route>
       <Route path="/user/:id">
-        {/* {isLoggedIn ? <UserPage /> : <Redirect to="/" exact />} */}
         <UserPage />
       </Route>
       <Route path="/account/:id">
-        <AccountSettingsPage />
+        {isLoggedIn ? <AccountSettingsPage /> : <Redirect to="/" exact />}
       </Route>
       <Route path="/post/:id">
         <PostPage />
@@ -70,7 +69,7 @@ function App() {
         <DailyPage />
       </Route>
       <Route path="/followed">
-        <FollowedPage />
+        {isLoggedIn ? <FollowedPage /> : <Redirect to="/" exact />}
       </Route>
       <Route path="/new">
         <NewPage />

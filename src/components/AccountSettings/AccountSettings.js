@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import { BsChevronRight } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { RiProfileLine } from "react-icons/ri";
@@ -13,7 +14,7 @@ import Appearance from "./Appearance";
 import { useGlobalContext } from "../../context";
 
 const AccountSettings = ({ id }) => {
-  const { isLoggedIn, userData } = useGlobalContext();
+  const { userData } = useGlobalContext();
   console.log(userData);
   const [isProfile, setProfile] = useState(true);
   const [isPersonal, setPersonal] = useState(false);
