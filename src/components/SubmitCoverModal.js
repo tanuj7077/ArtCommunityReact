@@ -82,8 +82,8 @@ const SubmitCoverModal = () => {
                 // }
                 if (userData.username === res.data.user.username) {
                   setUserData(res.data.user);
-                  changeAlert(res.data.message);
                 }
+                changeAlert(res.data.message);
               });
             closeSubmitCoverModal();
           })

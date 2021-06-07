@@ -1211,10 +1211,8 @@ body {
   grid-column: 3 / -1;
   grid-row: 4 / -1;
   padding-top: 5rem;
-  margin: auto;
-  width: 95%;
-  display: grid;
-  grid-template-rows: 1fr min-content; }
+  margin: 0 auto;
+  width: 95%; }
 
 .tagSearchList {
   grid-row: 3 / -1;

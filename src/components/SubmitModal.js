@@ -125,7 +125,7 @@ const customStyles = {
 };
 
 const SubmitModal = () => {
-  const { closeSubmitModal, userData } = useGlobalContext();
+  const { closeSubmitModal, userData, changeAlert } = useGlobalContext();
 
   const [image, setImage] = useState("");
   const [toSendImage, setToSendImage] = useState("");
@@ -187,7 +187,10 @@ const SubmitModal = () => {
             };
             axios
               .post("http://localhost:8000/posts/newPost", post)
-              .then((res) => console.log(res.data));
+              .then((res) => {
+                console.log(res.data);
+                changeAlert(res.data.message);
+              });
             closeSubmitModal();
           });
       }

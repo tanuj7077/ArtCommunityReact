@@ -5,7 +5,7 @@ import { MdEdit } from "react-icons/md";
 import { FaTrash } from "react-icons/fa";
 
 const Extras = () => {
-  const { isLoggedIn, userData, setUserData } = useGlobalContext();
+  const { isLoggedIn, userData, setUserData, changeAlert } = useGlobalContext();
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -62,7 +62,8 @@ const Extras = () => {
     };
     axios.post(url, extrasInfo).then((res) => {
       console.log(res.data.extras);
-      setUserData(res.data);
+      setUserData(res.data.user);
+      changeAlert(res.data.message);
     });
   };
 

@@ -15,6 +15,7 @@ const Profile = () => {
     isLoggedIn,
     userData,
     setUserData,
+    changeAlert,
   } = useGlobalContext();
   let url = "http://localhost:8000/users/user/editProfile/" + userData._id;
   const [name, setName] = useState("");
@@ -28,8 +29,8 @@ const Profile = () => {
       email: email,
     };
     axios.post(url, profileInfo).then((res) => {
-      console.log(res.data);
-      setUserData(res.data);
+      setUserData(res.data.user);
+      changeAlert(res.data.message);
     });
   };
 

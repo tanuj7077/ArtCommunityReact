@@ -97,8 +97,8 @@ const SubmitProfilePicModal = () => {
                   .then((res) => {
                     if (userData.username === res.data.user.username) {
                       setUserData(res.data.user);
-                      changeAlert(res.data.message);
                     }
+                    changeAlert(res.data.message);
                   });
                 closeSubmitProfilePicModal();
               })
