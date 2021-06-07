@@ -5,6 +5,7 @@ import axios from "axios";
 
 import SubmitModal from "./SubmitModal";
 import LoginModal from "./LoginModal";
+import LoginModal2 from "./Modals/LoginModal/LoginModal";
 import SearchComponent from "./SearchComponent";
 
 import { notifications } from "../data";
@@ -20,6 +21,8 @@ const TopNav = () => {
     submitModal,
     openLoginModal,
     loginModal,
+    loginModal2,
+    openLoginModal2,
     userData,
     setUserData,
   } = useGlobalContext();
@@ -139,7 +142,7 @@ const TopNav = () => {
             <div className="topNav--separator">
               <span className="separator"></span>
             </div>
-            <div className="topNav--submit" onClick={openLoginModal}>
+            <div className="topNav--submit" onClick={openLoginModal2}>
               <span>Login</span>
             </div>
           </>
@@ -149,6 +152,7 @@ const TopNav = () => {
       {submitModal && <SubmitModal />}
 
       {loginModal && <LoginModal />}
+      {loginModal2 && <LoginModal2 />}
     </>
   );
 };

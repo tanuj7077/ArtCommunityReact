@@ -2,7 +2,7 @@ import React from "react";
 import TopNav from "../components/TopNav";
 import SideNav from "../components/SideNav";
 import SideNavTopic from "../components/SideNavTopic";
-import LoginModal from "../components/Modals/LoginModal";
+import LoginModal from "../components/Modals/LoginModal/LoginModal";
 
 const PopularPage = () => {
   return (

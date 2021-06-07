@@ -11,6 +11,7 @@ const AppProvider = ({ children }) => {
   const [explorePageTags, setExplorePageTags] = useState([]);
   const [submitModal, setsubmitModal] = useState(false);
   const [loginModal, setloginModal] = useState(false);
+  const [loginModal2, setloginModal2] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [userData, setUserData] = useState({});
   const [submitCoverModal, setSubmitCoverModal] = useState(false);
@@ -68,6 +69,13 @@ const AppProvider = ({ children }) => {
   const closeLoginModal = () => {
     setloginModal(false);
   };
+  const openLoginModal2 = () => {
+    setloginModal2(true);
+  };
+
+  const closeLoginModal2 = () => {
+    setloginModal2(false);
+  };
 
   const switchToLogin = () => {
     setIsLogin(true);
@@ -113,6 +121,9 @@ const AppProvider = ({ children }) => {
         setPage,
         //userPosts,
         //setUserPost,
+        loginModal2,
+        openLoginModal2,
+        closeLoginModal2,
       }}
     >
       {children}

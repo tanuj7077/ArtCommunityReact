@@ -5,11 +5,20 @@
   top: 0;
   left: 0;
   z-index: 1600;
-  background: rgba(0, 0, 0, 0.5);
   display: grid;
   place-items: center;
 
+  &-outside {
+    z-index: 1601;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
   &-body {
+    z-index: 1602;
     width: 50%;
     height: 55rem;
     background-color: rgb(43, 43, 43);
@@ -30,11 +39,12 @@
 
       .text {
         position: absolute;
-        top: 0;
+        bottom: 0;
+        //top: 0;
         left: 0;
         z-index: 100;
         width: 100%;
-        height: 100%;
+        height: 50%;
         background-color: rgba(0, 0, 0, 0.6);
         display: flex;
         flex-flow: column;
@@ -103,7 +113,62 @@
     &-form {
       width: 50%;
       height: 100%;
-      background-color: rgb(90, 151, 221);
+      background-color: rgb(44, 44, 44);
+      display: flex;
+      flex-flow: column;
+      .heading {
+        position: relative;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: nowrap;
+        color: rgb(173, 173, 173);
+        font-size: 3rem;
+        letter-spacing: 0.3rem;
+        text-align: center;
+        // padding: 2rem 0;
+        //border-bottom: 2px solid rgb(90, 90, 90);
+        .login {
+          padding: 2rem 0;
+          //border-bottom: 2px solid rgb(90, 90, 90);
+          width: 50%;
+          cursor: pointer;
+        }
+        .signup {
+          padding: 2rem 0;
+          //border-bottom: 2px solid rgb(90, 90, 90);
+          width: 50%;
+          cursor: pointer;
+        }
+        &::after {
+          position: absolute;
+          bottom: 0;
+          content: "";
+          height: 2px;
+          width: 50%;
+          background-color: rgb(173, 173, 173);
+          transition: all 0.3s ease;
+        }
+        &-signup::after {
+          transform: translateX(100%);
+          transition: all 0.3s ease;
+        }
+      }
+      .loginForm {
+        margin: 5rem 4rem;
+        display: grid;
+        place-items: center;
+        .form {
+          width: 100%;
+        }
+      }
+      .signupForm {
+        margin: auto 4rem;
+        display: grid;
+        place-items: center;
+        .form {
+          width: 100%;
+        }
+      }
     }
   }
 }
