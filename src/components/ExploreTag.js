@@ -16,6 +16,7 @@ const ExploreTag = ({ image, name }) => {
               className="explorePage--grid-item--card-img"
               src={image}
               alt=""
+              draggable="false"
             />
             <span className="explorePage--grid-item--card-title">{name}</span>
           </div>

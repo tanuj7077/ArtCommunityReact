@@ -105,6 +105,7 @@ const AppProvider = ({ children }) => {
         isLoggedIn,
         posts,
         explorePageTags,
+        setExplorePageTags,
         setPosts,
         openSubmitModal,
         closeSubmitModal,

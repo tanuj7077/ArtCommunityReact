@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 
 import TopNav from "../components/TopNav";
 import SideNav from "../components/SideNav";
 import SideNavTopic from "../components/SideNavTopic";
-import Explore from "../components/Explore";
-import PostList from "../components/PostList";
 import Alert from "../components/Modals/Alert/Alert";
+//import Explore from "../components/Explore";
+const Explore = React.lazy(() => import("../components/Explore"));
+const PostList = React.lazy(() => import("../components/PostList"));
+//import PostList from "../components/PostList";
 
 const Home = () => {
   return (
@@ -13,8 +15,12 @@ const Home = () => {
       <TopNav />
       <SideNav />
       <SideNavTopic topic="Home" />
-      <Explore />
-      <PostList />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Explore />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <PostList />
+      </Suspense>
       <Alert />
     </div>
   );

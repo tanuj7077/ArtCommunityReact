@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, Suspense } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-import ExploreTag from "./ExploreTag";
+//import ExploreTag from "./ExploreTag";
 import { useGlobalContext } from "../context";
+const ExploreTag = React.lazy(() => import("./ExploreTag"));
 
 const ExploreTagList = () => {
   const { explorePageTags } = useGlobalContext();
@@ -29,7 +29,15 @@ const ExploreTagList = () => {
       >
         <Masonry>
           {tags.map((tag) => {
-            return <ExploreTag key={tag.id} {...tag} />;
+            return (
+              <Suspense
+                fallback={
+                  <div className="explorePage--loading">Loading...</div>
+                }
+              >
+                <ExploreTag key={tag.id} {...tag} />
+              </Suspense>
+            );
           })}
         </Masonry>
       </ResponsiveMasonry>

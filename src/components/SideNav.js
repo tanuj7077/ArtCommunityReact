@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import { LoggedInSideNavItems, SideNavItems } from "../data";
 import { useGlobalContext } from "../context";
@@ -13,6 +13,22 @@ const SideNav = () => {
       setItems(SideNavItems);
     }
   };
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          sideNavShortenHandler();
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
 
   const addHover = (item) => {
     console.log(item);
@@ -33,9 +49,24 @@ const SideNav = () => {
   };
 
   const sideNavToggleHandler = () => {
+    if (
+      document
+        .getElementsByClassName("sideNav-expansion")[0]
+        .classList.contains("expanded")
+    ) {
+      document
+        .getElementsByClassName("sideNav-expansion")[0]
+        .classList.remove("expanded");
+    } else {
+      document
+        .getElementsByClassName("sideNav-expansion")[0]
+        .classList.add("expanded");
+    }
+  };
+  const sideNavShortenHandler = () => {
     document
       .getElementsByClassName("sideNav-expansion")[0]
-      .classList.toggle("expanded");
+      .classList.remove("expanded");
   };
 
   useEffect(() => {
@@ -44,7 +75,7 @@ const SideNav = () => {
 
   return (
     <>
-      <section className="sideNav">
+      <section className="sideNav" ref={wrapperRef}>
         <div className="sideNav--ham" onClick={sideNavToggleHandler}>
           <span className="material-icons sideNav--icon">menu</span>
         </div>

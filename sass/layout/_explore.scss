@@ -78,6 +78,15 @@
 
   margin: auto;
   width: 95%;
+  min-height: 84vh;
+
+  &--loading {
+    margin-bottom: 7px;
+    width: calc(100% - 10px);
+    height: 30rem;
+    border-radius: 1rem;
+    background-color: rgb(66, 65, 65);
+  }
 
   &--grid-item {
     margin-bottom: 7px;
