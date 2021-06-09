@@ -1622,8 +1622,15 @@ body {
   align-items: stretch;
   justify-items: stretch;
   text-align: center;
-  color: white;
+  color: #d6d6d6;
   z-index: 11; }
+  .sideNav--icon {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
   .sideNav--ham {
     position: sticky;
     top: 0;
@@ -1733,6 +1740,7 @@ body {
   transform: translate(-77%);
   letter-spacing: 0.6rem;
   font-weight: 700;
+  text-transform: capitalize;
   transition: 0.3s ease;
   z-index: 10;
   border-right: 4px solid rgba(23, 28, 33, 0.95); }

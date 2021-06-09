@@ -242,22 +242,22 @@ export const LoggedInSideNavItems = [
     icon: "new_releases",
     link: "popular",
   },
-  {
-    id: "side6",
-    id2: "sideExp6",
-    classname: "6",
-    name: "new",
-    icon: "fiber_new",
-    link: "new",
-  },
-  {
-    id: "side7",
-    id2: "sideExp7",
-    classname: "7",
-    name: "poll",
-    icon: "poll",
-    link: "poll",
-  },
+  // {
+  //   id: "side6",
+  //   id2: "sideExp6",
+  //   classname: "6",
+  //   name: "new",
+  //   icon: "fiber_new",
+  //   link: "new",
+  // },
+  // {
+  //   id: "side7",
+  //   id2: "sideExp7",
+  //   classname: "7",
+  //   name: "poll",
+  //   icon: "poll",
+  //   link: "poll",
+  // },
 ];
 export const SideNavItems = [
   {
@@ -284,14 +284,14 @@ export const SideNavItems = [
     icon: "new_releases",
     link: "popular",
   },
-  {
-    id: "side4",
-    id2: "sideExp4",
-    classname: "4",
-    name: "new",
-    icon: "fiber_new",
-    link: "new",
-  },
+  // {
+  //   id: "side4",
+  //   id2: "sideExp4",
+  //   classname: "4",
+  //   name: "new",
+  //   icon: "fiber_new",
+  //   link: "new",
+  // },
 ];
 
 export const ExploreTags = [

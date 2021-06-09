@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import { LoggedInSideNavItems, SideNavItems } from "../data";
 import { useGlobalContext } from "../context";
+import { AiFillHome } from "react-icons/ai";
+import { IoPeople, IoToday, IoMdColorPalette } from "react-icons/io5";
+import { FaWpexplorer } from "react-icons/fa";
+import { MdNewReleases, MdAccountCircle } from "react-icons/md";
+import { CgMenu } from "react-icons/cg";
 
 const SideNav = () => {
   const { isLoggedIn } = useGlobalContext();
@@ -77,7 +82,8 @@ const SideNav = () => {
     <>
       <section className="sideNav" ref={wrapperRef}>
         <div className="sideNav--ham" onClick={sideNavToggleHandler}>
-          <span className="material-icons sideNav--icon">menu</span>
+          {/* <span className="material-icons sideNav--icon">menu</span> */}
+          <CgMenu className="sideNav--icon" />
         </div>
         {items &&
           items.map((item) => {
@@ -94,7 +100,22 @@ const SideNav = () => {
                     onMouseEnter={() => addHover(item.classname)}
                     onMouseLeave={() => removeHover(item.classname)}
                   >
-                    <span className="material-icons">{item.icon}</span>
+                    {/* <span className="material-icons">{item.icon}</span> */}
+                    {item.name === "home" && (
+                      <AiFillHome className="sideNav--icon" />
+                    )}
+                    {item.name === "followed" && (
+                      <IoPeople className="sideNav--icon" />
+                    )}
+                    {item.name === "daily" && (
+                      <IoToday className="sideNav--icon" />
+                    )}
+                    {item.name === "topic" && (
+                      <FaWpexplorer className="sideNav--icon" />
+                    )}
+                    {item.name === "popular" && (
+                      <MdNewReleases className="sideNav--icon" />
+                    )}
                   </div>
                 )}
               />
