@@ -1080,7 +1080,9 @@ body {
   height: max-content;
   padding: 1rem 2rem;
   padding-right: 3.5rem;
-  border-radius: 5px; }
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column; }
   .alertBox-error {
     background-color: #e69494; }
   .alertBox-success {

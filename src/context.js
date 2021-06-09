@@ -134,6 +134,7 @@ const AppProvider = ({ children }) => {
         changeAlert,
         showAlert,
         setShowAlert,
+        updatePostsBackend,
       }}
     >
       {children}

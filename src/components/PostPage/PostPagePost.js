@@ -7,7 +7,7 @@ import PostsByUser from "./PostsByUser/PostsByUser";
 import Recommended from "./Recommended/Recommended";
 import LoginModal from "../LoginModal";
 import axios from "axios";
-import { Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 
 const url =
   "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
@@ -19,6 +19,8 @@ const PostPagePost = ({ id }) => {
     setUserData,
     openLoginModal,
     loginModal,
+    changeAlert,
+    updatePostsBackend,
   } = useGlobalContext();
   let postUrl = "http://localhost:8000/posts/post/" + id;
 
@@ -71,6 +73,21 @@ const PostPagePost = ({ id }) => {
         });
     }
   }
+  const history = useHistory();
+  const handleDelete = async () => {
+    try {
+      axios.post("http://localhost:8000/posts/deletePost/" + id).then((res) => {
+        console.log(res.data);
+        setUserData(res.data.user);
+        console.log(res.data.data);
+        changeAlert(res.data.message);
+        history.push("/");
+        //updatePostsBackend();
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleComment = async () => {
     if (!isLoggedIn) {
       openLoginModal();
@@ -150,7 +167,9 @@ const PostPagePost = ({ id }) => {
                 {isLoggedIn && userData.username === Post.author.username && (
                   <>
                     <span className="menu-item">Edit</span>
-                    <span className="menu-item">Delete</span>
+                    <span className="menu-item" onClick={handleDelete}>
+                      Delete
+                    </span>
                   </>
                 )}
               </div>

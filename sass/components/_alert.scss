@@ -16,6 +16,8 @@
   &-success {
     background-color: rgb(124, 216, 155);
   }
+  display: flex;
+  flex-flow: column;
 }
 .alertText {
   font-size: 1.4rem;

@@ -20,10 +20,17 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
 
   const setButtonVisibility = () => {
     if (sliderRef && rightBtnRef && sliderRef.current && rightBtnRef.current) {
-      if (sliderRef.current.clientWidth >= rightBtnRef.current.offsetLeft) {
+      if (
+        sliderRef.current.clientWidth >=
+        rightBtnRef.current.offsetLeft + 40
+      ) {
+        console.log(
+          sliderRef.current.clientWidth,
+          rightBtnRef.current.offsetLeft + 40
+        );
         setBtnVisibility(true);
       }
-      if (sliderRef.current.clientWidth < rightBtnRef.current.offsetLeft) {
+      if (sliderRef.current.clientWidth < rightBtnRef.current.offsetLeft + 40) {
         setBtnVisibility(false);
       }
     }
