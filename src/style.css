@@ -1198,17 +1198,22 @@ body {
   .explorePage--grid-item {
     margin-bottom: 7px;
     width: calc(100% - 10px); }
+    .explorePage--grid-item:hover {
+      cursor: pointer; }
     .explorePage--grid-item--card {
       width: 100%;
       position: relative;
       border-radius: 1rem;
-      overflow: hidden; }
+      overflow: hidden;
+      background-color: black; }
       .explorePage--grid-item--card-img {
-        filter: hue-rotate(0deg);
         width: 100%;
         transition: all 0.2s ease-in;
-        border-radius: 1rem; }
+        border-radius: 1rem;
+        display: block;
+        opacity: 0.5; }
       .explorePage--grid-item--card-title {
+        text-transform: capitalize;
         color: white;
         font-size: 2.5rem;
         z-index: 1;
@@ -1221,12 +1226,12 @@ body {
         transform: translate(-50%, -50%); }
         .explorePage--grid-item--card-title:hover {
           text-decoration: none;
-          color: white;
-          font-size: 2.6rem; }
+          color: white; }
       .explorePage--grid-item--card:hover .explorePage--grid-item--card-img {
-        opacity: 0.5;
-        filter: hue-rotate(90deg);
+        opacity: 1;
         transform: scale(1.04); }
+      .explorePage--grid-item--card:hover .explorePage--grid-item--card-title {
+        opacity: 0; }
 
 .main {
   background-color: black;

@@ -42,7 +42,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
       fetchExploreTags();
-    }, 5000);
+    }, 3000);
     //updatePostsBackend();
   }, []);
 
