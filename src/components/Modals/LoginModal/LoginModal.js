@@ -31,7 +31,12 @@ const LoginModal = () => {
           className="LoginModal-outside"
           onClick={() => closeLoginModal2()}
         ></div>
-        <div className="LoginModal-body">
+        {/* <div className="LoginModal-body"> */}
+        <div
+          className={`LoginModal-body ${
+            loginMode ? "LoginModal-body-login" : "LoginModal-body-signup"
+          }`}
+        >
           <div className="LoginModal-body-img">
             <div className="text">
               <span className="content1">GodArt</span>
@@ -49,12 +54,18 @@ const LoginModal = () => {
             </div>
           </div>
           <div className="LoginModal-body-form">
-            <div className={`heading ${loginMode ? "" : "heading-signup"}`}>
-              <span className="login" onClick={() => toggleLoginMode("login")}>
+            <div className={`heading ${loginMode ? "heading-signup" : ""}`}>
+              {/* <span className="login" onClick={() => toggleLoginMode("login")}>
+                Login
+              </span> */}
+              <span
+                className={`login ${loginMode ? "" : "notCurrent"}`}
+                onClick={() => toggleLoginMode("login")}
+              >
                 Login
               </span>
               <span
-                className="signup"
+                className={`signup ${loginMode ? "notCurrent" : ""}`}
                 onClick={() => toggleLoginMode("signup")}
               >
                 Sign-up

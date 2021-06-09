@@ -43,6 +43,7 @@
   .grid-item--exploreCard {
     width: 100%;
     border-radius: 1rem;
+    background-color: black;
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -52,9 +53,11 @@
       background-size: cover;
       background-position-x: center;
       background-position-y: center;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
+      opacity: 0.7;
     }
     &-text {
+      text-transform: capitalize;
       color: white;
       font-size: 2rem;
       z-index: 1;
@@ -66,7 +69,11 @@
       transform: translate(-50%, -50%);
     }
     &:hover .grid-item--exploreCard-img {
+      opacity: 1;
       transform: scale(1.1);
+    }
+    &:hover .grid-item--exploreCard-text {
+      opacity: 0.3;
     }
   }
 }

@@ -378,7 +378,7 @@ body {
       color: inherit;
       padding: 0 1rem;
       padding-top: 1rem;
-      background-color: rgba(128, 128, 128, 0.5);
+      background-color: #555555;
       color: white;
       border: none;
       border-bottom: 2px solid black;
@@ -508,7 +508,7 @@ body {
       color: inherit;
       padding: 0 1rem;
       padding-top: 1rem;
-      background-color: rgba(128, 128, 128, 0.5);
+      background-color: #555555;
       color: white;
       border: none;
       border-bottom: 2px solid black;
@@ -1159,6 +1159,7 @@ body {
   .exploreGrid .grid-item--exploreCard {
     width: 100%;
     border-radius: 1rem;
+    background-color: black;
     overflow: hidden;
     position: relative;
     cursor: pointer; }
@@ -1168,8 +1169,10 @@ body {
       background-size: cover;
       background-position-x: center;
       background-position-y: center;
-      transition: all 0.3s ease; }
+      transition: all 0.2s ease;
+      opacity: 0.7; }
     .exploreGrid .grid-item--exploreCard-text {
+      text-transform: capitalize;
       color: white;
       font-size: 2rem;
       z-index: 1;
@@ -1179,7 +1182,10 @@ body {
       top: 50%;
       transform: translate(-50%, -50%); }
     .exploreGrid .grid-item--exploreCard:hover .grid-item--exploreCard-img {
+      opacity: 1;
       transform: scale(1.1); }
+    .exploreGrid .grid-item--exploreCard:hover .grid-item--exploreCard-text {
+      opacity: 0.3; }
 
 .explorePage {
   background-color: black;
@@ -3818,13 +3824,22 @@ body {
     z-index: 1602;
     width: 50%;
     height: 55rem;
-    background-color: #2b2b2b;
+    animation: gradient 15s ease infinite;
+    background: linear-gradient(-45deg, #030303, #292929, #525252, #6e6e6e);
+    background-size: 400% 400%;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap; }
+    .LoginModal-body-login {
+      background: linear-gradient(-45deg, #030303, #2c2c2c, #383838, #4b4b4b);
+      background-size: 400% 400%;
+      transition: all 1s; }
+    .LoginModal-body-signup {
+      background: linear-gradient(-45deg, #030303, #2c2c2c, #383838, #4b4b4b);
+      background-size: 400% 400%; }
     .LoginModal-body-img {
       width: 50%;
       height: 100%;
@@ -3862,7 +3877,7 @@ body {
         z-index: 99;
         width: 100%;
         height: 100%;
-        background-color: #2c2c2c; }
+        background-color: transparent; }
         .LoginModal-body-img .carousel .carouselItem {
           width: 100%;
           height: 100%;
@@ -3891,7 +3906,7 @@ body {
     .LoginModal-body-form {
       width: 50%;
       height: 100%;
-      background-color: #2c2c2c;
+      background-color: transparent;
       display: flex;
       flex-flow: column; }
       .LoginModal-body-form .heading {
@@ -3899,28 +3914,49 @@ body {
         display: flex;
         flex-flow: row;
         flex-wrap: nowrap;
-        color: #adadad;
         font-size: 3rem;
         letter-spacing: 0.3rem;
         text-align: center; }
         .LoginModal-body-form .heading .login {
           padding: 2rem 0;
+          color: #6ecf86;
+          border-right: 1px solid #505050;
           width: 50%;
-          cursor: pointer; }
+          cursor: pointer;
+          transition: all 0.5s ease; }
         .LoginModal-body-form .heading .signup {
           padding: 2rem 0;
+          color: #6ecf86;
+          border-left: 1px solid #505050;
           width: 50%;
-          cursor: pointer; }
+          cursor: pointer;
+          transition: all 0.5s ease; }
+        .LoginModal-body-form .heading .notCurrent {
+          background-color: #222222;
+          color: #adadad;
+          transition: all 0.5s ease; }
         .LoginModal-body-form .heading::after {
           position: absolute;
           bottom: 0;
           content: "";
           height: 2px;
           width: 50%;
-          background-color: #adadad;
+          background-color: #505050;
           transition: all 0.3s ease; }
         .LoginModal-body-form .heading-signup::after {
           transform: translateX(100%);
+          transition: all 0.3s ease; }
+        .LoginModal-body-form .heading::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          content: "";
+          height: 2px;
+          width: 50%;
+          background-color: #505050;
+          transition: all 0.3s ease; }
+        .LoginModal-body-form .heading-signup::before {
+          transform: translateX(-100%);
           transition: all 0.3s ease; }
       .LoginModal-body-form .loginForm {
         margin: 5rem 4rem;

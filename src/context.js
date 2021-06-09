@@ -6,9 +6,9 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [explorePageTags, setExplorePageTags] = useState([]);
+  const [homePageTags, setHomePageTags] = useState([]);
   const [submitModal, setsubmitModal] = useState(false);
   const [loginModal, setloginModal] = useState(false);
   const [loginModal2, setloginModal2] = useState(false);
@@ -24,6 +24,11 @@ const AppProvider = ({ children }) => {
     const result = await axios.get("http://localhost:8000/posts/updatePosts");
     console.log(result.data);
   };
+
+  useEffect(() => {
+    updatePostsBackend();
+  }, []);
+  //--------------------For Explore Page------------------//
   const fetchExploreTags = async () => {
     let url = "http://localhost:8000/tags/exploreTags";
     try {
@@ -34,17 +39,38 @@ const AppProvider = ({ children }) => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    updatePostsBackend();
-  }, []);
-
   useEffect(() => {
     setTimeout(() => {
       fetchExploreTags();
     }, 3000);
     //updatePostsBackend();
   }, []);
+  //----------------------END---------------------//
+
+  //--------------------For Home Page Explore Section------------------//
+  const fetchHomePageTags = async () => {
+    let url = "http://localhost:8000/tags/randomTags";
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setHomePageTags(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchHomePageTags();
+    }, 20000);
+    return () => {
+      clearInterval(interval);
+    };
+    // fetchHomePageTags();
+  }, []);
+  useEffect(() => {
+    fetchHomePageTags();
+  }, []);
+  //----------------------END---------------------//
 
   const changeAlert = (msg) => {
     setAlert(msg);
@@ -113,6 +139,7 @@ const AppProvider = ({ children }) => {
         posts,
         explorePageTags,
         setExplorePageTags,
+        homePageTags,
         setPosts,
         openSubmitModal,
         closeSubmitModal,

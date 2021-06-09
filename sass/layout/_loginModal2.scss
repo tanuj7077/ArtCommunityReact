@@ -21,15 +21,28 @@
     z-index: 1602;
     width: 50%;
     height: 55rem;
-    background-color: rgb(43, 43, 43);
+    //new
+    animation: gradient 15s ease infinite;
+    background: linear-gradient(-45deg, #030303, #292929, #525252, #6e6e6e);
+    background-size: 400% 400%;
+    ///new end
+    ///background-color: rgb(218, 148, 148);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-      rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
+    &-login {
+      background: linear-gradient(-45deg, #030303, #2c2c2c, #383838, #4b4b4b);
+      background-size: 400% 400%;
+      transition: all 1s;
+    }
+    &-signup {
+      background: linear-gradient(-45deg, #030303, #2c2c2c, #383838, #4b4b4b);
+      background-size: 400% 400%;
+    }
     &-img {
       width: 50%;
       height: 100%;
@@ -74,7 +87,8 @@
         z-index: 99;
         width: 100%;
         height: 100%;
-        background-color: rgb(44, 44, 44);
+        //background-color: rgb(44, 44, 44);
+        background-color: transparent;
         .carouselItem {
           width: 100%;
           height: 100%;
@@ -113,7 +127,8 @@
     &-form {
       width: 50%;
       height: 100%;
-      background-color: rgb(44, 44, 44);
+      ///background-color: rgb(44, 44, 44);
+      background-color: transparent;
       display: flex;
       flex-flow: column;
       .heading {
@@ -121,7 +136,7 @@
         display: flex;
         flex-flow: row;
         flex-wrap: nowrap;
-        color: rgb(173, 173, 173);
+        //color: rgb(173, 173, 173);
         font-size: 3rem;
         letter-spacing: 0.3rem;
         text-align: center;
@@ -130,14 +145,26 @@
         .login {
           padding: 2rem 0;
           //border-bottom: 2px solid rgb(90, 90, 90);
+          color: #6ecf86;
+          border-right: 1px solid rgb(80, 80, 80);
           width: 50%;
           cursor: pointer;
+          transition: all 0.5s ease;
         }
         .signup {
           padding: 2rem 0;
           //border-bottom: 2px solid rgb(90, 90, 90);
+          color: #6ecf86;
+
+          border-left: 1px solid rgb(80, 80, 80);
           width: 50%;
           cursor: pointer;
+          transition: all 0.5s ease;
+        }
+        .notCurrent {
+          background-color: rgb(34, 34, 34);
+          color: rgb(173, 173, 173);
+          transition: all 0.5s ease;
         }
         &::after {
           position: absolute;
@@ -145,11 +172,25 @@
           content: "";
           height: 2px;
           width: 50%;
-          background-color: rgb(173, 173, 173);
+          background-color: rgb(80, 80, 80);
           transition: all 0.3s ease;
         }
         &-signup::after {
           transform: translateX(100%);
+          transition: all 0.3s ease;
+        }
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          content: "";
+          height: 2px;
+          width: 50%;
+          background-color: rgb(80, 80, 80);
+          transition: all 0.3s ease;
+        }
+        &-signup::before {
+          transform: translateX(-100%);
           transition: all 0.3s ease;
         }
       }
