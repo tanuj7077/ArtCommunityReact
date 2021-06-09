@@ -9,6 +9,27 @@ import LoginModal from "../LoginModal";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 
+//-----------------------Firebase-----------------------
+import firebase from "firebase/app";
+import "firebase/storage";
+var config = {
+  apiKey: "AIzaSyDvMwMxRmt0N_On1efH-eHN5n6vz3DIqyw",
+  authDomain: "artcomm707.firebaseapp.com",
+  projectId: "artcomm707",
+  storageBucket: "artcomm707.appspot.com",
+  messagingSenderId: "1015814439095",
+  appId: "1:1015814439095:web:d0b3ed402203702c9b8d32",
+  measurementId: "G-HC2QXZ27V4",
+};
+// Initialize Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+} else {
+  firebase.app(); // if already initialized, use that one
+}
+var storage = firebase.storage();
+//---------Firebase end----------------------//
+
 const url =
   "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
 
@@ -75,18 +96,46 @@ const PostPagePost = ({ id }) => {
   }
   const history = useHistory();
   const handleDelete = async () => {
+    var imageUrl = Post.image.slice(69, -1);
+    var ar = imageUrl
+      .split("%2F")
+      .join(",")
+      .split("?")
+      .join(",")
+      .split("/")[0]
+      .split(",");
+    var imageName = ar[1];
+    var firebaseFolder = ar[0];
     try {
+      storage
+        .ref(firebaseFolder)
+        .child(imageName)
+        .delete()
+        .then(() => {
+          axios
+            .post("http://localhost:8000/posts/deletePost/" + id)
+            .then((res) => {
+              setUserData(res.data.user);
+              changeAlert(res.data.message);
+              updatePostsBackend();
+              history.push("/");
+            });
+        });
+    } catch (err) {
+      console.log(err);
+    }
+    /*try {
       axios.post("http://localhost:8000/posts/deletePost/" + id).then((res) => {
         console.log(res.data);
         setUserData(res.data.user);
         console.log(res.data.data);
         changeAlert(res.data.message);
         history.push("/");
-        //updatePostsBackend();
+        updatePostsBackend();
       });
     } catch (err) {
       console.log(err);
-    }
+    }*/
   };
   const handleComment = async () => {
     if (!isLoggedIn) {
