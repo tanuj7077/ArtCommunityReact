@@ -114,12 +114,21 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
           )}
           {username && (
             <>
-              <div
+              {/* <div
                 className="authorHover--cover"
                 style={{
                   backgroundImage: `linear-gradient(to bottom,transparent,rgba(43, 43, 43, 0.9)), url(${coverPhoto})`,
                 }}
-              ></div>
+              ></div> */}
+              {coverPhoto && (
+                <div
+                  className="authorHover--cover"
+                  style={{
+                    backgroundImage: `linear-gradient(to bottom,transparent,rgba(43, 43, 43, 0.9)), url(${coverPhoto})`,
+                  }}
+                ></div>
+              )}
+              {!coverPhoto && <div className="authorHover--noCover"></div>}
               <div
                 className="authorHover--profile"
                 style={{
