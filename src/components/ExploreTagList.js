@@ -9,7 +9,7 @@ const ExploreTagList = () => {
   const { explorePageTags } = useGlobalContext();
   const [tags, setTags] = useState([]);
 
-  const fetchTags = async () => {
+  /*const fetchTags = async () => {
     let url = "http://localhost:8000/tags/exploreTags";
     try {
       const response = await fetch(url);
@@ -21,14 +21,14 @@ const ExploreTagList = () => {
   };
   useEffect(() => {
     fetchTags();
-  }, []);
+  }, []);*/
   return (
     <div className="explorePage">
       <ResponsiveMasonry
         columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1000: 4 }}
       >
         <Masonry>
-          {tags.map((tag) => {
+          {explorePageTags.map((tag) => {
             return (
               <Suspense
                 fallback={

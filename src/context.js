@@ -24,9 +24,26 @@ const AppProvider = ({ children }) => {
     const result = await axios.get("http://localhost:8000/posts/updatePosts");
     console.log(result.data);
   };
+  const fetchExploreTags = async () => {
+    let url = "http://localhost:8000/tags/exploreTags";
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setExplorePageTags(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     updatePostsBackend();
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetchExploreTags();
+    }, 5000);
+    //updatePostsBackend();
   }, []);
 
   const changeAlert = (msg) => {
@@ -49,16 +66,6 @@ const AppProvider = ({ children }) => {
 
   const closeSubmitProfilePicModal = () => {
     setSubmitProfilePicModal(false);
-  };
-
-  const fetchExploreTags = async () => {
-    setIsLoading(true);
-    try {
-      setExplorePageTags(ExploreTags);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const openSubmitModal = () => {
