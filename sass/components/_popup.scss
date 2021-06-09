@@ -38,6 +38,7 @@
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
+    cursor: pointer;
   }
   &--name {
     position: absolute;
@@ -48,6 +49,7 @@
     color: white;
     font-size: 3rem;
     font-weight: 700;
+    cursor: pointer;
     //background-color: rgb(122, 118, 102);
   }
   &--info {
@@ -83,6 +85,10 @@
       background-size: cover;
       background-position-x: center;
       background-position-y: center;
+      cursor: pointer;
+      &:hover {
+        border: 1px solid rgb(119, 119, 119);
+      }
     }
   }
 }

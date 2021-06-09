@@ -19,7 +19,7 @@ const Recommended = ({ id, tags }) => {
   };
   useEffect(() => {
     getRecommended();
-  }, [id]);
+  }, [id, tags]);
   return (
     <div className="otherContent--user">
       {recommended.length > 1 && (

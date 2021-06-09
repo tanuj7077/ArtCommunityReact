@@ -129,14 +129,40 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
                 ></div>
               )}
               {!coverPhoto && <div className="authorHover--noCover"></div>}
-              <div
+              {/* <div
                 className="authorHover--profile"
                 style={{
                   backgroundImage: `url(${profilePic})`,
                   borderRadius: `${profileBorderRad}`,
                 }}
-              ></div>
-              <div className="authorHover--name">{username}</div>
+              ></div> */}
+              <Route
+                render={({ history }) => (
+                  <div
+                    onClick={() => {
+                      history.push(`/user/${username}`);
+                    }}
+                    className="authorHover--profile"
+                    style={{
+                      backgroundImage: `url(${profilePic})`,
+                      borderRadius: `${profileBorderRad}`,
+                    }}
+                  ></div>
+                )}
+              />
+              <Route
+                render={({ history }) => (
+                  <div
+                    onClick={() => {
+                      history.push(`/user/${username}`);
+                    }}
+                    className="authorHover--name"
+                  >
+                    {username}
+                  </div>
+                )}
+              />
+              {/* <div className="authorHover--name">{username}</div> */}
               <div className="authorHover--info">
                 <span className="info">{postCount} Posts</span>
                 <span className="lineBreak">|</span>
@@ -146,12 +172,25 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
                 {/* if images count > 3 add "SEE MORE"*/}
                 {posts.map((post) => {
                   return (
-                    <div
-                      className="image"
-                      style={{
-                        backgroundImage: `url(${post.image})`,
-                      }}
-                    ></div>
+                    <Route
+                      render={({ history }) => (
+                        <div
+                          className="image"
+                          style={{
+                            backgroundImage: `url(${post.image})`,
+                          }}
+                          onClick={() => {
+                            history.push(`/post/${post._id}`);
+                          }}
+                        ></div>
+                      )}
+                    />
+                    // <div
+                    //   className="image"
+                    //   style={{
+                    //     backgroundImage: `url(${post.image})`,
+                    //   }}
+                    // ></div>
                   );
                 })}
               </div>
