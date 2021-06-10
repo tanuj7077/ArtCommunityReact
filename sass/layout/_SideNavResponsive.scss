@@ -1,0 +1,154 @@
+.sideNavMobile {
+  position: fixed;
+  top: 7.5vh;
+  width: 30rem;
+  height: 100vh;
+  //   background-color: #171c21;
+  background-color: black;
+  border-right: 4px solid rgba(#171c21, 0.95);
+  z-index: 10;
+  display: flex;
+  flex-flow: column;
+  transition: all 0.3s ease;
+  &--item {
+    width: 100%;
+    height: 7rem;
+    color: rgb(214, 214, 214);
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    background-color: black;
+    align-items: center;
+    gap: 2rem;
+    &-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-left: 2.2rem;
+    }
+    &-text {
+      font-size: 2rem;
+    }
+    &:active {
+      color: #6ecf86;
+      background-color: #424242;
+    }
+  }
+  &--hidden {
+    transform: translateX(-30rem);
+    transition: all 0.3s ease;
+  }
+}
+.sideNavMobile--ham {
+  position: fixed;
+  width: 7rem;
+  height: 7.5vh;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  color: rgb(214, 214, 214);
+  .sideNavMobile--ham-icon {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.sideNavDesktopShort {
+  position: fixed;
+  top: 7.5vh;
+  width: 7rem;
+  height: 100vh;
+  background-color: #171c21;
+  background-color: black;
+  z-index: 11;
+  display: flex;
+  flex-flow: column;
+  transition: all 0.3s ease;
+  &--item {
+    width: 100%;
+    height: 7rem;
+    color: rgb(214, 214, 214);
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 2rem;
+    &-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-left: 2.2rem;
+    }
+  }
+  &--hover {
+    color: #6ecf86;
+    background-color: #424242;
+  }
+}
+.sideNavDesktop {
+  position: fixed;
+  top: 7.5vh;
+  left: 7rem;
+  width: 30rem;
+  height: 100vh;
+  //   background-color: #171c21;
+  background-color: black;
+  border-right: 4px solid rgba(#171c21, 0.95);
+  z-index: 10;
+  display: flex;
+  flex-flow: column;
+
+  transition: all 0.3s ease;
+  &--item {
+    width: 100%;
+    height: 7rem;
+    color: rgb(214, 214, 214);
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    background-color: black;
+    align-items: center;
+    gap: 2rem;
+
+    &-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-left: 2.2rem;
+    }
+    &-text {
+      margin-left: 2px;
+      font-size: 2rem;
+      &::selection {
+        color: rgb(214, 214, 214);
+        background: transparent;
+      }
+    }
+  }
+  &--hidden {
+    transform: translateX(-29.6rem);
+    transition: all 0.3s ease;
+  }
+  &--hover {
+    color: #6ecf86;
+    background-color: #424242;
+  }
+}
+.sideNavDesktop--ham {
+  position: fixed;
+  width: 7rem;
+  height: 7.5vh;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  color: rgb(214, 214, 214);
+  &-icon {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

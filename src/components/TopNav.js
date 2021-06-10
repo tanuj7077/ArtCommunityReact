@@ -48,9 +48,9 @@ const TopNav = () => {
   return (
     <>
       <section className="topNav">
-        <div className="topNav--logo">
+        {/* <div className="topNav--logo">
           <span className="material-icons">anchor</span>
-        </div>
+        </div> */}
         {/* <div className="topNav--search">
           <span className="material-icons topNav--search-icon">search</span>
           <span className="topNav--search-text">SEARCH AND DISCOVER</span>

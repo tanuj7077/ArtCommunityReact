@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
-import { LoggedInSideNavItems, SideNavItems } from "../data";
-import { useGlobalContext } from "../context";
+import { LoggedInSideNavItems, SideNavItems } from "../../data";
+import { useGlobalContext } from "../../context";
 import { AiFillHome } from "react-icons/ai";
 import { IoPeople, IoToday, IoMdColorPalette } from "react-icons/io5";
 import { FaWpexplorer } from "react-icons/fa";
@@ -82,9 +82,11 @@ const SideNav = () => {
     <>
       <section className="sideNav" ref={wrapperRef}>
         <div className="sideNav--ham" onClick={sideNavToggleHandler}>
-          {/* <span className="material-icons sideNav--icon">menu</span> */}
           <CgMenu className="sideNav--icon" />
         </div>
+        {/* <div className="sideNav--ham2" onClick={sideNavToggleHandler}>
+          <CgMenu className="icon" />
+        </div> */}
         {items &&
           items.map((item) => {
             return (

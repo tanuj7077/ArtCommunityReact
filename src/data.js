@@ -207,7 +207,6 @@ export const LoggedInSideNavItems = [
     id2: "sideExp1",
     classname: "1",
     name: "home",
-    icon: "home",
     link: "",
   },
   {
@@ -215,7 +214,6 @@ export const LoggedInSideNavItems = [
     id2: "sideExp2",
     classname: "2",
     name: "followed",
-    icon: "people",
     link: "followed",
   },
   {
@@ -223,7 +221,6 @@ export const LoggedInSideNavItems = [
     id2: "sideExp3",
     classname: "3",
     name: "daily",
-    icon: "today",
     link: "daily",
   },
   {
@@ -231,7 +228,6 @@ export const LoggedInSideNavItems = [
     id2: "sideExp4",
     classname: "4",
     name: "topic",
-    icon: "image_search",
     link: "explore",
   },
   {
@@ -239,7 +235,6 @@ export const LoggedInSideNavItems = [
     id2: "sideExp5",
     classname: "5",
     name: "popular",
-    icon: "new_releases",
     link: "popular",
   },
   // {
@@ -265,7 +260,6 @@ export const SideNavItems = [
     id2: "sideExp1",
     classname: "1",
     name: "home",
-    icon: "home",
     link: "",
   },
   {
@@ -273,7 +267,6 @@ export const SideNavItems = [
     id2: "sideExp2",
     classname: "2",
     name: "topic",
-    icon: "image_search",
     link: "explore",
   },
   {
@@ -281,17 +274,8 @@ export const SideNavItems = [
     id2: "sideExp3",
     classname: "3",
     name: "popular",
-    icon: "new_releases",
     link: "popular",
   },
-  // {
-  //   id: "side4",
-  //   id2: "sideExp4",
-  //   classname: "4",
-  //   name: "new",
-  //   icon: "fiber_new",
-  //   link: "new",
-  // },
 ];
 
 export const ExploreTags = [

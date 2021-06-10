@@ -2,6 +2,9 @@
   //grid-column: 2 / -1;
   grid-column: 3 / -1;
   grid-row: 2 / 3;
+  @include respond(phone) {
+    grid-column: 1 / -1;
+  }
 
   position: sticky;
   top: 7.5vh;

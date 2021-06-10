@@ -1,6 +1,6 @@
 import React from "react";
 import TopNav from "../components/TopNav";
-import SideNav from "../components/SideNav";
+import SideNav from "../components/Navigation/SideNav";
 import SideNavTopic from "../components/SideNavTopic";
 const PollPage = () => {
   return (
