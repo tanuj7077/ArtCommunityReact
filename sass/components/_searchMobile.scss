@@ -106,6 +106,9 @@
         flex-shrink: 0;
         width: 70vw;
         height: 300px;
+        @include respond(phone-land) {
+          height: 240px;
+        }
 
         display: flex;
         flex-flow: column;
@@ -137,6 +140,9 @@
         width: 70vw;
         height: 300px;
 
+        @include respond(phone-land) {
+          height: 240px;
+        }
         display: flex;
         flex-flow: column;
         overflow: hidden;
@@ -165,6 +171,9 @@
         flex-shrink: 0;
         width: 70vw;
         height: 300px;
+        @include respond(phone-land) {
+          height: 240px;
+        }
         font-size: 2rem;
         margin: 1rem 0;
         .tagList {

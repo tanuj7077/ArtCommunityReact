@@ -2,14 +2,20 @@
   //grid-column: 2 / -1;
   grid-column: 3 / -1;
   grid-row: 3 / 4;
-
   display: grid;
   grid-template-rows: 1fr min-content;
-
   margin: auto;
   width: 95%;
-
   padding-top: 5rem;
+  @include respond(phone) {
+    padding-top: 2.5rem;
+    grid-column: 1 / -1;
+  }
+  .subHeading {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .exploreGrid {
@@ -27,7 +33,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
   @include respond(phone) {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   grid-gap: 6px;
   .tagLoading {
