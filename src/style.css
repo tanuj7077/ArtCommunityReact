@@ -2065,7 +2065,7 @@ body {
   position: fixed;
   top: 6rem;
   width: 7rem;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #171c21;
   background-color: black;
   z-index: 11;
@@ -2079,8 +2079,10 @@ body {
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
-    align-items: center;
-    gap: 2rem; }
+    align-items: center; }
+    @media only screen and (max-height: 37.5em) {
+      .sideNavDesktopShort--item {
+        height: 12vh; } }
     .sideNavDesktopShort--item-icon {
       width: 2.5rem;
       height: 2.5rem;
@@ -2089,13 +2091,6 @@ body {
     color: #6ecf86;
     background-color: #424242;
     cursor: pointer; }
-  .sideNavDesktopShort::-webkit-scrollbar {
-    width: 7px; }
-  .sideNavDesktopShort::-webkit-scrollbar-thumb {
-    background: #222222;
-    border-radius: 5px; }
-  .sideNavDesktopShort::-webkit-scrollbar-track {
-    background: #505050; }
 
 .sideNavDesktop {
   position: fixed;
@@ -2119,6 +2114,9 @@ body {
     background-color: black;
     align-items: center;
     gap: 2rem; }
+    @media only screen and (max-height: 37.5em) {
+      .sideNavDesktop--item {
+        height: 12vh; } }
     .sideNavDesktop--item-icon {
       width: 2.5rem;
       height: 2.5rem;
