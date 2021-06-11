@@ -79,7 +79,7 @@
       font-size: 1.6rem;
       align-items: center;
       justify-content: space-around;
-      border-bottom: 2px solid rgb(70, 70, 70);
+      //border-bottom: 2px solid rgb(70, 70, 70);
       .link {
         margin-right: 1rem;
         color: gray;
@@ -98,8 +98,10 @@
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
+      transform: rotateX(180deg);
 
       &--postSection {
+        transform: rotateX(180deg);
         scroll-snap-align: start;
         flex-shrink: 0;
         width: 70vw;
@@ -129,6 +131,7 @@
         }
       }
       &--authorSection {
+        transform: rotateX(180deg);
         scroll-snap-align: start;
         flex-shrink: 0;
         width: 70vw;
@@ -157,6 +160,7 @@
         }
       }
       &--tagSection {
+        transform: rotateX(180deg);
         scroll-snap-align: start;
         flex-shrink: 0;
         width: 70vw;
@@ -187,6 +191,17 @@
           }
         }
       }
+      &::-webkit-scrollbar {
+        height: 2px;
+        background: rgb(70, 70, 70);
+      }
+      &::-webkit-scrollbar-thumb {
+        height: 2px;
+        background: #6ecf86;
+      }
+      //   &::-webkit-scrollbar-track {
+      //     //background: red;
+      //   }
 
       .notFound {
         font-size: 4rem;

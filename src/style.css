@@ -1172,8 +1172,7 @@ body {
       flex-wrap: nowrap;
       font-size: 1.6rem;
       align-items: center;
-      justify-content: space-around;
-      border-bottom: 2px solid #464646; }
+      justify-content: space-around; }
       .liveSearch-searchResults2-links .link {
         margin-right: 1rem;
         color: gray;
@@ -1188,8 +1187,10 @@ body {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch; }
+      -webkit-overflow-scrolling: touch;
+      transform: rotateX(180deg); }
       .liveSearch-searchResults2-carousel--postSection {
+        transform: rotateX(180deg);
         scroll-snap-align: start;
         flex-shrink: 0;
         width: 70vw;
@@ -1214,6 +1215,7 @@ body {
           .liveSearch-searchResults2-carousel--postSection .item:active {
             color: #6ecf86; }
       .liveSearch-searchResults2-carousel--authorSection {
+        transform: rotateX(180deg);
         scroll-snap-align: start;
         flex-shrink: 0;
         width: 70vw;
@@ -1237,6 +1239,7 @@ body {
           .liveSearch-searchResults2-carousel--authorSection .item:active {
             color: #6ecf86; }
       .liveSearch-searchResults2-carousel--tagSection {
+        transform: rotateX(180deg);
         scroll-snap-align: start;
         flex-shrink: 0;
         width: 70vw;
@@ -1263,6 +1266,12 @@ body {
             color: gray; }
             .liveSearch-searchResults2-carousel--tagSection .tagList .item:active {
               color: #6ecf86; }
+      .liveSearch-searchResults2-carousel::-webkit-scrollbar {
+        height: 2px;
+        background: #464646; }
+      .liveSearch-searchResults2-carousel::-webkit-scrollbar-thumb {
+        height: 2px;
+        background: #6ecf86; }
       .liveSearch-searchResults2-carousel .notFound {
         font-size: 4rem;
         color: #6ecf86;

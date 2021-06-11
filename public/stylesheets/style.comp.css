@@ -1188,7 +1188,8 @@ body {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch; }
+      -webkit-overflow-scrolling: touch;
+      transform: rotateX(180deg); }
       .liveSearch-searchResults2-carousel--postSection {
         scroll-snap-align: start;
         flex-shrink: 0;
@@ -2079,8 +2080,10 @@ body {
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
-    align-items: center;
-    gap: 2rem; }
+    align-items: center; }
+    @media only screen and (max-height: 37.5em) {
+      .sideNavDesktopShort--item {
+        height: 12vh; } }
     .sideNavDesktopShort--item-icon {
       width: 2.5rem;
       height: 2.5rem;
@@ -2112,6 +2115,9 @@ body {
     background-color: black;
     align-items: center;
     gap: 2rem; }
+    @media only screen and (max-height: 37.5em) {
+      .sideNavDesktop--item {
+        height: 12vh; } }
     .sideNavDesktop--item-icon {
       width: 2.5rem;
       height: 2.5rem;
