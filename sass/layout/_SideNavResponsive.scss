@@ -1,6 +1,7 @@
 .sideNavMobile {
   position: fixed;
-  top: 7.5vh;
+  // top: 7.5vh;
+  top: 6rem;
   width: 30rem;
   height: 100vh;
   //   background-color: #171c21;
@@ -41,7 +42,8 @@
 .sideNavMobile--ham {
   position: fixed;
   width: 7rem;
-  height: 7.5vh;
+  height: 6rem;
+  // height: 7.5vh;
   top: 0;
   left: 0;
   z-index: 101;
@@ -58,9 +60,10 @@
 
 .sideNavDesktopShort {
   position: fixed;
-  top: 7.5vh;
+  // top: 7.5vh;
+  top: 6rem;
   width: 7rem;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #171c21;
   background-color: black;
   z-index: 11;
@@ -85,11 +88,23 @@
   &--hover {
     color: #6ecf86;
     background-color: #424242;
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #222222;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #505050;
   }
 }
 .sideNavDesktop {
   position: fixed;
-  top: 7.5vh;
+  //top: 7.5vh;
+  top: 6rem;
   left: 7rem;
   width: 30rem;
   height: 100vh;
@@ -133,12 +148,14 @@
   &--hover {
     color: #6ecf86;
     background-color: #424242;
+    cursor: pointer;
   }
 }
 .sideNavDesktop--ham {
   position: fixed;
   width: 7rem;
-  height: 7.5vh;
+  height: 6rem;
+  // height: 7.5vh;
   top: 0;
   left: 0;
   z-index: 101;
@@ -150,5 +167,8 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+  &:hover {
+    cursor: pointer;
   }
 }

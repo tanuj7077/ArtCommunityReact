@@ -7,17 +7,21 @@ import SideNav from "../components/Navigation/SideNav";
 import User from "../components/UserPage/User";
 import Alert from "../components/Modals/Alert/Alert";
 import SideNavHandler from "../components/Navigation/SideNavHandler";
+import TopNavResponsive from "../components/Navigation/TopNav";
+import FloatingButton from "../components/Navigation/FloatingButton";
 
 const UserPage = () => {
   const { id } = useParams();
   return (
     <div className="Container">
-      <TopNav />
+      {/* <TopNav /> */}
+      <TopNavResponsive />
       {/* <SideNav /> */}
       <SideNavHandler />
 
       <User id={id} />
       <Alert />
+      <FloatingButton />
     </div>
   );
 };

@@ -1,0 +1,33 @@
+.TopNavDesk {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 6rem;
+  background-color: black;
+  z-index: 10;
+  &--submit {
+    position: absolute;
+    height: 4.2rem;
+    border-left: 3px solid #424242;
+    display: grid;
+    place-items: center;
+    @include respond(phone) {
+      display: none;
+    }
+    top: 0;
+    right: 0;
+    transform: translateY(25%);
+    color: #6ecf86;
+    span {
+      padding: 0 3.5rem;
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+    &:hover {
+      cursor: pointer;
+      color: #50b369;
+    }
+  }
+}

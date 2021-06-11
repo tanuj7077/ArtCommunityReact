@@ -1,0 +1,20 @@
+.floatingButton {
+  position: fixed;
+  bottom: 3.5rem;
+  right: 3.5rem;
+  width: 5rem;
+  height: 5rem;
+  background-color: #2c8843;
+  border-radius: 50%;
+  display: none;
+  place-items: center;
+  @include respond(phone) {
+    display: grid;
+  }
+
+  &-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    color: white;
+  }
+}

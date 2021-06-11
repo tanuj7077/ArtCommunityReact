@@ -6,12 +6,15 @@ import SideNavTopic from "../components/SideNavTopic";
 import ExploreTagList from "../components/ExploreTagList";
 import Alert from "../components/Modals/Alert/Alert";
 import SideNavHandler from "../components/Navigation/SideNavHandler";
+import TopNavResponsive from "../components/Navigation/TopNav";
+import FloatingButton from "../components/Navigation/FloatingButton";
 //const ExploreTagList = React.lazy(() => import("../components/ExploreTagList"));
 
 const ExplorePage = () => {
   return (
     <div className="Container">
-      <TopNav />
+      {/* <TopNav /> */}
+      <TopNavResponsive />
       {/* <SideNav /> */}
       <SideNavHandler />
       <SideNavTopic topic="Explore" />
@@ -21,6 +24,7 @@ const ExplorePage = () => {
       <ExploreTagList />
 
       <Alert />
+      <FloatingButton />
     </div>
   );
 };

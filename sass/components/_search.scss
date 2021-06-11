@@ -1,6 +1,5 @@
 .searchForm {
   width: 100%;
-  //   height: 85%;
   height: 6.5vh;
   background-color: transparent;
   position: relative;
@@ -14,11 +13,9 @@
     letter-spacing: 0.4rem;
     color: gray;
     padding: 0 1.4rem;
-    //padding-top: 0.6rem;
     background-color: rgb(44, 44, 44);
     border: none;
     border-radius: 1rem;
-    //width: 30vw;
     display: block;
     transition: all 0.4s;
 
@@ -35,7 +32,7 @@
 
 .searchResults {
   position: absolute;
-  top: 7.7vh;
+  top: 6.5rem;
   width: 100%;
   max-height: 55rem;
   border-radius: 1rem;
@@ -62,6 +59,7 @@
     display: flex;
     flex-flow: column;
     letter-spacing: 0.3rem;
+    font-size: 2rem;
 
     .postList {
       list-style-type: none;
@@ -74,9 +72,11 @@
 
       .item {
         text-align: start;
-        height: 5.5rem;
+        min-height: 5.5rem;
+        height: max-content;
         background-color: rgb(59, 59, 59);
         align-self: center;
+        color: gray;
         padding-top: 1.5rem;
         padding-left: 1.5rem;
         letter-spacing: 0.3rem;
@@ -138,6 +138,8 @@
       overflow-y: scroll;
       margin-left: 1rem;
       border-radius: 1rem;
+      font-size: 2rem;
+      color: gray;
 
       .item {
         text-align: start;
@@ -185,27 +187,6 @@
     }
   }
 
-  /*&--authorList {
-    list-style-type: none;
-    max-height: 25rem;
-    grid-row: 1 /2;
-    grid-column: 5 / -1;
-    width: 100%;
-    overflow: hidden;
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-      width: 7px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: #3e3f3e;
-      border-radius: 5px;
-    }
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-  }*/
   &--tagSection {
     max-height: 25rem;
     grid-row: 2 /3;
@@ -226,6 +207,8 @@
       flex-wrap: wrap;
       padding-left: 2rem;
       margin-bottom: 2rem;
+      font-size: 2rem;
+      color: gray;
 
       .item {
         background-color: rgb(24, 24, 24);

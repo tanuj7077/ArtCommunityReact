@@ -6,7 +6,7 @@ import axios from "axios";
 import SubmitModal from "./SubmitModal";
 import LoginModal from "./LoginModal";
 import LoginModal2 from "./Modals/LoginModal/LoginModal";
-import SearchComponent from "./SearchComponent";
+import SearchComponent from "./Search/SearchComponent";
 
 import { notifications } from "../data";
 import { useGlobalContext } from "../context";

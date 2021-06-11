@@ -5,6 +5,8 @@ import SideNav from "../components/Navigation/SideNav";
 import SideNavTopic from "../components/SideNavTopic";
 import Alert from "../components/Modals/Alert/Alert";
 import SideNavHandler from "../components/Navigation/SideNavHandler";
+import TopNavResponsive from "../components/Navigation/TopNav";
+import FloatingButton from "../components/Navigation/FloatingButton";
 //import Explore from "../components/Explore";
 const Explore = React.lazy(() => import("../components/Explore"));
 const PostList = React.lazy(() => import("../components/PostList"));
@@ -13,7 +15,8 @@ const PostList = React.lazy(() => import("../components/PostList"));
 const Home = () => {
   return (
     <div className="Container">
-      <TopNav />
+      {/* <TopNav /> */}
+      <TopNavResponsive />
       {/* <SideNav /> */}
       <SideNavHandler />
       <SideNavTopic topic="Home" />
@@ -24,6 +27,7 @@ const Home = () => {
         <PostList />
       </Suspense>
       <Alert />
+      <FloatingButton />
     </div>
   );
 };

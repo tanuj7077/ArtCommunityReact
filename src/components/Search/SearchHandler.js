@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context";
-import SideNavMobile from "./SideNavMobile";
-import SideNavDesktop from "./SideNavDesktop";
+import SearchComponent from "./SearchComponent";
+import SearchComponentMobile from "./SearchComponentMobile";
 
 const SideNavHandler = () => {
   const [deskTopMode, setDesktopMode] = useState(1);
@@ -20,7 +20,7 @@ const SideNavHandler = () => {
     sideNavModeChangeHandler();
   }, []);
 
-  return <>{deskTopMode ? <SideNavDesktop /> : <SideNavMobile />}</>;
+  return <>{deskTopMode ? <SearchComponent /> : <SearchComponentMobile />}</>;
 };
 
 export default SideNavHandler;
