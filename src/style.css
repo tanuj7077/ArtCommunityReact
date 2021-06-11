@@ -2175,15 +2175,17 @@ body {
       grid-column: 1 / -1; } }
   .sideNavTopic-container {
     margin: auto;
-    width: 95%;
-    display: grid;
-    grid-template-columns: 30% repeat(12, 1fr); }
+    width: 95%; }
   .sideNavTopic--title {
     font-size: 2.5rem;
     font-weight: 500;
     position: absolute;
     top: 50%;
     transform: translateY(-50%); }
+    @media only screen and (max-width: 37.5em) {
+      .sideNavTopic--title {
+        left: 50%;
+        transform: translate(-50%, -50%); } }
 
 .submitModal {
   width: 100%;

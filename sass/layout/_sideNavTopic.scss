@@ -14,15 +14,9 @@
   color: white;
   background-color: rgba(#171c21, 0.95);
 
-  //display: grid;
-  //grid-template-columns: 30% repeat(12,1fr);
-
   &-container {
     margin: auto;
     width: 95%;
-
-    display: grid;
-    grid-template-columns: 30% repeat(12, 1fr);
   }
 
   &--title {
@@ -32,5 +26,10 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+
+    @include respond(phone) {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
