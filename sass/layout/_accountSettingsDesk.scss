@@ -1,18 +1,21 @@
-.settings {
-  grid-column: 3/ -1;
-  //grid-row: 2 / -1;
-  grid-row: 1 / -1;
+.settingsDesk {
+  //width: 100vw;
+  width: calc(100vw - 7rem);
+  height: calc(100vh - 6rem);
 
-  display: grid;
-  grid-template-columns: 1.5fr 3fr;
-
+  grid-column: 3 / -1;
+  grid-row: 2 / -1;
+  // display: grid;
+  // grid-template-columns: max-content max-content;
+  display: flex;
+  flex-flow: row;
   position: relative;
-
   &-sideNav {
+    width: 30%;
+    //height: 100vh;
     padding-left: 5rem;
-    padding-top: 8rem;
+    padding-top: 6rem;
     background-color: rgb(42, 42, 44);
-    height: 100vh;
     border-right: 3px solid rgb(58, 58, 58);
 
     display: flex;
@@ -53,7 +56,7 @@
     }
 
     .sideNav-items {
-      margin-top: 5rem;
+      //margin-top: 5vh;
       display: flex;
       flex-flow: column;
       .sideNav-item {
@@ -117,10 +120,12 @@
     }
   }
   &-main {
-    padding-left: 10rem;
-    padding-top: 8rem;
+    width: 70%;
+    //height: 100%;
+    padding-left: 7rem;
+    padding-right: 7rem;
+    padding-top: 6rem;
     background-color: rgb(42, 42, 44);
-    height: 100vh;
 
     display: flex;
     flex-flow: column;
@@ -153,10 +158,11 @@
       height: 8rem;
       border-bottom: 3px solid rgb(58, 58, 58);
     }
-    .saveBtn {
-    }
     .profile-items {
+      //background-color: bisque;
       padding-top: 4rem;
+      padding-bottom: 4rem;
+      padding-right: 7rem;
       display: flex;
       flex-flow: column;
       gap: 4rem;
@@ -164,7 +170,7 @@
       overflow: hidden;
       overflow-y: scroll;
       // max-height: 55rem;
-      height: 74vh;
+      //height: 74vh;
       &::-webkit-scrollbar {
         width: 7px;
       }
@@ -177,7 +183,7 @@
       }
 
       .photos {
-        width: 89%;
+        //width: 90%;
         justify-content: space-between;
         display: flex;
         flex-flow: row;
@@ -189,8 +195,8 @@
           }
           &-photo {
             margin-top: 0.8rem;
-            width: 25rem;
-            height: 25rem;
+            width: 17vw;
+            height: 17vw;
             border: 2px solid rgb(88, 88, 88);
             background-color: rgb(70, 70, 70);
 
@@ -244,8 +250,10 @@
           }
           &-photo {
             margin-top: 0.8rem;
-            width: 43rem;
-            height: 25rem;
+            // width: 43rem;
+            // height: 25rem;
+            width: 26vw;
+            height: 17vw;
             border: 2px solid rgb(88, 88, 88);
             background-color: rgb(70, 70, 70);
 
@@ -295,7 +303,7 @@
         }
       }
       .inputs {
-        width: 89%;
+        width: 100%;
         display: flex;
         flex-flow: row;
         flex-wrap: wrap;
@@ -634,27 +642,6 @@
           }
         }
       }
-      /*&-photo {
-        width: 55rem;
-        height: 30rem;
-        border-radius: 10px;
-        border: dashed 2px rgb(98, 98, 98); ///#6ecf86;
-        display: grid;
-        place-items: center;
-
-        .uploadIcon {
-          width: 10rem;
-          height: 10rem;
-          color: rgb(98, 98, 98);
-        }
-        &:hover {
-          cursor: pointer;
-          border-color: #6ecf86;
-        }
-        &:hover .uploadIcon {
-          color: #6ecf86;
-        }
-      }*/
     }
     .editModal {
       .modal-buttons {

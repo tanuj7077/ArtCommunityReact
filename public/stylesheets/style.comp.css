@@ -346,7 +346,6 @@ body {
       padding: 0 1rem;
       padding-top: 1rem;
       background-color: rgba(128, 128, 128, 0.5);
-      white-space: pre;
       border: 2px solid transparent;
       width: 100%;
       display: block;
@@ -1370,6 +1369,9 @@ body {
   margin: auto;
   width: 95%;
   min-height: 84vh; }
+  @media only screen and (max-width: 37.5em) {
+    .explorePage {
+      grid-column: 1 / -1; } }
   .explorePage--loading {
     margin-bottom: 7px;
     width: calc(100% - 10px);
@@ -1377,8 +1379,8 @@ body {
     border-radius: 1rem;
     background-color: #424141; }
   .explorePage--grid-item {
-    margin-bottom: 7px;
-    width: calc(100% - 10px); }
+    padding: 0.5rem;
+    width: 100%; }
     .explorePage--grid-item:hover {
       cursor: pointer; }
     .explorePage--grid-item--card {
@@ -1680,7 +1682,50 @@ body {
       grid-row: 3 / -1;
       min-height: 30rem;
       padding: 2rem 9rem;
-      background-color: #252525; }
+      background-color: #252525;
+      /*&-comment {
+        padding: 1rem 0;
+        display: grid;
+        column-gap: 1rem;
+        grid-template-rows: repeat(3, min-content);
+        grid-template-columns: repeat(16, 1fr);
+        &-img {
+          grid-row: 1 / 3;
+          grid-column: 1 / 2;
+          width: 4rem;
+          height: 4rem;
+          border-radius: 50%;
+        }
+        &-user {
+          grid-row: 1 / 2;
+          grid-column: 2 / 13;
+          font-size: 2rem;
+          align-self: center;
+        }
+        &-date {
+          grid-row: 1 / 2;
+          grid-column: 14 / -1;
+          font-size: 1.2rem;
+          justify-self: end;
+        }
+        &-text {
+          grid-row: 2 / 3;
+          grid-column: 2 / -1;
+          font-size: 1.5rem;
+          //white-space: pre;
+          word-wrap: break-word;
+        }
+        &-controls {
+          grid-row: 3 / 4;
+          grid-column: 2 / -1;
+
+          .control {
+            font-size: 1.5rem;
+            margin-right: 2rem;
+            cursor: pointer;
+          }
+        }
+      }*/ }
       @media only screen and (max-width: 75em) {
         .postPage .postContent--comments {
           grid-column: 1 / 13;
@@ -1695,44 +1740,49 @@ body {
         margin-top: 2rem; }
       .postPage .postContent--comments-comment {
         padding: 1rem 0;
-        display: grid;
-        column-gap: 1rem;
-        grid-template-rows: repeat(3, min-content);
-        grid-template-columns: repeat(16, 1fr); }
-        .postPage .postContent--comments-comment-img {
-          grid-row: 1 / 3;
-          grid-column: 1 / 2;
-          width: 4rem;
-          height: 4rem;
-          border-radius: 50%; }
+        display: flex;
+        flex-flow: column;
+        gap: 0.5rem; }
+        .postPage .postContent--comments-comment-top {
+          display: flex;
+          flex-flow: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.5rem; }
         .postPage .postContent--comments-comment-user {
-          grid-row: 1 / 2;
-          grid-column: 2 / 13;
+          display: flex;
+          flex-flow: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          gap: 0.5rem; }
+        .postPage .postContent--comments-comment-img {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 50%; }
+        .postPage .postContent--comments-comment-usertext {
           font-size: 2rem;
           align-self: center; }
         .postPage .postContent--comments-comment-date {
-          grid-row: 1 / 2;
-          grid-column: 14 / -1;
-          font-size: 1.2rem;
-          justify-self: end; }
+          font-size: 1.2rem; }
+        .postPage .postContent--comments-comment-bottom {
+          display: flex;
+          flex-flow: column;
+          gap: 0.5rem; }
         .postPage .postContent--comments-comment-text {
-          grid-row: 2 / 3;
-          grid-column: 2 / -1;
           font-size: 1.5rem;
           word-wrap: break-word; }
-        .postPage .postContent--comments-comment-controls {
-          grid-row: 3 / 4;
-          grid-column: 2 / -1; }
-          .postPage .postContent--comments-comment-controls .control {
-            font-size: 1.5rem;
-            margin-right: 2rem;
-            cursor: pointer; }
+        .postPage .postContent--comments-comment-controls .control {
+          font-size: 1.5rem;
+          margin-right: 2rem;
+          cursor: pointer; }
   .postPage .otherContent {
     grid-column: 15 / -1;
     grid-row: 1 / -1;
     background-color: #1b1b1b;
     display: grid;
     grid-template-rows: repeat(2, max-content);
+    margin: 0 auto;
     /*&--thumbnails {
       padding-top: 2rem;
       display: grid;
@@ -2073,7 +2123,7 @@ body {
   position: fixed;
   top: 6rem;
   width: 30rem;
-  height: 100vh;
+  height: calc(100vh - 6rem);
   background-color: black;
   border-right: 4px solid rgba(23, 28, 33, 0.95);
   z-index: 10;
@@ -2123,7 +2173,7 @@ body {
   position: fixed;
   top: 6rem;
   width: 7rem;
-  height: 100vh;
+  height: calc(100vh - 6rem);
   background-color: #171c21;
   background-color: black;
   z-index: 11;
@@ -2155,7 +2205,7 @@ body {
   top: 6rem;
   left: 7rem;
   width: 30rem;
-  height: 100vh;
+  height: calc(100vh - 6rem);
   background-color: black;
   border-right: 4px solid rgba(23, 28, 33, 0.95);
   z-index: 10;
@@ -3513,15 +3563,15 @@ body {
 
 .settings {
   grid-column: 3/ -1;
-  grid-row: 2 / -1;
+  grid-row: 1 / -1;
   display: grid;
   grid-template-columns: 1.5fr 3fr;
   position: relative; }
   .settings-sideNav {
     padding-left: 5rem;
-    padding-top: 3.5rem;
+    padding-top: 8rem;
     background-color: #2a2a2c;
-    height: 92.5vh;
+    height: 100vh;
     border-right: 3px solid #3a3a3a;
     display: flex;
     flex-flow: column;
@@ -3600,9 +3650,9 @@ body {
             color: #e0e0e0; }
   .settings-main {
     padding-left: 10rem;
-    padding-top: 3.5rem;
+    padding-top: 8rem;
     background-color: #2a2a2c;
-    height: 92.5vh;
+    height: 100vh;
     display: flex;
     flex-flow: column; }
     .settings-main .headingSection {
@@ -4055,12 +4105,929 @@ body {
           color: #ff6a6a;
           cursor: pointer; }
 
+.settingsDesk {
+  width: calc(100vw - 7rem);
+  height: calc(100vh - 6rem);
+  grid-column: 3 / -1;
+  grid-row: 2 / -1;
+  display: flex;
+  flex-flow: row;
+  position: relative; }
+  .settingsDesk-sideNav {
+    width: 30%;
+    padding-left: 5rem;
+    padding-top: 6rem;
+    background-color: #2a2a2c;
+    border-right: 3px solid #3a3a3a;
+    display: flex;
+    flex-flow: column;
+    gap: 1.5rem; }
+    .settingsDesk-sideNav .heading {
+      font-size: 4rem;
+      letter-spacing: 0.35rem;
+      color: white; }
+    .settingsDesk-sideNav .completion {
+      background-color: #114ec0;
+      height: 100px;
+      width: 350px;
+      border-radius: 15px;
+      display: flex;
+      flex-flow: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px; }
+      .settingsDesk-sideNav .completion .percentage {
+        color: white;
+        font-size: 2.5rem;
+        width: 7.5rem;
+        height: 7.5rem;
+        background-color: #5b7dbd;
+        border-radius: 50%;
+        display: grid;
+        place-items: center; }
+      .settingsDesk-sideNav .completion .status {
+        font-size: 2rem;
+        color: white; }
+    .settingsDesk-sideNav .sideNav-items {
+      margin-top: 5rem;
+      display: flex;
+      flex-flow: column; }
+      .settingsDesk-sideNav .sideNav-items .sideNav-item {
+        border-bottom: 3px solid #3a3a3a;
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1rem; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item:last-child {
+          border: none; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item .icon {
+          width: 3rem;
+          height: 3rem;
+          color: #777777; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item .textual {
+          display: flex;
+          flex-flow: column; }
+          .settingsDesk-sideNav .sideNav-items .sideNav-item .textual .subheading {
+            font-size: 2.5rem;
+            color: #777777; }
+          .settingsDesk-sideNav .sideNav-items .sideNav-item .textual .desc {
+            text-transform: none;
+            font-size: 1.6rem;
+            color: #777777; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item .right-icon {
+          justify-self: flex-end;
+          margin-right: 1rem;
+          width: 2.5rem;
+          height: 2.5rem;
+          color: #777777; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item .active {
+          color: white; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item:hover {
+          cursor: pointer; }
+          .settingsDesk-sideNav .sideNav-items .sideNav-item:hover .icon {
+            color: #6ecf86; }
+          .settingsDesk-sideNav .sideNav-items .sideNav-item:hover .subheading {
+            color: #e0e0e0; }
+          .settingsDesk-sideNav .sideNav-items .sideNav-item:hover .desc {
+            color: #a8a8a8; }
+          .settingsDesk-sideNav .sideNav-items .sideNav-item:hover .right-icon {
+            color: #e0e0e0; }
+  .settingsDesk-main {
+    width: 70%;
+    padding-left: 7rem;
+    padding-right: 7rem;
+    padding-top: 6rem;
+    background-color: #2a2a2c;
+    display: flex;
+    flex-flow: column; }
+    .settingsDesk-main .headingSection {
+      border-bottom: 3px solid #3a3a3a; }
+      .settingsDesk-main .headingSection .heading {
+        font-size: 4rem;
+        letter-spacing: 0.35rem;
+        color: white; }
+      .settingsDesk-main .headingSection .saveBtn {
+        float: right;
+        font-size: 2rem;
+        padding: 1rem;
+        margin-right: 10rem;
+        background-color: black;
+        color: white; }
+        .settingsDesk-main .headingSection .saveBtn:hover {
+          cursor: pointer;
+          color: #6ecf86; }
+    .settingsDesk-main .heading {
+      font-size: 4rem;
+      letter-spacing: 0.35rem;
+      color: white;
+      height: 8rem;
+      border-bottom: 3px solid #3a3a3a; }
+    .settingsDesk-main .profile-items {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      padding-right: 7rem;
+      display: flex;
+      flex-flow: column;
+      gap: 4rem;
+      overflow: hidden;
+      overflow-y: scroll;
+      /*--------------------Explicit settings----------*/
+      /*--------------------OVER----------*/ }
+      .settingsDesk-main .profile-items::-webkit-scrollbar {
+        width: 7px; }
+      .settingsDesk-main .profile-items::-webkit-scrollbar-thumb {
+        background: #6ecf86;
+        border-radius: 5px; }
+      .settingsDesk-main .profile-items::-webkit-scrollbar-track {
+        background: #505050; }
+      .settingsDesk-main .profile-items .photos {
+        justify-content: space-between;
+        display: flex;
+        flex-flow: row;
+        gap: 3rem; }
+        .settingsDesk-main .profile-items .photos .profilePhoto-label {
+          font-size: 1.7rem;
+          color: #888888; }
+        .settingsDesk-main .profile-items .photos .profilePhoto-photo {
+          margin-top: 0.8rem;
+          width: 17vw;
+          height: 17vw;
+          border: 2px solid #585858;
+          background-color: #464646;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center;
+          display: grid;
+          place-items: center; }
+          .settingsDesk-main .profile-items .photos .profilePhoto-photo .overlay {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            display: grid;
+            place-items: center;
+            transition: all 0.25s ease; }
+            .settingsDesk-main .profile-items .photos .profilePhoto-photo .overlay .text {
+              text-align: center;
+              width: 80%;
+              font-size: 3rem;
+              color: #cccccc;
+              opacity: 0; }
+          .settingsDesk-main .profile-items .photos .profilePhoto-photo:hover .overlay {
+            background-color: rgba(37, 37, 37, 0.7);
+            transition: all 0.25s ease; }
+          .settingsDesk-main .profile-items .photos .profilePhoto-photo:hover .overlay .text {
+            opacity: 1; }
+          .settingsDesk-main .profile-items .photos .profilePhoto-photo .icon {
+            color: #585858;
+            width: 10rem;
+            height: 10rem; }
+          .settingsDesk-main .profile-items .photos .profilePhoto-photo:hover .icon {
+            color: #626262;
+            transition: all 0.25s ease; }
+          .settingsDesk-main .profile-items .photos .profilePhoto-photo:hover {
+            cursor: pointer;
+            border: 4px solid #626262; }
+        .settingsDesk-main .profile-items .photos .coverPhoto-label {
+          font-size: 1.7rem;
+          color: #888888; }
+        .settingsDesk-main .profile-items .photos .coverPhoto-photo {
+          margin-top: 0.8rem;
+          width: 26vw;
+          height: 17vw;
+          border: 2px solid #585858;
+          background-color: #464646;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center;
+          display: grid;
+          place-items: center; }
+          .settingsDesk-main .profile-items .photos .coverPhoto-photo .overlay {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            display: grid;
+            place-items: center;
+            transition: all 0.25s ease; }
+            .settingsDesk-main .profile-items .photos .coverPhoto-photo .overlay .text {
+              text-align: center;
+              width: 80%;
+              font-size: 3rem;
+              color: #cccccc;
+              opacity: 0; }
+          .settingsDesk-main .profile-items .photos .coverPhoto-photo:hover .overlay {
+            background-color: rgba(37, 37, 37, 0.7);
+            transition: all 0.25s ease; }
+          .settingsDesk-main .profile-items .photos .coverPhoto-photo:hover .overlay .text {
+            opacity: 1; }
+          .settingsDesk-main .profile-items .photos .coverPhoto-photo .icon {
+            color: #585858;
+            width: 10rem;
+            height: 10rem; }
+          .settingsDesk-main .profile-items .photos .coverPhoto-photo:hover .icon {
+            color: #626262;
+            transition: all 0.25s ease; }
+          .settingsDesk-main .profile-items .photos .coverPhoto-photo:hover {
+            cursor: pointer;
+            border: 4px solid #626262; }
+      .settingsDesk-main .profile-items .inputs {
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        column-gap: 5rem;
+        row-gap: 3rem; }
+        .settingsDesk-main .profile-items .inputs .settings-group {
+          display: flex;
+          flex-flow: column; }
+          .settingsDesk-main .profile-items .inputs .settings-group-label {
+            font-size: 1.6rem;
+            color: #888888; }
+          .settingsDesk-main .profile-items .inputs .settings-group-input {
+            margin-top: 0.6rem;
+            height: 4rem;
+            width: 30rem;
+            background-color: #464646;
+            border: 2px solid #585858;
+            border-radius: 10px;
+            color: #a8a8a8;
+            font-size: 2rem;
+            padding-left: 1rem; }
+          .settingsDesk-main .profile-items .inputs .settings-group-input::-webkit-input-placeholder {
+            color: gray; }
+          .settingsDesk-main .profile-items .inputs .settings-group-input:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+            border: 2px solid #a8a8a8; }
+          .settingsDesk-main .profile-items .inputs .settings-group .location-select {
+            width: 30rem; }
+          .settingsDesk-main .profile-items .inputs .settings-group .long {
+            width: 65rem; }
+      .settingsDesk-main .profile-items .inputs-profile {
+        justify-content: space-between; }
+        .settingsDesk-main .profile-items .inputs-profile .settings-group-profile {
+          width: 46%; }
+          .settingsDesk-main .profile-items .inputs-profile .settings-group-profile-input {
+            width: 100%; }
+      .settingsDesk-main .profile-items .settings-group-extras {
+        width: 100%; }
+        .settingsDesk-main .profile-items .settings-group-extras .settings-group-input {
+          width: 100%; }
+        .settingsDesk-main .profile-items .settings-group-extras .settings-group-label {
+          width: 100%;
+          display: flex;
+          flex-flow: row;
+          flex-wrap: nowrap;
+          justify-content: space-between; }
+          .settingsDesk-main .profile-items .settings-group-extras .settings-group-label .label {
+            width: 80%; }
+          .settingsDesk-main .profile-items .settings-group-extras .settings-group-label .icons {
+            width: 10%;
+            display: flex;
+            flex-flow: row;
+            gap: 1rem;
+            justify-content: flex-end;
+            align-items: center; }
+            .settingsDesk-main .profile-items .settings-group-extras .settings-group-label .icons .edit {
+              width: 2rem;
+              height: 2rem; }
+              .settingsDesk-main .profile-items .settings-group-extras .settings-group-label .icons .edit:hover {
+                cursor: pointer;
+                color: #3e82ff; }
+            .settingsDesk-main .profile-items .settings-group-extras .settings-group-label .icons .delete:hover {
+              cursor: pointer;
+              color: #dd4c4c; }
+      .settingsDesk-main .profile-items .inputs-personalInfo {
+        justify-content: space-between; }
+        .settingsDesk-main .profile-items .inputs-personalInfo .settings-group-personalInfo-textarea {
+          width: 100%; }
+        .settingsDesk-main .profile-items .inputs-personalInfo .settings-group-personalInfo {
+          width: 46%; }
+          .settingsDesk-main .profile-items .inputs-personalInfo .settings-group-personalInfo input {
+            width: 100%; }
+      .settingsDesk-main .profile-items .radios {
+        display: flex;
+        flex-flow: row;
+        gap: 4rem; }
+        .settingsDesk-main .profile-items .radios .radio-container {
+          margin-top: 0.5rem;
+          display: flex;
+          flex-flow: row;
+          gap: 1rem;
+          align-items: center;
+          font-size: 2rem;
+          color: #a8a8a8;
+          cursor: pointer; }
+          .settingsDesk-main .profile-items .radios .radio-container input {
+            display: none; }
+          .settingsDesk-main .profile-items .radios .radio-container .checkmark {
+            height: 2rem;
+            width: 2rem;
+            border-radius: 50%;
+            background-color: #464646;
+            border: 2px solid #a8a8a8;
+            display: grid;
+            place-items: center; }
+            .settingsDesk-main .profile-items .radios .radio-container .checkmark:after {
+              content: "";
+              width: 0;
+              height: 0;
+              display: none; }
+          .settingsDesk-main .profile-items .radios .radio-container input:checked ~ .checkmark:after {
+            display: block; }
+          .settingsDesk-main .profile-items .radios .radio-container .checkmark:after {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #a8a8a8; }
+      .settingsDesk-main .profile-items .link-label {
+        margin-top: -1rem; }
+      .settingsDesk-main .profile-items .links {
+        width: 89%;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        gap: 2rem; }
+      .settingsDesk-main .profile-items .add {
+        margin-top: 1rem;
+        width: 8rem;
+        height: 8rem;
+        border: 2px solid #585858;
+        display: grid;
+        place-items: center;
+        cursor: pointer; }
+        .settingsDesk-main .profile-items .add .icon {
+          color: #585858;
+          height: 4rem;
+          width: 4rem; }
+        .settingsDesk-main .profile-items .add:hover {
+          border-color: #6ecf86; }
+        .settingsDesk-main .profile-items .add:hover .icon {
+          color: #6ecf86; }
+      .settingsDesk-main .profile-items .btn {
+        font-size: 2rem;
+        color: #868686;
+        text-transform: uppercase;
+        word-spacing: 0.4rem;
+        width: 15rem;
+        height: 5rem;
+        display: grid;
+        place-items: center;
+        background-color: black;
+        border-radius: 10px;
+        cursor: pointer; }
+        .settingsDesk-main .profile-items .btn:hover {
+          color: #6ecf86; }
+  .settingsDesk .addExtrasModal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1600;
+    background: rgba(0, 0, 0, 0.5);
+    display: grid;
+    place-items: center; }
+    .settingsDesk .addExtrasModal .modal {
+      width: 65rem;
+      height: max-content;
+      background-color: #2b2b2b;
+      border-radius: 10px;
+      display: flex;
+      flex-flow: column;
+      gap: 2.5rem;
+      align-items: center; }
+      .settingsDesk .addExtrasModal .modal-heading {
+        font-size: 3rem;
+        padding: 2rem 4.6rem;
+        width: 100%;
+        border-bottom: 2px solid #3a3a3a;
+        color: silver; }
+      .settingsDesk .addExtrasModal .modal-grp {
+        display: flex;
+        flex-flow: column; }
+        .settingsDesk .addExtrasModal .modal-grp-label {
+          font-size: 1.6rem;
+          color: #888888; }
+        .settingsDesk .addExtrasModal .modal-grp-confirm {
+          font-size: 2.5rem;
+          text-transform: none;
+          color: #888888; }
+        .settingsDesk .addExtrasModal .modal-grp-input {
+          margin-top: 0.6rem;
+          height: 4rem;
+          width: 55rem;
+          background-color: #464646;
+          border: 2px solid #585858;
+          border-radius: 10px;
+          color: #a8a8a8;
+          font-size: 2rem;
+          padding-left: 1rem; }
+        .settingsDesk .addExtrasModal .modal-grp-msg {
+          margin-top: 0.6rem;
+          height: 2rem;
+          font-size: 1.6rem;
+          text-transform: none;
+          color: #eb6161; }
+        .settingsDesk .addExtrasModal .modal-grp-input::-webkit-input-placeholder {
+          color: gray; }
+        .settingsDesk .addExtrasModal .modal-grp-input:focus {
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+          border: 2px solid #a8a8a8; }
+        .settingsDesk .addExtrasModal .modal-grp-textarea {
+          width: 55rem;
+          margin-top: 0.6rem;
+          background-color: #464646;
+          border: 2px solid #585858;
+          border-radius: 10px;
+          color: #a8a8a8;
+          font-size: 2rem;
+          padding: 1rem 1rem; }
+          .settingsDesk .addExtrasModal .modal-grp-textarea::-webkit-scrollbar {
+            height: 80%;
+            width: 10px; }
+          .settingsDesk .addExtrasModal .modal-grp-textarea::-webkit-scrollbar-thumb {
+            background: #1b1b1b;
+            border-radius: 5px; }
+          .settingsDesk .addExtrasModal .modal-grp-textarea::-webkit-scrollbar-thumb:hover {
+            cursor: pointer; }
+          .settingsDesk .addExtrasModal .modal-grp-textarea::-webkit-scrollbar-track {
+            background: #3a3a3a; }
+          .settingsDesk .addExtrasModal .modal-grp-textarea::-webkit-scrollbar-corner {
+            display: none; }
+          .settingsDesk .addExtrasModal .modal-grp-textarea::-webkit-resizer {
+            color: transparent; }
+        .settingsDesk .addExtrasModal .modal-grp-textarea:focus {
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+          border: 2px solid #a8a8a8; }
+      .settingsDesk .addExtrasModal .modal-buttons {
+        margin-bottom: 3rem;
+        width: 55rem;
+        color: silver;
+        font-size: 2rem;
+        text-transform: uppercase;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        word-spacing: 0.4rem; }
+        .settingsDesk .addExtrasModal .modal-buttons .add-btn {
+          display: grid;
+          place-items: center;
+          border-radius: 10px;
+          padding: 1.2rem 2rem;
+          width: 25rem;
+          background-color: black; }
+          .settingsDesk .addExtrasModal .modal-buttons .add-btn:hover {
+            color: #6ecf86;
+            cursor: pointer; }
+        .settingsDesk .addExtrasModal .modal-buttons .cancel-btn {
+          display: grid;
+          place-items: center;
+          border-radius: 10px;
+          padding: 1rem 2rem;
+          width: 25rem;
+          background-color: black; }
+          .settingsDesk .addExtrasModal .modal-buttons .cancel-btn:hover {
+            color: red;
+            cursor: pointer; }
+    .settingsDesk .addExtrasModal .editModal .modal-buttons {
+      font-size: 2rem;
+      text-transform: uppercase;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-evenly;
+      word-spacing: 0.4rem; }
+      .settingsDesk .addExtrasModal .editModal .modal-buttons .add-btn {
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1.2rem 2rem;
+        width: 30%;
+        background-color: black; }
+        .settingsDesk .addExtrasModal .editModal .modal-buttons .add-btn:hover {
+          color: #6ecf86;
+          cursor: pointer; }
+      .settingsDesk .addExtrasModal .editModal .modal-buttons .cancel-btn {
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        width: 30%;
+        background-color: black; }
+        .settingsDesk .addExtrasModal .editModal .modal-buttons .cancel-btn:hover {
+          color: #6aafff;
+          cursor: pointer; }
+      .settingsDesk .addExtrasModal .editModal .modal-buttons .delete-btn {
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        width: 30%;
+        background-color: black; }
+        .settingsDesk .addExtrasModal .editModal .modal-buttons .delete-btn:hover {
+          color: #ff6a6a;
+          cursor: pointer; }
+
+.settingsMobile {
+  width: calc(100vw);
+  height: calc(100vh - 6rem);
+  grid-column: 1 / -1;
+  grid-row: 2 / -1; }
+  .settingsMobile-links {
+    background-color: #2a2a2c;
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    font-size: 1.6rem;
+    justify-content: space-around; }
+    .settingsMobile-links .link {
+      margin-right: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 0.6rem;
+      transition: all 0.5s ease; }
+      .settingsMobile-links .link .icon {
+        width: 4rem;
+        height: 4rem;
+        color: gray; }
+    .settingsMobile-links .current {
+      color: #6ecf86;
+      transition: all 0.5s ease; }
+  .settingsMobile-carousel {
+    width: 100vw;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    transform: rotateX(180deg); }
+    .settingsMobile-carousel--profileSection {
+      width: 100%;
+      transform: rotateX(180deg);
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      width: 100%;
+      height: calc(100vh - 12rem); }
+      .settingsMobile-carousel--profileSection .headingSection {
+        width: 100%;
+        font-size: 3.5rem;
+        padding: 1rem 0;
+        color: white;
+        background-color: rgba(23, 28, 33, 0.95);
+        text-align: center; }
+      .settingsMobile-carousel--profileSection .profile-items {
+        width: 100%;
+        padding: 2rem 2rem;
+        display: flex;
+        flex-flow: column;
+        overflow: hidden;
+        overflow-y: scroll;
+        align-items: center;
+        gap: 2rem;
+        max-height: calc(100vh - 18rem); }
+        .settingsMobile-carousel--profileSection .profile-items .photos {
+          width: 100%;
+          display: flex;
+          flex-flow: row;
+          flex-wrap: nowrap;
+          justify-content: space-between; }
+        .settingsMobile-carousel--profileSection .profile-items .profilePhoto-label {
+          font-size: 1.7rem;
+          color: #888888; }
+        .settingsMobile-carousel--profileSection .profile-items .profilePhoto-photo {
+          width: 30vw;
+          height: 32vw;
+          border: 2px solid #585858;
+          background-color: #464646;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center;
+          display: grid;
+          place-items: center; }
+        .settingsMobile-carousel--profileSection .profile-items .profilePhoto .icon {
+          color: #585858;
+          width: 10rem;
+          height: 10rem; }
+        .settingsMobile-carousel--profileSection .profile-items .coverPhoto-label {
+          font-size: 1.7rem;
+          color: #888888; }
+        .settingsMobile-carousel--profileSection .profile-items .coverPhoto-photo {
+          width: 52vw;
+          height: 32vw;
+          border: 2px solid #585858;
+          background-color: #464646;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center;
+          display: grid;
+          place-items: center; }
+        .settingsMobile-carousel--profileSection .profile-items .coverPhoto .icon {
+          color: #585858;
+          width: 10rem;
+          height: 10rem; }
+        .settingsMobile-carousel--profileSection .profile-items .settings-group {
+          display: flex;
+          width: 100%;
+          flex-flow: column; }
+          .settingsMobile-carousel--profileSection .profile-items .settings-group-label {
+            font-size: 1.6rem;
+            color: #888888;
+            width: 100%;
+            display: flex;
+            flex-flow: row;
+            flex-wrap: nowrap;
+            justify-content: space-between; }
+            .settingsMobile-carousel--profileSection .profile-items .settings-group-label .icons {
+              width: 10%;
+              display: flex;
+              flex-flow: row;
+              gap: 1rem;
+              justify-content: flex-end;
+              align-items: center; }
+              .settingsMobile-carousel--profileSection .profile-items .settings-group-label .icons .edit {
+                width: 2rem;
+                height: 2rem; }
+                .settingsMobile-carousel--profileSection .profile-items .settings-group-label .icons .edit:hover {
+                  cursor: pointer;
+                  color: #3e82ff; }
+              .settingsMobile-carousel--profileSection .profile-items .settings-group-label .icons .delete:hover {
+                cursor: pointer;
+                color: #dd4c4c; }
+          .settingsMobile-carousel--profileSection .profile-items .settings-group-input {
+            margin-top: 0.6rem;
+            height: 4rem;
+            width: 100%;
+            background-color: #464646;
+            border: 2px transparent #585858;
+            border-radius: 30px;
+            color: #a8a8a8;
+            font-size: 2rem;
+            padding-left: 1.5rem; }
+          .settingsMobile-carousel--profileSection .profile-items .settings-group-input::-webkit-input-placeholder {
+            color: gray; }
+          .settingsMobile-carousel--profileSection .profile-items .settings-group-input:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+            border: 2px solid #a8a8a8; }
+          .settingsMobile-carousel--profileSection .profile-items .settings-group .location-select {
+            width: 30rem; }
+          .settingsMobile-carousel--profileSection .profile-items .settings-group .long {
+            width: 65rem; }
+        .settingsMobile-carousel--profileSection .profile-items .saveBtn {
+          font-size: 2rem;
+          padding: 1rem;
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+          background-color: #383838;
+          color: white; }
+          .settingsMobile-carousel--profileSection .profile-items .saveBtn:hover {
+            cursor: pointer;
+            color: #6ecf86; }
+        .settingsMobile-carousel--profileSection .profile-items .radios {
+          display: flex;
+          flex-flow: row;
+          gap: 4rem; }
+          .settingsMobile-carousel--profileSection .profile-items .radios .radio-container {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-flow: row;
+            gap: 1rem;
+            align-items: center;
+            font-size: 2rem;
+            color: #a8a8a8;
+            cursor: pointer; }
+            .settingsMobile-carousel--profileSection .profile-items .radios .radio-container input {
+              display: none; }
+            .settingsMobile-carousel--profileSection .profile-items .radios .radio-container .checkmark {
+              height: 2rem;
+              width: 2rem;
+              border-radius: 50%;
+              background-color: #464646;
+              border: 2px solid #a8a8a8;
+              display: grid;
+              place-items: center; }
+              .settingsMobile-carousel--profileSection .profile-items .radios .radio-container .checkmark:after {
+                content: "";
+                width: 0;
+                height: 0;
+                display: none; }
+            .settingsMobile-carousel--profileSection .profile-items .radios .radio-container input:checked ~ .checkmark:after {
+              display: block; }
+            .settingsMobile-carousel--profileSection .profile-items .radios .radio-container .checkmark:after {
+              width: 1rem;
+              height: 1rem;
+              border-radius: 50%;
+              background-color: #a8a8a8; }
+        .settingsMobile-carousel--profileSection .profile-items .link-label {
+          margin-top: 0rem; }
+        .settingsMobile-carousel--profileSection .profile-items .links {
+          width: 89%;
+          display: flex;
+          flex-flow: row;
+          flex-wrap: wrap;
+          gap: 2rem; }
+        .settingsMobile-carousel--profileSection .profile-items .add {
+          margin-top: 1rem;
+          width: 8rem;
+          height: 8rem;
+          border: 2px solid #585858;
+          display: grid;
+          place-items: center;
+          cursor: pointer; }
+          .settingsMobile-carousel--profileSection .profile-items .add .icon {
+            color: #585858;
+            height: 4rem;
+            width: 4rem; }
+          .settingsMobile-carousel--profileSection .profile-items .add:hover {
+            border-color: #6ecf86; }
+          .settingsMobile-carousel--profileSection .profile-items .add:hover .icon {
+            color: #6ecf86; }
+        .settingsMobile-carousel--profileSection .profile-items .btn {
+          font-size: 2rem;
+          color: #868686;
+          text-transform: uppercase;
+          word-spacing: 0.4rem;
+          width: 15rem;
+          height: 5rem;
+          display: grid;
+          place-items: center;
+          background-color: black;
+          border-radius: 10px;
+          cursor: pointer; }
+          .settingsMobile-carousel--profileSection .profile-items .btn:hover {
+            color: #6ecf86; }
+      .settingsMobile-carousel--profileSection .addExtraModal {
+        width: 100%;
+        height: calc(100vh - 12rem);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1600;
+        background: rgba(0, 0, 0, 0.5);
+        display: grid;
+        place-items: center; }
+        .settingsMobile-carousel--profileSection .addExtraModal .modal {
+          width: 80%;
+          height: max-content;
+          background-color: #2b2b2b;
+          border-radius: 10px;
+          display: flex;
+          flex-flow: column;
+          gap: 2.5rem;
+          align-items: center; }
+          .settingsMobile-carousel--profileSection .addExtraModal .modal-heading {
+            font-size: 3rem;
+            padding: 2rem 4.6rem;
+            width: 100%;
+            border-bottom: 2px solid #3a3a3a;
+            color: silver; }
+          .settingsMobile-carousel--profileSection .addExtraModal .modal-grp {
+            width: 100%;
+            display: flex;
+            flex-flow: column; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-label {
+              font-size: 1.6rem;
+              color: #888888;
+              margin-left: 4.6rem; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-confirm {
+              font-size: 2.5rem;
+              text-transform: none;
+              color: #888888; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-input {
+              margin: 0.6rem auto;
+              height: 4rem;
+              width: 80%;
+              background-color: #464646;
+              border: 2px solid #585858;
+              border-radius: 10px;
+              color: #a8a8a8;
+              font-size: 2rem;
+              padding-left: 1rem; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-msg {
+              width: 80%;
+              margin: 0.6rem auto;
+              margin-top: 0.6rem;
+              height: 2rem;
+              font-size: 1.6rem;
+              text-transform: none;
+              color: #eb6161; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-input::-webkit-input-placeholder {
+              color: gray; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-input:focus {
+              outline: none;
+              box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+              border: 2px solid #a8a8a8; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-textarea {
+              width: 55rem;
+              margin-top: 0.6rem;
+              background-color: #464646;
+              border: 2px solid #585858;
+              border-radius: 10px;
+              color: #a8a8a8;
+              font-size: 2rem;
+              padding: 1rem 1rem; }
+              .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-textarea::-webkit-scrollbar {
+                height: 80%;
+                width: 10px; }
+              .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-textarea::-webkit-scrollbar-thumb {
+                background: #1b1b1b;
+                border-radius: 5px; }
+              .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-textarea::-webkit-scrollbar-thumb:hover {
+                cursor: pointer; }
+              .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-textarea::-webkit-scrollbar-track {
+                background: #3a3a3a; }
+              .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-textarea::-webkit-scrollbar-corner {
+                display: none; }
+              .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-textarea::-webkit-resizer {
+                color: transparent; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-grp-textarea:focus {
+              outline: none;
+              box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+              border: 2px solid #a8a8a8; }
+          .settingsMobile-carousel--profileSection .addExtraModal .modal-buttons {
+            margin-bottom: 3rem;
+            width: 80%;
+            color: silver;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            word-spacing: 0.4rem; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-buttons .add-btn {
+              display: grid;
+              place-items: center;
+              border-radius: 10px;
+              width: 40%;
+              background-color: black; }
+              .settingsMobile-carousel--profileSection .addExtraModal .modal-buttons .add-btn:hover {
+                color: #6ecf86;
+                cursor: pointer; }
+            .settingsMobile-carousel--profileSection .addExtraModal .modal-buttons .cancel-btn {
+              display: grid;
+              place-items: center;
+              border-radius: 10px;
+              padding: 1rem auto;
+              width: 40%;
+              background-color: black; }
+              .settingsMobile-carousel--profileSection .addExtraModal .modal-buttons .cancel-btn:hover {
+                color: red;
+                cursor: pointer; }
+        .settingsMobile-carousel--profileSection .addExtraModal .editModal .modal-buttons {
+          font-size: 1.5rem;
+          text-transform: uppercase;
+          display: flex;
+          flex-flow: row;
+          justify-content: space-evenly;
+          word-spacing: 0.4rem; }
+          .settingsMobile-carousel--profileSection .addExtraModal .editModal .modal-buttons .add-btn {
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            width: 30%;
+            background-color: black; }
+            .settingsMobile-carousel--profileSection .addExtraModal .editModal .modal-buttons .add-btn:hover {
+              color: #6ecf86;
+              cursor: pointer; }
+          .settingsMobile-carousel--profileSection .addExtraModal .editModal .modal-buttons .cancel-btn {
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            width: 30%;
+            background-color: black; }
+            .settingsMobile-carousel--profileSection .addExtraModal .editModal .modal-buttons .cancel-btn:hover {
+              color: #6aafff;
+              cursor: pointer; }
+          .settingsMobile-carousel--profileSection .addExtraModal .editModal .modal-buttons .delete-btn {
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            padding: 1rem auto;
+            width: 30%;
+            background-color: black; }
+            .settingsMobile-carousel--profileSection .addExtraModal .editModal .modal-buttons .delete-btn:hover {
+              color: #ff6a6a;
+              cursor: pointer; }
+    .settingsMobile-carousel::-webkit-scrollbar {
+      height: 2px;
+      background: #464646; }
+    .settingsMobile-carousel::-webkit-scrollbar-thumb {
+      height: 2px;
+      background: #6ecf86; }
+
 .followedList {
   grid-column: 3 / -1;
   grid-row: 3 / -1;
   width: 100%;
   height: min-content;
   padding: 2rem 0; }
+  @media only screen and (max-width: 37.5em) {
+    .followedList {
+      grid-column: 1 / -1; } }
 
 .followed {
   width: 95%;

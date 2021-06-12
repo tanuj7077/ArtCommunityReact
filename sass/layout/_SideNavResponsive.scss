@@ -3,7 +3,8 @@
   // top: 7.5vh;
   top: 6rem;
   width: 30rem;
-  height: 100vh;
+  //height: 100vh;
+  height: calc(100vh - 6rem);
   //   background-color: #171c21;
   background-color: black;
   border-right: 4px solid rgba(#171c21, 0.95);
@@ -63,7 +64,9 @@
   // top: 7.5vh;
   top: 6rem;
   width: 7rem;
-  height: 100vh;
+  //height: 100vh;
+  height: calc(100vh - 6rem);
+  //min-height: calc("100vh - 6rem");
   background-color: #171c21;
   background-color: black;
   z-index: 11;
@@ -100,7 +103,8 @@
   top: 6rem;
   left: 7rem;
   width: 30rem;
-  height: 100vh;
+  //height: 100vh;
+  height: calc(100vh - 6rem);
   //   background-color: #171c21;
   background-color: black;
   border-right: 4px solid rgba(#171c21, 0.95);
