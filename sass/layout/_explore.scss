@@ -92,6 +92,9 @@
   margin: auto;
   width: 95%;
   min-height: 84vh;
+  @include respond(phone) {
+    grid-column: 1 / -1;
+  }
 
   &--loading {
     margin-bottom: 7px;
@@ -102,8 +105,9 @@
   }
 
   &--grid-item {
-    margin-bottom: 7px;
-    width: calc(100% - 10px);
+    ///margin-bottom: 7px;
+    padding: 0.5rem;
+    width: 100%;
     &:hover {
       cursor: pointer;
     }
