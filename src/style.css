@@ -5197,18 +5197,40 @@ body {
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap; }
+    @media only screen and (max-width: 37.5em) {
+      .LoginModal-body {
+        width: 95%; } }
+    @media only screen and (max-height: 37.5em) {
+      .LoginModal-body {
+        width: 80%;
+        height: 90vh; } }
     .LoginModal-body-login {
       background: linear-gradient(-45deg, #030303, #2c2c2c, #383838, #4b4b4b);
       background-size: 400% 400%;
       transition: all 1s; }
+      @media only screen and (max-width: 37.5em) {
+        .LoginModal-body-login {
+          background: linear-gradient(-45deg, #da7050, #c53d71, #2293bd, #22be9a);
+          background-size: 400% 400%; } }
     .LoginModal-body-signup {
       background: linear-gradient(-45deg, #030303, #2c2c2c, #383838, #4b4b4b);
       background-size: 400% 400%; }
+      @media only screen and (max-width: 37.5em) {
+        .LoginModal-body-signup {
+          background: linear-gradient(-45deg, #da7050, #c53d71, #2293bd, #22be9a);
+          background-size: 400% 400%; } }
     .LoginModal-body-img {
       width: 50%;
       height: 100%;
       position: relative;
       overflow: hidden; }
+      @media only screen and (max-width: 37.5em) {
+        .LoginModal-body-img {
+          display: none; } }
+      @media only screen and (max-height: 37.5em) {
+        .LoginModal-body-img {
+          display: block;
+          width: 35%; } }
       .LoginModal-body-img .text {
         position: absolute;
         bottom: 0;
@@ -5228,12 +5250,18 @@ body {
           font-weight: 600;
           letter-spacing: 0.4rem;
           color: #6ecf86; }
+          @media only screen and (max-height: 37.5em) {
+            .LoginModal-body-img .text .content1 {
+              font-size: 4rem; } }
         .LoginModal-body-img .text .content2 {
           display: block;
           font-size: 2.5rem;
           font-weight: 400;
           letter-spacing: 0.3rem;
           color: white; }
+          @media only screen and (max-height: 37.5em) {
+            .LoginModal-body-img .text .content2 {
+              font-size: 2rem; } }
       .LoginModal-body-img .carousel {
         position: absolute;
         top: 0;
@@ -5273,6 +5301,12 @@ body {
       background-color: transparent;
       display: flex;
       flex-flow: column; }
+      @media only screen and (max-width: 37.5em) {
+        .LoginModal-body-form {
+          width: 100%; } }
+      @media only screen and (max-height: 37.5em) {
+        .LoginModal-body-form {
+          width: 65%; } }
       .LoginModal-body-form .heading {
         position: relative;
         display: flex;
@@ -5329,9 +5363,12 @@ body {
         .LoginModal-body-form .loginForm .form {
           width: 100%; }
       .LoginModal-body-form .signupForm {
-        margin: auto 4rem;
+        margin: auto 0;
+        padding: 0 3rem;
         display: grid;
-        place-items: center; }
+        place-items: center;
+        overflow: hidden;
+        overflow-y: scroll; }
         .LoginModal-body-form .signupForm .form {
           width: 100%; }
 

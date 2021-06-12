@@ -29,19 +29,36 @@
     ///background-color: rgb(218, 148, 148);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+      rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
+    @include respond(phone) {
+      width: 95%;
+    }
+    @include respond(phone-land) {
+      width: 80%;
+      height: 90vh;
+    }
+
     &-login {
       background: linear-gradient(-45deg, #030303, #2c2c2c, #383838, #4b4b4b);
       background-size: 400% 400%;
       transition: all 1s;
+      @include respond(phone) {
+        background: linear-gradient(-45deg, #da7050, #c53d71, #2293bd, #22be9a);
+        background-size: 400% 400%;
+      }
     }
     &-signup {
       background: linear-gradient(-45deg, #030303, #2c2c2c, #383838, #4b4b4b);
       background-size: 400% 400%;
+      @include respond(phone) {
+        background: linear-gradient(-45deg, #da7050, #c53d71, #2293bd, #22be9a);
+        background-size: 400% 400%;
+      }
     }
     &-img {
       width: 50%;
@@ -49,6 +66,13 @@
       //background-color: wheat;
       position: relative;
       overflow: hidden;
+      @include respond(phone) {
+        display: none;
+      }
+      @include respond(phone-land) {
+        display: block;
+        width: 35%;
+      }
 
       .text {
         position: absolute;
@@ -71,6 +95,9 @@
           font-weight: 600;
           letter-spacing: 0.4rem;
           color: #6ecf86;
+          @include respond(phone-land) {
+            font-size: 4rem;
+          }
         }
         .content2 {
           display: block;
@@ -78,6 +105,9 @@
           font-weight: 400;
           letter-spacing: 0.3rem;
           color: white;
+          @include respond(phone-land) {
+            font-size: 2rem;
+          }
         }
       }
       .carousel {
@@ -131,6 +161,12 @@
       background-color: transparent;
       display: flex;
       flex-flow: column;
+      @include respond(phone) {
+        width: 100%;
+      }
+      @include respond(phone-land) {
+        width: 65%;
+      }
       .heading {
         position: relative;
         display: flex;
@@ -203,9 +239,12 @@
         }
       }
       .signupForm {
-        margin: auto 4rem;
+        margin: auto 0;
+        padding: 0 3rem;
         display: grid;
         place-items: center;
+        overflow: hidden;
+        overflow-y: scroll;
         .form {
           width: 100%;
         }
