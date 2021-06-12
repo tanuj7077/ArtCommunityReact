@@ -73,66 +73,78 @@ const SingleComment = ({ id, postId }) => {
     return <span></span>;
   }
   return (
-    <div className="postContent--comments-comment">
-      <img src={url} alt="user" className="postContent--comments-comment-img" />
-      <span className="postContent--comments-comment-user">
-        {comment.author.username}
-      </span>
-      <span className="postContent--comments-comment-date">
-        {comment.datePosted}
-      </span>
-      {!editState ? (
-        <span className="postContent--comments-comment-text">
-          {comment.text}
-        </span>
-      ) : (
-        <span className="postContent--comments-comment-text">
-          <div className="form__group form__group--basic u-margin-top-small u-margin-bottom-small">
-            <textarea
-              name="desc"
-              id="edit-comment"
-              cols="40"
-              rows="4"
-              className="form__input-textarea-comment"
-              autoComplete="off"
-              spellCheck="false"
-              placeholder="Add a public comment"
-              value={editedComment}
-              onChange={(e) => setEditedComment(e.target.value)}
-            ></textarea>
+    <>
+      <div className="postContent--comments-comment">
+        <div className="postContent--comments-comment-top">
+          <div className="postContent--comments-comment-user">
+            <img
+              src={url}
+              alt="user"
+              className="postContent--comments-comment-img"
+            />
+            <span className="postContent--comments-comment-usertext">
+              {comment.author.username}
+            </span>
           </div>
-        </span>
-      )}
-      <span className="postContent--comments-comment-controls">
-        {userData.username !== comment.author.username && !editState && (
-          <span className="control" onClick={likeComment}>
-            {/* {typeof comment.likesArray === "undefined" ? `` : likes} */}
-            {likes === 0 ? `` : likes} Like
+
+          <span className="postContent--comments-comment-date">
+            {comment.datePosted}
           </span>
-        )}
-        {!editState && <span className="control">Reply</span>}
-        {userData.username === comment.author.username && !editState && (
-          <>
-            <span className="control" onClick={deleteComment}>
-              Delete
+        </div>
+        <div className="postContent--comments-comment-bottom">
+          {!editState ? (
+            <span className="postContent--comments-comment-text">
+              {comment.text}
             </span>
-            <span className="control" onClick={editClick}>
-              Edit
+          ) : (
+            <span className="postContent--comments-comment-text">
+              <div className="form__group form__group--basic u-margin-top-small u-margin-bottom-small">
+                <textarea
+                  name="desc"
+                  id="edit-comment"
+                  cols="40"
+                  rows="4"
+                  className="form__input-textarea-comment"
+                  autoComplete="off"
+                  spellCheck="false"
+                  placeholder="Add a public comment"
+                  value={editedComment}
+                  onChange={(e) => setEditedComment(e.target.value)}
+                ></textarea>
+              </div>
             </span>
-          </>
-        )}
-        {editState && (
-          <>
-            <span className="control" onClick={editComment}>
-              Submit
-            </span>
-            <span className="control" onClick={() => setEditState(false)}>
-              Cancel
-            </span>
-          </>
-        )}
-      </span>
-    </div>
+          )}
+          <span className="postContent--comments-comment-controls">
+            {userData.username !== comment.author.username && !editState && (
+              <span className="control" onClick={likeComment}>
+                {likes === 0 ? `` : likes} Like
+              </span>
+            )}
+            {!editState && <span className="control">Reply</span>}
+            {userData.username === comment.author.username && !editState && (
+              <>
+                <span className="control" onClick={deleteComment}>
+                  Delete
+                </span>
+                <span className="control" onClick={editClick}>
+                  Edit
+                </span>
+              </>
+            )}
+            {editState && (
+              <>
+                <span className="control" onClick={editComment}>
+                  Submit
+                </span>
+                <span className="control" onClick={() => setEditState(false)}>
+                  Cancel
+                </span>
+              </>
+            )}
+          </span>
+        </div>
+      </div>
+    </>
   );
 };
 

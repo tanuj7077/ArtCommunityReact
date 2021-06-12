@@ -135,7 +135,7 @@ const PostList = () => {
     <div className="main">
       <div className="subHeading">Discover</div>
       <ResponsiveMasonry
-        columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1000: 4 }}
+        columnsCountBreakPoints={{ 350: 1, 600: 2, 750: 2, 900: 3, 1000: 4 }}
       >
         <Masonry>
           {imgData.images.map((post) => {

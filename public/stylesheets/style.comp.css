@@ -1172,8 +1172,7 @@ body {
       flex-wrap: nowrap;
       font-size: 1.6rem;
       align-items: center;
-      justify-content: space-around;
-      border-bottom: 2px solid #464646; }
+      justify-content: space-around; }
       .liveSearch-searchResults2-links .link {
         margin-right: 1rem;
         color: gray;
@@ -1191,6 +1190,7 @@ body {
       -webkit-overflow-scrolling: touch;
       transform: rotateX(180deg); }
       .liveSearch-searchResults2-carousel--postSection {
+        transform: rotateX(180deg);
         scroll-snap-align: start;
         flex-shrink: 0;
         width: 70vw;
@@ -1200,6 +1200,9 @@ body {
         overflow: hidden;
         overflow-y: scroll;
         font-size: 2rem; }
+        @media only screen and (max-height: 37.5em) {
+          .liveSearch-searchResults2-carousel--postSection {
+            height: 240px; } }
         .liveSearch-searchResults2-carousel--postSection .item {
           text-align: start;
           height: max-content;
@@ -1215,6 +1218,7 @@ body {
           .liveSearch-searchResults2-carousel--postSection .item:active {
             color: #6ecf86; }
       .liveSearch-searchResults2-carousel--authorSection {
+        transform: rotateX(180deg);
         scroll-snap-align: start;
         flex-shrink: 0;
         width: 70vw;
@@ -1224,6 +1228,9 @@ body {
         overflow: hidden;
         overflow-y: scroll;
         font-size: 2rem; }
+        @media only screen and (max-height: 37.5em) {
+          .liveSearch-searchResults2-carousel--authorSection {
+            height: 240px; } }
         .liveSearch-searchResults2-carousel--authorSection .item {
           text-align: start;
           height: 5.5rem;
@@ -1238,12 +1245,16 @@ body {
           .liveSearch-searchResults2-carousel--authorSection .item:active {
             color: #6ecf86; }
       .liveSearch-searchResults2-carousel--tagSection {
+        transform: rotateX(180deg);
         scroll-snap-align: start;
         flex-shrink: 0;
         width: 70vw;
         height: 300px;
         font-size: 2rem;
         margin: 1rem 0; }
+        @media only screen and (max-height: 37.5em) {
+          .liveSearch-searchResults2-carousel--tagSection {
+            height: 240px; } }
         .liveSearch-searchResults2-carousel--tagSection .tagList {
           list-style-type: none;
           height: max-content;
@@ -1264,6 +1275,12 @@ body {
             color: gray; }
             .liveSearch-searchResults2-carousel--tagSection .tagList .item:active {
               color: #6ecf86; }
+      .liveSearch-searchResults2-carousel::-webkit-scrollbar {
+        height: 2px;
+        background: #464646; }
+      .liveSearch-searchResults2-carousel::-webkit-scrollbar-thumb {
+        height: 2px;
+        background: #6ecf86; }
       .liveSearch-searchResults2-carousel .notFound {
         font-size: 4rem;
         color: #6ecf86;
@@ -1278,6 +1295,14 @@ body {
   margin: auto;
   width: 95%;
   padding-top: 5rem; }
+  @media only screen and (max-width: 37.5em) {
+    .explore {
+      padding-top: 2.5rem;
+      grid-column: 1 / -1; } }
+  .explore .subHeading {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem; }
 
 .exploreGrid {
   display: grid;
@@ -1296,7 +1321,7 @@ body {
       grid-template-columns: repeat(2, 1fr); } }
   @media only screen and (max-width: 37.5em) {
     .exploreGrid {
-      grid-template-columns: repeat(1, 1fr); } }
+      grid-template-columns: repeat(2, 1fr); } }
   .exploreGrid .tagLoading {
     width: 100%;
     padding-top: 70%;
@@ -1400,18 +1425,17 @@ body {
   @media only screen and (max-width: 37.5em) {
     .main {
       grid-column: 1 / -1; } }
+  .main .subHeading {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem; }
 
 .tagSearchList {
   grid-row: 3 / -1;
   padding-top: 0rem;
   margin: 3rem auto;
   min-height: 77vh; }
-
-.subHeading {
-  color: white;
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: 1rem; }
 
 .grid-item {
   position: relative;
@@ -1422,12 +1446,13 @@ body {
     background-color: black;
     position: relative;
     border-radius: 1rem;
-    overflow: hidden; }
+    overflow: hidden;
+    margin-bottom: 1rem; }
     .grid-item--card-img {
       width: 100%;
       transition: all 0.2s ease-in;
       border-radius: 1rem;
-      margin-bottom: -1%; }
+      display: block; }
     .grid-item--card-title {
       color: white;
       font-size: 2.5rem;
@@ -1509,6 +1534,9 @@ body {
   grid-template-columns: repeat(19, 1fr);
   grid-template-rows: repeat(5, max-content);
   color: white; }
+  @media only screen and (max-width: 37.5em) {
+    .postPage {
+      grid-column: 1 / -1; } }
   .postPage .postContent {
     grid-column: 1 / 15;
     grid-row: 1 / 3;
@@ -1525,22 +1553,46 @@ body {
       height: 72.5vh; }
       @media only screen and (max-width: 75em) {
         .postPage .postContent--image {
-          height: 80vh; } }
+          height: 400px; } }
       @media only screen and (max-width: 37.5em) {
         .postPage .postContent--image {
-          height: 95vh; } }
+          height: 300px; } }
       .postPage .postContent--image-img {
         border-radius: 5px;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         width: auto;
-        max-width: 95%;
+        max-width: 90%;
         max-height: 65vh; }
+        @media only screen and (max-width: 75em) {
+          .postPage .postContent--image-img {
+            max-height: 350px; } }
+        @media only screen and (max-width: 37.5em) {
+          .postPage .postContent--image-img {
+            max-height: 250px; } }
     .postPage .postContent--info {
       padding: 3rem 9rem;
       background-color: #2c2c2c;
       width: 100%;
       display: flex;
-      flex-flow: column; }
+      flex-flow: column;
+      /*&-author {
+        display: grid;
+        grid-template-rows: min-content max-content;
+        grid-template-columns: max-content max-content;
+        &-img {
+          grid-column: 1/ 2;
+          grid-row: 1 / 3;
+        }
+        &-title {
+          padding-left: 2.5rem;
+          font-size: 4rem;
+          align-self: start;
+        }
+        &-name {
+          padding-left: 2.5rem;
+          font-size: 2rem;
+        }
+      }*/ }
       @media only screen and (max-width: 75em) {
         .postPage .postContent--info {
           padding: 3rem 5rem; } }
@@ -1573,19 +1625,24 @@ body {
         .postPage .postContent--info-menu:hover .postContent--info-menu-dropdown {
           visibility: visible; }
       .postPage .postContent--info-author {
-        display: grid;
-        grid-template-rows: min-content max-content;
-        grid-template-columns: max-content max-content; }
-        .postPage .postContent--info-author-img {
-          grid-column: 1/ 2;
-          grid-row: 1 / 3; }
+        display: flex;
+        flex-flow: column;
+        gap: 1rem; }
         .postPage .postContent--info-author-title {
-          padding-left: 2.5rem;
           font-size: 4rem;
           align-self: start; }
-        .postPage .postContent--info-author-name {
-          padding-left: 2.5rem;
-          font-size: 2rem; }
+        .postPage .postContent--info-author-detail {
+          display: flex;
+          flex-flow: row;
+          gap: 1rem; }
+          .postPage .postContent--info-author-detail .userImg {
+            width: 5rem;
+            height: 5rem;
+            background-size: cover;
+            background-position-x: center;
+            background-position-y: center; }
+          .postPage .postContent--info-author-detail .name {
+            font-size: 3rem; }
       .postPage .postContent--info-icons {
         position: relative;
         padding: 3rem 0;
@@ -1662,7 +1719,7 @@ body {
           grid-row: 2 / 3;
           grid-column: 2 / -1;
           font-size: 1.5rem;
-          white-space: pre; }
+          word-wrap: break-word; }
         .postPage .postContent--comments-comment-controls {
           grid-row: 3 / 4;
           grid-column: 2 / -1; }
@@ -2167,15 +2224,17 @@ body {
       grid-column: 1 / -1; } }
   .sideNavTopic-container {
     margin: auto;
-    width: 95%;
-    display: grid;
-    grid-template-columns: 30% repeat(12, 1fr); }
+    width: 95%; }
   .sideNavTopic--title {
     font-size: 2.5rem;
     font-weight: 500;
     position: absolute;
     top: 50%;
     transform: translateY(-50%); }
+    @media only screen and (max-width: 37.5em) {
+      .sideNavTopic--title {
+        left: 50%;
+        transform: translate(-50%, -50%); } }
 
 .submitModal {
   width: 100%;
@@ -4308,7 +4367,7 @@ body {
   right: 3.5rem;
   width: 5rem;
   height: 5rem;
-  background-color: #2c8843;
+  background-color: #20bf6b;
   border-radius: 50%;
   display: none;
   place-items: center; }

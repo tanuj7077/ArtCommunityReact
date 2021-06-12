@@ -223,7 +223,7 @@ const PostPagePost = ({ id }) => {
                 )}
               </div>
             </div>
-            <div className="postContent--info-author">
+            {/* <div className="postContent--info-author">
               <div className="postContent--info-author-img">
                 <img src={url} alt="" className="author-image" />
               </div>
@@ -233,6 +233,21 @@ const PostPagePost = ({ id }) => {
               <span className="postContent--info-author-name">
                 by {Post.author.username}
               </span>
+            </div> */}
+            <div className="postContent--info-author">
+              <span className="postContent--info-author-title">
+                {Post.name}
+              </span>
+              <div className="postContent--info-author-detail">
+                <div
+                  className="userImg"
+                  style={{
+                    backgroundImage: `url(${url})`,
+                    borderRadius: `${50 + "%"}`,
+                  }}
+                ></div>
+                <span className="name">{Post.author.username}</span>
+              </div>
             </div>
             <div className="postContent--info-icons">
               <div className="postContent--info-icons-like">

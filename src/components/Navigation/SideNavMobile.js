@@ -72,88 +72,148 @@ const SideNavMobile = () => {
         }`}
         ref={wrapperRef}
       >
-        <Route
-          render={({ history }) => (
-            <div
-              onClick={() => {
-                history.push(`/`);
-              }}
-              className="sideNavMobile--item"
-            >
-              <AiFillHome className="sideNavMobile--item-icon" />
-              <div className="sideNavMobile--item-text">Home</div>
+        {isLoggedIn && (
+          <>
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <AiFillHome className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Home</div>
+                </div>
+              )}
+            />
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/followed`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <IoPeople className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Followed</div>
+                </div>
+              )}
+            />
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/daily`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <IoToday className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Daily</div>
+                </div>
+              )}
+            />
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/explore`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <FaWpexplorer className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Topic</div>
+                </div>
+              )}
+            />
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/popular`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <MdNewReleases className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Popular</div>
+                </div>
+              )}
+            />
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/account/${userData.username}`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <MdAccountCircle className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Settings</div>
+                </div>
+              )}
+            />
+            <div onClick={handleLogout} className="sideNavMobile--item">
+              <IoMdPower className="sideNavMobile--item-icon" />
+              <div className="sideNavMobile--item-text">Logout</div>
             </div>
-          )}
-        />
-        <Route
-          render={({ history }) => (
-            <div
-              onClick={() => {
-                history.push(`/followed`);
-              }}
-              className="sideNavMobile--item"
-            >
-              <IoPeople className="sideNavMobile--item-icon" />
-              <div className="sideNavMobile--item-text">Followed</div>
-            </div>
-          )}
-        />
-        <Route
-          render={({ history }) => (
-            <div
-              onClick={() => {
-                history.push(`/daily`);
-              }}
-              className="sideNavMobile--item"
-            >
-              <IoToday className="sideNavMobile--item-icon" />
-              <div className="sideNavMobile--item-text">Daily</div>
-            </div>
-          )}
-        />
-        <Route
-          render={({ history }) => (
-            <div
-              onClick={() => {
-                history.push(`/explore`);
-              }}
-              className="sideNavMobile--item"
-            >
-              <FaWpexplorer className="sideNavMobile--item-icon" />
-              <div className="sideNavMobile--item-text">Topic</div>
-            </div>
-          )}
-        />
-        <Route
-          render={({ history }) => (
-            <div
-              onClick={() => {
-                history.push(`/popular`);
-              }}
-              className="sideNavMobile--item"
-            >
-              <MdNewReleases className="sideNavMobile--item-icon" />
-              <div className="sideNavMobile--item-text">Popular</div>
-            </div>
-          )}
-        />
-        <Route
-          render={({ history }) => (
-            <div
-              onClick={() => {
-                history.push(`/account/${userData.username}`);
-              }}
-              className="sideNavMobile--item"
-            >
-              <MdAccountCircle className="sideNavMobile--item-icon" />
-              <div className="sideNavMobile--item-text">Settings</div>
-            </div>
-          )}
-        />
-        <div onClick={handleLogout} className="sideNavMobile--item">
-          <IoMdPower className="sideNavMobile--item-icon" />
-          <div className="sideNavMobile--item-text">Logout</div>
-        </div>
+          </>
+        )}
+        {!isLoggedIn && (
+          <>
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <AiFillHome className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Home</div>
+                </div>
+              )}
+            />
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/daily`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <IoToday className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Daily</div>
+                </div>
+              )}
+            />
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/explore`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <FaWpexplorer className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Topic</div>
+                </div>
+              )}
+            />
+            <Route
+              render={({ history }) => (
+                <div
+                  onClick={() => {
+                    history.push(`/popular`);
+                  }}
+                  className="sideNavMobile--item"
+                >
+                  <MdNewReleases className="sideNavMobile--item-icon" />
+                  <div className="sideNavMobile--item-text">Popular</div>
+                </div>
+              )}
+            />
+          </>
+        )}
       </section>
     </>
   );
