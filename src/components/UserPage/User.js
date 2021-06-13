@@ -162,23 +162,6 @@ const User = ({ id }) => {
   return (
     <>
       <div className="userPage">
-        {/* {userData.username === user.username ? (
-          <div
-            className="userPage--background"
-            style={{
-              backgroundImage: `url(${
-                typeof userData.coverPhoto === "undefined"
-                  ? ``
-                  : userData.coverPhoto
-              })`,
-            }}
-          ></div>
-        ) : (
-          <div
-            className="userPage--background"
-            style={{ backgroundImage: `url(${cover})` }}
-          ></div>
-        )} */}
         {userData.username === user.username &&
           typeof userData.coverPhoto !== "undefined" && (
             <div

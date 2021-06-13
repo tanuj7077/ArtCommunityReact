@@ -8,6 +8,7 @@ import Recommended from "./Recommended/Recommended";
 import LoginModal from "../LoginModal";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
+import blank from "../../tagImage/blankProfile.png";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";
@@ -43,7 +44,7 @@ const PostPagePost = ({ id }) => {
     changeAlert,
     updatePostsBackend,
   } = useGlobalContext();
-  let postUrl = "http://localhost:8000/posts/post/" + id;
+  let postUrl = "http://localhost:8000/posts/post1/" + id;
 
   const [Post, setPost] = useState(null);
   const [comment, setComment] = useState("");
@@ -58,8 +59,8 @@ const PostPagePost = ({ id }) => {
       //setTotalLikes(data.likesArray.length);
       //setTotalComments(data.comments.length);
       setComments(data.comments); //new
-      console.log(data.likesArray.length);
-      console.log(isLoggedIn, userData);
+      //console.log(data.likesArray.length);
+      //console.log(isLoggedIn, userData);
 
       if (isLoggedIn) {
         if (userData.following.includes(data.author.id)) {
@@ -89,8 +90,10 @@ const PostPagePost = ({ id }) => {
         .post("http://localhost:8000/posts/post/" + id + "/like", data)
         .then((res) => {
           console.log(res.data);
-          //setTotalLikes(res.data.likes);
-          setPost(res.data.post);
+          changeAlert(res.data.message);
+          if (res.data.post) {
+            setPost(res.data.post);
+          }
         });
     }
   }
@@ -169,11 +172,13 @@ const PostPagePost = ({ id }) => {
         axios.post("http://localhost:8000/users/follow", data).then((res) => {
           setFollowStat("Unfollow User");
           setUserData(res.data.user);
+          changeAlert(res.data.message);
         });
       } else {
         axios.post("http://localhost:8000/users/unfollow", data).then((res) => {
           setFollowStat("Follow User");
           setUserData(res.data.user);
+          changeAlert(res.data.message);
         });
       }
     }
@@ -242,8 +247,16 @@ const PostPagePost = ({ id }) => {
                 <div
                   className="userImg"
                   style={{
-                    backgroundImage: `url(${url})`,
-                    borderRadius: `${50 + "%"}`,
+                    backgroundImage: `url(${
+                      typeof Post.authorPic === "undefined"
+                        ? blank
+                        : Post.authorPic
+                    })`,
+                    borderRadius: `${
+                      typeof Post.authorPicBorder === "undefined"
+                        ? "0%"
+                        : Post.authorPicBorder + "%"
+                    }`,
                   }}
                 ></div>
                 <span className="name">{Post.author.username}</span>
@@ -312,13 +325,15 @@ const PostPagePost = ({ id }) => {
               onChange={(e) => setComment(e.target.value)}
             ></textarea>
           </div>
-          <button
-            className="btn btn-submit u-margin-bottom-small"
-            type="button"
-            onClick={handleComment}
-          >
-            Submit
-          </button>
+          {comment && (
+            <button
+              className="btn btn-submit u-margin-bottom-small"
+              type="button"
+              onClick={handleComment}
+            >
+              Submit
+            </button>
+          )}
 
           {/* {typeof Post.comments !== "undefined" && (
             <CommentList commentArr={Post.comments} />

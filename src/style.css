@@ -1448,7 +1448,8 @@ body {
 .grid-item {
   position: relative;
   margin-bottom: 7px;
-  width: calc(100% - 10px); }
+  width: calc(100% - 10px);
+  margin: 0 auto; }
   .grid-item--card {
     width: 100%;
     background-color: black;
@@ -1766,6 +1767,12 @@ body {
           width: 3rem;
           height: 3rem;
           border-radius: 50%; }
+        .postPage .postContent--comments-comment-Img {
+          width: 3rem;
+          height: 3rem;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center; }
         .postPage .postContent--comments-comment-usertext {
           font-size: 2rem;
           align-self: center; }
@@ -2311,6 +2318,13 @@ body {
     flex-flow: column;
     gap: 2.5rem;
     align-items: center; }
+    @media only screen and (max-width: 37.5em) {
+      .submitModal .modal {
+        width: 90%; } }
+    @media only screen and (max-height: 37.5em) {
+      .submitModal .modal {
+        width: 90%;
+        height: 80vh; } }
     .submitModal .modal-heading {
       font-size: 3rem;
       padding: 2rem 4rem;
@@ -2322,11 +2336,24 @@ body {
       padding: 2rem 4rem;
       display: grid;
       grid-template-rows: repeat(2, max-content);
-      grid-template-columns: repeat(2, 1fr); }
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 2rem; }
+      @media only screen and (max-width: 37.5em) {
+        .submitModal .modal-form {
+          display: flex;
+          flex-flow: column;
+          height: 60vh;
+          overflow: hidden;
+          overflow-y: scroll;
+          margin-bottom: 2rem; } }
+      @media only screen and (max-height: 37.5em) {
+        .submitModal .modal-form {
+          overflow: hidden;
+          overflow-y: scroll; } }
       .submitModal .modal-form-imgHolder {
         grid-row: 1/ 2;
         grid-column: 1/ 2;
-        width: 95%;
+        width: 100%;
         height: max-content;
         padding: 2rem 0;
         min-height: 32rem;
@@ -2334,10 +2361,14 @@ body {
         border: dashed 2px #626262;
         display: grid;
         place-items: center; }
+        @media only screen and (max-width: 37.5em) {
+          .submitModal .modal-form-imgHolder {
+            height: 30vh;
+            margin-bottom: 1.5rem; } }
         .submitModal .modal-form-imgHolder-img {
           box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
           max-width: 90%;
-          max-height: 30rem; }
+          max-height: 30vh; }
         .submitModal .modal-form-imgHolder .uploadLabel {
           display: flex;
           flex-flow: column;
@@ -2363,16 +2394,28 @@ body {
         width: 100%; }
         .submitModal .modal-form-inputs-input {
           color: lightgray; }
+          @media only screen and (max-width: 37.5em) {
+            .submitModal .modal-form-inputs-input {
+              margin-bottom: -1rem; } }
         .submitModal .modal-form-inputs-textarea {
           color: lightgray; }
+          @media only screen and (max-width: 37.5em) {
+            .submitModal .modal-form-inputs-textarea {
+              margin-bottom: -1rem; } }
         .submitModal .modal-form-inputs-select {
           width: 100%; }
+          @media only screen and (max-width: 37.5em) {
+            .submitModal .modal-form-inputs-select {
+              margin-bottom: -1rem; } }
       .submitModal .modal-form-buttons {
         grid-row: 2 / -1;
         grid-column: 1 / -1;
         display: flex;
         flex-flow: row;
         justify-content: space-between; }
+        @media only screen and (max-height: 37.5em) {
+          .submitModal .modal-form-buttons {
+            padding-bottom: 2rem; } }
         .submitModal .modal-form-buttons .add-btn {
           border: none;
           color: silver;

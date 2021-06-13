@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaUpload } from "react-icons/fa";
 import axios from "axios";
@@ -197,6 +197,22 @@ const SubmitModal = () => {
     );
   }
 
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          closeSubmitModal();
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
   //----------------Fetch Tags----------------
   const [tags, setTags] = useState([]);
   const fetchTags = async () => {
@@ -212,7 +228,7 @@ const SubmitModal = () => {
   return (
     <>
       <div className="submitModal">
-        <div className="modal">
+        <div className="modal" ref={wrapperRef}>
           <div className="modal-heading">Add your image</div>
 
           <form
@@ -235,22 +251,6 @@ const SubmitModal = () => {
                   <span className="form__label__content">Title</span>
                 </label>
               </div>
-              <div className="form__group form__group--basic">
-                <textarea
-                  name="desc"
-                  id="desc"
-                  cols="40"
-                  rows="4"
-                  className="form__input-textarea modal-form-inputs-textarea"
-                  autoComplete="off"
-                  spellCheck="false"
-                  placeholder="description"
-                  onChange={(e) => setDesc(e.target.value)}
-                ></textarea>
-                <label htmlFor="desc" className="form__label">
-                  <span className="form__label__content">Description</span>
-                </label>
-              </div>
               {tags && (
                 <div className="form__group form__group--basic">
                   <Select
@@ -268,6 +268,22 @@ const SubmitModal = () => {
                   </label>
                 </div>
               )}
+              <div className="form__group form__group--basic">
+                <textarea
+                  name="desc"
+                  id="desc"
+                  cols="40"
+                  rows="4"
+                  className="form__input-textarea modal-form-inputs-textarea"
+                  autoComplete="off"
+                  spellCheck="false"
+                  placeholder="description"
+                  onChange={(e) => setDesc(e.target.value)}
+                ></textarea>
+                <label htmlFor="desc" className="form__label">
+                  <span className="form__label__content">Description</span>
+                </label>
+              </div>
             </div>
 
             {isUploaded ? (

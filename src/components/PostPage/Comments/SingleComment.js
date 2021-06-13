@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../context";
-
+import blank from "../../../tagImage/blankProfile.png";
 const url =
   "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
 
@@ -10,6 +10,7 @@ const SingleComment = ({ id, postId }) => {
   const [editedComment, setEditedComment] = useState("");
   const [comment, setComment] = useState(null);
   const [likes, setLikes] = useState(0);
+  const [userPicData, setUserPicData] = useState();
 
   const [editState, setEditState] = useState(false);
   let commentUrl = "http://localhost:8000/comments/comment/" + id;
@@ -22,6 +23,8 @@ const SingleComment = ({ id, postId }) => {
       const response = await fetch(commentUrl);
       await response.json().then((data) => {
         setComment(data);
+        console.log(123);
+        console.log(data);
         setLikes(data.likesArray.length);
       });
       //setComment(data);
@@ -77,11 +80,33 @@ const SingleComment = ({ id, postId }) => {
       <div className="postContent--comments-comment">
         <div className="postContent--comments-comment-top">
           <div className="postContent--comments-comment-user">
-            <img
+            {/* <div
+              className="postContent--comments-comment-Img"
+              style={{
+                backgroundImage: `url(${blank})`,
+                borderRadius: `${50 + "%"}`,
+              }}
+            ></div> */}
+            {/* <img
               src={url}
               alt="user"
               className="postContent--comments-comment-img"
-            />
+            /> */}
+            <div
+              className="postContent--comments-comment-Img"
+              style={{
+                backgroundImage: `url(${
+                  typeof comment.authorPic === "undefined"
+                    ? blank
+                    : comment.authorPic
+                })`,
+                borderRadius: `${
+                  typeof comment.authorPicBorder === "undefined"
+                    ? "0%"
+                    : comment.authorPicBorder + "%"
+                }`,
+              }}
+            ></div>
             <span className="postContent--comments-comment-usertext">
               {comment.author.username}
             </span>

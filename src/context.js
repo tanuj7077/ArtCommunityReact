@@ -58,7 +58,7 @@ const AppProvider = ({ children }) => {
       console.log(error);
     }
   };
-  /*useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       fetchHomePageTags();
     }, 20000);
@@ -66,7 +66,7 @@ const AppProvider = ({ children }) => {
       clearInterval(interval);
     };
     // fetchHomePageTags();
-  }, []);*/
+  }, []);
   useEffect(() => {
     fetchHomePageTags();
   }, []);

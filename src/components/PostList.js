@@ -143,6 +143,11 @@ const PostList = () => {
           })}
         </Masonry>
       </ResponsiveMasonry>
+      {/* <div className="gallery">
+        {imgData.images.map((post) => {
+          return <SinglePost key={post.name} {...post} />;
+        })}
+      </div> */}
       {imgData.fetching && <span className="loadingAnim">Loading...</span>}
       <div
         id="page-bottom-boundary"

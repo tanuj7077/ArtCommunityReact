@@ -17,6 +17,14 @@
     flex-flow: column;
     gap: 2.5rem;
     align-items: center;
+    @include respond(phone) {
+      width: 90%;
+    }
+    @include respond(phone-land) {
+      width: 90%;
+      height: 80vh;
+    }
+
     &-heading {
       font-size: 3rem;
       padding: 2rem 4rem;
@@ -30,12 +38,25 @@
       display: grid;
       grid-template-rows: repeat(2, max-content);
       grid-template-columns: repeat(2, 1fr);
+      column-gap: 2rem;
+      @include respond(phone) {
+        display: flex;
+        flex-flow: column;
+        height: 60vh;
+        overflow: hidden;
+        overflow-y: scroll;
+        margin-bottom: 2rem;
+      }
+      @include respond(phone-land) {
+        overflow: hidden;
+        overflow-y: scroll;
+      }
 
       &-imgHolder {
         grid-row: 1/ 2;
         grid-column: 1/ 2;
         //width: 55rem;
-        width: 95%;
+        width: 100%;
         height: max-content;
         padding: 2rem 0;
         min-height: 32rem;
@@ -43,11 +64,15 @@
         border: dashed 2px rgb(98, 98, 98); ///#6ecf86;
         display: grid;
         place-items: center;
+        @include respond(phone) {
+          height: 30vh;
+          margin-bottom: 1.5rem;
+        }
         &-img {
           box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
             rgba(0, 0, 0, 0.22) 0px 10px 10px;
           max-width: 90%;
-          max-height: 30rem;
+          max-height: 30vh;
         }
 
         .uploadLabel {
@@ -82,12 +107,21 @@
         width: 100%;
         &-input {
           color: rgb(211, 211, 211);
+          @include respond(phone) {
+            margin-bottom: -1rem;
+          }
         }
         &-textarea {
           color: rgb(211, 211, 211);
+          @include respond(phone) {
+            margin-bottom: -1rem;
+          }
         }
         &-select {
           width: 100%;
+          @include respond(phone) {
+            margin-bottom: -1rem;
+          }
         }
       }
 
@@ -97,6 +131,9 @@
         display: flex;
         flex-flow: row;
         justify-content: space-between;
+        @include respond(phone-land) {
+          padding-bottom: 2rem;
+        }
         .add-btn {
           border: none;
           color: rgb(192, 192, 192);
