@@ -17,21 +17,25 @@
     flex-flow: row;
     flex-wrap: nowrap;
     font-size: 1.6rem;
-    justify-content: space-around;
+    //justify-content: space-around;
     .link {
-      margin-right: 1rem;
-      padding-top: 1rem;
-      padding-bottom: 0.6rem;
+      width: 100%;
+      text-align: center;
+      color: gray;
+      padding: 1rem 0;
       transition: all 0.5s ease;
       .icon {
         width: 4rem;
         height: 4rem;
-        color: gray;
       }
-    }
-    .current {
-      color: #6ecf86;
-      transition: all 0.5s ease;
+      &::selection {
+        color: gray;
+        background-color: transparent;
+      }
+      &:active {
+        color: #6ecf86;
+        background-color: rgb(70, 69, 69);
+      }
     }
   }
   &-carousel {

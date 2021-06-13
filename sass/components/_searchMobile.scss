@@ -78,13 +78,24 @@
       flex-wrap: nowrap;
       font-size: 1.6rem;
       align-items: center;
-      justify-content: space-around;
+      //justify-content: space-around;
+      //justify-content: stretch;
       //border-bottom: 2px solid rgb(70, 70, 70);
       .link {
-        margin-right: 1rem;
+        width: 100%;
+        text-align: center;
+        //margin-right: 1rem;
         color: gray;
-        padding: 0.5rem 0;
+        padding: 1rem 0;
         transition: all 0.5s ease;
+        &::selection {
+          color: gray;
+          background-color: transparent;
+        }
+        &:active {
+          color: #6ecf86;
+          background-color: rgb(70, 69, 69);
+        }
       }
       .current {
         color: #6ecf86;

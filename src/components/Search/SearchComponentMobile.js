@@ -57,6 +57,16 @@ const SearchComponent = () => {
     fetchData();
   }, [searchTerm, fetchData]);
 
+  const moveToPosts = () => {
+    document.getElementById("slide-1").scrollIntoView(true);
+  };
+  const moveToAuthors = () => {
+    document.getElementById("slide-2").scrollIntoView(true);
+  };
+  const moveToTags = () => {
+    document.getElementById("slide-3").scrollIntoView(true);
+  };
+
   return (
     <>
       {!searchStatus && (
@@ -81,13 +91,13 @@ const SearchComponent = () => {
 
             <div className="liveSearch-searchResults2">
               <div className="liveSearch-searchResults2-links">
-                <a href="#slide-1" className="link">
+                <a className="link" onClick={moveToPosts}>
                   Posts
                 </a>
-                <a href="#slide-2" className="link">
+                <a className="link" onClick={moveToAuthors}>
                   Author
                 </a>
-                <a href="#slide-3" className="link">
+                <a className="link" onClick={moveToTags}>
                   Tags
                 </a>
               </div>

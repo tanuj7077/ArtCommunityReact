@@ -1170,13 +1170,19 @@ body {
       flex-flow: row;
       flex-wrap: nowrap;
       font-size: 1.6rem;
-      align-items: center;
-      justify-content: space-around; }
+      align-items: center; }
       .liveSearch-searchResults2-links .link {
-        margin-right: 1rem;
+        width: 100%;
+        text-align: center;
         color: gray;
-        padding: 0.5rem 0;
+        padding: 1rem 0;
         transition: all 0.5s ease; }
+        .liveSearch-searchResults2-links .link::selection {
+          color: gray;
+          background-color: transparent; }
+        .liveSearch-searchResults2-links .link:active {
+          color: #6ecf86;
+          background-color: #464545; }
       .liveSearch-searchResults2-links .current {
         color: #6ecf86;
         transition: all 0.5s ease; }
@@ -4646,20 +4652,22 @@ body {
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
-    font-size: 1.6rem;
-    justify-content: space-around; }
+    font-size: 1.6rem; }
     .settingsMobile-links .link {
-      margin-right: 1rem;
-      padding-top: 1rem;
-      padding-bottom: 0.6rem;
+      width: 100%;
+      text-align: center;
+      color: gray;
+      padding: 1rem 0;
       transition: all 0.5s ease; }
       .settingsMobile-links .link .icon {
         width: 4rem;
-        height: 4rem;
-        color: gray; }
-    .settingsMobile-links .current {
-      color: #6ecf86;
-      transition: all 0.5s ease; }
+        height: 4rem; }
+      .settingsMobile-links .link::selection {
+        color: gray;
+        background-color: transparent; }
+      .settingsMobile-links .link:active {
+        color: #6ecf86;
+        background-color: #464545; }
   .settingsMobile-carousel {
     width: 100vw;
     display: flex;
