@@ -11,6 +11,9 @@
   background: rgba(0, 0, 0, 0.5);
   display: grid;
   place-items: center;
+  @include respond(phone) {
+    height: calc(100vh - 12rem);
+  }
 
   .modal {
     width: 65rem;
@@ -21,6 +24,12 @@
     flex-flow: column;
     gap: 2.5rem;
     align-items: center;
+    @include respond(phone) {
+      width: 90vw;
+    }
+    @include respond(phone-land) {
+      width: 85vw;
+    }
     &-heading {
       font-size: 3rem;
       padding: 2rem 4rem;
@@ -33,6 +42,12 @@
       display: flex;
       flex-flow: column;
       gap: 2rem;
+      @include respond(phone) {
+        width: 80vw;
+      }
+      @include respond(phone-land) {
+        width: 80vw;
+      }
     }
     &-buttons {
       margin-bottom: 3rem;
@@ -44,6 +59,9 @@
       flex-flow: row;
       justify-content: space-between;
       word-spacing: 0.4rem;
+      @include respond(phone) {
+        width: 100%;
+      }
       .add-btn {
         border: none;
         color: rgb(192, 192, 192);
@@ -55,6 +73,9 @@
         padding: 1.2rem 2rem;
         width: 25rem;
         background-color: black;
+        @include respond(phone) {
+          width: 45%;
+        }
         &:hover {
           color: #6ecf86;
           cursor: pointer;
@@ -67,6 +88,9 @@
         padding: 1rem 2rem;
         width: 25rem;
         background-color: black;
+        @include respond(phone) {
+          width: 45%;
+        }
         &:hover {
           color: red;
           cursor: pointer;
@@ -77,16 +101,29 @@
       width: 55rem;
       display: flex;
       flex-flow: column;
+      @include respond(phone) {
+        width: 100%;
+      }
       .inputSlider {
         display: flex;
         flex-flow: row;
         align-items: center;
         justify-content: space-between;
+        @include respond(phone) {
+          width: 100%;
+        }
         &--label {
           color: rgb(192, 192, 192);
+          @include respond(phone) {
+            font-size: 1.6rem;
+            width: 50%;
+          }
         }
         &--slider {
           width: 30rem;
+          @include respond(phone) {
+            width: 50%;
+          }
         }
       }
     }
@@ -99,11 +136,26 @@
       border: dashed 2px rgb(98, 98, 98); ///#6ecf86;
       display: grid;
       place-items: center;
+
+      @include respond(phone) {
+        width: 100%;
+      }
+      canvas {
+        width: 35rem !important;
+        height: 35rem !important;
+        @include respond(phone) {
+          width: 65vw !important;
+          height: 65vw !important;
+        }
+      }
       &-img {
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-          rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         max-width: 52rem;
         max-height: 30rem;
+        @include respond(phone) {
+          max-width: 90%;
+          max-height: 30vh;
+        }
       }
 
       .uploadLabel {
@@ -220,8 +272,7 @@
   height: 80%;
   background-color: rgb(43, 43, 43);
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   flex-wrap: nowrap;
   overflow-y: scroll;
   scroll-behavior: smooth;

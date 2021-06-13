@@ -3392,6 +3392,9 @@ body {
   background: rgba(0, 0, 0, 0.5);
   display: grid;
   place-items: center; }
+  @media only screen and (max-width: 37.5em) {
+    .addExtrasModal {
+      height: calc(100vh - 12rem); } }
   .addExtrasModal .modal {
     width: 65rem;
     height: max-content;
@@ -3401,6 +3404,12 @@ body {
     flex-flow: column;
     gap: 2.5rem;
     align-items: center; }
+    @media only screen and (max-width: 37.5em) {
+      .addExtrasModal .modal {
+        width: 90vw; } }
+    @media only screen and (max-height: 37.5em) {
+      .addExtrasModal .modal {
+        width: 85vw; } }
     .addExtrasModal .modal-heading {
       font-size: 3rem;
       padding: 2rem 4rem;
@@ -3412,6 +3421,12 @@ body {
       display: flex;
       flex-flow: column;
       gap: 2rem; }
+      @media only screen and (max-width: 37.5em) {
+        .addExtrasModal .modal-form {
+          width: 80vw; } }
+      @media only screen and (max-height: 37.5em) {
+        .addExtrasModal .modal-form {
+          width: 80vw; } }
     .addExtrasModal .modal-buttons {
       margin-bottom: 3rem;
       width: 55rem;
@@ -3422,6 +3437,9 @@ body {
       flex-flow: row;
       justify-content: space-between;
       word-spacing: 0.4rem; }
+      @media only screen and (max-width: 37.5em) {
+        .addExtrasModal .modal-buttons {
+          width: 100%; } }
       .addExtrasModal .modal-buttons .add-btn {
         border: none;
         color: silver;
@@ -3433,6 +3451,9 @@ body {
         padding: 1.2rem 2rem;
         width: 25rem;
         background-color: black; }
+        @media only screen and (max-width: 37.5em) {
+          .addExtrasModal .modal-buttons .add-btn {
+            width: 45%; } }
         .addExtrasModal .modal-buttons .add-btn:hover {
           color: #6ecf86;
           cursor: pointer; }
@@ -3443,6 +3464,9 @@ body {
         padding: 1rem 2rem;
         width: 25rem;
         background-color: black; }
+        @media only screen and (max-width: 37.5em) {
+          .addExtrasModal .modal-buttons .cancel-btn {
+            width: 45%; } }
         .addExtrasModal .modal-buttons .cancel-btn:hover {
           color: red;
           cursor: pointer; }
@@ -3450,15 +3474,28 @@ body {
       width: 55rem;
       display: flex;
       flex-flow: column; }
+      @media only screen and (max-width: 37.5em) {
+        .addExtrasModal .modal-sliders {
+          width: 100%; } }
       .addExtrasModal .modal-sliders .inputSlider {
         display: flex;
         flex-flow: row;
         align-items: center;
         justify-content: space-between; }
+        @media only screen and (max-width: 37.5em) {
+          .addExtrasModal .modal-sliders .inputSlider {
+            width: 100%; } }
         .addExtrasModal .modal-sliders .inputSlider--label {
           color: silver; }
+          @media only screen and (max-width: 37.5em) {
+            .addExtrasModal .modal-sliders .inputSlider--label {
+              font-size: 1.6rem;
+              width: 50%; } }
         .addExtrasModal .modal-sliders .inputSlider--slider {
           width: 30rem; }
+          @media only screen and (max-width: 37.5em) {
+            .addExtrasModal .modal-sliders .inputSlider--slider {
+              width: 50%; } }
     .addExtrasModal .modal-photo {
       width: 55rem;
       height: max-content;
@@ -3468,10 +3505,24 @@ body {
       border: dashed 2px #626262;
       display: grid;
       place-items: center; }
+      @media only screen and (max-width: 37.5em) {
+        .addExtrasModal .modal-photo {
+          width: 100%; } }
+      .addExtrasModal .modal-photo canvas {
+        width: 35rem !important;
+        height: 35rem !important; }
+        @media only screen and (max-width: 37.5em) {
+          .addExtrasModal .modal-photo canvas {
+            width: 65vw !important;
+            height: 65vw !important; } }
       .addExtrasModal .modal-photo-img {
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         max-width: 52rem;
         max-height: 30rem; }
+        @media only screen and (max-width: 37.5em) {
+          .addExtrasModal .modal-photo-img {
+            max-width: 90%;
+            max-height: 30vh; } }
       .addExtrasModal .modal-photo .uploadLabel {
         display: flex;
         flex-flow: column;
@@ -4261,7 +4312,6 @@ body {
         float: right;
         font-size: 2rem;
         padding: 1rem;
-        margin-right: 10rem;
         background-color: black;
         color: white; }
         .settingsDesk-main .headingSection .saveBtn:hover {

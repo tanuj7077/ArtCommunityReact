@@ -224,7 +224,7 @@ const Extras = () => {
       )}
 
       {showEditModal && (
-        <div className="addExtrasModal">
+        <div className="addExtraModal">
           <div className="modal">
             <span className="modal-heading">Edit Field</span>
             <div className="modal-grp">
@@ -256,7 +256,7 @@ const Extras = () => {
                   toggleEditModalDisplay();
                 }}
               >
-                Save Changes
+                Save
               </span>
               <span className="cancel-btn" onClick={toggleEditModalDisplay}>
                 Cancel
@@ -267,7 +267,7 @@ const Extras = () => {
       )}
 
       {showConfirmModal && (
-        <div className="addExtrasModal">
+        <div className="addExtraModal">
           <div className="modal">
             <span className="modal-heading">Deletion Confirmation</span>
             <div className="modal-grp">
