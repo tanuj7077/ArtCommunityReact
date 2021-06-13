@@ -74,17 +74,15 @@ const SubmitCoverModal = () => {
               userId: userData._id,
               imageUrl: url,
             };
-            axios
-              .post("http://localhost:8000/users/user/changeCover", User)
-              .then((res) => {
-                // if (userData.username === res.data.username) {
-                //   setUserData(res.data);
-                // }
-                if (userData.username === res.data.user.username) {
-                  setUserData(res.data.user);
-                }
-                changeAlert(res.data.message);
-              });
+            axios.post("/users/user/changeCover", User).then((res) => {
+              // if (userData.username === res.data.username) {
+              //   setUserData(res.data);
+              // }
+              if (userData.username === res.data.user.username) {
+                setUserData(res.data.user);
+              }
+              changeAlert(res.data.message);
+            });
             closeSubmitCoverModal();
           })
           .catch((err) => {

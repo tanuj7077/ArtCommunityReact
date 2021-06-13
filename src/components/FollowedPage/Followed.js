@@ -18,11 +18,7 @@ const Followed = (userId) => {
   async function getPostsByUserId() {
     try {
       const LIMIT = 9;
-      const postUrl =
-        "http://localhost:8000/posts/postsByUserId/" +
-        userId.userId +
-        "/" +
-        LIMIT;
+      const postUrl = "/posts/postsByUserId/" + userId.userId + "/" + LIMIT;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setUsername(postData.username);

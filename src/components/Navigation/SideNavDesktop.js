@@ -23,7 +23,7 @@ const SideNavDesktop = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.get("http://localhost:8000/auth/signout").then((res) => {
+      await axios.get("/auth/signout").then((res) => {
         console.log(res.data);
         if (res.data.success) {
           setUserData({});

@@ -6,8 +6,7 @@ const PostsByUser = ({ id }) => {
   async function getPostsByUser() {
     try {
       const LIMIT = 9;
-      const postUrl =
-        "http://localhost:8000/posts/postByUser/" + id + "/" + LIMIT;
+      const postUrl = "/posts/postByUser/" + id + "/" + LIMIT;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setPostsByUser(postData);

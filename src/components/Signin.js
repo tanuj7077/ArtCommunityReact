@@ -15,16 +15,14 @@ const Signin = () => {
         email,
         password,
       };
-      await axios
-        .post("http://localhost:8000/auth/signin", loginData)
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.success) {
-            closeLoginModal();
-            setUserData(res.data.userData);
-            setIsLoggedIn(true);
-          }
-        });
+      await axios.post("/auth/signin", loginData).then((res) => {
+        console.log(res.data);
+        if (res.data.success) {
+          closeLoginModal();
+          setUserData(res.data.userData);
+          setIsLoggedIn(true);
+        }
+      });
     } catch (err) {
       console.log(err);
     }

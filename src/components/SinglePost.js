@@ -4,7 +4,7 @@ import axios from "axios";
 import blank from "../tagImage/blankProfile.png";
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
-  let userUrl = "http://localhost:8000/users/hoverUser/" + author.id;
+  let userUrl = "/users/hoverUser/" + author.id;
 
   const AuthorHoverRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);

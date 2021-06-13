@@ -17,7 +17,7 @@ const Profile = () => {
     setUserData,
     changeAlert,
   } = useGlobalContext();
-  let url = "http://localhost:8000/users/user/editProfile/" + userData._id;
+  let url = "/users/user/editProfile/" + userData._id;
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

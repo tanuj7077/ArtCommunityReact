@@ -20,7 +20,7 @@ axios.defaults.withCredentials = true;
 function App() {
   const { setIsLoggedIn, setUserData, isLoggedIn } = useGlobalContext();
   const getLoggedIn = async () => {
-    const loggedInRes = await axios.get("http://localhost:8000/auth/loggedIn");
+    const loggedInRes = await axios.get("/auth/loggedIn");
     console.log(loggedInRes);
     if (loggedInRes.data.loggedIn) {
       setIsLoggedIn(true);

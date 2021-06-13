@@ -13,10 +13,9 @@ const SingleComment = ({ id, postId }) => {
   const [userPicData, setUserPicData] = useState();
 
   const [editState, setEditState] = useState(false);
-  let commentUrl = "http://localhost:8000/comments/comment/" + id;
-  let commentDeleteUrl =
-    "http://localhost:8000/comments/comment/" + id + "/delete";
-  let commentEditUrl = "http://localhost:8000/comments/comment/" + id + "/edit";
+  let commentUrl = "/comments/comment/" + id;
+  let commentDeleteUrl = "/comments/comment/" + id + "/delete";
+  let commentEditUrl = "/comments/comment/" + id + "/edit";
 
   async function fetchComment() {
     try {
@@ -43,12 +42,10 @@ const SingleComment = ({ id, postId }) => {
       const data = {
         user: userData,
       };
-      axios
-        .post("http://localhost:8000/comments/comment/" + id + "/like", data)
-        .then((res) => {
-          console.log(res.data.msg);
-          setLikes(res.data.likes);
-        });
+      axios.post("/comments/comment/" + id + "/like", data).then((res) => {
+        console.log(res.data.msg);
+        setLikes(res.data.likes);
+      });
     }
   };
 

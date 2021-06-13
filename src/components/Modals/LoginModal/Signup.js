@@ -23,17 +23,15 @@ const Signin = ({ toggleLoginMode }) => {
         password: signupPassword,
         password_confirmation: signupPasswordConf,
       };
-      await axios
-        .post("http://localhost:8000/auth/signup", registerData)
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.success) {
-            toggleLoginMode("login");
-            changeAlert(res.data.message);
-          } else {
-            changeAlert(res.data.message);
-          }
-        });
+      await axios.post("/auth/signup", registerData).then((res) => {
+        console.log(res.data);
+        if (res.data.success) {
+          toggleLoginMode("login");
+          changeAlert(res.data.message);
+        } else {
+          changeAlert(res.data.message);
+        }
+      });
     } catch (err) {
       console.log(err);
     }

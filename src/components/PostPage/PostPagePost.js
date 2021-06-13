@@ -44,7 +44,7 @@ const PostPagePost = ({ id }) => {
     changeAlert,
     updatePostsBackend,
   } = useGlobalContext();
-  let postUrl = "http://localhost:8000/posts/post1/" + id;
+  let postUrl = "/posts/post1/" + id;
 
   const [Post, setPost] = useState(null);
   const [comment, setComment] = useState("");
@@ -86,15 +86,13 @@ const PostPagePost = ({ id }) => {
       const data = {
         user: userData,
       };
-      axios
-        .post("http://localhost:8000/posts/post/" + id + "/like", data)
-        .then((res) => {
-          console.log(res.data);
-          changeAlert(res.data.message);
-          if (res.data.post) {
-            setPost(res.data.post);
-          }
-        });
+      axios.post("/posts/post/" + id + "/like", data).then((res) => {
+        console.log(res.data);
+        changeAlert(res.data.message);
+        if (res.data.post) {
+          setPost(res.data.post);
+        }
+      });
     }
   }
   const history = useHistory();
@@ -115,14 +113,12 @@ const PostPagePost = ({ id }) => {
         .child(imageName)
         .delete()
         .then(() => {
-          axios
-            .post("http://localhost:8000/posts/deletePost/" + id)
-            .then((res) => {
-              setUserData(res.data.user);
-              changeAlert(res.data.message);
-              updatePostsBackend();
-              history.push("/");
-            });
+          axios.post("/posts/deletePost/" + id).then((res) => {
+            setUserData(res.data.user);
+            changeAlert(res.data.message);
+            updatePostsBackend();
+            history.push("/");
+          });
         });
     } catch (err) {
       console.log(err);
@@ -148,16 +144,14 @@ const PostPagePost = ({ id }) => {
         user: userData,
         comment: comment,
       };
-      axios
-        .post("http://localhost:8000/posts/post/" + id + "/comment", data)
-        .then((res) => {
-          setPost(res.data.post); //new
-          console.log(res.data);
-          //setTotalComments(res.data.commentsCount);
-          setComments(res.data.comments);
-          setComment("");
-          document.getElementById("desc").value = "";
-        });
+      axios.post("/posts/post/" + id + "/comment", data).then((res) => {
+        setPost(res.data.post); //new
+        console.log(res.data);
+        //setTotalComments(res.data.commentsCount);
+        setComments(res.data.comments);
+        setComment("");
+        document.getElementById("desc").value = "";
+      });
     }
   };
   const handleFollow = () => {
@@ -169,13 +163,13 @@ const PostPagePost = ({ id }) => {
         following: Post.author.id,
       };
       if (!userData.following.includes(Post.author.id)) {
-        axios.post("http://localhost:8000/users/follow", data).then((res) => {
+        axios.post("/users/follow", data).then((res) => {
           setFollowStat("Unfollow User");
           setUserData(res.data.user);
           changeAlert(res.data.message);
         });
       } else {
-        axios.post("http://localhost:8000/users/unfollow", data).then((res) => {
+        axios.post("/users/unfollow", data).then((res) => {
           setFollowStat("Follow User");
           setUserData(res.data.user);
           changeAlert(res.data.message);

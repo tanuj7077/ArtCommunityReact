@@ -18,7 +18,7 @@ const User = ({ id }) => {
     isLoggedIn,
     userData,
   } = useGlobalContext();
-  let userUrl = "http://localhost:8000/users/user/" + id;
+  let userUrl = "/users/user/" + id;
 
   const [user, setUser] = useState(null);
   const [cover, setCover] = useState("");
@@ -72,8 +72,7 @@ const User = ({ id }) => {
   async function getPostByUser() {
     try {
       const LIMIT = -1;
-      const postUrl =
-        "http://localhost:8000/posts/postByUser/" + id + "/" + LIMIT;
+      const postUrl = "/posts/postByUser/" + id + "/" + LIMIT;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setUserPost(postData);
@@ -85,7 +84,7 @@ const User = ({ id }) => {
   //--------------For Home Section--------------//
   async function getFollowing() {
     try {
-      const followingUrl = "http://localhost:8000/users/fetchFollowing/" + id;
+      const followingUrl = "/users/fetchFollowing/" + id;
       const userResponse = await fetch(followingUrl);
       const userdata = await userResponse.json();
       setFollowing(userdata);
@@ -95,7 +94,7 @@ const User = ({ id }) => {
   }
   async function getFollowers() {
     try {
-      const followerUrl = "http://localhost:8000/users/fetchFollowers/" + id;
+      const followerUrl = "/users/fetchFollowers/" + id;
       const userResponse = await fetch(followerUrl);
       const userdata = await userResponse.json();
       setFollowers(userdata);
@@ -106,8 +105,7 @@ const User = ({ id }) => {
   const getPopularPosts = async () => {
     try {
       const num = 8;
-      const url =
-        "http://localhost:8000/posts/getPopularPosts/" + id + "/" + num;
+      const url = "/posts/getPopularPosts/" + id + "/" + num;
       const userResponse = await fetch(url);
       const data = await userResponse.json();
       setPopularPosts(data);
@@ -118,7 +116,7 @@ const User = ({ id }) => {
   };
   const getLikedPosts = async () => {
     try {
-      const url = "http://localhost:8000/posts/getLikedPosts/" + id;
+      const url = "/posts/getLikedPosts/" + id;
       const userResponse = await fetch(url);
       const data = await userResponse.json();
       setLikedPosts(data);

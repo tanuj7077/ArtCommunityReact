@@ -40,7 +40,7 @@ const PostList = () => {
 
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
-    fetch(`http://localhost:8000/posts/postList?page=${pager.page}&limit=12`)
+    fetch(`/posts/postList?page=${pager.page}&limit=12`)
       .then((data) => data.json())
       .then((images) => {
         imgDispatch({ type: "STACK_IMAGES", images });

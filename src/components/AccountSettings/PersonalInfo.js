@@ -91,7 +91,7 @@ const customStyles = {
 
 const Personal = () => {
   const { isLoggedIn, userData, setUserData, changeAlert } = useGlobalContext();
-  let url = "http://localhost:8000/users/user/editPersonal/" + userData._id;
+  let url = "/users/user/editPersonal/" + userData._id;
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 

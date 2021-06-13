@@ -21,7 +21,7 @@ const Extras = () => {
   const [extraLabel, setExtraLabel] = useState("");
   const [extraValue, setExtraValue] = useState("");
 
-  let url = "http://localhost:8000/users/user/editExtras/" + userData._id;
+  let url = "/users/user/editExtras/" + userData._id;
 
   const toggleModalDisplay = () => {
     setShowModal(!showModal);

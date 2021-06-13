@@ -92,14 +92,12 @@ const SubmitProfilePicModal = () => {
                   imageUrl: url,
                   borderRad: cssBorderRad,
                 };
-                axios
-                  .post("http://localhost:8000/users/user/changeProfile", User)
-                  .then((res) => {
-                    if (userData.username === res.data.user.username) {
-                      setUserData(res.data.user);
-                    }
-                    changeAlert(res.data.message);
-                  });
+                axios.post("/users/user/changeProfile", User).then((res) => {
+                  if (userData.username === res.data.user.username) {
+                    setUserData(res.data.user);
+                  }
+                  changeAlert(res.data.message);
+                });
                 closeSubmitProfilePicModal();
               })
               .catch((err) => {

@@ -185,19 +185,17 @@ const SubmitModal = () => {
               tags: submittedTags,
               author: { id: userData._id, username: userData.username },
             };
-            axios
-              .post("http://localhost:8000/posts/newPost", post)
-              .then((res) => {
-                console.log(res.data);
-                changeAlert(res.data.message);
-              });
+            axios.post("/posts/newPost", post).then((res) => {
+              console.log(res.data);
+              changeAlert(res.data.message);
+            });
             closeSubmitModal();
           });
       }
     );
   }
 
-  function useOutsideAlerter(ref) {
+  /*function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
@@ -211,13 +209,13 @@ const SubmitModal = () => {
     }, [ref]);
   }
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  useOutsideAlerter(wrapperRef);*/
 
   //----------------Fetch Tags----------------
   const [tags, setTags] = useState([]);
   const fetchTags = async () => {
     await axios
-      .get("http://localhost:8000/tags/fetchTags")
+      .get("/tags/fetchTags")
       .then((res) => setTags(res.data))
       .then(console.log(tags));
     //Initialize all data
@@ -228,7 +226,7 @@ const SubmitModal = () => {
   return (
     <>
       <div className="submitModal">
-        <div className="modal" ref={wrapperRef}>
+        <div className="modal">
           <div className="modal-heading">Add your image</div>
 
           <form

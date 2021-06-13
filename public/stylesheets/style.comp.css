@@ -1170,13 +1170,19 @@ body {
       flex-flow: row;
       flex-wrap: nowrap;
       font-size: 1.6rem;
-      align-items: center;
-      justify-content: space-around; }
+      align-items: center; }
       .liveSearch-searchResults2-links .link {
-        margin-right: 1rem;
+        width: 100%;
+        text-align: center;
         color: gray;
-        padding: 0.5rem 0;
+        padding: 1rem 0;
         transition: all 0.5s ease; }
+        .liveSearch-searchResults2-links .link::selection {
+          color: gray;
+          background-color: transparent; }
+        .liveSearch-searchResults2-links .link:active {
+          color: #6ecf86;
+          background-color: #464545; }
       .liveSearch-searchResults2-links .current {
         color: #6ecf86;
         transition: all 0.5s ease; }
@@ -1442,7 +1448,8 @@ body {
 .grid-item {
   position: relative;
   margin-bottom: 7px;
-  width: calc(100% - 10px); }
+  width: calc(100% - 10px);
+  margin: 0 auto; }
   .grid-item--card {
     width: 100%;
     background-color: black;
@@ -1760,6 +1767,12 @@ body {
           width: 3rem;
           height: 3rem;
           border-radius: 50%; }
+        .postPage .postContent--comments-comment-Img {
+          width: 3rem;
+          height: 3rem;
+          background-size: cover;
+          background-position-x: center;
+          background-position-y: center; }
         .postPage .postContent--comments-comment-usertext {
           font-size: 2rem;
           align-self: center; }
@@ -2305,6 +2318,13 @@ body {
     flex-flow: column;
     gap: 2.5rem;
     align-items: center; }
+    @media only screen and (max-width: 37.5em) {
+      .submitModal .modal {
+        width: 90%; } }
+    @media only screen and (max-height: 37.5em) {
+      .submitModal .modal {
+        width: 90%;
+        height: 80vh; } }
     .submitModal .modal-heading {
       font-size: 3rem;
       padding: 2rem 4rem;
@@ -2316,11 +2336,24 @@ body {
       padding: 2rem 4rem;
       display: grid;
       grid-template-rows: repeat(2, max-content);
-      grid-template-columns: repeat(2, 1fr); }
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 2rem; }
+      @media only screen and (max-width: 37.5em) {
+        .submitModal .modal-form {
+          display: flex;
+          flex-flow: column;
+          height: 60vh;
+          overflow: hidden;
+          overflow-y: scroll;
+          margin-bottom: 2rem; } }
+      @media only screen and (max-height: 37.5em) {
+        .submitModal .modal-form {
+          overflow: hidden;
+          overflow-y: scroll; } }
       .submitModal .modal-form-imgHolder {
         grid-row: 1/ 2;
         grid-column: 1/ 2;
-        width: 95%;
+        width: 100%;
         height: max-content;
         padding: 2rem 0;
         min-height: 32rem;
@@ -2328,10 +2361,14 @@ body {
         border: dashed 2px #626262;
         display: grid;
         place-items: center; }
+        @media only screen and (max-width: 37.5em) {
+          .submitModal .modal-form-imgHolder {
+            height: 30vh;
+            margin-bottom: 1.5rem; } }
         .submitModal .modal-form-imgHolder-img {
           box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
           max-width: 90%;
-          max-height: 30rem; }
+          max-height: 30vh; }
         .submitModal .modal-form-imgHolder .uploadLabel {
           display: flex;
           flex-flow: column;
@@ -2357,16 +2394,28 @@ body {
         width: 100%; }
         .submitModal .modal-form-inputs-input {
           color: lightgray; }
+          @media only screen and (max-width: 37.5em) {
+            .submitModal .modal-form-inputs-input {
+              margin-bottom: -1rem; } }
         .submitModal .modal-form-inputs-textarea {
           color: lightgray; }
+          @media only screen and (max-width: 37.5em) {
+            .submitModal .modal-form-inputs-textarea {
+              margin-bottom: -1rem; } }
         .submitModal .modal-form-inputs-select {
           width: 100%; }
+          @media only screen and (max-width: 37.5em) {
+            .submitModal .modal-form-inputs-select {
+              margin-bottom: -1rem; } }
       .submitModal .modal-form-buttons {
         grid-row: 2 / -1;
         grid-column: 1 / -1;
         display: flex;
         flex-flow: row;
         justify-content: space-between; }
+        @media only screen and (max-height: 37.5em) {
+          .submitModal .modal-form-buttons {
+            padding-bottom: 2rem; } }
         .submitModal .modal-form-buttons .add-btn {
           border: none;
           color: silver;
@@ -4223,6 +4272,44 @@ body {
       color: white;
       height: 8rem;
       border-bottom: 3px solid #3a3a3a; }
+    .settingsDesk-main .gallerySection {
+      padding: 2rem 0;
+      padding-right: 1rem;
+      width: 100%;
+      height: 67vh;
+      display: flex;
+      overflow: hidden;
+      overflow-y: scroll; }
+      .settingsDesk-main .gallerySection .gallery {
+        width: 100%;
+        height: max-content;
+        columns: 4;
+        gap: 1rem; }
+        @media only screen and (max-width: 75em) {
+          .settingsDesk-main .gallerySection .gallery {
+            columns: 3; } }
+        @media only screen and (max-width: 56.25em) {
+          .settingsDesk-main .gallerySection .gallery {
+            columns: 2; } }
+        .settingsDesk-main .gallerySection .gallery .SingleImage {
+          background-color: black;
+          position: relative;
+          border-radius: 10px;
+          overflow: hidden;
+          margin-bottom: 1rem; }
+          .settingsDesk-main .gallerySection .gallery .SingleImage .image {
+            width: 100%;
+            display: block;
+            transition: all 0.25s ease; }
+          .settingsDesk-main .gallerySection .gallery .SingleImage:hover {
+            cursor: pointer; }
+      .settingsDesk-main .gallerySection::-webkit-scrollbar {
+        width: 7px; }
+      .settingsDesk-main .gallerySection::-webkit-scrollbar-thumb {
+        background: #6ecf86;
+        border-radius: 5px; }
+      .settingsDesk-main .gallerySection::-webkit-scrollbar-track {
+        background: #505050; }
     .settingsDesk-main .profile-items {
       padding-top: 4rem;
       padding-bottom: 4rem;
@@ -4646,20 +4733,22 @@ body {
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
-    font-size: 1.6rem;
-    justify-content: space-around; }
+    font-size: 1.6rem; }
     .settingsMobile-links .link {
-      margin-right: 1rem;
-      padding-top: 1rem;
-      padding-bottom: 0.6rem;
+      width: 100%;
+      text-align: center;
+      color: gray;
+      padding: 1rem 0;
       transition: all 0.5s ease; }
       .settingsMobile-links .link .icon {
         width: 4rem;
-        height: 4rem;
-        color: gray; }
-    .settingsMobile-links .current {
-      color: #6ecf86;
-      transition: all 0.5s ease; }
+        height: 4rem; }
+      .settingsMobile-links .link::selection {
+        color: gray;
+        background-color: transparent; }
+      .settingsMobile-links .link:active {
+        color: #6ecf86;
+        background-color: #464545; }
   .settingsMobile-carousel {
     width: 100vw;
     display: flex;

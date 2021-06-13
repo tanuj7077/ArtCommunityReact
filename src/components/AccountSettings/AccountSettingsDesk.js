@@ -15,11 +15,26 @@ import { useGlobalContext } from "../../context";
 
 const AccountSettingsDesk = ({ id }) => {
   const { userData } = useGlobalContext();
-  console.log(userData);
   const [isProfile, setProfile] = useState(true);
   const [isPersonal, setPersonal] = useState(false);
   const [isExtras, setExtras] = useState(false);
   const [isAppearance, setAppearance] = useState(false);
+
+  const [posts, setPosts] = useState([]);
+  async function getPostsByUser() {
+    try {
+      const LIMIT = -1;
+      const postUrl = "/posts/postByUser/" + userData.username + "/" + LIMIT;
+      const PostResponse = await fetch(postUrl);
+      const postData = await PostResponse.json();
+      setPosts(postData);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  useEffect(() => {
+    getPostsByUser();
+  }, []);
 
   const toProfile = () => {
     setProfile(true);
@@ -83,10 +98,8 @@ const AccountSettingsDesk = ({ id }) => {
             <section className="sideNav-item" onClick={() => toAppearance()}>
               <IoColorPalette className="icon" />
               <div className="textual">
-                <span className="subheading">Appearance</span>
-                <span className="desc">
-                  Set website theme, accent colors and more
-                </span>
+                <span className="subheading">Posts</span>
+                <span className="desc">Find all your uploaded posts here</span>
               </div>
               <BsChevronRight className="right-icon" />
             </section>
@@ -96,7 +109,7 @@ const AccountSettingsDesk = ({ id }) => {
           {isProfile && <Profile />}
           {isPersonal && <Personal />}
           {isExtras && <Extras />}
-          {isAppearance && <Appearance />}
+          {isAppearance && <Appearance posts={posts} />}
         </section>
       </div>
     </>

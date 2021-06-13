@@ -10,8 +10,25 @@ import Profile from "./ProfileMobile";
 import Personal from "./PersonalInfoMobile";
 import Extras from "./ExtrasMobile";
 import Appearance from "./AppearanceMobile";
+import { useGlobalContext } from "../../context";
 
 const AccountSettingsMobile = ({ id }) => {
+  const { userData } = useGlobalContext();
+  const [posts, setPosts] = useState([]);
+  async function getPostsByUser() {
+    try {
+      const LIMIT = -1;
+      const postUrl = "/posts/postByUser/" + userData.username + "/" + LIMIT;
+      const PostResponse = await fetch(postUrl);
+      const postData = await PostResponse.json();
+      setPosts(postData);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  useEffect(() => {
+    getPostsByUser();
+  }, []);
   const toProfile = () => {
     document.getElementById("profileSlide").scrollIntoView(true);
   };
@@ -65,7 +82,7 @@ const AccountSettingsMobile = ({ id }) => {
             id="appearanceSlide"
             className="settingsMobile-carousel--profileSection"
           >
-            <Appearance />
+            <Appearance posts={posts} />
           </div>
         </div>
       </div>

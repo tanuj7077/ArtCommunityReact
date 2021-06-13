@@ -4272,6 +4272,44 @@ body {
       color: white;
       height: 8rem;
       border-bottom: 3px solid #3a3a3a; }
+    .settingsDesk-main .gallerySection {
+      padding: 2rem 0;
+      padding-right: 1rem;
+      width: 100%;
+      height: 67vh;
+      display: flex;
+      overflow: hidden;
+      overflow-y: scroll; }
+      .settingsDesk-main .gallerySection .gallery {
+        width: 100%;
+        height: max-content;
+        columns: 4;
+        gap: 1rem; }
+        @media only screen and (max-width: 75em) {
+          .settingsDesk-main .gallerySection .gallery {
+            columns: 3; } }
+        @media only screen and (max-width: 56.25em) {
+          .settingsDesk-main .gallerySection .gallery {
+            columns: 2; } }
+        .settingsDesk-main .gallerySection .gallery .SingleImage {
+          background-color: black;
+          position: relative;
+          border-radius: 10px;
+          overflow: hidden;
+          margin-bottom: 1rem; }
+          .settingsDesk-main .gallerySection .gallery .SingleImage .image {
+            width: 100%;
+            display: block;
+            transition: all 0.25s ease; }
+          .settingsDesk-main .gallerySection .gallery .SingleImage:hover {
+            cursor: pointer; }
+      .settingsDesk-main .gallerySection::-webkit-scrollbar {
+        width: 7px; }
+      .settingsDesk-main .gallerySection::-webkit-scrollbar-thumb {
+        background: #6ecf86;
+        border-radius: 5px; }
+      .settingsDesk-main .gallerySection::-webkit-scrollbar-track {
+        background: #505050; }
     .settingsDesk-main .profile-items {
       padding-top: 4rem;
       padding-bottom: 4rem;
@@ -4736,6 +4774,47 @@ body {
         color: white;
         background-color: rgba(23, 28, 33, 0.95);
         text-align: center; }
+      .settingsMobile-carousel--profileSection .gallerySection {
+        padding: 2rem 0;
+        padding-right: 1rem;
+        width: 100%;
+        height: calc(100vh - 18rem);
+        display: flex;
+        overflow: hidden;
+        overflow-y: scroll;
+        /*&::-webkit-scrollbar {
+          width: 7px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #6ecf86;
+          border-radius: 5px;
+        }
+        &::-webkit-scrollbar-track {
+          background: #505050;
+        }*/ }
+        .settingsMobile-carousel--profileSection .gallerySection .gallery {
+          width: 100%;
+          height: max-content;
+          columns: 4;
+          gap: 1rem; }
+          @media only screen and (max-width: 75em) {
+            .settingsMobile-carousel--profileSection .gallerySection .gallery {
+              columns: 3; } }
+          @media only screen and (max-width: 56.25em) {
+            .settingsMobile-carousel--profileSection .gallerySection .gallery {
+              columns: 2; } }
+          .settingsMobile-carousel--profileSection .gallerySection .gallery .SingleImage {
+            background-color: black;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem; }
+            .settingsMobile-carousel--profileSection .gallerySection .gallery .SingleImage .image {
+              width: 100%;
+              display: block;
+              transition: all 0.25s ease; }
+            .settingsMobile-carousel--profileSection .gallerySection .gallery .SingleImage:hover {
+              cursor: pointer; }
       .settingsMobile-carousel--profileSection .profile-items {
         width: 100%;
         padding: 2rem 2rem;

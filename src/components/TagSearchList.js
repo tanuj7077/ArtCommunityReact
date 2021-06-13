@@ -6,7 +6,7 @@ import SinglePost from "./SinglePost";
 const TagSearchList = ({ name }) => {
   const [posts, setPosts] = useState([]);
 
-  let url = "http://localhost:8000/tags/tag/" + name;
+  let url = "/tags/tag/" + name;
 
   const fetchPosts = async () => {
     fetch(url)

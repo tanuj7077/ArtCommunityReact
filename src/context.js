@@ -21,7 +21,7 @@ const AppProvider = ({ children }) => {
   const [showAlert, setShowAlert] = useState(0);
 
   const updatePostsBackend = async () => {
-    const result = await axios.get("http://localhost:8000/posts/updatePosts");
+    const result = await axios.get("/posts/updatePosts");
     console.log(result.data);
   };
 
@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
   }, []);
   //--------------------For Explore Page------------------//
   const fetchExploreTags = async () => {
-    let url = "http://localhost:8000/tags/exploreTags";
+    let url = "/tags/exploreTags";
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -49,7 +49,7 @@ const AppProvider = ({ children }) => {
 
   //--------------------For Home Page Explore Section------------------//
   const fetchHomePageTags = async () => {
-    let url = "http://localhost:8000/tags/randomTags";
+    let url = "/tags/randomTags";
     try {
       const response = await fetch(url);
       const data = await response.json();

@@ -21,14 +21,12 @@ const Register = () => {
         password,
         password_confirmation: passwordConf,
       };
-      await axios
-        .post("http://localhost:8000/auth/signup", registerData)
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.success) {
-            switchToLogin();
-          }
-        });
+      await axios.post("/auth/signup", registerData).then((res) => {
+        console.log(res.data);
+        if (res.data.success) {
+          switchToLogin();
+        }
+      });
       // .then(res.success ? setIsLoggedIn(true) : setIsLoggedIn(false))
       // .then(closeLoginModal());
     } catch (err) {
