@@ -100,7 +100,7 @@ const SideNavMobile = () => {
                 </div>
               )}
             />
-            <Route
+            {/* <Route
               render={({ history }) => (
                 <div
                   onClick={() => {
@@ -112,7 +112,7 @@ const SideNavMobile = () => {
                   <div className="sideNavMobile--item-text">Daily</div>
                 </div>
               )}
-            />
+            /> */}
             <Route
               render={({ history }) => (
                 <div
@@ -173,7 +173,7 @@ const SideNavMobile = () => {
                 </div>
               )}
             />
-            <Route
+            {/* <Route
               render={({ history }) => (
                 <div
                   onClick={() => {
@@ -185,7 +185,7 @@ const SideNavMobile = () => {
                   <div className="sideNavMobile--item-text">Daily</div>
                 </div>
               )}
-            />
+            /> */}
             <Route
               render={({ history }) => (
                 <div

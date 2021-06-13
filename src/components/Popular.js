@@ -2,9 +2,8 @@ import React, { useEffect, useReducer, useCallback, useRef } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import SinglePost from "./SinglePost";
-import { useGlobalContext } from "../context";
 
-const PostList = () => {
+const Popular = () => {
   const imgReducer = (state, action) => {
     switch (action.type) {
       case "STACK_IMAGES":
@@ -33,7 +32,7 @@ const PostList = () => {
 
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
-    fetch(`/posts/postList?page=${pager.page}&limit=12`)
+    fetch(`/posts/getPopular?page=${pager.page}&limit=12`)
       .then((data) => data.json())
       .then((images) => {
         imgDispatch({ type: "STACK_IMAGES", images });
@@ -68,65 +67,8 @@ const PostList = () => {
     }
   }, [scrollObserver, bottomBoundaryRef]);
 
-  /*const { posts, setPosts, page, setPage } = useGlobalContext();
-
-  const [limit, setLimit] = useState(12);
-  const [loading, setLoading] = useState(false);
-
-  const fetchPosts = async () => {
-    setLoading(true);
-    let baseUrl = "http://localhost:8000/posts/postList";
-    const urlPage = `?page=${page}`;
-    const urlLimit = `&limit=${limit}`;
-    let url = `${baseUrl}${urlPage}${urlLimit}`;
-    try {
-      console.log(page);
-      const response = await fetch(url);
-      const data = await response.json();
-      setPosts((oldPhotos) => {
-        //return [...oldPhotos, ...data];
-        var arr = [];
-        data.forEach((item) => {
-          if (!oldPhotos.includes(item)) {
-            arr.push(item);
-          }
-        });
-        return [...oldPhotos, ...arr];
-      });
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };*/
-  /*useEffect(() => {
-    fetchPosts();
-  }, [page]);
-
-  useEffect(() => {
-    const event = window.addEventListener("scroll", () => {
-      if (
-        (!loading && window.innerHeight + window.scrollY) >=
-        document.body.scrollHeight - 10
-      ) {
-        console.log("page = ", page);
-        console.log(
-          "(page + 1) * limit - limit = ",
-          (page + 1) * limit - limit
-        );
-        console.log("postLength = ", posts.length);
-        setPage((oldPage) => {
-          return oldPage + 1;
-        });
-      }
-    });
-    return () => window.removeEventListener("scroll", event);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);*/
-
   return (
     <div className="main">
-      <div className="subHeading">Discover</div>
       <ResponsiveMasonry
         columnsCountBreakPoints={{ 350: 1, 600: 2, 750: 2, 900: 3, 1000: 4 }}
       >
@@ -136,29 +78,14 @@ const PostList = () => {
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {/* <div className="gallery">
-        {imgData.images.map((post) => {
-          return <SinglePost key={post.name} {...post} />;
-        })}
-      </div> */}
       {imgData.fetching && <span className="loadingAnim">Loading...</span>}
       <div
         id="page-bottom-boundary"
         style={{ border: "10px solid transparent" }}
         ref={bottomBoundaryRef}
       ></div>
-      {/* <ResponsiveMasonry
-        columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1000: 4 }}
-      >
-        <Masonry>
-          {posts.map((post) => {
-            return <SinglePost key={post.name} {...post} />;
-          })}
-        </Masonry>
-      </ResponsiveMasonry> */}
-      {/* {loading && <span className="loadingAnim">Loading...</span>} */}
     </div>
   );
 };
 
-export default PostList;
+export default Popular;

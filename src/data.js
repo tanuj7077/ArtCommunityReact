@@ -216,13 +216,13 @@ export const LoggedInSideNavItems = [
     name: "followed",
     link: "followed",
   },
-  {
-    id: "side3",
-    id2: "sideExp3",
-    classname: "3",
-    name: "daily",
-    link: "daily",
-  },
+  // {
+  //   id: "side3",
+  //   id2: "sideExp3",
+  //   classname: "3",
+  //   name: "daily",
+  //   link: "daily",
+  // },
   {
     id: "side4",
     id2: "sideExp4",

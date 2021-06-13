@@ -7,6 +7,8 @@ import LoginModal from "../components/Modals/LoginModal/LoginModal";
 import Alert from "../components/Modals/Alert/Alert";
 import SideNavHandler from "../components/Navigation/SideNavHandler";
 import FloatingButton from "../components/Navigation/FloatingButton";
+import Popular from "../components/Popular";
+import PostList from "../components/PostList";
 
 const PopularPage = () => {
   return (
@@ -20,6 +22,8 @@ const PopularPage = () => {
         <SideNavHandler />
         <Alert />
         <FloatingButton />
+        <Popular />
+        {/* <PostList /> */}
       </div>
     </>
   );

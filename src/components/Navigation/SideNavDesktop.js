@@ -113,7 +113,7 @@ const SideNavDesktop = () => {
                 </div>
               )}
             />
-            <Route
+            {/* <Route
               render={({ history }) => (
                 <div
                   onClick={() => {
@@ -126,7 +126,7 @@ const SideNavDesktop = () => {
                   <IoToday className="sideNavDesktopShort--item-icon" />
                 </div>
               )}
-            />
+            /> */}
             <Route
               render={({ history }) => (
                 <div
@@ -213,7 +213,7 @@ const SideNavDesktop = () => {
                 </div>
               )}
             />
-            <Route
+            {/* <Route
               render={({ history }) => (
                 <div
                   onClick={() => {
@@ -226,7 +226,7 @@ const SideNavDesktop = () => {
                   <div className="sideNavDesktop--item-text">Daily</div>
                 </div>
               )}
-            />
+            /> */}
             <Route
               render={({ history }) => (
                 <div
@@ -301,7 +301,7 @@ const SideNavDesktop = () => {
               )}
             />
 
-            <Route
+            {/* <Route
               render={({ history }) => (
                 <div
                   onClick={() => {
@@ -314,7 +314,7 @@ const SideNavDesktop = () => {
                   <IoToday className="sideNavDesktopShort--item-icon" />
                 </div>
               )}
-            />
+            /> */}
             <Route
               render={({ history }) => (
                 <div
@@ -364,7 +364,7 @@ const SideNavDesktop = () => {
                 </div>
               )}
             />
-            <Route
+            {/* <Route
               render={({ history }) => (
                 <div
                   onClick={() => {
@@ -377,7 +377,7 @@ const SideNavDesktop = () => {
                   <div className="sideNavDesktop--item-text">Daily</div>
                 </div>
               )}
-            />
+            /> */}
             <Route
               render={({ history }) => (
                 <div

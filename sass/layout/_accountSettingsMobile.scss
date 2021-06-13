@@ -75,6 +75,12 @@
         display: flex;
         overflow: hidden;
         overflow-y: scroll;
+        @include respond(phone) {
+          padding: 2rem 1rem;
+        }
+        @include respond(phone-land) {
+          padding: 2rem 1rem;
+        }
         .gallery {
           width: 100%;
           height: max-content;

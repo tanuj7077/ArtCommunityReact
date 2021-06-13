@@ -109,9 +109,9 @@ const SideNav = () => {
                     {item.name === "followed" && (
                       <IoPeople className="sideNav--icon" />
                     )}
-                    {item.name === "daily" && (
+                    {/* {item.name === "daily" && (
                       <IoToday className="sideNav--icon" />
-                    )}
+                    )} */}
                     {item.name === "topic" && (
                       <FaWpexplorer className="sideNav--icon" />
                     )}
