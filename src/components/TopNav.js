@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Link, Route, Redirect } from "react-router-dom";
 import axios from "axios";
 
-import SubmitModal from "./SubmitModal";
-import LoginModal from "./LoginModal";
+import SubmitModal from "./Modals/SubmitModals/SubmitModal";
+//import LoginModal from "./LoginModal";
 import LoginModal2 from "./Modals/LoginModal/LoginModal";
 import SearchComponent from "./Search/SearchComponent";
 
@@ -153,7 +153,7 @@ const TopNav = () => {
 
       {submitModal && <SubmitModal />}
 
-      {loginModal && <LoginModal />}
+      {/* {loginModal && <LoginModal />} */}
       {loginModal2 && <LoginModal2 />}
     </>
   );

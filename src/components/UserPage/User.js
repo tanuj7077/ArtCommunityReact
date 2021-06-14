@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import SubmitCoverModal from "../SubmitCoverModal";
-import SubmitProfilePicModal from "../SubmitProfilePicModal";
+import SubmitCoverModal from "../Modals/SubmitModals/SubmitCoverModal";
+import SubmitProfilePicModal from "../Modals/SubmitModals/SubmitProfilePicModal";
 import UserHome from "./UserHome";
 import Gallery from "./Gallery";
 import About from "./About";

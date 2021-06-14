@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 
-import SubmitModal from "../SubmitModal";
-import LoginModal from "../LoginModal";
+import SubmitModal from "../Modals/SubmitModals/SubmitModal";
 import LoginModal2 from "../Modals/LoginModal/LoginModal";
 //import SearchComponent from "../SearchComponent";
 import SearchHandler from "../Search/SearchHandler";
@@ -40,7 +39,7 @@ const TopNav = () => {
 
       {submitModal && <SubmitModal />}
 
-      {loginModal && <LoginModal />}
+      {/* {loginModal && <LoginModal />} */}
       {loginModal2 && <LoginModal2 />}
     </>
   );

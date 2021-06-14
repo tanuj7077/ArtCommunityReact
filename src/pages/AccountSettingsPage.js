@@ -1,11 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import TopNav from "../components/TopNav";
-import SideNav from "../components/Navigation/SideNav";
-import AccountSettings from "../components/AccountSettings/AccountSettings";
-import AccountSettingsDesk from "../components/AccountSettings/AccountSettingsDesk";
-import AccountSettingsMobile from "../components/AccountSettings/AccountSettingsMobile";
 import AccountSettingsHandler from "../components/AccountSettings/AccountSettingsHandler";
 import Alert from "../components/Modals/Alert/Alert";
 import SideNavHandler from "../components/Navigation/SideNavHandler";
@@ -16,13 +11,8 @@ const AccountSettingsPage = () => {
   const { id } = useParams();
   return (
     <div className="Container">
-      {/* <TopNav /> */}
       <TopNavResponsive />
-      {/* <SideNav /> */}
       <SideNavHandler />
-      {/* <AccountSettings id={id} /> */}
-      {/* <AccountSettingsDesk id={id} /> */}
-      {/* <AccountSettingsMobile id={id} /> */}
       <AccountSettingsHandler id={id} />
       <Alert />
       <FloatingButton />

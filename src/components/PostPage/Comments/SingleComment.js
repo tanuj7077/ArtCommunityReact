@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../context";
 import blank from "../../../tagImage/blankProfile.png";
-const url =
-  "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
 
 const SingleComment = ({ id, postId }) => {
-  const { userData, isLoggedIn, openLoginModal } = useGlobalContext();
+  const { userData, isLoggedIn, openLoginModal2 } = useGlobalContext();
   const [editedComment, setEditedComment] = useState("");
   const [comment, setComment] = useState(null);
   const [likes, setLikes] = useState(0);
-  const [userPicData, setUserPicData] = useState();
 
   const [editState, setEditState] = useState(false);
   let commentUrl = "/comments/comment/" + id;
@@ -26,7 +23,6 @@ const SingleComment = ({ id, postId }) => {
         console.log(data);
         setLikes(data.likesArray.length);
       });
-      //setComment(data);
     } catch (err) {
       console.log(err);
     }
@@ -37,7 +33,7 @@ const SingleComment = ({ id, postId }) => {
 
   const likeComment = async () => {
     if (!isLoggedIn) {
-      openLoginModal();
+      openLoginModal2();
     } else {
       const data = {
         user: userData,
@@ -77,18 +73,6 @@ const SingleComment = ({ id, postId }) => {
       <div className="postContent--comments-comment">
         <div className="postContent--comments-comment-top">
           <div className="postContent--comments-comment-user">
-            {/* <div
-              className="postContent--comments-comment-Img"
-              style={{
-                backgroundImage: `url(${blank})`,
-                borderRadius: `${50 + "%"}`,
-              }}
-            ></div> */}
-            {/* <img
-              src={url}
-              alt="user"
-              className="postContent--comments-comment-img"
-            /> */}
             <div
               className="postContent--comments-comment-Img"
               style={{

@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SingleTag from "./SingleTag";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../../context";
 
 const Explore = () => {
   const { homePageTags } = useGlobalContext();
-  /*const [tags, setTags] = useState([]);
-  const fetchTags = async () => {
-    let url = "http://localhost:8000/tags/randomTags";
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setTags(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchTags();
-  }, []);*/
 
   return (
     <section className="explore">

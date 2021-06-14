@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { GoPlus } from "react-icons/go";
 import { AiOutlineLogin } from "react-icons/ai";
 
-import SubmitModal from "../SubmitModal";
+import SubmitModal from "../Modals/SubmitModals/SubmitModal";
 import LoginModal from "../Modals/LoginModal/LoginModal";
 import SearchComponent from "../Search/SearchComponent";
 

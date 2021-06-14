@@ -5,7 +5,7 @@ import { useGlobalContext } from "../../context";
 import CommentList from "./Comments/CommentList";
 import PostsByUser from "./PostsByUser/PostsByUser";
 import Recommended from "./Recommended/Recommended";
-import LoginModal from "../LoginModal";
+import LoginModal from "../Modals/LoginModal/LoginModal";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 import blank from "../../tagImage/blankProfile.png";
@@ -33,15 +33,12 @@ if (!firebase.apps.length) {
 var storage = firebase.storage();
 //---------Firebase end----------------------//
 
-const url =
-  "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
-
 const PostPagePost = ({ id }) => {
   const {
     isLoggedIn,
     userData,
     setUserData,
-    openLoginModal,
+    openLoginModal2,
     loginModal,
     changeAlert,
     updatePostsBackend,
@@ -83,7 +80,7 @@ const PostPagePost = ({ id }) => {
 
   async function handleLike() {
     if (!isLoggedIn) {
-      openLoginModal();
+      openLoginModal2();
     } else {
       const data = {
         user: userData,
@@ -139,7 +136,7 @@ const PostPagePost = ({ id }) => {
   };
   const handleComment = async () => {
     if (!isLoggedIn) {
-      openLoginModal();
+      openLoginModal2();
     } else {
       const data = {
         user: userData,
@@ -157,7 +154,7 @@ const PostPagePost = ({ id }) => {
   };
   const handleFollow = () => {
     if (!isLoggedIn) {
-      openLoginModal();
+      openLoginModal2();
     } else {
       const data = {
         user: userData._id,

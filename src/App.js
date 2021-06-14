@@ -8,10 +8,7 @@ import Home from "./pages/Home";
 import UserPage from "./pages/UserPage";
 import PostPage from "./pages/PostPage";
 import ExplorePage from "./pages/ExplorePage";
-import DailyPage from "./pages/DailyPage";
 import FollowedPage from "./pages/FollowedPage";
-import NewPage from "./pages/NewPage";
-import PollPage from "./pages/PollPage";
 import PopularPage from "./pages/PopularPage";
 import TagSearchPage from "./pages/TagSearchPage";
 import AccountSettingsPage from "./pages/AccountSettingsPage";
@@ -65,17 +62,8 @@ function App() {
       <Route path="/explore">
         <ExplorePage />
       </Route>
-      <Route path="/daily">
-        <DailyPage />
-      </Route>
       <Route path="/followed">
         {isLoggedIn ? <FollowedPage /> : <Redirect to="/" exact />}
-      </Route>
-      <Route path="/new">
-        <NewPage />
-      </Route>
-      <Route path="/poll">
-        <PollPage />
       </Route>
       <Route path="/popular">
         <PopularPage />

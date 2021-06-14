@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useCallback, useRef } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-import SinglePost from "./SinglePost";
+import SinglePost from "../HomePage/SinglePost";
 
 const Popular = () => {
   const imgReducer = (state, action) => {

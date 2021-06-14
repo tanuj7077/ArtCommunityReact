@@ -5549,7 +5549,7 @@ body {
           background: linear-gradient(-45deg, #da7050, #c53d71, #2293bd, #22be9a);
           background-size: 400% 400%; } }
     .LoginModal-body-img {
-      width: 50%;
+      width: 45%;
       height: 100%;
       position: relative;
       overflow: hidden; }
@@ -5560,6 +5560,9 @@ body {
         .LoginModal-body-img {
           display: block;
           width: 35%; } }
+      @media only screen and (max-height: 37.5em) and (max-width: 37.5em) {
+        .LoginModal-body-img {
+          display: none; } }
       .LoginModal-body-img .text {
         position: absolute;
         bottom: 0;
@@ -5625,7 +5628,7 @@ body {
           background-image: url("../src/tagImage/cubism.jpg");
           animation-delay: 20s; }
     .LoginModal-body-form {
-      width: 50%;
+      width: 55%;
       height: 100%;
       background-color: transparent;
       display: flex;
@@ -5636,6 +5639,9 @@ body {
       @media only screen and (max-height: 37.5em) {
         .LoginModal-body-form {
           width: 65%; } }
+      @media only screen and (max-height: 37.5em) and (max-width: 37.5em) {
+        .LoginModal-body-form {
+          width: 100%; } }
       .LoginModal-body-form .heading {
         position: relative;
         display: flex;

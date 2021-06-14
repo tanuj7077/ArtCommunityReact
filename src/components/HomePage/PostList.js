@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useCallback, useRef } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import SinglePost from "./SinglePost";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../../context";
 
 const PostList = () => {
   const imgReducer = (state, action) => {
@@ -136,27 +136,12 @@ const PostList = () => {
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {/* <div className="gallery">
-        {imgData.images.map((post) => {
-          return <SinglePost key={post.name} {...post} />;
-        })}
-      </div> */}
       {imgData.fetching && <span className="loadingAnim">Loading...</span>}
       <div
         id="page-bottom-boundary"
         style={{ border: "10px solid transparent" }}
         ref={bottomBoundaryRef}
       ></div>
-      {/* <ResponsiveMasonry
-        columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1000: 4 }}
-      >
-        <Masonry>
-          {posts.map((post) => {
-            return <SinglePost key={post.name} {...post} />;
-          })}
-        </Masonry>
-      </ResponsiveMasonry> */}
-      {/* {loading && <span className="loadingAnim">Loading...</span>} */}
     </div>
   );
 };

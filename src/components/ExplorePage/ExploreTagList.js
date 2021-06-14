@@ -1,27 +1,12 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { Suspense } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 //import ExploreTag from "./ExploreTag";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../../context";
 const ExploreTag = React.lazy(() => import("./ExploreTag"));
 
 const ExploreTagList = () => {
   const { explorePageTags } = useGlobalContext();
-  const [tags, setTags] = useState([]);
-
-  /*const fetchTags = async () => {
-    let url = "http://localhost:8000/tags/exploreTags";
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setTags(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchTags();
-  }, []);*/
   return (
     <div className="explorePage">
       <ResponsiveMasonry

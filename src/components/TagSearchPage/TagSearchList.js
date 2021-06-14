@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-import SinglePost from "./SinglePost";
+import SinglePost from "../HomePage/SinglePost";
 
 const TagSearchList = ({ name }) => {
   const [posts, setPosts] = useState([]);

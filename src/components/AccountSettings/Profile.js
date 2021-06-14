@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import SubmitCoverModal from "../SubmitCoverModal";
-import SubmitProfilePicModal from "../SubmitProfilePicModal";
+import SubmitCoverModal from "../Modals/SubmitModals/SubmitCoverModal";
+import SubmitProfilePicModal from "../Modals/SubmitModals/SubmitProfilePicModal";
 import blank from "../../tagImage/blankProfile.png";
 import { FaPlus, FaUpload } from "react-icons/fa";
 import axios from "axios";

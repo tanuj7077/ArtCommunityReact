@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
-import blank from "../tagImage/blankProfile.png";
+import blank from "../../tagImage/blankProfile.png";
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   let userUrl = "/users/hoverUser/" + author.id;
