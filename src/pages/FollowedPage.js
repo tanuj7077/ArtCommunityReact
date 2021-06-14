@@ -1,7 +1,5 @@
 import React from "react";
 
-import TopNav from "../components/TopNav";
-import SideNav from "../components/Navigation/SideNav";
 import SideNavTopic from "../components/SideNavTopic";
 import FollowedList from "../components/FollowedPage/FollowedList";
 import Alert from "../components/Modals/Alert/Alert";
@@ -12,9 +10,7 @@ import FloatingButton from "../components/Navigation/FloatingButton";
 const FollowedPage = () => {
   return (
     <div className="Container">
-      {/* <TopNav /> */}
       <TopNavResponsive />
-      {/* <SideNav /> */}
       <SideNavHandler />
       <SideNavTopic topic="Followed" />
       <FollowedList />

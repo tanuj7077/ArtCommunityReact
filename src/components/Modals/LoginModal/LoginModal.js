@@ -6,12 +6,6 @@ import { useGlobalContext } from "../../../context";
 import Login from "./Login";
 import Signup from "./Signup";
 
-// import sunset from "../../tagImage/sunset.jpg";
-// import waterColor from "../../tagImage/waterColor.jpg";
-// import cubism from "../../tagImage/cubism.jpg";
-// import old from "../../tagImage/old.jpg";
-// import fanart from "../../tagImage/fanart.jpg";
-
 const LoginModal = () => {
   const { closeLoginModal2 } = useGlobalContext();
   const [loginMode, setLoginMode] = useState(1);

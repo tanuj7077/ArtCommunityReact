@@ -3,9 +3,9 @@ import { Route } from "react-router-dom";
 import { LoggedInSideNavItems, SideNavItems } from "../../data";
 import { useGlobalContext } from "../../context";
 import { AiFillHome } from "react-icons/ai";
-import { IoPeople, IoToday, IoMdColorPalette } from "react-icons/io5";
+import { IoPeople } from "react-icons/io5";
 import { FaWpexplorer } from "react-icons/fa";
-import { MdNewReleases, MdAccountCircle } from "react-icons/md";
+import { MdNewReleases } from "react-icons/md";
 import { CgMenu } from "react-icons/cg";
 
 const SideNav = () => {

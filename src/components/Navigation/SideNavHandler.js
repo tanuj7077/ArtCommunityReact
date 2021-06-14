@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useGlobalContext } from "../../context";
 import SideNavMobile from "./SideNavMobile";
 import SideNavDesktop from "./SideNavDesktop";
 
