@@ -660,6 +660,12 @@ body {
       box-shadow: -100.5vw 0 0 100vw green;
       cursor: pointer;
       transition: all 0.2s ease; }
+      @media only screen and (max-width: 37.5em) {
+        .inputSlider--slider::-webkit-slider-thumb {
+          box-shadow: -101.5vw 0 0 100vw green; } }
+      @media only screen and (max-height: 37.5em) {
+        .inputSlider--slider::-webkit-slider-thumb {
+          box-shadow: -101vw 0 0 100vw green; } }
       .inputSlider--slider::-webkit-slider-thumb:active {
         border: solid 5px green;
         background: white; }

@@ -577,6 +577,12 @@
       border-radius: 50%;
       background: rgb(138, 241, 138);
       box-shadow: -100.5vw 0 0 100vw green;
+      @include respond(phone) {
+        box-shadow: -101.5vw 0 0 100vw green;
+      }
+      @include respond(phone-land) {
+        box-shadow: -101vw 0 0 100vw green;
+      }
       cursor: pointer;
       transition: all 0.2s ease;
 
