@@ -8,6 +8,7 @@
   border-radius: 50%;
   display: none;
   place-items: center;
+  z-index: 1000;
   @include respond(phone) {
     display: grid;
   }

@@ -1350,7 +1350,12 @@ const Personal = () => {
         </div>
         {/* </div> */}
         <div className="settings-group link-label">
-          <label className="settings-group-label">Links</label>
+          <label className="settings-group-label labelLink">
+            Links
+            <span className="supported">
+              (youtube, instagram, facebook, patreon, gmail)
+            </span>
+          </label>
           <div className="links">
             {links.map((item, i) => {
               return (

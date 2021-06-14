@@ -1823,14 +1823,21 @@ body {
         grid-row: 3 / -1; } }
     @media only screen and (max-width: 37.5em) {
       .postPage .otherContent {
+        width: 100%;
         grid-column: 1 / -1;
         grid-row: 4 / -1; } }
+    @media only screen and (max-height: 37.5em) {
+      .postPage .otherContent {
+        width: 100%; } }
     .postPage .otherContent--subheading {
       font-size: 2rem;
       letter-spacing: 0.3rem; }
     .postPage .otherContent--user {
       justify-self: start;
       padding: 1.5rem 1.5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .postPage .otherContent--user {
+          justify-self: center; } }
     .postPage .otherContent--recommend {
       justify-self: start;
       padding: 1.5rem 1.5rem; }
@@ -1876,8 +1883,8 @@ body {
             height: 8.5vw; } }
         @media only screen and (max-width: 37.5em) {
           .postPage .otherContent--Thumbnails-img {
-            width: 22vw;
-            height: 22vw; } }
+            width: 25.5vw;
+            height: 25.5vw; } }
 
 .menu-item:hover {
   cursor: pointer;
@@ -3395,6 +3402,9 @@ body {
   @media only screen and (max-width: 37.5em) {
     .addExtrasModal {
       height: calc(100vh - 12rem); } }
+  @media only screen and (max-height: 37.5em) {
+    .addExtrasModal {
+      height: calc(100vh - 12rem); } }
   .addExtrasModal .modal {
     width: 65rem;
     height: max-content;
@@ -3409,13 +3419,26 @@ body {
         width: 90vw; } }
     @media only screen and (max-height: 37.5em) {
       .addExtrasModal .modal {
-        width: 85vw; } }
+        width: 85vw;
+        height: calc(100vh - 12rem); } }
     .addExtrasModal .modal-heading {
       font-size: 3rem;
       padding: 2rem 4rem;
       width: 100%;
       border-bottom: 2px solid #3a3a3a;
       color: silver; }
+      @media only screen and (max-width: 37.5em) {
+        .addExtrasModal .modal-heading {
+          font-size: 2rem;
+          padding: 1.5rem 4rem;
+          display: grid;
+          place-items: center; } }
+      @media only screen and (max-height: 37.5em) {
+        .addExtrasModal .modal-heading {
+          font-size: 2rem;
+          padding: 1rem 4rem;
+          display: grid;
+          place-items: center; } }
     .addExtrasModal .modal-form {
       width: 55rem;
       display: flex;
@@ -3426,7 +3449,10 @@ body {
           width: 80vw; } }
       @media only screen and (max-height: 37.5em) {
         .addExtrasModal .modal-form {
-          width: 80vw; } }
+          width: 80vw;
+          overflow: hidden;
+          overflow-y: scroll;
+          align-items: center; } }
     .addExtrasModal .modal-buttons {
       margin-bottom: 3rem;
       width: 55rem;
@@ -3508,6 +3534,9 @@ body {
       @media only screen and (max-width: 37.5em) {
         .addExtrasModal .modal-photo {
           width: 100%; } }
+      @media only screen and (max-height: 37.5em) {
+        .addExtrasModal .modal-photo {
+          width: 80%; } }
       .addExtrasModal .modal-photo canvas {
         width: 35rem !important;
         height: 35rem !important; }
@@ -3515,6 +3544,10 @@ body {
           .addExtrasModal .modal-photo canvas {
             width: 65vw !important;
             height: 65vw !important; } }
+        @media only screen and (max-height: 37.5em) {
+          .addExtrasModal .modal-photo canvas {
+            width: 50vh !important;
+            height: 50vh !important; } }
       .addExtrasModal .modal-photo-img {
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         max-width: 52rem;
@@ -4481,6 +4514,10 @@ body {
           .settingsDesk-main .profile-items .inputs .settings-group-label {
             font-size: 1.6rem;
             color: #888888; }
+            .settingsDesk-main .profile-items .inputs .settings-group-label .supported {
+              font-size: 1.3rem;
+              color: #888888;
+              margin-left: 0.5rem; }
           .settingsDesk-main .profile-items .inputs .settings-group-input {
             margin-top: 0.6rem;
             height: 4rem;
@@ -4580,6 +4617,10 @@ body {
             background-color: #a8a8a8; }
       .settingsDesk-main .profile-items .link-label {
         margin-top: -1rem; }
+        .settingsDesk-main .profile-items .link-label .supported {
+          font-size: 1.3rem;
+          color: #888888;
+          margin-left: 0.5rem; }
       .settingsDesk-main .profile-items .links {
         width: 89%;
         display: flex;
@@ -4950,6 +4991,12 @@ body {
               .settingsMobile-carousel--profileSection .profile-items .settings-group-label .icons .delete:hover {
                 cursor: pointer;
                 color: #dd4c4c; }
+          .settingsMobile-carousel--profileSection .profile-items .settings-group .labelLink {
+            display: block; }
+            .settingsMobile-carousel--profileSection .profile-items .settings-group .labelLink .supported {
+              font-size: 1.3rem;
+              color: #888888;
+              margin-left: 0.5rem; }
           .settingsMobile-carousel--profileSection .profile-items .settings-group-input {
             margin-top: 0.6rem;
             height: 4rem;
@@ -5568,7 +5615,8 @@ body {
   background-color: #20bf6b;
   border-radius: 50%;
   display: none;
-  place-items: center; }
+  place-items: center;
+  z-index: 1000; }
   @media only screen and (max-width: 37.5em) {
     .floatingButton {
       display: grid; } }

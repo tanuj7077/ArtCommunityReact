@@ -360,6 +360,11 @@
           &-label {
             font-size: 1.6rem;
             color: rgb(136, 136, 136);
+            .supported {
+              font-size: 1.3rem;
+              color: rgb(136, 136, 136);
+              margin-left: 0.5rem;
+            }
           }
           &-input {
             margin-top: 0.6rem;
@@ -501,6 +506,11 @@
 
       .link-label {
         margin-top: -1rem;
+        .supported {
+          font-size: 1.3rem;
+          color: rgb(136, 136, 136);
+          margin-left: 0.5rem;
+        }
       }
       .links {
         width: 89%;

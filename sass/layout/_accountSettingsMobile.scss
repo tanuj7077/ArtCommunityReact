@@ -219,6 +219,14 @@
               }
             }
           }
+          .labelLink {
+            display: block;
+            .supported {
+              font-size: 1.3rem;
+              color: rgb(136, 136, 136);
+              margin-left: 0.5rem;
+            }
+          }
           &-input {
             margin-top: 0.6rem;
             height: 4rem;

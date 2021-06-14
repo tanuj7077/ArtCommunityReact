@@ -9,13 +9,13 @@ import { useGlobalContext } from "../context";
 import firebase from "firebase/app";
 import "firebase/storage";
 var config = {
-  apiKey: "AIzaSyDvMwMxRmt0N_On1efH-eHN5n6vz3DIqyw",
-  authDomain: "artcomm707.firebaseapp.com",
-  projectId: "artcomm707",
-  storageBucket: "artcomm707.appspot.com",
-  messagingSenderId: "1015814439095",
-  appId: "1:1015814439095:web:d0b3ed402203702c9b8d32",
-  measurementId: "G-HC2QXZ27V4",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 // Initialize Firebase
 if (!firebase.apps.length) {
@@ -227,108 +227,7 @@ const SubmitProfilePicModal = () => {
           </form>
         </div>
       </div>
-      <>
-        {/* <div className="loginModal">
-        <div className="submitForm">
-          <span className="closeIcon">
-            <IoClose className="Icon" onClick={closeSubmitProfilePicModal} />
-          </span>
-
-          <form
-            className="form u-margin-top-big"
-            onSubmit={handleSubmit}
-            encType="multipart/form-data"
-          >
-            {isProfileUploaded ? (
-              <>
-                <div className="submitForm-image">
-                  <AvatarEditor
-                    ref={setEditorRef}
-                    image={profileImage}
-                    width={250}
-                    height={250}
-                    scale={scale}
-                    borderRadius={borderRadius}
-                    rotate={angle}
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="submitForm-imgHolder coverImageHolder u-margin-bottom-medium">
-                  <label htmlFor="fileInput">
-                    <span className="uploadIcon">
-                      <FaUpload className="Icon" />
-                    </span>
-                  </label>
-                  <label htmlFor="fileInput">
-                    <span className="uploadText">Click to Upload</span>
-                  </label>
-                  <input
-                    id="fileInput"
-                    type="file"
-                    accept=".jpg,.jpeg,.png"
-                    onChange={handleImage}
-                  />
-                </div>
-              </>
-            )}
-
-            {isProfileUploaded && (
-              <>
-                <div className="inputSlider u-margin-bottom-small">
-                  <label htmlFor="borderRadius" className="inputSlider--label">
-                    Border Radius:{" "}
-                  </label>
-                  <input
-                    type="range"
-                    min="0"
-                    max="126"
-                    value={borderRadius}
-                    className="inputSlider--slider"
-                    id="borderRadius"
-                    onChange={(e) => handleBorderRad(e)}
-                  ></input>
-                </div>
-                <div className="inputSlider u-margin-bottom-small">
-                  <label htmlFor="rotation" className="inputSlider--label">
-                    Rotation:{" "}
-                  </label>
-                  <input
-                    type="range"
-                    min="0"
-                    max="360"
-                    value={angle}
-                    className="inputSlider--slider"
-                    id="rotation"
-                    onChange={(e) => setAngle(e.target.value)}
-                  ></input>
-                </div>
-                <div className="inputSlider u-margin-bottom-small">
-                  <label htmlFor="scale" className="inputSlider--label">
-                    Scale:{" "}
-                  </label>
-                  <input
-                    type="range"
-                    min="1"
-                    max="2"
-                    step="0.01"
-                    value={scale}
-                    className="inputSlider--slider"
-                    id="scale"
-                    onChange={(e) => setScale(e.target.value)}
-                  ></input>
-                </div>
-
-                <button className="btn btn-submit" type="submit">
-                  Submit
-                </button>
-              </>
-            )}
-          </form>
-        </div>
-      </div> */}
-      </>
+      <></>
     </>
   );
 };
