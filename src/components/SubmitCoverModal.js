@@ -7,15 +7,15 @@ import { useGlobalContext } from "../context";
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";
 import "firebase/storage";
-// var config = {
-//   apiKey: "AIzaSyDvMwMxRmt0N_On1efH-eHN5n6vz3DIqyw",
-//   authDomain: "artcomm707.firebaseapp.com",
-//   projectId: "artcomm707",
-//   storageBucket: "artcomm707.appspot.com",
-//   messagingSenderId: "1015814439095",
-//   appId: "1:1015814439095:web:d0b3ed402203702c9b8d32",
-//   measurementId: "G-HC2QXZ27V4",
-// };
+/*var config = {
+  apiKey: "AIzaSyDvMwMxRmt0N_On1efH-eHN5n6vz3DIqyw",
+  authDomain: "artcomm707.firebaseapp.com",
+  projectId: "artcomm707",
+  storageBucket: "artcomm707.appspot.com",
+  messagingSenderId: "1015814439095",
+  appId: "1:1015814439095:web:d0b3ed402203702c9b8d32",
+  measurementId: "G-HC2QXZ27V4",
+};*/
 var config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
