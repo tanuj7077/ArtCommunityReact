@@ -149,7 +149,6 @@ const SubmitModal = () => {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
       setToSendImage(e.target.files[0]);
-
       reader.onload = (e) => {
         setImage(e.target.result);
         setIsUploaded(true);
@@ -162,9 +161,6 @@ const SubmitModal = () => {
     setSubmittedTags(Array.isArray(e) ? e.map((x) => x.value) : []);
   };
 
-  // const handleSelectChange = (e) => {
-  //   setSubmittedTags(Array.isArray(e) ? e.map((x) => x.value) : []);
-  // };
   async function handleSubmit(e) {
     e.preventDefault();
     let currentImageName = "image-" + Date.now();
@@ -203,22 +199,6 @@ const SubmitModal = () => {
       }
     );
   }
-
-  /*function useOutsideAlerter(ref) {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          closeSubmitModal();
-        }
-      }
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  }
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);*/
 
   //----------------Fetch Tags----------------
   const [tags, setTags] = useState([]);

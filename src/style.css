@@ -4892,7 +4892,7 @@ body {
           cursor: pointer; }
 
 .settingsMobile {
-  width: calc(100vw);
+  width: 100vw;
   height: calc(100vh - 6rem);
   grid-column: 1 / -1;
   grid-row: 2 / -1; }
@@ -4900,6 +4900,10 @@ body {
     .settingsMobile {
       grid-column: 3 / -1;
       width: calc(100vw - 7rem); } }
+  @media only screen and (max-height: 37.5em) and (max-width: 37.5em) {
+    .settingsMobile {
+      grid-column: 1 / -1;
+      width: 100vw; } }
   .settingsMobile-links {
     background-color: #2a2a2c;
     width: 100%;
@@ -4934,6 +4938,9 @@ body {
     @media only screen and (max-height: 37.5em) {
       .settingsMobile-carousel {
         width: calc(100vw - 7rem); } }
+    @media only screen and (max-height: 37.5em) and (max-width: 37.5em) {
+      .settingsMobile-carousel {
+        width: 100vw; } }
     .settingsMobile-carousel--profileSection {
       width: 100%;
       transform: rotateX(180deg);

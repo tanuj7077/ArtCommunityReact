@@ -1471,16 +1471,19 @@ body {
       .grid-item--card-title:hover {
         text-decoration: none;
         color: white;
-        font-size: 2.6rem; }
+        font-size: 2.6rem;
+        cursor: pointer; }
     .grid-item--card-author {
       color: white;
       font-size: 2rem;
       z-index: 1;
-      transition: all 0.2s ease-in; }
+      transition: all 0.2s ease-in;
+      cursor: pointer; }
       .grid-item--card-author:hover {
         text-decoration: none;
         color: white;
-        font-size: 2.1rem; }
+        font-size: 2.1rem;
+        cursor: pointer; }
     .grid-item--card-img-overlay {
       position: absolute;
       top: 0;
@@ -1495,6 +1498,8 @@ body {
       opacity: 0;
       padding-left: 2rem;
       padding-top: 1rem; }
+      .grid-item--card-textualInfo:hover {
+        cursor: pointer; }
     .grid-item--card-icons {
       padding-left: 2rem;
       padding-bottom: 2rem;
@@ -1584,25 +1589,7 @@ body {
       background-color: #2c2c2c;
       width: 100%;
       display: flex;
-      flex-flow: column;
-      /*&-author {
-        display: grid;
-        grid-template-rows: min-content max-content;
-        grid-template-columns: max-content max-content;
-        &-img {
-          grid-column: 1/ 2;
-          grid-row: 1 / 3;
-        }
-        &-title {
-          padding-left: 2.5rem;
-          font-size: 4rem;
-          align-self: start;
-        }
-        &-name {
-          padding-left: 2.5rem;
-          font-size: 2rem;
-        }
-      }*/ }
+      flex-flow: column; }
       @media only screen and (max-width: 75em) {
         .postPage .postContent--info {
           padding: 3rem 5rem; } }
@@ -1653,6 +1640,8 @@ body {
             background-position-y: center; }
           .postPage .postContent--info-author-detail .name {
             font-size: 3rem; }
+            .postPage .postContent--info-author-detail .name:hover {
+              cursor: pointer; }
       .postPage .postContent--info-icons {
         position: relative;
         padding: 3rem 0;
@@ -1667,6 +1656,15 @@ body {
           display: flex;
           gap: 1rem;
           align-items: center; }
+        .postPage .postContent--info-icons .icon:hover {
+          cursor: pointer; }
+        .postPage .postContent--info-icons .followBtn {
+          display: grid;
+          place-items: center;
+          background-color: #6e6e6e;
+          padding: 1rem; }
+          .postPage .postContent--info-icons .followBtn:hover {
+            cursor: pointer; }
       .postPage .postContent--info-desc {
         font-size: 2rem; }
       .postPage .postContent--info-tags {
@@ -1833,11 +1831,7 @@ body {
       font-size: 2rem;
       letter-spacing: 0.3rem; }
     .postPage .otherContent--user {
-      justify-self: start;
       padding: 1.5rem 1.5rem; }
-      @media only screen and (max-width: 37.5em) {
-        .postPage .otherContent--user {
-          justify-self: center; } }
     .postPage .otherContent--recommend {
       justify-self: start;
       padding: 1.5rem 1.5rem; }
@@ -1883,8 +1877,12 @@ body {
             height: 8.5vw; } }
         @media only screen and (max-width: 37.5em) {
           .postPage .otherContent--Thumbnails-img {
-            width: 25.5vw;
-            height: 25.5vw; } }
+            width: 30vw;
+            height: 30vw; } }
+        @media only screen and (max-height: 37.5em) {
+          .postPage .otherContent--Thumbnails-img {
+            width: 9.8vw;
+            height: 9.8vw; } }
 
 .menu-item:hover {
   cursor: pointer;
@@ -2314,7 +2312,7 @@ body {
   top: 0;
   left: 0;
   z-index: 1600;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(223, 46, 46, 0.5);
   display: grid;
   place-items: center; }
   .submitModal .modal {
@@ -2326,13 +2324,6 @@ body {
     flex-flow: column;
     gap: 2.5rem;
     align-items: center; }
-    @media only screen and (max-width: 37.5em) {
-      .submitModal .modal {
-        width: 90%; } }
-    @media only screen and (max-height: 37.5em) {
-      .submitModal .modal {
-        width: 90%;
-        height: 80vh; } }
     .submitModal .modal-heading {
       font-size: 3rem;
       padding: 2rem 4rem;
@@ -2344,24 +2335,11 @@ body {
       padding: 2rem 4rem;
       display: grid;
       grid-template-rows: repeat(2, max-content);
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 2rem; }
-      @media only screen and (max-width: 37.5em) {
-        .submitModal .modal-form {
-          display: flex;
-          flex-flow: column;
-          height: 60vh;
-          overflow: hidden;
-          overflow-y: scroll;
-          margin-bottom: 2rem; } }
-      @media only screen and (max-height: 37.5em) {
-        .submitModal .modal-form {
-          overflow: hidden;
-          overflow-y: scroll; } }
+      grid-template-columns: repeat(2, 1fr); }
       .submitModal .modal-form-imgHolder {
         grid-row: 1/ 2;
         grid-column: 1/ 2;
-        width: 100%;
+        width: 95%;
         height: max-content;
         padding: 2rem 0;
         min-height: 32rem;
@@ -2369,14 +2347,10 @@ body {
         border: dashed 2px #626262;
         display: grid;
         place-items: center; }
-        @media only screen and (max-width: 37.5em) {
-          .submitModal .modal-form-imgHolder {
-            height: 30vh;
-            margin-bottom: 1.5rem; } }
         .submitModal .modal-form-imgHolder-img {
           box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
           max-width: 90%;
-          max-height: 30vh; }
+          max-height: 30rem; }
         .submitModal .modal-form-imgHolder .uploadLabel {
           display: flex;
           flex-flow: column;
@@ -2402,28 +2376,16 @@ body {
         width: 100%; }
         .submitModal .modal-form-inputs-input {
           color: lightgray; }
-          @media only screen and (max-width: 37.5em) {
-            .submitModal .modal-form-inputs-input {
-              margin-bottom: -1rem; } }
         .submitModal .modal-form-inputs-textarea {
           color: lightgray; }
-          @media only screen and (max-width: 37.5em) {
-            .submitModal .modal-form-inputs-textarea {
-              margin-bottom: -1rem; } }
         .submitModal .modal-form-inputs-select {
           width: 100%; }
-          @media only screen and (max-width: 37.5em) {
-            .submitModal .modal-form-inputs-select {
-              margin-bottom: -1rem; } }
       .submitModal .modal-form-buttons {
         grid-row: 2 / -1;
         grid-column: 1 / -1;
         display: flex;
         flex-flow: row;
         justify-content: space-between; }
-        @media only screen and (max-height: 37.5em) {
-          .submitModal .modal-form-buttons {
-            padding-bottom: 2rem; } }
         .submitModal .modal-form-buttons .add-btn {
           border: none;
           color: silver;
@@ -2712,22 +2674,28 @@ body {
   display: grid;
   grid-template-rows: repeat(2, min-content);
   background-color: #161616 100%; }
+  @media only screen and (max-width: 37.5em) {
+    .userPage {
+      grid-column: 1 / -1; } }
   .userPage--background {
     grid-row: 1 / 2;
     grid-column: 1 / -1;
     position: sticky;
-    top: 7.5vh;
+    top: 6rem;
     left: 0;
     height: 70vh;
     background-image: url("./tagImage/snow.jpg");
     background-size: cover;
     z-index: 1;
     background-position-x: center;
-    background-position-y: center;
-    animation: gradient 15s ease infinite; }
+    background-position-y: center; }
+    @media only screen and (max-width: 37.5em) {
+      .userPage--background {
+        height: 35vh; } }
   .userPage .noCover {
     background: linear-gradient(-45deg, #ec7956, #e64080, #21a6d6, #25d3aa);
-    background-size: 400% 400%; }
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite; }
   .userPage--top {
     grid-row: 1 / 2;
     grid-column: 1 / -1;
@@ -2737,6 +2705,9 @@ body {
     background: linear-gradient(to bottom, transparent 35%, rgba(48, 48, 48, 0.336) 70%, #161616 100%);
     z-index: 2;
     position: relative; }
+    @media only screen and (max-width: 37.5em) {
+      .userPage--top {
+        height: 35vh; } }
     .userPage--top-user {
       position: absolute;
       top: 33vh;
@@ -2744,6 +2715,14 @@ body {
       display: grid;
       grid-template-rows: min-content min-content;
       grid-template-columns: max-content max-content; }
+      @media only screen and (max-width: 37.5em) {
+        .userPage--top-user {
+          top: 50%;
+          left: 2.5%; } }
+      @media only screen and (max-height: 37.5em) {
+        .userPage--top-user {
+          top: 25%;
+          left: 2.5%; } }
       .userPage--top-user-img {
         grid-row: 1 / 3;
         grid-column: 1 / 2;
@@ -2753,6 +2732,10 @@ body {
         background-size: cover;
         background-position-x: center;
         background-position-y: center; }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--top-user-img {
+            width: 10rem;
+            height: 10rem; } }
       .userPage--top-user-imgOverlay {
         grid-row: 1 / 3;
         grid-column: 1 / 2;
@@ -2766,6 +2749,11 @@ body {
         transition: 0.2s ease;
         text-align: center;
         padding-top: 30%; }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--top-user-imgOverlay {
+            width: 10rem;
+            height: 10rem;
+            font-size: 1.5rem; } }
         .userPage--top-user-imgOverlay:hover {
           background-color: rgba(37, 37, 37, 0.7);
           color: white;
@@ -2778,6 +2766,9 @@ body {
         color: white;
         font-size: 4.5rem;
         font-weight: 700; }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--top-user-name {
+            font-size: 3rem; } }
       .userPage--top-user-info {
         grid-row: 2 / 3;
         grid-column: 2 / 3;
@@ -2785,6 +2776,9 @@ body {
         padding-left: 2rem;
         color: white;
         font-size: 3rem; }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--top-user-info {
+            font-size: 2rem; } }
     .userPage--top-menu {
       position: absolute;
       bottom: 0;
@@ -2792,10 +2786,32 @@ body {
       color: white;
       letter-spacing: 0.3rem;
       padding: 1rem 0; }
+      @media only screen and (max-width: 37.5em) {
+        .userPage--top-menu {
+          left: 0;
+          right: 0;
+          display: flex;
+          flex-flow: row;
+          width: 95%;
+          margin: 0.5rem auto;
+          justify-content: space-between; } }
+      @media only screen and (max-height: 37.5em) {
+        .userPage--top-menu {
+          left: 0;
+          right: 0;
+          display: flex;
+          flex-flow: row;
+          width: 95%;
+          margin: 0.5rem auto;
+          justify-content: space-between; } }
       .userPage--top-menu .menu-item {
         font-size: 3.3rem;
         padding: 0 5rem;
         transition: font-size 0.3s ease; }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--top-menu .menu-item {
+            padding: 0;
+            font-size: 3rem; } }
     .userPage--top-cover {
       opacity: 0.8;
       position: absolute;
@@ -2807,6 +2823,9 @@ body {
       padding: 1rem 1.5rem;
       border-radius: 2rem;
       transition: 0.15s ease-in; }
+      @media only screen and (max-width: 37.5em) {
+        .userPage--top-cover {
+          display: none; } }
       .userPage--top-cover:hover {
         opacity: 1;
         cursor: pointer;
@@ -2821,9 +2840,16 @@ body {
     display: grid;
     grid-template-rows: repeat(3, max-content);
     grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
+    column-gap: 3rem;
     align-items: center;
-    margin-left: 5rem; }
+    margin: 0 auto;
+    width: 95%; }
+    @media only screen and (max-width: 37.5em) {
+      .userPage--home {
+        margin: 0 auto;
+        width: 95%;
+        display: flex;
+        flex-flow: column; } }
     .userPage--home .subheading {
       font-size: 2.4rem;
       color: white;
@@ -2834,10 +2860,10 @@ body {
       letter-spacing: 0.3rem; }
     .userPage--home-about {
       align-self: start;
-      margin: 6rem 0;
+      margin: 2.5rem 0;
       grid-row: 1 / 2;
       grid-column: 2 / -1;
-      width: 90%; }
+      width: 100%; }
     .userPage--home-aboutInfo {
       background-color: #3b3b3b;
       min-height: 55rem;
@@ -2876,15 +2902,18 @@ body {
         color: #868686; }
     .userPage--home-spotlight {
       align-self: start;
-      margin: 6rem 0;
+      margin: 2.5rem 0;
       grid-row: 1 / 2;
       grid-column: 1 / 2; }
       .userPage--home-spotlight .spotlight {
-        width: 90%;
+        width: 100%;
         height: 55rem;
         background-color: black;
         display: grid;
         grid-template-rows: 90% 10%; }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--home-spotlight .spotlight {
+            width: 100%; } }
         .userPage--home-spotlight .spotlight .spotlight-image {
           background-color: #3b3b3b;
           display: flex;
@@ -2932,72 +2961,77 @@ body {
       flex-flow: column;
       row-gap: 5rem;
       margin-bottom: 6rem; }
-    .userPage--home .popular-slider {
-      margin-top: 1.6rem;
-      position: relative;
-      width: 86vw;
-      overflow: hidden;
-      display: flex; }
-      .userPage--home .popular-slider-leftButton {
-        z-index: 2;
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 4.5rem;
-        width: 4.5rem;
-        border-radius: 50%;
-        background-color: #636363;
-        display: grid;
-        place-items: center;
-        opacity: 0.4; }
-        .userPage--home .popular-slider-leftButton .icon {
-          color: white;
-          width: 4rem;
-          height: 4rem; }
-        .userPage--home .popular-slider-leftButton:hover {
-          cursor: pointer;
-          opacity: 1; }
-      .userPage--home .popular-slider-rightButton {
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 4.5rem;
-        width: 4.5rem;
-        border-radius: 50%;
-        background-color: #636363;
-        display: grid;
-        place-items: center;
-        opacity: 0.4; }
-        .userPage--home .popular-slider-rightButton .icon {
-          color: white;
-          width: 4rem;
-          height: 4rem; }
-        .userPage--home .popular-slider-rightButton:hover {
-          cursor: pointer;
-          opacity: 1; }
-      .userPage--home .popular-slider-slides {
-        display: flex;
-        flex-flow: row;
-        gap: 1rem;
-        overflow-x: scroll;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch; }
-        .userPage--home .popular-slider-slides .slider-img {
-          height: 20rem;
-          width: auto;
-          scroll-snap-align: start;
-          border-radius: 10px; }
-          .userPage--home .popular-slider-slides .slider-img::selection {
-            color: transparent;
-            background: transparent; }
-          .userPage--home .popular-slider-slides .slider-img:hover {
-            cursor: pointer; }
-        .userPage--home .popular-slider-slides::-webkit-scrollbar {
-          display: none; }
+    .userPage--home .popular {
+      width: 100%; }
+      .userPage--home .popular-slider {
+        margin-top: 1.6rem;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        display: flex; }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--home .popular-slider {
+            width: 95vw; } }
+        .userPage--home .popular-slider-leftButton {
+          z-index: 2;
+          position: absolute;
+          left: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 4.5rem;
+          width: 4.5rem;
+          border-radius: 50%;
+          background-color: #636363;
+          display: grid;
+          place-items: center;
+          opacity: 0.4; }
+          .userPage--home .popular-slider-leftButton .icon {
+            color: white;
+            width: 4rem;
+            height: 4rem; }
+          .userPage--home .popular-slider-leftButton:hover {
+            cursor: pointer;
+            opacity: 1; }
+        .userPage--home .popular-slider-rightButton {
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 4.5rem;
+          width: 4.5rem;
+          border-radius: 50%;
+          background-color: #636363;
+          display: grid;
+          place-items: center;
+          opacity: 0.4; }
+          .userPage--home .popular-slider-rightButton .icon {
+            color: white;
+            width: 4rem;
+            height: 4rem; }
+          .userPage--home .popular-slider-rightButton:hover {
+            cursor: pointer;
+            opacity: 1; }
+        .userPage--home .popular-slider-slides {
+          display: flex;
+          flex-flow: row;
+          gap: 1rem;
+          overflow-x: scroll;
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch; }
+          .userPage--home .popular-slider-slides .slider-img {
+            height: 20rem;
+            width: auto;
+            scroll-snap-align: start;
+            border-radius: 10px; }
+            .userPage--home .popular-slider-slides .slider-img::selection {
+              color: transparent;
+              background: transparent; }
+            .userPage--home .popular-slider-slides .slider-img:hover {
+              cursor: pointer; }
+          .userPage--home .popular-slider-slides::-webkit-scrollbar {
+            display: none; }
     .userPage--home .likedSection {
-      width: 86vw; }
+      width: 100%; }
     .userPage--home .liked {
       width: 100%;
       display: flex;
@@ -3032,7 +3066,7 @@ body {
     .userPage--home .likedSection:hover .liked::-webkit-scrollbar-thumb {
       background: #6ecf86; }
     .userPage--home .LikedSection {
-      width: 86vw; }
+      width: 100%; }
       .userPage--home .LikedSection .Liked {
         margin-top: 1rem;
         width: 100%;
@@ -3182,6 +3216,9 @@ body {
     width: 70%;
     margin: 5rem auto;
     color: #dddddd; }
+    @media only screen and (max-width: 37.5em) {
+      .userPage--about {
+        width: 90%; } }
     .userPage--about hr.solid {
       height: 1px;
       background-color: #bbb;
@@ -3263,12 +3300,21 @@ body {
       flex-flow: row;
       flex-wrap: wrap;
       gap: 2rem; }
+      @media only screen and (max-width: 37.5em) {
+        .userPage--about-stats .items {
+          width: 100%;
+          gap: 3%;
+          row-gap: 1.4rem; } }
       .userPage--about-stats .items .item {
         width: 15rem;
         height: 15rem;
         border: 2px solid white;
         position: relative;
         text-align: center; }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--about-stats .items .item {
+            width: 28vw;
+            height: 28vw; } }
         .userPage--about-stats .items .item .label {
           display: block;
           font-size: 1.6rem;
