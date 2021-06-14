@@ -114,12 +114,6 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
           )}
           {username && (
             <>
-              {/* <div
-                className="authorHover--cover"
-                style={{
-                  backgroundImage: `linear-gradient(to bottom,transparent,rgba(43, 43, 43, 0.9)), url(${coverPhoto})`,
-                }}
-              ></div> */}
               {coverPhoto && (
                 <div
                   className="authorHover--cover"
@@ -129,13 +123,6 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
                 ></div>
               )}
               {!coverPhoto && <div className="authorHover--noCover"></div>}
-              {/* <div
-                className="authorHover--profile"
-                style={{
-                  backgroundImage: `url(${profilePic})`,
-                  borderRadius: `${profileBorderRad}`,
-                }}
-              ></div> */}
               <Route
                 render={({ history }) => (
                   <div

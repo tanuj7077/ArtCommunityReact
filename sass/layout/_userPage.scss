@@ -7,12 +7,15 @@
   display: grid;
   grid-template-rows: repeat(2, min-content);
   background-color: rgb(22, 22, 22) 100%;
+  @include respond(phone) {
+    grid-column: 1 / -1;
+  }
 
   &--background {
     grid-row: 1 / 2;
     grid-column: 1 / -1;
     position: sticky;
-    top: 7.5vh;
+    top: 6rem;
     left: 0;
     height: 70vh;
     background-image: url("./tagImage/snow.jpg");
@@ -20,6 +23,9 @@
     z-index: 1;
     background-position-x: center;
     background-position-y: center;
+    @include respond(phone) {
+      height: 35vh;
+    }
   }
   .noCover {
     background: linear-gradient(-45deg, #ec7956, #e64080, #21a6d6, #25d3aa);
@@ -40,6 +46,9 @@
     );
     z-index: 2;
     position: relative;
+    @include respond(phone) {
+      height: 35vh;
+    }
 
     &-user {
       position: absolute;
@@ -49,6 +58,14 @@
       display: grid;
       grid-template-rows: min-content min-content;
       grid-template-columns: max-content max-content;
+      @include respond(phone) {
+        top: 50%;
+        left: 2.5%;
+      }
+      @include respond(phone-land) {
+        top: 25%;
+        left: 2.5%;
+      }
 
       &-img {
         grid-row: 1 / 3;
@@ -60,6 +77,10 @@
         background-size: cover;
         background-position-x: center;
         background-position-y: center;
+        @include respond(phone) {
+          width: 10rem;
+          height: 10rem;
+        }
       }
       &-imgOverlay {
         grid-row: 1 / 3;
@@ -74,6 +95,11 @@
         transition: 0.2s ease;
         text-align: center;
         padding-top: 30%;
+        @include respond(phone) {
+          width: 10rem;
+          height: 10rem;
+          font-size: 1.5rem;
+        }
 
         &:hover {
           background-color: rgba(37, 37, 37, 0.7);
@@ -90,6 +116,9 @@
         color: white;
         font-size: 4.5rem;
         font-weight: 700;
+        @include respond(phone) {
+          font-size: 3rem;
+        }
       }
       &-info {
         grid-row: 2 / 3;
@@ -99,6 +128,9 @@
         padding-left: 2rem;
         color: white;
         font-size: 3rem;
+        @include respond(phone) {
+          font-size: 2rem;
+        }
       }
     }
 
@@ -110,12 +142,34 @@
       color: white;
       letter-spacing: 0.3rem;
       padding: 1rem 0;
+      @include respond(phone) {
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-flow: row;
+        width: 95%;
+        margin: 0.5rem auto;
+        justify-content: space-between;
+      }
+      @include respond(phone-land) {
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-flow: row;
+        width: 95%;
+        margin: 0.5rem auto;
+        justify-content: space-between;
+      }
 
       .menu-item {
         font-size: 3.3rem;
         //font-size: clamp(2rem, 50vw, 4rem);
         padding: 0 5rem;
         transition: font-size 0.3s ease;
+        @include respond(phone) {
+          padding: 0;
+          font-size: 3rem;
+        }
       }
     }
 
@@ -130,6 +184,9 @@
       padding: 1rem 1.5rem;
       border-radius: 2rem;
       transition: 0.15s ease-in;
+      @include respond(phone) {
+        display: none;
+      }
       &:hover {
         opacity: 1;
         cursor: pointer;
@@ -148,9 +205,17 @@
     display: grid;
     grid-template-rows: repeat(3, max-content);
     grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
+    column-gap: 3rem;
     align-items: center;
-    margin-left: 5rem;
+    margin: 0 auto;
+    width: 95%;
+    //margin-left: 5rem;
+    @include respond(phone) {
+      margin: 0 auto;
+      width: 95%;
+      display: flex;
+      flex-flow: column;
+    }
 
     .subheading {
       font-size: 2.4rem;
@@ -165,10 +230,10 @@
 
     &-about {
       align-self: start;
-      margin: 6rem 0;
+      margin: 2.5rem 0;
       grid-row: 1 / 2;
       grid-column: 2 / -1;
-      width: 90%;
+      width: 100%;
       //height: 30rem;
     }
     &-aboutInfo {
@@ -217,15 +282,18 @@
 
     &-spotlight {
       align-self: start;
-      margin: 6rem 0;
+      margin: 2.5rem 0;
       grid-row: 1 / 2;
       grid-column: 1 / 2;
       .spotlight {
-        width: 90%;
+        width: 100%;
         height: 55rem;
         background-color: black;
         display: grid;
         grid-template-rows: 90% 10%;
+        @include respond(phone) {
+          width: 100%;
+        }
         .spotlight-image {
           background-color: #3b3b3b;
           display: flex;
@@ -290,13 +358,17 @@
     }
 
     .popular {
+      width: 100%;
       //margin-top: 4rem;
       //grid-row: 2 / 3;
       //grid-column: 1 / -1;
       &-slider {
         margin-top: 1.6rem;
         position: relative;
-        width: 86vw;
+        width: 100%;
+        @include respond(phone) {
+          width: 95vw;
+        }
 
         overflow: hidden;
         display: flex;
@@ -381,7 +453,8 @@
 
     //unused
     .likedSection {
-      width: 86vw;
+      //width: 86vw;
+      width: 100%;
     }
     .liked {
       width: 100%;
@@ -427,7 +500,8 @@
 
     //used
     .LikedSection {
-      width: 86vw;
+      //width: 86vw;
+      width: 100%;
       .Liked {
         margin-top: 1rem;
         width: 100%;
@@ -610,6 +684,9 @@
     width: 70%;
     margin: 5rem auto;
     color: rgb(221, 221, 221);
+    @include respond(phone) {
+      width: 90%;
+    }
 
     hr.solid {
       height: 1px;
@@ -718,12 +795,21 @@
         flex-flow: row;
         flex-wrap: wrap;
         gap: 2rem;
+        @include respond(phone) {
+          width: 100%;
+          gap: 3%;
+          row-gap: 1.4rem;
+        }
         .item {
           width: 15rem;
           height: 15rem;
           border: 2px solid white;
           position: relative;
           text-align: center;
+          @include respond(phone) {
+            width: 28vw;
+            height: 28vw;
+          }
           .label {
             display: block;
             font-size: 1.6rem;

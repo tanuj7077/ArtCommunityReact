@@ -9,19 +9,12 @@ import LoginModal from "../LoginModal";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 import blank from "../../tagImage/blankProfile.png";
+import { BsHeartFill } from "react-icons/bs";
+import { MdDelete, MdComment } from "react-icons/md";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";
 import "firebase/storage";
-/*var config = {
-  apiKey: "AIzaSyDvMwMxRmt0N_On1efH-eHN5n6vz3DIqyw",
-  authDomain: "artcomm707.firebaseapp.com",
-  projectId: "artcomm707",
-  storageBucket: "artcomm707.appspot.com",
-  messagingSenderId: "1015814439095",
-  appId: "1:1015814439095:web:d0b3ed402203702c9b8d32",
-  measurementId: "G-HC2QXZ27V4",
-};*/
 var config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -96,7 +89,6 @@ const PostPagePost = ({ id }) => {
         user: userData,
       };
       axios.post("/posts/post/" + id + "/like", data).then((res) => {
-        console.log(res.data);
         changeAlert(res.data.message);
         if (res.data.post) {
           setPost(res.data.post);
@@ -154,8 +146,8 @@ const PostPagePost = ({ id }) => {
         comment: comment,
       };
       axios.post("/posts/post/" + id + "/comment", data).then((res) => {
+        changeAlert(res.data.message);
         setPost(res.data.post); //new
-        console.log(res.data);
         //setTotalComments(res.data.commentsCount);
         setComments(res.data.comments);
         setComment("");
@@ -198,50 +190,6 @@ const PostPagePost = ({ id }) => {
             <img className="postContent--image-img" src={Post.image} alt="" />
           </div>
           <div className="postContent--info">
-            <div className="postContent--info-menu">
-              <HiOutlineDotsVertical className="menu-icon" />
-              <div className="postContent--info-menu-dropdown">
-                {isLoggedIn && userData.username !== Post.author.username && (
-                  <>
-                    <span className="menu-item" onClick={handleLike}>
-                      Like Post
-                    </span>
-                    <span className="menu-item" onClick={handleFollow}>
-                      {followStat}
-                    </span>
-                  </>
-                )}
-                {!isLoggedIn && (
-                  <>
-                    <span className="menu-item" onClick={handleLike}>
-                      Like Post
-                    </span>
-                    <span className="menu-item" onClick={handleFollow}>
-                      Follow Author
-                    </span>
-                  </>
-                )}
-                {isLoggedIn && userData.username === Post.author.username && (
-                  <>
-                    <span className="menu-item">Edit</span>
-                    <span className="menu-item" onClick={handleDelete}>
-                      Delete
-                    </span>
-                  </>
-                )}
-              </div>
-            </div>
-            {/* <div className="postContent--info-author">
-              <div className="postContent--info-author-img">
-                <img src={url} alt="" className="author-image" />
-              </div>
-              <span className="postContent--info-author-title">
-                {Post.name}
-              </span>
-              <span className="postContent--info-author-name">
-                by {Post.author.username}
-              </span>
-            </div> */}
             <div className="postContent--info-author">
               <span className="postContent--info-author-title">
                 {Post.name}
@@ -262,12 +210,29 @@ const PostPagePost = ({ id }) => {
                     }`,
                   }}
                 ></div>
-                <span className="name">{Post.author.username}</span>
+                <Route
+                  render={({ history }) => (
+                    <span
+                      onClick={() => {
+                        history.push(`/user/${Post.author.username}`);
+                      }}
+                      className="name"
+                    >
+                      {Post.author.username}
+                    </span>
+                  )}
+                />
+                {/* <span className="name">{Post.author.username}</span> */}
               </div>
             </div>
             <div className="postContent--info-icons">
               <div className="postContent--info-icons-like">
-                <span className="material-icons like">favorite</span>
+                {isLoggedIn && userData.username !== Post.author.username ? (
+                  <BsHeartFill className="icon" onClick={handleLike} />
+                ) : (
+                  <BsHeartFill className="icon" />
+                )}
+
                 {
                   <span className="count">
                     {typeof Post.likesArray === "undefined"
@@ -278,7 +243,8 @@ const PostPagePost = ({ id }) => {
                 }
               </div>
               <div className="postContent--info-icons-like">
-                <span className="material-icons comment">insert_comment</span>
+                <MdComment className="icon" />
+                {/* <span className="material-icons comment">insert_comment</span> */}
                 {
                   <span className="count">
                     {typeof Post.comments === "undefined"
@@ -288,6 +254,31 @@ const PostPagePost = ({ id }) => {
                   </span>
                 }
               </div>
+              {isLoggedIn && userData.username === Post.author.username && (
+                <div
+                  className="postContent--info-icons-like"
+                  onClick={handleDelete}
+                >
+                  <MdDelete className="icon" />
+                  <span className="count">Delete</span>
+                </div>
+              )}
+              {isLoggedIn && userData.username !== Post.author.username && (
+                <span
+                  className="postContent--info-icons-like followBtn"
+                  onClick={handleFollow}
+                >
+                  {followStat}
+                </span>
+              )}
+              {!isLoggedIn && (
+                <span
+                  className="postContent--info-icons-like followBtn"
+                  onClick={handleFollow}
+                >
+                  Follow Author
+                </span>
+              )}
             </div>
             <span className="postContent--info-desc">{Post.desc}</span>
             <div className="postContent--info-tags">

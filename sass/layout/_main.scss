@@ -54,6 +54,7 @@
         text-decoration: none;
         color: white;
         font-size: 2.6rem;
+        cursor: pointer;
       }
     }
     &-author {
@@ -61,11 +62,13 @@
       font-size: 2rem;
       z-index: 1;
       transition: all 0.2s ease-in;
+      cursor: pointer;
 
       &:hover {
         text-decoration: none;
         color: white;
         font-size: 2.1rem;
+        cursor: pointer;
       }
     }
 
@@ -85,6 +88,9 @@
       opacity: 0;
       padding-left: 2rem;
       padding-top: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
     }
     &-icons {
       padding-left: 2rem;
