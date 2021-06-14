@@ -14,6 +14,9 @@ const FollowedList = () => {
           })}
         </div>
       )}
+      {userData.following && userData.following.length === 0 && (
+        <div className="noFollowing">You are not following anyone</div>
+      )}
     </>
   );
 };

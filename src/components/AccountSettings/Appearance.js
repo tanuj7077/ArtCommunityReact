@@ -8,9 +8,6 @@ const Appearance = ({ posts }) => {
         <div className="gallery">
           {posts.map((post) => {
             return (
-              // <div className="SingleImage">
-              //   <img src={post.image} alt="galleryImage" className="image" />
-              // </div>
               <Route
                 render={({ history }) => (
                   <div

@@ -2759,7 +2759,7 @@ body {
       grid-template-columns: max-content max-content; }
       @media only screen and (max-width: 37.5em) {
         .userPage--top-user {
-          top: 50%;
+          top: 45%;
           left: 2.5%; } }
       @media only screen and (max-height: 37.5em) {
         .userPage--top-user {
@@ -3172,6 +3172,9 @@ body {
         @media only screen and (max-width: 56.25em) {
           .userPage--gallery .GallerySection .Gallery {
             columns: 2; } }
+        @media only screen and (max-width: 37.5em) {
+          .userPage--gallery .GallerySection .Gallery {
+            min-height: 60vh; } }
         .userPage--gallery .GallerySection .Gallery .SingleImage {
           background-color: black;
           position: relative;
@@ -4475,6 +4478,9 @@ body {
             transition: all 0.25s ease; }
           .settingsDesk-main .gallerySection .gallery .SingleImage:hover {
             cursor: pointer; }
+      .settingsDesk-main .gallerySection .noPosts {
+        font-size: 3rem;
+        color: white; }
       .settingsDesk-main .gallerySection::-webkit-scrollbar {
         width: 7px; }
       .settingsDesk-main .gallerySection::-webkit-scrollbar-thumb {
@@ -5363,6 +5369,19 @@ body {
   padding: 2rem 0; }
   @media only screen and (max-width: 37.5em) {
     .followedList {
+      grid-column: 1 / -1; } }
+
+.noFollowing {
+  text-align: center;
+  grid-column: 3 / -1;
+  grid-row: 3 / -1;
+  width: 100%;
+  height: min-content;
+  margin: 5rem 0;
+  color: white;
+  font-size: 3rem; }
+  @media only screen and (max-width: 37.5em) {
+    .noFollowing {
       grid-column: 1 / -1; } }
 
 .followed {

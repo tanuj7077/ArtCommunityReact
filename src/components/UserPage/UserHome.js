@@ -59,104 +59,108 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
 
   return (
     <div className="userPage--home">
-      {user.personalInfo && user.extras && user.extras.profession && (
-        <div className="userPage--home-about">
-          <section className="subheading u-margin-bottom-small">
-            About <span className="aboutName">{user.fullname}</span>
-          </section>
-          <div className="userPage--home-aboutInfo">
-            {
+      {user.personalInfo &&
+        user.extras &&
+        user.extras.profession &&
+        user.extras.extra &&
+        user.personalInfo.dob && (
+          <div className="userPage--home-about">
+            <section className="subheading u-margin-bottom-small">
+              About <span className="aboutName">{user.fullname}</span>
+            </section>
+            <div className="userPage--home-aboutInfo">
+              {
+                <div className="userPage--home-aboutInfo-item">
+                  {user.extras.profession}
+                </div>
+              }
+              {(user.personalInfo.dob ||
+                user.personalInfo.location ||
+                user.personalInfo.gender) && (
+                <div className="userPage--home-aboutInfo-item group-column">
+                  {user.personalInfo.dob && (
+                    <div className="item">
+                      <FaBirthdayCake className="aboutIcon" />
+                      <span className="aboutText">
+                        {user.personalInfo.dob.substring(0, 10)}
+                      </span>
+                    </div>
+                  )}
+                  {user.personalInfo.location && (
+                    <div className="item">
+                      <HiLocationMarker className="aboutIcon" />
+                      <span className="aboutText">
+                        {user.personalInfo.location}
+                      </span>
+                    </div>
+                  )}
+                  {user.personalInfo.gender && (
+                    <div className="item">
+                      {user.personalInfo.gender === "Female" ? (
+                        <CgGenderFemale className="aboutIcon" />
+                      ) : (
+                        <CgGenderMale className="aboutIcon" />
+                      )}
+                      <span className="aboutText">
+                        {user.personalInfo.gender}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
               <div className="userPage--home-aboutInfo-item">
-                {user.extras.profession}
+                Joined in {user.creationDate}
               </div>
-            }
-            {(user.personalInfo.dob ||
-              user.personalInfo.location ||
-              user.personalInfo.gender) && (
-              <div className="userPage--home-aboutInfo-item group-column">
-                {user.personalInfo.dob && (
-                  <div className="item">
-                    <FaBirthdayCake className="aboutIcon" />
-                    <span className="aboutText">
-                      {user.personalInfo.dob.substring(0, 10)}
-                    </span>
-                  </div>
-                )}
-                {user.personalInfo.location && (
-                  <div className="item">
-                    <HiLocationMarker className="aboutIcon" />
-                    <span className="aboutText">
-                      {user.personalInfo.location}
-                    </span>
-                  </div>
-                )}
-                {user.personalInfo.gender && (
-                  <div className="item">
-                    {user.personalInfo.gender === "Female" ? (
-                      <CgGenderFemale className="aboutIcon" />
-                    ) : (
-                      <CgGenderMale className="aboutIcon" />
-                    )}
-                    <span className="aboutText">
-                      {user.personalInfo.gender}
-                    </span>
-                  </div>
-                )}
-              </div>
-            )}
-            <div className="userPage--home-aboutInfo-item">
-              Joined in {user.creationDate}
+              {user.extras.link && (
+                <div className="userPage--home-aboutInfo-item">
+                  <AiOutlineLink className="aboutIcon" />
+                  <span className="aboutText"> {user.extras.link}</span>
+                </div>
+              )}
+              {user.personalInfo.links && user.personalInfo.links.length > 0 && (
+                <div className="userPage--home-aboutInfo-item group-row">
+                  <span className="u-margin-bottom-small">Follow me on</span>
+                  {user.personalInfo.links.map((link) => {
+                    return (
+                      <>
+                        {link.includes("facebook.com") && (
+                          <span className="item">
+                            <FaFacebookSquare className="aboutIcon" />
+                            <span className="aboutText">Facebook</span>
+                          </span>
+                        )}
+                        {link.includes("instagram.com") && (
+                          <span className="item">
+                            <AiFillInstagram className="aboutIcon" />
+                            <span className="aboutText">Instagram</span>
+                          </span>
+                        )}
+                        {link.includes("gmail.com") && (
+                          <span className="item">
+                            <SiGmail className="aboutIcon" />
+                            <span className="aboutText">Gmail</span>
+                          </span>
+                        )}
+                        {link.includes("patreon.com") && (
+                          <span className="item">
+                            <FaPatreon className="aboutIcon" />
+                            <span className="aboutText">Patreon</span>
+                          </span>
+                        )}
+                        {link.includes("youtube.com") && (
+                          <span className="item">
+                            <FaYoutube className="aboutIcon" />
+                            <span className="aboutText">Youtube</span>
+                          </span>
+                        )}
+                      </>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-            {user.extras.link && (
-              <div className="userPage--home-aboutInfo-item">
-                <AiOutlineLink className="aboutIcon" />
-                <span className="aboutText"> {user.extras.link}</span>
-              </div>
-            )}
-            {user.personalInfo.links && user.personalInfo.links.length > 0 && (
-              <div className="userPage--home-aboutInfo-item group-row">
-                <span className="u-margin-bottom-small">Follow me on</span>
-                {user.personalInfo.links.map((link) => {
-                  return (
-                    <>
-                      {link.includes("facebook.com") && (
-                        <span className="item">
-                          <FaFacebookSquare className="aboutIcon" />
-                          <span className="aboutText">Facebook</span>
-                        </span>
-                      )}
-                      {link.includes("instagram.com") && (
-                        <span className="item">
-                          <AiFillInstagram className="aboutIcon" />
-                          <span className="aboutText">Instagram</span>
-                        </span>
-                      )}
-                      {link.includes("gmail.com") && (
-                        <span className="item">
-                          <SiGmail className="aboutIcon" />
-                          <span className="aboutText">Gmail</span>
-                        </span>
-                      )}
-                      {link.includes("patreon.com") && (
-                        <span className="item">
-                          <FaPatreon className="aboutIcon" />
-                          <span className="aboutText">Patreon</span>
-                        </span>
-                      )}
-                      {link.includes("youtube.com") && (
-                        <span className="item">
-                          <FaYoutube className="aboutIcon" />
-                          <span className="aboutText">Youtube</span>
-                        </span>
-                      )}
-                    </>
-                  );
-                })}
-              </div>
-            )}
           </div>
-        </div>
-      )}
+        )}
 
       <div className="userPage--home-spotlight">
         <section className="subheading u-margin-bottom-small">

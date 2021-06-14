@@ -59,7 +59,7 @@
       grid-template-rows: min-content min-content;
       grid-template-columns: max-content max-content;
       @include respond(phone) {
-        top: 50%;
+        top: 45%;
         left: 2.5%;
       }
       @include respond(phone-land) {
@@ -575,6 +575,9 @@
         }
         @include respond(tab-port) {
           columns: 2;
+        }
+        @include respond(phone) {
+          min-height: 60vh;
         }
         .SingleImage {
           background-color: black;
