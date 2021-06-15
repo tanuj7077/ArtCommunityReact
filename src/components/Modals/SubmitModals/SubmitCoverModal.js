@@ -51,9 +51,40 @@ const SubmitCoverModal = () => {
     }
   };
 
-  async function handleSubmit(e) {
+  const handleDelete = async (e) => {
     setLoading(1);
     e.preventDefault();
+    if (userData.coverPhoto) {
+      var imageUrl = userData.coverPhoto.slice(69, -1);
+      var ar = imageUrl
+        .split("%2F")
+        .join(",")
+        .split("?")
+        .join(",")
+        .split("/")[0]
+        .split(",");
+      var imageName = ar[1];
+      var firebaseFolder = ar[0];
+      try {
+        storage
+          .ref(firebaseFolder)
+          .child(imageName)
+          .delete()
+          .then(() => {
+            console.log("Old cover photo deleted");
+            handleSubmit();
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      console.log("Adding new cover photo");
+      handleSubmit();
+    }
+  };
+  async function handleSubmit() {
+    setLoading(1);
+    //e.preventDefault();
     let currentImageName = "image-" + Date.now();
     let uploadImage = storage
       .ref(`coverPhotos/${currentImageName}`)
@@ -102,7 +133,7 @@ const SubmitCoverModal = () => {
 
           <form
             className="modal-form"
-            onSubmit={handleSubmit}
+            onSubmit={handleDelete}
             encType="multipart/form-data"
           >
             {isCoverUploaded ? (

@@ -121,18 +121,6 @@ const PostPagePost = ({ id }) => {
     } catch (err) {
       console.log(err);
     }
-    /*try {
-      axios.post("http://localhost:8000/posts/deletePost/" + id).then((res) => {
-        console.log(res.data);
-        setUserData(res.data.user);
-        console.log(res.data.data);
-        changeAlert(res.data.message);
-        history.push("/");
-        updatePostsBackend();
-      });
-    } catch (err) {
-      console.log(err);
-    }*/
   };
   const handleComment = async () => {
     if (!isLoggedIn) {

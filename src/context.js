@@ -86,7 +86,7 @@ const AppProvider = ({ children }) => {
   };
 
   const openSubmitProfilePicModal = () => {
-    console.log("pressed");
+    //console.log("pressed");
     setSubmitProfilePicModal(true);
   };
 

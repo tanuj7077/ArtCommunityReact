@@ -58,24 +58,52 @@ const SubmitProfilePicModal = () => {
 
   let setEditorRef = useRef(null);
 
-  async function handleSubmit(e) {
+  const handleDelete = async (e) => {
     setLoading(1);
     e.preventDefault();
+    if (userData.profilePic) {
+      var imageUrl = userData.profilePic.slice(69, -1);
+      var ar = imageUrl
+        .split("%2F")
+        .join(",")
+        .split("?")
+        .join(",")
+        .split("/")[0]
+        .split(",");
+      var imageName = ar[1];
+      var firebaseFolder = ar[0];
+      try {
+        storage
+          .ref(firebaseFolder)
+          .child(imageName)
+          .delete()
+          .then(() => {
+            console.log("Old profile photo deleted");
+            handleSubmit();
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      console.log("Adding new profile photo");
+      handleSubmit();
+    }
+  };
+  async function handleSubmit() {
+    setLoading(1);
+    //e.preventDefault();
 
     const canvasScaled = setEditorRef.current
       .getImageScaledToCanvas()
       .toDataURL("image/jpg");
 
-    let imageURL;
     fetch(canvasScaled)
       .then((res) => res.blob())
       .then((blob) => {
-        imageURL = window.URL.createObjectURL(blob);
         let currentImageName = "image-" + Date.now();
         let uploadImage = storage
           .ref(`profilePics/${currentImageName}`)
           .put(blob);
-        //.put(toSendProfileImage);
 
         uploadImage.on(
           "state-changed",
@@ -123,7 +151,7 @@ const SubmitProfilePicModal = () => {
           <span className="modal-heading">Add Profile Photo</span>
           <form
             className="modal-form"
-            onSubmit={handleSubmit}
+            onSubmit={handleDelete}
             encType="multipart/form-data"
           >
             {isProfileUploaded ? (
