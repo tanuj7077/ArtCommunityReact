@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-#/sass
+/sass
 /.pnp
 .pnp.js
 
