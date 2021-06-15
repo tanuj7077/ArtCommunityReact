@@ -21,7 +21,9 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(0);
 
   const updatePostsBackend = async () => {
-    const result = await axios.get("/posts/updatePosts");
+    const result = await axios.get(
+      "https://shielded-woodland-79171.herokuapp.com/posts/updatePosts"
+    );
     console.log(result.data);
   };
 
@@ -30,7 +32,7 @@ const AppProvider = ({ children }) => {
   }, []);
   //--------------------For Explore Page------------------//
   const fetchExploreTags = async () => {
-    let url = "/tags/exploreTags";
+    let url = "https://shielded-woodland-79171.herokuapp.com/tags/exploreTags";
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -49,7 +51,7 @@ const AppProvider = ({ children }) => {
 
   //--------------------For Home Page Explore Section------------------//
   const fetchHomePageTags = async () => {
-    let url = "/tags/randomTags";
+    let url = "https://shielded-woodland-79171.herokuapp.com/tags/randomTags";
     try {
       const response = await fetch(url);
       const data = await response.json();

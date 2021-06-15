@@ -22,15 +22,17 @@ const SideNavDesktop = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.get("/auth/signout").then((res) => {
-        console.log(res.data);
-        if (res.data.success) {
-          setUserData({});
-          setIsLoggedIn(false);
-          changeAlert(res.data.message);
-          return <Redirect to="/" exact />;
-        }
-      });
+      await axios
+        .get("https://shielded-woodland-79171.herokuapp.com/auth/signout")
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.success) {
+            setUserData({});
+            setIsLoggedIn(false);
+            changeAlert(res.data.message);
+            return <Redirect to="/" exact />;
+          }
+        });
     } catch (err) {
       console.log(err);
     }

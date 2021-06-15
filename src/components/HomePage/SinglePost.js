@@ -4,7 +4,9 @@ import axios from "axios";
 import blank from "../../tagImage/blankProfile.png";
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
-  let userUrl = "/users/hoverUser/" + author.id;
+  let userUrl =
+    "https://shielded-woodland-79171.herokuapp.com/users/hoverUser/" +
+    author.id;
 
   const AuthorHoverRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);

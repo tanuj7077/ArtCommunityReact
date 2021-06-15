@@ -21,17 +21,22 @@ const Signin = () => {
         email,
         password,
       };
-      await axios.post("/auth/signin", loginData).then((res) => {
-        if (res.data.success) {
-          closeLoginModal2();
-          setUserData(res.data.userData);
-          setIsLoggedIn(true);
-          changeAlert(res.data.message);
-        } else {
-          changeAlert(res.data.message);
-          console.log(alert);
-        }
-      });
+      await axios
+        .post(
+          "https://shielded-woodland-79171.herokuapp.com/auth/signin",
+          loginData
+        )
+        .then((res) => {
+          if (res.data.success) {
+            closeLoginModal2();
+            setUserData(res.data.userData);
+            setIsLoggedIn(true);
+            changeAlert(res.data.message);
+          } else {
+            changeAlert(res.data.message);
+            console.log(alert);
+          }
+        });
     } catch (err) {
       console.log(err);
     }

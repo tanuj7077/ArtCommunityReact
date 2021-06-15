@@ -18,7 +18,11 @@ const Followed = (userId) => {
   async function getPostsByUserId() {
     try {
       const LIMIT = 9;
-      const postUrl = "/posts/postsByUserId/" + userId.userId + "/" + LIMIT;
+      const postUrl =
+        "https://shielded-woodland-79171.herokuapp.com/posts/postsByUserId/" +
+        userId.userId +
+        "/" +
+        LIMIT;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setUsername(postData.username);

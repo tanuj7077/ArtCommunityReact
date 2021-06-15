@@ -6,7 +6,7 @@ import SinglePost from "../HomePage/SinglePost";
 const TagSearchList = ({ name }) => {
   const [posts, setPosts] = useState([]);
 
-  let url = "/tags/tag/" + name;
+  let url = "https://shielded-woodland-79171.herokuapp.com/tags/tag/" + name;
 
   const fetchPosts = async () => {
     fetch(url)

@@ -42,12 +42,16 @@ const SearchComponent = () => {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      await axios.post("/search", { searchTerm: searchTerm }).then((res) => {
-        setPost(res.data.posts);
-        setTag(res.data.tags);
-        setAuthor(res.data.users);
-        console.log(res.data);
-      });
+      await axios
+        .post("https://shielded-woodland-79171.herokuapp.com/search", {
+          searchTerm: searchTerm,
+        })
+        .then((res) => {
+          setPost(res.data.posts);
+          setTag(res.data.tags);
+          setAuthor(res.data.users);
+          console.log(res.data);
+        });
       setLoading(false);
     } catch (error) {
       console.log(error);

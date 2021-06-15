@@ -1801,6 +1801,7 @@ body {
           margin-right: 2rem;
           cursor: pointer; }
   .postPage .otherContent {
+    width: 100%;
     grid-column: 15 / -1;
     grid-row: 1 / -1;
     background-color: #1b1b1b;

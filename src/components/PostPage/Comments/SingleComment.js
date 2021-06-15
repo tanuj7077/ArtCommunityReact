@@ -10,9 +10,16 @@ const SingleComment = ({ id, postId }) => {
   const [likes, setLikes] = useState(0);
 
   const [editState, setEditState] = useState(false);
-  let commentUrl = "/comments/comment/" + id;
-  let commentDeleteUrl = "/comments/comment/" + id + "/delete";
-  let commentEditUrl = "/comments/comment/" + id + "/edit";
+  let commentUrl =
+    "https://shielded-woodland-79171.herokuapp.com/comments/comment/" + id;
+  let commentDeleteUrl =
+    "https://shielded-woodland-79171.herokuapp.com/comments/comment/" +
+    id +
+    "/delete";
+  let commentEditUrl =
+    "https://shielded-woodland-79171.herokuapp.com/comments/comment/" +
+    id +
+    "/edit";
 
   async function fetchComment() {
     try {
@@ -38,10 +45,17 @@ const SingleComment = ({ id, postId }) => {
       const data = {
         user: userData,
       };
-      axios.post("/comments/comment/" + id + "/like", data).then((res) => {
-        console.log(res.data.msg);
-        setLikes(res.data.likes);
-      });
+      axios
+        .post(
+          "https://shielded-woodland-79171.herokuapp.com/comments/comment/" +
+            id +
+            "/like",
+          data
+        )
+        .then((res) => {
+          console.log(res.data.msg);
+          setLikes(res.data.likes);
+        });
     }
   };
 

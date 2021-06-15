@@ -188,10 +188,15 @@ const SubmitModal = () => {
               tags: submittedTags,
               author: { id: userData._id, username: userData.username },
             };
-            axios.post("/posts/newPost", post).then((res) => {
-              console.log(res.data);
-              changeAlert(res.data.message);
-            });
+            axios
+              .post(
+                "https://shielded-woodland-79171.herokuapp.com/posts/newPost",
+                post
+              )
+              .then((res) => {
+                console.log(res.data);
+                changeAlert(res.data.message);
+              });
             setLoading(0);
             closeSubmitModal();
           });
@@ -203,7 +208,7 @@ const SubmitModal = () => {
   const [tags, setTags] = useState([]);
   const fetchTags = async () => {
     await axios
-      .get("/tags/fetchTags")
+      .get("https://shielded-woodland-79171.herokuapp.com/tags/fetchTags")
       .then((res) => setTags(res.data))
       .then(console.log(tags));
     //Initialize all data

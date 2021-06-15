@@ -17,7 +17,9 @@ axios.defaults.withCredentials = true;
 function App() {
   const { setIsLoggedIn, setUserData, isLoggedIn } = useGlobalContext();
   const getLoggedIn = async () => {
-    const loggedInRes = await axios.get("/auth/loggedIn");
+    const loggedInRes = await axios.get(
+      "https://shielded-woodland-79171.herokuapp.com/auth/loggedIn"
+    );
     console.log(loggedInRes);
     if (loggedInRes.data.loggedIn) {
       setIsLoggedIn(true);
@@ -30,20 +32,6 @@ function App() {
   useEffect(() => {
     getLoggedIn();
   }, []);
-
-  ///-----------IMPORTANT-----------------
-  //we need to add LOADING and Conditional rendering
-  //Otherwise sidenav error
-
-  // var tags;
-  // const fetchTags = async () => {
-  //   tags = await axios.get("http://localhost:8000/tags/fetchTags");
-  //   console.log(tags.data);
-  //   //Initialize all data
-  // };
-  // useEffect(() => {
-  //   fetchTags();
-  // }, []);
 
   return (
     <Switch>

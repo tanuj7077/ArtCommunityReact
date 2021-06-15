@@ -43,7 +43,8 @@ const PostPagePost = ({ id }) => {
     changeAlert,
     updatePostsBackend,
   } = useGlobalContext();
-  let postUrl = "/posts/post1/" + id;
+  let postUrl =
+    "https://shielded-woodland-79171.herokuapp.com/posts/post1/" + id;
 
   const [Post, setPost] = useState(null);
   const [comment, setComment] = useState("");
@@ -85,12 +86,19 @@ const PostPagePost = ({ id }) => {
       const data = {
         user: userData,
       };
-      axios.post("/posts/post/" + id + "/like", data).then((res) => {
-        changeAlert(res.data.message);
-        if (res.data.post) {
-          setPost(res.data.post);
-        }
-      });
+      axios
+        .post(
+          "https://shielded-woodland-79171.herokuapp.com/posts/post/" +
+            id +
+            "/like",
+          data
+        )
+        .then((res) => {
+          changeAlert(res.data.message);
+          if (res.data.post) {
+            setPost(res.data.post);
+          }
+        });
     }
   }
   const history = useHistory();
@@ -111,12 +119,17 @@ const PostPagePost = ({ id }) => {
         .child(imageName)
         .delete()
         .then(() => {
-          axios.post("/posts/deletePost/" + id).then((res) => {
-            setUserData(res.data.user);
-            changeAlert(res.data.message);
-            updatePostsBackend();
-            history.push("/");
-          });
+          axios
+            .post(
+              "https://shielded-woodland-79171.herokuapp.com/posts/deletePost/" +
+                id
+            )
+            .then((res) => {
+              setUserData(res.data.user);
+              changeAlert(res.data.message);
+              updatePostsBackend();
+              history.push("/");
+            });
         });
     } catch (err) {
       console.log(err);
@@ -130,14 +143,21 @@ const PostPagePost = ({ id }) => {
         user: userData,
         comment: comment,
       };
-      axios.post("/posts/post/" + id + "/comment", data).then((res) => {
-        changeAlert(res.data.message);
-        setPost(res.data.post); //new
-        //setTotalComments(res.data.commentsCount);
-        setComments(res.data.comments);
-        setComment("");
-        document.getElementById("desc").value = "";
-      });
+      axios
+        .post(
+          "https://shielded-woodland-79171.herokuapp.com/posts/post/" +
+            id +
+            "/comment",
+          data
+        )
+        .then((res) => {
+          changeAlert(res.data.message);
+          setPost(res.data.post); //new
+          //setTotalComments(res.data.commentsCount);
+          setComments(res.data.comments);
+          setComment("");
+          document.getElementById("desc").value = "";
+        });
     }
   };
   const handleFollow = () => {
@@ -149,17 +169,27 @@ const PostPagePost = ({ id }) => {
         following: Post.author.id,
       };
       if (!userData.following.includes(Post.author.id)) {
-        axios.post("/users/follow", data).then((res) => {
-          setFollowStat("Unfollow User");
-          setUserData(res.data.user);
-          changeAlert(res.data.message);
-        });
+        axios
+          .post(
+            "https://shielded-woodland-79171.herokuapp.com/users/follow",
+            data
+          )
+          .then((res) => {
+            setFollowStat("Unfollow User");
+            setUserData(res.data.user);
+            changeAlert(res.data.message);
+          });
       } else {
-        axios.post("/users/unfollow", data).then((res) => {
-          setFollowStat("Follow User");
-          setUserData(res.data.user);
-          changeAlert(res.data.message);
-        });
+        axios
+          .post(
+            "https://shielded-woodland-79171.herokuapp.com/users/unfollow",
+            data
+          )
+          .then((res) => {
+            setFollowStat("Follow User");
+            setUserData(res.data.user);
+            changeAlert(res.data.message);
+          });
       }
     }
   };

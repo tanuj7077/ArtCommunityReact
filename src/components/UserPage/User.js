@@ -18,7 +18,8 @@ const User = ({ id }) => {
     isLoggedIn,
     userData,
   } = useGlobalContext();
-  let userUrl = "/users/user/" + id;
+  let userUrl =
+    "https://shielded-woodland-79171.herokuapp.com/users/user/" + id;
 
   const [user, setUser] = useState(null);
   const [cover, setCover] = useState("");
@@ -72,7 +73,11 @@ const User = ({ id }) => {
   async function getPostByUser() {
     try {
       const LIMIT = -1;
-      const postUrl = "/posts/postByUser/" + id + "/" + LIMIT;
+      const postUrl =
+        "https://shielded-woodland-79171.herokuapp.com/posts/postByUser/" +
+        id +
+        "/" +
+        LIMIT;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setUserPost(postData);
@@ -84,7 +89,9 @@ const User = ({ id }) => {
   //--------------For Home Section--------------//
   async function getFollowing() {
     try {
-      const followingUrl = "/users/fetchFollowing/" + id;
+      const followingUrl =
+        "https://shielded-woodland-79171.herokuapp.com/users/fetchFollowing/" +
+        id;
       const userResponse = await fetch(followingUrl);
       const userdata = await userResponse.json();
       setFollowing(userdata);
@@ -94,7 +101,9 @@ const User = ({ id }) => {
   }
   async function getFollowers() {
     try {
-      const followerUrl = "/users/fetchFollowers/" + id;
+      const followerUrl =
+        "https://shielded-woodland-79171.herokuapp.com/users/fetchFollowers/" +
+        id;
       const userResponse = await fetch(followerUrl);
       const userdata = await userResponse.json();
       setFollowers(userdata);
@@ -105,7 +114,11 @@ const User = ({ id }) => {
   const getPopularPosts = async () => {
     try {
       const num = 8;
-      const url = "/posts/getPopularPosts/" + id + "/" + num;
+      const url =
+        "https://shielded-woodland-79171.herokuapp.com/posts/getPopularPosts/" +
+        id +
+        "/" +
+        num;
       const userResponse = await fetch(url);
       const data = await userResponse.json();
       setPopularPosts(data);
@@ -116,7 +129,9 @@ const User = ({ id }) => {
   };
   const getLikedPosts = async () => {
     try {
-      const url = "/posts/getLikedPosts/" + id;
+      const url =
+        "https://shielded-woodland-79171.herokuapp.com/posts/getLikedPosts/" +
+        id;
       const userResponse = await fetch(url);
       const data = await userResponse.json();
       setLikedPosts(data);

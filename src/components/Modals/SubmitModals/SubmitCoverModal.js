@@ -107,15 +107,20 @@ const SubmitCoverModal = () => {
               userId: userData._id,
               imageUrl: url,
             };
-            axios.post("/users/user/changeCover", User).then((res) => {
-              // if (userData.username === res.data.username) {
-              //   setUserData(res.data);
-              // }
-              if (userData.username === res.data.user.username) {
-                setUserData(res.data.user);
-              }
-              changeAlert(res.data.message);
-            });
+            axios
+              .post(
+                "https://shielded-woodland-79171.herokuapp.com/users/user/changeCover",
+                User
+              )
+              .then((res) => {
+                // if (userData.username === res.data.username) {
+                //   setUserData(res.data);
+                // }
+                if (userData.username === res.data.user.username) {
+                  setUserData(res.data.user);
+                }
+                changeAlert(res.data.message);
+              });
             setLoading(0);
             closeSubmitCoverModal();
           })

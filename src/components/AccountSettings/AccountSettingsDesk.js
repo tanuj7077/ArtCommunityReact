@@ -24,7 +24,7 @@ const AccountSettingsDesk = ({ id }) => {
   async function getPostsByUser() {
     try {
       const LIMIT = -1;
-      const postUrl = "/posts/postByUser/" + userData.username + "/" + LIMIT;
+      const postUrl = "https://shielded-woodland-79171.herokuapp.com/posts/postByUser/" + userData.username + "/" + LIMIT;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setPosts(postData);

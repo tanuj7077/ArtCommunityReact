@@ -123,12 +123,17 @@ const SubmitProfilePicModal = () => {
                   imageUrl: url,
                   borderRad: cssBorderRad,
                 };
-                axios.post("/users/user/changeProfile", User).then((res) => {
-                  if (userData.username === res.data.user.username) {
-                    setUserData(res.data.user);
-                  }
-                  changeAlert(res.data.message);
-                });
+                axios
+                  .post(
+                    "https://shielded-woodland-79171.herokuapp.com/users/user/changeProfile",
+                    User
+                  )
+                  .then((res) => {
+                    if (userData.username === res.data.user.username) {
+                      setUserData(res.data.user);
+                    }
+                    changeAlert(res.data.message);
+                  });
                 setLoading(0);
                 closeSubmitProfilePicModal();
               })

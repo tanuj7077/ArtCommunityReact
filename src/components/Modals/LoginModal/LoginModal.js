@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { IoClose } from "react-icons/io5";
-import axios from "axios";
 
 import { useGlobalContext } from "../../../context";
 import Login from "./Login";

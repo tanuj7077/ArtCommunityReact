@@ -33,7 +33,9 @@ const PostList = () => {
 
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
-    fetch(`/posts/postList?page=${pager.page}&limit=12`)
+    fetch(
+      `https://shielded-woodland-79171.herokuapp.com/posts/postList?page=${pager.page}&limit=12`
+    )
       .then((data) => data.json())
       .then((images) => {
         imgDispatch({ type: "STACK_IMAGES", images });
