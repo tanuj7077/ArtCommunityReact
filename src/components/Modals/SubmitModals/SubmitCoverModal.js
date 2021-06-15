@@ -30,6 +30,8 @@ const SubmitCoverModal = () => {
     closeSubmitCoverModal,
     setUserData,
     changeAlert,
+    loading,
+    setLoading,
   } = useGlobalContext();
 
   const [coverImage, setCoverImage] = useState("");
@@ -50,7 +52,7 @@ const SubmitCoverModal = () => {
   };
 
   async function handleSubmit(e) {
-    console.log("submit pressed");
+    setLoading(1);
     e.preventDefault();
     let currentImageName = "image-" + Date.now();
     let uploadImage = storage
@@ -83,6 +85,7 @@ const SubmitCoverModal = () => {
               }
               changeAlert(res.data.message);
             });
+            setLoading(0);
             closeSubmitCoverModal();
           })
           .catch((err) => {
@@ -112,12 +115,19 @@ const SubmitCoverModal = () => {
                   />
                 </div>
                 <div className="modal-buttons">
-                  <button className="add-btn" type="submit">
-                    Submit
-                  </button>
-                  <span className="cancel-btn" onClick={closeSubmitCoverModal}>
-                    Cancel
-                  </span>
+                  {!loading && (
+                    <button className="add-btn" type="submit">
+                      Submit
+                    </button>
+                  )}
+                  {!loading && (
+                    <span
+                      className="cancel-btn"
+                      onClick={closeSubmitCoverModal}
+                    >
+                      Cancel
+                    </span>
+                  )}
                 </div>
               </>
             ) : (

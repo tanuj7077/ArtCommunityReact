@@ -106,6 +106,12 @@ breakpoint argument choices:
   100% {
     background-position: 0% 50%; } }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 *,
 *::after,
 *::before {
@@ -2726,7 +2732,6 @@ body {
     top: 6rem;
     left: 0;
     height: 70vh;
-    background-image: url("./tagImage/snow.jpg");
     background-size: cover;
     z-index: 1;
     background-position-x: center;
@@ -3666,6 +3671,14 @@ body {
         .addExtrasModal .modal-photo .uploadLabel:hover .uploadText {
           color: #6ecf86;
           cursor: pointer; }
+    .addExtrasModal .modal-loader {
+      border: 16px solid #dadada;
+      /* Light grey */
+      border-top: 16px solid #0e0e0e;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      animation: spin 2s linear infinite; }
 
 .loginToggle {
   margin-top: 6rem;
@@ -5744,6 +5757,42 @@ body {
     width: 3.5rem;
     height: 3.5rem;
     color: white; }
+
+.loadingAnimation {
+  position: fixed;
+  top: 7rem;
+  right: 4rem;
+  display: flex;
+  flex-flow: row;
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; }
+  @media only screen and (max-width: 37.5em) {
+    .loadingAnimation {
+      top: 50vh;
+      left: 0; } }
+  @media only screen and (max-height: 37.5em) {
+    .loadingAnimation {
+      top: 50vh;
+      left: 0; } }
+  @media only screen and (max-height: 37.5em) and (max-width: 37.5em) {
+    .loadingAnimation {
+      top: 50vh;
+      left: 0; } }
+
+.modalLoading {
+  border: 0.5rem solid #f3f3f3;
+  /* Light grey */
+  border-top: 0.5rem solid #6ecf86;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  animation: spin 2s linear infinite; }
+
+.modalLoadingText {
+  font-size: 2rem;
+  color: white; }
 
 .Container {
   background-color: black;

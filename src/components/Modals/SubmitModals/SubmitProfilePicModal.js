@@ -31,6 +31,8 @@ const SubmitProfilePicModal = () => {
     closeSubmitProfilePicModal,
     setUserData,
     changeAlert,
+    loading,
+    setLoading,
   } = useGlobalContext();
 
   const [profileImage, setProfileImage] = useState("");
@@ -57,6 +59,7 @@ const SubmitProfilePicModal = () => {
   let setEditorRef = useRef(null);
 
   async function handleSubmit(e) {
+    setLoading(1);
     e.preventDefault();
 
     const canvasScaled = setEditorRef.current
@@ -98,6 +101,7 @@ const SubmitProfilePicModal = () => {
                   }
                   changeAlert(res.data.message);
                 });
+                setLoading(0);
                 closeSubmitProfilePicModal();
               })
               .catch((err) => {
@@ -117,10 +121,6 @@ const SubmitProfilePicModal = () => {
       <div className="addExtrasModal">
         <div className="modal">
           <span className="modal-heading">Add Profile Photo</span>
-          {/* <span className="closeIcon">
-            <IoClose className="Icon" onClick={closeSubmitProfilePicModal} />
-          </span> */}
-
           <form
             className="modal-form"
             onSubmit={handleSubmit}
@@ -187,17 +187,20 @@ const SubmitProfilePicModal = () => {
                     ></input>
                   </div>
                 </div>
-
                 <div className="modal-buttons">
-                  <button className="add-btn" type="submit">
-                    Submit
-                  </button>
-                  <span
-                    className="cancel-btn"
-                    onClick={closeSubmitProfilePicModal}
-                  >
-                    Cancel
-                  </span>
+                  {!loading && (
+                    <button className="add-btn" type="submit">
+                      Submit
+                    </button>
+                  )}
+                  {!loading && (
+                    <span
+                      className="cancel-btn"
+                      onClick={closeSubmitProfilePicModal}
+                    >
+                      Cancel
+                    </span>
+                  )}
                 </div>
               </>
             ) : (

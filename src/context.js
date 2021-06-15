@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Posts, ExploreTags } from "./data";
 import axios from "axios";
 
 const AppContext = React.createContext();
@@ -19,6 +18,7 @@ const AppProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [alert, setAlert] = useState({});
   const [showAlert, setShowAlert] = useState(0);
+  const [loading, setLoading] = useState(0);
 
   const updatePostsBackend = async () => {
     const result = await axios.get("/posts/updatePosts");
@@ -169,6 +169,8 @@ const AppProvider = ({ children }) => {
         showAlert,
         setShowAlert,
         updatePostsBackend,
+        loading,
+        setLoading,
       }}
     >
       {children}

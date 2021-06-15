@@ -13,7 +13,7 @@ const TopNav = () => {
     isLoggedIn,
     openSubmitModal,
     submitModal,
-    loginModal,
+    loading,
     loginModal2,
     openLoginModal2,
   } = useGlobalContext();
@@ -41,6 +41,12 @@ const TopNav = () => {
 
       {/* {loginModal && <LoginModal />} */}
       {loginModal2 && <LoginModal2 />}
+      {loading && (
+        <div className="loadingAnimation">
+          <div className="modalLoading"></div>
+          <div className="modalLoadingText">Loading...</div>
+        </div>
+      )}
     </>
   );
 };

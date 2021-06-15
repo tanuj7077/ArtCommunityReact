@@ -125,7 +125,13 @@ const customStyles = {
 };
 
 const SubmitModal = () => {
-  const { closeSubmitModal, userData, changeAlert } = useGlobalContext();
+  const {
+    closeSubmitModal,
+    userData,
+    changeAlert,
+    loading,
+    setLoading,
+  } = useGlobalContext();
 
   const [image, setImage] = useState("");
   const [toSendImage, setToSendImage] = useState("");
@@ -153,6 +159,7 @@ const SubmitModal = () => {
   };
 
   async function handleSubmit(e) {
+    setLoading(1);
     e.preventDefault();
     let currentImageName = "image-" + Date.now();
     let uploadImage = storage
@@ -185,6 +192,7 @@ const SubmitModal = () => {
               console.log(res.data);
               changeAlert(res.data.message);
             });
+            setLoading(0);
             closeSubmitModal();
           });
       }

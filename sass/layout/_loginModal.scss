@@ -176,7 +176,8 @@
         }
       }
       &-img {
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+          rgba(0, 0, 0, 0.22) 0px 10px 10px;
         max-width: 52rem;
         max-height: 30rem;
         @include respond(phone) {
@@ -208,6 +209,14 @@
           cursor: pointer;
         }
       }
+    }
+    &-loader {
+      border: 16px solid #dadada; /* Light grey */
+      border-top: 16px solid #0e0e0e;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      animation: spin 2s linear infinite;
     }
   }
 }
@@ -299,7 +308,8 @@
   height: 80%;
   background-color: rgb(43, 43, 43);
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   flex-wrap: nowrap;
   overflow-y: scroll;
   scroll-behavior: smooth;

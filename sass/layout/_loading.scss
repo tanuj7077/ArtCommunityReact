@@ -1,0 +1,35 @@
+.loadingAnimation {
+  position: fixed;
+  top: 7rem;
+  right: 4rem;
+  display: flex;
+  flex-flow: row;
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  @include respond(phone) {
+    top: 50vh;
+    left: 0;
+  }
+  @include respond(phone-land) {
+    top: 50vh;
+    left: 0;
+  }
+  @include respond(phone-typing) {
+    top: 50vh;
+    left: 0;
+  }
+}
+.modalLoading {
+  border: 0.5rem solid #f3f3f3; /* Light grey */
+  border-top: 0.5rem solid #6ecf86;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  animation: spin 2s linear infinite;
+}
+.modalLoadingText {
+  font-size: 2rem;
+  color: white;
+}
