@@ -1801,6 +1801,7 @@ body {
           margin-right: 2rem;
           cursor: pointer; }
   .postPage .otherContent {
+    width: 100%;
     grid-column: 15 / -1;
     grid-row: 1 / -1;
     background-color: #1b1b1b;
@@ -5768,6 +5769,18 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem; }
+  @media only screen and (max-width: 37.5em) {
+    .loadingAnimation {
+      top: 50vh;
+      left: 0; } }
+  @media only screen and (max-height: 37.5em) {
+    .loadingAnimation {
+      top: 50vh;
+      left: 0; } }
+  @media only screen and (max-height: 37.5em) and (max-width: 37.5em) {
+    .loadingAnimation {
+      top: 50vh;
+      left: 0; } }
 
 .modalLoading {
   border: 0.5rem solid #f3f3f3;
