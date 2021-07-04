@@ -2,8 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import blank from "../../tagImage/blankProfile.png";
+import { useGlobalContext } from "../../context";                
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
+  const {
+    isLoggedIn,
+    userData,
+    openLoginModal2,
+    changeAlert,
+  } = useGlobalContext();
   let userUrl =
     "https://shielded-woodland-79171.herokuapp.com/users/hoverUser/" +
     author.id;
@@ -94,6 +101,29 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
         -(bottom - window.innerHeight + 110) + "px";
     }
   };
+
+  async function handleLike() {
+    if (!isLoggedIn) {
+      openLoginModal2();
+    } else {
+      const data = {
+        user: userData,
+      };
+      await axios
+        .post(
+          "https://shielded-woodland-79171.herokuapp.com/posts/post/" +
+            _id +
+            "/like",
+          data
+        )
+        .then((res) => {
+          changeAlert(res.data.message);
+          if (res.data.message.type === "success") {
+            likesArray.push(userData._id);
+          } 
+        });
+    }
+  }
 
   return (
     <div className="grid-item">
@@ -223,7 +253,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
               <span className="grid-item--card-icons-likes-count">
                 {typeof likesArray === "undefined" ? `0` : likesArray.length}
               </span>
-              <span className="material-icons grid-item--card-icons-likes-icon">
+              <span className="material-icons grid-item--card-icons-likes-icon" onClick={handleLike}>
                 favorite
               </span>
             </section>
