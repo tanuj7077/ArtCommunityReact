@@ -4469,10 +4469,10 @@ body {
       padding: 2rem 0;
       padding-right: 1rem;
       width: 100%;
-      height: 67vh;
+      max-height: 67vh;
       display: flex;
       overflow: hidden;
-      overflow-y: scroll; }
+      overflow-y: auto; }
       .settingsDesk-main .gallerySection .gallery {
         width: 100%;
         height: max-content;
@@ -4496,9 +4496,6 @@ body {
             transition: all 0.25s ease; }
           .settingsDesk-main .gallerySection .gallery .SingleImage:hover {
             cursor: pointer; }
-      .settingsDesk-main .gallerySection .noPosts {
-        font-size: 3rem;
-        color: white; }
       .settingsDesk-main .gallerySection::-webkit-scrollbar {
         width: 7px; }
       .settingsDesk-main .gallerySection::-webkit-scrollbar-thumb {
@@ -4506,6 +4503,10 @@ body {
         border-radius: 5px; }
       .settingsDesk-main .gallerySection::-webkit-scrollbar-track {
         background: #505050; }
+    .settingsDesk-main .noPosts {
+      font-size: 3rem;
+      color: white;
+      padding: 2rem 0; }
     .settingsDesk-main .profile-items {
       padding-top: 4rem;
       padding-bottom: 4rem;
@@ -4514,7 +4515,8 @@ body {
       flex-flow: column;
       gap: 4rem;
       overflow: hidden;
-      overflow-y: scroll;
+      overflow-y: auto;
+      max-height: 74vh;
       /*--------------------Explicit settings----------*/
       /*--------------------OVER----------*/ }
       .settingsDesk-main .profile-items::-webkit-scrollbar {
@@ -4991,8 +4993,10 @@ body {
         width: 100%;
         height: calc(100vh - 18rem);
         display: flex;
+        flex-flow: column;
         overflow: hidden;
         overflow-y: scroll;
+        align-items: center;
         /*&::-webkit-scrollbar {
           width: 7px;
         }
@@ -5010,6 +5014,7 @@ body {
           .settingsMobile-carousel--profileSection .gallerySection {
             padding: 2rem 1rem; } }
         .settingsMobile-carousel--profileSection .gallerySection .gallery {
+          margin-top: 2rem;
           width: 100%;
           height: max-content;
           columns: 4;
@@ -5032,6 +5037,9 @@ body {
               transition: all 0.25s ease; }
             .settingsMobile-carousel--profileSection .gallerySection .gallery .SingleImage:hover {
               cursor: pointer; }
+        .settingsMobile-carousel--profileSection .gallerySection .noPosts {
+          font-size: 3rem;
+          color: white; }
       .settingsMobile-carousel--profileSection .profile-items {
         width: 100%;
         padding: 2rem 2rem;

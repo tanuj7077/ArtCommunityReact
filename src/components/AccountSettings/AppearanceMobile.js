@@ -6,13 +6,13 @@ const Appearance = ({ posts }) => {
     <>
       <div className="headingSection">
         <span className="heading">Posts</span>
+        
+      </div>
+      
         <div className="gallerySection">
           <div className="gallery">
             {posts.map((post) => {
               return (
-                // <div className="SingleImage">
-                //   <img src={post.image} alt="galleryImage" className="image" />
-                // </div>
                 <Route
                   render={({ history }) => (
                     <div
@@ -32,8 +32,13 @@ const Appearance = ({ posts }) => {
               );
             })}
           </div>
-        </div>
+          {posts.length===0 &&
+            <span className="noPosts">
+            No Posts uploaded
+          </span>  
+        }
       </div>
+      
     </>
   );
 };

@@ -4,6 +4,11 @@ const Appearance = ({ posts }) => {
   return (
     <>
       <span className="heading">Posts</span>
+      {posts.length===0 &&
+            <span className="noPosts">
+            You have not uploaded any posts yet
+          </span>  
+          }
       <div className="gallerySection">
         <div className="gallery">
           {posts.map((post) => {
