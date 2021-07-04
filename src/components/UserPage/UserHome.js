@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
+import axios from "axios";
+import { useGlobalContext } from "../../context"; 
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import {
   FaBirthdayCake,
@@ -14,6 +16,12 @@ import { HiLocationMarker } from "react-icons/hi";
 import { AiOutlineLink, AiFillInstagram, AiFillLike } from "react-icons/ai";
 
 const UserHome = ({ user, popular, liked, spotlight }) => {
+  const {
+    isLoggedIn,
+    userData,
+    openLoginModal2,
+    changeAlert,
+  } = useGlobalContext();
   const sliderRef = useRef(null);
   const rightBtnRef = useRef(null);
   const [btnVisibility, setBtnVisibility] = useState(false);
@@ -35,6 +43,29 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
       }
     }
   };
+
+  async function handleLike() {
+    if (!isLoggedIn) {
+      openLoginModal2();
+    } else {
+      const data = {
+        user: userData,
+      };
+      await axios
+        .post(
+          "https://shielded-woodland-79171.herokuapp.com/posts/post/" +
+            spotlight._id +
+            "/like",
+          data
+        )
+        .then((res) => {
+          changeAlert(res.data.message);
+          if (res.data.message.type === "success") {
+            spotlight.likesArray.push(userData._id);
+          } 
+        });
+    }
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -187,13 +218,20 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
             <div className="spotlight-info-actions">
               {spotlight && spotlight.likesArray && (
                 <span className="spotlight-info-actions-like">
-                  <AiFillLike class="infoIcon" />
+                  <AiFillLike class="infoIcon" onClick={ handleLike }/>
                   <span className="text">{spotlight.likesArray.length}</span>
                 </span>
               )}
               {spotlight && spotlight.comments && (
                 <span className="spotlight-info-actions-comment">
-                  <FaCommentDots class="infoIcon" />
+                  <Route
+                    render={({ history }) => (
+                      <FaCommentDots class="infoIcon" onClick={() => {
+                          history.push(`/post/${spotlight._id}`);
+                        }}/>
+                    )}
+                  />
+                  {/* <FaCommentDots class="infoIcon" /> */}
                   <span className="text">{spotlight.comments.length}</span>
                 </span>
               )}
@@ -251,7 +289,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
         )}
 
         <div className="LikedSection">
-          <div className="subheading">Liked Posts</div>
+          {liked && liked.length > 0 && <div className="subheading">Liked Posts</div>}
           <div className="Liked">
             {liked.map((item) => {
               return (
@@ -295,29 +333,6 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
           </div>
         </div>
 
-        {/* <div className="likedSection">
-          <span className="subheading">Liked Posts</span>
-          <div className="liked">
-            <div className="liked-masonry">
-              <div className="liked-masonry-item">
-                <img
-                  draggable="false"
-                  src={tree}
-                  alt=""
-                  className="liked-img"
-                />
-              </div>
-              <div className="liked-masonry-item">
-                <img
-                  draggable="false"
-                  src={city}
-                  alt=""
-                  className="liked-img"
-                />
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

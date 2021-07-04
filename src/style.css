@@ -2181,7 +2181,9 @@ body {
       height: 2.5rem;
       margin-left: 2.2rem; }
     .sideNavMobile--item-text {
-      font-size: 2rem; }
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem; }
     .sideNavMobile--item:active {
       color: #6ecf86;
       background-color: #424242; }
@@ -2257,7 +2259,9 @@ body {
     flex-wrap: nowrap;
     background-color: black;
     align-items: center;
-    gap: 2rem; }
+    gap: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem; }
     @media only screen and (max-height: 37.5em) {
       .sideNavDesktop--item {
         height: 12vh; } }
@@ -2314,6 +2318,8 @@ body {
   .sideNavTopic--title {
     font-size: 2.5rem;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
     position: absolute;
     top: 50%;
     transform: translateY(-50%); }
@@ -2999,9 +3005,13 @@ body {
             .userPage--home-spotlight .spotlight .spotlight-info-actions-like {
               display: flex;
               align-items: center; }
+              .userPage--home-spotlight .spotlight .spotlight-info-actions-like:hover {
+                cursor: pointer; }
             .userPage--home-spotlight .spotlight .spotlight-info-actions-comment {
               display: flex;
               align-items: center; }
+              .userPage--home-spotlight .spotlight .spotlight-info-actions-comment:hover {
+                cursor: pointer; }
           .userPage--home-spotlight .spotlight .spotlight-info .infoIcon {
             font-size: 2rem;
             margin-right: 0.8rem; }
