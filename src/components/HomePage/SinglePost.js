@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import blank from "../../tagImage/blankProfile.png";
+import { AiTwotoneHeart } from "react-icons/ai";
+import { MdComment } from "react-icons/md";
 import { useGlobalContext } from "../../context";                
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
@@ -253,17 +255,20 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
               <span className="grid-item--card-icons-likes-count">
                 {typeof likesArray === "undefined" ? `0` : likesArray.length}
               </span>
-              <span className="material-icons grid-item--card-icons-likes-icon" onClick={handleLike}>
-                favorite
-              </span>
+              <AiTwotoneHeart  className="grid-item--card-icons-likes-icon" onClick={handleLike}/>
             </section>
             <section className="grid-item--card-icons-comments">
               <span className="grid-item--card-icons-comments-count">
                 {typeof comments === "undefined" ? `0` : comments.length}
               </span>
-              <span className="material-icons grid-item--card-icons-comments-icon">
-                insert_comment
-              </span>
+              <Route
+              render={({ history }) => (
+                <MdComment className="grid-item--card-icons-comments-icon" onClick={() => {
+                    history.push(`/post/${_id}`);
+                  }}/>
+              )}
+            />
+              {/* <MdComment className="grid-item--card-icons-comments-icon"/> */}
             </section>
           </div>
         </div>
