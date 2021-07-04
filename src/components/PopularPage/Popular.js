@@ -1,9 +1,17 @@
-import React, { useEffect, useReducer, useCallback, useRef } from "react";
+import React, { useEffect, useReducer, useCallback, useRef, useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-
+import axios from "axios";
 import SinglePost from "../HomePage/SinglePost";
 
 const Popular = () => {
+  const [totalPages, setTotalPages] = useState(1);
+  const getTotalPages = async () => {
+    let total = await axios.get("http://localhost:8000/posts/totalPosts");
+    setTotalPages(total.data);
+  }
+  useEffect(() => {
+    getTotalPages();
+  },[])
   const imgReducer = (state, action) => {
     switch (action.type) {
       case "STACK_IMAGES":
@@ -33,7 +41,7 @@ const Popular = () => {
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
     fetch(
-      `https://shielded-woodland-79171.herokuapp.com/posts/getPopular?page=${pager.page}&limit=12`
+      `https://shielded-woodland-79171.herokuapp.com/posts/getPopular?page=${pager.page}&limit=8`
     )
       .then((data) => data.json())
       .then((images) => {
@@ -80,7 +88,10 @@ const Popular = () => {
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {imgData.fetching && <span className="loadingAnim">Loading...</span>}
+      {imgData.images.length !== totalPages && imgData.fetching && <span className="loadingAnim">Loading...</span>}
+      {imgData.images.length === totalPages &&
+        <span className="loadingAnim">Thats all Folks</span>
+      }
       <div
         id="page-bottom-boundary"
         style={{ border: "10px solid transparent" }}
