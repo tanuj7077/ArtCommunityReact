@@ -2769,18 +2769,20 @@ body {
     .userPage--top-user {
       position: absolute;
       top: 33vh;
-      left: 9vw;
+      left: 5vw;
       display: grid;
       grid-template-rows: min-content min-content;
       grid-template-columns: max-content max-content; }
       @media only screen and (max-width: 37.5em) {
         .userPage--top-user {
           top: 45%;
-          left: 2.5%; } }
+          left: 5%;
+          right: 5vw; } }
       @media only screen and (max-height: 37.5em) {
         .userPage--top-user {
           top: 25%;
-          left: 2.5%; } }
+          left: 5%;
+          right: 5vw; } }
       .userPage--top-user-img {
         grid-row: 1 / 3;
         grid-column: 1 / 2;
@@ -2840,26 +2842,26 @@ body {
     .userPage--top-menu {
       position: absolute;
       bottom: 0;
-      left: 8vw;
+      left: 5vw;
       color: white;
       letter-spacing: 0.3rem;
       padding: 1rem 0; }
       @media only screen and (max-width: 37.5em) {
         .userPage--top-menu {
-          left: 0;
-          right: 0;
+          left: 5vw;
+          right: 5vw;
           display: flex;
           flex-flow: row;
-          width: 95%;
+          width: 90vw;
           margin: 0.5rem auto;
           justify-content: space-between; } }
       @media only screen and (max-height: 37.5em) {
         .userPage--top-menu {
-          left: 0;
-          right: 0;
+          left: 5vw;
+          right: 5vw;
           display: flex;
           flex-flow: row;
-          width: 95%;
+          width: 90vw;
           margin: 0.5rem auto;
           justify-content: space-between; } }
       .userPage--top-menu .menu-item {
@@ -2870,11 +2872,13 @@ body {
           .userPage--top-menu .menu-item {
             padding: 0;
             font-size: 3rem; } }
+      .userPage--top-menu .menu-item:first-of-type {
+        padding-left: 0; }
     .userPage--top-cover {
       opacity: 0.8;
       position: absolute;
       bottom: 8vh;
-      right: 4vw;
+      right: 5vw;
       color: white;
       font-size: 2.5rem;
       background-color: #3b3b3b;
@@ -2884,6 +2888,10 @@ body {
       @media only screen and (max-width: 37.5em) {
         .userPage--top-cover {
           display: none; } }
+      @media only screen and (max-height: 37.5em) {
+        .userPage--top-cover {
+          bottom: 20vh;
+          right: 5vw; } }
       .userPage--top-cover:hover {
         opacity: 1;
         cursor: pointer;
@@ -2901,20 +2909,22 @@ body {
     column-gap: 3rem;
     align-items: center;
     margin: 0 auto;
-    width: 95%; }
+    width: 90%; }
     @media only screen and (max-width: 37.5em) {
       .userPage--home {
         margin: 0 auto;
-        width: 95%;
+        width: 90%;
         display: flex;
         flex-flow: column; } }
     .userPage--home .subheading {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       color: white;
-      letter-spacing: 0.3rem; }
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      word-spacing: 0.6rem; }
     .userPage--home .aboutName {
-      font-size: 2.8rem;
-      font-weight: 700;
+      font-size: 2.5rem;
+      text-transform: uppercase;
       letter-spacing: 0.3rem; }
     .userPage--home-about {
       align-self: start;
@@ -3015,6 +3025,8 @@ body {
           .userPage--home-spotlight .spotlight .spotlight-info .infoIcon {
             font-size: 2rem;
             margin-right: 0.8rem; }
+    .userPage--home .noAbout {
+      grid-column: 1 / -1; }
     .userPage--home-posts {
       margin-top: 4rem;
       grid-row: 2 / 3;
@@ -3033,7 +3045,7 @@ body {
         display: flex; }
         @media only screen and (max-width: 37.5em) {
           .userPage--home .popular-slider {
-            width: 95vw; } }
+            width: 90vw; } }
         .userPage--home .popular-slider-leftButton {
           z-index: 2;
           position: absolute;

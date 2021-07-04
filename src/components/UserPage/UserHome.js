@@ -193,9 +193,13 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
           </div>
         )}
 
-      <div className="userPage--home-spotlight">
+      <div className={`userPage--home-spotlight ${(!user.personalInfo ||
+        !user.extras ||
+        !user.extras.profession ||
+        !user.extras.extra ||
+        !user.personalInfo.dob)?"noAbout":""}`}>
         <section className="subheading u-margin-bottom-small">
-          <span className="aboutName">Spotlight</span>
+          <span>Spotlight</span>
         </section>
         <section className="spotlight">
           <div className="spotlight-image">
