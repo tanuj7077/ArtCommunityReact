@@ -17,7 +17,7 @@ const ExploreTagList = () => {
             return (
               <Suspense
                 fallback={
-                  <div className="explorePage--loading">Loading...</div>
+                  <div className="explorePage--loading"></div>
                 }
               >
                 <ExploreTag key={tag.id} {...tag} />

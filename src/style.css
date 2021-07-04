@@ -112,6 +112,23 @@ breakpoint argument choices:
   100% {
     transform: rotate(360deg); } }
 
+@keyframes appear {
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+
+@keyframes textFadeIn {
+  100% {
+    opacity: 1; } }
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0.3; } }
+
 *,
 *::after,
 *::before {
@@ -754,7 +771,9 @@ body {
     height: 60%;
     background-size: cover;
     background-position-x: center;
-    background-position-y: center; }
+    background-position-y: center;
+    opacity: 0;
+    animation: textFadeIn 0.5s linear forwards; }
   .authorHover--noCover {
     width: 100%;
     height: 60%;
@@ -770,6 +789,8 @@ body {
     width: 13rem;
     height: 13rem;
     background-color: black;
+    opacity: 0;
+    animation: textFadeIn 0.5s linear forwards;
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
@@ -811,6 +832,8 @@ body {
       height: 9rem;
       border-radius: 5px;
       background-color: darkgray;
+      opacity: 0;
+      animation: textFadeIn 0.5s linear forwards;
       background-size: cover;
       background-position-x: center;
       background-position-y: center;
@@ -1316,18 +1339,21 @@ body {
     .explore {
       padding-top: 2.5rem;
       grid-column: 1 / -1;
-      width: 92%; } }
+      width: 90vw; } }
   .explore .subHeading {
     color: white;
-    font-size: 2.5rem;
-    margin-bottom: 1rem; }
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    word-spacing: 0.6rem; }
 
 .exploreGrid {
   display: grid;
   grid-template-rows: min-content;
   grid-template-columns: repeat(8, 1fr);
   grid-auto-rows: min-content;
-  grid-gap: 6px; }
+  grid-gap: 10px; }
   @media only screen and (max-width: 75em) {
     .exploreGrid {
       grid-template-columns: repeat(4, 1fr); } }
@@ -1355,7 +1381,9 @@ body {
     background-color: black;
     overflow: hidden;
     position: relative;
-    cursor: pointer; }
+    cursor: pointer;
+    opacity: 0;
+    animation: appear 0.5s linear forwards; }
     .exploreGrid .grid-item--exploreCard-img {
       width: 100%;
       padding-top: 70%;
@@ -1365,15 +1393,17 @@ body {
       transition: all 0.2s ease;
       opacity: 0.7; }
     .exploreGrid .grid-item--exploreCard-text {
-      text-transform: capitalize;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
       color: white;
-      font-size: 2rem;
+      font-size: 1.5rem;
       z-index: 1;
-      transition: all 0.2s ease-in;
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%); }
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      animation: textFadeIn 0.5s 0.5s linear forwards; }
     .exploreGrid .grid-item--exploreCard:hover .grid-item--exploreCard-img {
       opacity: 1;
       transform: scale(1.1); }
@@ -1390,13 +1420,15 @@ body {
   min-height: 84vh; }
   @media only screen and (max-width: 37.5em) {
     .explorePage {
-      grid-column: 1 / -1; } }
+      grid-column: 1 / -1;
+      width: 90vw; } }
   .explorePage--loading {
     margin-bottom: 7px;
     width: calc(100% - 10px);
-    height: 30rem;
+    height: 20rem;
     border-radius: 1rem;
-    background-color: #424141; }
+    background-color: #424141;
+    animation: pulse 1s linear infinite; }
   .explorePage--grid-item {
     padding: 0.5rem;
     width: 100%; }
@@ -1407,7 +1439,10 @@ body {
       position: relative;
       border-radius: 1rem;
       overflow: hidden;
-      background-color: black; }
+      background-color: black;
+      opacity: 0;
+      transform: scale(0.5);
+      animation: appear 0.3s linear forwards; }
       .explorePage--grid-item--card-img {
         width: 100%;
         transition: all 0.2s ease-in;
@@ -1415,13 +1450,16 @@ body {
         display: block;
         opacity: 0.5; }
       .explorePage--grid-item--card-title {
-        text-transform: capitalize;
+        text-transform: uppercase;
         color: white;
-        font-size: 2.5rem;
+        font-size: 2rem;
+        letter-spacing: 0.3rem;
         z-index: 1;
         transition: all 0.2s ease-in;
         font-weight: 700;
         letter-spacing: 0.4rem;
+        opacity: 0;
+        animation: textFadeIn 0.3s 0.3s linear forwards;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -1445,12 +1483,27 @@ body {
   min-height: 75vh; }
   @media only screen and (max-width: 37.5em) {
     .main {
-      grid-column: 1 / -1; } }
+      grid-column: 1 / -1;
+      width: 90vw; } }
   .main .subHeading {
+    color: white;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    word-spacing: 0.6rem; }
+  .main .endMessage {
+    display: grid;
+    place-items: center;
+    margin: 2rem; }
+  .main .completed {
     color: white;
     font-size: 2.5rem;
     font-weight: 400;
-    margin-bottom: 1rem; }
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    word-spacing: 0.6rem; }
 
 .tagSearchList {
   grid-row: 3 / -1;
@@ -1461,15 +1514,19 @@ body {
 .grid-item {
   position: relative;
   margin-bottom: 7px;
-  width: calc(100% - 10px);
+  width: 100%;
   margin: 0 auto; }
+  @media only screen and (max-width: 37.5em) {
+    .grid-item {
+      width: 100%; } }
   .grid-item--card {
     width: 100%;
     background-color: black;
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
-    margin-bottom: 1rem; }
+    opacity: 0;
+    animation: appear 0.5s linear forwards; }
     .grid-item--card-img {
       width: 100%;
       transition: all 0.2s ease-in;
@@ -5031,7 +5088,7 @@ body {
         }*/ }
         @media only screen and (max-width: 37.5em) {
           .settingsMobile-carousel--profileSection .gallerySection {
-            padding: 2rem 1rem; } }
+            padding: 2rem 5vw; } }
         @media only screen and (max-height: 37.5em) {
           .settingsMobile-carousel--profileSection .gallerySection {
             padding: 2rem 1rem; } }

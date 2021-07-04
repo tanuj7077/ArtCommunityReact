@@ -87,16 +87,22 @@ const PostList = () => {
       <ResponsiveMasonry
         columnsCountBreakPoints={{ 350: 1, 600: 2, 750: 2, 900: 3, 1000: 4 }}
       >
-        <Masonry>
+        <Masonry 
+        gutter="10px">
           {imgData.images.map((post) => {
             return <SinglePost key={post.name} {...post} />;
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {imgData.images.length !== totalPages && imgData.fetching && <span className="loadingAnim">Loading...</span>}
-      {imgData.images.length === totalPages &&
-        <span className="loadingAnim">Thats all Folks</span>
+      <div className="endMessage">
+          {imgData.images.length !== totalPages && imgData.fetching &&
+        <span className="loadingAnim">Loading...</span>
       }
+      {imgData.images.length >= totalPages &&
+        <span className="completed">Thats all Folks</span>
+      }
+      </div>
+      
       <div
         id="page-bottom-boundary"
         style={{ border: "10px solid transparent" }}
