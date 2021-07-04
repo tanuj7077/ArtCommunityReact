@@ -56,18 +56,12 @@ const PostPagePost = ({ id }) => {
       const response = await fetch(postUrl);
       const data = await response.json();
       setPost(data);
-      //setTotalLikes(data.likesArray.length);
-      //setTotalComments(data.comments.length);
-      setComments(data.comments); //new
-      //console.log(data.likesArray.length);
-      //console.log(isLoggedIn, userData);
+      setComments(data.comments); 
 
       if (isLoggedIn) {
         if (userData.following.includes(data.author.id)) {
-          console.log("currently following");
           setFollowStat("Unfollow User");
         } else {
-          console.log("not followed");
           setFollowStat("Follow User");
         }
       }

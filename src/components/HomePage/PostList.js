@@ -1,10 +1,21 @@
-import React, { useEffect, useReducer, useCallback, useRef } from "react";
+import React, { useEffect, useReducer, useCallback, useRef, useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import SinglePost from "./SinglePost";
+import axios from "axios";
 import { useGlobalContext } from "../../context";
 
 const PostList = () => {
+
+  const [totalPages, setTotalPages] = useState(1);
+  const getTotalPages = async () => {
+    let total = await axios.get("http://localhost:8000/posts/totalPosts");
+    setTotalPages(total.data);
+  }
+  useEffect(() => {
+    getTotalPages();
+  },[])
+
   const imgReducer = (state, action) => {
     switch (action.type) {
       case "STACK_IMAGES":
@@ -34,7 +45,7 @@ const PostList = () => {
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
     fetch(
-      `https://shielded-woodland-79171.herokuapp.com/posts/postList?page=${pager.page}&limit=12`
+      `https://shielded-woodland-79171.herokuapp.com/posts/postList?page=${pager.page}&limit=4`
     )
       .then((data) => data.json())
       .then((images) => {
@@ -56,7 +67,6 @@ const PostList = () => {
         entries.forEach((en) => {
           if (en.intersectionRatio > 0) {
             pagerDispatch({ type: "ADVANCE_PAGE" });
-            console.log(pager.page);
           }
         });
       }).observe(node);
@@ -70,61 +80,6 @@ const PostList = () => {
     }
   }, [scrollObserver, bottomBoundaryRef]);
 
-  /*const { posts, setPosts, page, setPage } = useGlobalContext();
-
-  const [limit, setLimit] = useState(12);
-  const [loading, setLoading] = useState(false);
-
-  const fetchPosts = async () => {
-    setLoading(true);
-    let baseUrl = "http://localhost:8000/posts/postList";
-    const urlPage = `?page=${page}`;
-    const urlLimit = `&limit=${limit}`;
-    let url = `${baseUrl}${urlPage}${urlLimit}`;
-    try {
-      console.log(page);
-      const response = await fetch(url);
-      const data = await response.json();
-      setPosts((oldPhotos) => {
-        //return [...oldPhotos, ...data];
-        var arr = [];
-        data.forEach((item) => {
-          if (!oldPhotos.includes(item)) {
-            arr.push(item);
-          }
-        });
-        return [...oldPhotos, ...arr];
-      });
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };*/
-  /*useEffect(() => {
-    fetchPosts();
-  }, [page]);
-
-  useEffect(() => {
-    const event = window.addEventListener("scroll", () => {
-      if (
-        (!loading && window.innerHeight + window.scrollY) >=
-        document.body.scrollHeight - 10
-      ) {
-        console.log("page = ", page);
-        console.log(
-          "(page + 1) * limit - limit = ",
-          (page + 1) * limit - limit
-        );
-        console.log("postLength = ", posts.length);
-        setPage((oldPage) => {
-          return oldPage + 1;
-        });
-      }
-    });
-    return () => window.removeEventListener("scroll", event);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);*/
 
   return (
     <div className="main">
@@ -138,7 +93,10 @@ const PostList = () => {
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {imgData.fetching && <span className="loadingAnim">Loading...</span>}
+      {imgData.images.length !== totalPages && imgData.fetching && <span className="loadingAnim">Loading...</span>}
+      {imgData.images.length === totalPages &&
+        <span className="loadingAnim">Thats all Folks</span>
+      }
       <div
         id="page-bottom-boundary"
         style={{ border: "10px solid transparent" }}

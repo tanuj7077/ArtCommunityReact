@@ -59,7 +59,6 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
 
   const getHoverData = async () => {
     await axios.get(userUrl).then((res) => {
-      console.log(res.data);
       if (AuthorHoverRef.current) {
         document.getElementById("authorHover").classList.remove("loading");
       }

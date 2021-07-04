@@ -20,12 +20,9 @@ function App() {
     const loggedInRes = await axios.get(
       "https://shielded-woodland-79171.herokuapp.com/auth/loggedIn"
     );
-    console.log(loggedInRes);
     if (loggedInRes.data.loggedIn) {
       setIsLoggedIn(true);
       setUserData(loggedInRes.data.userData);
-
-      //Initialize all data
     }
   };
 
