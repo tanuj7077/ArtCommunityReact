@@ -10,7 +10,12 @@ import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 import blank from "../../tagImage/blankProfile.png";
 import { BsHeartFill } from "react-icons/bs";
-import { MdDelete, MdComment } from "react-icons/md";
+import {
+  MdDelete,
+  MdComment,
+  MdFullscreen,
+  MdFullscreenExit,
+} from "react-icons/md";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";
@@ -50,13 +55,14 @@ const PostPagePost = ({ id }) => {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [followStat, setFollowStat] = useState("");
+  const [expanded, setExpanded] = useState(false);
 
   async function getPost() {
     try {
       const response = await fetch(postUrl);
       const data = await response.json();
       setPost(data);
-      setComments(data.comments); 
+      setComments(data.comments);
 
       if (isLoggedIn) {
         if (userData.following.includes(data.author.id)) {
@@ -188,128 +194,145 @@ const PostPagePost = ({ id }) => {
     }
   };
 
-  if (!Post) {
-    return <>Hey</>;
-  }
+  const toggleExpand = () => {
+    expanded ? setExpanded(false) : setExpanded(true);
+  };
+
+  // if (!Post) {
+  //   return <>Hey</>;
+  // }
   return (
     <>
       <div className="postPage">
         <div className="postContent">
-          <div className="postContent--image">
-            <img className="postContent--image-img" src={Post.image} alt="" />
-          </div>
-          <div className="postContent--info">
-            <div className="postContent--info-author">
-              <span className="postContent--info-author-title">
-                {Post.name}
+          {Post && (
+            <div className="postContent--image">
+              <img className="postContent--image-img" src={Post.image} alt="" />
+              <span
+                className="postContent--image-expand"
+                onClick={toggleExpand}
+              >
+                <MdFullscreen className="icon" />
               </span>
-              <div className="postContent--info-author-detail">
-                <div
-                  className="userImg"
-                  style={{
-                    backgroundImage: `url(${
-                      typeof Post.authorPic === "undefined"
-                        ? blank
-                        : Post.authorPic
-                    })`,
-                    borderRadius: `${
-                      typeof Post.authorPicBorder === "undefined"
-                        ? "0%"
-                        : Post.authorPicBorder + "%"
-                    }`,
-                  }}
-                ></div>
-                <Route
-                  render={({ history }) => (
-                    <span
-                      onClick={() => {
-                        history.push(`/user/${Post.author.username}`);
+            </div>
+          )}
+          {!Post && <div className="postContent--image"></div>}
+          <div className="postContent--info">
+            {Post && (
+              <>
+                <div className="postContent--info-author">
+                  <span className="postContent--info-author-title">
+                    {Post.name}
+                  </span>
+                  <div className="postContent--info-author-detail">
+                    <div
+                      className="userImg"
+                      style={{
+                        backgroundImage: `url(${
+                          typeof Post.authorPic === "undefined"
+                            ? blank
+                            : Post.authorPic
+                        })`,
+                        borderRadius: `${
+                          typeof Post.authorPicBorder === "undefined"
+                            ? "0%"
+                            : Post.authorPicBorder + "%"
+                        }`,
                       }}
-                      className="name"
+                    ></div>
+                    <Route
+                      render={({ history }) => (
+                        <span
+                          onClick={() => {
+                            history.push(`/user/${Post.author.username}`);
+                          }}
+                          className="name"
+                        >
+                          {Post.author.username}
+                        </span>
+                      )}
+                    />
+                    {/* <span className="name">{Post.author.username}</span> */}
+                  </div>
+                </div>
+                <div className="postContent--info-icons">
+                  <div className="postContent--info-icons-like">
+                    {isLoggedIn &&
+                    userData.username !== Post.author.username ? (
+                      <BsHeartFill className="icon" onClick={handleLike} />
+                    ) : (
+                      <BsHeartFill className="icon" />
+                    )}
+
+                    {
+                      <span className="count">
+                        {typeof Post.likesArray === "undefined"
+                          ? `0`
+                          : Post.likesArray.length}{" "}
+                        Likes
+                      </span>
+                    }
+                  </div>
+                  <div className="postContent--info-icons-like">
+                    <MdComment className="icon" />
+                    {/* <span className="material-icons comment">insert_comment</span> */}
+                    {
+                      <span className="count">
+                        {typeof Post.comments === "undefined"
+                          ? `0`
+                          : Post.comments.length}{" "}
+                        Comments
+                      </span>
+                    }
+                  </div>
+                  {isLoggedIn && userData.username === Post.author.username && (
+                    <div
+                      className="postContent--info-icons-like"
+                      onClick={handleDelete}
                     >
-                      {Post.author.username}
+                      <MdDelete className="icon" />
+                      <span className="count">Delete</span>
+                    </div>
+                  )}
+                  {isLoggedIn && userData.username !== Post.author.username && (
+                    <span
+                      className="postContent--info-icons-like followBtn"
+                      onClick={handleFollow}
+                    >
+                      {followStat}
                     </span>
                   )}
-                />
-                {/* <span className="name">{Post.author.username}</span> */}
-              </div>
-            </div>
-            <div className="postContent--info-icons">
-              <div className="postContent--info-icons-like">
-                {isLoggedIn && userData.username !== Post.author.username ? (
-                  <BsHeartFill className="icon" onClick={handleLike} />
-                ) : (
-                  <BsHeartFill className="icon" />
-                )}
-
-                {
-                  <span className="count">
-                    {typeof Post.likesArray === "undefined"
-                      ? `0`
-                      : Post.likesArray.length}{" "}
-                    Likes
-                  </span>
-                }
-              </div>
-              <div className="postContent--info-icons-like">
-                <MdComment className="icon" />
-                {/* <span className="material-icons comment">insert_comment</span> */}
-                {
-                  <span className="count">
-                    {typeof Post.comments === "undefined"
-                      ? `0`
-                      : Post.comments.length}{" "}
-                    Comments
-                  </span>
-                }
-              </div>
-              {isLoggedIn && userData.username === Post.author.username && (
-                <div
-                  className="postContent--info-icons-like"
-                  onClick={handleDelete}
-                >
-                  <MdDelete className="icon" />
-                  <span className="count">Delete</span>
+                  {!isLoggedIn && (
+                    <span
+                      className="postContent--info-icons-like followBtn"
+                      onClick={handleFollow}
+                    >
+                      Follow Author
+                    </span>
+                  )}
                 </div>
-              )}
-              {isLoggedIn && userData.username !== Post.author.username && (
-                <span
-                  className="postContent--info-icons-like followBtn"
-                  onClick={handleFollow}
-                >
-                  {followStat}
-                </span>
-              )}
-              {!isLoggedIn && (
-                <span
-                  className="postContent--info-icons-like followBtn"
-                  onClick={handleFollow}
-                >
-                  Follow Author
-                </span>
-              )}
-            </div>
-            <span className="postContent--info-desc">{Post.desc}</span>
-            <div className="postContent--info-tags">
-              {Post.tags.map((item) => {
-                return (
-                  <Route
-                    key={item}
-                    render={({ history }) => (
-                      <span
-                        onClick={() => {
-                          history.push(`../tagSearch/${item}`);
-                        }}
-                        className="tag"
-                      >
-                        {item}
-                      </span>
-                    )}
-                  />
-                );
-                // <span className="tag">{item}</span>;
-              })}
-            </div>
+                <span className="postContent--info-desc">{Post.desc}</span>
+                <div className="postContent--info-tags">
+                  {Post.tags.map((item) => {
+                    return (
+                      <Route
+                        key={item}
+                        render={({ history }) => (
+                          <span
+                            onClick={() => {
+                              history.push(`../tagSearch/${item}`);
+                            }}
+                            className="tag"
+                          >
+                            {item}
+                          </span>
+                        )}
+                      />
+                    );
+                  })}
+                </div>
+              </>
+            )}
           </div>
         </div>
         <div className="postContent--comments">
@@ -337,21 +360,44 @@ const PostPagePost = ({ id }) => {
               Submit
             </button>
           )}
-
-          {/* {typeof Post.comments !== "undefined" && (
-            <CommentList commentArr={Post.comments} />
-          )} */}
-          {typeof Post.comments !== "undefined" && (
+          {Post && typeof Post.comments !== "undefined" && (
             <CommentList commentArr={comments} postId={Post._id} />
           )}
         </div>
 
         <div className="otherContent">
-          <PostsByUser id={Post.author.username} />
-          <Recommended id={Post.author.username} tags={Post.tags} />
+          {Post && (
+            <>
+              <PostsByUser id={Post.author.username} />
+              <Recommended id={Post.author.username} tags={Post.tags} />
+            </>
+          )}
+          {!Post && (
+            <>
+              <div className="otherContent--user">
+                <span className="otherContent--subheading">By User</span>
+                <div className="otherContent--loading">
+                  <span>Loading...</span>
+                </div>
+              </div>
+              <div className="otherContent--user">
+                <div className="otherContent--loading">
+                  <span>Loading...</span>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
       {loginModal && <LoginModal />}
+      {expanded && (
+        <div className="expandedImage">
+          <img className="expandedImage-img" src={Post.image} alt="" />
+          <span className="expandedImage-shrink" onClick={toggleExpand}>
+            <MdFullscreenExit className="icon" />
+          </span>
+        </div>
+      )}
     </>
   );
 };

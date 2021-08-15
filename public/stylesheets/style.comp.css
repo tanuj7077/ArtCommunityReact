@@ -112,6 +112,23 @@ breakpoint argument choices:
   100% {
     transform: rotate(360deg); } }
 
+@keyframes appear {
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+
+@keyframes textFadeIn {
+  100% {
+    opacity: 1; } }
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0.5; } }
+
 *,
 *::after,
 *::before {
@@ -132,6 +149,15 @@ html {
   @media only screen and (min-width: 112.5em) {
     html {
       font-size: 75%; } }
+  @media only screen and (min-width: 131.25em) {
+    html {
+      font-size: 90%; } }
+  @media only screen and (min-width: 160em) {
+    html {
+      font-size: 100%; } }
+  @media only screen and (min-width: 192em) {
+    html {
+      font-size: 120%; } }
 
 body {
   box-sizing: border-box;
@@ -754,7 +780,9 @@ body {
     height: 60%;
     background-size: cover;
     background-position-x: center;
-    background-position-y: center; }
+    background-position-y: center;
+    opacity: 0;
+    animation: textFadeIn 0.5s linear forwards; }
   .authorHover--noCover {
     width: 100%;
     height: 60%;
@@ -770,6 +798,8 @@ body {
     width: 13rem;
     height: 13rem;
     background-color: black;
+    opacity: 0;
+    animation: textFadeIn 0.5s linear forwards;
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
@@ -811,6 +841,8 @@ body {
       height: 9rem;
       border-radius: 5px;
       background-color: darkgray;
+      opacity: 0;
+      animation: textFadeIn 0.5s linear forwards;
       background-size: cover;
       background-position-x: center;
       background-position-y: center;
@@ -890,12 +922,15 @@ body {
   width: 100%;
   height: 6.5vh;
   background-color: transparent;
-  position: relative; }
+  position: relative;
+  opacity: 0;
+  animation: textFadeIn 0.2s linear forwards; }
   .searchForm--input {
     position: absolute;
     top: 0.5rem;
+    bottom: 0.5rem;
     width: 100%;
-    height: 100%;
+    height: 5rem;
     font-size: 2rem;
     font-family: inherit;
     letter-spacing: 0.4rem;
@@ -922,7 +957,10 @@ body {
   grid-gap: 5px;
   grid-template-rows: repeat(2, min-content);
   grid-template-columns: repeat(7, 1fr);
-  overflow: hidden; }
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.1);
+  animation: appear 0.2s linear forwards; }
   .searchResults .subHeading {
     font-size: 3rem;
     text-align: start;
@@ -1130,7 +1168,9 @@ body {
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  cursor: pointer; }
+  cursor: pointer;
+  opacity: 0;
+  animation: textFadeIn 0.2s linear forwards; }
   .search-icon {
     color: white;
     width: 2rem;
@@ -1150,7 +1190,9 @@ body {
   .liveSearch-searchForm {
     width: 70vw;
     height: 80%;
-    position: relative; }
+    position: relative;
+    opacity: 0;
+    animation: textFadeIn 0.2s linear forwards; }
     .liveSearch-searchForm--input {
       position: absolute;
       top: 0.5rem;
@@ -1175,7 +1217,10 @@ body {
     background-color: #2c2c2c;
     margin-top: 2rem;
     width: 70vw;
-    overflow: hidden; }
+    overflow: hidden;
+    transform: scale(0.1);
+    opacity: 0;
+    animation: appear 0.2s linear forwards; }
     .liveSearch-searchResults2-links {
       width: 70vw;
       display: flex;
@@ -1229,7 +1274,9 @@ body {
           align-self: center;
           padding-top: 1.5rem;
           padding-left: 1.5rem;
-          letter-spacing: 0.3rem; }
+          letter-spacing: 0.3rem;
+          opacity: 0;
+          animation: textFadeIn 0.2s linear forwards; }
           .liveSearch-searchResults2-carousel--postSection .item:nth-child(even) {
             background: #3b3b3b; }
           .liveSearch-searchResults2-carousel--postSection .item:active {
@@ -1256,7 +1303,9 @@ body {
           align-self: center;
           padding-top: 1.5rem;
           padding-left: 1.5rem;
-          letter-spacing: 0.3rem; }
+          letter-spacing: 0.3rem;
+          opacity: 0;
+          animation: textFadeIn 0.2s linear forwards; }
           .liveSearch-searchResults2-carousel--authorSection .item:nth-child(even) {
             background: #363636; }
           .liveSearch-searchResults2-carousel--authorSection .item:active {
@@ -1289,7 +1338,9 @@ body {
             border-radius: 1rem;
             height: 4rem;
             padding: 0.7rem 1.2rem;
-            color: gray; }
+            color: gray;
+            opacity: 0;
+            animation: textFadeIn 0.2s linear forwards; }
             .liveSearch-searchResults2-carousel--tagSection .tagList .item:active {
               color: #6ecf86; }
       .liveSearch-searchResults2-carousel::-webkit-scrollbar {
@@ -1316,18 +1367,21 @@ body {
     .explore {
       padding-top: 2.5rem;
       grid-column: 1 / -1;
-      width: 92%; } }
+      width: 90vw; } }
   .explore .subHeading {
     color: white;
-    font-size: 2.5rem;
-    margin-bottom: 1rem; }
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    word-spacing: 0.6rem; }
 
 .exploreGrid {
   display: grid;
   grid-template-rows: min-content;
   grid-template-columns: repeat(8, 1fr);
   grid-auto-rows: min-content;
-  grid-gap: 6px; }
+  grid-gap: 10px; }
   @media only screen and (max-width: 75em) {
     .exploreGrid {
       grid-template-columns: repeat(4, 1fr); } }
@@ -1355,25 +1409,28 @@ body {
     background-color: black;
     overflow: hidden;
     position: relative;
-    cursor: pointer; }
+    cursor: pointer;
+    opacity: 0;
+    animation: appear 0.5s linear forwards; }
     .exploreGrid .grid-item--exploreCard-img {
       width: 100%;
       padding-top: 70%;
       background-size: cover;
-      background-position-x: center;
-      background-position-y: center;
+      background-position: center;
       transition: all 0.2s ease;
       opacity: 0.7; }
     .exploreGrid .grid-item--exploreCard-text {
-      text-transform: capitalize;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
       color: white;
-      font-size: 2rem;
+      font-size: 1.5rem;
       z-index: 1;
-      transition: all 0.2s ease-in;
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%); }
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      animation: textFadeIn 0.5s 0.5s linear forwards; }
     .exploreGrid .grid-item--exploreCard:hover .grid-item--exploreCard-img {
       opacity: 1;
       transform: scale(1.1); }
@@ -1390,13 +1447,15 @@ body {
   min-height: 84vh; }
   @media only screen and (max-width: 37.5em) {
     .explorePage {
-      grid-column: 1 / -1; } }
+      grid-column: 1 / -1;
+      width: 90vw; } }
   .explorePage--loading {
     margin-bottom: 7px;
     width: calc(100% - 10px);
-    height: 30rem;
+    height: 20rem;
     border-radius: 1rem;
-    background-color: #424141; }
+    background-color: #3a3a3ab7;
+    animation: pulse 1s linear infinite; }
   .explorePage--grid-item {
     padding: 0.5rem;
     width: 100%; }
@@ -1407,7 +1466,10 @@ body {
       position: relative;
       border-radius: 1rem;
       overflow: hidden;
-      background-color: black; }
+      background-color: black;
+      opacity: 0;
+      transform: scale(0.5);
+      animation: appear 0.3s linear forwards; }
       .explorePage--grid-item--card-img {
         width: 100%;
         transition: all 0.2s ease-in;
@@ -1415,13 +1477,16 @@ body {
         display: block;
         opacity: 0.5; }
       .explorePage--grid-item--card-title {
-        text-transform: capitalize;
+        text-transform: uppercase;
         color: white;
-        font-size: 2.5rem;
+        font-size: 2rem;
+        letter-spacing: 0.3rem;
         z-index: 1;
         transition: all 0.2s ease-in;
         font-weight: 700;
         letter-spacing: 0.4rem;
+        opacity: 0;
+        animation: textFadeIn 0.3s 0.3s linear forwards;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -1445,12 +1510,27 @@ body {
   min-height: 75vh; }
   @media only screen and (max-width: 37.5em) {
     .main {
-      grid-column: 1 / -1; } }
+      grid-column: 1 / -1;
+      width: 90vw; } }
   .main .subHeading {
+    color: white;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    word-spacing: 0.6rem; }
+  .main .endMessage {
+    display: grid;
+    place-items: center;
+    margin: 2rem; }
+  .main .completed {
     color: white;
     font-size: 2.5rem;
     font-weight: 400;
-    margin-bottom: 1rem; }
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    word-spacing: 0.6rem; }
 
 .tagSearchList {
   grid-row: 3 / -1;
@@ -1461,15 +1541,19 @@ body {
 .grid-item {
   position: relative;
   margin-bottom: 7px;
-  width: calc(100% - 10px);
+  width: 100%;
   margin: 0 auto; }
+  @media only screen and (max-width: 37.5em) {
+    .grid-item {
+      width: 100%; } }
   .grid-item--card {
     width: 100%;
     background-color: black;
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
-    margin-bottom: 1rem; }
+    opacity: 0;
+    animation: appear 0.5s linear forwards; }
     .grid-item--card-img {
       width: 100%;
       transition: all 0.2s ease-in;
@@ -1479,22 +1563,23 @@ body {
       color: white;
       font-size: 2.5rem;
       z-index: 1;
+      opacity: 0;
       transition: all 0.2s ease-in; }
       .grid-item--card-title:hover {
         text-decoration: none;
         color: white;
-        font-size: 2.6rem;
         cursor: pointer; }
     .grid-item--card-author {
       color: white;
       font-size: 2rem;
+      width: max-content;
       z-index: 1;
+      opacity: 0;
       transition: all 0.2s ease-in;
       cursor: pointer; }
       .grid-item--card-author:hover {
         text-decoration: none;
         color: white;
-        font-size: 2.1rem;
         cursor: pointer; }
     .grid-item--card-img-overlay {
       position: absolute;
@@ -1509,7 +1594,8 @@ body {
       grid-template-rows: max-content max-content;
       opacity: 0;
       padding-left: 2rem;
-      padding-top: 1rem; }
+      padding-top: 1rem;
+      transition: all 0.2s ease-in; }
       .grid-item--card-textualInfo:hover {
         cursor: pointer; }
     .grid-item--card-icons {
@@ -1520,7 +1606,8 @@ body {
       grid-template-columns: max-content max-content;
       align-items: end;
       grid-gap: 2rem;
-      opacity: 0; }
+      opacity: 0;
+      transition: all 0.2s ease-in; }
       .grid-item--card-icons-likes {
         display: flex;
         flex-flow: row;
@@ -1547,6 +1634,9 @@ body {
           .grid-item--card-icons-comments-icon:hover {
             color: #73c28a;
             cursor: pointer; }
+    .grid-item--card:hover .grid-item--card-title,
+    .grid-item--card:hover .grid-item--card-author {
+      opacity: 1; }
     .grid-item--card:hover .grid-item--card-textualInfo {
       opacity: 1; }
     .grid-item--card:hover .grid-item--card-img {
@@ -1576,6 +1666,7 @@ body {
       .postPage .postContent {
         grid-column: 1 / -1; } }
     .postPage .postContent--image {
+      position: relative;
       display: grid;
       place-items: center;
       background-color: #3f3f3f;
@@ -1593,22 +1684,35 @@ body {
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         width: auto;
         max-width: 90%;
-        max-height: 65vh; }
+        max-height: 65vh;
+        opacity: 0;
+        transform: scale(0.5);
+        animation: appear 0.5s cubic-bezier(0, 1, 0.3, 1) forwards; }
         @media only screen and (max-width: 75em) {
           .postPage .postContent--image-img {
             max-height: 350px; } }
         @media only screen and (max-width: 37.5em) {
           .postPage .postContent--image-img {
             max-height: 250px; } }
+      .postPage .postContent--image-expand {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        background-color: #1b1b1b; }
     .postPage .postContent--info {
       padding: 3rem 9rem;
       background-color: #2c2c2c;
       width: 100%;
       display: flex;
-      flex-flow: column; }
+      flex-flow: column;
+      opacity: 0;
+      animation: textFadeIn 0.3s linear forwards; }
       @media only screen and (max-width: 75em) {
         .postPage .postContent--info {
-          padding: 3rem 5rem; } }
+          padding: 3rem 5vw; } }
       .postPage .postContent--info-menu {
         position: relative;
         align-self: flex-end;
@@ -1652,8 +1756,7 @@ body {
             width: 5rem;
             height: 5rem;
             background-size: cover;
-            background-position-x: center;
-            background-position-y: center; }
+            background-position: center; }
           .postPage .postContent--info-author-detail .name {
             font-size: 3rem; }
             .postPage .postContent--info-author-detail .name:hover {
@@ -1751,7 +1854,7 @@ body {
       @media only screen and (max-width: 75em) {
         .postPage .postContent--comments {
           grid-column: 1 / 13;
-          padding: 2rem 5rem; } }
+          padding: 2rem 5vw; } }
       @media only screen and (max-width: 37.5em) {
         .postPage .postContent--comments {
           grid-column: 1 / -1;
@@ -1786,8 +1889,7 @@ body {
           width: 3rem;
           height: 3rem;
           background-size: cover;
-          background-position-x: center;
-          background-position-y: center; }
+          background-position: center; }
         .postPage .postContent--comments-comment-usertext {
           font-size: 2rem;
           align-self: center; }
@@ -1811,44 +1913,24 @@ body {
     background-color: #1b1b1b;
     display: grid;
     grid-template-rows: repeat(2, max-content);
-    margin: 0 auto;
-    /*&--thumbnails {
-      padding-top: 2rem;
-      display: grid;
-      grid-template-rows: repeat(3, min-content);
-      grid-template-columns: repeat(3, min-content);
-      gap: 1rem;
-
-      &-img {
-        width: 7vw;
-        height: 7vw;
-        @include respond(tab-land) {
-          width: 8.5vw;
-          height: 8.5vw;
-        }
-        @include respond(phone) {
-          width: 22vw;
-          height: 22vw;
-        }
-      }
-    }*/ }
+    margin: 0 auto; }
     @media only screen and (max-width: 75em) {
       .postPage .otherContent {
         grid-column: 13 / -1;
         grid-row: 3 / -1; } }
     @media only screen and (max-width: 37.5em) {
       .postPage .otherContent {
-        width: 100%;
+        width: 90vw;
         grid-column: 1 / -1;
         grid-row: 4 / -1; } }
-    @media only screen and (max-height: 37.5em) {
-      .postPage .otherContent {
-        width: 100%; } }
     .postPage .otherContent--subheading {
       font-size: 2rem;
       letter-spacing: 0.3rem; }
     .postPage .otherContent--user {
       padding: 1.5rem 1.5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .postPage .otherContent--user {
+          padding: 1.5rem 0; } }
     .postPage .otherContent--recommend {
       justify-self: start;
       padding: 1.5rem 1.5rem; }
@@ -1886,20 +1968,48 @@ body {
         height: 7vw;
         background-color: #666666;
         background-size: cover;
-        background-position-x: center;
-        background-position-y: center; }
+        background-position: center;
+        opacity: 0;
+        transform: scale(0.5);
+        animation: appear 0.5s cubic-bezier(0, 1, 0.3, 1) forwards; }
         @media only screen and (max-width: 75em) {
           .postPage .otherContent--Thumbnails-img {
             width: 8.5vw;
             height: 8.5vw; } }
         @media only screen and (max-width: 37.5em) {
           .postPage .otherContent--Thumbnails-img {
-            width: 30vw;
-            height: 30vw; } }
+            width: calc(90vw / 3 - 0.66rem);
+            height: calc(90vw / 3 - 0.66rem); } }
         @media only screen and (max-height: 37.5em) {
           .postPage .otherContent--Thumbnails-img {
             width: 9.8vw;
             height: 9.8vw; } }
+
+.expandedImage {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  background-color: #1f1f1f;
+  padding: 2rem 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000; }
+  .expandedImage-img {
+    border-radius: 5px;
+    width: auto;
+    max-width: 90%;
+    max-height: 80vh;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: appear 0.5s cubic-bezier(0, 1, 0.3, 1) forwards; }
+  .expandedImage-shrink {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: #444444; }
 
 .menu-item:hover {
   cursor: pointer;
@@ -2181,7 +2291,9 @@ body {
       height: 2.5rem;
       margin-left: 2.2rem; }
     .sideNavMobile--item-text {
-      font-size: 2rem; }
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem; }
     .sideNavMobile--item:active {
       color: #6ecf86;
       background-color: #424242; }
@@ -2223,7 +2335,10 @@ body {
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
-    align-items: center; }
+    align-items: center;
+    opacity: 0;
+    transform: scale(0);
+    animation: appear 1s cubic-bezier(0, 1, 0.3, 1) forwards; }
     @media only screen and (max-height: 37.5em) {
       .sideNavDesktopShort--item {
         height: 12vh; } }
@@ -2257,7 +2372,9 @@ body {
     flex-wrap: nowrap;
     background-color: black;
     align-items: center;
-    gap: 2rem; }
+    gap: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem; }
     @media only screen and (max-height: 37.5em) {
       .sideNavDesktop--item {
         height: 12vh; } }
@@ -2267,7 +2384,7 @@ body {
       margin-left: 2.2rem; }
     .sideNavDesktop--item-text {
       margin-left: 2px;
-      font-size: 2rem; }
+      font-size: 1.6rem; }
       .sideNavDesktop--item-text::selection {
         color: #d6d6d6;
         background: transparent; }
@@ -2314,9 +2431,13 @@ body {
   .sideNavTopic--title {
     font-size: 2.5rem;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); }
+    transform: translateY(-50%);
+    opacity: 0;
+    animation: textFadeIn 0.5s linear forwards; }
     @media only screen and (max-width: 37.5em) {
       .sideNavTopic--title {
         left: 50%;
@@ -2763,18 +2884,20 @@ body {
     .userPage--top-user {
       position: absolute;
       top: 33vh;
-      left: 9vw;
+      left: 5vw;
       display: grid;
       grid-template-rows: min-content min-content;
       grid-template-columns: max-content max-content; }
       @media only screen and (max-width: 37.5em) {
         .userPage--top-user {
           top: 45%;
-          left: 2.5%; } }
+          left: 5%;
+          right: 5vw; } }
       @media only screen and (max-height: 37.5em) {
         .userPage--top-user {
           top: 25%;
-          left: 2.5%; } }
+          left: 5%;
+          right: 5vw; } }
       .userPage--top-user-img {
         grid-row: 1 / 3;
         grid-column: 1 / 2;
@@ -2834,26 +2957,26 @@ body {
     .userPage--top-menu {
       position: absolute;
       bottom: 0;
-      left: 8vw;
+      left: 5vw;
       color: white;
       letter-spacing: 0.3rem;
       padding: 1rem 0; }
       @media only screen and (max-width: 37.5em) {
         .userPage--top-menu {
-          left: 0;
-          right: 0;
+          left: 5vw;
+          right: 5vw;
           display: flex;
           flex-flow: row;
-          width: 95%;
+          width: 90vw;
           margin: 0.5rem auto;
           justify-content: space-between; } }
       @media only screen and (max-height: 37.5em) {
         .userPage--top-menu {
-          left: 0;
-          right: 0;
+          left: 5vw;
+          right: 5vw;
           display: flex;
           flex-flow: row;
-          width: 95%;
+          width: 90vw;
           margin: 0.5rem auto;
           justify-content: space-between; } }
       .userPage--top-menu .menu-item {
@@ -2864,11 +2987,13 @@ body {
           .userPage--top-menu .menu-item {
             padding: 0;
             font-size: 3rem; } }
+      .userPage--top-menu .menu-item:first-of-type {
+        padding-left: 0; }
     .userPage--top-cover {
       opacity: 0.8;
       position: absolute;
       bottom: 8vh;
-      right: 4vw;
+      right: 5vw;
       color: white;
       font-size: 2.5rem;
       background-color: #3b3b3b;
@@ -2878,6 +3003,10 @@ body {
       @media only screen and (max-width: 37.5em) {
         .userPage--top-cover {
           display: none; } }
+      @media only screen and (max-height: 37.5em) {
+        .userPage--top-cover {
+          bottom: 20vh;
+          right: 5vw; } }
       .userPage--top-cover:hover {
         opacity: 1;
         cursor: pointer;
@@ -2895,20 +3024,22 @@ body {
     column-gap: 3rem;
     align-items: center;
     margin: 0 auto;
-    width: 95%; }
+    width: 90%; }
     @media only screen and (max-width: 37.5em) {
       .userPage--home {
         margin: 0 auto;
-        width: 95%;
+        width: 90%;
         display: flex;
         flex-flow: column; } }
     .userPage--home .subheading {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       color: white;
-      letter-spacing: 0.3rem; }
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      word-spacing: 0.6rem; }
     .userPage--home .aboutName {
-      font-size: 2.8rem;
-      font-weight: 700;
+      font-size: 2.5rem;
+      text-transform: uppercase;
       letter-spacing: 0.3rem; }
     .userPage--home-about {
       align-self: start;
@@ -2999,12 +3130,18 @@ body {
             .userPage--home-spotlight .spotlight .spotlight-info-actions-like {
               display: flex;
               align-items: center; }
+              .userPage--home-spotlight .spotlight .spotlight-info-actions-like:hover {
+                cursor: pointer; }
             .userPage--home-spotlight .spotlight .spotlight-info-actions-comment {
               display: flex;
               align-items: center; }
+              .userPage--home-spotlight .spotlight .spotlight-info-actions-comment:hover {
+                cursor: pointer; }
           .userPage--home-spotlight .spotlight .spotlight-info .infoIcon {
             font-size: 2rem;
             margin-right: 0.8rem; }
+    .userPage--home .noAbout {
+      grid-column: 1 / -1; }
     .userPage--home-posts {
       margin-top: 4rem;
       grid-row: 2 / 3;
@@ -3023,7 +3160,7 @@ body {
         display: flex; }
         @media only screen and (max-width: 37.5em) {
           .userPage--home .popular-slider {
-            width: 95vw; } }
+            width: 90vw; } }
         .userPage--home .popular-slider-leftButton {
           z-index: 2;
           position: absolute;
@@ -4496,9 +4633,6 @@ body {
             transition: all 0.25s ease; }
           .settingsDesk-main .gallerySection .gallery .SingleImage:hover {
             cursor: pointer; }
-      .settingsDesk-main .gallerySection .noPosts {
-        font-size: 3rem;
-        color: white; }
       .settingsDesk-main .gallerySection::-webkit-scrollbar {
         width: 7px; }
       .settingsDesk-main .gallerySection::-webkit-scrollbar-thumb {
@@ -4506,6 +4640,10 @@ body {
         border-radius: 5px; }
       .settingsDesk-main .gallerySection::-webkit-scrollbar-track {
         background: #505050; }
+    .settingsDesk-main .noPosts {
+      font-size: 3rem;
+      color: white;
+      padding: 2rem 0; }
     .settingsDesk-main .profile-items {
       padding-top: 4rem;
       padding-bottom: 4rem;
@@ -4992,8 +5130,10 @@ body {
         width: 100%;
         height: calc(100vh - 18rem);
         display: flex;
+        flex-flow: column;
         overflow: hidden;
         overflow-y: scroll;
+        align-items: center;
         /*&::-webkit-scrollbar {
           width: 7px;
         }
@@ -5006,11 +5146,12 @@ body {
         }*/ }
         @media only screen and (max-width: 37.5em) {
           .settingsMobile-carousel--profileSection .gallerySection {
-            padding: 2rem 1rem; } }
+            padding: 2rem 5vw; } }
         @media only screen and (max-height: 37.5em) {
           .settingsMobile-carousel--profileSection .gallerySection {
             padding: 2rem 1rem; } }
         .settingsMobile-carousel--profileSection .gallerySection .gallery {
+          margin-top: 2rem;
           width: 100%;
           height: max-content;
           columns: 4;
@@ -5033,6 +5174,9 @@ body {
               transition: all 0.25s ease; }
             .settingsMobile-carousel--profileSection .gallerySection .gallery .SingleImage:hover {
               cursor: pointer; }
+        .settingsMobile-carousel--profileSection .gallerySection .noPosts {
+          font-size: 3rem;
+          color: white; }
       .settingsMobile-carousel--profileSection .profile-items {
         width: 100%;
         padding: 2rem 2rem;
@@ -5415,7 +5559,9 @@ body {
   .followed .user {
     position: relative;
     height: 7rem;
-    margin-bottom: 2rem; }
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: appear 0.5s linear forwards; }
     .followed .user .userImg {
       position: absolute;
       top: 50%;
@@ -5424,8 +5570,7 @@ body {
       width: 6rem;
       height: 6rem;
       background-size: cover;
-      background-position-x: center;
-      background-position-y: center; }
+      background-position: center; }
     .followed .user .username {
       position: absolute;
       top: 0.5rem;
@@ -5440,6 +5585,35 @@ body {
       left: 7.5rem;
       color: white;
       font-size: 1.6rem; }
+  .followed .userNotLoaded {
+    position: relative;
+    height: 7rem;
+    margin-bottom: 2rem; }
+    .followed .userNotLoaded .userImg {
+      position: absolute;
+      top: 50%;
+      left: 0.5rem;
+      transform: translateY(-50%);
+      width: 6rem;
+      height: 6rem;
+      background-color: #3a3a3ab7;
+      animation: pulse 2s linear infinite; }
+    .followed .userNotLoaded .username {
+      position: absolute;
+      top: 0.5rem;
+      left: 7.5rem;
+      height: 3.5rem;
+      width: 10rem;
+      background-color: #3a3a3ab7;
+      animation: pulse 2s linear infinite; }
+    .followed .userNotLoaded .userFollowers {
+      position: absolute;
+      top: 4.7rem;
+      left: 7.5rem;
+      height: 1.6rem;
+      width: 10rem;
+      background-color: #3a3a3ab7;
+      animation: pulse 2s linear infinite; }
   .followed .slider {
     position: relative;
     margin-bottom: 5rem;
@@ -5500,7 +5674,9 @@ body {
         width: max-content;
         border-radius: 5px;
         background-color: black;
-        position: relative; }
+        position: relative;
+        opacity: 0;
+        animation: appear 0.5s linear forwards; }
         .followed .slider .followedItems .item .img {
           height: 20rem;
           border-radius: 10px;
@@ -5533,6 +5709,17 @@ body {
           opacity: 0.6; }
         .followed .slider .followedItems .item:hover .imgInfo {
           opacity: 1; }
+      .followed .slider .followedItems .itemNotLoaded {
+        scroll-snap-align: start;
+        height: 20rem;
+        width: 30rem;
+        border-radius: 5px;
+        background-color: #666666; }
+    .followed .slider .followedItems-notLoaded {
+      height: 20rem;
+      width: 100%;
+      background-color: #3a3a3ab7;
+      animation: pulse 2s linear infinite; }
 
 .LoginModal {
   width: 100%;

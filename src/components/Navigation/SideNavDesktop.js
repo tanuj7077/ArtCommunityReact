@@ -302,20 +302,6 @@ const SideNavDesktop = () => {
               )}
             />
 
-            {/* <Route
-              render={({ history }) => (
-                <div
-                  onClick={() => {
-                    history.push(`/daily`);
-                  }}
-                  className="sideNavDesktopShort--item sideNavDesktopShort--daily"
-                  onMouseEnter={() => addHover("daily")}
-                  onMouseLeave={() => removeHover("daily")}
-                >
-                  <IoToday className="sideNavDesktopShort--item-icon" />
-                </div>
-              )}
-            /> */}
             <Route
               render={({ history }) => (
                 <div
@@ -365,20 +351,6 @@ const SideNavDesktop = () => {
                 </div>
               )}
             />
-            {/* <Route
-              render={({ history }) => (
-                <div
-                  onClick={() => {
-                    history.push(`/daily`);
-                  }}
-                  className="sideNavDesktop--item sideNavDesktop--daily"
-                  onMouseEnter={() => addHover("daily")}
-                  onMouseLeave={() => removeHover("daily")}
-                >
-                  <div className="sideNavDesktop--item-text">Daily</div>
-                </div>
-              )}
-            /> */}
             <Route
               render={({ history }) => (
                 <div

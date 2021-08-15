@@ -79,8 +79,7 @@ const Followed = (userId) => {
 
   return (
     <div className="followed">
-      <div className="user">
-        {/* <img src={blank} alt="userImg" className="userImg" /> */}
+      {username && <div className="user">
         <div
           className="userImg"
           style={{
@@ -104,9 +103,15 @@ const Followed = (userId) => {
             </span>
           )}
         />
-        {/* <span className="username">{username}</span> */}
         <span className="userFollowers">{followers} Followers</span>
-      </div>
+      </div>}
+      {!username &&
+        <div className="userNotLoaded">
+        <div className="userImg"></div>
+        <span className="username"></span>
+        <span className="userFollowers"></span>
+        </div>
+      }
       <div className="slider">
         <span
           className="leftButton"
@@ -155,7 +160,20 @@ const Followed = (userId) => {
                 </div>
               );
             })}
+          {/* {posts && posts.length === 0 &&
+            <>
+              <span className="itemNotLoaded">
+              </span>
+              <span className="itemNotLoaded">
+              </span>
+              <span className="itemNotLoaded">
+              </span>
+            </>
+          } */}
         </div>
+        {posts && posts.length === 0 &&
+          <div className="followedItems-notLoaded"></div>
+        }
 
         <span
           className="rightButton"
