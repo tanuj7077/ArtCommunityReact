@@ -960,6 +960,7 @@ body {
   overflow: hidden;
   opacity: 0;
   transform: scale(0.1);
+  transform-origin: top;
   animation: appear 0.2s linear forwards; }
   .searchResults .subHeading {
     font-size: 3rem;
@@ -1418,7 +1419,9 @@ body {
       background-size: cover;
       background-position: center;
       transition: all 0.2s ease;
-      opacity: 0.7; }
+      opacity: 0.7;
+      transform: scale(1.1);
+      filter: blur(2px); }
     .exploreGrid .grid-item--exploreCard-text {
       text-transform: uppercase;
       letter-spacing: 0.2rem;
@@ -1430,12 +1433,14 @@ body {
       top: 50%;
       transform: translate(-50%, -50%);
       opacity: 0;
-      animation: textFadeIn 0.5s 0.5s linear forwards; }
+      animation: textFadeIn 0.5s 0.5s linear forwards;
+      transition: color 0.2s; }
     .exploreGrid .grid-item--exploreCard:hover .grid-item--exploreCard-img {
       opacity: 1;
-      transform: scale(1.1); }
+      transform: scale(1);
+      filter: blur(0); }
     .exploreGrid .grid-item--exploreCard:hover .grid-item--exploreCard-text {
-      opacity: 0.3; }
+      color: transparent; }
 
 .explorePage {
   background-color: black;
@@ -1475,7 +1480,9 @@ body {
         transition: all 0.2s ease-in;
         border-radius: 1rem;
         display: block;
-        opacity: 0.5; }
+        opacity: 0.5;
+        filter: blur(3px);
+        transform: scale(1.1); }
       .explorePage--grid-item--card-title {
         text-transform: uppercase;
         color: white;
@@ -1496,9 +1503,10 @@ body {
           color: white; }
       .explorePage--grid-item--card:hover .explorePage--grid-item--card-img {
         opacity: 1;
-        transform: scale(1.04); }
+        filter: blur(0px);
+        transform: scale(1); }
       .explorePage--grid-item--card:hover .explorePage--grid-item--card-title {
-        opacity: 0; }
+        color: transparent; }
 
 .main {
   background-color: black;

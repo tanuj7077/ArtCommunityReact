@@ -125,13 +125,8 @@ const customStyles = {
 };
 
 const SubmitModal = () => {
-  const {
-    closeSubmitModal,
-    userData,
-    changeAlert,
-    loading,
-    setLoading,
-  } = useGlobalContext();
+  const { closeSubmitModal, userData, changeAlert, loading, setLoading } =
+    useGlobalContext();
 
   const [image, setImage] = useState("");
   const [toSendImage, setToSendImage] = useState("");
@@ -147,6 +142,7 @@ const SubmitModal = () => {
       let reader = new FileReader();
       setToSendImage(e.target.files[0]);
       reader.onload = (e) => {
+        console.log("executed");
         setImage(e.target.result);
         setIsUploaded(true);
       };
@@ -194,7 +190,6 @@ const SubmitModal = () => {
                 post
               )
               .then((res) => {
-                console.log(res.data);
                 changeAlert(res.data.message);
               });
             setLoading(0);
@@ -209,8 +204,7 @@ const SubmitModal = () => {
   const fetchTags = async () => {
     await axios
       .get("https://shielded-woodland-79171.herokuapp.com/tags/fetchTags")
-      .then((res) => setTags(res.data))
-      .then(console.log(tags));
+      .then((res) => setTags(res.data));
     //Initialize all data
   };
   useEffect(() => {

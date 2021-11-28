@@ -1,4 +1,10 @@
-import React, { useEffect, useReducer, useCallback, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useReducer,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import SinglePost from "./SinglePost";
@@ -6,15 +12,16 @@ import axios from "axios";
 import { useGlobalContext } from "../../context";
 
 const PostList = () => {
-
   const [totalPages, setTotalPages] = useState(1);
   const getTotalPages = async () => {
-    let total = await axios.get("http://localhost:8000/posts/totalPosts");
+    let total = await axios.get(
+      "https://shielded-woodland-79171.herokuapp.com/posts/totalPosts"
+    );
     setTotalPages(total.data);
-  }
+  };
   useEffect(() => {
     getTotalPages();
-  },[])
+  }, []);
 
   const imgReducer = (state, action) => {
     switch (action.type) {
@@ -80,29 +87,27 @@ const PostList = () => {
     }
   }, [scrollObserver, bottomBoundaryRef]);
 
-
   return (
     <div className="main">
       <div className="subHeading">Discover</div>
       <ResponsiveMasonry
         columnsCountBreakPoints={{ 350: 1, 600: 2, 750: 2, 900: 3, 1000: 4 }}
       >
-        <Masonry 
-        gutter="10px">
+        <Masonry gutter="10px">
           {imgData.images.map((post) => {
             return <SinglePost key={post.name} {...post} />;
           })}
         </Masonry>
       </ResponsiveMasonry>
       <div className="endMessage">
-          {imgData.images.length !== totalPages && imgData.fetching &&
-        <span className="loadingAnim">Loading...</span>
-      }
-      {imgData.images.length >= totalPages &&
-        <span className="completed">Thats all Folks</span>
-      }
+        {imgData.images.length !== totalPages && imgData.fetching && (
+          <span className="loadingAnim">Loading...</span>
+        )}
+        {imgData.images.length >= totalPages && (
+          <span className="completed">Thats all Folks</span>
+        )}
       </div>
-      
+
       <div
         id="page-bottom-boundary"
         style={{ border: "10px solid transparent" }}

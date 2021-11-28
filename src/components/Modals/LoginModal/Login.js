@@ -6,13 +6,8 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isValid, setIsValid] = useState(1);
-  const {
-    closeLoginModal2,
-    setIsLoggedIn,
-    setUserData,
-    changeAlert,
-    alert,
-  } = useGlobalContext();
+  const { closeLoginModal2, setIsLoggedIn, setUserData, changeAlert, alert } =
+    useGlobalContext();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -23,8 +18,8 @@ const Signin = () => {
       };
       await axios
         .post(
-          // "https://shielded-woodland-79171.herokuapp.com/auth/signin",
-          "http://localhost:8000/auth/signin",
+          "https://shielded-woodland-79171.herokuapp.com/auth/signin",
+          //"http://localhost:8000/auth/signin",
           loginData
         )
         .then((res) => {
