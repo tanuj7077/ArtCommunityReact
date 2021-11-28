@@ -6,10 +6,8 @@ import React, {
   useState,
 } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-
-import SinglePost from "./SinglePost";
 import axios from "axios";
-import { useGlobalContext } from "../../context";
+import SinglePost from "./SinglePost";
 
 const PostList = () => {
   const [totalPages, setTotalPages] = useState(1);

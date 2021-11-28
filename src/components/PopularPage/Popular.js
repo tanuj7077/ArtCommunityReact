@@ -20,6 +20,7 @@ const Popular = () => {
   useEffect(() => {
     getTotalPages();
   }, []);
+
   const imgReducer = (state, action) => {
     switch (action.type) {
       case "STACK_IMAGES":
@@ -71,7 +72,6 @@ const Popular = () => {
         entries.forEach((en) => {
           if (en.intersectionRatio > 0) {
             pagerDispatch({ type: "ADVANCE_PAGE" });
-            console.log(pager.page);
           }
         });
       }).observe(node);
