@@ -50,7 +50,7 @@ const Popular = () => {
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
     fetch(
-      `https://shielded-woodland-79171.herokuapp.com/posts/getPopular?page=${pager.page}&limit=4`
+      `https://shielded-woodland-79171.herokuapp.com/posts/getPopular?page=${pager.page}&limit=12`
     )
       .then((data) => data.json())
       .then((images) => {

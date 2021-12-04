@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import axios from "axios";
 
@@ -19,7 +19,6 @@ function App() {
   const getLoggedIn = async () => {
     const loggedInRes = await axios.get(
       "https://shielded-woodland-79171.herokuapp.com/auth/loggedIn"
-      //"http://localhost:8000/auth/loggedIn"
     );
     if (loggedInRes.data.loggedIn) {
       setIsLoggedIn(true);
