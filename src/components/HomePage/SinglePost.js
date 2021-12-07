@@ -4,15 +4,11 @@ import axios from "axios";
 import blank from "../../tagImage/blankProfile.png";
 import { AiTwotoneHeart } from "react-icons/ai";
 import { MdComment } from "react-icons/md";
-import { useGlobalContext } from "../../context";                
+import { useGlobalContext } from "../../context";
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
-  const {
-    isLoggedIn,
-    userData,
-    openLoginModal2,
-    changeAlert,
-  } = useGlobalContext();
+  const { isLoggedIn, userData, setSignupModalVisibility, changeAlert } =
+    useGlobalContext();
   let userUrl =
     "https://shielded-woodland-79171.herokuapp.com/users/hoverUser/" +
     author.id;
@@ -105,7 +101,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
 
   async function handleLike() {
     if (!isLoggedIn) {
-      openLoginModal2();
+      setSignupModalVisibility(true);
     } else {
       const data = {
         user: userData,
@@ -121,7 +117,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
           changeAlert(res.data.message);
           if (res.data.message.type === "success") {
             likesArray.push(userData._id);
-          } 
+          }
         });
     }
   }
@@ -254,19 +250,25 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
               <span className="grid-item--card-icons-likes-count">
                 {typeof likesArray === "undefined" ? `0` : likesArray.length}
               </span>
-              <AiTwotoneHeart  className="grid-item--card-icons-likes-icon" onClick={handleLike}/>
+              <AiTwotoneHeart
+                className="grid-item--card-icons-likes-icon"
+                onClick={handleLike}
+              />
             </section>
             <section className="grid-item--card-icons-comments">
               <span className="grid-item--card-icons-comments-count">
                 {typeof comments === "undefined" ? `0` : comments.length}
               </span>
               <Route
-              render={({ history }) => (
-                <MdComment className="grid-item--card-icons-comments-icon" onClick={() => {
-                    history.push(`/post/${_id}`);
-                  }}/>
-              )}
-            />
+                render={({ history }) => (
+                  <MdComment
+                    className="grid-item--card-icons-comments-icon"
+                    onClick={() => {
+                      history.push(`/post/${_id}`);
+                    }}
+                  />
+                )}
+              />
               {/* <MdComment className="grid-item--card-icons-comments-icon"/> */}
             </section>
           </div>

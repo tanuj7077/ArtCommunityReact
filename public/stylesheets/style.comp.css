@@ -5955,6 +5955,255 @@ body {
         .LoginModal-body-form .signupForm .form {
           width: 100%; }
 
+.signupModal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1600;
+  display: grid;
+  place-items: center; }
+  .signupModal-backdrop {
+    z-index: 1601;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0); }
+  .signupModal-modal {
+    z-index: 1602;
+    width: 75rem;
+    height: 50rem;
+    border-radius: 1rem;
+    background-color: white;
+    display: flex;
+    overflow: hidden; }
+    .signupModal-modal-left {
+      width: 33rem;
+      height: 100%;
+      position: relative; }
+      .signupModal-modal-left-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center; }
+      .signupModal-modal-left-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 2.5rem;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between; }
+        .signupModal-modal-left-text .logo {
+          height: 4rem;
+          width: 4rem; }
+        .signupModal-modal-left-text .text-large {
+          font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
+          font-size: 3.5rem;
+          font-weight: 900;
+          color: #fff2df; }
+        .signupModal-modal-left-text .text-small {
+          margin-top: 1rem;
+          font-size: 1.6rem;
+          color: #d8cdbb; }
+    .signupModal-modal-right {
+      width: 42rem;
+      height: 100%;
+      background-color: white;
+      position: relative;
+      display: grid;
+      place-items: center; }
+      .signupModal-modal-right-login {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        padding: 3rem;
+        gap: 2rem; }
+        .signupModal-modal-right-login-headingSection {
+          display: flex;
+          flex-flow: column; }
+          .signupModal-modal-right-login-headingSection .heading {
+            color: black;
+            font-size: 3rem;
+            font-weight: 700; }
+          .signupModal-modal-right-login-headingSection .subheading {
+            margin-top: 0.5rem;
+            font-size: 1.6rem; }
+            .signupModal-modal-right-login-headingSection .subheading-text {
+              color: #6b6b6b; }
+            .signupModal-modal-right-login-headingSection .subheading-alternative {
+              margin-left: 0.8rem;
+              font-weight: bold;
+              color: #007be0; }
+              .signupModal-modal-right-login-headingSection .subheading-alternative:hover {
+                cursor: pointer; }
+        .signupModal-modal-right-login-form {
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          gap: 2rem;
+          overflow: hidden;
+          overflow-y: auto; }
+          .signupModal-modal-right-login-form .formGrpLargeInput {
+            width: 100%;
+            height: 4.2rem;
+            border-radius: 1rem;
+            position: relative; }
+            .signupModal-modal-right-login-form .formGrpLargeInput-input {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: #ecf1fd;
+              border: none;
+              outline: none;
+              padding: 1.5rem;
+              padding-top: 2.2rem;
+              padding-bottom: 0.8rem;
+              border-radius: 1rem;
+              font-weight: bold;
+              color: #001138;
+              z-index: 1602;
+              border: 0.1rem solid transparent;
+              transition: background-color 0.3s ease; }
+              .signupModal-modal-right-login-form .formGrpLargeInput-input:focus {
+                border: 0.1rem solid #adc6ff;
+                background-color: white; }
+              .signupModal-modal-right-login-form .formGrpLargeInput-input:focus + label,
+              .signupModal-modal-right-login-form .formGrpLargeInput-input:valid + label {
+                visibility: visible;
+                top: 0.6rem;
+                transition: all 0.3s ease;
+                color: #7aa2ff; }
+              .signupModal-modal-right-login-form .formGrpLargeInput-input::placeholder {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 1.5rem;
+                font-size: 1.2rem;
+                font-family: "Nunito", sans-serif;
+                font-weight: normal;
+                opacity: 1;
+                transition: all 0s 0.3s ease;
+                color: #1b1980;
+                text-transform: uppercase; }
+              .signupModal-modal-right-login-form .formGrpLargeInput-input:focus::placeholder {
+                opacity: 0;
+                transition: none; }
+            .signupModal-modal-right-login-form .formGrpLargeInput-label {
+              position: absolute;
+              top: 1.5rem;
+              left: 1.6rem;
+              font-size: 1.2rem;
+              visibility: hidden;
+              z-index: 1603;
+              transition: all 0.3s ease;
+              color: #1b1980;
+              text-transform: uppercase; }
+          .signupModal-modal-right-login-form .formGrpSmallInputGrp {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            height: 4.2rem; }
+            .signupModal-modal-right-login-form .formGrpSmallInputGrp .smallInput {
+              width: calc(50% - 0.7rem);
+              border-radius: 1rem;
+              position: relative; }
+              .signupModal-modal-right-login-form .formGrpSmallInputGrp .smallInput-input {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: #ecf1fd;
+                border: none;
+                outline: none;
+                padding: 1.5rem;
+                padding-top: 2.2rem;
+                padding-bottom: 0.8rem;
+                border-radius: 1rem;
+                font-weight: bold;
+                color: #001138;
+                z-index: 1602;
+                border: 0.1rem solid transparent;
+                transition: background-color 0.3s ease; }
+                .signupModal-modal-right-login-form .formGrpSmallInputGrp .smallInput-input:focus {
+                  border: 0.1rem solid #adc6ff;
+                  background-color: white; }
+                .signupModal-modal-right-login-form .formGrpSmallInputGrp .smallInput-input:focus + label,
+                .signupModal-modal-right-login-form .formGrpSmallInputGrp .smallInput-input:valid + label {
+                  visibility: visible;
+                  top: 0.6rem;
+                  transition: all 0.3s ease;
+                  color: #7aa2ff; }
+                .signupModal-modal-right-login-form .formGrpSmallInputGrp .smallInput-input::placeholder {
+                  position: absolute;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  left: 1.5rem;
+                  font-size: 1.2rem;
+                  font-family: "Nunito", sans-serif;
+                  font-weight: normal;
+                  opacity: 1;
+                  transition: all 0s 0.3s ease;
+                  color: #1b1980;
+                  text-transform: uppercase; }
+                .signupModal-modal-right-login-form .formGrpSmallInputGrp .smallInput-input:focus::placeholder {
+                  opacity: 0;
+                  transition: none; }
+              .signupModal-modal-right-login-form .formGrpSmallInputGrp .smallInput-label {
+                position: absolute;
+                top: 1.5rem;
+                left: 1.6rem;
+                font-size: 1.2rem;
+                visibility: hidden;
+                z-index: 1603;
+                transition: all 0.3s ease;
+                color: #1b1980;
+                text-transform: uppercase; }
+          .signupModal-modal-right-login-form .formGrpBtn {
+            width: 100%; }
+            .signupModal-modal-right-login-form .formGrpBtn-btn {
+              text-transform: uppercase;
+              letter-spacing: 0.2rem;
+              width: 100%;
+              padding: 1.4rem;
+              text-align: center;
+              outline: none;
+              border: none;
+              font-size: 1.4rem;
+              color: white;
+              background-color: #007be0;
+              border-radius: 2.1rem; }
+              .signupModal-modal-right-login-form .formGrpBtn-btn:hover {
+                cursor: pointer; }
+              .signupModal-modal-right-login-form .formGrpBtn-btn:focus {
+                border: 0.1rem solid #007be0;
+                background-color: white;
+                color: #007be0; }
+            .signupModal-modal-right-login-form .formGrpBtn-alternate {
+              width: 100%;
+              text-align: center;
+              margin-top: 0.5rem;
+              font-size: 1.6rem;
+              color: #007be0;
+              font-weight: bold; }
+              .signupModal-modal-right-login-form .formGrpBtn-alternate:hover {
+                cursor: pointer; }
+      .signupModal-modal-right .login {
+        gap: 7rem; }
+      .signupModal-modal-right .signup {
+        justify-content: space-between; }
+
 .floatingButton {
   position: fixed;
   bottom: 3.5rem;

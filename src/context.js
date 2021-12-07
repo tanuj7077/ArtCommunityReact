@@ -9,8 +9,6 @@ const AppProvider = ({ children }) => {
   const [explorePageTags, setExplorePageTags] = useState([]);
   const [homePageTags, setHomePageTags] = useState([]);
   const [submitModal, setsubmitModal] = useState(false);
-  const [loginModal, setloginModal] = useState(false);
-  const [loginModal2, setloginModal2] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [userData, setUserData] = useState({});
   const [submitCoverModal, setSubmitCoverModal] = useState(false);
@@ -26,7 +24,6 @@ const AppProvider = ({ children }) => {
     );
     console.log(result.data);
   };
-
   useEffect(() => {
     updatePostsBackend();
   }, []);
@@ -74,6 +71,10 @@ const AppProvider = ({ children }) => {
   }, []);
   //----------------------END---------------------//
 
+  //--------------------For Signup and Login------------------//
+  const [signupModalVisibility, setSignupModalVisibility] = useState(false);
+  //----------------------END---------------------//
+
   const changeAlert = (msg) => {
     setAlert(msg);
     setShowAlert(1);
@@ -104,31 +105,71 @@ const AppProvider = ({ children }) => {
     setsubmitModal(false);
   };
 
-  const openLoginModal = () => {
-    setloginModal(true);
-  };
-
-  const closeLoginModal = () => {
-    setloginModal(false);
-  };
-  const openLoginModal2 = () => {
-    setloginModal2(true);
-  };
-
-  const closeLoginModal2 = () => {
-    setloginModal2(false);
-  };
-
   const switchToLogin = () => {
     setIsLogin(true);
   };
   const switchToSignup = () => {
     setIsLogin(false);
   };
-
-  // useEffect(() => {
-  //   fetchPosts();
-  // }, []);
+  const login = async (email, password) => {
+    try {
+      const loginData = {
+        email,
+        password,
+      };
+      await axios
+        .post(
+          "https://shielded-woodland-79171.herokuapp.com/auth/signin",
+          loginData
+        )
+        .then((res) => {
+          if (res.data.success) {
+            console.log(res.data);
+            setUserData(res.data.userData);
+            setIsLoggedIn(true);
+            changeAlert(res.data.message);
+            setSignupModalVisibility(false);
+          } else {
+            changeAlert(res.data.message);
+            console.log(alert);
+          }
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const register = async (
+    signupUsername,
+    signupFullname,
+    signupEmail,
+    signupPassword,
+    signupPasswordConf
+  ) => {
+    try {
+      const registerData = {
+        username: signupUsername,
+        fullname: signupFullname,
+        email: signupEmail,
+        password: signupPassword,
+        password_confirmation: signupPasswordConf,
+      };
+      await axios
+        .post(
+          "https://shielded-woodland-79171.herokuapp.com/auth/signup",
+          registerData
+        )
+        .then((res) => {
+          if (res.data.success) {
+            setSignupModalVisibility(false);
+            changeAlert(res.data.message);
+          } else {
+            changeAlert(res.data.message);
+          }
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     fetchExploreTags();
@@ -146,9 +187,6 @@ const AppProvider = ({ children }) => {
         openSubmitModal,
         closeSubmitModal,
         submitModal,
-        openLoginModal,
-        closeLoginModal,
-        loginModal,
         isLogin,
         switchToLogin,
         switchToSignup,
@@ -163,9 +201,6 @@ const AppProvider = ({ children }) => {
         closeSubmitProfilePicModal,
         page,
         setPage,
-        loginModal2,
-        openLoginModal2,
-        closeLoginModal2,
         alert,
         changeAlert,
         showAlert,
@@ -173,6 +208,10 @@ const AppProvider = ({ children }) => {
         updatePostsBackend,
         loading,
         setLoading,
+        signupModalVisibility,
+        setSignupModalVisibility,
+        login,
+        register,
       }}
     >
       {children}

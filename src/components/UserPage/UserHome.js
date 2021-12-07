@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
-import { useGlobalContext } from "../../context"; 
+import { useGlobalContext } from "../../context";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import {
   FaBirthdayCake,
@@ -16,12 +16,8 @@ import { HiLocationMarker } from "react-icons/hi";
 import { AiOutlineLink, AiFillInstagram, AiFillLike } from "react-icons/ai";
 
 const UserHome = ({ user, popular, liked, spotlight }) => {
-  const {
-    isLoggedIn,
-    userData,
-    openLoginModal2,
-    changeAlert,
-  } = useGlobalContext();
+  const { isLoggedIn, userData, changeAlert, setSignupModalVisibility } =
+    useGlobalContext();
   const sliderRef = useRef(null);
   const rightBtnRef = useRef(null);
   const [btnVisibility, setBtnVisibility] = useState(false);
@@ -46,7 +42,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
 
   async function handleLike() {
     if (!isLoggedIn) {
-      openLoginModal2();
+      setSignupModalVisibility(true);
     } else {
       const data = {
         user: userData,
@@ -62,7 +58,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
           changeAlert(res.data.message);
           if (res.data.message.type === "success") {
             spotlight.likesArray.push(userData._id);
-          } 
+          }
         });
     }
   }
@@ -193,11 +189,17 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
           </div>
         )}
 
-      <div className={`userPage--home-spotlight ${(!user.personalInfo ||
-        !user.extras ||
-        !user.extras.profession ||
-        !user.extras.extra ||
-        !user.personalInfo.dob)?"noAbout":""}`}>
+      <div
+        className={`userPage--home-spotlight ${
+          !user.personalInfo ||
+          !user.extras ||
+          !user.extras.profession ||
+          !user.extras.extra ||
+          !user.personalInfo.dob
+            ? "noAbout"
+            : ""
+        }`}
+      >
         <section className="subheading u-margin-bottom-small">
           <span>Spotlight</span>
         </section>
@@ -222,7 +224,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
             <div className="spotlight-info-actions">
               {spotlight && spotlight.likesArray && (
                 <span className="spotlight-info-actions-like">
-                  <AiFillLike class="infoIcon" onClick={ handleLike }/>
+                  <AiFillLike class="infoIcon" onClick={handleLike} />
                   <span className="text">{spotlight.likesArray.length}</span>
                 </span>
               )}
@@ -230,9 +232,12 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
                 <span className="spotlight-info-actions-comment">
                   <Route
                     render={({ history }) => (
-                      <FaCommentDots class="infoIcon" onClick={() => {
+                      <FaCommentDots
+                        class="infoIcon"
+                        onClick={() => {
                           history.push(`/post/${spotlight._id}`);
-                        }}/>
+                        }}
+                      />
                     )}
                   />
                   {/* <FaCommentDots class="infoIcon" /> */}
@@ -293,7 +298,9 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
         )}
 
         <div className="LikedSection">
-          {liked && liked.length > 0 && <div className="subheading">Liked Posts</div>}
+          {liked && liked.length > 0 && (
+            <div className="subheading">Liked Posts</div>
+          )}
           <div className="Liked">
             {liked.map((item) => {
               return (
@@ -336,7 +343,6 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
             })}
           </div>
         </div>
-
       </div>
     </div>
   );

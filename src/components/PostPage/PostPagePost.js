@@ -5,7 +5,7 @@ import { useGlobalContext } from "../../context";
 import CommentList from "./Comments/CommentList";
 import PostsByUser from "./PostsByUser/PostsByUser";
 import Recommended from "./Recommended/Recommended";
-import LoginModal from "../Modals/LoginModal/LoginModal";
+import SignupModal from "../Modals/LoginModal/SignupModal";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 import blank from "../../tagImage/blankProfile.png";
@@ -43,8 +43,8 @@ const PostPagePost = ({ id }) => {
     isLoggedIn,
     userData,
     setUserData,
-    openLoginModal2,
-    loginModal,
+    setSignupModalVisibility,
+    signupModalVisibility,
     changeAlert,
     updatePostsBackend,
   } = useGlobalContext();
@@ -81,7 +81,7 @@ const PostPagePost = ({ id }) => {
 
   async function handleLike() {
     if (!isLoggedIn) {
-      openLoginModal2();
+      setSignupModalVisibility(true);
     } else {
       const data = {
         user: userData,
@@ -137,7 +137,7 @@ const PostPagePost = ({ id }) => {
   };
   const handleComment = async () => {
     if (!isLoggedIn) {
-      openLoginModal2();
+      setSignupModalVisibility(true);
     } else {
       const data = {
         user: userData,
@@ -162,7 +162,7 @@ const PostPagePost = ({ id }) => {
   };
   const handleFollow = () => {
     if (!isLoggedIn) {
-      openLoginModal2();
+      setSignupModalVisibility(true);
     } else {
       const data = {
         user: userData._id,
@@ -389,7 +389,7 @@ const PostPagePost = ({ id }) => {
           )}
         </div>
       </div>
-      {loginModal && <LoginModal />}
+      {signupModalVisibility && <SignupModal />}
       {expanded && (
         <div className="expandedImage">
           <img className="expandedImage-img" src={Post.image} alt="" />

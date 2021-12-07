@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 import SubmitModal from "../Modals/SubmitModals/SubmitModal";
-import LoginModal2 from "../Modals/LoginModal/LoginModal";
+import SignupModal from "../Modals/LoginModal/SignupModal";
 //import SearchComponent from "../SearchComponent";
 import SearchHandler from "../Search/SearchHandler";
 
@@ -14,8 +14,8 @@ const TopNav = () => {
     openSubmitModal,
     submitModal,
     loading,
-    loginModal2,
-    openLoginModal2,
+    signupModalVisibility,
+    setSignupModalVisibility,
   } = useGlobalContext();
 
   return (
@@ -30,7 +30,10 @@ const TopNav = () => {
           </>
         ) : (
           <>
-            <div className="TopNavDesk--submit" onClick={openLoginModal2}>
+            <div
+              className="TopNavDesk--submit"
+              onClick={() => setSignupModalVisibility(true)}
+            >
               <span>LOGIN</span>
             </div>
           </>
@@ -39,8 +42,7 @@ const TopNav = () => {
 
       {submitModal && <SubmitModal />}
 
-      {/* {loginModal && <LoginModal />} */}
-      {loginModal2 && <LoginModal2 />}
+      {signupModalVisibility && <SignupModal />}
       {loading && (
         <div className="loadingAnimation">
           <div className="modalLoading"></div>

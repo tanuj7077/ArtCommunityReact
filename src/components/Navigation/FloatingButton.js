@@ -4,8 +4,7 @@ import { GoPlus } from "react-icons/go";
 import { AiOutlineLogin } from "react-icons/ai";
 
 import SubmitModal from "../Modals/SubmitModals/SubmitModal";
-import LoginModal from "../Modals/LoginModal/LoginModal";
-import SearchComponent from "../Search/SearchComponent";
+import SignupModal from "../Modals/LoginModal/SignupModal";
 
 import { useGlobalContext } from "../../context";
 
@@ -14,8 +13,8 @@ const FloatingButton = () => {
     isLoggedIn,
     openSubmitModal,
     submitModal,
-    loginModal2,
-    openLoginModal2,
+    signupModalVisibility,
+    setSignupModalVisibility,
   } = useGlobalContext();
 
   return (
@@ -23,21 +22,22 @@ const FloatingButton = () => {
       {isLoggedIn ? (
         <>
           <div className="floatingButton" onClick={openSubmitModal}>
-            {/* <span>SUBMIT</span> */}
             <GoPlus className="floatingButton-icon" />
           </div>
         </>
       ) : (
         <>
-          <div className="floatingButton" onClick={openLoginModal2}>
-            {/* <span>LOGIN</span> */}
+          <div
+            className="floatingButton"
+            onClick={() => setSignupModalVisibility(true)}
+          >
             <AiOutlineLogin className="floatingButton-icon" />
           </div>
         </>
       )}
 
       {submitModal && <SubmitModal />}
-      {loginModal2 && <LoginModal />}
+      {signupModalVisibility && <SignupModal />}
     </>
   );
 };

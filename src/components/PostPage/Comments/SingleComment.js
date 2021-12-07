@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../../context";
 import blank from "../../../tagImage/blankProfile.png";
 
 const SingleComment = ({ id, postId }) => {
-  const { userData, isLoggedIn, openLoginModal2 } = useGlobalContext();
+  const { userData, isLoggedIn, setSignupModalVisibility } = useGlobalContext();
   const [editedComment, setEditedComment] = useState("");
   const [comment, setComment] = useState(null);
   const [likes, setLikes] = useState(0);
@@ -40,7 +40,7 @@ const SingleComment = ({ id, postId }) => {
 
   const likeComment = async () => {
     if (!isLoggedIn) {
-      openLoginModal2();
+      setSignupModalVisibility(true);
     } else {
       const data = {
         user: userData,
