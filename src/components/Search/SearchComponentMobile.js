@@ -91,116 +91,118 @@ const SearchComponent = () => {
               />
             </form>
 
-            <div className="liveSearch-searchResults2">
-              <div className="liveSearch-searchResults2-links">
-                <a className="link" onClick={moveToPosts}>
-                  Posts
-                </a>
-                <a className="link" onClick={moveToAuthors}>
-                  Author
-                </a>
-                <a className="link" onClick={moveToTags}>
-                  Tags
-                </a>
+            {searchTerm.length > 0 && (
+              <div className="liveSearch-searchResults2">
+                <div className="liveSearch-searchResults2-links">
+                  <a className="link" onClick={moveToPosts}>
+                    Posts
+                  </a>
+                  <a className="link" onClick={moveToAuthors}>
+                    Author
+                  </a>
+                  <a className="link" onClick={moveToTags}>
+                    Tags
+                  </a>
+                </div>
+                <div className="liveSearch-searchResults2-carousel">
+                  <div
+                    id="slide-1"
+                    className="liveSearch-searchResults2-carousel--postSection"
+                  >
+                    {post.length > 0 ? (
+                      <>
+                        <ul className="postList">
+                          {post.map((item) => {
+                            return (
+                              <Route
+                                render={({ history }) => (
+                                  <li
+                                    className="item"
+                                    onClick={() => {
+                                      history.push(`/post/${item.postId}`);
+                                    }}
+                                  >
+                                    {item.post}
+                                  </li>
+                                )}
+                              />
+                            );
+                          })}
+                        </ul>
+                      </>
+                    ) : (
+                      <>
+                        <span className="notFound">No post found!</span>
+                      </>
+                    )}
+                  </div>
+                  <div
+                    id="slide-2"
+                    className="liveSearch-searchResults2-carousel--authorSection"
+                  >
+                    {author.length > 0 ? (
+                      <>
+                        <ul className="authorList">
+                          {author.map((item) => {
+                            // return <li className="item">{item}</li>;
+                            return (
+                              <Route
+                                render={({ history }) => (
+                                  <li
+                                    className="item"
+                                    onClick={() => {
+                                      history.push(`/user/${item}`);
+                                    }}
+                                  >
+                                    {item}
+                                  </li>
+                                )}
+                              />
+                            );
+                          })}
+                        </ul>
+                      </>
+                    ) : (
+                      <>
+                        <span className="notFound">No author found!</span>
+                      </>
+                    )}
+                  </div>
+                  <div
+                    id="slide-3"
+                    className="liveSearch-searchResults2-carousel--tagSection"
+                  >
+                    {tag.length > 0 ? (
+                      <>
+                        <ul className="tagList">
+                          {tag.map((item) => {
+                            // return <li className="item">{item}</li>;
+                            return (
+                              <Route
+                                render={({ history }) => (
+                                  <li
+                                    className="item"
+                                    onClick={() => {
+                                      history.push(`../tagSearch/${item}`);
+                                    }}
+                                  >
+                                    {item}
+                                  </li>
+                                )}
+                              />
+                            );
+                          })}
+                        </ul>
+                      </>
+                    ) : (
+                      <>
+                        <span className="notFound">No tag found!</span>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
-              <div className="liveSearch-searchResults2-carousel">
-                <div
-                  id="slide-1"
-                  className="liveSearch-searchResults2-carousel--postSection"
-                >
-                  {post.length > 0 ? (
-                    <>
-                      <ul className="postList">
-                        {post.map((item) => {
-                          return (
-                            <Route
-                              render={({ history }) => (
-                                <li
-                                  className="item"
-                                  onClick={() => {
-                                    history.push(`/post/${item.postId}`);
-                                  }}
-                                >
-                                  {item.post}
-                                </li>
-                              )}
-                            />
-                          );
-                        })}
-                      </ul>
-                    </>
-                  ) : (
-                    <>
-                      <span className="notFound">No post found!</span>
-                    </>
-                  )}
-                </div>
-                <div
-                  id="slide-2"
-                  className="liveSearch-searchResults2-carousel--authorSection"
-                >
-                  {author.length > 0 ? (
-                    <>
-                      <ul className="authorList">
-                        {author.map((item) => {
-                          // return <li className="item">{item}</li>;
-                          return (
-                            <Route
-                              render={({ history }) => (
-                                <li
-                                  className="item"
-                                  onClick={() => {
-                                    history.push(`/user/${item}`);
-                                  }}
-                                >
-                                  {item}
-                                </li>
-                              )}
-                            />
-                          );
-                        })}
-                      </ul>
-                    </>
-                  ) : (
-                    <>
-                      <span className="notFound">No author found!</span>
-                    </>
-                  )}
-                </div>
-                <div
-                  id="slide-3"
-                  className="liveSearch-searchResults2-carousel--tagSection"
-                >
-                  {tag.length > 0 ? (
-                    <>
-                      <ul className="tagList">
-                        {tag.map((item) => {
-                          // return <li className="item">{item}</li>;
-                          return (
-                            <Route
-                              render={({ history }) => (
-                                <li
-                                  className="item"
-                                  onClick={() => {
-                                    history.push(`../tagSearch/${item}`);
-                                  }}
-                                >
-                                  {item}
-                                </li>
-                              )}
-                            />
-                          );
-                        })}
-                      </ul>
-                    </>
-                  ) : (
-                    <>
-                      <span className="notFound">No tag found!</span>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </>
       )}

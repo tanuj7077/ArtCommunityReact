@@ -83,98 +83,100 @@ const SearchComponent = () => {
                 placeholder="Search post, tags or user"
               />
             </form>
-            <div className="searchResults">
-              <div className="searchResults--postSection">
-                <span className="subHeading">Posts</span>
-                {post.length > 0 ? (
-                  <>
-                    <ul className="postList">
-                      {post.map((item) => {
-                        return (
-                          <Route
-                            render={({ history }) => (
-                              <li
-                                className="item"
-                                onClick={() => {
-                                  history.push(`/post/${item.postId}`);
-                                }}
-                              >
-                                {item.post}
-                              </li>
-                            )}
-                          />
-                        );
-                      })}
-                    </ul>
-                  </>
-                ) : (
-                  <>
-                    <span className="notFound">No post found!</span>
-                  </>
-                )}
-              </div>
-              <div className="searchResults--authorSection">
-                <span className="subHeading">Users</span>
-                {author.length > 0 ? (
-                  <>
-                    <ul className="authorList">
-                      {author.map((item) => {
-                        // return <li className="item">{item}</li>;
-                        return (
-                          <Route
-                            render={({ history }) => (
-                              <li
-                                className="item"
-                                onClick={() => {
-                                  history.push(`/user/${item}`);
-                                }}
-                              >
-                                {item}
-                              </li>
-                            )}
-                          />
-                        );
-                      })}
-                    </ul>
-                  </>
-                ) : (
-                  <>
-                    <span className="notFound">No author found!</span>
-                  </>
-                )}
-              </div>
+            {searchTerm.length > 0 && (
+              <div className="searchResults">
+                <div className="searchResults--postSection">
+                  <span className="subHeading">Posts</span>
+                  {post.length > 0 ? (
+                    <>
+                      <ul className="postList">
+                        {post.map((item) => {
+                          return (
+                            <Route
+                              render={({ history }) => (
+                                <li
+                                  className="item"
+                                  onClick={() => {
+                                    history.push(`/post/${item.postId}`);
+                                  }}
+                                >
+                                  {item.post}
+                                </li>
+                              )}
+                            />
+                          );
+                        })}
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <span className="notFound">No post found!</span>
+                    </>
+                  )}
+                </div>
+                <div className="searchResults--authorSection">
+                  <span className="subHeading">Users</span>
+                  {author.length > 0 ? (
+                    <>
+                      <ul className="authorList">
+                        {author.map((item) => {
+                          // return <li className="item">{item}</li>;
+                          return (
+                            <Route
+                              render={({ history }) => (
+                                <li
+                                  className="item"
+                                  onClick={() => {
+                                    history.push(`/user/${item}`);
+                                  }}
+                                >
+                                  {item}
+                                </li>
+                              )}
+                            />
+                          );
+                        })}
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <span className="notFound">No author found!</span>
+                    </>
+                  )}
+                </div>
 
-              <div className="searchResults--tagSection">
-                <span className="subHeading">Tags</span>
-                {tag.length > 0 ? (
-                  <>
-                    <ul className="tagList">
-                      {tag.map((item) => {
-                        // return <li className="item">{item}</li>;
-                        return (
-                          <Route
-                            render={({ history }) => (
-                              <li
-                                className="item"
-                                onClick={() => {
-                                  history.push(`../tagSearch/${item}`);
-                                }}
-                              >
-                                {item}
-                              </li>
-                            )}
-                          />
-                        );
-                      })}
-                    </ul>
-                  </>
-                ) : (
-                  <>
-                    <span className="notFound">No tag found!</span>
-                  </>
-                )}
+                <div className="searchResults--tagSection">
+                  <span className="subHeading">Tags</span>
+                  {tag.length > 0 ? (
+                    <>
+                      <ul className="tagList">
+                        {tag.map((item) => {
+                          // return <li className="item">{item}</li>;
+                          return (
+                            <Route
+                              render={({ history }) => (
+                                <li
+                                  className="item"
+                                  onClick={() => {
+                                    history.push(`../tagSearch/${item}`);
+                                  }}
+                                >
+                                  {item}
+                                </li>
+                              )}
+                            />
+                          );
+                        })}
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <span className="notFound">No tag found!</span>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </>
       )}

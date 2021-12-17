@@ -21,7 +21,10 @@ function SignupModal() {
       <div
         className="signupModal-backdrop"
         onClick={() => setSignupModalVisibility(false)}
-        style={{ backgroundImage: `url(${backdropImg})` }}
+        style={{
+          backgroundImage: `url(${backdropImg})`,
+          backgroundSize: `cover`,
+        }}
       ></div>
       <div className="signupModal-modal">
         <IoClose

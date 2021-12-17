@@ -918,6 +918,14 @@ body {
 .show {
   visibility: visible; }
 
+.liveSearch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 50vw;
+  transform: translateX(-50%); }
+
 .searchForm {
   width: 100%;
   height: 6.5vh;
@@ -931,7 +939,7 @@ body {
     bottom: 0.5rem;
     width: 100%;
     height: 5rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-family: inherit;
     letter-spacing: 0.4rem;
     color: gray;
@@ -958,16 +966,18 @@ body {
   grid-template-rows: repeat(2, min-content);
   grid-template-columns: repeat(7, 1fr);
   overflow: hidden;
+  padding: 2rem;
   opacity: 0;
   transform: scale(0.1);
   transform-origin: top;
   animation: appear 0.2s linear forwards; }
   .searchResults .subHeading {
-    font-size: 3rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
     text-align: start;
-    padding-left: 2.5rem;
-    padding-top: 1rem;
-    color: #6ecf86; }
+    color: #6ecf86;
+    margin-bottom: 1rem; }
   .searchResults--postSection {
     max-height: min-content;
     grid-row: 1 /2;
@@ -983,18 +993,16 @@ body {
       width: 100%;
       overflow: hidden;
       overflow-y: scroll;
-      margin-left: 2rem;
-      border-radius: 1rem; }
+      border-radius: 0.5rem; }
       .searchResults--postSection .postList .item {
         text-align: start;
-        min-height: 5.5rem;
+        font-size: 1.6rem;
         height: max-content;
         background-color: #3b3b3b;
         align-self: center;
-        color: gray;
-        padding-top: 1.5rem;
-        padding-left: 1.5rem;
-        letter-spacing: 0.3rem; }
+        color: #a1a1a1;
+        padding: 1rem 1.5rem;
+        letter-spacing: 0.2rem; }
         .searchResults--postSection .postList .item:hover {
           cursor: pointer;
           background-color: #2b2b2b;
@@ -1015,10 +1023,11 @@ body {
     .searchResults--postSection:hover .postList::-webkit-scrollbar-thumb {
       background: #6ecf86; }
     .searchResults--postSection .notFound {
-      font-size: 2.5rem;
-      color: white;
-      text-align: left;
-      padding-left: 2.5rem; }
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: #b9b9b9;
+      letter-spacing: 0.2rem;
+      text-align: left; }
   .searchResults--authorSection {
     max-height: min-content;
     grid-row: 1 /2;
@@ -1027,26 +1036,22 @@ body {
     display: flex;
     flex-flow: column;
     letter-spacing: 0.3rem; }
-    .searchResults--authorSection .subHeading {
-      padding-left: 1rem; }
     .searchResults--authorSection .authorList {
       list-style-type: none;
       max-height: 25rem;
-      width: 89%;
+      width: 97%;
       overflow: hidden;
       overflow-y: scroll;
-      margin-left: 1rem;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
       font-size: 2rem;
-      color: gray; }
+      color: #a1a1a1; }
       .searchResults--authorSection .authorList .item {
         text-align: start;
-        height: 5.5rem;
         background-color: #3b3b3b;
         align-self: center;
-        padding-top: 1.5rem;
-        padding-left: 1.5rem;
-        letter-spacing: 0.3rem; }
+        font-size: 1.6rem;
+        padding: 1rem 1.5rem;
+        letter-spacing: 0.2rem; }
         .searchResults--authorSection .authorList .item:hover {
           cursor: pointer;
           background-color: #2b2b2b;
@@ -1067,10 +1072,11 @@ body {
     .searchResults--authorSection:hover .authorList::-webkit-scrollbar-thumb {
       background: #6ecf86; }
     .searchResults--authorSection .notFound {
-      font-size: 2.5rem;
-      color: white;
-      text-align: left;
-      padding-left: 1rem; }
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: #b9b9b9;
+      letter-spacing: 0.2rem;
+      text-align: left; }
   .searchResults--tagSection {
     max-height: 25rem;
     grid-row: 2 /3;
@@ -1078,27 +1084,26 @@ body {
     width: 100%;
     display: flex;
     flex-flow: column;
-    letter-spacing: 0.3rem;
+    letter-spacing: 0.2rem;
     margin-top: 3rem; }
     .searchResults--tagSection .tagList {
       list-style-type: none;
       max-height: 12rem;
-      width: 97%;
+      width: 100%;
       overflow: hidden;
       overflow-y: scroll;
       display: flex;
       flex-wrap: wrap;
-      padding-left: 2rem;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      color: gray; }
+      margin-bottom: 2rem; }
       .searchResults--tagSection .tagList .item {
+        font-size: 1.2rem;
+        color: #a1a1a1;
+        text-transform: uppercase;
         background-color: #181818;
-        border-radius: 1rem;
-        height: 4rem;
+        border-radius: 0.5rem;
         margin-right: 1rem;
         margin-bottom: 1rem;
-        padding: 0.7rem 1.2rem; }
+        padding: 0.7rem 1.5rem; }
         .searchResults--tagSection .tagList .item:hover {
           cursor: pointer;
           color: #6ecf86; }
@@ -1112,11 +1117,11 @@ body {
     .searchResults--tagSection:hover .tagList::-webkit-scrollbar-thumb {
       background: #6ecf86; }
     .searchResults--tagSection .notFound {
-      font-size: 2.5rem;
-      color: white;
-      text-align: left;
-      padding-left: 2.5rem;
-      margin-bottom: 2.5rem; }
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: #b9b9b9;
+      letter-spacing: 0.2rem;
+      text-align: left; }
 
 .alertBox {
   position: relative;
@@ -1186,8 +1191,14 @@ body {
   top: 0;
   left: 50%;
   height: 100%;
-  width: 70vw;
+  width: 50vw;
   transform: translateX(-50%); }
+  @media only screen and (max-width: 75em) {
+    .liveSearch {
+      width: 60vw; } }
+  @media only screen and (max-width: 37.5em) {
+    .liveSearch {
+      width: 70vw; } }
   .liveSearch-searchForm {
     width: 70vw;
     height: 80%;
@@ -1227,16 +1238,17 @@ body {
       display: flex;
       flex-flow: row;
       flex-wrap: nowrap;
-      font-size: 1.6rem;
       align-items: center; }
       .liveSearch-searchResults2-links .link {
+        font-size: 1.2rem;
+        text-transform: uppercase;
         width: 100%;
         text-align: center;
-        color: gray;
+        color: #a1a1a1;
         padding: 1rem 0;
         transition: all 0.5s ease; }
         .liveSearch-searchResults2-links .link::selection {
-          color: gray;
+          color: #a1a1a1;
           background-color: transparent; }
         .liveSearch-searchResults2-links .link:active {
           color: #6ecf86;
@@ -1262,20 +1274,18 @@ body {
         flex-flow: column;
         overflow: hidden;
         overflow-y: scroll;
-        font-size: 2rem; }
+        font-size: 1.6rem; }
         @media only screen and (max-height: 37.5em) {
           .liveSearch-searchResults2-carousel--postSection {
             height: 240px; } }
         .liveSearch-searchResults2-carousel--postSection .item {
           text-align: start;
           height: max-content;
-          min-height: 5.5rem;
-          color: gray;
+          color: #a1a1a1;
           background-color: #2c2c2c;
           align-self: center;
-          padding-top: 1.5rem;
-          padding-left: 1.5rem;
-          letter-spacing: 0.3rem;
+          padding: 1rem 1.5rem;
+          letter-spacing: 0.2rem;
           opacity: 0;
           animation: textFadeIn 0.2s linear forwards; }
           .liveSearch-searchResults2-carousel--postSection .item:nth-child(even) {
@@ -1292,19 +1302,17 @@ body {
         flex-flow: column;
         overflow: hidden;
         overflow-y: scroll;
-        font-size: 2rem; }
+        font-size: 1.6rem; }
         @media only screen and (max-height: 37.5em) {
           .liveSearch-searchResults2-carousel--authorSection {
             height: 240px; } }
         .liveSearch-searchResults2-carousel--authorSection .item {
           text-align: start;
-          height: 5.5rem;
-          color: gray;
+          color: #a1a1a1;
           background-color: #3b3b3b;
           align-self: center;
-          padding-top: 1.5rem;
-          padding-left: 1.5rem;
-          letter-spacing: 0.3rem;
+          padding: 1rem 1.5rem;
+          letter-spacing: 0.2rem;
           opacity: 0;
           animation: textFadeIn 0.2s linear forwards; }
           .liveSearch-searchResults2-carousel--authorSection .item:nth-child(even) {
@@ -1317,7 +1325,6 @@ body {
         flex-shrink: 0;
         width: 70vw;
         height: 300px;
-        font-size: 2rem;
         margin: 1rem 0; }
         @media only screen and (max-height: 37.5em) {
           .liveSearch-searchResults2-carousel--tagSection {
@@ -1335,11 +1342,13 @@ body {
           padding-left: 2rem;
           margin-bottom: 2rem; }
           .liveSearch-searchResults2-carousel--tagSection .tagList .item {
+            font-size: 1.2rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
             background-color: #181818;
-            border-radius: 1rem;
-            height: 4rem;
+            border-radius: 0.5rem;
             padding: 0.7rem 1.2rem;
-            color: gray;
+            color: #a1a1a1;
             opacity: 0;
             animation: textFadeIn 0.2s linear forwards; }
             .liveSearch-searchResults2-carousel--tagSection .tagList .item:active {
