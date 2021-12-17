@@ -12,7 +12,6 @@ const Profile = () => {
     openSubmitCoverModal,
     submitProfilePicModal,
     openSubmitProfilePicModal,
-    isLoggedIn,
     userData,
     setUserData,
     changeAlert,
@@ -44,12 +43,6 @@ const Profile = () => {
 
   return (
     <>
-      <div className="headingSection">
-        <span className="heading">Profile</span>
-        <span className="saveBtn" onClick={save}>
-          Save Changes
-        </span>
-      </div>
       <div className="profile-items">
         <div className="photos">
           <div className="profilePhoto" onClick={openSubmitProfilePicModal}>
@@ -129,6 +122,10 @@ const Profile = () => {
             />
           </div>
         </div>
+
+        <button className="save-btn" onClick={save}>
+          Save Changes
+        </button>
       </div>
 
       {submitCoverModal && <SubmitCoverModal />}

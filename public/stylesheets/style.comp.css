@@ -3845,69 +3845,9 @@ body {
       height: 3rem;
       animation: spin 2s linear infinite; }
 
-.loginToggle {
-  margin-top: 6rem;
-  align-self: center;
-  font-size: 3rem;
-  background-color: #222222;
-  width: 30vw;
-  height: 6rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  overflow: hidden;
-  justify-content: center;
-  margin-bottom: 4rem;
-  border-radius: 10px; }
-  .loginToggle .loginText {
-    grid-column: 1 /2;
-    text-align: center;
-    padding: 0.8rem 0;
-    transition: all 0.7s ease; }
-    .loginToggle .loginText:hover {
-      cursor: pointer; }
-  .loginToggle .signupText {
-    grid-column: 2 /-1;
-    text-align: center;
-    padding: 0.8rem 0;
-    transition: all 0.7s ease; }
-    .loginToggle .signupText:hover {
-      cursor: pointer; }
-
 .form {
   text-align: center;
   margin-bottom: 4rem; }
-
-.login .loginText {
-  color: #6ecf86;
-  transition: all 1s ease; }
-
-.login::after {
-  content: "";
-  background-color: #6ecf86;
-  transform: translateX(0vw);
-  transition: all 0.4s ease; }
-
-.signup .signupText {
-  color: #6ecf86;
-  transition: all 1s ease; }
-
-.signup::after {
-  content: "";
-  background-color: #6ecf86;
-  transform: translateX(15vw);
-  transition: all 0.4s ease; }
-
-.loginModal {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1600;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center; }
 
 .submitForm {
   transition: all 0.3s ease;
@@ -5838,14 +5778,11 @@ body {
           height: 100%; } }
       .signupModal-modal-right-login {
         width: 100%;
-        height: 100%;
+        height: max-content;
         display: flex;
         flex-flow: column;
         padding: 3rem;
         gap: 2rem; }
-        @media only screen and (max-width: 37.5em) {
-          .signupModal-modal-right-login {
-            justify-content: space-around; } }
         .signupModal-modal-right-login-headingSection {
           display: flex;
           flex-flow: column; }
@@ -6026,9 +5963,6 @@ body {
                 border-bottom: 0.1rem solid #007be0; }
       .signupModal-modal-right .login {
         gap: 7rem; }
-      @media only screen and (max-width: 37.5em) {
-        .signupModal-modal-right .signup {
-          justify-content: space-around; } }
 
 .floatingButton {
   position: fixed;

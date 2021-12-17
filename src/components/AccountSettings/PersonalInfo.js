@@ -1260,13 +1260,6 @@ const Personal = () => {
   ];
   return (
     <>
-      <div className="headingSection">
-        <span className="heading">Personal Info</span>
-        <span className="saveBtn" onClick={save}>
-          Save Changes
-        </span>
-      </div>
-
       <div className="profile-items">
         <div className="inputs inputs-personalInfo">
           <div className="settings-group settings-group-personalInfo-textarea">
@@ -1450,6 +1443,9 @@ const Personal = () => {
             </div>
           </div>
         </div>
+        <button className="save-btn" onClick={save}>
+          Save Changes
+        </button>
       </div>
       {showModal && (
         <div className="addExtrasModal">

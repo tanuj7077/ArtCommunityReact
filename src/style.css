@@ -722,7 +722,7 @@ body {
     height: 4rem;
     width: 30rem;
     background-color: #464646;
-    border: 2px solid #585858;
+    border: none;
     border-radius: 10px;
     color: #a8a8a8;
     font-size: 2rem;
@@ -732,7 +732,7 @@ body {
   .settings-group-input:focus {
     outline: none;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-    border: 2px solid #a8a8a8; }
+    border: 2px solid #3b3b3b; }
   .settings-group-input::-webkit-calendar-picker-indicator {
     padding-right: 10px;
     filter: invert(1) brightness(60%);
@@ -740,7 +740,7 @@ body {
   .settings-group-textarea {
     margin-top: 0.6rem;
     background-color: #464646;
-    border: 2px solid #585858;
+    border: none;
     border-radius: 10px;
     color: #a8a8a8;
     font-size: 2rem;
@@ -762,7 +762,7 @@ body {
   .settings-group-textarea:focus {
     outline: none;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-    border: 2px solid #a8a8a8; }
+    border: 2px solid #4d4d4d; }
 
 .authorHover {
   position: absolute;
@@ -3773,7 +3773,8 @@ body {
           .addExtrasModal .modal-sliders .inputSlider {
             width: 100%; } }
         .addExtrasModal .modal-sliders .inputSlider--label {
-          color: silver; }
+          color: silver;
+          font-size: 2rem; }
           @media only screen and (max-width: 37.5em) {
             .addExtrasModal .modal-sliders .inputSlider--label {
               font-size: 1.6rem;
@@ -3799,8 +3800,8 @@ body {
         .addExtrasModal .modal-photo {
           width: 80%; } }
       .addExtrasModal .modal-photo canvas {
-        width: 35rem !important;
-        height: 35rem !important; }
+        width: 25rem !important;
+        height: 25rem !important; }
         @media only screen and (max-width: 37.5em) {
           .addExtrasModal .modal-photo canvas {
             width: 65vw !important;
@@ -3845,69 +3846,9 @@ body {
       height: 3rem;
       animation: spin 2s linear infinite; }
 
-.loginToggle {
-  margin-top: 6rem;
-  align-self: center;
-  font-size: 3rem;
-  background-color: #222222;
-  width: 30vw;
-  height: 6rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  overflow: hidden;
-  justify-content: center;
-  margin-bottom: 4rem;
-  border-radius: 10px; }
-  .loginToggle .loginText {
-    grid-column: 1 /2;
-    text-align: center;
-    padding: 0.8rem 0;
-    transition: all 0.7s ease; }
-    .loginToggle .loginText:hover {
-      cursor: pointer; }
-  .loginToggle .signupText {
-    grid-column: 2 /-1;
-    text-align: center;
-    padding: 0.8rem 0;
-    transition: all 0.7s ease; }
-    .loginToggle .signupText:hover {
-      cursor: pointer; }
-
 .form {
   text-align: center;
   margin-bottom: 4rem; }
-
-.login .loginText {
-  color: #6ecf86;
-  transition: all 1s ease; }
-
-.login::after {
-  content: "";
-  background-color: #6ecf86;
-  transform: translateX(0vw);
-  transition: all 0.4s ease; }
-
-.signup .signupText {
-  color: #6ecf86;
-  transition: all 1s ease; }
-
-.signup::after {
-  content: "";
-  background-color: #6ecf86;
-  transform: translateX(15vw);
-  transition: all 0.4s ease; }
-
-.loginModal {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1600;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center; }
 
 .submitForm {
   transition: all 0.3s ease;
@@ -4514,75 +4455,59 @@ body {
   grid-column: 3 / -1;
   grid-row: 2 / -1;
   display: flex;
-  flex-flow: row;
   position: relative; }
   .settingsDesk-sideNav {
-    width: 30%;
+    width: max-content;
     padding-left: 5rem;
-    padding-top: 6rem;
+    padding-top: 5rem;
     background-color: #2a2a2c;
     border-right: 3px solid #3a3a3a;
     display: flex;
-    flex-flow: column;
-    gap: 1.5rem; }
+    flex-flow: column; }
+    @media only screen and (max-width: 75em) {
+      .settingsDesk-sideNav {
+        padding-left: 2rem; } }
     .settingsDesk-sideNav .heading {
-      font-size: 4rem;
+      font-size: 2.5rem;
       letter-spacing: 0.35rem;
       color: white; }
-    .settingsDesk-sideNav .completion {
-      background-color: #114ec0;
-      height: 100px;
-      width: 350px;
-      border-radius: 15px;
-      display: flex;
-      flex-flow: row;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: center;
-      gap: 10px; }
-      .settingsDesk-sideNav .completion .percentage {
-        color: white;
-        font-size: 2.5rem;
-        width: 7.5rem;
-        height: 7.5rem;
-        background-color: #5b7dbd;
-        border-radius: 50%;
-        display: grid;
-        place-items: center; }
-      .settingsDesk-sideNav .completion .status {
-        font-size: 2rem;
-        color: white; }
     .settingsDesk-sideNav .sideNav-items {
       display: flex;
-      flex-flow: column; }
+      flex-flow: column;
+      flex: 1;
+      justify-content: center; }
       .settingsDesk-sideNav .sideNav-items .sideNav-item {
-        border-bottom: 3px solid #3a3a3a;
         display: grid;
         grid-template-columns: 1fr 6fr 1fr;
         align-items: center;
         padding: 2rem 0;
         gap: 1rem; }
-        .settingsDesk-sideNav .sideNav-items .sideNav-item:last-child {
-          border: none; }
         .settingsDesk-sideNav .sideNav-items .sideNav-item .icon {
-          width: 3rem;
-          height: 3rem;
-          color: #777777; }
+          width: 3.5rem;
+          height: 3.5rem;
+          color: #777777;
+          transition: all 0.2s ease; }
         .settingsDesk-sideNav .sideNav-items .sideNav-item .textual {
           display: flex;
           flex-flow: column; }
           .settingsDesk-sideNav .sideNav-items .sideNav-item .textual .subheading {
-            font-size: 2.5rem;
-            color: #777777; }
+            font-size: 2rem;
+            color: #919191;
+            transition: all 0.2s ease; }
           .settingsDesk-sideNav .sideNav-items .sideNav-item .textual .desc {
             text-transform: none;
-            font-size: 1.6rem;
-            color: #777777; }
+            font-size: 1.2rem;
+            color: #787878;
+            transition: all 0.2s ease; }
+            @media only screen and (max-width: 56.25em) {
+              .settingsDesk-sideNav .sideNav-items .sideNav-item .textual .desc {
+                display: none; } }
         .settingsDesk-sideNav .sideNav-items .sideNav-item .right-icon {
+          display: none;
           justify-self: flex-end;
           margin-right: 1rem;
-          width: 2.5rem;
-          height: 2.5rem;
+          width: 2rem;
+          height: 2rem;
           color: #777777; }
         .settingsDesk-sideNav .sideNav-items .sideNav-item .active {
           color: white; }
@@ -4596,11 +4521,16 @@ body {
             color: #a8a8a8; }
           .settingsDesk-sideNav .sideNav-items .sideNav-item:hover .right-icon {
             color: #e0e0e0; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item-current .icon {
+          color: #6ecf86; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item-current .textual .subheading {
+          color: #dedede; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item-current .textual .desc {
+          color: #ababab; }
+        .settingsDesk-sideNav .sideNav-items .sideNav-item-current .right-icon {
+          color: #c4c4c4; }
   .settingsDesk-main {
-    width: 70%;
-    padding-left: 7rem;
-    padding-right: 7rem;
-    padding-top: 6rem;
+    flex: 1;
     background-color: #2a2a2c;
     display: flex;
     flex-flow: column; }
@@ -4626,10 +4556,8 @@ body {
       height: 8rem;
       border-bottom: 3px solid #3a3a3a; }
     .settingsDesk-main .gallerySection {
-      padding: 2rem 0;
-      padding-right: 1rem;
+      padding: 4rem 5rem;
       width: 100%;
-      max-height: 67vh;
       display: flex;
       overflow: hidden;
       overflow-y: auto; }
@@ -4666,17 +4594,16 @@ body {
     .settingsDesk-main .noPosts {
       font-size: 3rem;
       color: white;
-      padding: 2rem 0; }
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 40vh; }
     .settingsDesk-main .profile-items {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-      padding-right: 7rem;
+      padding: 4rem 5rem;
       display: flex;
       flex-flow: column;
       gap: 4rem;
       overflow: hidden;
       overflow-y: auto;
-      max-height: 74vh;
       /*--------------------Explicit settings----------*/
       /*--------------------OVER----------*/ }
       .settingsDesk-main .profile-items::-webkit-scrollbar {
@@ -4687,18 +4614,18 @@ body {
       .settingsDesk-main .profile-items::-webkit-scrollbar-track {
         background: #505050; }
       .settingsDesk-main .profile-items .photos {
-        justify-content: space-between;
         display: flex;
-        flex-flow: row;
-        gap: 3rem; }
+        gap: 5rem; }
         .settingsDesk-main .profile-items .photos .profilePhoto-label {
-          font-size: 1.7rem;
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          letter-spacing: 0.2rem;
           color: #888888; }
         .settingsDesk-main .profile-items .photos .profilePhoto-photo {
           margin-top: 0.8rem;
           width: 17vw;
           height: 17vw;
-          border: 2px solid #585858;
+          border-radius: 0.5rem;
           background-color: #464646;
           background-size: cover;
           background-position-x: center;
@@ -4715,7 +4642,9 @@ body {
             .settingsDesk-main .profile-items .photos .profilePhoto-photo .overlay .text {
               text-align: center;
               width: 80%;
-              font-size: 3rem;
+              font-size: 2.5rem;
+              text-transform: uppercase;
+              letter-spacing: 0.3rem;
               color: #cccccc;
               opacity: 0; }
           .settingsDesk-main .profile-items .photos .profilePhoto-photo:hover .overlay {
@@ -4740,7 +4669,7 @@ body {
           margin-top: 0.8rem;
           width: 26vw;
           height: 17vw;
-          border: 2px solid #585858;
+          border-radius: 0.5rem;
           background-color: #464646;
           background-size: cover;
           background-position-x: center;
@@ -4757,7 +4686,9 @@ body {
             .settingsDesk-main .profile-items .photos .coverPhoto-photo .overlay .text {
               text-align: center;
               width: 80%;
-              font-size: 3rem;
+              font-size: 2.5rem;
+              text-transform: uppercase;
+              letter-spacing: 0.3rem;
               color: #cccccc;
               opacity: 0; }
           .settingsDesk-main .profile-items .photos .coverPhoto-photo:hover .overlay {
@@ -4786,7 +4717,9 @@ body {
           display: flex;
           flex-flow: column; }
           .settingsDesk-main .profile-items .inputs .settings-group-label {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
             color: #888888; }
             .settingsDesk-main .profile-items .inputs .settings-group-label .supported {
               font-size: 1.3rem;
@@ -4797,17 +4730,17 @@ body {
             height: 4rem;
             width: 30rem;
             background-color: #464646;
-            border: 2px solid #585858;
-            border-radius: 10px;
+            border-radius: 0.5rem;
             color: #a8a8a8;
-            font-size: 2rem;
+            font-size: 1.6rem;
+            letter-spacing: 0.2rem;
             padding-left: 1rem; }
           .settingsDesk-main .profile-items .inputs .settings-group-input::-webkit-input-placeholder {
             color: gray; }
           .settingsDesk-main .profile-items .inputs .settings-group-input:focus {
             outline: none;
             box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-            border: 2px solid #a8a8a8; }
+            border: 2px solid #585858; }
           .settingsDesk-main .profile-items .inputs .settings-group .location-select {
             width: 30rem; }
           .settingsDesk-main .profile-items .inputs .settings-group .long {
@@ -4906,6 +4839,7 @@ body {
         width: 8rem;
         height: 8rem;
         border: 2px solid #585858;
+        border-radius: 0.5rem;
         display: grid;
         place-items: center;
         cursor: pointer; }
@@ -4918,19 +4852,35 @@ body {
         .settingsDesk-main .profile-items .add:hover .icon {
           color: #6ecf86; }
       .settingsDesk-main .profile-items .btn {
-        font-size: 2rem;
-        color: #868686;
+        font-size: 1.2rem;
+        color: #a3a3a3;
+        letter-spacing: 0.2rem;
         text-transform: uppercase;
-        word-spacing: 0.4rem;
-        width: 15rem;
-        height: 5rem;
-        display: grid;
-        place-items: center;
-        background-color: black;
-        border-radius: 10px;
+        width: max-content;
+        background-color: #363636;
+        border-radius: 5px;
+        padding: 1rem 2rem;
         cursor: pointer; }
         .settingsDesk-main .profile-items .btn:hover {
-          color: #6ecf86; }
+          cursor: pointer; }
+    .settingsDesk-main .save-btn {
+      width: max-content;
+      outline: none;
+      border: none;
+      background-color: #363636;
+      color: #6ecf86;
+      font-size: 1.2rem;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      padding: 2rem 4rem;
+      margin-bottom: 4rem;
+      align-self: center;
+      border-radius: 0.5rem;
+      transition: all 0.1s ease; }
+      .settingsDesk-main .save-btn:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+        background-color: #424242; }
   .settingsDesk .addExtrasModal {
     width: 100%;
     height: 100vh;
@@ -4951,7 +4901,7 @@ body {
       gap: 2.5rem;
       align-items: center; }
       .settingsDesk .addExtrasModal .modal-heading {
-        font-size: 3rem;
+        font-size: 2.5rem;
         padding: 2rem 4.6rem;
         width: 100%;
         border-bottom: 2px solid #3a3a3a;
@@ -4995,7 +4945,7 @@ body {
           border: 2px solid #585858;
           border-radius: 10px;
           color: #a8a8a8;
-          font-size: 2rem;
+          font-size: 1.6rem;
           padding: 1rem 1rem; }
           .settingsDesk .addExtrasModal .modal-grp-textarea::-webkit-scrollbar {
             height: 80%;
@@ -5014,7 +4964,7 @@ body {
         .settingsDesk .addExtrasModal .modal-grp-textarea:focus {
           outline: none;
           box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-          border: 2px solid #a8a8a8; }
+          border: 2px solid #3b3b3b; }
       .settingsDesk .addExtrasModal .modal-buttons {
         margin-bottom: 3rem;
         width: 55rem;
@@ -5142,8 +5092,10 @@ body {
       height: calc(100vh - 12rem); }
       .settingsMobile-carousel--profileSection .headingSection {
         width: 100%;
-        font-size: 3.5rem;
-        padding: 1rem 0;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3rem;
+        padding: 1.3rem 0;
         color: white;
         background-color: rgba(23, 28, 33, 0.95);
         text-align: center; }
@@ -5202,6 +5154,7 @@ body {
           color: white; }
       .settingsMobile-carousel--profileSection .profile-items {
         width: 100%;
+        margin-top: 2rem;
         padding: 2rem 2rem;
         display: flex;
         flex-flow: column;
@@ -5217,13 +5170,16 @@ body {
           flex-wrap: nowrap;
           justify-content: space-between; }
         .settingsMobile-carousel--profileSection .profile-items .profilePhoto-label {
-          font-size: 1.7rem;
-          color: #888888; }
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          letter-spacing: 0.2rem;
+          color: #9c9c9c; }
         .settingsMobile-carousel--profileSection .profile-items .profilePhoto-photo {
+          margin-top: 0.5rem;
           width: 30vw;
           height: 32vw;
-          border: 2px solid #585858;
           background-color: #464646;
+          border-radius: 0.5rem;
           background-size: cover;
           background-position-x: center;
           background-position-y: center;
@@ -5234,13 +5190,16 @@ body {
           width: 10rem;
           height: 10rem; }
         .settingsMobile-carousel--profileSection .profile-items .coverPhoto-label {
-          font-size: 1.7rem;
-          color: #888888; }
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          letter-spacing: 0.2rem;
+          color: #9c9c9c; }
         .settingsMobile-carousel--profileSection .profile-items .coverPhoto-photo {
+          margin-top: 0.5rem;
           width: 52vw;
           height: 32vw;
-          border: 2px solid #585858;
           background-color: #464646;
+          border-radius: 0.5rem;
           background-size: cover;
           background-position-x: center;
           background-position-y: center;
@@ -5255,8 +5214,10 @@ body {
           width: 100%;
           flex-flow: column; }
           .settingsMobile-carousel--profileSection .profile-items .settings-group-label {
-            font-size: 1.6rem;
-            color: #888888;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: #9c9c9c;
             width: 100%;
             display: flex;
             flex-flow: row;
@@ -5290,10 +5251,11 @@ body {
             width: 100%;
             background-color: #464646;
             border: 2px transparent #585858;
-            border-radius: 30px;
+            border-radius: 0.5rem;
             color: #a8a8a8;
-            font-size: 2rem;
-            padding-left: 1.5rem; }
+            font-size: 1.6rem;
+            letter-spacing: 0.2rem;
+            padding-left: 1rem; }
           .settingsMobile-carousel--profileSection .profile-items .settings-group-input::-webkit-input-placeholder {
             color: gray; }
           .settingsMobile-carousel--profileSection .profile-items .settings-group-input:focus {
@@ -5305,15 +5267,24 @@ body {
           .settingsMobile-carousel--profileSection .profile-items .settings-group .long {
             width: 65rem; }
         .settingsMobile-carousel--profileSection .profile-items .saveBtn {
-          font-size: 2rem;
-          padding: 1rem;
-          margin-top: 1rem;
-          margin-bottom: 2rem;
-          background-color: #383838;
-          color: white; }
+          margin-top: 2rem;
+          width: max-content;
+          outline: none;
+          border: none;
+          background-color: #363636;
+          color: #6ecf86;
+          font-size: 1.2rem;
+          letter-spacing: 0.2rem;
+          text-transform: uppercase;
+          padding: 2rem 4rem;
+          margin-bottom: 4rem;
+          align-self: center;
+          border-radius: 0.5rem;
+          transition: all 0.1s ease; }
           .settingsMobile-carousel--profileSection .profile-items .saveBtn:hover {
             cursor: pointer;
-            color: #6ecf86; }
+            transform: scale(1.05);
+            background-color: #424242; }
         .settingsMobile-carousel--profileSection .profile-items .radios {
           display: flex;
           flex-flow: row;

@@ -91,12 +91,6 @@ const Extras = () => {
 
   return (
     <>
-      <div className="headingSection">
-        <span className="heading">Extras</span>
-        <span className="saveBtn" onClick={save}>
-          Save Changes
-        </span>
-      </div>
       <div className="profile-items">
         <div className="inputs">
           <div className="settings-group settings-group-extras">
@@ -180,6 +174,9 @@ const Extras = () => {
         <span className="btn" onClick={toggleModalDisplay}>
           Add More
         </span>
+        <button className="save-btn" onClick={save}>
+          Save Changes
+        </button>
       </div>
 
       {showModal && (

@@ -24,7 +24,11 @@ const AccountSettingsDesk = ({ id }) => {
   async function getPostsByUser() {
     try {
       const LIMIT = -1;
-      const postUrl = "https://shielded-woodland-79171.herokuapp.com/posts/postByUser/" + userData.username + "/" + LIMIT;
+      const postUrl =
+        "https://shielded-woodland-79171.herokuapp.com/posts/postByUser/" +
+        userData.username +
+        "/" +
+        LIMIT;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setPosts(postData);
@@ -67,7 +71,12 @@ const AccountSettingsDesk = ({ id }) => {
         <section className="settingsDesk-sideNav">
           <span className="heading">Settings</span>
           <section className="sideNav-items">
-            <section className="sideNav-item" onClick={() => toProfile()}>
+            <section
+              className={`sideNav-item ${
+                isProfile ? "sideNav-item-current" : ""
+              }`}
+              onClick={() => toProfile()}
+            >
               <CgProfile className="icon" />
               <div className="textual">
                 <span className="subheading">Profile</span>
@@ -75,7 +84,12 @@ const AccountSettingsDesk = ({ id }) => {
               </div>
               <BsChevronRight className="right-icon" />
             </section>
-            <section className="sideNav-item" onClick={() => toPersonal()}>
+            <section
+              className={`sideNav-item ${
+                isPersonal ? "sideNav-item-current" : ""
+              }`}
+              onClick={() => toPersonal()}
+            >
               <RiProfileLine className="icon" />
               <div className="textual">
                 <span className="subheading">Personal Info</span>
@@ -85,7 +99,12 @@ const AccountSettingsDesk = ({ id }) => {
               </div>
               <BsChevronRight className="right-icon" />
             </section>
-            <section className="sideNav-item" onClick={() => toExtras()}>
+            <section
+              className={`sideNav-item ${
+                isExtras ? "sideNav-item-current" : ""
+              }`}
+              onClick={() => toExtras()}
+            >
               <AiFillPlusSquare className="icon" />
               <div className="textual">
                 <span className="subheading">Extras</span>
@@ -95,7 +114,12 @@ const AccountSettingsDesk = ({ id }) => {
               </div>
               <BsChevronRight className="right-icon" />
             </section>
-            <section className="sideNav-item" onClick={() => toAppearance()}>
+            <section
+              className={`sideNav-item ${
+                isAppearance ? "sideNav-item-current" : ""
+              }`}
+              onClick={() => toAppearance()}
+            >
               <IoColorPalette className="icon" />
               <div className="textual">
                 <span className="subheading">Posts</span>

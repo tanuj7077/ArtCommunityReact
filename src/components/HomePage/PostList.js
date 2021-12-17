@@ -50,7 +50,7 @@ const PostList = () => {
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
     fetch(
-      `https://shielded-woodland-79171.herokuapp.com/posts/postList?page=${pager.page}&limit=4`
+      `https://shielded-woodland-79171.herokuapp.com/posts/postList?page=${pager.page}&limit=16`
     )
       .then((data) => data.json())
       .then((images) => {
