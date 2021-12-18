@@ -261,7 +261,7 @@ const PostPagePost = ({ id }) => {
                     userData.username !== Post.author.username ? (
                       <BsHeartFill className="icon" onClick={handleLike} />
                     ) : (
-                      <BsHeartFill className="icon" />
+                      <BsHeartFill className="icon" onClick={handleLike} />
                     )}
 
                     {

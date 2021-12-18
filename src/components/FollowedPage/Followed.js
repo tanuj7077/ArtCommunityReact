@@ -79,39 +79,41 @@ const Followed = (userId) => {
 
   return (
     <div className="followed">
-      {username && <div className="user">
-        <div
-          className="userImg"
-          style={{
-            backgroundImage: `url(${
-              typeof profilePic === "undefined" ? blank : profilePic
-            })`,
-            borderRadius: `${
-              typeof borderRad === "undefined" ? "50%" : borderRad + "%"
-            }`,
-          }}
-        ></div>
-        <Route
-          render={({ history }) => (
-            <span
-              onClick={() => {
-                history.push(`/user/${username}`);
-              }}
-              className="username"
-            >
-              {username}
-            </span>
-          )}
-        />
-        <span className="userFollowers">{followers} Followers</span>
-      </div>}
-      {!username &&
-        <div className="userNotLoaded">
-        <div className="userImg"></div>
-        <span className="username"></span>
-        <span className="userFollowers"></span>
+      {username && (
+        <div className="user">
+          <div
+            className="userImg"
+            style={{
+              backgroundImage: `url(${
+                typeof profilePic === "undefined" ? blank : profilePic
+              })`,
+              borderRadius: `${
+                typeof borderRad === "undefined" ? "50%" : borderRad + "%"
+              }`,
+            }}
+          ></div>
+          <Route
+            render={({ history }) => (
+              <span
+                onClick={() => {
+                  history.push(`/user/${username}`);
+                }}
+                className="username"
+              >
+                {username}
+              </span>
+            )}
+          />
+          <span className="userFollowers">{followers} Followers</span>
         </div>
-      }
+      )}
+      {!username && (
+        <div className="userNotLoaded">
+          <div className="userImg"></div>
+          <span className="username"></span>
+          <span className="userFollowers"></span>
+        </div>
+      )}
       <div className="slider">
         <span
           className="leftButton"
@@ -150,7 +152,7 @@ const Followed = (userId) => {
                     {/* <span className="name">{post.name}</span> */}
                     <div className="others">
                       <span className="likes">
-                        {post.likesArray.length} Likes
+                        {post.likesArray.length} likes
                       </span>
                       <span className="comments">
                         {post.comments.length} comments
@@ -171,9 +173,9 @@ const Followed = (userId) => {
             </>
           } */}
         </div>
-        {posts && posts.length === 0 &&
+        {posts && posts.length === 0 && (
           <div className="followedItems-notLoaded"></div>
-        }
+        )}
 
         <span
           className="rightButton"

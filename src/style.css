@@ -247,12 +247,22 @@ body {
 .btn {
   border: none; }
   .btn-submit {
-    background-color: #5dad71;
-    color: white;
-    font-size: 2rem;
-    letter-spacing: 0.4rem;
-    border-radius: 5px;
-    padding: 1rem 2rem; }
+    width: max-content;
+    outline: none;
+    border: none;
+    background-color: #363636;
+    color: #6ecf86;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    align-self: center;
+    border-radius: 0.5rem;
+    transition: all 0.1s ease; }
+    .btn-submit:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      background-color: #424242; }
   .btn-login {
     background-color: black;
     color: white;
@@ -322,9 +332,9 @@ body {
       background-color: white;
       letter-spacing: 1rem; }
     .form__group--basic .form__input-textarea {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-family: inherit;
-      letter-spacing: 0.4rem;
+      letter-spacing: 0.2rem;
       color: inherit;
       padding: 0 1rem;
       padding-top: 1rem;
@@ -371,12 +381,12 @@ body {
     .form__group--basic .select__menu-list::-webkit-scrollbar-track {
       background: transparent; }
     .form__group--basic .form__input-textarea-comment {
-      font-size: 2rem;
+      border-radius: 0.5rem;
+      font-size: 1.6rem;
       font-family: inherit;
-      letter-spacing: 0.4rem;
+      letter-spacing: 0.2rem;
       color: inherit;
-      padding: 0 1rem;
-      padding-top: 1rem;
+      padding: 1rem 1rem;
       background-color: rgba(128, 128, 128, 0.5);
       border: 2px solid transparent;
       width: 100%;
@@ -387,7 +397,7 @@ body {
       .form__group--basic .form__input-textarea-comment:focus {
         outline: none;
         box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-        border: 2px solid #6ecf86; }
+        border: 2px solid #6e9678; }
       .form__group--basic .form__input-textarea-comment::-webkit-scrollbar {
         width: 7px; }
       .form__group--basic .form__input-textarea-comment::-webkit-scrollbar-thumb {
@@ -1581,7 +1591,8 @@ body {
       display: block; }
     .grid-item--card-title {
       color: white;
-      font-size: 2.5rem;
+      font-size: 2rem;
+      letter-spacing: 0.2rem;
       z-index: 1;
       opacity: 0;
       transition: all 0.2s ease-in; }
@@ -1590,8 +1601,8 @@ body {
         color: white;
         cursor: pointer; }
     .grid-item--card-author {
-      color: white;
-      font-size: 2rem;
+      color: #cccccc;
+      font-size: 1.6rem;
       width: max-content;
       z-index: 1;
       opacity: 0;
@@ -1620,7 +1631,7 @@ body {
         cursor: pointer; }
     .grid-item--card-icons {
       padding-left: 2rem;
-      padding-bottom: 2rem;
+      padding-bottom: 1rem;
       color: white;
       display: grid;
       grid-template-columns: max-content max-content;
@@ -1634,10 +1645,10 @@ body {
         align-items: center;
         gap: 0.5rem; }
         .grid-item--card-icons-likes-count {
-          font-size: 2rem; }
+          font-size: 1.6rem; }
         .grid-item--card-icons-likes-icon {
-          width: 2.5rem;
-          height: 2.5rem; }
+          width: 2rem;
+          height: 2rem; }
           .grid-item--card-icons-likes-icon:hover {
             color: red;
             cursor: pointer; }
@@ -1647,10 +1658,10 @@ body {
         gap: 0.5rem;
         align-items: center; }
         .grid-item--card-icons-comments-count {
-          font-size: 2rem; }
+          font-size: 1.6rem; }
         .grid-item--card-icons-comments-icon {
-          width: 2.5rem;
-          height: 2.5rem; }
+          width: 2rem;
+          height: 2rem; }
           .grid-item--card-icons-comments-icon:hover {
             color: #73c28a;
             cursor: pointer; }
@@ -1772,53 +1783,70 @@ body {
         flex-flow: column;
         gap: 1rem; }
         .postPage .postContent--info-author-title {
-          font-size: 4rem;
+          font-size: 3rem;
+          letter-spacing: 0.3rem;
           align-self: start; }
         .postPage .postContent--info-author-detail {
           display: flex;
           flex-flow: row;
           gap: 1rem; }
           .postPage .postContent--info-author-detail .userImg {
-            width: 5rem;
-            height: 5rem;
+            width: 3rem;
+            height: 3rem;
             background-size: cover;
             background-position: center; }
           .postPage .postContent--info-author-detail .name {
-            font-size: 3rem; }
+            font-size: 2rem;
+            letter-spacing: 0.2rem;
+            color: #a1a1a1; }
             .postPage .postContent--info-author-detail .name:hover {
               cursor: pointer; }
       .postPage .postContent--info-icons {
         position: relative;
-        padding: 3rem 0;
+        padding: 1.5rem 0 2rem 0;
         display: flex; }
         @media only screen and (max-width: 37.5em) {
           .postPage .postContent--info-icons {
             flex-flow: column;
             gap: 0.7rem; } }
         .postPage .postContent--info-icons-like {
-          padding-right: 5rem;
-          font-size: 2.4rem;
+          padding-right: 3rem;
+          font-size: 1.6rem;
           display: flex;
           gap: 1rem;
-          align-items: center; }
+          align-items: center;
+          color: #e8e8e8; }
         .postPage .postContent--info-icons .icon:hover {
           cursor: pointer; }
         .postPage .postContent--info-icons .followBtn {
-          display: grid;
-          place-items: center;
-          background-color: #6e6e6e;
-          padding: 1rem; }
+          width: max-content;
+          outline: none;
+          border: none;
+          background-color: #424242;
+          color: #6ecf86;
+          font-size: 1.2rem;
+          letter-spacing: 0.2rem;
+          text-transform: uppercase;
+          padding: 1rem 2rem;
+          align-self: center;
+          border-radius: 0.5rem;
+          transition: all 0.1s ease; }
           .postPage .postContent--info-icons .followBtn:hover {
-            cursor: pointer; }
+            cursor: pointer;
+            transform: scale(1.05);
+            background-color: #4f4f4f; }
       .postPage .postContent--info-desc {
-        font-size: 2rem; }
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+        color: #c4c4c4; }
       .postPage .postContent--info-tags {
         padding-top: 3rem;
-        font-size: 2rem;
         display: flex;
         flex-wrap: wrap;
         gap: 1rem; }
         .postPage .postContent--info-tags .tag {
+          font-size: 1.2rem;
+          text-transform: uppercase;
           cursor: pointer;
           background-color: #414141;
           padding: 0.6rem 1.5rem;
@@ -1827,56 +1855,14 @@ body {
           box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; }
           .postPage .postContent--info-tags .tag:hover {
             transform: scale(1.03);
+            color: #6ecf86;
             transition: all 0.3s ease; }
     .postPage .postContent--comments {
       grid-column: 1 / 15;
       grid-row: 3 / -1;
       min-height: 30rem;
       padding: 2rem 9rem;
-      background-color: #252525;
-      /*&-comment {
-        padding: 1rem 0;
-        display: grid;
-        column-gap: 1rem;
-        grid-template-rows: repeat(3, min-content);
-        grid-template-columns: repeat(16, 1fr);
-        &-img {
-          grid-row: 1 / 3;
-          grid-column: 1 / 2;
-          width: 4rem;
-          height: 4rem;
-          border-radius: 50%;
-        }
-        &-user {
-          grid-row: 1 / 2;
-          grid-column: 2 / 13;
-          font-size: 2rem;
-          align-self: center;
-        }
-        &-date {
-          grid-row: 1 / 2;
-          grid-column: 14 / -1;
-          font-size: 1.2rem;
-          justify-self: end;
-        }
-        &-text {
-          grid-row: 2 / 3;
-          grid-column: 2 / -1;
-          font-size: 1.5rem;
-          //white-space: pre;
-          word-wrap: break-word;
-        }
-        &-controls {
-          grid-row: 3 / 4;
-          grid-column: 2 / -1;
-
-          .control {
-            font-size: 1.5rem;
-            margin-right: 2rem;
-            cursor: pointer;
-          }
-        }
-      }*/ }
+      background-color: #252525; }
       @media only screen and (max-width: 75em) {
         .postPage .postContent--comments {
           grid-column: 1 / 13;
@@ -1886,7 +1872,10 @@ body {
           grid-column: 1 / -1;
           grid-row: 3 / 4; } }
       .postPage .postContent--comments .subheading {
-        font-size: 3rem; }
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3rem;
+        color: #bababa; }
       .postPage .postContent--comments-commentList {
         margin-top: 2rem; }
       .postPage .postContent--comments-comment {
@@ -1899,14 +1888,11 @@ body {
           flex-flow: row;
           flex-wrap: nowrap;
           align-items: center;
-          justify-content: space-between;
-          gap: 0.5rem; }
+          justify-content: space-between; }
         .postPage .postContent--comments-comment-user {
           display: flex;
-          flex-flow: row;
-          flex-wrap: nowrap;
           align-items: center;
-          gap: 0.5rem; }
+          gap: 1rem; }
         .postPage .postContent--comments-comment-img {
           width: 3rem;
           height: 3rem;
@@ -1917,21 +1903,25 @@ body {
           background-size: cover;
           background-position: center; }
         .postPage .postContent--comments-comment-usertext {
-          font-size: 2rem;
+          font-size: 1.6rem;
+          color: #cfcfcf;
           align-self: center; }
         .postPage .postContent--comments-comment-date {
-          font-size: 1.2rem; }
+          font-size: 1.2rem;
+          color: #cfcfcf; }
         .postPage .postContent--comments-comment-bottom {
           display: flex;
           flex-flow: column;
           gap: 0.5rem; }
         .postPage .postContent--comments-comment-text {
           font-size: 1.5rem;
-          word-wrap: break-word; }
+          word-wrap: break-word;
+          color: #e8e8e8; }
         .postPage .postContent--comments-comment-controls .control {
           font-size: 1.5rem;
           margin-right: 2rem;
-          cursor: pointer; }
+          cursor: pointer;
+          color: #cfcfcf; }
   .postPage .otherContent {
     width: 100%;
     grid-column: 15 / -1;
@@ -1950,8 +1940,10 @@ body {
         grid-column: 1 / -1;
         grid-row: 4 / -1; } }
     .postPage .otherContent--subheading {
-      font-size: 2rem;
-      letter-spacing: 0.3rem; }
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      color: #bababa; }
     .postPage .otherContent--user {
       padding: 1.5rem 1.5rem; }
       @media only screen and (max-width: 37.5em) {
@@ -2861,7 +2853,8 @@ body {
     top: 0;
     right: 0;
     transform: translateY(25%);
-    color: #6ecf86; }
+    color: #6ecf86;
+    letter-spacing: 0.2rem; }
     @media only screen and (max-width: 37.5em) {
       .TopNavDesk--submit {
         display: none; } }
@@ -5579,14 +5572,15 @@ body {
       top: 0.5rem;
       left: 7.5rem;
       color: white;
-      font-size: 3rem; }
+      font-size: 2.5rem;
+      letter-spacing: 0.3rem; }
       .followed .user .username:hover {
         cursor: pointer; }
     .followed .user .userFollowers {
       position: absolute;
       top: 4rem;
       left: 7.5rem;
-      color: white;
+      color: #c9c9c9;
       font-size: 1.6rem; }
   .followed .userNotLoaded {
     position: relative;
@@ -5699,7 +5693,7 @@ body {
           color: white;
           opacity: 0; }
           .followed .slider .followedItems .item .imgInfo .name {
-            font-size: 2.5rem; }
+            font-size: 2rem; }
             .followed .slider .followedItems .item .imgInfo .name:hover {
               cursor: pointer; }
           .followed .slider .followedItems .item .imgInfo .others {
@@ -5707,7 +5701,8 @@ body {
             display: flex;
             column-gap: 1rem;
             flex-flow: row;
-            flex-wrap: wrap; }
+            flex-wrap: wrap;
+            color: #d1d1d1; }
         .followed .slider .followedItems .item:hover .img {
           opacity: 0.6; }
         .followed .slider .followedItems .item:hover .imgInfo {
