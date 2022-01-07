@@ -12,6 +12,7 @@ import FollowedPage from "./pages/FollowedPage";
 import PopularPage from "./pages/PopularPage";
 import TagSearchPage from "./pages/TagSearchPage";
 import AccountSettingsPage from "./pages/AccountSettingsPage";
+import Landing from "./pages/Landing";
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -32,6 +33,9 @@ function App() {
 
   return (
     <Switch>
+      <Route path="/landing">
+        <Landing />
+      </Route>
       <Route path="/" exact>
         <Home />
       </Route>

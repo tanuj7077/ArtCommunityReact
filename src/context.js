@@ -80,6 +80,14 @@ const AppProvider = ({ children }) => {
     setShowAlert(1);
   };
 
+  const [submitModal2, setSubmitModal2] = useState(false);
+  const openSubmitModal2 = () => {
+    setSubmitModal2(true);
+  };
+
+  const closeSubmitModal2 = () => {
+    setSubmitModal2(false);
+  };
   const openSubmitCoverModal = () => {
     setSubmitCoverModal(true);
   };
@@ -212,6 +220,9 @@ const AppProvider = ({ children }) => {
         setSignupModalVisibility,
         login,
         register,
+        openSubmitModal2,
+        closeSubmitModal2,
+        submitModal2,
       }}
     >
       {children}

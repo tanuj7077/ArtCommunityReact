@@ -7,12 +7,15 @@ import SignupModal from "../Modals/LoginModal/SignupModal";
 import SearchHandler from "../Search/SearchHandler";
 
 import { useGlobalContext } from "../../context";
+import SubmitModal2 from "../Modals/SubmitModals/SubmitModal2";
 
 const TopNav = () => {
   const {
     isLoggedIn,
     openSubmitModal,
+    openSubmitModal2,
     submitModal,
+    submitModal2,
     loading,
     signupModalVisibility,
     setSignupModalVisibility,
@@ -24,7 +27,10 @@ const TopNav = () => {
         <SearchHandler />
         {isLoggedIn ? (
           <>
-            <div className="TopNavDesk--submit" onClick={openSubmitModal}>
+            {/* <div className="TopNavDesk--submit" onClick={openSubmitModal}>
+              <span>SUBMIT</span>
+            </div> */}
+            <div className="TopNavDesk--submit" onClick={openSubmitModal2}>
               <span>SUBMIT</span>
             </div>
           </>
@@ -41,6 +47,7 @@ const TopNav = () => {
       </section>
 
       {submitModal && <SubmitModal />}
+      {submitModal2 && <SubmitModal2 />}
 
       {signupModalVisibility && <SignupModal />}
       {loading && (
