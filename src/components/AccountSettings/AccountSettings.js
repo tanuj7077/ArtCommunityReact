@@ -15,7 +15,6 @@ import { useGlobalContext } from "../../context";
 
 const AccountSettings = ({ id }) => {
   const { userData } = useGlobalContext();
-  console.log(userData);
   const [isProfile, setProfile] = useState(true);
   const [isPersonal, setPersonal] = useState(false);
   const [isExtras, setExtras] = useState(false);
