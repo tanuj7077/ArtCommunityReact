@@ -133,7 +133,7 @@ const About = ({ user, following, followers }) => {
       {user.extras &&
         (user.extras.tools ||
           user.extras.favCategory ||
-          user.extras.extra.length > 0) && <hr class="solid"></hr>}
+          user.extras.extra.length > 0) && <hr className="solid"></hr>}
 
       {user.extras &&
         (user.extras.tools ||
@@ -157,7 +157,7 @@ const About = ({ user, following, followers }) => {
             {user.extras.extra &&
               user.extras.extra.map((item) => {
                 return (
-                  <div className="item">
+                  <div className="item" key={`extra_${item.label}`}>
                     <span className="label">{item.label}</span>
                     <span className="answer">{item.value}</span>
                   </div>
@@ -166,7 +166,7 @@ const About = ({ user, following, followers }) => {
           </div>
         )}
 
-      <hr class="solid"></hr>
+      <hr className="solid"></hr>
 
       <div className="userPage--about-stats">
         <span className="subheading">Stats</span>
@@ -198,7 +198,7 @@ const About = ({ user, following, followers }) => {
         </div>
       </div>
 
-      {following.length > 0 && <hr class="solid"></hr>}
+      {following.length > 0 && <hr className="solid"></hr>}
 
       {following.length > 0 && (
         <div className="userPage--about-followers">
@@ -208,6 +208,7 @@ const About = ({ user, following, followers }) => {
               return (
                 <>
                   <Route
+                    key={`folowing${user.id}`}
                     render={({ history }) => (
                       <div
                         onClick={() => {
@@ -266,7 +267,7 @@ const About = ({ user, following, followers }) => {
         </div>
       )}
 
-      <hr class="solid"></hr>
+      <hr className="solid"></hr>
 
       {followers.length > 0 && (
         <div className="userPage--about-followers">
@@ -274,7 +275,7 @@ const About = ({ user, following, followers }) => {
           <div className="items">
             {followers.map((user) => {
               return (
-                <div key={user.id} className="item">
+                <div key={`follower${user.id}`} className="item">
                   {!user.image ? (
                     <div
                       className="img"

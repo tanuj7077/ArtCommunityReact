@@ -242,7 +242,6 @@ const Personal = () => {
   const deleteLink = (i) => {
     var arr = links;
     arr.splice(i, 1);
-    console.log(arr);
     setLinks(arr);
   };
 
@@ -255,7 +254,6 @@ const Personal = () => {
       links: links,
     };
     axios.post(url, personalInfo).then((res) => {
-      //console.log(res.data);
       setUserData(res.data.user);
       changeAlert(res.data.message);
     });
@@ -1314,34 +1312,34 @@ const Personal = () => {
           <div className="settings-group">
             <label className="settings-group-label">Gender</label>
             <div className="radios" onChange={(e) => setGender(e.target.value)}>
-              <label class="radio-container">
+              <label className="radio-container">
                 <input
                   type="radio"
                   name="radio"
                   value="Male"
                   checked={gender === "Male"}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 Male
               </label>
-              <label class="radio-container">
+              <label className="radio-container">
                 <input
                   type="radio"
                   name="radio"
                   value="Female"
                   checked={gender === "Female"}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 Female
               </label>
-              <label class="radio-container">
+              <label className="radio-container">
                 <input
                   type="radio"
                   name="radio"
                   value="Other"
                   checked={gender === "Other"}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 Other
               </label>
             </div>

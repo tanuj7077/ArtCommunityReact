@@ -29,6 +29,7 @@ const PostsByUser = ({ id }) => {
           {postsByUser.map((item) => {
             return (
               <Route
+                key={`postsByUser${item._id}`}
                 render={({ history }) => (
                   <div
                     className="otherContent--Thumbnails-img"

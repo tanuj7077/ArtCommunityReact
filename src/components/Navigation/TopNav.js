@@ -47,7 +47,8 @@ const TopNav = () => {
       </section>
 
       {submitModal && <SubmitModal />}
-      {submitModal2 && <SubmitModal2 />}
+      {/* {submitModal2 && <SubmitModal2 />} */}
+      <SubmitModal2 />
 
       {signupModalVisibility && <SignupModal />}
       {loading && (

@@ -26,8 +26,6 @@ const SingleComment = ({ id, postId }) => {
       const response = await fetch(commentUrl);
       await response.json().then((data) => {
         setComment(data);
-        console.log(123);
-        console.log(data);
         setLikes(data.likesArray.length);
       });
     } catch (err) {
@@ -53,7 +51,6 @@ const SingleComment = ({ id, postId }) => {
           data
         )
         .then((res) => {
-          console.log(res.data.msg);
           setLikes(res.data.likes);
         });
     }
@@ -67,14 +64,12 @@ const SingleComment = ({ id, postId }) => {
   async function deleteComment() {
     const data = { post_id: postId };
     axios.post(commentDeleteUrl, data).then((res) => {
-      console.log(res.data);
       setComment(null);
     });
   }
   async function editComment() {
     const data = { edited_comment: editedComment };
     axios.post(commentEditUrl, data).then((res) => {
-      console.log(res.data);
       setComment(res.data.comment);
       setEditState(false);
     });
@@ -140,7 +135,7 @@ const SingleComment = ({ id, postId }) => {
                 {likes === 0 ? `` : likes} Like
               </span>
             )}
-            {!editState && <span className="control">Reply</span>}
+
             {userData.username === comment.author.username && !editState && (
               <>
                 <span className="control" onClick={deleteComment}>

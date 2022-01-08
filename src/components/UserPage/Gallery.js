@@ -16,7 +16,7 @@ const Gallery = ({ userPosts, posts, page, setPage }) => {
           <div className="Gallery">
             {posts.map((post) => {
               return (
-                <div className="SingleImage">
+                <div className="SingleImage" key={`gallery_${post._id}`}>
                   <img src={post.image} alt="galleryImage" className="image" />
                   <div className="info">
                     <Route

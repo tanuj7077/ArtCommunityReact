@@ -17,7 +17,7 @@ function SignupModal() {
   const [registerConfPassword, setRegisterConfPassword] = useState("");
 
   return (
-    <div class="signupModal">
+    <div className="signupModal">
       <div
         className="signupModal-backdrop"
         onClick={() => setSignupModalVisibility(false)}

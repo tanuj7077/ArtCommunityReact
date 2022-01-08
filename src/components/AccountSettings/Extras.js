@@ -50,7 +50,6 @@ const Extras = () => {
   const deleteField = (i) => {
     var arr = extras;
     arr.splice(i, 1);
-    console.log(arr);
     setExtras(arr);
   };
 
@@ -63,7 +62,6 @@ const Extras = () => {
       extra: extras,
     };
     axios.post(url, extrasInfo).then((res) => {
-      console.log(res.data.extras);
       setUserData(res.data.user);
       changeAlert(res.data.message);
     });
@@ -136,7 +134,7 @@ const Extras = () => {
           {extras.map((item, i) => {
             return (
               <div
-                key={item.label}
+                key={`extras_${item.label}`}
                 className="settings-group settings-group-extras"
               >
                 <label className="settings-group-label">

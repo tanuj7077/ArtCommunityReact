@@ -12,6 +12,7 @@ const Appearance = ({ posts }) => {
           {posts.map((post) => {
             return (
               <Route
+                key={`userPost_${post._id}`}
                 render={({ history }) => (
                   <div
                     onClick={() => {

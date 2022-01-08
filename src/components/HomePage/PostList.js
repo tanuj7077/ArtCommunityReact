@@ -93,7 +93,7 @@ const PostList = () => {
       >
         <Masonry gutter="10px">
           {imgData.images.map((post) => {
-            return <SinglePost key={post.name} {...post} />;
+            return <SinglePost key={post._id} {...post} />;
           })}
         </Masonry>
       </ResponsiveMasonry>

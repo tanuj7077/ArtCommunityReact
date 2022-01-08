@@ -14,7 +14,6 @@ const Recommended = ({ id, tags }) => {
         LIMIT;
       await axios.post(postUrl, { tags: tags }).then((res) => {
         setRecommended(res.data);
-        console.log(res.data);
       });
     } catch (error) {
       console.log(error);
@@ -33,6 +32,7 @@ const Recommended = ({ id, tags }) => {
           {recommended.map((item) => {
             return (
               <Route
+                key={`recommended${item._id}`}
                 render={({ history }) => (
                   <div
                     className="otherContent--Thumbnails-img"

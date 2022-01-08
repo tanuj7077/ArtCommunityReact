@@ -22,7 +22,6 @@ const AppProvider = ({ children }) => {
     const result = await axios.get(
       "https://shielded-woodland-79171.herokuapp.com/posts/updatePosts"
     );
-    console.log(result.data);
   };
   useEffect(() => {
     updatePostsBackend();
@@ -97,7 +96,6 @@ const AppProvider = ({ children }) => {
   };
 
   const openSubmitProfilePicModal = () => {
-    //console.log("pressed");
     setSubmitProfilePicModal(true);
   };
 
@@ -132,7 +130,6 @@ const AppProvider = ({ children }) => {
         )
         .then((res) => {
           if (res.data.success) {
-            console.log(res.data);
             setUserData(res.data.userData);
             setIsLoggedIn(true);
             changeAlert(res.data.message);

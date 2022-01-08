@@ -185,10 +185,10 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
                 <span className="info">{followerCount} Followers</span>
               </div>
               <div className="authorHover--images">
-                {/* if images count > 3 add "SEE MORE"*/}
                 {posts.map((post) => {
                   return (
                     <Route
+                      key={`hoverDataPosts_${post._id}`}
                       render={({ history }) => (
                         <div
                           className="image"
@@ -201,12 +201,6 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
                         ></div>
                       )}
                     />
-                    // <div
-                    //   className="image"
-                    //   style={{
-                    //     backgroundImage: `url(${post.image})`,
-                    //   }}
-                    // ></div>
                   );
                 })}
               </div>

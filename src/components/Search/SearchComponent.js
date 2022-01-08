@@ -50,7 +50,6 @@ const SearchComponent = () => {
           setPost(res.data.posts);
           setTag(res.data.tags);
           setAuthor(res.data.users);
-          console.log(res.data);
         });
       setLoading(false);
     } catch (error) {
@@ -93,6 +92,7 @@ const SearchComponent = () => {
                         {post.map((item) => {
                           return (
                             <Route
+                              key={`searchResults_${item.postId}`}
                               render={({ history }) => (
                                 <li
                                   className="item"
@@ -119,10 +119,11 @@ const SearchComponent = () => {
                   {author.length > 0 ? (
                     <>
                       <ul className="authorList">
-                        {author.map((item) => {
+                        {author.map((item, idx) => {
                           // return <li className="item">{item}</li>;
                           return (
                             <Route
+                              key={`author_${idx}_${item}`}
                               render={({ history }) => (
                                 <li
                                   className="item"
@@ -150,10 +151,11 @@ const SearchComponent = () => {
                   {tag.length > 0 ? (
                     <>
                       <ul className="tagList">
-                        {tag.map((item) => {
+                        {tag.map((item, idx) => {
                           // return <li className="item">{item}</li>;
                           return (
                             <Route
+                              key={`searchTag_${idx}_${item}`}
                               render={({ history }) => (
                                 <li
                                   className="item"

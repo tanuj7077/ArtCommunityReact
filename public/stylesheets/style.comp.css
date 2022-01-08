@@ -3223,6 +3223,7 @@ body {
   flex-flow: column;
   gap: 2.5rem;
   align-items: center;
+  position: relative;
 }
 @media only screen and (max-width: 37.5em) {
   .SubmitModal-modal {
@@ -3234,6 +3235,18 @@ body {
     width: 85vw;
     height: calc(100vh - 12rem);
   }
+}
+.SubmitModal-modal .closeIcon {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  color: #999999;
+}
+.SubmitModal-modal .closeIcon:hover, .SubmitModal-modal .closeIcon:focus {
+  cursor: pointer;
+  color: #f36868;
 }
 .SubmitModal-modal .heading {
   font-size: 1.6rem;
@@ -6141,6 +6154,11 @@ body {
 }
 .settingsDesk-main .profile-items .inputs-profile .settings-group-profile {
   width: 46%;
+}
+@media only screen and (max-width: 56.25em) {
+  .settingsDesk-main .profile-items .inputs-profile .settings-group-profile {
+    width: 100%;
+  }
 }
 .settingsDesk-main .profile-items .inputs-profile .settings-group-profile-input {
   width: 100%;

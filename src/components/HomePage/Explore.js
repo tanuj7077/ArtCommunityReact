@@ -24,21 +24,11 @@ const Explore = () => {
 
         {homePageTags.length > 0 &&
           homePageTags.map((tag) => {
-            return <SingleTag key={tag.id} {...tag} />;
+            return <SingleTag key={`homePageTags_${tag.id}`} {...tag} />;
           })}
       </div>
     </section>
   );
-  /*return (
-    <section className="explore">
-      <div className="subHeading">Explore Topics</div>
-      <div className="exploreGrid">
-        {tags.map((tag) => {
-          return <SingleTag key={tag.id} {...tag} />;
-        })}
-      </div>
-    </section>
-  );*/
 };
 
 export default Explore;

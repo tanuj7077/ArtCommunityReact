@@ -26,8 +26,14 @@ if (!firebase.apps.length) {
 var storage = firebase.storage();
 
 const SubmitModal2 = () => {
-  const { userData, closeSubmitModal2, changeAlert, loading, setLoading } =
-    useGlobalContext();
+  const {
+    userData,
+    closeSubmitModal2,
+    changeAlert,
+    loading,
+    setLoading,
+    submitModal2,
+  } = useGlobalContext();
 
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
@@ -68,6 +74,16 @@ const SubmitModal2 = () => {
     });
     newList.splice(index, 1);
     setSelectedTags(newList);
+  };
+
+  const setDefault = () => {
+    setImage("");
+    setToSendImage("");
+    setName("");
+    setDesc("");
+    setTagInput("");
+    setSelectedTags([]);
+    setIsImageUploaded(false);
   };
 
   async function handleSubmit() {
@@ -112,112 +128,123 @@ const SubmitModal2 = () => {
   }
   return (
     <>
-      <div className="SubmitModal">
-        <div className="SubmitModal-overlay" onClick={closeSubmitModal2}></div>
-        <div className="SubmitModal-modal">
-          <div className="heading">Add Image</div>
-          <div className="content">
-            <div className="content-container">
-              <div className="content-container-imgContainer">
-                {!isImageUploaded ? (
-                  <>
-                    <label htmlFor="fileInput" className="uploadLabel">
-                      <FaUpload className="uploadIcon" />
-                      <span className="uploadText">Click to Upload</span>
-                    </label>
-                    <input
-                      id="fileInput"
-                      type="file"
-                      accept=".jpg,.jpeg,.png"
-                      onChange={handleImage}
+      {submitModal2 && (
+        <div className="SubmitModal">
+          <div
+            className="SubmitModal-overlay"
+            onClick={() => {
+              closeSubmitModal2();
+              setDefault();
+            }}
+          ></div>
+          <div className="SubmitModal-modal">
+            <IoClose
+              className="closeIcon"
+              onClick={() => {
+                closeSubmitModal2();
+                setDefault();
+              }}
+            />
+            <div className="heading">Add Image</div>
+            <div className="content">
+              <div className="content-container">
+                <div className="content-container-imgContainer">
+                  {!isImageUploaded ? (
+                    <>
+                      <label htmlFor="fileInput" className="uploadLabel">
+                        <FaUpload className="uploadIcon" />
+                        <span className="uploadText">Click to Upload</span>
+                      </label>
+                      <input
+                        id="fileInput"
+                        type="file"
+                        accept=".jpg,.jpeg,.png"
+                        onChange={handleImage}
+                      />
+                    </>
+                  ) : (
+                    <img
+                      src={image}
+                      alt="coverImg"
+                      className="img"
+                      onClick={setDefault}
                     />
-                  </>
-                ) : (
-                  <img
-                    src={image}
-                    alt="coverImg"
-                    className="img"
-                    onClick={() => {
-                      setImage("");
-                      setToSendImage("");
-                      setIsImageUploaded(false);
-                    }}
-                  />
-                )}
-              </div>
-              {isImageUploaded && (
-                <div className="content-container-textual">
-                  <div className="content-container-textual-formGrp">
-                    <label>name</label>
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </div>
-                  <div className="content-container-textual-formGrp">
-                    <label>Description</label>
-                    <textarea
-                      type="text"
-                      value={desc}
-                      onChange={(e) => setDesc(e.target.value)}
-                    ></textarea>
-                  </div>
-                  <div className="content-container-textual-tags">
-                    <div className="tags">
-                      <label>Tags:</label>
-                      <ul className="selectedTags">
-                        {selectedTags.map((tag) => {
-                          return (
-                            <li
-                              key={`selectedTag_${tag}`}
-                              className="selectedTags-tag"
-                              onClick={() => removeFromCategories(tag)}
-                            >
-                              {tag}
-                            </li>
-                          );
-                        })}
+                  )}
+                </div>
+                {isImageUploaded && (
+                  <div className="content-container-textual">
+                    <div className="content-container-textual-formGrp">
+                      <label>name</label>
+                      <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+                    <div className="content-container-textual-formGrp">
+                      <label>Description</label>
+                      <textarea
+                        type="text"
+                        value={desc}
+                        onChange={(e) => setDesc(e.target.value)}
+                      ></textarea>
+                    </div>
+                    <div className="content-container-textual-tags">
+                      <div className="tags">
+                        <label>Tags:</label>
+                        <ul className="selectedTags">
+                          {selectedTags.map((tag) => {
+                            return (
+                              <li
+                                key={`selectedTag_${tag}`}
+                                className="selectedTags-tag"
+                                onClick={() => removeFromCategories(tag)}
+                              >
+                                {tag}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                      <input
+                        placeholder="search"
+                        type="text"
+                        value={tagInput}
+                        onChange={(e) => setTagInput(e.target.value)}
+                      />
+                      <ul className="list">
+                        {tags
+                          .filter((item) => {
+                            return item.includes(tagInput);
+                          })
+                          .map((tag) => {
+                            return (
+                              <li
+                                key={`listTag_${tag}`}
+                                className="list-item"
+                                onClick={() => addToCategories(tag)}
+                              >
+                                {tag}
+                              </li>
+                            );
+                          })}
                       </ul>
                     </div>
-                    <input
-                      placeholder="search"
-                      type="text"
-                      value={tagInput}
-                      onChange={(e) => setTagInput(e.target.value)}
-                    />
-                    <ul className="list">
-                      {tags
-                        .filter((item) => {
-                          return item.includes(tagInput);
-                        })
-                        .map((tag) => {
-                          return (
-                            <li
-                              key={`listTag_${tag}`}
-                              className="list-item"
-                              onClick={() => addToCategories(tag)}
-                            >
-                              {tag}
-                            </li>
-                          );
-                        })}
-                    </ul>
                   </div>
-                </div>
-              )}
-              {name.length > 0 && (
-                <button
-                  className="content-container-btn"
-                  onClick={handleSubmit}
-                >
-                  Submit
-                </button>
-              )}
+                )}
+                {name.length > 0 && (
+                  <button
+                    className="content-container-btn"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
   /*return (

@@ -10,7 +10,7 @@ const FollowedList = () => {
       {userData.following && (
         <div className="followedList">
           {userData.following.map((userId) => {
-            return <Followed userId={userId} />;
+            return <Followed key={`followedList_${userId}`} userId={userId} />;
           })}
         </div>
       )}

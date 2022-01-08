@@ -16,9 +16,8 @@ const ExploreTagList = () => {
           {explorePageTags.map((tag) => {
             return (
               <Suspense
-                fallback={
-                  <div className="explorePage--loading"></div>
-                }
+                fallback={<div className="explorePage--loading"></div>}
+                key={`explorePaageTags_${tag}`}
               >
                 <ExploreTag key={tag.id} {...tag} />
               </Suspense>

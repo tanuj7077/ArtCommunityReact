@@ -102,7 +102,6 @@ const SubmitCoverModal = () => {
           .child(currentImageName)
           .getDownloadURL()
           .then((url) => {
-            console.log(url);
             const User = {
               userId: userData._id,
               imageUrl: url,

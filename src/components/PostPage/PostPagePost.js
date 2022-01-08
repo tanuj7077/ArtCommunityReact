@@ -316,7 +316,7 @@ const PostPagePost = ({ id }) => {
                   {Post.tags.map((item) => {
                     return (
                       <Route
-                        key={item}
+                        key={`postContentTag_${item}`}
                         render={({ history }) => (
                           <span
                             onClick={() => {

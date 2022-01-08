@@ -143,8 +143,6 @@ const SubmitModal = () => {
       let reader = new FileReader();
       setToSendImage(e.target.files[0]);
       reader.onload = (e) => {
-        console.log("executed2");
-        console.log(e.target);
         setImage(e.target.result);
       };
       reader.readAsDataURL(e.target.files[0]);
@@ -211,9 +209,6 @@ const SubmitModal = () => {
   useEffect(() => {
     fetchTags();
   }, []);
-  useEffect(() => {
-    console.log("isUploaded=", isUploaded);
-  }, [isUploaded]);
   return (
     <>
       <div className="submitModal">
@@ -311,12 +306,7 @@ const SubmitModal = () => {
                   <span className="cancel-btn" onClick={closeSubmitModal}>
                     Cancel
                   </span>
-                  <span
-                    className="cancel-btn"
-                    onClick={() => console.log(isUploaded)}
-                  >
-                    Check uploaded
-                  </span>
+                  <span className="cancel-btn">Check uploaded</span>
                 </div>
               </>
             )}

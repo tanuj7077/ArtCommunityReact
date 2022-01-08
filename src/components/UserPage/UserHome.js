@@ -28,10 +28,6 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
         sliderRef.current.clientWidth >=
         rightBtnRef.current.offsetLeft + 40
       ) {
-        console.log(
-          sliderRef.current.clientWidth,
-          rightBtnRef.current.offsetLeft + 40
-        );
         setBtnVisibility(true);
       }
       if (sliderRef.current.clientWidth < rightBtnRef.current.offsetLeft + 40) {
@@ -224,7 +220,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
             <div className="spotlight-info-actions">
               {spotlight && spotlight.likesArray && (
                 <span className="spotlight-info-actions-like">
-                  <AiFillLike class="infoIcon" onClick={handleLike} />
+                  <AiFillLike className="infoIcon" onClick={handleLike} />
                   <span className="text">{spotlight.likesArray.length}</span>
                 </span>
               )}
@@ -233,14 +229,14 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
                   <Route
                     render={({ history }) => (
                       <FaCommentDots
-                        class="infoIcon"
+                        className="infoIcon"
                         onClick={() => {
                           history.push(`/post/${spotlight._id}`);
                         }}
                       />
                     )}
                   />
-                  {/* <FaCommentDots class="infoIcon" /> */}
+                  {/* <FaCommentDots className="infoIcon" /> */}
                   <span className="text">{spotlight.comments.length}</span>
                 </span>
               )}
@@ -267,6 +263,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
                 {popular.map((item) => {
                   return (
                     <Route
+                      key={`popularSlider_${item._id}`}
                       render={({ history }) => (
                         <img
                           onClick={() => {
@@ -304,7 +301,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
           <div className="Liked">
             {liked.map((item) => {
               return (
-                <div className="LikedImage">
+                <div className="LikedImage" key={`likedImage_${item._id}`}>
                   <img
                     draggable="false"
                     src={item.image}

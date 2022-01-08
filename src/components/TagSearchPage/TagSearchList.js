@@ -15,7 +15,6 @@ const TagSearchList = ({ name }) => {
     fetch(url)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         if (result.length === 0) {
           setMessage("No posts in this category yet");
         } else {
@@ -38,7 +37,7 @@ const TagSearchList = ({ name }) => {
       >
         <Masonry gutter="10px">
           {posts.map((post) => {
-            return <SinglePost key={post} {...post} />;
+            return <SinglePost key={`tagSearchPost_${post}`} {...post} />;
           })}
         </Masonry>
       </ResponsiveMasonry>

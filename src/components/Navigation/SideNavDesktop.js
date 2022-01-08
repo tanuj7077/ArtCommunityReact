@@ -10,13 +10,8 @@ import { CgMenu } from "react-icons/cg";
 import { IoMdPower } from "react-icons/io";
 
 const SideNavDesktop = () => {
-  const {
-    isLoggedIn,
-    userData,
-    setIsLoggedIn,
-    setUserData,
-    changeAlert,
-  } = useGlobalContext();
+  const { isLoggedIn, userData, setIsLoggedIn, setUserData, changeAlert } =
+    useGlobalContext();
   const [sideNavVisibility, setSideNavVisibility] = useState(0);
 
   const handleLogout = async (e) => {
@@ -25,7 +20,6 @@ const SideNavDesktop = () => {
       await axios
         .get("https://shielded-woodland-79171.herokuapp.com/auth/signout")
         .then((res) => {
-          console.log(res.data);
           if (res.data.success) {
             setUserData({});
             setIsLoggedIn(false);

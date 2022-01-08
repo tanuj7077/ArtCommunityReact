@@ -129,7 +129,7 @@ const Followed = (userId) => {
           {posts &&
             posts.map((post) => {
               return (
-                <div className="item">
+                <div className="item" key={`followed_${post._id}`}>
                   <img
                     src={post.image}
                     draggable="false"
