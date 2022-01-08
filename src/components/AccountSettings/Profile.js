@@ -24,15 +24,22 @@ const Profile = () => {
   const [email, setEmail] = useState("");
 
   const save = () => {
-    var profileInfo = {
-      name: name,
-      username: username,
-      email: email,
-    };
-    axios.post(url, profileInfo).then((res) => {
-      setUserData(res.data.user);
-      changeAlert(res.data.message);
-    });
+    if (userData.username === "demoUser") {
+      changeAlert({
+        type: "error",
+        messages: ["Can't update this field as a demo user"],
+      });
+    } else {
+      var profileInfo = {
+        name: name,
+        username: username,
+        email: email,
+      };
+      axios.post(url, profileInfo).then((res) => {
+        setUserData(res.data.user);
+        changeAlert(res.data.message);
+      });
+    }
   };
 
   useEffect(() => {
