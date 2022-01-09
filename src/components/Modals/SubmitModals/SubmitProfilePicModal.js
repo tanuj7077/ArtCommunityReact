@@ -124,7 +124,7 @@ const SubmitProfilePicModal = () => {
                 };
                 axios
                   .post(
-                    "https://shielded-woodland-79171.herokuapp.com/users/user/changeProfile",
+                    `${process.env.REACT_APP_BASE_URL}/users/user/changeProfile`,
                     User
                   )
                   .then((res) => {

@@ -9,9 +9,7 @@ import { useGlobalContext } from "../../context";
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   const { isLoggedIn, userData, setSignupModalVisibility, changeAlert } =
     useGlobalContext();
-  let userUrl =
-    "https://shielded-woodland-79171.herokuapp.com/users/hoverUser/" +
-    author.id;
+  let userUrl = `${process.env.REACT_APP_BASE_URL}/users/hoverUser/${author.id}`;
 
   const AuthorHoverRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -107,12 +105,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
         user: userData,
       };
       await axios
-        .post(
-          "https://shielded-woodland-79171.herokuapp.com/posts/post/" +
-            _id +
-            "/like",
-          data
-        )
+        .post(`${process.env.REACT_APP_BASE_URL}/posts/post/${_id}/like`, data)
         .then((res) => {
           changeAlert(res.data.message);
           if (res.data.message.type === "success") {

@@ -19,7 +19,7 @@ function App() {
   const { setIsLoggedIn, setUserData, isLoggedIn } = useGlobalContext();
   const getLoggedIn = async () => {
     const loggedInRes = await axios.get(
-      "https://shielded-woodland-79171.herokuapp.com/auth/loggedIn"
+      `${process.env.REACT_APP_BASE_URL}/auth/loggedIn`
     );
     if (loggedInRes.data.loggedIn) {
       setIsLoggedIn(true);

@@ -13,7 +13,7 @@ const PostList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const getTotalPages = async () => {
     let total = await axios.get(
-      "https://shielded-woodland-79171.herokuapp.com/posts/totalPosts"
+      `${process.env.REACT_APP_BASE_URL}/posts/totalPosts`
     );
     setTotalPages(total.data);
   };
@@ -43,6 +43,7 @@ const PostList = () => {
     images: [], //state
     fetching: true, //action
   });
+  const LIMIT = 4;
   const [pager, pagerDispatch] = useReducer(pageReducer, {
     page: 1, //state
   });
@@ -50,7 +51,7 @@ const PostList = () => {
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
     fetch(
-      `https://shielded-woodland-79171.herokuapp.com/posts/postList?page=${pager.page}&limit=16`
+      `${process.env.REACT_APP_BASE_URL}/posts/postList?page=${pager.page}&limit=${LIMIT}`
     )
       .then((data) => data.json())
       .then((images) => {
@@ -85,8 +86,25 @@ const PostList = () => {
     }
   }, [scrollObserver, bottomBoundaryRef]);
 
+  const gridRef = useRef(null);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (gridRef && gridRef.current) {
+        if (
+          gridRef.current.getBoundingClientRect().height < window.innerHeight &&
+          imgData.images.length !== totalPages
+        ) {
+          pagerDispatch({ type: "ADVANCE_PAGE" });
+        }
+      }
+    }, 2000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
-    <div className="main">
+    <div className="main" ref={gridRef}>
       <div className="subHeading">Discover</div>
       <ResponsiveMasonry
         columnsCountBreakPoints={{ 350: 1, 600: 2, 750: 2, 900: 3, 1000: 4 }}
@@ -98,6 +116,9 @@ const PostList = () => {
         </Masonry>
       </ResponsiveMasonry>
       <div className="endMessage">
+        <span className="completed">
+          Total={totalPages}, length={imgData.images.length}
+        </span>
         {imgData.images.length !== totalPages && imgData.fetching && (
           <span className="loadingAnim">Loading...</span>
         )}

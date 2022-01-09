@@ -7,11 +7,7 @@ const Recommended = ({ id, tags }) => {
   const getRecommended = async () => {
     try {
       const LIMIT = 9;
-      const postUrl =
-        "https://shielded-woodland-79171.herokuapp.com/posts/recommendedPosts/" +
-        id +
-        "/" +
-        LIMIT;
+      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/recommendedPosts/${id}/${LIMIT}`;
       await axios.post(postUrl, { tags: tags }).then((res) => {
         setRecommended(res.data);
       });

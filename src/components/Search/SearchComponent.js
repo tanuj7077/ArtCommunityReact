@@ -43,7 +43,7 @@ const SearchComponent = () => {
     setLoading(true);
     try {
       await axios
-        .post("https://shielded-woodland-79171.herokuapp.com/search", {
+        .post(`${process.env.REACT_APP_BASE_URL}/search`, {
           searchTerm: searchTerm,
         })
         .then((res) => {

@@ -45,9 +45,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
       };
       await axios
         .post(
-          "https://shielded-woodland-79171.herokuapp.com/posts/post/" +
-            spotlight._id +
-            "/like",
+          `${process.env.REACT_APP_BASE_URL}/posts/post/${spotlight._id}/like`,
           data
         )
         .then((res) => {

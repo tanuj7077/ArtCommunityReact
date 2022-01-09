@@ -108,7 +108,7 @@ const SubmitCoverModal = () => {
             };
             axios
               .post(
-                "https://shielded-woodland-79171.herokuapp.com/users/user/changeCover",
+                `${process.env.REACT_APP_BASE_URL}/users/user/changeCover`,
                 User
               )
               .then((res) => {

@@ -39,7 +39,7 @@ const SideNavMobile = () => {
     e.preventDefault();
     try {
       await axios
-        .get("https://shielded-woodland-79171.herokuapp.com/auth/signout")
+        .get(`${process.env.REACT_APP_BASE_URL}/auth/signout`)
         .then((res) => {
           if (res.data.success) {
             setUserData({});

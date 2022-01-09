@@ -48,8 +48,7 @@ const PostPagePost = ({ id }) => {
     changeAlert,
     updatePostsBackend,
   } = useGlobalContext();
-  let postUrl =
-    "https://shielded-woodland-79171.herokuapp.com/posts/post1/" + id;
+  let postUrl = `${process.env.REACT_APP_BASE_URL}/posts/post1/${id}`;
 
   const [Post, setPost] = useState(null);
   const [comment, setComment] = useState("");
@@ -87,12 +86,7 @@ const PostPagePost = ({ id }) => {
         user: userData,
       };
       axios
-        .post(
-          "https://shielded-woodland-79171.herokuapp.com/posts/post/" +
-            id +
-            "/like",
-          data
-        )
+        .post(`${process.env.REACT_APP_BASE_URL}/posts/post/${id}/like`, data)
         .then((res) => {
           changeAlert(res.data.message);
           if (res.data.post) {
@@ -120,10 +114,7 @@ const PostPagePost = ({ id }) => {
         .delete()
         .then(() => {
           axios
-            .post(
-              "https://shielded-woodland-79171.herokuapp.com/posts/deletePost/" +
-                id
-            )
+            .post(`${process.env.REACT_APP_BASE_URL}/posts/deletePost/${id}`)
             .then((res) => {
               setUserData(res.data.user);
               changeAlert(res.data.message);
@@ -145,9 +136,7 @@ const PostPagePost = ({ id }) => {
       };
       axios
         .post(
-          "https://shielded-woodland-79171.herokuapp.com/posts/post/" +
-            id +
-            "/comment",
+          `${process.env.REACT_APP_BASE_URL}/posts/post/${id}/comment`,
           data
         )
         .then((res) => {
@@ -170,10 +159,7 @@ const PostPagePost = ({ id }) => {
       };
       if (!userData.following.includes(Post.author.id)) {
         axios
-          .post(
-            "https://shielded-woodland-79171.herokuapp.com/users/follow",
-            data
-          )
+          .post(`${process.env.REACT_APP_BASE_URL}/users/follow`, data)
           .then((res) => {
             setFollowStat("Unfollow User");
             setUserData(res.data.user);
@@ -181,10 +167,7 @@ const PostPagePost = ({ id }) => {
           });
       } else {
         axios
-          .post(
-            "https://shielded-woodland-79171.herokuapp.com/users/unfollow",
-            data
-          )
+          .post(`${process.env.REACT_APP_BASE_URL}/users/unfollow`, data)
           .then((res) => {
             setFollowStat("Follow User");
             setUserData(res.data.user);

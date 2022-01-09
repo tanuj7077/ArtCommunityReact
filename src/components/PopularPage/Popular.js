@@ -13,7 +13,7 @@ const Popular = () => {
   const [totalPages, setTotalPages] = useState(1);
   const getTotalPages = async () => {
     let total = await axios.get(
-      "https://shielded-woodland-79171.herokuapp.com/posts/totalPosts"
+      `${process.env.REACT_APP_BASE_URL}/posts/totalPosts`
     );
     setTotalPages(total.data);
   };
@@ -50,7 +50,7 @@ const Popular = () => {
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
     fetch(
-      `https://shielded-woodland-79171.herokuapp.com/posts/getPopular?page=${pager.page}&limit=12`
+      `${process.env.REACT_APP_BASE_URL}/posts/getPopular?page=${pager.page}&limit=12`
     )
       .then((data) => data.json())
       .then((images) => {

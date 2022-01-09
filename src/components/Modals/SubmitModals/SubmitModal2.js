@@ -113,10 +113,7 @@ const SubmitModal2 = () => {
               author: { id: userData._id, username: userData.username },
             };
             axios
-              .post(
-                "https://shielded-woodland-79171.herokuapp.com/posts/newPost",
-                post
-              )
+              .post(`${process.env.REACT_APP_BASE_URL}/posts/newPost`, post)
               .then((res) => {
                 changeAlert(res.data.message);
               });

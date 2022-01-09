@@ -6,11 +6,7 @@ const PostsByUser = ({ id }) => {
   async function getPostsByUser() {
     try {
       const LIMIT = 9;
-      const postUrl =
-        "https://shielded-woodland-79171.herokuapp.com/posts/postByUser/" +
-        id +
-        "/" +
-        LIMIT;
+      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/postByUser/${id}/${LIMIT}`;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setPostsByUser(postData);

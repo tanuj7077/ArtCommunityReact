@@ -91,9 +91,7 @@ const customStyles = {
 
 const Personal = () => {
   const { isLoggedIn, userData, setUserData, changeAlert } = useGlobalContext();
-  let url =
-    "https://shielded-woodland-79171.herokuapp.com/users/user/editPersonal/" +
-    userData._id;
+  let url = `${process.env.REACT_APP_BASE_URL}/users/user/editPersonal/${userData._id}`;
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 

@@ -21,9 +21,7 @@ const Extras = () => {
   const [extraLabel, setExtraLabel] = useState("");
   const [extraValue, setExtraValue] = useState("");
 
-  let url =
-    "https://shielded-woodland-79171.herokuapp.com/users/user/editExtras/" +
-    userData._id;
+  let url = `${process.env.REACT_APP_BASE_URL}/users/user/editExtras/${userData._id}`;
 
   const toggleModalDisplay = () => {
     setShowModal(!showModal);

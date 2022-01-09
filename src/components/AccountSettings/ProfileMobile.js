@@ -16,9 +16,7 @@ const Profile = () => {
     setUserData,
     changeAlert,
   } = useGlobalContext();
-  let url =
-    "https://shielded-woodland-79171.herokuapp.com/users/user/editProfile/" +
-    userData._id;
+  let url = `${process.env.REACT_APP_BASE_URL}/users/user/editProfile/${userData._id}`;
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

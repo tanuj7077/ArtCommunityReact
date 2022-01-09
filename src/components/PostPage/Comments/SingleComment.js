@@ -10,16 +10,9 @@ const SingleComment = ({ id, postId }) => {
   const [likes, setLikes] = useState(0);
 
   const [editState, setEditState] = useState(false);
-  let commentUrl =
-    "https://shielded-woodland-79171.herokuapp.com/comments/comment/" + id;
-  let commentDeleteUrl =
-    "https://shielded-woodland-79171.herokuapp.com/comments/comment/" +
-    id +
-    "/delete";
-  let commentEditUrl =
-    "https://shielded-woodland-79171.herokuapp.com/comments/comment/" +
-    id +
-    "/edit";
+  let commentUrl = `${process.env.REACT_APP_BASE_URL}/comments/comment/${id}`;
+  let commentDeleteUrl = `${process.env.REACT_APP_BASE_URL}/comments/comment/${id}/delete`;
+  let commentEditUrl = `${process.env.REACT_APP_BASE_URL}/comments/comment/${id}/edit`;
 
   async function fetchComment() {
     try {
@@ -45,9 +38,7 @@ const SingleComment = ({ id, postId }) => {
       };
       axios
         .post(
-          "https://shielded-woodland-79171.herokuapp.com/comments/comment/" +
-            id +
-            "/like",
+          `${process.env.REACT_APP_BASE_URL}/comments/comment/${id}/like`,
           data
         )
         .then((res) => {

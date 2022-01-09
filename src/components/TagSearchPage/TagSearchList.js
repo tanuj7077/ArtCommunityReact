@@ -7,7 +7,7 @@ const TagSearchList = ({ name }) => {
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState("");
 
-  let url = "https://shielded-woodland-79171.herokuapp.com/tags/tag/" + name;
+  let url = `${process.env.REACT_APP_BASE_URL}/tags/tag/${name}`;
 
   const fetchPosts = async () => {
     setPosts([]);

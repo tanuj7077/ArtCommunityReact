@@ -20,7 +20,7 @@ const AppProvider = ({ children }) => {
 
   const updatePostsBackend = async () => {
     const result = await axios.get(
-      "https://shielded-woodland-79171.herokuapp.com/posts/updatePosts"
+      `${process.env.REACT_APP_BASE_URL}/posts/updatePosts`
     );
   };
   useEffect(() => {
@@ -28,7 +28,7 @@ const AppProvider = ({ children }) => {
   }, []);
   //--------------------For Explore Page------------------//
   const fetchExploreTags = async () => {
-    let url = "https://shielded-woodland-79171.herokuapp.com/tags/exploreTags";
+    let url = `${process.env.REACT_APP_BASE_URL}/tags/exploreTags`;
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -41,16 +41,16 @@ const AppProvider = ({ children }) => {
     setTimeout(() => {
       fetchExploreTags();
     }, 3000);
-    //updatePostsBackend();
   }, []);
   //----------------------END---------------------//
 
   //--------------------For Home Page Explore Section------------------//
   const fetchHomePageTags = async () => {
-    let url = "https://shielded-woodland-79171.herokuapp.com/tags/randomTags";
+    let url = `${process.env.REACT_APP_BASE_URL}/tags/randomTags`;
     try {
       const response = await fetch(url);
       const data = await response.json();
+      console.log(data);
       setHomePageTags(data);
     } catch (error) {
       console.log(error);
@@ -124,10 +124,7 @@ const AppProvider = ({ children }) => {
         password,
       };
       await axios
-        .post(
-          "https://shielded-woodland-79171.herokuapp.com/auth/signin",
-          loginData
-        )
+        .post(`${process.env.REACT_APP_BASE_URL}/auth/signin`, loginData)
         .then((res) => {
           if (res.data.success) {
             setUserData(res.data.userData);
@@ -159,10 +156,7 @@ const AppProvider = ({ children }) => {
         password_confirmation: signupPasswordConf,
       };
       await axios
-        .post(
-          "https://shielded-woodland-79171.herokuapp.com/auth/signup",
-          registerData
-        )
+        .post(`${process.env.REACT_APP_BASE_URL}/auth/signup`, registerData)
         .then((res) => {
           if (res.data.success) {
             setSignupModalVisibility(false);

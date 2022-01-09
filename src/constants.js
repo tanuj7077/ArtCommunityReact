@@ -49,4 +49,6 @@ export const tags = [
   "clouds",
   "mountain",
   "building",
+  "fashion",
+  "art",
 ];
