@@ -51,4 +51,10 @@ export const tags = [
   "building",
   "fashion",
   "art",
+  "greenery",
+  "black",
+  "animal",
+  "street",
+  "village",
+  "dark",
 ];

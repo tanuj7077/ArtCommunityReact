@@ -10,9 +10,16 @@ const ExploreTagList = () => {
   return (
     <div className="explorePage">
       <ResponsiveMasonry
-        columnsCountBreakPoints={{ 350: 2, 750: 2, 900: 3, 1000: 4 }}
+        columnsCountBreakPoints={{
+          350: 2,
+          750: 2,
+          900: 3,
+          1000: 4,
+          1440: 5,
+          2000: 6,
+        }}
       >
-        <Masonry>
+        <Masonry gutter="5px">
           {explorePageTags.map((tag) => {
             return (
               <Suspense

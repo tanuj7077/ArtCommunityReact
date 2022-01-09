@@ -43,7 +43,7 @@ const PostList = () => {
     images: [], //state
     fetching: true, //action
   });
-  const LIMIT = 4;
+  const LIMIT = 8;
   const [pager, pagerDispatch] = useReducer(pageReducer, {
     page: 1, //state
   });
@@ -107,18 +107,25 @@ const PostList = () => {
     <div className="main" ref={gridRef}>
       <div className="subHeading">Discover</div>
       <ResponsiveMasonry
-        columnsCountBreakPoints={{ 350: 1, 600: 2, 750: 2, 900: 3, 1000: 4 }}
+        columnsCountBreakPoints={{
+          350: 1,
+          600: 2,
+          750: 2,
+          1000: 3,
+          1440: 4,
+          2560: 5,
+        }}
       >
-        <Masonry gutter="10px">
+        <Masonry gutter="15px">
           {imgData.images.map((post) => {
             return <SinglePost key={post._id} {...post} />;
           })}
         </Masonry>
       </ResponsiveMasonry>
       <div className="endMessage">
-        <span className="completed">
+        {/* <span className="completed">
           Total={totalPages}, length={imgData.images.length}
-        </span>
+        </span> */}
         {imgData.images.length !== totalPages && imgData.fetching && (
           <span className="loadingAnim">Loading...</span>
         )}

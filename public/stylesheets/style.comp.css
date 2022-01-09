@@ -1873,7 +1873,7 @@ body {
   padding-top: 5rem;
   margin: 0 auto;
   width: 95%;
-  min-height: 75vh;
+  height: max-content;
 }
 @media only screen and (max-width: 37.5em) {
   .main {
@@ -1933,7 +1933,7 @@ body {
   border-radius: 1rem;
   overflow: hidden;
   opacity: 0;
-  animation: appear 0.5s linear forwards;
+  animation: appear 0.5s linear 1s forwards;
 }
 .grid-item--card-img {
   width: 100%;

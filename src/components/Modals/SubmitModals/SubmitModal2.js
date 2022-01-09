@@ -116,6 +116,7 @@ const SubmitModal2 = () => {
               .post(`${process.env.REACT_APP_BASE_URL}/posts/newPost`, post)
               .then((res) => {
                 changeAlert(res.data.message);
+                setDefault();
               });
             setLoading(0);
             closeSubmitModal2();

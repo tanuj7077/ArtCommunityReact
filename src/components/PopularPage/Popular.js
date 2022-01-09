@@ -39,6 +39,7 @@ const Popular = () => {
         return state;
     }
   };
+  const LIMIT = 8;
   const [imgData, imgDispatch] = useReducer(imgReducer, {
     images: [], //state
     fetching: true, //action
@@ -50,7 +51,7 @@ const Popular = () => {
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
     fetch(
-      `${process.env.REACT_APP_BASE_URL}/posts/getPopular?page=${pager.page}&limit=12`
+      `${process.env.REACT_APP_BASE_URL}/posts/getPopular?page=${pager.page}&limit=${LIMIT}`
     )
       .then((data) => data.json())
       .then((images) => {
@@ -85,12 +86,36 @@ const Popular = () => {
     }
   }, [scrollObserver, bottomBoundaryRef]);
 
+  const gridRef = useRef(null);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (gridRef && gridRef.current) {
+        if (
+          gridRef.current.getBoundingClientRect().height < window.innerHeight &&
+          imgData.images.length !== totalPages
+        ) {
+          pagerDispatch({ type: "ADVANCE_PAGE" });
+        }
+      }
+    }, 2000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
-    <div className="main">
+    <div className="main" ref={gridRef}>
       <ResponsiveMasonry
-        columnsCountBreakPoints={{ 350: 1, 600: 2, 750: 2, 900: 3, 1000: 4 }}
+        columnsCountBreakPoints={{
+          350: 1,
+          600: 2,
+          750: 2,
+          1000: 3,
+          1440: 4,
+          2560: 5,
+        }}
       >
-        <Masonry gutter="10px">
+        <Masonry gutter="15px">
           {imgData.images.map((post) => {
             return <SinglePost key={`popularPosts_${post._id}`} {...post} />;
           })}
