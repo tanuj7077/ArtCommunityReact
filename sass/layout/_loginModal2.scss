@@ -1,0 +1,328 @@
+.signupModal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1600;
+  display: grid;
+  place-items: center;
+
+  &-backdrop {
+    z-index: 1601;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  &-modal {
+    z-index: 1602;
+    width: 75rem;
+    height: 50rem;
+    border-radius: 1rem;
+    background-color: white;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    @include respond(phone) {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    &-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      width: 2rem;
+      height: 2rem;
+      z-index: 1604;
+      &:hover {
+        color: red;
+        cursor: pointer;
+      }
+    }
+    &-left {
+      width: 33rem;
+      height: 100%;
+      position: relative;
+
+      @include respond(phone) {
+        display: none;
+      }
+      &-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        //filter: blur(1px);
+      }
+      &-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(black, 0.5);
+        padding: 2.5rem;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        .logo {
+          height: 4rem;
+          width: 4rem;
+        }
+        .text {
+          &-large {
+            font-family: "Source Code Pro", sans-serif, courier, arial,
+              helvetica;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: rgb(255, 242, 223);
+          }
+          &-small {
+            margin-top: 1rem;
+            font-size: 1.6rem;
+            color: rgb(216, 205, 187);
+          }
+        }
+      }
+    }
+    &-right {
+      width: 42rem;
+      height: 100%;
+      background-color: white;
+      position: relative;
+      display: grid;
+      place-items: center;
+      @include respond(phone) {
+        width: 100%;
+        height: 100%;
+      }
+      &-login {
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-flow: column;
+        padding: 3rem;
+        gap: 2rem;
+        &-headingSection {
+          display: flex;
+          flex-flow: column;
+          .heading {
+            color: black;
+            font-size: 3rem;
+            font-weight: 700;
+          }
+          .subheading {
+            margin-top: 0.5rem;
+            font-size: 1.6rem;
+            &-text {
+              color: rgb(107, 107, 107);
+            }
+            &-alternative {
+              margin-left: 0.8rem;
+              font-weight: bold;
+              color: hsl(207, 100%, 44%);
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        &-form {
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          gap: 2rem;
+          overflow: hidden;
+          overflow-y: auto;
+          .formGrpLargeInput {
+            width: 100%;
+            height: 4.2rem;
+            border-radius: 1rem;
+            position: relative;
+            &-input {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: hsl(223, 82%, 96%);
+              border: none;
+              outline: none;
+              padding: 1.5rem;
+              padding-top: 2.2rem;
+              padding-bottom: 0.8rem;
+              border-radius: 1rem;
+              font-weight: bold;
+              color: hsl(222, 100%, 11%);
+              z-index: 1602;
+              border: 0.1rem solid transparent;
+              transition: background-color 0.3s ease;
+              &:focus {
+                border: 0.1rem solid hsl(222, 100%, 84%);
+                background-color: hsl(223, 82%, 100%);
+              }
+              &:focus + label,
+              &:valid + label {
+                visibility: visible;
+                top: 0.6rem;
+                transition: all 0.3s ease;
+                color: hsl(222, 100%, 74%);
+              }
+              &::placeholder {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 1.5rem;
+                font-size: 1.2rem;
+                font-family: "Nunito", sans-serif;
+                font-weight: normal;
+                opacity: 1;
+                transition: all 0s 0.3s ease;
+                color: hsl(241, 67%, 30%);
+                text-transform: uppercase;
+              }
+              &:focus::placeholder {
+                opacity: 0;
+                transition: none;
+              }
+            }
+            &-label {
+              position: absolute;
+              top: 1.5rem;
+              left: 1.6rem;
+              font-size: 1.2rem;
+              visibility: hidden;
+              z-index: 1603;
+              transition: all 0.3s ease;
+              color: hsl(241, 67%, 30%);
+              text-transform: uppercase;
+            }
+          }
+          .formGrpSmallInputGrp {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            height: 4.2rem;
+            .smallInput {
+              width: calc(50% - 0.7rem);
+              border-radius: 1rem;
+              position: relative;
+              &-input {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: hsl(223, 82%, 96%);
+                border: none;
+                outline: none;
+                padding: 1.5rem;
+                padding-top: 2.2rem;
+                padding-bottom: 0.8rem;
+                border-radius: 1rem;
+                font-weight: bold;
+                color: hsl(222, 100%, 11%);
+                z-index: 1602;
+                border: 0.1rem solid transparent;
+                transition: background-color 0.3s ease;
+                &:focus {
+                  border: 0.1rem solid hsl(222, 100%, 84%);
+                  background-color: hsl(223, 82%, 100%);
+                }
+                &:focus + label,
+                &:valid + label {
+                  visibility: visible;
+                  top: 0.6rem;
+                  transition: all 0.3s ease;
+                  color: hsl(222, 100%, 74%);
+                }
+                &::placeholder {
+                  position: absolute;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  left: 1.5rem;
+                  font-size: 1.2rem;
+                  font-family: "Nunito", sans-serif;
+                  font-weight: normal;
+                  opacity: 1;
+                  transition: all 0s 0.3s ease;
+                  color: hsl(241, 67%, 30%);
+                  text-transform: uppercase;
+                }
+                &:focus::placeholder {
+                  opacity: 0;
+                  transition: none;
+                }
+              }
+              &-label {
+                position: absolute;
+                top: 1.5rem;
+                left: 1.6rem;
+                font-size: 1.2rem;
+                visibility: hidden;
+                z-index: 1603;
+                transition: all 0.3s ease;
+                color: hsl(241, 67%, 30%);
+                text-transform: uppercase;
+              }
+            }
+          }
+          .formGrpBtn {
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            &-btn {
+              text-transform: uppercase;
+              letter-spacing: 0.2rem;
+              width: 100%;
+              padding: 1.4rem;
+              text-align: center;
+              outline: none;
+              border: none;
+              font-size: 1.4rem;
+              color: white;
+              background-color: hsl(207, 100%, 44%);
+              border-radius: 2.1rem;
+              &:hover {
+                cursor: pointer;
+              }
+              &:focus {
+                border: 0.1rem solid hsl(207, 100%, 44%);
+                background-color: hsl(223, 82%, 100%);
+                color: hsl(207, 100%, 44%);
+              }
+            }
+            &-alternate {
+              background-color: unset;
+              outline: none;
+              border: none;
+              width: max-content;
+              text-align: center;
+              margin-top: 0.5rem;
+              font-size: 1.6rem;
+              color: hsl(207, 100%, 44%);
+              font-weight: bold;
+              &:hover {
+                cursor: pointer;
+              }
+              &:focus {
+                border-bottom: 0.1rem solid hsl(207, 100%, 44%);
+              }
+            }
+          }
+        }
+      }
+      .login {
+        gap: 7rem;
+      }
+    }
+  }
+}

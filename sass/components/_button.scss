@@ -1,0 +1,43 @@
+.btn {
+  border: none;
+  &-submit {
+    width: max-content;
+    outline: none;
+    border: none;
+    background-color: hsl(0, 0%, 21%);
+    color: #6ecf86;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    align-self: center;
+    border-radius: 0.5rem;
+    transition: all 0.1s ease;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      background-color: hsl(0, 0%, 26%);
+    }
+  }
+  &-login {
+    background-color: black;
+    color: white;
+    font-size: 1.6rem;
+    letter-spacing: 0.3rem;
+    border-radius: 5px;
+    padding: 1rem 1.5rem;
+    margin-top: 2rem;
+    &:hover {
+      color: #5dad71;
+    }
+    &-disabled {
+      color: rgb(163, 162, 162);
+      &:hover {
+        color: rgb(163, 162, 162);
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}

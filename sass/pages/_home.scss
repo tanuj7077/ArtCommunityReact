@@ -1,0 +1,11 @@
+.Container {
+  background-color: black;
+  display: grid;
+  //grid-template-rows: 7.5vh 8vh max-content minmax(100vh, max-content);
+  // grid-template-rows: 7.5vh 8vh max-content max-content;
+  grid-template-rows: 6rem 7rem max-content max-content;
+  grid-template-columns: 0rem [sideNav-start] 7rem [sideNav-end] repeat(
+      12,
+      [col-start] 1fr [col-end]
+    );
+}

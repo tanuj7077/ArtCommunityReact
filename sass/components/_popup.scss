@@ -1,0 +1,175 @@
+.authorHover {
+  position: absolute;
+  top: -7vw;
+  left: 10rem;
+  overflow: hidden;
+
+  width: 45rem;
+  height: 40rem;
+  background-color: rgb(43, 43, 43);
+  border-radius: 1rem;
+  z-index: 8;
+  visibility: hidden;
+
+  &--cover {
+    width: 100%;
+    height: 60%;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    opacity: 0;
+    animation: textFadeIn 0.5s linear forwards;
+  }
+  &--noCover {
+    width: 100%;
+    height: 60%;
+    background-position-x: center;
+    background-position-y: center;
+    animation: gradient 15s ease infinite;
+    background: linear-gradient(-45deg, #da7050, #c53d71, #2293bd, #22be9a);
+    background-size: 400% 400%;
+  }
+  &--profile {
+    position: absolute;
+    top: 37%;
+    left: 10%;
+    width: 13rem;
+    height: 13rem;
+    background-color: black;
+    opacity: 0;
+    animation: textFadeIn 0.5s linear forwards;
+
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    cursor: pointer;
+  }
+  &--name {
+    position: absolute;
+    top: 42%;
+    left: 47%;
+    width: 18rem;
+    height: 4rem;
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+    cursor: pointer;
+    //background-color: rgb(122, 118, 102);
+  }
+  &--info {
+    position: absolute;
+    top: 65%;
+    left: 47%;
+    width: 20rem;
+    height: 2rem;
+    color: white;
+    font-size: 1.7rem;
+    .lineBreak {
+      padding: 0 1rem;
+    }
+  }
+  &--images {
+    position: absolute;
+    top: 95.5%;
+    left: 5%;
+    width: 90%;
+    height: 9rem;
+    background-color: transparent;
+    transform: translate(0, -95%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    .image {
+      width: 9rem;
+      height: 9rem;
+      border-radius: 5px;
+      background-color: darkgray;
+
+      opacity: 0;
+      animation: textFadeIn 0.5s linear forwards;
+      background-size: cover;
+      background-position-x: center;
+      background-position-y: center;
+      cursor: pointer;
+      &:hover {
+        border: 1px solid rgb(119, 119, 119);
+      }
+    }
+  }
+}
+
+.loading {
+  background: linear-gradient(220deg, #141414, #666666, #111111);
+  background-size: 600% 600%;
+  -webkit-animation: CoverAnim 1s ease infinite;
+  -moz-animation: CoverAnim 1s ease infinite;
+  animation: CoverAnim 1s ease infinite;
+}
+.authorHover-loading {
+  &--cover {
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(220deg, #000000, #6b6b6b, #000000);
+    background-size: 600% 600%;
+    -webkit-animation: CoverAnim 1s ease infinite;
+    -moz-animation: CoverAnim 1s ease infinite;
+    animation: CoverAnim 1s ease infinite;
+  }
+  &--profile {
+    position: absolute;
+    top: 37%;
+    left: 10%;
+    width: 13rem;
+    height: 13rem;
+
+    background: linear-gradient(270deg, #296c5b, #a5a5a5, #ca6262);
+    background-size: 600% 600%;
+
+    -webkit-animation: ProfileAnim 1s ease infinite;
+    -moz-animation: ProfileAnim 1s ease infinite;
+    animation: ProfileAnim 1s ease infinite;
+  }
+  &--name {
+    position: absolute;
+    top: 42%;
+    left: 47%;
+    width: 18rem;
+    height: 4rem;
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  &--info {
+    position: absolute;
+    top: 65%;
+    left: 47%;
+    width: 20rem;
+    height: 2rem;
+    color: white;
+    font-size: 1.6rem;
+  }
+  &--images {
+    position: absolute;
+    top: 95.5%;
+    left: 5%;
+    width: 90%;
+    height: 9rem;
+    background-color: transparent;
+    transform: translate(0, -95%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    .image {
+      width: 9rem;
+      height: 9rem;
+      border-radius: 5px;
+      background-color: darkgray;
+    }
+  }
+}
+
+.show {
+  visibility: visible;
+}

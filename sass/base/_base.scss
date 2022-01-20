@@ -1,0 +1,81 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+} /*Removing every default margin or padding*/
+
+html {
+  font-size: 62.5%; /*62.5% of 16px is 10px*/
+  //therfore 1rem = 10px
+
+  @include respond(tab-land) {
+    font-size: 56.25%; //1rem=9px
+  }
+  @include respond(tab-port) {
+    font-size: 50%; //1rem=8px
+  }
+  // @include respond(medium-desk) {
+  //   font-size: 67%; //1rem=12px
+  // }
+  @include respond(big-desk) {
+    font-size: 75%; //1rem=12px
+  }
+  @include respond(large-desk) {
+    font-size: 90%; //1rem=12px
+  }
+  @include respond(2k) {
+    font-size: 100%; //1rem=12px
+  }
+  @include respond(3k) {
+    font-size: 120%; //1rem=12px
+  }
+}
+
+body {
+  box-sizing: border-box;
+  text-transform: none;
+  background-color: black;
+  overflow-x: hidden;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgb(35, 34, 44);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #6ecf86;
+    border-radius: 2px;
+  }
+}
+
+::selection {
+  background-color: $color-primary-dark;
+  color: $color-grey-dark-3;
+}
+
+a {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: white;
+  }
+}
+/*
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+body::-webkit-scrollbar-track {
+    background: black;
+}
+body::-webkit-scrollbar-track {
+    background: black;
+}*/

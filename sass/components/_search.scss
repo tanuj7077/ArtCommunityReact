@@ -1,0 +1,264 @@
+.liveSearch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 50vw;
+  transform: translateX(-50%);
+}
+.searchForm {
+  width: 100%;
+  height: 6.5vh;
+  background-color: transparent;
+  position: relative;
+  opacity: 0;
+  animation: textFadeIn 0.2s linear forwards;
+  &--input {
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 100%;
+    height: 5rem;
+    font-size: 1.6rem;
+    font-family: inherit;
+    letter-spacing: 0.4rem;
+    color: gray;
+    padding: 0 1.4rem;
+    background-color: rgb(44, 44, 44);
+    border: none;
+    border-radius: 1rem;
+    display: block;
+    transition: all 0.4s;
+
+    &::-webkit-input-placeholder {
+      color: gray;
+    }
+
+    &:focus {
+      outline: none;
+      //border-bottom: 2px solid #6ecf86;
+    }
+  }
+}
+
+.searchResults {
+  position: absolute;
+  top: 6.5rem;
+  width: 100%;
+  max-height: 55rem;
+  border-radius: 1rem;
+  background-color: rgb(44, 44, 44);
+  display: grid;
+  grid-gap: 5px;
+  grid-template-rows: repeat(2, min-content);
+  grid-template-columns: repeat(7, 1fr);
+  overflow: hidden;
+  padding: 2rem;
+  opacity: 0;
+  transform: scale(0.1);
+  transform-origin: top;
+  animation: appear 0.2s linear forwards;
+
+  .subHeading {
+    font-size: 1.6rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    text-align: start;
+    //padding-left: 2.5rem;
+    //padding-top: 1rem;
+    color: #6ecf86;
+    margin-bottom: 1rem;
+  }
+
+  &--postSection {
+    max-height: min-content;
+    grid-row: 1 /2;
+    grid-column: 1 / 5;
+    width: 90%;
+    display: flex;
+    flex-flow: column;
+    letter-spacing: 0.3rem;
+    font-size: 2rem;
+
+    .postList {
+      list-style-type: none;
+      max-height: 25rem;
+      width: 100%;
+      overflow: hidden;
+      overflow-y: scroll;
+      border-radius: 0.5rem;
+
+      .item {
+        text-align: start;
+        //min-height: 5.5rem;
+        font-size: 1.6rem;
+        height: max-content;
+        background-color: rgb(59, 59, 59);
+        align-self: center;
+        color: hsl(0, 0%, 63%);
+        padding: 1rem 1.5rem;
+        letter-spacing: 0.2rem;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(43, 43, 43);
+          color: #6ecf86;
+        }
+        &:nth-child(even) {
+          background: rgb(54, 54, 54);
+          &:hover {
+            cursor: pointer;
+            background-color: rgb(43, 43, 43);
+            color: #6ecf86;
+          }
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #222222;
+        border-radius: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #505050;
+      }
+    }
+    &:hover .postList::-webkit-scrollbar-thumb {
+      background: #6ecf86;
+    }
+    .notFound {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: rgb(185, 185, 185);
+      letter-spacing: 0.2rem;
+      text-align: left;
+    }
+  }
+  &--authorSection {
+    max-height: min-content;
+    grid-row: 1 /2;
+    grid-column: 5 / -1;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    letter-spacing: 0.3rem;
+
+    .authorList {
+      list-style-type: none;
+      max-height: 25rem;
+      width: 97%;
+      overflow: hidden;
+      overflow-y: scroll;
+      //margin-left: 1rem;
+      border-radius: 0.5rem;
+      font-size: 2rem;
+      color: hsl(0, 0%, 63%);
+
+      .item {
+        text-align: start;
+        background-color: rgb(59, 59, 59);
+        align-self: center;
+        font-size: 1.6rem;
+        padding: 1rem 1.5rem;
+        letter-spacing: 0.2rem;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(43, 43, 43);
+          color: #6ecf86;
+        }
+        &:nth-child(even) {
+          background: rgb(54, 54, 54);
+          &:hover {
+            cursor: pointer;
+            background-color: rgb(43, 43, 43);
+            color: #6ecf86;
+          }
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #222222;
+        border-radius: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #505050;
+      }
+    }
+    &:hover .authorList::-webkit-scrollbar-thumb {
+      background: #6ecf86;
+    }
+    .notFound {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: rgb(185, 185, 185);
+      letter-spacing: 0.2rem;
+      text-align: left;
+    }
+  }
+
+  &--tagSection {
+    max-height: 25rem;
+    grid-row: 2 /3;
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    letter-spacing: 0.2rem;
+    margin-top: 3rem;
+
+    .tagList {
+      list-style-type: none;
+      max-height: 12rem;
+      width: 100%;
+      overflow: hidden;
+      overflow-y: scroll;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+
+      .item {
+        font-size: 1.2rem;
+        color: hsl(0, 0%, 63%);
+        text-transform: uppercase;
+        background-color: rgb(24, 24, 24);
+        border-radius: 0.5rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        padding: 0.7rem 1.5rem;
+        &:hover {
+          cursor: pointer;
+          color: #6ecf86;
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+      &::-webkit-scrollbar-thumb {
+        //background: #505050;
+        background: #222222;
+        border-radius: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        //background: transparent;
+        background: #505050;
+      }
+    }
+    &:hover .tagList::-webkit-scrollbar-thumb {
+      background: #6ecf86;
+    }
+    .notFound {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: rgb(185, 185, 185);
+      letter-spacing: 0.2rem;
+      text-align: left;
+    }
+  }
+}
