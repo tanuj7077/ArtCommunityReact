@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useGlobalContext } from "../../context";
 import CommentList from "./Comments/CommentList";
 import PostsByUser from "./PostsByUser/PostsByUser";
@@ -294,7 +293,9 @@ const PostPagePost = ({ id }) => {
                     </span>
                   )}
                 </div>
-                <span className="postContent--info-desc">{Post.desc}</span>
+                {Post && Post.desc && (
+                  <span className="postContent--info-desc">{Post.desc}</span>
+                )}
                 <div className="postContent--info-tags">
                   {Post.tags.map((item) => {
                     return (
