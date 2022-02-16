@@ -2,6 +2,7 @@ import React, { useEffect, Suspense } from "react";
 
 import SideNavTopic from "../components/SideNavTopic";
 import Alert from "../components/Modals/Alert/Alert";
+import SubmitModal from "../components/Modals/SubmitModals/SubmitModal";
 import SideNavHandler from "../components/Navigation/SideNavHandler";
 import TopNavResponsive from "../components/Navigation/TopNav";
 import FloatingButton from "../components/Navigation/FloatingButton";
@@ -22,6 +23,7 @@ const Home = () => {
         <PostList />
       </Suspense>
       <Alert />
+      {/* <SubmitModal /> */}
       <FloatingButton />
     </div>
   );

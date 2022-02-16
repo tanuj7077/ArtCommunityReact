@@ -37,8 +37,6 @@ const TopNav = () => {
         )}
       </section>
 
-      <SubmitModal />
-
       {signupModalVisibility && <SignupModal />}
       {loading && (
         <div className="loadingAnimation">
