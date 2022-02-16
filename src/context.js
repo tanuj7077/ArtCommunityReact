@@ -8,8 +8,6 @@ const AppProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [explorePageTags, setExplorePageTags] = useState([]);
   const [homePageTags, setHomePageTags] = useState([]);
-  const [submitModal, setsubmitModal] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
   const [userData, setUserData] = useState({});
   const [submitCoverModal, setSubmitCoverModal] = useState(false);
   const [submitProfilePicModal, setSubmitProfilePicModal] = useState(false);
@@ -18,14 +16,6 @@ const AppProvider = ({ children }) => {
   const [showAlert, setShowAlert] = useState(0);
   const [loading, setLoading] = useState(0);
 
-  const updatePostsBackend = async () => {
-    const result = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/posts/updatePosts`
-    );
-  };
-  useEffect(() => {
-    updatePostsBackend();
-  }, []);
   //--------------------For Explore Page------------------//
   const fetchExploreTags = async () => {
     let url = `${process.env.REACT_APP_BASE_URL}/tags/exploreTags`;
@@ -38,9 +28,7 @@ const AppProvider = ({ children }) => {
     }
   };
   useEffect(() => {
-    setTimeout(() => {
-      fetchExploreTags();
-    }, 3000);
+    fetchExploreTags();
   }, []);
   //----------------------END---------------------//
 
@@ -50,23 +38,19 @@ const AppProvider = ({ children }) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
       setHomePageTags(data);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
+    fetchHomePageTags();
     const interval = setInterval(() => {
       fetchHomePageTags();
     }, 20000);
     return () => {
       clearInterval(interval);
     };
-    // fetchHomePageTags();
-  }, []);
-  useEffect(() => {
-    fetchHomePageTags();
   }, []);
   //----------------------END---------------------//
 
@@ -79,13 +63,13 @@ const AppProvider = ({ children }) => {
     setShowAlert(1);
   };
 
-  const [submitModal2, setSubmitModal2] = useState(false);
-  const openSubmitModal2 = () => {
-    setSubmitModal2(true);
+  const [submitModal, setSubmitModal] = useState(false);
+  const openSubmitModal = () => {
+    setSubmitModal(true);
   };
 
-  const closeSubmitModal2 = () => {
-    setSubmitModal2(false);
+  const closeSubmitModal = () => {
+    setSubmitModal(false);
   };
   const openSubmitCoverModal = () => {
     setSubmitCoverModal(true);
@@ -103,20 +87,6 @@ const AppProvider = ({ children }) => {
     setSubmitProfilePicModal(false);
   };
 
-  const openSubmitModal = () => {
-    setsubmitModal(true);
-  };
-
-  const closeSubmitModal = () => {
-    setsubmitModal(false);
-  };
-
-  const switchToLogin = () => {
-    setIsLogin(true);
-  };
-  const switchToSignup = () => {
-    setIsLogin(false);
-  };
   const login = async (email, password) => {
     try {
       const loginData = {
@@ -133,7 +103,6 @@ const AppProvider = ({ children }) => {
             setSignupModalVisibility(false);
           } else {
             changeAlert(res.data.message);
-            console.log(alert);
           }
         });
     } catch (err) {
@@ -183,12 +152,6 @@ const AppProvider = ({ children }) => {
         setExplorePageTags,
         homePageTags,
         setPosts,
-        openSubmitModal,
-        closeSubmitModal,
-        submitModal,
-        isLogin,
-        switchToLogin,
-        switchToSignup,
         setIsLoggedIn,
         userData,
         setUserData,
@@ -204,16 +167,15 @@ const AppProvider = ({ children }) => {
         changeAlert,
         showAlert,
         setShowAlert,
-        updatePostsBackend,
         loading,
         setLoading,
         signupModalVisibility,
         setSignupModalVisibility,
         login,
         register,
-        openSubmitModal2,
-        closeSubmitModal2,
-        submitModal2,
+        openSubmitModal,
+        closeSubmitModal,
+        submitModal,
       }}
     >
       {children}

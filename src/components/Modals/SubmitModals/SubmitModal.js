@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaUpload } from "react-icons/fa";
 import axios from "axios";
 import { useGlobalContext } from "../../../context";
-import Select from "react-select";
+import { tags } from "../../../constants";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";
@@ -25,137 +25,63 @@ if (!firebase.apps.length) {
 }
 var storage = firebase.storage();
 
-//-----------------React Select-----------------
-const customStyles = {
-  option: (provided, state) => ({
-    ...provided,
-    //borderBottom: "1px dotted pink",
-    borderBottom: "1px solid #525050",
-    //color: state.isSelected ? "red" : "#80808080",
-    fontSize: 20,
-    letterSpacing: 4,
-    color: "#A8A8A8",
-    //backgroundColor: "#323232",
-    backgroundColor: state.isFocused ? "black" : "#323232",
-    textAlign: "left",
-    cursor: "pointer",
-  }),
-  menu: (base) => ({
-    ...base,
-    backgroundColor: "#323232",
-    border: "1px solid #525050",
-  }),
-  menuList: (base) => ({
-    ...base,
-
-    "::-webkit-scrollbar": {
-      width: "9px",
-    },
-    "::-webkit-scrollbar-track": {
-      background: "black",
-    },
-    "::-webkit-scrollbar-thumb": {
-      //background: "#3e3f3e",
-      background: "#6ecf86",
-      borderRadius: "5px",
-    },
-    "::-webkit-scrollbar-thumb:hover": {
-      background: "#555",
-    },
-  }),
-  container: (base) => ({
-    ...base,
-    width: "100%",
-  }),
-  control: (base, state) => ({
-    ...base,
-    //height: 32,
-    padding: 5,
-    paddingLeft: 10,
-    minHeight: 32,
-    fontSize: 20,
-    letterSpacing: 4,
-    border: "none",
-    boxShadow: "none",
-    width: "100%",
-    textAlign: "left",
-    cursor: "pointer",
-    backgroundColor: "#80808080",
-    color: "gray",
-  }),
-  dropdownIndicator: (base, state) => ({
-    ...base,
-    //display: "none",
-    color: "gray",
-  }),
-  indicatorSeparator: (base) => ({
-    ...base,
-    display: "none",
-  }),
-  valueContainer: (base) => ({
-    ...base,
-    padding: 0,
-    paddingLeft: 2,
-  }),
-  multiValue: (base) => ({
-    ...base,
-    backgroundColor: "black",
-    paddingLeft: 8,
-    marginRight: 7,
-    marginTop: 7,
-  }),
-  multiValueLabel: (base) => ({
-    ...base,
-    color: "white",
-    backgroundColor: "black",
-    padding: 6,
-  }),
-  multiValueRemove: (base) => ({
-    ...base,
-    color: "red",
-    "&:hover": {
-      backgroundColor: "#F87A6E ",
-      color: "white",
-    },
-  }),
-  input: (base) => ({
-    ...base,
-    color: "white",
-  }),
-};
-
 const SubmitModal = () => {
-  const { closeSubmitModal, userData, changeAlert, loading, setLoading } =
+  const { userData, closeSubmitModal, changeAlert, setLoading, submitModal } =
     useGlobalContext();
-
-  const [image, setImage] = useState("");
-  const [toSendImage, setToSendImage] = useState("");
 
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  const [submittedTags, setSubmittedTags] = useState([]);
+  const [tagInput, setTagInput] = useState("");
 
-  const [isUploaded, setIsUploaded] = useState(false);
+  const [isImageUploaded, setIsImageUploaded] = useState(false);
+  const [image, setImage] = useState("");
+  const [toSendImage, setToSendImage] = useState("");
 
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
-      setIsUploaded(true);
       let reader = new FileReader();
       setToSendImage(e.target.files[0]);
+
       reader.onload = (e) => {
         setImage(e.target.result);
+        setIsImageUploaded(true);
       };
       reader.readAsDataURL(e.target.files[0]);
     }
+  }; //----------------Fetch Tags----------------
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const addToCategories = (tag) => {
+    let newList = [...selectedTags];
+    if (!newList.includes(tag)) {
+      newList.push(tag);
+      setSelectedTags(newList);
+    }
+  };
+  const removeFromCategories = (tag) => {
+    let newList = [...selectedTags];
+    let index;
+    newList.forEach((item, i) => {
+      if (item === tag) {
+        index = i;
+      }
+    });
+    newList.splice(index, 1);
+    setSelectedTags(newList);
   };
 
-  const handleSelectChange = (e) => {
-    setSubmittedTags(Array.isArray(e) ? e.map((x) => x.value) : []);
+  const setDefault = () => {
+    setImage("");
+    setToSendImage("");
+    setName("");
+    setDesc("");
+    setTagInput("");
+    setSelectedTags([]);
+    setIsImageUploaded(false);
   };
 
-  async function handleSubmit(e) {
+  async function handleSubmit() {
     setLoading(1);
-    e.preventDefault();
     let currentImageName = "image-" + Date.now();
     let uploadImage = storage
       .ref(`images/${currentImageName}`)
@@ -173,20 +99,18 @@ const SubmitModal = () => {
           .child(currentImageName)
           .getDownloadURL()
           .then((url) => {
-            //const imageUrl = url;
-            //const name = document.getElementById("title").value;
-            //const desc = document.getElementById("desc").value;
             const post = {
               name: name,
               desc: desc,
               imageUrl: url,
-              tags: submittedTags,
+              tags: selectedTags,
               author: { id: userData._id, username: userData.username },
             };
             axios
               .post(`${process.env.REACT_APP_BASE_URL}/posts/newPost`, post)
               .then((res) => {
                 changeAlert(res.data.message);
+                setDefault();
               });
             setLoading(0);
             closeSubmitModal();
@@ -194,100 +118,164 @@ const SubmitModal = () => {
       }
     );
   }
-
-  //----------------Fetch Tags----------------
-  const [tags, setTags] = useState([]);
-  const fetchTags = async () => {
-    await axios
-      .get(`${process.env.REACT_APP_BASE_URL}/tags/fetchTags`)
-      .then((res) => setTags(res.data));
-    //Initialize all data
-  };
-  useEffect(() => {
-    fetchTags();
-  }, []);
   return (
     <>
-      <div className="submitModal">
-        <div className="modal">
-          <div className="modal-heading">Add your image</div>
-
-          <form
-            className="modal-form"
-            onSubmit={handleSubmit}
-            encType="multipart/form-data"
-          >
-            <div className="modal-form-inputs">
-              <div className="form__group form__group--basic">
-                <input
-                  name="name"
-                  type="text"
-                  id="title"
-                  className="form__input modal-form-inputs-input"
-                  placeholder="title"
-                  required
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <label htmlFor="title" className="form__label">
-                  <span className="form__label__content">Title</span>
-                </label>
-              </div>
-              {tags && (
-                <div className="form__group form__group--basic">
-                  <Select
-                    className="form__input-select modal-form-inputs-select"
-                    id="select"
-                    styles={customStyles}
-                    closeMenuOnSelect={false}
-                    isMulti
-                    options={tags}
-                    placeholder={<div>Select Tags...</div>}
-                    onChange={handleSelectChange}
-                  />
-                  <label htmlFor="select" className="form__label">
-                    <span className="form__label__content">Tags</span>
-                  </label>
+      {submitModal && (
+        <div className="SubmitModal">
+          <div
+            className="SubmitModal-overlay"
+            onClick={() => {
+              closeSubmitModal();
+              setDefault();
+            }}
+          ></div>
+          <div className="SubmitModal-modal">
+            <IoClose
+              className="closeIcon"
+              onClick={() => {
+                closeSubmitModal();
+                setDefault();
+              }}
+            />
+            <div className="heading">Add Image</div>
+            <div className="content">
+              <div className="content-container">
+                <div className="content-container-imgContainer">
+                  {!isImageUploaded ? (
+                    <>
+                      <label htmlFor="fileInput" className="uploadLabel">
+                        <FaUpload className="uploadIcon" />
+                        <span className="uploadText">Click to Upload</span>
+                      </label>
+                      <input
+                        id="fileInput"
+                        type="file"
+                        accept=".jpg,.jpeg,.png"
+                        onChange={handleImage}
+                      />
+                    </>
+                  ) : (
+                    <img
+                      src={image}
+                      alt="coverImg"
+                      className="img"
+                      onClick={setDefault}
+                    />
+                  )}
                 </div>
-              )}
-              <div className="form__group form__group--basic">
-                <textarea
-                  name="desc"
-                  id="desc"
-                  cols="40"
-                  rows="4"
-                  className="form__input-textarea modal-form-inputs-textarea"
-                  autoComplete="off"
-                  spellCheck="false"
-                  placeholder="description"
-                  onChange={(e) => setDesc(e.target.value)}
-                ></textarea>
-                <label htmlFor="desc" className="form__label">
-                  <span className="form__label__content">Description</span>
-                </label>
-              </div>
-            </div>
-
-            {isUploaded ? (
-              <>
-                <div className="modal-form-imgHolder uploadedImg">
-                  <img
-                    src={image}
-                    alt="uploaded pic"
-                    className="modal-form-imgHolder-img"
-                  />
-                </div>
-                <div className="modal-form-buttons">
-                  <button className="add-btn" type="submit">
+                {isImageUploaded && (
+                  <div className="content-container-textual">
+                    <div className="content-container-textual-formGrp">
+                      <label>name</label>
+                      <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+                    <div className="content-container-textual-formGrp">
+                      <label>Description</label>
+                      <textarea
+                        type="text"
+                        value={desc}
+                        onChange={(e) => setDesc(e.target.value)}
+                      ></textarea>
+                    </div>
+                    <div className="content-container-textual-tags">
+                      <div className="tags">
+                        <label>Tags:</label>
+                        <ul className="selectedTags">
+                          {selectedTags.map((tag) => {
+                            return (
+                              <li
+                                key={`selectedTag_${tag}`}
+                                className="selectedTags-tag"
+                                onClick={() => removeFromCategories(tag)}
+                              >
+                                {tag}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                      <input
+                        placeholder="search"
+                        type="text"
+                        value={tagInput}
+                        onChange={(e) => setTagInput(e.target.value)}
+                      />
+                      <ul className="list">
+                        {tags
+                          .filter((item) => {
+                            return item.includes(tagInput);
+                          })
+                          .map((tag) => {
+                            return (
+                              <li
+                                key={`listTag_${tag}`}
+                                className="list-item"
+                                onClick={() => addToCategories(tag)}
+                              >
+                                {tag}
+                              </li>
+                            );
+                          })}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+                {name.length > 0 && (
+                  <button
+                    className="content-container-btn"
+                    onClick={handleSubmit}
+                  >
                     Submit
                   </button>
-                  <span className="cancel-btn" onClick={closeSubmitModal}>
-                    Cancel
-                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+  /*return (
+    <>
+      <div className="addExtrasModal">
+        <div className="modal">
+          <span className="modal-heading">Add Image</span>
+
+          <form className="modal-form" encType="multipart/form-data">
+            {isImageUploaded ? (
+              <>
+                <div className="modal-photo">
+                  <img
+                    src={image}
+                    alt="coverImg"
+                    className="modal-photo-img"
+                    onClick={() => {
+                      setImage("");
+                      setToSendImage("");
+                      setIsImageUploaded(false);
+                    }}
+                  />
+                </div>
+                <div className="modal-buttons">
+                  {!loading && (
+                    <button className="add-btn" type="submit">
+                      Submit
+                    </button>
+                  )}
+                  {!loading && (
+                    <span className="cancel-btn" onClick={closeSubmitModal}>
+                      Cancel
+                    </span>
+                  )}
                 </div>
               </>
             ) : (
               <>
-                <div className="modal-form-imgHolder">
+                <div className="modal-photo">
                   <label htmlFor="fileInput" className="uploadLabel">
                     <FaUpload className="uploadIcon" />
                     <span className="uploadText">Click to Upload</span>
@@ -299,115 +287,18 @@ const SubmitModal = () => {
                     onChange={handleImage}
                   />
                 </div>
-                <div className="modal-form-buttons">
+                <div className="modal-buttons">
                   <span className="cancel-btn" onClick={closeSubmitModal}>
                     Cancel
                   </span>
-                  <span className="cancel-btn">Check uploaded</span>
                 </div>
               </>
             )}
           </form>
         </div>
       </div>
-      {/* <div className="loginModal">
-        <div className="submitForm">
-          <span className="closeIcon">
-            <IoClose className="Icon" onClick={closeSubmitModal} />
-          </span>
-
-          <form
-            className="form u-margin-top-big"
-            onSubmit={handleSubmit}
-            encType="multipart/form-data"
-          >
-            <div className="form__group form__group--basic">
-              <input
-                name="name"
-                type="text"
-                id="title"
-                className="form__input"
-                placeholder="title"
-                required
-                onChange={(e) => setName(e.target.value)}
-              />
-              <label htmlFor="title" className="form__label">
-                <span className="form__label__content">Title</span>
-              </label>
-            </div>
-            <div className="form__group form__group--basic">
-              <textarea
-                name="desc"
-                id="desc"
-                cols="40"
-                rows="4"
-                className="form__input-textarea"
-                autoComplete="off"
-                spellCheck="false"
-                placeholder="description"
-                onChange={(e) => setDesc(e.target.value)}
-              ></textarea>
-              <label htmlFor="desc" className="form__label">
-                <span className="form__label__content">Description</span>
-              </label>
-            </div>
-
-            {tags && (
-              <div className="form__group form__group--basic">
-                <Select
-                  className="form__input-select"
-                  id="select"
-                  styles={customStyles}
-                  closeMenuOnSelect={false}
-                  isMulti
-                  options={tags}
-                  placeholder={<div>Select Tags...</div>}
-                  onChange={handleSelectChange}
-                />
-                <label htmlFor="select" className="form__label">
-                  <span className="form__label__content">Tags</span>
-                </label>
-              </div>
-            )}
-
-            {isUploaded ? (
-              <>
-                <div className="submitForm-image">
-                  <img src={image} alt="uploaded pic" />
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="submitForm-imgHolder">
-                  <label htmlFor="fileInput">
-                    <span className="uploadIcon">
-                      <FaUpload className="Icon" />
-                    </span>
-                  </label>
-                  <label htmlFor="fileInput">
-                    <span className="uploadText">Click to Upload</span>
-                  </label>
-                  <input
-                    id="fileInput"
-                    type="file"
-                    accept=".jpg,.jpeg,.png"
-                    onChange={handleImage}
-                  />
-                </div>
-              </>
-            )}
-
-            <button
-              className="btn btn-submit u-margin-top-medium"
-              type="submit"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-      </div> */}
     </>
-  );
+  );*/
 };
 
 export default SubmitModal;

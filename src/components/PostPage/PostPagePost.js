@@ -45,7 +45,6 @@ const PostPagePost = ({ id }) => {
     setSignupModalVisibility,
     signupModalVisibility,
     changeAlert,
-    updatePostsBackend,
   } = useGlobalContext();
   let postUrl = `${process.env.REACT_APP_BASE_URL}/posts/post1/${id}`;
 
@@ -117,7 +116,6 @@ const PostPagePost = ({ id }) => {
             .then((res) => {
               setUserData(res.data.user);
               changeAlert(res.data.message);
-              updatePostsBackend();
               history.push("/");
             });
         });

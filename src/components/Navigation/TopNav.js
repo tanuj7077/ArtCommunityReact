@@ -1,21 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-
-import SubmitModal from "../Modals/SubmitModals/SubmitModal";
 import SignupModal from "../Modals/LoginModal/SignupModal";
-//import SearchComponent from "../SearchComponent";
 import SearchHandler from "../Search/SearchHandler";
 
 import { useGlobalContext } from "../../context";
-import SubmitModal2 from "../Modals/SubmitModals/SubmitModal2";
+import SubmitModal from "../Modals/SubmitModals/SubmitModal";
 
 const TopNav = () => {
   const {
     isLoggedIn,
     openSubmitModal,
-    openSubmitModal2,
-    submitModal,
-    submitModal2,
     loading,
     signupModalVisibility,
     setSignupModalVisibility,
@@ -27,10 +21,7 @@ const TopNav = () => {
         <SearchHandler />
         {isLoggedIn ? (
           <>
-            {/* <div className="TopNavDesk--submit" onClick={openSubmitModal}>
-              <span>SUBMIT</span>
-            </div> */}
-            <div className="TopNavDesk--submit" onClick={openSubmitModal2}>
+            <div className="TopNavDesk--submit" onClick={openSubmitModal}>
               <span>SUBMIT</span>
             </div>
           </>
@@ -46,9 +37,7 @@ const TopNav = () => {
         )}
       </section>
 
-      {submitModal && <SubmitModal />}
-      {/* {submitModal2 && <SubmitModal2 />} */}
-      <SubmitModal2 />
+      <SubmitModal />
 
       {signupModalVisibility && <SignupModal />}
       {loading && (
