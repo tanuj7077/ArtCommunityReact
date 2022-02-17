@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
+import ReactDOM from "react-dom";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 
 import blank from "../../tagImage/blankProfile.png";
@@ -21,11 +22,13 @@ const Followed = (userId) => {
       const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/postsByUserId/${userId.userId}/${LIMIT}`;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
-      setUsername(postData.username);
-      setFollowers(postData.followers);
-      setProfilePic(postData.profilePic);
-      setBorderRad(postData.profileBorderRad);
-      setPosts(postData.posts);
+      ReactDOM.unstable_batchedUpdates(() => {
+        setUsername(postData.username);
+        setFollowers(postData.followers);
+        setProfilePic(postData.profilePic);
+        setBorderRad(postData.profileBorderRad);
+        setPosts(postData.posts);
+      });
     } catch (err) {
       console.log(err);
     }
@@ -158,16 +161,6 @@ const Followed = (userId) => {
                 </div>
               );
             })}
-          {/* {posts && posts.length === 0 &&
-            <>
-              <span className="itemNotLoaded">
-              </span>
-              <span className="itemNotLoaded">
-              </span>
-              <span className="itemNotLoaded">
-              </span>
-            </>
-          } */}
         </div>
         {posts && posts.length === 0 && (
           <div className="followedItems-notLoaded"></div>
