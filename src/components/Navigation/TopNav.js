@@ -28,12 +28,6 @@ const TopNav = () => {
           </>
         )}
       </section>
-      {loading && (
-        <div className="loadingAnimation">
-          <div className="modalLoading"></div>
-          <div className="modalLoadingText">Loading...</div>
-        </div>
-      )}
     </>
   );
 };

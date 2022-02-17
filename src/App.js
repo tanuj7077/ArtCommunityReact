@@ -17,10 +17,24 @@ import Landing from "./pages/Landing";
 import SubmitModal from "./components/Modals/SubmitModals/SubmitModal";
 import SignupModal from "./components/Modals/LoginModal/SignupModal";
 import Alert from "./components/Modals/Alert/Alert";
+import Loading from "./components/Modals/Loading/Loading";
 
 axios.defaults.withCredentials = true;
 function App() {
-  const { setIsLoggedIn, setUserData, isLoggedIn } = useGlobalContext();
+  const { setIsLoggedIn, setUserData, isLoggedIn, setLoading } =
+    useGlobalContext();
+
+  axios.interceptors.request.use((request) => {
+    if (!request.url.split("/").includes("hoverUser")) {
+      setLoading(true);
+    }
+    return request;
+  });
+  axios.interceptors.response.use((response) => {
+    setLoading(false);
+    return response;
+  });
+
   const getLoggedIn = async () => {
     const loggedInRes = await axios.get(
       `${process.env.REACT_APP_BASE_URL}/auth/loggedIn`
@@ -45,6 +59,7 @@ function App() {
         <SignupModal />
         <SubmitModal />
         <Alert />
+        <Loading />
         <Route path="/" exact>
           <Home />
         </Route>
