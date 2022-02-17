@@ -1466,6 +1466,22 @@ body {
   font-weight: 300;
   color: white;
 }
+.search-mobile {
+  display: none;
+}
+@media only screen and (max-width: 37.5em) {
+  .search-mobile {
+    display: flex;
+  }
+}
+.search-desk {
+  display: flex;
+}
+@media only screen and (max-width: 37.5em) {
+  .search-desk {
+    display: none;
+  }
+}
 
 .liveSearch {
   position: absolute;
@@ -1681,6 +1697,22 @@ body {
   color: #6ecf86;
   margin-top: 3rem;
   text-align: center;
+}
+.liveSearch-mobile {
+  display: none;
+}
+@media only screen and (max-width: 37.5em) {
+  .liveSearch-mobile {
+    display: block;
+  }
+}
+.liveSearch-desk {
+  display: block;
+}
+@media only screen and (max-width: 37.5em) {
+  .liveSearch-desk {
+    display: none;
+  }
 }
 
 .loadScreen {

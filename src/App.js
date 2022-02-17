@@ -25,6 +25,7 @@ function App() {
     useGlobalContext();
 
   axios.interceptors.request.use((request) => {
+    console.log(request.url.split("/").includes("hoverUser"));
     if (!request.url.split("/").includes("hoverUser")) {
       setLoading(true);
     }
@@ -56,10 +57,6 @@ function App() {
         <Landing />
       </Route>
       <>
-        <SignupModal />
-        <SubmitModal />
-        <Alert />
-        <Loading />
         <Route path="/" exact>
           <Home />
         </Route>
@@ -84,6 +81,10 @@ function App() {
         <Route path="/tagSearch/:name">
           <TagSearchPage />
         </Route>
+        <SignupModal />
+        <SubmitModal />
+        <Alert />
+        <Loading />
       </>
     </Switch>
   );

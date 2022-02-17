@@ -23,7 +23,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
 
   const handleMouseEnter = () => {
     //clear all data from previous hover
-    if (username !== author.username) {
+    /*if (username !== author.username) {
       setUsername("");
       setPosts([]);
       setPostCount(0);
@@ -31,7 +31,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
       setCoverPhoto("");
       setProfilePic(blank);
       setProfileBorderRad("0%");
-    }
+    }*/
     setIsHovered(true);
     setTimeout(() => {
       if (AuthorHoverRef.current) {
@@ -80,7 +80,6 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
 
   const positionItem = () => {
     let top = AuthorHoverRef.current.getBoundingClientRect().top;
-    let left = AuthorHoverRef.current.getBoundingClientRect().left;
     let bottom = AuthorHoverRef.current.getBoundingClientRect().bottom;
     let right = AuthorHoverRef.current.getBoundingClientRect().right;
 

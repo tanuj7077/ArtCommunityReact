@@ -24,6 +24,18 @@
     font-weight: 300;
     color: white;
   }
+  &-mobile {
+    display: none;
+    @include respond(phone) {
+      display: flex;
+    }
+  }
+  &-desk {
+    display: flex;
+    @include respond(phone) {
+      display: none;
+    }
+  }
 }
 
 .liveSearch {
@@ -242,6 +254,20 @@
         margin-top: 3rem;
         text-align: center;
       }
+    }
+  }
+
+  &-mobile {
+    display: none;
+    @include respond(phone) {
+      display: block;
+    }
+  }
+
+  &-desk {
+    display: block;
+    @include respond(phone) {
+      display: none;
     }
   }
 }

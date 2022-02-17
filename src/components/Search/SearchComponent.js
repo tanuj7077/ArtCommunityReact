@@ -64,14 +64,17 @@ const SearchComponent = () => {
   return (
     <>
       {!searchStatus && (
-        <div className="search" onClick={() => setSearchStatus(true)}>
+        <div
+          className="search search-desk"
+          onClick={() => setSearchStatus(true)}
+        >
           <IoSearch className="search-icon" />
           <span className="search-text">SEARCH AND DISCOVER</span>
         </div>
       )}
       {searchStatus && (
         <>
-          <div ref={wrapperRef} className="liveSearch">
+          <div ref={wrapperRef} className="liveSearch liveSearch-desk">
             <form className="searchForm" onSubmit={handleSubmit}>
               <input
                 className="searchForm--input"

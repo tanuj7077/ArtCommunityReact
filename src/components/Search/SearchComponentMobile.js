@@ -71,14 +71,17 @@ const SearchComponent = () => {
   return (
     <>
       {!searchStatus && (
-        <div className="search" onClick={() => setSearchStatus(true)}>
+        <div
+          className="search search-mobile"
+          onClick={() => setSearchStatus(true)}
+        >
           <IoSearch className="search-icon" />
           <span className="search-text">SEARCH AND DISCOVER</span>
         </div>
       )}
       {searchStatus && (
         <>
-          <div ref={wrapperRef} className="liveSearch">
+          <div ref={wrapperRef} className="liveSearch liveSearch-mobile">
             <form className="liveSearch-searchForm" onSubmit={handleSubmit}>
               <input
                 className="liveSearch-searchForm--input"
@@ -93,15 +96,15 @@ const SearchComponent = () => {
             {searchTerm.length > 0 && (
               <div className="liveSearch-searchResults2">
                 <div className="liveSearch-searchResults2-links">
-                  <a className="link" onClick={moveToPosts}>
+                  <p className="link" onClick={moveToPosts}>
                     Posts
-                  </a>
-                  <a className="link" onClick={moveToAuthors}>
+                  </p>
+                  <p className="link" onClick={moveToAuthors}>
                     Author
-                  </a>
-                  <a className="link" onClick={moveToTags}>
+                  </p>
+                  <p className="link" onClick={moveToTags}>
                     Tags
-                  </a>
+                  </p>
                 </div>
                 <div className="liveSearch-searchResults2-carousel">
                   <div

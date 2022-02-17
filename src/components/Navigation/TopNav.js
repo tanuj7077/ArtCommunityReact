@@ -1,16 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import SearchHandler from "../Search/SearchHandler";
+import SearchMobile from "../Search/SearchComponentMobile";
+import Search from "../Search/SearchComponent";
 import { useGlobalContext } from "../../context";
 
 const TopNav = () => {
-  const { isLoggedIn, openSubmitModal, loading, setSignupModalVisibility } =
+  const { isLoggedIn, openSubmitModal, setSignupModalVisibility } =
     useGlobalContext();
 
   return (
     <>
       <section className="TopNavDesk">
-        <SearchHandler />
+        <SearchMobile />
+        <Search />
         {isLoggedIn ? (
           <>
             <div className="TopNavDesk--submit" onClick={openSubmitModal}>

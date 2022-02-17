@@ -1,12 +1,11 @@
-import React, { Suspense } from "react";
+import React from "react";
 
 import SideNavTopic from "../components/SideNavTopic";
 import SideNavHandler from "../components/Navigation/SideNavHandler";
 import TopNavResponsive from "../components/Navigation/TopNav";
 import FloatingButton from "../components/Navigation/FloatingButton";
-
-const Explore = React.lazy(() => import("../components/HomePage/Explore"));
-const PostList = React.lazy(() => import("../components/HomePage/PostList"));
+import Explore from "../components/HomePage/Explore";
+import PostList from "../components/HomePage/PostList";
 
 const Home = () => {
   return (
@@ -14,12 +13,8 @@ const Home = () => {
       <TopNavResponsive />
       <SideNavHandler />
       <SideNavTopic topic="Home" />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Explore />
-      </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
-        <PostList />
-      </Suspense>
+      <Explore />
+      <PostList />
       <FloatingButton />
     </div>
   );

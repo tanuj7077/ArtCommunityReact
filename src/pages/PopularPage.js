@@ -7,15 +7,13 @@ import Popular from "../components/PopularPage/Popular";
 
 const PopularPage = () => {
   return (
-    <>
-      <div className="Container">
-        <TopNavResponsive />
-        <SideNavTopic topic="Popular" />
-        <SideNavHandler />
-        <FloatingButton />
-        <Popular />
-      </div>
-    </>
+    <div className="Container">
+      <TopNavResponsive />
+      <SideNavTopic topic="Popular" />
+      <SideNavHandler />
+      <FloatingButton />
+      <Popular />
+    </div>
   );
 };
 

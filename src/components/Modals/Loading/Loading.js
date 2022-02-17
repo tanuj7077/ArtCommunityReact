@@ -9,7 +9,7 @@ const Loading = () => {
       {loading && (
         <div className="loadScreen">
           <div className="loadScreen-container">
-            <div class="loadScreen-spinner">
+            <div className="loadScreen-spinner">
               <div></div>
               <div></div>
               <div></div>
