@@ -3,6 +3,10 @@
   height: calc(100vh - 6rem);
   grid-column: 1 / -1;
   grid-row: 2 / -1;
+  display: none;
+  @include respond(phone) {
+    display: block;
+  }
   @include respond(phone-land) {
     grid-column: 3 / -1;
     width: calc(100vw - 7rem);

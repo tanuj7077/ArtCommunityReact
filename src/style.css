@@ -5949,6 +5949,11 @@ body {
   display: flex;
   position: relative;
 }
+@media only screen and (max-width: 37.5em) {
+  .settingsDesk {
+    display: none;
+  }
+}
 .settingsDesk-sideNav {
   width: max-content;
   padding-left: 5rem;
@@ -5967,6 +5972,8 @@ body {
   font-size: 2.5rem;
   letter-spacing: 0.35rem;
   color: white;
+  padding-bottom: 3rem;
+  border-bottom: 2px solid #3a3a3a;
 }
 .settingsDesk-sideNav .sideNav-items {
   display: flex;
@@ -6673,6 +6680,12 @@ body {
   height: calc(100vh - 6rem);
   grid-column: 1/-1;
   grid-row: 2/-1;
+  display: none;
+}
+@media only screen and (max-width: 37.5em) {
+  .settingsMobile {
+    display: block;
+  }
 }
 @media only screen and (max-height: 37.5em) {
   .settingsMobile {

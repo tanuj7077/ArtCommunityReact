@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import AccountSettingsHandler from "../components/AccountSettings/AccountSettingsHandler";
+import AccountSettingsMobile from "../components/AccountSettings/AccountSettingsMobile";
+import AccountSettingsDesk from "../components/AccountSettings/AccountSettingsDesk";
 import SideNavDesktop from "../components/Navigation/SideNavDesktop";
 import SideNavMobile from "../components/Navigation/SideNavMobile";
 import TopNavResponsive from "../components/Navigation/TopNav";
@@ -14,7 +15,8 @@ const AccountSettingsPage = () => {
       <TopNavResponsive />
       <SideNavDesktop />
       <SideNavMobile />
-      <AccountSettingsHandler id={id} />
+      <AccountSettingsMobile id={id} />
+      <AccountSettingsDesk id={id} />
       <FloatingButton />
     </div>
   );
