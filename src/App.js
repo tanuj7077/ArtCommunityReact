@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import axios from "axios";
@@ -15,6 +16,7 @@ import AccountSettingsPage from "./pages/AccountSettingsPage";
 import Landing from "./pages/Landing";
 import SubmitModal from "./components/Modals/SubmitModals/SubmitModal";
 import SignupModal from "./components/Modals/LoginModal/SignupModal";
+import Alert from "./components/Modals/Alert/Alert";
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -39,46 +41,35 @@ function App() {
         <SignupModal />
         <Landing />
       </Route>
-      <Route path="/" exact>
+      <>
         <SignupModal />
         <SubmitModal />
-        <Home />
-      </Route>
-      <Route path="/user/:id">
-        <SignupModal />
-        <SubmitModal />
-        <UserPage />
-      </Route>
-      <Route path="/account/:id">
-        <SignupModal />
-        <SubmitModal />
-        {isLoggedIn ? <AccountSettingsPage /> : <Redirect to="/" exact />}
-      </Route>
-      <Route path="/post/:id">
-        <SignupModal />
-        <SubmitModal />
-        <PostPage />
-      </Route>
-      <Route path="/explore">
-        <SignupModal />
-        <SubmitModal />
-        <ExplorePage />
-      </Route>
-      <Route path="/followed">
-        <SignupModal />
-        <SubmitModal />
-        {isLoggedIn ? <FollowedPage /> : <Redirect to="/" exact />}
-      </Route>
-      <Route path="/popular">
-        <SignupModal />
-        <SubmitModal />
-        <PopularPage />
-      </Route>
-      <Route path="/tagSearch/:name">
-        <SignupModal />
-        <SubmitModal />
-        <TagSearchPage />
-      </Route>
+        <Alert />
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/user/:id">
+          <UserPage />
+        </Route>
+        <Route path="/account/:id">
+          {isLoggedIn ? <AccountSettingsPage /> : <Redirect to="/" exact />}
+        </Route>
+        <Route path="/post/:id">
+          <PostPage />
+        </Route>
+        <Route path="/explore">
+          <ExplorePage />
+        </Route>
+        <Route path="/followed">
+          {isLoggedIn ? <FollowedPage /> : <Redirect to="/" exact />}
+        </Route>
+        <Route path="/popular">
+          <PopularPage />
+        </Route>
+        <Route path="/tagSearch/:name">
+          <TagSearchPage />
+        </Route>
+      </>
     </Switch>
   );
 }
