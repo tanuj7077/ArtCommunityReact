@@ -95,19 +95,6 @@ const SideNavMobile = () => {
                 </div>
               )}
             />
-            {/* <Route
-              render={({ history }) => (
-                <div
-                  onClick={() => {
-                    history.push(`/daily`);
-                  }}
-                  className="sideNavMobile--item"
-                >
-                  <IoToday className="sideNavMobile--item-icon" />
-                  <div className="sideNavMobile--item-text">Daily</div>
-                </div>
-              )}
-            /> */}
             <Route
               render={({ history }) => (
                 <div
@@ -168,19 +155,6 @@ const SideNavMobile = () => {
                 </div>
               )}
             />
-            {/* <Route
-              render={({ history }) => (
-                <div
-                  onClick={() => {
-                    history.push(`/daily`);
-                  }}
-                  className="sideNavMobile--item"
-                >
-                  <IoToday className="sideNavMobile--item-icon" />
-                  <div className="sideNavMobile--item-text">Daily</div>
-                </div>
-              )}
-            /> */}
             <Route
               render={({ history }) => (
                 <div

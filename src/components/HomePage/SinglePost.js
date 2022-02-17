@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import blank from "../../tagImage/blankProfile.png";
@@ -56,21 +58,24 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
       if (AuthorHoverRef.current) {
         document.getElementById("authorHover").classList.remove("loading");
       }
-      setUsername(res.data.username);
-      setPosts(res.data.posts);
-      setPostCount(res.data.postCount);
-      setFollowerCount(res.data.followerCount);
-      setCoverPhoto(res.data.coverImage);
-      if (!res.data.profilePic) {
-        setProfilePic(blank);
-      } else {
-        setProfilePic(res.data.profilePic);
-      }
-      if (!res.data.profileBorderRad) {
-        setProfileBorderRad("0%");
-      } else {
-        setProfileBorderRad(res.data.profileBorderRad + "%");
-      }
+
+      ReactDOM.unstable_batchedUpdates(() => {
+        setUsername(res.data.username);
+        setPosts(res.data.posts);
+        setPostCount(res.data.postCount);
+        setFollowerCount(res.data.followerCount);
+        setCoverPhoto(res.data.coverImage);
+        if (!res.data.profilePic) {
+          setProfilePic(blank);
+        } else {
+          setProfilePic(res.data.profilePic);
+        }
+        if (!res.data.profileBorderRad) {
+          setProfileBorderRad("0%");
+        } else {
+          setProfileBorderRad(res.data.profileBorderRad + "%");
+        }
+      });
     });
   };
 
