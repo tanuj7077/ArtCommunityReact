@@ -9,28 +9,22 @@ const TopNav = () => {
     useGlobalContext();
 
   return (
-    <>
-      <section className="TopNavDesk">
-        <SearchMobile />
-        <Search />
-        {isLoggedIn ? (
-          <>
-            <div className="TopNavDesk--submit" onClick={openSubmitModal}>
-              <span>SUBMIT</span>
-            </div>
-          </>
-        ) : (
-          <>
-            <div
-              className="TopNavDesk--submit"
-              onClick={() => setSignupModalVisibility(true)}
-            >
-              <span>LOGIN</span>
-            </div>
-          </>
-        )}
-      </section>
-    </>
+    <section className="TopNavDesk">
+      <SearchMobile />
+      <Search />
+      {isLoggedIn ? (
+        <div className="TopNavDesk--submit" onClick={openSubmitModal}>
+          <span>SUBMIT</span>
+        </div>
+      ) : (
+        <div
+          className="TopNavDesk--submit"
+          onClick={() => setSignupModalVisibility(true)}
+        >
+          <span>LOGIN</span>
+        </div>
+      )}
+    </section>
   );
 };
 

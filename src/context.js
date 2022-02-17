@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect } from "react";
+import ReactDOM from "react-dom";
 import axios from "axios";
 
 const AppContext = React.createContext();
@@ -15,6 +17,24 @@ const AppProvider = ({ children }) => {
   const [alert, setAlert] = useState({});
   const [showAlert, setShowAlert] = useState(0);
   const [loading, setLoading] = useState(0);
+
+  const [renderCount, setRenderCount] = useState(0);
+
+  useEffect(() => {
+    setRenderCount(renderCount + 1);
+    //console.log(renderCount);
+  }, [
+    isLoggedIn,
+    posts,
+    explorePageTags,
+    homePageTags,
+    userData,
+    submitCoverModal,
+    submitProfilePicModal,
+    page,
+    alert,
+    showAlert,
+  ]);
 
   //--------------------For Explore Page------------------//
   const fetchExploreTags = async () => {
@@ -97,10 +117,12 @@ const AppProvider = ({ children }) => {
         .post(`${process.env.REACT_APP_BASE_URL}/auth/signin`, loginData)
         .then((res) => {
           if (res.data.success) {
-            setUserData(res.data.userData);
-            setIsLoggedIn(true);
-            changeAlert(res.data.message);
-            setSignupModalVisibility(false);
+            ReactDOM.unstable_batchedUpdates(() => {
+              setUserData(res.data.userData);
+              setIsLoggedIn(true);
+              changeAlert(res.data.message);
+              setSignupModalVisibility(false);
+            });
           } else {
             changeAlert(res.data.message);
           }

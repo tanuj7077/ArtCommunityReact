@@ -25,7 +25,7 @@ function App() {
     useGlobalContext();
 
   axios.interceptors.request.use((request) => {
-    console.log(request.url.split("/").includes("hoverUser"));
+    //console.log(request.url.split("/").includes("hoverUser"));
     if (!request.url.split("/").includes("hoverUser")) {
       setLoading(true);
     }

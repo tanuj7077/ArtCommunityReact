@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from "react";
+import ReactDOM from "react-dom";
 import { Route } from "react-router-dom";
 import { useCallback } from "react";
 import axios from "axios";
@@ -18,7 +20,7 @@ const SearchComponent = () => {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          setSearchTerm("");
+          //setSearchTerm("");
           setSearchStatus(false);
         }
       }
@@ -36,27 +38,29 @@ const SearchComponent = () => {
     e.preventDefault();
   };
 
-  const searchItem = () => {
-    setSearchTerm(searchValue.current.value);
-  };
+  // const searchItem = () => {
+  //   setSearchTerm(searchValue.current.value);
+  // };
   const fetchData = useCallback(async () => {
     try {
       await axios
         .post(`${process.env.REACT_APP_BASE_URL}/search`, {
-          searchTerm: searchTerm,
+          searchTerm: searchValue.current.value,
         })
         .then((res) => {
-          setPost(res.data.posts);
-          setTag(res.data.tags);
-          setAuthor(res.data.users);
+          ReactDOM.unstable_batchedUpdates(() => {
+            setPost(res.data.posts);
+            setTag(res.data.tags);
+            setAuthor(res.data.users);
+          });
         });
     } catch (error) {
       console.log(error);
     }
-  }, [searchTerm]);
-  useEffect(() => {
-    fetchData();
-  }, [searchTerm, fetchData]);
+  }, [searchValue?.current?.value]);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [searchTerm, fetchData]);
 
   const moveToPosts = () => {
     document.getElementById("slide-1").scrollIntoView(true);
@@ -88,12 +92,12 @@ const SearchComponent = () => {
                 type="text"
                 id="name"
                 ref={searchValue}
-                onChange={searchItem}
+                onChange={fetchData}
                 placeholder="Search post, tags or user"
               />
             </form>
 
-            {searchTerm.length > 0 && (
+            {searchValue?.current?.value?.length > 0 && (
               <div className="liveSearch-searchResults2">
                 <div className="liveSearch-searchResults2-links">
                   <p className="link" onClick={moveToPosts}>

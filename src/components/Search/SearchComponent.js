@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from "react";
+import ReactDOM from "react-dom";
 import { Route } from "react-router-dom";
 import { useCallback } from "react";
 import axios from "axios";
@@ -9,10 +11,15 @@ const SearchComponent = () => {
   const searchValue = useRef("");
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
   const [post, setPost] = useState([]);
   const [author, setAuthor] = useState([]);
   const [tag, setTag] = useState([]);
+  // const [renderCount, setRenderCount] = useState(0);
+
+  // useEffect(() => {
+  //   setRenderCount(renderCount + 1);
+  //   console.log(renderCount);
+  // }, [searchStatus, searchTerm, post, author, tag]);
 
   //-----------------Disable Search on outside Click-----------------
   function useOutsideAlerter(ref) {
@@ -36,30 +43,29 @@ const SearchComponent = () => {
     e.preventDefault();
   };
 
-  const searchItem = () => {
-    setSearchTerm(searchValue.current.value);
-  };
+  // const searchItem = () => {
+  //   setSearchTerm(searchValue.current.value);
+  // };
   const fetchData = useCallback(async () => {
-    setLoading(true);
     try {
       await axios
         .post(`${process.env.REACT_APP_BASE_URL}/search`, {
-          searchTerm: searchTerm,
+          searchTerm: searchValue.current.value,
         })
         .then((res) => {
-          setPost(res.data.posts);
-          setTag(res.data.tags);
-          setAuthor(res.data.users);
+          ReactDOM.unstable_batchedUpdates(() => {
+            setPost(res.data.posts);
+            setTag(res.data.tags);
+            setAuthor(res.data.users);
+          });
         });
-      setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
     }
-  }, [searchTerm]);
-  useEffect(() => {
-    fetchData();
-  }, [searchTerm, fetchData]);
+  }, [searchValue?.current?.value]);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [searchTerm, fetchData]);
 
   return (
     <>
@@ -81,11 +87,11 @@ const SearchComponent = () => {
                 type="text"
                 id="name"
                 ref={searchValue}
-                onChange={searchItem}
+                onChange={fetchData}
                 placeholder="Search post, tags or user"
               />
             </form>
-            {searchTerm.length > 0 && (
+            {searchValue?.current?.value?.length > 0 && (
               <div className="searchResults">
                 <div className="searchResults--postSection">
                   <span className="subHeading">Posts</span>
