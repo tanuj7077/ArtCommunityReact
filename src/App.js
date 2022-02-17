@@ -14,6 +14,7 @@ import TagSearchPage from "./pages/TagSearchPage";
 import AccountSettingsPage from "./pages/AccountSettingsPage";
 import Landing from "./pages/Landing";
 import SubmitModal from "./components/Modals/SubmitModals/SubmitModal";
+import SignupModal from "./components/Modals/LoginModal/SignupModal";
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -35,37 +36,46 @@ function App() {
   return (
     <Switch>
       <Route path="/landing">
+        <SignupModal />
         <Landing />
       </Route>
       <Route path="/" exact>
+        <SignupModal />
         <SubmitModal />
         <Home />
       </Route>
       <Route path="/user/:id">
+        <SignupModal />
         <SubmitModal />
         <UserPage />
       </Route>
       <Route path="/account/:id">
+        <SignupModal />
         <SubmitModal />
         {isLoggedIn ? <AccountSettingsPage /> : <Redirect to="/" exact />}
       </Route>
       <Route path="/post/:id">
+        <SignupModal />
         <SubmitModal />
         <PostPage />
       </Route>
       <Route path="/explore">
+        <SignupModal />
         <SubmitModal />
         <ExplorePage />
       </Route>
       <Route path="/followed">
+        <SignupModal />
         <SubmitModal />
         {isLoggedIn ? <FollowedPage /> : <Redirect to="/" exact />}
       </Route>
       <Route path="/popular">
+        <SignupModal />
         <SubmitModal />
         <PopularPage />
       </Route>
       <Route path="/tagSearch/:name">
+        <SignupModal />
         <SubmitModal />
         <TagSearchPage />
       </Route>

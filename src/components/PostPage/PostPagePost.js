@@ -4,7 +4,6 @@ import { useGlobalContext } from "../../context";
 import CommentList from "./Comments/CommentList";
 import PostsByUser from "./PostsByUser/PostsByUser";
 import Recommended from "./Recommended/Recommended";
-import SignupModal from "../Modals/LoginModal/SignupModal";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 import blank from "../../tagImage/blankProfile.png";
@@ -43,7 +42,6 @@ const PostPagePost = ({ id }) => {
     userData,
     setUserData,
     setSignupModalVisibility,
-    signupModalVisibility,
     changeAlert,
   } = useGlobalContext();
   let postUrl = `${process.env.REACT_APP_BASE_URL}/posts/post1/${id}`;
@@ -371,7 +369,6 @@ const PostPagePost = ({ id }) => {
           )}
         </div>
       </div>
-      {signupModalVisibility && <SignupModal />}
       {expanded && (
         <div className="expandedImage">
           <img className="expandedImage-img" src={Post.image} alt="" />

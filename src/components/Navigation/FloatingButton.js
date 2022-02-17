@@ -2,17 +2,12 @@
 import React from "react";
 import { GoPlus } from "react-icons/go";
 import { AiOutlineLogin } from "react-icons/ai";
-import SignupModal from "../Modals/LoginModal/SignupModal";
 
 import { useGlobalContext } from "../../context";
 
 const FloatingButton = () => {
-  const {
-    isLoggedIn,
-    openSubmitModal,
-    signupModalVisibility,
-    setSignupModalVisibility,
-  } = useGlobalContext();
+  const { isLoggedIn, openSubmitModal, setSignupModalVisibility } =
+    useGlobalContext();
 
   return (
     <>
@@ -32,7 +27,6 @@ const FloatingButton = () => {
           </div>
         </>
       )}
-      {signupModalVisibility && <SignupModal />}
     </>
   );
 };
