@@ -2,7 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import User from "../components/UserPage/User";
-import SideNavHandler from "../components/Navigation/SideNavHandler";
+import SideNavDesktop from "../components/Navigation/SideNavDesktop";
+import SideNavMobile from "../components/Navigation/SideNavMobile";
 import TopNavResponsive from "../components/Navigation/TopNav";
 import FloatingButton from "../components/Navigation/FloatingButton";
 
@@ -11,7 +12,8 @@ const UserPage = () => {
   return (
     <div className="Container">
       <TopNavResponsive />
-      <SideNavHandler />
+      <SideNavDesktop />
+      <SideNavMobile />
       <User id={id} />
       <FloatingButton />
     </div>

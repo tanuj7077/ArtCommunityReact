@@ -1,7 +1,8 @@
 import React from "react";
 
 import SideNavTopic from "../components/SideNavTopic";
-import SideNavHandler from "../components/Navigation/SideNavHandler";
+import SideNavDesktop from "../components/Navigation/SideNavDesktop";
+import SideNavMobile from "../components/Navigation/SideNavMobile";
 import TopNavResponsive from "../components/Navigation/TopNav";
 import FloatingButton from "../components/Navigation/FloatingButton";
 import Explore from "../components/HomePage/Explore";
@@ -11,7 +12,8 @@ const Home = () => {
   return (
     <div className="Container">
       <TopNavResponsive />
-      <SideNavHandler />
+      <SideNavDesktop />
+      <SideNavMobile />
       <SideNavTopic topic="Home" />
       <Explore />
       <PostList />

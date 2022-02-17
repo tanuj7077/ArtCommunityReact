@@ -9,9 +9,12 @@
   background-color: black;
   border-right: 4px solid rgba(#171c21, 0.95);
   z-index: 10;
-  display: flex;
+  display: none;
   flex-flow: column;
   transition: all 0.3s ease;
+  @include respond(phone) {
+    display: flex;
+  }
   &--item {
     width: 100%;
     height: 7rem;
@@ -51,6 +54,10 @@
   left: 0;
   z-index: 101;
   color: rgb(214, 214, 214);
+  display: none;
+  @include respond(phone) {
+    display: block;
+  }
   .sideNavMobile--ham-icon {
     width: 2rem;
     height: 2rem;
@@ -75,6 +82,9 @@
   display: flex;
   flex-flow: column;
   transition: all 0.3s ease;
+  @include respond(phone) {
+    display: none;
+  }
   &--item {
     width: 100%;
     height: 7rem;
@@ -116,8 +126,10 @@
   z-index: 10;
   display: flex;
   flex-flow: column;
-
   transition: all 0.3s ease;
+  @include respond(phone) {
+    display: none;
+  }
   &--item {
     width: 100%;
     height: 7rem;
@@ -168,6 +180,10 @@
   left: 0;
   z-index: 101;
   color: rgb(214, 214, 214);
+  display: block;
+  @include respond(phone) {
+    display: none;
+  }
   &-icon {
     width: 2rem;
     height: 2rem;

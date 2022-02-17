@@ -26,7 +26,7 @@ const SearchComponent = () => {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          setSearchTerm("");
+          //setSearchTerm("");
           setSearchStatus(false);
         }
       }

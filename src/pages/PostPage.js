@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 
 import TopNavResponsive from "../components/Navigation/TopNav";
 import PostPagePost from "../components/PostPage/PostPagePost";
-import SideNavHandler from "../components/Navigation/SideNavHandler";
+import SideNavDesktop from "../components/Navigation/SideNavDesktop";
+import SideNavMobile from "../components/Navigation/SideNavMobile";
 import FloatingButton from "../components/Navigation/FloatingButton";
 
 const PostPage = () => {
@@ -11,7 +12,8 @@ const PostPage = () => {
   return (
     <div className="Container">
       <TopNavResponsive />
-      <SideNavHandler />
+      <SideNavDesktop />
+      <SideNavMobile />
       <PostPagePost id={id} />
       <FloatingButton />
     </div>
