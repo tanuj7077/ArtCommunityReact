@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 import axios from "axios";
 import { useGlobalContext } from "../../../context";
 import blank from "../../../tagImage/blankProfile.png";
@@ -18,8 +19,10 @@ const SingleComment = ({ id, postId }) => {
     try {
       const response = await fetch(commentUrl);
       await response.json().then((data) => {
-        setComment(data);
-        setLikes(data.likesArray.length);
+        ReactDOM.unstable_batchedUpdates(() => {
+          setComment(data);
+          setLikes(data.likesArray.length);
+        });
       });
     } catch (err) {
       console.log(err);
@@ -61,8 +64,10 @@ const SingleComment = ({ id, postId }) => {
   async function editComment() {
     const data = { edited_comment: editedComment };
     axios.post(commentEditUrl, data).then((res) => {
-      setComment(res.data.comment);
-      setEditState(false);
+      ReactDOM.unstable_batchedUpdates(() => {
+        setComment(res.data.comment);
+        setEditState(false);
+      });
     });
   }
   if (!comment) {

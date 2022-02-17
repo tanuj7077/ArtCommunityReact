@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context";
+import ReactDOM from "react-dom";
 import CommentList from "./Comments/CommentList";
 import PostsByUser from "./PostsByUser/PostsByUser";
 import Recommended from "./Recommended/Recommended";
@@ -52,20 +53,29 @@ const PostPagePost = ({ id }) => {
   const [followStat, setFollowStat] = useState("");
   const [expanded, setExpanded] = useState(false);
 
+  const [renderCount, setRenderCount] = useState(0);
+
+  useEffect(() => {
+    setRenderCount(renderCount + 1);
+    console.log(renderCount);
+  }, [Post, comment, comments, followStat, expanded, userData]);
+
   async function getPost() {
     try {
       const response = await fetch(postUrl);
       const data = await response.json();
-      setPost(data);
-      setComments(data.comments);
 
-      if (isLoggedIn) {
-        if (userData.following.includes(data.author.id)) {
-          setFollowStat("Unfollow User");
-        } else {
-          setFollowStat("Follow User");
+      ReactDOM.unstable_batchedUpdates(() => {
+        setPost(data);
+        setComments(data.comments);
+        if (isLoggedIn) {
+          if (userData?.following?.includes(data.author.id)) {
+            setFollowStat("Unfollow User");
+          } else {
+            setFollowStat("Follow User");
+          }
         }
-      }
+      });
     } catch (err) {
       console.log(err);
     }
@@ -136,10 +146,12 @@ const PostPagePost = ({ id }) => {
         )
         .then((res) => {
           changeAlert(res.data.message);
-          setPost(res.data.post); //new
-          //setTotalComments(res.data.commentsCount);
-          setComments(res.data.comments);
-          setComment("");
+
+          ReactDOM.unstable_batchedUpdates(() => {
+            setPost(res.data.post); //new
+            setComments(res.data.comments);
+            setComment("");
+          });
           document.getElementById("desc").value = "";
         });
     }
@@ -156,16 +168,20 @@ const PostPagePost = ({ id }) => {
         axios
           .post(`${process.env.REACT_APP_BASE_URL}/users/follow`, data)
           .then((res) => {
-            setFollowStat("Unfollow User");
-            setUserData(res.data.user);
+            ReactDOM.unstable_batchedUpdates(() => {
+              setFollowStat("Unfollow User");
+              setUserData(res.data.user);
+            });
             changeAlert(res.data.message);
           });
       } else {
         axios
           .post(`${process.env.REACT_APP_BASE_URL}/users/unfollow`, data)
           .then((res) => {
-            setFollowStat("Follow User");
-            setUserData(res.data.user);
+            ReactDOM.unstable_batchedUpdates(() => {
+              setFollowStat("Follow User");
+              setUserData(res.data.user);
+            });
             changeAlert(res.data.message);
           });
       }
