@@ -7,7 +7,7 @@ import {
   TopNavResponsive,
   FloatingButton,
   User,
-} from "../commonImports";
+} from "../commonImports/commonImports";
 
 const UserPage = () => {
   const { id } = useParams();

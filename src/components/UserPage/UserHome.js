@@ -2,18 +2,22 @@ import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import { useGlobalContext } from "../../context";
-import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import {
   FaBirthdayCake,
   FaFacebookSquare,
   FaPatreon,
   FaYoutube,
   FaCommentDots,
-} from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
-import { CgGenderFemale, CgGenderMale } from "react-icons/cg";
-import { HiLocationMarker } from "react-icons/hi";
-import { AiOutlineLink, AiFillInstagram, AiFillLike } from "react-icons/ai";
+  SiGmail,
+  CgGenderFemale,
+  CgGenderMale,
+  HiLocationMarker,
+  AiOutlineLink,
+  AiFillInstagram,
+  AiFillLike,
+  VscChevronLeft,
+  VscChevronRight,
+} from "../../commonImports/reactIcons";
 
 const UserHome = ({ user, popular, liked, spotlight }) => {
   const { isLoggedIn, userData, changeAlert, setSignupModalVisibility } =

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../context";
-import { MdEdit } from "react-icons/md";
-import { FaTrash } from "react-icons/fa";
+import { MdEdit, FaTrash } from "../../commonImports/reactIcons";
 
 const Extras = () => {
-  const { isLoggedIn, userData, setUserData, changeAlert } = useGlobalContext();
+  const { userData, setUserData, changeAlert } = useGlobalContext();
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);

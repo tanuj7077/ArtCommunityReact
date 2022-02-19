@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import { IoClose } from "react-icons/io5";
 import { useGlobalContext } from "../../../context";
+import { IoClose } from "../../../commonImports/reactIcons";
 
 const Alert = () => {
   const { alert, showAlert, setShowAlert } = useGlobalContext();

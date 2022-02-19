@@ -5,15 +5,19 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 import blank from "../../tagImage/blankProfile.png";
-import { BsHeartFill } from "react-icons/bs";
 import {
   MdDelete,
   MdComment,
   MdFullscreen,
   MdFullscreenExit,
-} from "react-icons/md";
+  BsHeartFill,
+} from "../../commonImports/reactIcons";
 
-import { CommentList, PostsByUser, Recommended } from "../../commonImports";
+import {
+  CommentList,
+  PostsByUser,
+  Recommended,
+} from "../../commonImports/commonImports";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";

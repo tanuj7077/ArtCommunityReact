@@ -3,7 +3,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 //import ExploreTag from "./ExploreTag";
 import { useGlobalContext } from "../../context";
-import { ExploreTag } from "../../commonImports";
+import { ExploreTag } from "../../commonImports/commonImports";
 
 const ExploreTagList = () => {
   const { explorePageTags } = useGlobalContext();

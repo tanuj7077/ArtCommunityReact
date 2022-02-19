@@ -1,9 +1,8 @@
 import React, { useState, useRef } from "react";
-import { IoClose } from "react-icons/io5";
-import { FaUpload } from "react-icons/fa";
 import axios from "axios";
 import AvatarEditor from "react-avatar-editor";
 import { useGlobalContext } from "../../../context";
+import { FaUpload } from "../../../commonImports/reactIcons";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";

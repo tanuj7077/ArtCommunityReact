@@ -1033,3 +1033,4 @@ export const COUNTRIES = [
     value: "Zimbabwe",
   },
 ];
+export const FIREBASE_CONFIG = [];

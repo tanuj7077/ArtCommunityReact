@@ -8,7 +8,7 @@ import {
   FloatingButton,
   Explore,
   PostList,
-} from "../commonImports";
+} from "../commonImports/commonImports";
 
 const Home = () => {
   return (

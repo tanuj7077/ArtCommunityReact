@@ -7,7 +7,7 @@ import {
   SideNavMobile,
   TopNavResponsive,
   FloatingButton,
-} from "../commonImports";
+} from "../commonImports/commonImports";
 
 const ExplorePage = () => {
   return (

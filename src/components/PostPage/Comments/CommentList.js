@@ -1,5 +1,5 @@
 import React from "react";
-import { SingleComment } from "../../../commonImports";
+import { SingleComment } from "../../../commonImports/commonImports";
 
 const CommentList = ({ commentArr, postId }) => {
   return (

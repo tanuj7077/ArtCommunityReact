@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SubmitCoverModal from "../Modals/SubmitModals/SubmitCoverModal";
 import SubmitProfilePicModal from "../Modals/SubmitModals/SubmitProfilePicModal";
-import blank from "../../tagImage/blankProfile.png";
-import { FaPlus, FaUpload } from "react-icons/fa";
 import axios from "axios";
 import { useGlobalContext } from "../../context";
+import { FaPlus } from "../../commonImports/reactIcons";
 
 const Profile = () => {
   const {

@@ -19,7 +19,7 @@ import {
   SignupModal,
   Alert,
   Loading,
-} from "./commonImports";
+} from "./commonImports/commonImports";
 
 axios.defaults.withCredentials = true;
 function App() {

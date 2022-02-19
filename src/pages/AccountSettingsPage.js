@@ -8,7 +8,7 @@ import {
   SideNavMobile,
   TopNavResponsive,
   FloatingButton,
-} from "../commonImports";
+} from "../commonImports/commonImports";
 
 const AccountSettingsPage = () => {
   const { id } = useParams();

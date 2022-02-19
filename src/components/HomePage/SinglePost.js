@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import blank from "../../tagImage/blankProfile.png";
-import { AiTwotoneHeart } from "react-icons/ai";
-import { MdComment } from "react-icons/md";
 import { useGlobalContext } from "../../context";
+import { AiTwotoneHeart, MdComment } from "../../commonImports/reactIcons";
 
 const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   const { isLoggedIn, userData, setSignupModalVisibility, changeAlert } =

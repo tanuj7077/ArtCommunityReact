@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import { useGlobalContext } from "../../context";
 import axios from "axios";
-import { FaFacebookSquare, FaPatreon, FaYoutube } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
-import { AiFillInstagram } from "react-icons/ai";
 import { COUNTRIES } from "../../constants";
+
+import {
+  AiFillInstagram,
+  FaFacebookSquare,
+  FaPatreon,
+  FaYoutube,
+  FaPlus,
+  SiGmail,
+} from "../../commonImports/reactIcons";
 
 const customStyles = {
   option: (provided, state) => ({

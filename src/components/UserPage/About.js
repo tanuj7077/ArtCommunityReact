@@ -1,16 +1,18 @@
 import React from "react";
+import { Route } from "react-router-dom";
+import blank from "../../tagImage/blankProfile.png";
 import {
   FaBirthdayCake,
   FaFacebookSquare,
   FaPatreon,
   FaYoutube,
-} from "react-icons/fa";
-import { Route } from "react-router-dom";
-import { SiGmail } from "react-icons/si";
-import { CgGenderFemale, CgGenderMale } from "react-icons/cg";
-import { HiLocationMarker } from "react-icons/hi";
-import { AiOutlineLink, AiFillInstagram } from "react-icons/ai";
-import blank from "../../tagImage/blankProfile.png";
+  SiGmail,
+  CgGenderFemale,
+  CgGenderMale,
+  HiLocationMarker,
+  AiOutlineLink,
+  AiFillInstagram,
+} from "../../commonImports/reactIcons";
 
 const About = ({ user, following, followers }) => {
   const openInNewTab = (url) => {

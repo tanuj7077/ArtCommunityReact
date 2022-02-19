@@ -1,16 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { BsChevronRight } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
-import { RiProfileLine } from "react-icons/ri";
-import { IoColorPalette } from "react-icons/io5";
-import { AiFillPlusSquare } from "react-icons/ai";
 
-import { Profile, Personal, Extras, Appearance } from "../../commonImports";
+import {
+  Profile,
+  Personal,
+  Extras,
+  Appearance,
+} from "../../commonImports/commonImports";
+
+import {
+  BsChevronRight,
+  CgProfile,
+  RiProfileLine,
+  IoColorPalette,
+  AiFillPlusSquare,
+} from "../../commonImports/reactIcons";
 
 import { useGlobalContext } from "../../context";
 
-const AccountSettingsDesk = ({ id }) => {
+const AccountSettingsDesk = () => {
   const { userData } = useGlobalContext();
   const [isProfile, setProfile] = useState(true);
   const [isPersonal, setPersonal] = useState(false);

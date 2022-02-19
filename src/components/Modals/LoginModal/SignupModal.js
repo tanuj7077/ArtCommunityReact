@@ -3,7 +3,7 @@ import { useGlobalContext } from "../../../context";
 import signupImg from "../../../assets/signupImg2.jpg";
 import logo from "../../../assets/logo.png";
 import backdropImg from "../../../assets/9.jpg";
-import { IoClose } from "react-icons/io5";
+import { IoClose } from "../../../commonImports/reactIcons";
 function SignupModal() {
   const { signupModalVisibility, setSignupModalVisibility, login, register } =
     useGlobalContext();

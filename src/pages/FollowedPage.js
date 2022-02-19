@@ -7,7 +7,7 @@ import {
   TopNavResponsive,
   FloatingButton,
   FollowedList,
-} from "../commonImports";
+} from "../commonImports/commonImports";
 
 const FollowedPage = () => {
   return (

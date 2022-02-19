@@ -2,7 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Route } from "react-router-dom";
 import ReactDOM from "react-dom";
-import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
+import {
+  VscChevronLeft,
+  VscChevronRight,
+} from "../../commonImports/reactIcons";
 
 import blank from "../../tagImage/blankProfile.png";
 import { PAGE_LIMIT } from "../../constants";

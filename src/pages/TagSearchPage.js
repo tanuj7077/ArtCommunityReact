@@ -8,7 +8,7 @@ import {
   TopNavResponsive,
   FloatingButton,
   TagSearchList,
-} from "../commonImports";
+} from "../commonImports/commonImports";
 
 const TagSearchPage = () => {
   const { name } = useParams();

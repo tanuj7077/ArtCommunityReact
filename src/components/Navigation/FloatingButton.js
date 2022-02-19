@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { GoPlus } from "react-icons/go";
-import { AiOutlineLogin } from "react-icons/ai";
+import { GoPlus, AiOutlineLogin } from "../../commonImports/reactIcons";
 
 import { useGlobalContext } from "../../context";
 

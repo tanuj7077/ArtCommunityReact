@@ -7,7 +7,7 @@ import {
   TopNavResponsive,
   FloatingButton,
   Popular,
-} from "../commonImports";
+} from "../commonImports/commonImports";
 
 const PopularPage = () => {
   return (

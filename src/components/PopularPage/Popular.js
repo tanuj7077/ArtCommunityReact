@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import axios from "axios";
-import { SinglePost } from "../../commonImports";
+import { SinglePost } from "../../commonImports/commonImports";
 import { PAGE_LIMIT } from "../../constants";
 
 const Popular = () => {

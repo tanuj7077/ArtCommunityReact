@@ -1,18 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { CgProfile } from "react-icons/cg";
-import { RiProfileLine } from "react-icons/ri";
-import { IoColorPalette } from "react-icons/io5";
-import { AiFillPlusSquare } from "react-icons/ai";
+import {
+  CgProfile,
+  RiProfileLine,
+  IoColorPalette,
+  AiFillPlusSquare,
+} from "../../commonImports/reactIcons";
 
 import {
   ProfileMobile,
   PersonalMobile,
   ExtrasMobile,
   AppearanceMobile,
-} from "../../commonImports";
+} from "../../commonImports/commonImports";
 import { useGlobalContext } from "../../context";
 
-const AccountSettingsMobile = ({ id }) => {
+const AccountSettingsMobile = () => {
   const { userData } = useGlobalContext();
   const [posts, setPosts] = useState([]);
   async function getPostsByUser() {

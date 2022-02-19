@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { Route } from "react-router-dom";
 import { useCallback } from "react";
 import axios from "axios";
-import { IoSearch } from "react-icons/io5";
+import { IoSearch } from "../../commonImports/reactIcons";
 
 const SearchComponent = () => {
   const [searchStatus, setSearchStatus] = useState(false);

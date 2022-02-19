@@ -7,7 +7,7 @@ import {
   TopNavResponsive,
   FloatingButton,
   PostPagePost,
-} from "../commonImports";
+} from "../commonImports/commonImports";
 
 const PostPage = () => {
   const { id } = useParams();

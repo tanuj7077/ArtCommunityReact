@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { Route, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useGlobalContext } from "../../context";
-import { AiFillHome } from "react-icons/ai";
-import { IoPeople } from "react-icons/io5";
-import { FaWpexplorer } from "react-icons/fa";
-import { MdNewReleases, MdAccountCircle } from "react-icons/md";
-import { CgMenu } from "react-icons/cg";
-import { IoMdPower } from "react-icons/io";
+import {
+  AiFillHome,
+  IoPeople,
+  FaWpexplorer,
+  MdNewReleases,
+  MdAccountCircle,
+  CgMenu,
+  IoMdPower,
+} from "../../commonImports/reactIcons";
 
 const SideNavDesktop = () => {
   const { isLoggedIn, userData, setIsLoggedIn, setUserData, changeAlert } =
