@@ -1,6 +1,6 @@
 import React from "react";
-import SingleTag from "./SingleTag";
 import { useGlobalContext } from "../../context";
+import { SingleTag } from "../../commonImports";
 
 const Explore = () => {
   const { homePageTags } = useGlobalContext();

@@ -5,19 +5,21 @@ import axios from "axios";
 
 import { useGlobalContext } from "./context";
 
-import Home from "./pages/Home";
-import UserPage from "./pages/UserPage";
-import PostPage from "./pages/PostPage";
-import ExplorePage from "./pages/ExplorePage";
-import FollowedPage from "./pages/FollowedPage";
-import PopularPage from "./pages/PopularPage";
-import TagSearchPage from "./pages/TagSearchPage";
-import AccountSettingsPage from "./pages/AccountSettingsPage";
-import Landing from "./pages/Landing";
-import SubmitModal from "./components/Modals/SubmitModals/SubmitModal";
-import SignupModal from "./components/Modals/LoginModal/SignupModal";
-import Alert from "./components/Modals/Alert/Alert";
-import Loading from "./components/Modals/Loading/Loading";
+import {
+  Home,
+  UserPage,
+  PostPage,
+  ExplorePage,
+  FollowedPage,
+  PopularPage,
+  TagSearchPage,
+  AccountSettingsPage,
+  Landing,
+  SubmitModal,
+  SignupModal,
+  Alert,
+  Loading,
+} from "./commonImports";
 
 axios.defaults.withCredentials = true;
 function App() {

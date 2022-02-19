@@ -4,10 +4,12 @@ import { RiProfileLine } from "react-icons/ri";
 import { IoColorPalette } from "react-icons/io5";
 import { AiFillPlusSquare } from "react-icons/ai";
 
-import Profile from "./ProfileMobile";
-import Personal from "./PersonalInfoMobile";
-import Extras from "./ExtrasMobile";
-import Appearance from "./AppearanceMobile";
+import {
+  ProfileMobile,
+  PersonalMobile,
+  ExtrasMobile,
+  AppearanceMobile,
+} from "../../commonImports";
 import { useGlobalContext } from "../../context";
 
 const AccountSettingsMobile = ({ id }) => {
@@ -65,25 +67,25 @@ const AccountSettingsMobile = ({ id }) => {
           id="profileSlide"
           className="settingsMobile-carousel--profileSection"
         >
-          <Profile />
+          <ProfileMobile />
         </div>
         <div
           id="personalSlide"
           className="settingsMobile-carousel--profileSection"
         >
-          <Personal />
+          <PersonalMobile />
         </div>
         <div
           id="extrasSlide"
           className="settingsMobile-carousel--profileSection"
         >
-          <Extras />
+          <ExtrasMobile />
         </div>
         <div
           id="appearanceSlide"
           className="settingsMobile-carousel--profileSection"
         >
-          <Appearance posts={posts} />
+          <AppearanceMobile posts={posts} />
         </div>
       </div>
     </div>

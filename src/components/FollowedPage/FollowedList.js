@@ -1,6 +1,7 @@
 import React from "react";
 import { useGlobalContext } from "../../context";
-import Followed from "./Followed";
+
+import { Followed } from "../../commonImports";
 
 const FollowedList = () => {
   const { userData } = useGlobalContext();

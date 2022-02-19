@@ -1,11 +1,13 @@
 import React from "react";
 
-import SideNavTopic from "../components/SideNavTopic";
-import FollowedList from "../components/FollowedPage/FollowedList";
-import SideNavDesktop from "../components/Navigation/SideNavDesktop";
-import SideNavMobile from "../components/Navigation/SideNavMobile";
-import TopNavResponsive from "../components/Navigation/TopNav";
-import FloatingButton from "../components/Navigation/FloatingButton";
+import {
+  SideNavTopic,
+  SideNavDesktop,
+  SideNavMobile,
+  TopNavResponsive,
+  FloatingButton,
+  FollowedList,
+} from "../commonImports";
 
 const FollowedPage = () => {
   return (

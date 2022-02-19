@@ -1,12 +1,14 @@
 import React from "react";
 
-import SideNavTopic from "../components/SideNavTopic";
-import SideNavDesktop from "../components/Navigation/SideNavDesktop";
-import SideNavMobile from "../components/Navigation/SideNavMobile";
-import TopNavResponsive from "../components/Navigation/TopNav";
-import FloatingButton from "../components/Navigation/FloatingButton";
-import Explore from "../components/HomePage/Explore";
-import PostList from "../components/HomePage/PostList";
+import {
+  SideNavTopic,
+  SideNavDesktop,
+  SideNavMobile,
+  TopNavResponsive,
+  FloatingButton,
+  Explore,
+  PostList,
+} from "../commonImports";
 
 const Home = () => {
   return (

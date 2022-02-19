@@ -6,10 +6,7 @@ import { RiProfileLine } from "react-icons/ri";
 import { IoColorPalette } from "react-icons/io5";
 import { AiFillPlusSquare } from "react-icons/ai";
 
-import Profile from "./Profile";
-import Personal from "./PersonalInfo";
-import Extras from "./Extras";
-import Appearance from "./Appearance";
+import { Profile, Personal, Extras, Appearance } from "../../commonImports";
 
 import { useGlobalContext } from "../../context";
 

@@ -2,9 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import ReactDOM from "react-dom";
-import CommentList from "./Comments/CommentList";
-import PostsByUser from "./PostsByUser/PostsByUser";
-import Recommended from "./Recommended/Recommended";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 import blank from "../../tagImage/blankProfile.png";
@@ -15,6 +12,8 @@ import {
   MdFullscreen,
   MdFullscreenExit,
 } from "react-icons/md";
+
+import { CommentList, PostsByUser, Recommended } from "../../commonImports";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";

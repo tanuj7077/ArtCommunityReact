@@ -1,12 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import SideNavTopic from "../components/SideNavTopic";
-import TagSearchList from "../components/TagSearchPage/TagSearchList";
-import SideNavDesktop from "../components/Navigation/SideNavDesktop";
-import SideNavMobile from "../components/Navigation/SideNavMobile";
-import TopNavResponsive from "../components/Navigation/TopNav";
-import FloatingButton from "../components/Navigation/FloatingButton";
+import {
+  SideNavTopic,
+  SideNavDesktop,
+  SideNavMobile,
+  TopNavResponsive,
+  FloatingButton,
+  TagSearchList,
+} from "../commonImports";
+
 const TagSearchPage = () => {
   const { name } = useParams();
   return (

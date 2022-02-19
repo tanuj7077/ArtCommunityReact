@@ -1,11 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import TopNavResponsive from "../components/Navigation/TopNav";
-import PostPagePost from "../components/PostPage/PostPagePost";
-import SideNavDesktop from "../components/Navigation/SideNavDesktop";
-import SideNavMobile from "../components/Navigation/SideNavMobile";
-import FloatingButton from "../components/Navigation/FloatingButton";
+import {
+  SideNavDesktop,
+  SideNavMobile,
+  TopNavResponsive,
+  FloatingButton,
+  PostPagePost,
+} from "../commonImports";
 
 const PostPage = () => {
   const { id } = useParams();
