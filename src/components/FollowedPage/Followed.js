@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 
 import blank from "../../tagImage/blankProfile.png";
-
+import { PAGE_LIMIT } from "../../constants";
 const Followed = (userId) => {
   const sliderRef = useRef(null);
   const rightBtnRef = useRef(null);
@@ -18,8 +18,7 @@ const Followed = (userId) => {
 
   async function getPostsByUserId() {
     try {
-      const LIMIT = 9;
-      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/postsByUserId/${userId.userId}/${LIMIT}`;
+      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/postsByUserId/${userId.userId}/${PAGE_LIMIT}`;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       ReactDOM.unstable_batchedUpdates(() => {

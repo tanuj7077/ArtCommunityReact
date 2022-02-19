@@ -8,6 +8,7 @@ import React, {
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import axios from "axios";
 import SinglePost from "./SinglePost";
+import { PAGE_LIMIT } from "../../constants";
 
 const PostList = () => {
   const [totalPages, setTotalPages] = useState(1);
@@ -43,7 +44,6 @@ const PostList = () => {
     images: [], //state
     fetching: true, //action
   });
-  const LIMIT = 8;
   const [pager, pagerDispatch] = useReducer(pageReducer, {
     page: 1, //state
   });
@@ -51,7 +51,7 @@ const PostList = () => {
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
     fetch(
-      `${process.env.REACT_APP_BASE_URL}/posts/postList?page=${pager.page}&limit=${LIMIT}`
+      `${process.env.REACT_APP_BASE_URL}/posts/postList?page=${pager.page}&limit=${PAGE_LIMIT}`
     )
       .then((data) => data.json())
       .then((images) => {

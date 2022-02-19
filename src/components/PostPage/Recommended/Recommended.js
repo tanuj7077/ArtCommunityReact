@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
+import { PAGE_LIMIT } from "../../../constants";
 
 const Recommended = ({ id, tags }) => {
   const [recommended, setRecommended] = useState([]);
   const getRecommended = async () => {
     try {
-      const LIMIT = 9;
-      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/recommendedPosts/${id}/${LIMIT}`;
+      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/recommendedPosts/${id}/${PAGE_LIMIT}`;
       await axios.post(postUrl, { tags: tags }).then((res) => {
         setRecommended(res.data);
       });

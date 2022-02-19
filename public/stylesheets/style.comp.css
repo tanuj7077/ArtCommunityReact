@@ -2946,9 +2946,14 @@ body {
   background-color: black;
   border-right: 4px solid rgba(23, 28, 33, 0.95);
   z-index: 10;
-  display: flex;
+  display: none;
   flex-flow: column;
   transition: all 0.3s ease;
+}
+@media only screen and (max-width: 37.5em) {
+  .sideNavMobile {
+    display: flex;
+  }
 }
 .sideNavMobile--item {
   width: 100%;
@@ -2988,6 +2993,12 @@ body {
   left: 0;
   z-index: 101;
   color: #d6d6d6;
+  display: none;
+}
+@media only screen and (max-width: 37.5em) {
+  .sideNavMobile--ham {
+    display: block;
+  }
 }
 .sideNavMobile--ham .sideNavMobile--ham-icon {
   width: 2rem;
@@ -3009,6 +3020,11 @@ body {
   display: flex;
   flex-flow: column;
   transition: all 0.3s ease;
+}
+@media only screen and (max-width: 37.5em) {
+  .sideNavDesktopShort {
+    display: none;
+  }
 }
 .sideNavDesktopShort--item {
   width: 100%;
@@ -3050,6 +3066,11 @@ body {
   display: flex;
   flex-flow: column;
   transition: all 0.3s ease;
+}
+@media only screen and (max-width: 37.5em) {
+  .sideNavDesktop {
+    display: none;
+  }
 }
 .sideNavDesktop--item {
   width: 100%;
@@ -3100,6 +3121,12 @@ body {
   left: 0;
   z-index: 101;
   color: #d6d6d6;
+  display: block;
+}
+@media only screen and (max-width: 37.5em) {
+  .sideNavDesktop--ham {
+    display: none;
+  }
 }
 .sideNavDesktop--ham-icon {
   width: 2rem;
@@ -5922,6 +5949,11 @@ body {
   display: flex;
   position: relative;
 }
+@media only screen and (max-width: 37.5em) {
+  .settingsDesk {
+    display: none;
+  }
+}
 .settingsDesk-sideNav {
   width: max-content;
   padding-left: 5rem;
@@ -5940,6 +5972,8 @@ body {
   font-size: 2.5rem;
   letter-spacing: 0.35rem;
   color: white;
+  padding-bottom: 3rem;
+  border-bottom: 2px solid #3a3a3a;
 }
 .settingsDesk-sideNav .sideNav-items {
   display: flex;
@@ -6646,6 +6680,12 @@ body {
   height: calc(100vh - 6rem);
   grid-column: 1/-1;
   grid-row: 2/-1;
+  display: none;
+}
+@media only screen and (max-width: 37.5em) {
+  .settingsMobile {
+    display: block;
+  }
 }
 @media only screen and (max-height: 37.5em) {
   .settingsMobile {

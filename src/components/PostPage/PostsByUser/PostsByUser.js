@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
+import { PAGE_LIMIT } from "../../../constants";
 
 const PostsByUser = ({ id }) => {
   const [postsByUser, setPostsByUser] = useState([]);
   async function getPostsByUser() {
     try {
-      const LIMIT = 9;
-      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/postByUser/${id}/${LIMIT}`;
+      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/postByUser/${id}/${PAGE_LIMIT}`;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();
       setPostsByUser(postData);

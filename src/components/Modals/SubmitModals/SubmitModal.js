@@ -3,7 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { FaUpload } from "react-icons/fa";
 import axios from "axios";
 import { useGlobalContext } from "../../../context";
-import { tags } from "../../../constants";
+import { TAGS } from "../../../constants";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";
@@ -205,21 +205,19 @@ const SubmitModal = () => {
                         onChange={(e) => setTagInput(e.target.value)}
                       />
                       <ul className="list">
-                        {tags
-                          .filter((item) => {
-                            return item.includes(tagInput);
-                          })
-                          .map((tag) => {
-                            return (
-                              <li
-                                key={`listTag_${tag}`}
-                                className="list-item"
-                                onClick={() => addToCategories(tag)}
-                              >
-                                {tag}
-                              </li>
-                            );
-                          })}
+                        {TAGS.filter((item) => {
+                          return item.includes(tagInput);
+                        }).map((tag) => {
+                          return (
+                            <li
+                              key={`listTag_${tag}`}
+                              className="list-item"
+                              onClick={() => addToCategories(tag)}
+                            >
+                              {tag}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   </div>
@@ -239,66 +237,6 @@ const SubmitModal = () => {
       )}
     </>
   );
-  /*return (
-    <>
-      <div className="addExtrasModal">
-        <div className="modal">
-          <span className="modal-heading">Add Image</span>
-
-          <form className="modal-form" encType="multipart/form-data">
-            {isImageUploaded ? (
-              <>
-                <div className="modal-photo">
-                  <img
-                    src={image}
-                    alt="coverImg"
-                    className="modal-photo-img"
-                    onClick={() => {
-                      setImage("");
-                      setToSendImage("");
-                      setIsImageUploaded(false);
-                    }}
-                  />
-                </div>
-                <div className="modal-buttons">
-                  {!loading && (
-                    <button className="add-btn" type="submit">
-                      Submit
-                    </button>
-                  )}
-                  {!loading && (
-                    <span className="cancel-btn" onClick={closeSubmitModal}>
-                      Cancel
-                    </span>
-                  )}
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="modal-photo">
-                  <label htmlFor="fileInput" className="uploadLabel">
-                    <FaUpload className="uploadIcon" />
-                    <span className="uploadText">Click to Upload</span>
-                  </label>
-                  <input
-                    id="fileInput"
-                    type="file"
-                    accept=".jpg,.jpeg,.png"
-                    onChange={handleImage}
-                  />
-                </div>
-                <div className="modal-buttons">
-                  <span className="cancel-btn" onClick={closeSubmitModal}>
-                    Cancel
-                  </span>
-                </div>
-              </>
-            )}
-          </form>
-        </div>
-      </div>
-    </>
-  );*/
 };
 
 export default SubmitModal;

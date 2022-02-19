@@ -6,6 +6,7 @@ import UserHome from "./UserHome";
 import Gallery from "./Gallery";
 import About from "./About";
 import blank from "../../tagImage/blankProfile.png";
+import { PAGE_LIMIT } from "../../constants";
 
 import { useGlobalContext } from "../../context";
 
@@ -32,7 +33,6 @@ const User = ({ id }) => {
   const [spotlight, setSpotlight] = useState({}); //for home section
 
   //------------Pagination for gallerySection------------
-  const LIMIT = 9;
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
   const paginate = (postArr, limit, pageNo) => {
@@ -40,7 +40,7 @@ const User = ({ id }) => {
   };
   const addPosts = () => {
     var arr = [];
-    var paginated = paginate(userPosts, LIMIT, page);
+    var paginated = paginate(userPosts, PAGE_LIMIT, page);
     arr = [...posts, ...paginated];
     setPosts(arr);
   };

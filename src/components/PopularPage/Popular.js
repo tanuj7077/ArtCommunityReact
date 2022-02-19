@@ -8,6 +8,7 @@ import React, {
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import axios from "axios";
 import SinglePost from "../HomePage/SinglePost";
+import { PAGE_LIMIT } from "../../constants";
 
 const Popular = () => {
   const [totalPages, setTotalPages] = useState(1);
@@ -39,7 +40,6 @@ const Popular = () => {
         return state;
     }
   };
-  const LIMIT = 8;
   const [imgData, imgDispatch] = useReducer(imgReducer, {
     images: [], //state
     fetching: true, //action
@@ -51,7 +51,7 @@ const Popular = () => {
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
     fetch(
-      `${process.env.REACT_APP_BASE_URL}/posts/getPopular?page=${pager.page}&limit=${LIMIT}`
+      `${process.env.REACT_APP_BASE_URL}/posts/getPopular?page=${pager.page}&limit=${PAGE_LIMIT}`
     )
       .then((data) => data.json())
       .then((images) => {
