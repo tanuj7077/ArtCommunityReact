@@ -1877,11 +1877,7 @@ body {
   width: 100%;
   padding-top: 70%;
   border-radius: 0.5rem;
-  background: linear-gradient(220deg, #141414, #666666, #111111);
-  background-size: 600% 600%;
-  -webkit-animation: CoverAnim 1s ease infinite;
-  -moz-animation: CoverAnim 1s ease infinite;
-  animation: CoverAnim 1s ease infinite;
+  background-color: #333333;
 }
 .exploreGrid .grid-item--exploreCard {
   width: 100%;

@@ -3,22 +3,15 @@ import axios from "axios";
 import { useGlobalContext } from "../../../context";
 import { TAGS } from "../../../constants";
 import { IoClose, FaUpload } from "../../../commonImports/reactIcons";
+import { FIREBASE_CONFIG } from "../../../constants";
+import imageCompression from "browser-image-compression";
 
 //-----------------------Firebase-----------------------
 import firebase from "firebase/app";
 import "firebase/storage";
-var config = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-};
 // Initialize Firebase
 if (!firebase.apps.length) {
-  firebase.initializeApp(config);
+  firebase.initializeApp(FIREBASE_CONFIG);
 } else {
   firebase.app(); // if already initialized, use that one
 }
@@ -35,11 +28,44 @@ const SubmitModal = () => {
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [image, setImage] = useState("");
   const [toSendImage, setToSendImage] = useState("");
+  const [toSendImageMd, setToSendImageMd] = useState("");
+  const [toSendImageThumb, setToSendImageThumb] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [imageMdUrl, setImageMdUrl] = useState("");
+  const [imageThumbUrl, setImageThumbUrl] = useState("");
+  const [files, setFiles] = useState([0, 0, 0]);
+  const [urls, setUrls] = useState([0, 0, 0]);
+  const [URLS, setURLS] = useState([]);
+
+  var options1 = {
+    maxSizeMB: 0.15,
+    maxWidthOrHeight: 1000,
+    useWebWorker: true,
+  };
+  var options2 = {
+    maxSizeMB: 0.02,
+    maxWidthOrHeight: 400,
+    useWebWorker: true,
+  };
 
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
-      setToSendImage(e.target.files[0]);
+      //setToSendImage(e.target.files[0]);
+      imageCompression(e.target.files[0], options1).then((compressed) => {
+        let f = files;
+        f[0] = e.target.files[0];
+        f[1] = compressed;
+        setFiles(f);
+        //setToSendImageMd(compressed);
+      });
+      imageCompression(e.target.files[0], options2).then((compressed) => {
+        let f = files;
+        f[2] = compressed;
+        setFiles(f);
+        //setToSendImageThumb(compressed);
+      });
+      //setFiles([e.target.files[0], toSendImageMd, toSendImageThumb]);
 
       reader.onload = (e) => {
         setImage(e.target.result);
@@ -82,40 +108,59 @@ const SubmitModal = () => {
   async function handleSubmit() {
     setLoading(1);
     let currentImageName = "image-" + Date.now();
-    let uploadImage = storage
-      .ref(`images/${currentImageName}`)
-      .put(toSendImage);
+    const promises = [];
+    files.forEach((file, index) => {
+      const uploadTask = storage
+        .ref()
+        .child(`images/${currentImageName + index.toString()}`)
+        .put(file);
 
-    uploadImage.on(
-      "state-changed",
-      (snapshot) => {},
-      (error) => {
-        alert(error);
-      },
-      () => {
-        storage
-          .ref("images")
-          .child(currentImageName)
-          .getDownloadURL()
-          .then((url) => {
-            const post = {
-              name: name,
-              desc: desc,
-              imageUrl: url,
-              tags: selectedTags,
-              author: { id: userData._id, username: userData.username },
-            };
-            axios
-              .post(`${process.env.REACT_APP_BASE_URL}/posts/newPost`, post)
-              .then((res) => {
-                changeAlert(res.data.message);
-                setDefault();
-              });
-            setLoading(0);
-            closeSubmitModal();
-          });
-      }
-    );
+      promises.push(uploadTask);
+
+      uploadTask.on(
+        "state-changed",
+        (snapshot) => {},
+        (error) => {
+          alert(error);
+        },
+        async () => {
+          await storage
+            .ref("images")
+            .child(currentImageName + index.toString())
+            .getDownloadURL()
+            .then((url) => {
+              let u = urls;
+              u[index] = url;
+              setUrls(u);
+            });
+        }
+      );
+    });
+
+    Promise.all(promises)
+      .then((d) => {
+        setTimeout(() => {
+          const post = {
+            name: name,
+            desc: desc,
+            imageUrl: urls[0],
+            imageMdUrl: urls[1],
+            imageThumbUrl: urls[2],
+            tags: selectedTags,
+            author: { id: userData._id, username: userData.username },
+          };
+          console.log(post);
+          axios
+            .post(`${process.env.REACT_APP_BASE_URL}/posts/addPost`, post)
+            .then((res) => {
+              changeAlert(res.data.message);
+              setDefault();
+            });
+          setLoading(0);
+          closeSubmitModal();
+        }, 4000);
+      })
+      .catch((err) => console.log(err.code));
   }
   return (
     <>
