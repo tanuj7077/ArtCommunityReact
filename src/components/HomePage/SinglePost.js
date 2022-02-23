@@ -16,6 +16,7 @@ const SinglePost = ({
   author,
   likesArray,
   comments,
+  showDataOnHover,
 }) => {
   const { isLoggedIn, userData, setSignupModalVisibility, changeAlert } =
     useGlobalContext();
@@ -171,7 +172,7 @@ const SinglePost = ({
 
   return (
     <div className="grid-item">
-      {isHovered && (
+      {showDataOnHover && isHovered && (
         <div
           className="authorHover"
           onMouseEnter={handleMouseEnter}

@@ -23,7 +23,7 @@ const PopularPage = () => {
         limit={8}
         fetchPostUrl={`${process.env.REACT_APP_BASE_URL}/posts/getPopular`}
         fetchPostCountUrl={`${process.env.REACT_APP_BASE_URL}/posts/totalPosts`}
-        showDataOnHover={false}
+        showDataOnHover={true}
       />
     </div>
   );

@@ -44,7 +44,13 @@ const TagSearchList = ({ name }) => {
       >
         <Masonry gutter="15px">
           {posts.map((post) => {
-            return <SinglePost key={`tagSearchPost_${post}`} {...post} />;
+            return (
+              <SinglePost
+                key={`tagSearchPost_${post}`}
+                {...post}
+                showDataOnHover={true}
+              />
+            );
           })}
         </Masonry>
       </ResponsiveMasonry>

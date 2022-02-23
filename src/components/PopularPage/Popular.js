@@ -132,7 +132,13 @@ const Popular = () => {
       >
         <Masonry gutter="15px">
           {imgData.images.map((post) => {
-            return <SinglePost key={`popularPosts_${post._id}`} {...post} />;
+            return (
+              <SinglePost
+                key={`popularPosts_${post._id}`}
+                {...post}
+                showDataOnHover={true}
+              />
+            );
           })}
         </Masonry>
       </ResponsiveMasonry>

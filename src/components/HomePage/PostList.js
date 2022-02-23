@@ -120,7 +120,9 @@ const PostList = () => {
       >
         <Masonry gutter="15px">
           {imgData.images.map((post) => {
-            return <SinglePost key={post._id} {...post} />;
+            return (
+              <SinglePost key={post._id} {...post} showDataOnHover={true} />
+            );
           })}
         </Masonry>
       </ResponsiveMasonry>
