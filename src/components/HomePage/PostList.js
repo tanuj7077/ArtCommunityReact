@@ -50,19 +50,21 @@ const PostList = () => {
 
   useEffect(() => {
     imgDispatch({ type: "FETCHING_IMAGES", fetching: true });
-    fetch(
-      `${process.env.REACT_APP_BASE_URL}/posts/postList?page=${pager.page}&limit=${PAGE_LIMIT}`
-    )
-      .then((data) => data.json())
-      .then((images) => {
-        imgDispatch({ type: "STACK_IMAGES", images });
-        imgDispatch({ type: "FETCHING_IMAGES", fetching: false });
-      })
-      .catch((e) => {
-        // handle error
-        imgDispatch({ type: "FETCHING_IMAGES", fetching: false });
-        return e;
-      });
+    setTimeout(() => {
+      fetch(
+        `${process.env.REACT_APP_BASE_URL}/posts/postList?page=${pager.page}&limit=${PAGE_LIMIT}`
+      )
+        .then((data) => data.json())
+        .then((images) => {
+          imgDispatch({ type: "STACK_IMAGES", images });
+          imgDispatch({ type: "FETCHING_IMAGES", fetching: false });
+        })
+        .catch((e) => {
+          // handle error
+          imgDispatch({ type: "FETCHING_IMAGES", fetching: false });
+          return e;
+        });
+    }, 1000);
   }, [imgDispatch, pager.page]);
 
   // implement infinite scrolling with intersection observer

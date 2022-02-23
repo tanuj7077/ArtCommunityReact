@@ -196,7 +196,11 @@ const PostPagePost = ({ id }) => {
         <div className="postContent">
           {Post && (
             <div className="postContent--image">
-              <img className="postContent--image-img" src={Post.image} alt="" />
+              <img
+                className="postContent--image-img"
+                src={Post.imageMd}
+                alt=""
+              />
               <span
                 className="postContent--image-expand"
                 onClick={toggleExpand}
@@ -360,7 +364,9 @@ const PostPagePost = ({ id }) => {
           {Post && (
             <>
               <PostsByUser id={Post.author.username} />
-              <Recommended id={Post.author.username} tags={Post.tags} />
+              {Post.tags.length > 0 && (
+                <Recommended id={Post.author.username} tags={Post.tags} />
+              )}
             </>
           )}
           {!Post && (

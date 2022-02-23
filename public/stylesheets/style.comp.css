@@ -2073,6 +2073,11 @@ body {
   transition: all 0.2s ease-in;
   display: block;
 }
+.grid-item--card-img-blurred {
+  -webkit-filter: blur(5px);
+  /* Safari 6.0 - 9.0 */
+  filter: blur(5px);
+}
 .grid-item--card-title {
   color: white;
   font-size: 2rem;

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Route } from "react-router-dom";
 import axios from "axios";
@@ -7,12 +7,22 @@ import blank from "../../tagImage/blankProfile.png";
 import { useGlobalContext } from "../../context";
 import { AiTwotoneHeart, MdComment } from "../../commonImports/reactIcons";
 
-const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
+const SinglePost = ({
+  _id,
+  image,
+  imageMd,
+  imageThumb,
+  name,
+  author,
+  likesArray,
+  comments,
+}) => {
   const { isLoggedIn, userData, setSignupModalVisibility, changeAlert } =
     useGlobalContext();
   let userUrl = `${process.env.REACT_APP_BASE_URL}/users/hoverUser/${author.id}`;
 
   const AuthorHoverRef = useRef(null);
+  const imgRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [username, setUsername] = useState("");
   const [posts, setPosts] = useState([]);
@@ -21,6 +31,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
   const [coverPhoto, setCoverPhoto] = useState("");
   const [profilePic, setProfilePic] = useState(blank);
   const [profileBorderRad, setProfileBorderRad] = useState("");
+  const [blurred, setBlurred] = useState(true);
 
   const handleMouseEnter = () => {
     //clear all data from previous hover
@@ -51,6 +62,46 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
       }
     }, 100);
   };
+
+  const loadHighRes = (entries, observer) => {
+    const [entry] = entries;
+    if (!entry.isIntersecting) return;
+
+    if (imgRef?.current?.src) {
+      if (imgRef.current.src !== imgRef.current.dataset.src) {
+        setTimeout(() => {
+          imgRef.current.src = imgRef?.current?.dataset?.src;
+          setBlurred(false);
+        }, 500);
+      }
+    }
+    // imgRef?.current?.src &&
+    //   (imgRef.current.src = imgRef?.current?.dataset?.src);
+  };
+  const observerOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: "0px",
+  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(loadHighRes, observerOptions);
+    if (imgRef.current) observer.observe(imgRef.current);
+
+    return () => {
+      if (imgRef.current) observer.unobserve(imgRef.current);
+    };
+  }, [imgRef]);
+
+  /*
+  function removeBlur() {
+    setBlurred(false);
+  }
+  useEffect(() => {
+    if (imgRef.current) {
+      imgRef.current.addEventListener("load", removeBlur);
+      return () => imgRef?.current?.removeEventListener("load", removeBlur);
+    }
+  }, []);*/
 
   const getHoverData = async () => {
     await axios.get(userUrl).then((res) => {
@@ -189,7 +240,7 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
                         <div
                           className="image"
                           style={{
-                            backgroundImage: `url(${post.image})`,
+                            backgroundImage: `url(${post.imageThumb})`,
                           }}
                           onClick={() => {
                             history.push(`/post/${post._id}`);
@@ -205,7 +256,15 @@ const SinglePost = ({ _id, image, name, author, likesArray, comments }) => {
         </div>
       )}
       <div className="grid-item--card">
-        <img className="grid-item--card-img" src={image} alt="" />
+        <img
+          ref={imgRef}
+          className={`grid-item--card-img ${
+            blurred && "grid-item--card-img-blurred"
+          }`}
+          src={imageThumb}
+          data-src={imageMd}
+          alt=""
+        />
         <div className="grid-item--card-img-overlay">
           <div className="grid-item--card-textualInfo">
             <Route

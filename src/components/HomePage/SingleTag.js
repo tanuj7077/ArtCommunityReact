@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-const SingleTag = ({ image, name }) => {
+const SingleTag = ({ imageMd, imageThumb, name }) => {
   return (
     <Route
       render={({ history }) => (
@@ -14,7 +14,7 @@ const SingleTag = ({ image, name }) => {
           <div
             className="grid-item--exploreCard-img"
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(${image})`,
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(${imageThumb})`,
             }}
           ></div>
           <span className="grid-item--exploreCard-text">{name}</span>

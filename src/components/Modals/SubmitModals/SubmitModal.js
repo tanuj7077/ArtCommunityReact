@@ -27,15 +27,8 @@ const SubmitModal = () => {
 
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [image, setImage] = useState("");
-  const [toSendImage, setToSendImage] = useState("");
-  const [toSendImageMd, setToSendImageMd] = useState("");
-  const [toSendImageThumb, setToSendImageThumb] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [imageMdUrl, setImageMdUrl] = useState("");
-  const [imageThumbUrl, setImageThumbUrl] = useState("");
   const [files, setFiles] = useState([0, 0, 0]);
   const [urls, setUrls] = useState([0, 0, 0]);
-  const [URLS, setURLS] = useState([]);
 
   var options1 = {
     maxSizeMB: 0.15,
@@ -43,8 +36,8 @@ const SubmitModal = () => {
     useWebWorker: true,
   };
   var options2 = {
-    maxSizeMB: 0.02,
-    maxWidthOrHeight: 400,
+    maxSizeMB: 0.015,
+    maxWidthOrHeight: 300,
     useWebWorker: true,
   };
 
@@ -97,11 +90,12 @@ const SubmitModal = () => {
 
   const setDefault = () => {
     setImage("");
-    setToSendImage("");
     setName("");
     setDesc("");
     setTagInput("");
     setSelectedTags([]);
+    setFiles([0, 0, 0]);
+    setUrls([0, 0, 0]);
     setIsImageUploaded(false);
   };
 
@@ -149,9 +143,8 @@ const SubmitModal = () => {
             tags: selectedTags,
             author: { id: userData._id, username: userData.username },
           };
-          console.log(post);
           axios
-            .post(`${process.env.REACT_APP_BASE_URL}/posts/addPost`, post)
+            .post(`${process.env.REACT_APP_BASE_URL}/posts/newPost`, post)
             .then((res) => {
               changeAlert(res.data.message);
               setDefault();

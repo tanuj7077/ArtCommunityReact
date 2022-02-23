@@ -36,7 +36,7 @@ const Recommended = ({ id, tags }) => {
                       history.push(`/post/${item._id}`);
                     }}
                     style={{
-                      backgroundImage: `url(${item.image})`,
+                      backgroundImage: `url(${item.imageThumb})`,
                     }}
                   ></div>
                 )}
