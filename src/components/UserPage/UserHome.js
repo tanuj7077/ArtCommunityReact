@@ -203,7 +203,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
         </section>
         <section className="spotlight">
           <div className="spotlight-image">
-            <img className="img-landscape" src={spotlight.image} alt="" />
+            <img className="img-landscape" src={spotlight.imageMd} alt="" />
           </div>
           <div className="spotlight-info">
             <Route
@@ -272,7 +272,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
                             history.push(`/post/${item._id}`);
                           }}
                           className="slider-img"
-                          src={item.image}
+                          src={item.imageThumb}
                           draggable="false"
                           alt=""
                         />
@@ -306,7 +306,7 @@ const UserHome = ({ user, popular, liked, spotlight }) => {
                 <div className="LikedImage" key={`likedImage_${item._id}`}>
                   <img
                     draggable="false"
-                    src={item.image}
+                    src={item.imageThumb}
                     alt=""
                     className="image"
                   />

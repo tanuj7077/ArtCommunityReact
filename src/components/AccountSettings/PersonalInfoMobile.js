@@ -132,8 +132,8 @@ const Personal = () => {
         setMessage("* This link is already added");
         setLinkValid(false);
       } else {
-        var toCheck, linkType;
-        var validity = true;
+        let toCheck, linkType;
+        let validity = true;
         if (item.includes("facebook.com")) {
           toCheck = "facebook.com";
           linkType = "Facebook";
@@ -210,15 +210,15 @@ const Personal = () => {
     }
   };
   const addLink = () => {
-    var arr = links;
+    let arr = links;
     if (!arr.includes(link)) {
       arr.push(link);
     }
     setLinks(arr);
   };
   const editLink = () => {
-    var arr = links;
-    var toRemove, indexToRemove;
+    let arr = links;
+    let toRemove, indexToRemove;
     if (link.includes("facebook.com")) {
       toRemove = "facebook.com";
     } else if (link.includes("instagram.com")) {
@@ -239,18 +239,18 @@ const Personal = () => {
     setLinks(arr);
   };
   const uneditablePart = (item) => {
-    var comIndex = item.indexOf(".com");
-    var st = item.substring(0, comIndex + 4);
+    let comIndex = item.indexOf(".com");
+    let st = item.substring(0, comIndex + 4);
     setUneditable(st);
   };
   const deleteLink = (i) => {
-    var arr = links;
+    let arr = links;
     arr.splice(i, 1);
     setLinks(arr);
   };
 
   const save = () => {
-    var personalInfo = {
+    let personalInfo = {
       about: about,
       dob: dob,
       location: location ? location.value : "",

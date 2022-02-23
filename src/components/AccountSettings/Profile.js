@@ -27,7 +27,7 @@ const Profile = () => {
         messages: ["Can't update this field as a demo user"],
       });
     } else {
-      var profileInfo = {
+      let profileInfo = {
         name: name,
         username: username,
         email: email,

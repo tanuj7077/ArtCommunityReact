@@ -23,7 +23,7 @@ const Profile = () => {
   const [email, setEmail] = useState("");
 
   const save = () => {
-    var profileInfo = {
+    let profileInfo = {
       name: name,
       username: username,
       email: email,

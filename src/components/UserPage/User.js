@@ -39,8 +39,8 @@ const User = ({ id }) => {
     return postArr.slice((pageNo - 1) * limit, pageNo * limit);
   };
   const addPosts = () => {
-    var arr = [];
-    var paginated = paginate(userPosts, PAGE_LIMIT, page);
+    let arr = [];
+    let paginated = paginate(userPosts, PAGE_LIMIT, page);
     arr = [...posts, ...paginated];
     setPosts(arr);
   };
@@ -71,7 +71,7 @@ const User = ({ id }) => {
   //------------For Gallery Section------------//
   async function getPostByUser() {
     try {
-      const LIMIT = -1;
+      const LIMIT = 4;
       const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/postByUser/${id}/${LIMIT}`;
       const PostResponse = await fetch(postUrl);
       const postData = await PostResponse.json();

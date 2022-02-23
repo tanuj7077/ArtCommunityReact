@@ -15,7 +15,7 @@ if (!firebase.apps.length) {
 } else {
   firebase.app(); // if already initialized, use that one
 }
-var storage = firebase.storage();
+let storage = firebase.storage();
 
 const SubmitModal = () => {
   const { userData, closeSubmitModal, changeAlert, setLoading, submitModal } =
@@ -30,12 +30,12 @@ const SubmitModal = () => {
   const [files, setFiles] = useState([0, 0, 0]);
   const [urls, setUrls] = useState([0, 0, 0]);
 
-  var options1 = {
+  let options1 = {
     maxSizeMB: 0.15,
     maxWidthOrHeight: 1000,
     useWebWorker: true,
   };
-  var options2 = {
+  let options2 = {
     maxSizeMB: 0.015,
     maxWidthOrHeight: 300,
     useWebWorker: true,

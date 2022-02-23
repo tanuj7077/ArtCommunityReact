@@ -16,7 +16,7 @@ import {
 
 const About = ({ user, following, followers }) => {
   const openInNewTab = (url) => {
-    var newUrl = "//" + url;
+    let newUrl = "//" + url;
     const newWindow = window.open(newUrl, "_blank");
     if (newWindow) newWindow.opener = null;
   };

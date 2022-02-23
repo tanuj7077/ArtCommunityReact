@@ -35,24 +35,24 @@ const Extras = () => {
 
   const addField = () => {
     let extra = { label: extraLabel, value: extraValue };
-    var arr = extras;
+    let arr = extras;
     arr.push(extra);
     setExtras(arr);
   };
   const editField = (i) => {
-    var arr = extras;
+    let arr = extras;
     arr[i].label = extraLabel;
     arr[i].value = extraValue;
     setExtras(arr);
   };
   const deleteField = (i) => {
-    var arr = extras;
+    let arr = extras;
     arr.splice(i, 1);
     setExtras(arr);
   };
 
   const save = () => {
-    var extrasInfo = {
+    let extrasInfo = {
       profession: profession,
       link: link,
       tools: tools,

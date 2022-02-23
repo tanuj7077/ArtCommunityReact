@@ -13,7 +13,7 @@ if (!firebase.apps.length) {
 } else {
   firebase.app(); // if already initialized, use that one
 }
-var storage = firebase.storage();
+let storage = firebase.storage();
 
 const SubmitCoverModal = () => {
   const {
@@ -46,16 +46,16 @@ const SubmitCoverModal = () => {
     setLoading(1);
     e.preventDefault();
     if (userData.coverPhoto) {
-      var imageUrl = userData.coverPhoto.slice(69, -1);
-      var ar = imageUrl
+      let imageUrl = userData.coverPhoto.slice(69, -1);
+      let ar = imageUrl
         .split("%2F")
         .join(",")
         .split("?")
         .join(",")
         .split("/")[0]
         .split(",");
-      var imageName = ar[1];
-      var firebaseFolder = ar[0];
+      let imageName = ar[1];
+      let firebaseFolder = ar[0];
       try {
         storage
           .ref(firebaseFolder)
