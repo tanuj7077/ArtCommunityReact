@@ -114,7 +114,7 @@ const PostPagePost = ({ id }) => {
     let imageName = imageUrl.split("%2F")[1].split("?")[0];
     let imageMdName = imageMdUrl.split("%2F")[1].split("?")[0];
     let imageThumbName = imageThumbUrl.split("%2F")[1].split("?")[0];
-    console.log(firebaseFolder, imageName, imageMdName, imageThumbName);
+
     let promise1 = storage.ref(firebaseFolder).child(imageName).delete();
     let promise2 = storage.ref(firebaseFolder).child(imageMdName).delete();
     let promise3 = storage.ref(firebaseFolder).child(imageThumbName).delete();

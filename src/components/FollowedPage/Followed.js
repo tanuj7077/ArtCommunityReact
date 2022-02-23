@@ -132,7 +132,7 @@ const Followed = (userId) => {
               return (
                 <div className="item" key={`followed_${post._id}`}>
                   <img
-                    src={post.image}
+                    src={post.imageThumb}
                     draggable="false"
                     alt="Img"
                     className="img"

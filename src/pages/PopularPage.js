@@ -7,6 +7,7 @@ import {
   TopNavResponsive,
   FloatingButton,
   Popular,
+  PostGrid,
 } from "../commonImports/commonImports";
 
 const PopularPage = () => {
@@ -17,7 +18,13 @@ const PopularPage = () => {
       <SideNavDesktop />
       <SideNavMobile />
       <FloatingButton />
-      <Popular />
+      {/* <Popular /> */}
+      <PostGrid
+        limit={8}
+        fetchPostUrl={`${process.env.REACT_APP_BASE_URL}/posts/getPopular`}
+        fetchPostCountUrl={`${process.env.REACT_APP_BASE_URL}/posts/totalPosts`}
+        showDataOnHover={false}
+      />
     </div>
   );
 };

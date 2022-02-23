@@ -60,3 +60,5 @@ export { default as SingleComment } from "../components/PostPage/Comments/Single
 
 export { default as SubmitCoverModal } from "../components/Modals/SubmitModals/SubmitCoverModal";
 export { default as SubmitProfilePicModal } from "../components/Modals/SubmitModals/SubmitProfilePicModal";
+
+export { default as PostGrid } from "../components/PostGrid";
