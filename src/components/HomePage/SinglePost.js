@@ -17,6 +17,7 @@ const SinglePost = ({
   likesArray,
   comments,
   showDataOnHover,
+  forUser,
 }) => {
   const { isLoggedIn, userData, setSignupModalVisibility, changeAlert } =
     useGlobalContext();
@@ -71,7 +72,8 @@ const SinglePost = ({
     if (imgRef?.current?.src) {
       if (imgRef.current.src !== imgRef.current.dataset.src) {
         setTimeout(() => {
-          imgRef.current.src = imgRef?.current?.dataset?.src;
+          if (imgRef?.current?.src)
+            imgRef.current.src = imgRef?.current?.dataset?.src;
           setBlurred(false);
         }, 500);
       }
@@ -92,17 +94,6 @@ const SinglePost = ({
       if (imgRef.current) observer.unobserve(imgRef.current);
     };
   }, [imgRef]);
-
-  /*
-  function removeBlur() {
-    setBlurred(false);
-  }
-  useEffect(() => {
-    if (imgRef.current) {
-      imgRef.current.addEventListener("load", removeBlur);
-      return () => imgRef?.current?.removeEventListener("load", removeBlur);
-    }
-  }, []);*/
 
   const getHoverData = async () => {
     await axios.get(userUrl).then((res) => {
@@ -171,160 +162,209 @@ const SinglePost = ({
   }
 
   return (
-    <div className="grid-item">
-      {showDataOnHover && isHovered && (
-        <div
-          className="authorHover"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          ref={AuthorHoverRef}
-          id="authorHover"
-        >
-          {!username && (
-            <>
-              <div className="authorHover-loading--cover"></div>
-              <div className="authorHover-loading--profile"></div>
-              <div className="authorHover-loading--name"></div>
-              <div className="authorHover-loading--info"></div>
-              <div className="authorHover-loading--images"></div>
-            </>
-          )}
-          {username && (
-            <>
-              {coverPhoto && (
-                <div
-                  className="authorHover--cover"
-                  style={{
-                    backgroundImage: `linear-gradient(to bottom,transparent,rgba(43, 43, 43, 0.9)), url(${coverPhoto})`,
-                  }}
-                ></div>
+    <>
+      {!forUser && (
+        <div className="grid-item">
+          {showDataOnHover && isHovered && (
+            <div
+              className="authorHover"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              ref={AuthorHoverRef}
+              id="authorHover"
+            >
+              {!username && (
+                <>
+                  <div className="authorHover-loading--cover"></div>
+                  <div className="authorHover-loading--profile"></div>
+                  <div className="authorHover-loading--name"></div>
+                  <div className="authorHover-loading--info"></div>
+                  <div className="authorHover-loading--images"></div>
+                </>
               )}
-              {!coverPhoto && <div className="authorHover--noCover"></div>}
-              <Route
-                render={({ history }) => (
-                  <div
-                    onClick={() => {
-                      history.push(`/user/${username}`);
-                    }}
-                    className="authorHover--profile"
-                    style={{
-                      backgroundImage: `url(${profilePic})`,
-                      borderRadius: `${profileBorderRad}`,
-                    }}
-                  ></div>
-                )}
-              />
-              <Route
-                render={({ history }) => (
-                  <div
-                    onClick={() => {
-                      history.push(`/user/${username}`);
-                    }}
-                    className="authorHover--name"
-                  >
-                    {username}
+              {username && (
+                <>
+                  {coverPhoto && (
+                    <div
+                      className="authorHover--cover"
+                      style={{
+                        backgroundImage: `linear-gradient(to bottom,transparent,rgba(43, 43, 43, 0.9)), url(${coverPhoto})`,
+                      }}
+                    ></div>
+                  )}
+                  {!coverPhoto && <div className="authorHover--noCover"></div>}
+                  <Route
+                    render={({ history }) => (
+                      <div
+                        onClick={() => {
+                          history.push(`/user/${username}`);
+                        }}
+                        className="authorHover--profile"
+                        style={{
+                          backgroundImage: `url(${profilePic})`,
+                          borderRadius: `${profileBorderRad}`,
+                        }}
+                      ></div>
+                    )}
+                  />
+                  <Route
+                    render={({ history }) => (
+                      <div
+                        onClick={() => {
+                          history.push(`/user/${username}`);
+                        }}
+                        className="authorHover--name"
+                      >
+                        {username}
+                      </div>
+                    )}
+                  />
+                  {/* <div className="authorHover--name">{username}</div> */}
+                  <div className="authorHover--info">
+                    <span className="info">{postCount} Posts</span>
+                    <span className="lineBreak">|</span>
+                    <span className="info">{followerCount} Followers</span>
                   </div>
-                )}
-              />
-              {/* <div className="authorHover--name">{username}</div> */}
-              <div className="authorHover--info">
-                <span className="info">{postCount} Posts</span>
-                <span className="lineBreak">|</span>
-                <span className="info">{followerCount} Followers</span>
-              </div>
-              <div className="authorHover--images">
-                {posts.map((post) => {
-                  return (
-                    <Route
-                      key={`hoverDataPosts_${post._id}`}
-                      render={({ history }) => (
-                        <div
-                          className="image"
-                          style={{
-                            backgroundImage: `url(${post.imageThumb})`,
-                          }}
-                          onClick={() => {
-                            history.push(`/post/${post._id}`);
-                          }}
-                        ></div>
-                      )}
-                    />
-                  );
-                })}
-              </div>
-            </>
+                  <div className="authorHover--images">
+                    {posts.map((post) => {
+                      return (
+                        <Route
+                          key={`hoverDataPosts_${post._id}`}
+                          render={({ history }) => (
+                            <div
+                              className="image"
+                              style={{
+                                backgroundImage: `url(${post.imageThumb})`,
+                              }}
+                              onClick={() => {
+                                history.push(`/post/${post._id}`);
+                              }}
+                            ></div>
+                          )}
+                        />
+                      );
+                    })}
+                  </div>
+                </>
+              )}
+            </div>
           )}
+          <div className="grid-item--card">
+            <img
+              ref={imgRef}
+              className={`grid-item--card-img ${
+                blurred && "grid-item--card-img-blurred"
+              }`}
+              src={imageThumb}
+              data-src={imageMd}
+              alt=""
+            />
+            <div className="grid-item--card-img-overlay">
+              <div className="grid-item--card-textualInfo">
+                <Route
+                  render={({ history }) => (
+                    <span
+                      onClick={() => {
+                        history.push(`/post/${_id}`);
+                      }}
+                      className="grid-item--card-title"
+                    >
+                      {name}
+                    </span>
+                  )}
+                />
+                <Route
+                  render={({ history }) => (
+                    <span
+                      onClick={() => {
+                        history.push(`/user/${author.username}`);
+                      }}
+                      className="grid-item--card-author"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      {author.username}
+                    </span>
+                  )}
+                />
+              </div>
+              <div className="grid-item--card-icons">
+                <section className="grid-item--card-icons-likes">
+                  <span className="grid-item--card-icons-likes-count">
+                    {typeof likesArray === "undefined"
+                      ? `0`
+                      : likesArray.length}
+                  </span>
+                  <AiTwotoneHeart
+                    className="grid-item--card-icons-likes-icon"
+                    onClick={handleLike}
+                  />
+                </section>
+                <section className="grid-item--card-icons-comments">
+                  <span className="grid-item--card-icons-comments-count">
+                    {typeof comments === "undefined" ? `0` : comments.length}
+                  </span>
+                  <Route
+                    render={({ history }) => (
+                      <MdComment
+                        className="grid-item--card-icons-comments-icon"
+                        onClick={() => {
+                          history.push(`/post/${_id}`);
+                        }}
+                      />
+                    )}
+                  />
+                  {/* <MdComment className="grid-item--card-icons-comments-icon"/> */}
+                </section>
+              </div>
+            </div>
+          </div>
         </div>
       )}
-      <div className="grid-item--card">
-        <img
-          ref={imgRef}
-          className={`grid-item--card-img ${
-            blurred && "grid-item--card-img-blurred"
-          }`}
-          src={imageThumb}
-          data-src={imageMd}
-          alt=""
-        />
-        <div className="grid-item--card-img-overlay">
-          <div className="grid-item--card-textualInfo">
-            <Route
-              render={({ history }) => (
-                <span
-                  onClick={() => {
-                    history.push(`/post/${_id}`);
-                  }}
-                  className="grid-item--card-title"
-                >
-                  {name}
-                </span>
-              )}
+      {forUser && (
+        <div className="grid-item">
+          <div className="grid-item--card">
+            <img
+              ref={imgRef}
+              className={`grid-item--card-img ${
+                blurred && "grid-item--card-img-blurred"
+              }`}
+              src={imageThumb}
+              data-src={imageMd}
+              alt=""
             />
-            <Route
-              render={({ history }) => (
-                <span
-                  onClick={() => {
-                    history.push(`/user/${author.username}`);
-                  }}
-                  className="grid-item--card-author"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {author.username}
-                </span>
-              )}
-            />
-          </div>
-          <div className="grid-item--card-icons">
-            <section className="grid-item--card-icons-likes">
-              <span className="grid-item--card-icons-likes-count">
-                {typeof likesArray === "undefined" ? `0` : likesArray.length}
-              </span>
-              <AiTwotoneHeart
-                className="grid-item--card-icons-likes-icon"
-                onClick={handleLike}
-              />
-            </section>
-            <section className="grid-item--card-icons-comments">
-              <span className="grid-item--card-icons-comments-count">
-                {typeof comments === "undefined" ? `0` : comments.length}
-              </span>
-              <Route
-                render={({ history }) => (
-                  <MdComment
-                    className="grid-item--card-icons-comments-icon"
-                    onClick={() => {
-                      history.push(`/post/${_id}`);
-                    }}
-                  />
-                )}
-              />
-              {/* <MdComment className="grid-item--card-icons-comments-icon"/> */}
-            </section>
+            <div className="grid-item--card-img-overlay">
+              <div className="grid-item--card-textualInfoUser">
+                <Route
+                  render={({ history }) => (
+                    <span
+                      onClick={() => {
+                        history.push(`/post/${_id}`);
+                      }}
+                      className="grid-item--card-textualInfoUser-title"
+                    >
+                      {name}
+                    </span>
+                  )}
+                />
+                <div className="grid-item--card-textualInfoUser-others">
+                  <span className="likes">
+                    {typeof likesArray === "undefined"
+                      ? `0`
+                      : likesArray.length}{" "}
+                    Likes
+                  </span>
+                  <span className="comments">
+                    {typeof comments === "undefined" ? `0` : comments.length}{" "}
+                    comments
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

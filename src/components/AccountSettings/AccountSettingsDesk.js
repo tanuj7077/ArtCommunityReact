@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   Profile,
@@ -24,22 +24,6 @@ const AccountSettingsDesk = () => {
   const [isPersonal, setPersonal] = useState(false);
   const [isExtras, setExtras] = useState(false);
   const [isAppearance, setAppearance] = useState(false);
-
-  const [posts, setPosts] = useState([]);
-  async function getPostsByUser() {
-    try {
-      const LIMIT = -1;
-      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/postByUser/${userData.username}/${LIMIT}`;
-      const PostResponse = await fetch(postUrl);
-      const postData = await PostResponse.json();
-      setPosts(postData);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  useEffect(() => {
-    getPostsByUser();
-  }, []);
 
   const toProfile = () => {
     setProfile(true);
@@ -131,7 +115,10 @@ const AccountSettingsDesk = () => {
         {isProfile && <Profile />}
         {isPersonal && <Personal />}
         {isExtras && <Extras />}
-        {isAppearance && <Appearance posts={posts} />}
+        {/* {isAppearance && <Appearance posts={posts} />} */}
+        {userData && userData.username && isAppearance && (
+          <Appearance username={userData.username} />
+        )}
       </section>
     </div>
   );

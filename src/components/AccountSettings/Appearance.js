@@ -1,35 +1,19 @@
 import React from "react";
-import { Route } from "react-router-dom";
-const Appearance = ({ posts }) => {
+import { PostGrid } from "../../commonImports/commonImports";
+const Appearance = ({ username }) => {
   return (
     <>
-      {/* <span className="heading">Posts</span> */}
-      {posts.length === 0 && (
-        <span className="noPosts">You have not uploaded any posts yet</span>
-      )}
       <div className="gallerySection">
-        <div className="gallery">
-          {posts.map((post) => {
-            return (
-              <Route
-                key={`userPost_${post._id}`}
-                render={({ history }) => (
-                  <div
-                    onClick={() => {
-                      history.push(`/post/${post._id}`);
-                    }}
-                    className="SingleImage"
-                  >
-                    <img
-                      src={post.image}
-                      alt="galleryImage"
-                      className="image"
-                    />
-                  </div>
-                )}
-              />
-            );
-          })}
+        <div className="main tagSearchList">
+          <PostGrid
+            type={"tagSearch"}
+            limit={8}
+            fetchPostUrl={`${process.env.REACT_APP_BASE_URL}/posts/postByUser/${username}`}
+            fetchPostCountUrl={`${process.env.REACT_APP_BASE_URL}/posts/userTotalPosts/${username}`}
+            forUser={true}
+            gridContainer={"small"}
+            endMessage={false}
+          />
         </div>
       </div>
     </>

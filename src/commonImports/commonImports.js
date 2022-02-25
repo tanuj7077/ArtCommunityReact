@@ -25,13 +25,8 @@ export { default as ExploreTagList } from "../components/ExplorePage/ExploreTagL
 export { default as FollowedList } from "../components/FollowedPage/FollowedList";
 
 export { default as Explore } from "../components/HomePage/Explore";
-export { default as PostList } from "../components/HomePage/PostList";
-
-export { default as Popular } from "../components/PopularPage/Popular";
 
 export { default as PostPagePost } from "../components/PostPage/PostPagePost";
-
-export { default as TagSearchList } from "../components/TagSearchPage/TagSearchList";
 
 export { default as User } from "../components/UserPage/User";
 

@@ -16,7 +16,7 @@ const UserPage = () => {
       <TopNavResponsive />
       <SideNavDesktop />
       <SideNavMobile />
-      <User id={id} />
+      <User username={id} />
       <FloatingButton />
     </div>
   );

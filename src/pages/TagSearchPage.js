@@ -7,7 +7,7 @@ import {
   SideNavMobile,
   TopNavResponsive,
   FloatingButton,
-  TagSearchList,
+  PostGrid,
 } from "../commonImports/commonImports";
 
 const TagSearchPage = () => {
@@ -18,7 +18,15 @@ const TagSearchPage = () => {
       <SideNavDesktop />
       <SideNavMobile />
       <SideNavTopic topic={`Tag : ${name}`} />
-      <TagSearchList name={name} />
+      <div className="main tagSearchList">
+        <PostGrid
+          type={"tagSearch"}
+          limit={8}
+          fetchPostUrl={`${process.env.REACT_APP_BASE_URL}/tags/tag/${name}`}
+          fetchPostCountUrl={`${process.env.REACT_APP_BASE_URL}/tags/totalPostsWithTag/${name}`}
+          showDataOnHover={true}
+        />
+      </div>
       <FloatingButton />
     </div>
   );

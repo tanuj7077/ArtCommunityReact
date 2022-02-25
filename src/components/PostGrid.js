@@ -11,10 +11,14 @@ import axios from "axios";
 import { SinglePost } from "../commonImports/commonImports";
 
 const PostGrid = ({
+  type,
   limit,
   fetchPostUrl,
   fetchPostCountUrl,
   showDataOnHover,
+  forUser,
+  endMessage,
+  gridContainer,
 }) => {
   const [totalPages, setTotalPages] = useState(1);
   const getTotalPages = async () => {
@@ -107,24 +111,29 @@ const PostGrid = ({
   }, []);
 
   return (
-    <div className="main" ref={gridRef}>
+    <div className="gridContainer" ref={gridRef}>
       <ResponsiveMasonry
-        columnsCountBreakPoints={{
-          350: 1,
-          600: 2,
-          750: 2,
-          1000: 3,
-          1440: 4,
-          2560: 5,
-        }}
+        columnsCountBreakPoints={
+          gridContainer === "small"
+            ? { 800: 1, 1000: 2, 1600: 3, 2560: 4 }
+            : {
+                350: 1,
+                600: 2,
+                750: 2,
+                1000: 3,
+                1440: 4,
+                2560: 5,
+              }
+        }
       >
         <Masonry gutter="15px">
           {imgData.images.map((post) => {
             return (
               <SinglePost
-                key={`popularPosts_${post._id}`}
+                key={`${type}_${post._id}`}
                 {...post}
                 showDataOnHover={showDataOnHover}
+                forUser={forUser}
               />
             );
           })}
@@ -134,10 +143,11 @@ const PostGrid = ({
         {imgData.images.length !== totalPages && imgData.fetching && (
           <span className="loadingAnim">Loading...</span>
         )}
-        {imgData.images.length >= totalPages && (
+        {endMessage && imgData.images.length >= totalPages && (
           <span className="completed">Thats all Folks</span>
         )}
       </div>
+
       <div
         id="page-bottom-boundary"
         style={{ border: "10px solid transparent" }}

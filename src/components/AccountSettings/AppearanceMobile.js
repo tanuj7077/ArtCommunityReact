@@ -1,7 +1,7 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { PostGrid } from "../../commonImports/commonImports";
 
-const Appearance = ({ posts }) => {
+const Appearance = ({ username }) => {
   return (
     <>
       <div className="headingSection">
@@ -9,7 +9,16 @@ const Appearance = ({ posts }) => {
       </div>
 
       <div className="gallerySection">
-        <div className="gallery">
+        <PostGrid
+          type={"tagSearch"}
+          limit={8}
+          fetchPostUrl={`${process.env.REACT_APP_BASE_URL}/posts/postByUser/${username}`}
+          fetchPostCountUrl={`${process.env.REACT_APP_BASE_URL}/posts/userTotalPosts/${username}`}
+          forUser={true}
+          gridContainer={"small"}
+          endMessage={false}
+        />
+        {/* <div className="gallery">
           {posts.map((post) => {
             return (
               <Route
@@ -32,9 +41,10 @@ const Appearance = ({ posts }) => {
             );
           })}
         </div>
-        {posts.length === 0 && (
+         */}
+        {/* {posts.length === 0 && (
           <span className="noPosts">No Posts uploaded</span>
-        )}
+        )} */}
       </div>
     </>
   );

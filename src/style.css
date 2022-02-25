@@ -2000,7 +2000,6 @@ body {
 }
 
 .main {
-  background-color: black;
   grid-column: 3/-1;
   grid-row: 4/-1;
   padding-top: 5rem;
@@ -2046,6 +2045,10 @@ body {
 .tagSearchList .message {
   color: white;
   font-size: 3rem;
+}
+
+.gridContainer {
+  width: 100%;
 }
 
 .grid-item {
@@ -2125,6 +2128,29 @@ body {
 .grid-item--card-textualInfo:hover {
   cursor: pointer;
 }
+.grid-item--card-textualInfoUser {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  opacity: 0;
+  padding: 1rem 2rem;
+  transition: all 0.2s ease-in;
+}
+.grid-item--card-textualInfoUser:hover {
+  cursor: pointer;
+}
+.grid-item--card-textualInfoUser-title {
+  color: white;
+  font-size: 2.5rem;
+  letter-spacing: 0.2rem;
+}
+.grid-item--card-textualInfoUser-others {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.6rem;
+}
 .grid-item--card-icons {
   padding-left: 2rem;
   padding-bottom: 1rem;
@@ -2174,6 +2200,9 @@ body {
   opacity: 1;
 }
 .grid-item--card:hover .grid-item--card-textualInfo {
+  opacity: 1;
+}
+.grid-item--card:hover .grid-item--card-textualInfoUser {
   opacity: 1;
 }
 .grid-item--card:hover .grid-item--card-img {

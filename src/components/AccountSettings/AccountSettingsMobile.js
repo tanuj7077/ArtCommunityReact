@@ -17,7 +17,7 @@ import { useGlobalContext } from "../../context";
 
 const AccountSettingsMobile = () => {
   const { userData } = useGlobalContext();
-  const [posts, setPosts] = useState([]);
+  /*const [posts, setPosts] = useState([]);
   async function getPostsByUser() {
     try {
       const LIMIT = -1;
@@ -31,7 +31,7 @@ const AccountSettingsMobile = () => {
   }
   useEffect(() => {
     getPostsByUser();
-  }, []);
+  }, []);*/
   const toProfile = () => {
     document.getElementById("profileSlide").scrollIntoView(true);
     window.scrollTo(0, 0);
@@ -88,7 +88,9 @@ const AccountSettingsMobile = () => {
           id="appearanceSlide"
           className="settingsMobile-carousel--profileSection"
         >
-          <AppearanceMobile posts={posts} />
+          {userData && userData.username && (
+            <AppearanceMobile username={userData.username} />
+          )}
         </div>
       </div>
     </div>

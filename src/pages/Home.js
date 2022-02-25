@@ -7,7 +7,7 @@ import {
   TopNavResponsive,
   FloatingButton,
   Explore,
-  PostList,
+  PostGrid,
 } from "../commonImports/commonImports";
 
 const Home = () => {
@@ -18,7 +18,17 @@ const Home = () => {
       <SideNavMobile />
       <SideNavTopic topic="Home" />
       <Explore />
-      <PostList />
+      <div className="main">
+        <div className="subHeading">Discover</div>
+        <PostGrid
+          type={"homePageList"}
+          limit={8}
+          fetchPostUrl={`${process.env.REACT_APP_BASE_URL}/posts/postList`}
+          fetchPostCountUrl={`${process.env.REACT_APP_BASE_URL}/posts/totalPosts`}
+          showDataOnHover={true}
+        />
+      </div>
+      {/* <PostList /> */}
       <FloatingButton />
     </div>
   );

@@ -6,11 +6,10 @@ import UserHome from "./UserHome";
 import Gallery from "./Gallery";
 import About from "./About";
 import blank from "../../tagImage/blankProfile.png";
-import { PAGE_LIMIT } from "../../constants";
 
 import { useGlobalContext } from "../../context";
 
-const User = ({ id }) => {
+const User = ({ username }) => {
   const {
     submitCoverModal,
     openSubmitCoverModal,
@@ -19,7 +18,7 @@ const User = ({ id }) => {
     isLoggedIn,
     userData,
   } = useGlobalContext();
-  let userUrl = `${process.env.REACT_APP_BASE_URL}/users/user/${id}`;
+  let userUrl = `${process.env.REACT_APP_BASE_URL}/users/user/${username}`;
 
   const [user, setUser] = useState(null);
   const [cover, setCover] = useState("");
@@ -27,27 +26,9 @@ const User = ({ id }) => {
   const [profileBorderRad, setProfileBorderRad] = useState("");
   const [following, setFollowing] = useState([]); //for about section
   const [followers, setFollowers] = useState([]); //for about section
-  const [userPosts, setUserPost] = useState([]); //for gallery section
   const [popularPosts, setPopularPosts] = useState([]); //for home section
   const [likedPosts, setLikedPosts] = useState([]); //for home section
   const [spotlight, setSpotlight] = useState({}); //for home section
-
-  //------------Pagination for gallerySection------------
-  const [posts, setPosts] = useState([]);
-  const [page, setPage] = useState(0);
-  const paginate = (postArr, limit, pageNo) => {
-    return postArr.slice((pageNo - 1) * limit, pageNo * limit);
-  };
-  const addPosts = () => {
-    let arr = [];
-    let paginated = paginate(userPosts, PAGE_LIMIT, page);
-    arr = [...posts, ...paginated];
-    setPosts(arr);
-  };
-
-  useEffect(() => {
-    addPosts();
-  }, [page]);
 
   async function getUser() {
     try {
@@ -68,23 +49,10 @@ const User = ({ id }) => {
     }
   }
 
-  //------------For Gallery Section------------//
-  async function getPostByUser() {
-    try {
-      const LIMIT = 4;
-      const postUrl = `${process.env.REACT_APP_BASE_URL}/posts/postByUser/${id}/${LIMIT}`;
-      const PostResponse = await fetch(postUrl);
-      const postData = await PostResponse.json();
-      setUserPost(postData);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   //--------------For Home Section--------------//
   async function getFollowing() {
     try {
-      const followingUrl = `${process.env.REACT_APP_BASE_URL}/users/fetchFollowing/${id}`;
+      const followingUrl = `${process.env.REACT_APP_BASE_URL}/users/fetchFollowing/${username}`;
       const userResponse = await fetch(followingUrl);
       const userdata = await userResponse.json();
       setFollowing(userdata);
@@ -94,7 +62,7 @@ const User = ({ id }) => {
   }
   async function getFollowers() {
     try {
-      const followerUrl = `${process.env.REACT_APP_BASE_URL}/users/fetchFollowers/${id}`;
+      const followerUrl = `${process.env.REACT_APP_BASE_URL}/users/fetchFollowers/${username}`;
       const userResponse = await fetch(followerUrl);
       const userdata = await userResponse.json();
       setFollowers(userdata);
@@ -105,7 +73,7 @@ const User = ({ id }) => {
   const getPopularPosts = async () => {
     try {
       const num = 8;
-      const url = `${process.env.REACT_APP_BASE_URL}/posts/getPopularPosts/${id}/${num}`;
+      const url = `${process.env.REACT_APP_BASE_URL}/posts/getPopularPosts/${username}/${num}`;
       const userResponse = await fetch(url);
       const data = await userResponse.json();
       setPopularPosts(data);
@@ -116,7 +84,7 @@ const User = ({ id }) => {
   };
   const getLikedPosts = async () => {
     try {
-      const url = `${process.env.REACT_APP_BASE_URL}/posts/getLikedPosts/${id}`;
+      const url = `${process.env.REACT_APP_BASE_URL}/posts/getLikedPosts/${username}`;
       const userResponse = await fetch(url);
       const data = await userResponse.json();
       setLikedPosts(data);
@@ -127,12 +95,12 @@ const User = ({ id }) => {
 
   useEffect(() => {
     getUser();
-    getPostByUser();
+    //getPostByUser();
     getFollowing();
     getFollowers();
     getPopularPosts();
     getLikedPosts();
-  }, [id]);
+  }, [username]);
 
   const [isHome, setHome] = useState(true);
   const [isGallery, setGallery] = useState(false);
@@ -263,15 +231,7 @@ const User = ({ id }) => {
               spotlight={spotlight}
             />
           )}
-          {/* {isGallery && userPosts && <Gallery userPosts={userPosts} />} */}
-          {isGallery && userPosts && (
-            <Gallery
-              userPosts={userPosts}
-              posts={posts}
-              setPage={setPage}
-              page={page}
-            />
-          )}
+          {isGallery && <Gallery username={username} />}
           {isAbout && user && following && followers && (
             <About user={user} following={following} followers={followers} />
           )}
