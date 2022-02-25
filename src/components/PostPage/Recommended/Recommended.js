@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import { PAGE_LIMIT } from "../../../constants";
+import { useGlobalContext } from "../../context";
 
 const Recommended = ({ id, tags }) => {
+  const { changeAlert } = useGlobalContext();
   const [recommended, setRecommended] = useState([]);
   const getRecommended = async () => {
     try {

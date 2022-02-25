@@ -5,8 +5,10 @@ import { Route } from "react-router-dom";
 import { useCallback } from "react";
 import axios from "axios";
 import { IoSearch } from "../../commonImports/reactIcons";
+import { useGlobalContext } from "../../context";
 
 const SearchComponent = () => {
+  const { changeAlert } = useGlobalContext();
   const [searchStatus, setSearchStatus] = useState(false);
   const searchValue = useRef("");
 

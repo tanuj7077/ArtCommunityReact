@@ -17,6 +17,7 @@ const User = ({ username }) => {
     openSubmitProfilePicModal,
     isLoggedIn,
     userData,
+    changeAlert,
   } = useGlobalContext();
   let userUrl = `${process.env.REACT_APP_BASE_URL}/users/user/${username}`;
 
