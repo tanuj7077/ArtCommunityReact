@@ -1,7 +1,7 @@
-# <a href="https://compassionate-mclean-d43349.netlify.app/"><img width="25" alt="godArt_logo" src="https://firebasestorage.googleapis.com/v0/b/portfolio-598a6.appspot.com/o/godArt%2FAsset6.png?alt=media&token=0fb920f8-cc87-4a3b-bc28-360bead89cb6" />  GodArt  </a>
+# <a href="https://nifty-clarke-487f97.netlify.app/"><img width="25" alt="godArt_logo" src="https://firebasestorage.googleapis.com/v0/b/portfolio-598a6.appspot.com/o/godArt%2FAsset6.png?alt=media&token=0fb920f8-cc87-4a3b-bc28-360bead89cb6" />  GodArt  </a>
 
 A social Media application where user can showcase their photography and artwork skills.<br />
-<a href="https://compassionate-mclean-d43349.netlify.app/">Live Website</a> ( Backend hosted on Heroku and the website may take about 15 seconds to load up )
+<a href="https://nifty-clarke-487f97.netlify.app/">Live Website</a> ( Backend hosted on Heroku and the website may take about 15 seconds to load up )
 
 ## Features
 <ul>
