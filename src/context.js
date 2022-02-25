@@ -36,6 +36,11 @@ const AppProvider = ({ children }) => {
     showAlert,
   ]);
 
+  const changeAlert = (msg) => {
+    setAlert(msg);
+    setShowAlert(1);
+  };
+
   //--------------------For Explore Page------------------//
   const fetchExploreTags = async () => {
     let url = `${process.env.REACT_APP_BASE_URL}/tags/exploreTags`;
@@ -44,7 +49,10 @@ const AppProvider = ({ children }) => {
       const data = await response.json();
       setExplorePageTags(data);
     } catch (error) {
-      console.log(error);
+      changeAlert({
+        type: "error",
+        messages: ["Cannot get explore tags"],
+      });
     }
   };
   useEffect(() => {
@@ -60,7 +68,10 @@ const AppProvider = ({ children }) => {
       const data = await response.json();
       setHomePageTags(data);
     } catch (error) {
-      console.log(error);
+      changeAlert({
+        type: "error",
+        messages: ["Cannot get homepage tags"],
+      });
     }
   };
   useEffect(() => {
@@ -77,11 +88,6 @@ const AppProvider = ({ children }) => {
   //--------------------For Signup and Login------------------//
   const [signupModalVisibility, setSignupModalVisibility] = useState(false);
   //----------------------END---------------------//
-
-  const changeAlert = (msg) => {
-    setAlert(msg);
-    setShowAlert(1);
-  };
 
   const [submitModal, setSubmitModal] = useState(false);
   const openSubmitModal = () => {
@@ -128,7 +134,10 @@ const AppProvider = ({ children }) => {
           }
         });
     } catch (err) {
-      console.log(err);
+      changeAlert({
+        type: "error",
+        messages: ["Unable to login"],
+      });
     }
   };
   const register = async (
@@ -157,7 +166,10 @@ const AppProvider = ({ children }) => {
           }
         });
     } catch (err) {
-      console.log(err);
+      changeAlert({
+        type: "error",
+        messages: ["Unable to register"],
+      });
     }
   };
 

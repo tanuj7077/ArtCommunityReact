@@ -1,6 +1,4 @@
 .alertBox {
-  position: relative;
-  z-index: 2000;
   position: fixed;
   top: 9vh;
   left: 50%;
@@ -10,14 +8,18 @@
   padding: 1rem 2rem;
   padding-right: 3.5rem;
   border-radius: 5px;
+  z-index: 2000;
   &-error {
     background-color: rgb(230, 148, 148);
   }
   &-success {
     background-color: rgb(124, 216, 155);
   }
-  display: flex;
+  display: none;
   flex-flow: column;
+  &-visible {
+    display: flex;
+  }
 }
 .alertText {
   font-size: 1.4rem;
