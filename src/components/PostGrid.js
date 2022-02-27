@@ -76,13 +76,18 @@ const PostGrid = ({
   let bottomBoundaryRef = useRef(null);
   const scrollObserver = useCallback(
     (node) => {
-      new IntersectionObserver((entries) => {
-        entries.forEach((en) => {
-          if (en.intersectionRatio > 0) {
-            pagerDispatch({ type: "ADVANCE_PAGE" });
-          }
-        });
-      }).observe(node);
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((en) => {
+            if (en.intersectionRatio > 0) {
+              pagerDispatch({ type: "ADVANCE_PAGE" });
+            }
+          });
+        },
+        {
+          rootMargin: "100px",
+        }
+      ).observe(node);
     },
     [pagerDispatch]
   );

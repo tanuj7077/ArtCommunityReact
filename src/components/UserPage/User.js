@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import SubmitCoverModal from "../Modals/SubmitModals/SubmitCoverModal";
 import SubmitProfilePicModal from "../Modals/SubmitModals/SubmitProfilePicModal";
 import UserHome from "./UserHome";
 import Gallery from "./Gallery";
 import About from "./About";
 import blank from "../../tagImage/blankProfile.png";
+import axios from "axios";
 
 import { useGlobalContext } from "../../context";
 
@@ -31,22 +33,35 @@ const User = ({ username }) => {
   const [likedPosts, setLikedPosts] = useState([]); //for home section
   const [spotlight, setSpotlight] = useState({}); //for home section
 
+  const history = useHistory();
   async function getUser() {
     try {
       const userResponse = await fetch(userUrl);
       const userdata = await userResponse.json();
-      setUser(userdata);
-      if (typeof userdata.coverPhoto !== "undefined") {
-        setCover(userdata.coverPhoto);
+      console.log(userdata);
+      if (userdata?.message?.type === "error") {
+        throw new Error(userdata);
       }
-      if (typeof userdata.profilePic !== "undefined") {
-        setProfilePic(userdata.profilePic);
+      setUser(userdata[0]);
+      if (typeof userdata[0].coverPhoto !== "undefined") {
+        setCover(userdata[0].coverPhoto);
       }
-      if (typeof userdata.profileBorderRad !== "undefined") {
-        setProfileBorderRad(userdata.profileBorderRad + "%");
+      if (typeof userdata[0].profilePic !== "undefined") {
+        setProfilePic(userdata[0].profilePic);
       }
+      if (typeof userdata[0].profileBorderRad !== "undefined") {
+        setProfileBorderRad(userdata[0].profileBorderRad + "%");
+      }
+      getFollowing();
+      getFollowers();
+      getPopularPosts();
+      getLikedPosts();
     } catch (er) {
-      console.log(er);
+      changeAlert({
+        type: "error",
+        messages: ["User not present"],
+      });
+      history.push("/");
     }
   }
 
@@ -96,11 +111,11 @@ const User = ({ username }) => {
 
   useEffect(() => {
     getUser();
-    //getPostByUser();
-    getFollowing();
-    getFollowers();
-    getPopularPosts();
-    getLikedPosts();
+    // //getPostByUser();
+    // getFollowing();
+    // getFollowers();
+    // getPopularPosts();
+    // getLikedPosts();
   }, [username]);
 
   const [isHome, setHome] = useState(true);
