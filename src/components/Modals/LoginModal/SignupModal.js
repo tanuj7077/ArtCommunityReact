@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../../context";
 import signupImg from "../../../assets/signupImg2.jpg";
 import logo from "../../../assets/logo.png";
@@ -16,6 +16,16 @@ function SignupModal() {
   const [registerFullname, setRegisterFullname] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerConfPassword, setRegisterConfPassword] = useState("");
+
+  useEffect(() => {
+    setLoginEmail("");
+    setLoginPassword("");
+    setRegisterEmail("");
+    setRegisterUsername("");
+    setRegisterFullname("");
+    setRegisterPassword("");
+    setRegisterConfPassword("");
+  }, [signupModalVisibility]);
 
   return (
     <>
