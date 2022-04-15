@@ -83,7 +83,11 @@ const SearchComponent = () => {
       {searchStatus && (
         <>
           <div ref={wrapperRef} className="liveSearch liveSearch-desk">
-            <form className="searchForm" onSubmit={handleSubmit}>
+            <form
+              className="searchForm"
+              onSubmit={handleSubmit}
+              autoComplete="off"
+            >
               <input
                 className="searchForm--input"
                 type="text"
