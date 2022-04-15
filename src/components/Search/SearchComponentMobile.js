@@ -40,29 +40,31 @@ const SearchComponent = () => {
     e.preventDefault();
   };
 
-  // const searchItem = () => {
-  //   setSearchTerm(searchValue.current.value);
-  // };
-  const fetchData = useCallback(async () => {
+  function fetchData() {
     try {
-      await axios
-        .post(`${process.env.REACT_APP_BASE_URL}/search`, {
-          searchTerm: searchValue.current.value,
-        })
-        .then((res) => {
-          ReactDOM.unstable_batchedUpdates(() => {
-            setPost(res.data.posts);
-            setTag(res.data.tags);
-            setAuthor(res.data.users);
+      if (searchValue?.current?.value?.length >= 1)
+        axios
+          .post(`${process.env.REACT_APP_BASE_URL}/search`, {
+            searchTerm: searchValue.current.value,
+          })
+          .then((res) => {
+            ReactDOM.unstable_batchedUpdates(() => {
+              setPost(res.data.posts);
+              setTag(res.data.tags);
+              setAuthor(res.data.users);
+            });
           });
-        });
     } catch (error) {
       console.log(error);
     }
-  }, [searchValue?.current?.value]);
-  // useEffect(() => {
-  //   fetchData();
-  // }, [searchTerm, fetchData]);
+  }
+  function debounce(cb, delay) {
+    let timer;
+    return function () {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => cb(), delay);
+    };
+  }
 
   const moveToPosts = () => {
     document.getElementById("slide-1").scrollIntoView(true);
@@ -98,7 +100,7 @@ const SearchComponent = () => {
                 type="text"
                 id="name"
                 ref={searchValue}
-                onChange={fetchData}
+                onChange={debounce(fetchData, 300)}
                 placeholder="Search post, tags or user"
               />
             </form>
