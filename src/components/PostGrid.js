@@ -85,7 +85,7 @@ const PostGrid = ({
           });
         },
         {
-          rootMargin: "100px",
+          rootMargin: "900px",
         }
       ).observe(node);
     },

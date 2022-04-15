@@ -22,7 +22,7 @@ const Home = () => {
         <div className="subHeading">Discover</div>
         <PostGrid
           type={"homePageList"}
-          limit={8}
+          limit={12}
           fetchPostUrl={`${process.env.REACT_APP_BASE_URL}/posts/postList`}
           fetchPostCountUrl={`${process.env.REACT_APP_BASE_URL}/posts/totalPosts`}
           showDataOnHover={true}

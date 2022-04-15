@@ -20,7 +20,7 @@ const PopularPage = () => {
       <div className="main">
         <PostGrid
           type={"popular"}
-          limit={8}
+          limit={12}
           fetchPostUrl={`${process.env.REACT_APP_BASE_URL}/posts/getPopular`}
           fetchPostCountUrl={`${process.env.REACT_APP_BASE_URL}/posts/totalPosts`}
           showDataOnHover={true}

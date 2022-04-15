@@ -93,7 +93,7 @@
     &-author {
       color: hsl(0, 0%, 80%);
       font-size: 1.6rem;
-      width: max-content;
+      width: 100%;
       z-index: 1;
       opacity: 0;
       transition: all 0.2s ease-in;
@@ -123,9 +123,6 @@
       padding-left: 2rem;
       padding-top: 1rem;
       transition: all 0.2s ease-in;
-      &:hover {
-        cursor: pointer;
-      }
     }
     &-textualInfoUser {
       position: absolute;

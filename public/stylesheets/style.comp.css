@@ -1394,8 +1394,6 @@ body {
 }
 
 .alertBox {
-  position: relative;
-  z-index: 2000;
   position: fixed;
   top: 9vh;
   left: 50%;
@@ -1405,7 +1403,8 @@ body {
   padding: 1rem 2rem;
   padding-right: 3.5rem;
   border-radius: 5px;
-  display: flex;
+  z-index: 2000;
+  display: none;
   flex-flow: column;
 }
 .alertBox-error {
@@ -1413,6 +1412,9 @@ body {
 }
 .alertBox-success {
   background-color: #7cd89b;
+}
+.alertBox-visible {
+  display: flex;
 }
 
 .alertText {
@@ -2047,6 +2049,10 @@ body {
   font-size: 3rem;
 }
 
+.gridContainer {
+  width: 100%;
+}
+
 .grid-item {
   position: relative;
   margin-bottom: 7px;
@@ -2120,9 +2126,6 @@ body {
   padding-left: 2rem;
   padding-top: 1rem;
   transition: all 0.2s ease-in;
-}
-.grid-item--card-textualInfo:hover {
-  cursor: pointer;
 }
 .grid-item--card-textualInfoUser {
   position: absolute;
