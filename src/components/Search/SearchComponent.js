@@ -2,17 +2,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Route } from "react-router-dom";
-import { useCallback } from "react";
 import axios from "axios";
 import { IoSearch } from "../../commonImports/reactIcons";
-import { useGlobalContext } from "../../context";
 
 const SearchComponent = () => {
-  const { changeAlert } = useGlobalContext();
   const [searchStatus, setSearchStatus] = useState(false);
   const searchValue = useRef("");
 
-  const [searchTerm, setSearchTerm] = useState("");
   const [post, setPost] = useState([]);
   const [author, setAuthor] = useState([]);
   const [tag, setTag] = useState([]);

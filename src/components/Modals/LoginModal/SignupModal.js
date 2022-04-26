@@ -66,7 +66,7 @@ function SignupModal() {
               {loginMode ? (
                 <div className="signupModal-modal-right-login login">
                   <div className="signupModal-modal-right-login-headingSection">
-                    <p className="heading">Log in to your accout</p>
+                    <p className="heading">Log in to your account</p>
                     <p className="subheading">
                       <span className="subheading-text">Not a Member?</span>
                       <span
