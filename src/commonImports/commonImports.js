@@ -1,4 +1,4 @@
-export { default as Home } from "../pages/Home";
+/*export { default as Home } from "../pages/Home";
 export { default as UserPage } from "../pages/UserPage";
 export { default as PostPage } from "../pages/PostPage";
 export { default as ExplorePage } from "../pages/ExplorePage";
@@ -56,4 +56,4 @@ export { default as SingleComment } from "../components/PostPage/Comments/Single
 export { default as SubmitCoverModal } from "../components/Modals/SubmitModals/SubmitCoverModal";
 export { default as SubmitProfilePicModal } from "../components/Modals/SubmitModals/SubmitProfilePicModal";
 
-export { default as PostGrid } from "../components/PostGrid";
+export { default as PostGrid } from "../components/PostGrid";*/

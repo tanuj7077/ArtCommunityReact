@@ -1,27 +1,7 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-
-import {
-  AccountSettingsMobile,
-  AccountSettingsDesk,
-  SideNavDesktop,
-  SideNavMobile,
-  TopNavResponsive,
-  FloatingButton,
-} from "../commonImports/commonImports";
 
 const AccountSettingsPage = () => {
-  const { id } = useParams();
-  return (
-    <div className="Container">
-      <TopNavResponsive />
-      <SideNavDesktop />
-      <SideNavMobile />
-      <AccountSettingsMobile id={id} />
-      <AccountSettingsDesk id={id} />
-      <FloatingButton />
-    </div>
-  );
+  return <div>AccountSettingsPage</div>;
 };
 
 export default AccountSettingsPage;
