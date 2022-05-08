@@ -52,12 +52,15 @@ export const Wrapper = styled.nav`
     transform: translateY(-50%);
     outline: none;
     border: none;
+    background-color: transparent;
+    padding: 0 3rem;
     font-weight: 700;
     color: ${(props) => props.theme.accentColor};
     text-transform: uppercase;
-    background-color: transparent;
-    padding: 0 3rem;
     font-size: 1.8rem;
+    @media only screen and (max-width: 37.5em) {
+      display: none;
+    }
     &:hover {
       cursor: pointer;
     }

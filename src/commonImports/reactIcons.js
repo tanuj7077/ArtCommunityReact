@@ -20,6 +20,7 @@ import {
   MdDelete,
   MdFullscreen,
   MdFullscreenExit,
+  MdDarkMode,
 } from "react-icons/md";
 import {
   FaTrash,
@@ -36,8 +37,10 @@ import { SiGmail } from "react-icons/si";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { GoPlus } from "react-icons/go";
 import { CgMenu, CgGenderFemale, CgGenderMale } from "react-icons/cg";
-import { BsHeartFill } from "react-icons/bs";
+import { BsHeartFill, BsFillSunFill } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
+import {} from "react-icons/md";
+// import { BsFillSunFill } from "react-icons/bs";
 
 export {
   BsChevronRight,
@@ -80,4 +83,6 @@ export {
   HiLocationMarker,
   FaCommentDots,
   AiFillLike,
+  MdDarkMode,
+  BsFillSunFill,
 };

@@ -1,20 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Wrapper } from "../../assets/wrappers/TopNav";
-import {
-  AiFillHome,
-  IoPeople,
-  FaWpexplorer,
-  MdNewReleases,
-  MdAccountCircle,
-  CgMenu,
-  IoMdPower,
-} from "../../commonImports/reactIcons";
+import { CgMenu } from "../../commonImports/reactIcons";
 import { IoSearch } from "../../commonImports/reactIcons";
+import { toggleSidebar } from "../../features/utility";
 
 const TopNav = () => {
+  const dispatch = useDispatch();
   return (
     <Wrapper>
-      <div className="navigationIcon">
+      <div className="navigationIcon" onClick={() => dispatch(toggleSidebar())}>
         <CgMenu className="menuIcon" />
       </div>
       <p className="search">

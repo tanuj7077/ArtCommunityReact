@@ -21,15 +21,14 @@ import {
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./utils/themes";
 import { Wrapper } from "./assets/wrappers/App";
+import { useSelector } from "react-redux";
 
 axios.defaults.withCredentials = true;
 function App() {
-  const [theme, setTheme] = useState("dark");
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
+  const { isDarkMode } = useSelector((store) => store.utility);
+
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <Wrapper>
         <BrowserRouter>
           <Routes>
