@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
+import "./App.css";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import {
@@ -17,29 +18,40 @@ import {
   Gallery,
   UserHome,
 } from "./pages";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./utils/themes";
+import { Wrapper } from "./assets/wrappers/App";
 
 axios.defaults.withCredentials = true;
 function App() {
+  const [theme, setTheme] = useState("dark");
+  const themeToggler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="user/:id" element={<UserPage />}>
-            <Route index element={<UserHome />} />
-            <Route path="gallery" element={<Gallery />} />
-            <Route path="about" element={<About />} />
-          </Route>
-          <Route path="post/:id" element={<PostPage />} />
-          <Route path="explore" element={<ExplorePage />} />
-          <Route path="followed" element={<FollowedPage />} />
-          <Route path="popular" element={<PopularPage />} />
-          <Route path="TagSearchPage" element={<TagSearchPage />} />
-        </Route>
-        <Route path="landing" element={<Landing />} />
-        <Route path="account/:id" element={<AccountSettingsPage />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <Wrapper>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<SharedLayout />}>
+              <Route index element={<Home />} />
+              <Route path="user/:id" element={<UserPage />}>
+                <Route index element={<UserHome />} />
+                <Route path="gallery" element={<Gallery />} />
+                <Route path="about" element={<About />} />
+              </Route>
+              <Route path="post/:id" element={<PostPage />} />
+              <Route path="explore" element={<ExplorePage />} />
+              <Route path="followed" element={<FollowedPage />} />
+              <Route path="popular" element={<PopularPage />} />
+              <Route path="TagSearchPage" element={<TagSearchPage />} />
+            </Route>
+            <Route path="landing" element={<Landing />} />
+            <Route path="account/:id" element={<AccountSettingsPage />} />
+          </Routes>
+        </BrowserRouter>
+      </Wrapper>
+    </ThemeProvider>
   );
 }
 
