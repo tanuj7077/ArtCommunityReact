@@ -3,7 +3,7 @@ import { Wrapper } from "../../assets/wrappers/SideNav";
 import { NavLink } from "react-router-dom";
 import { sideNavLinks } from "../../utils/sideNavLinks";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme, toggleSidebar } from "../../features/utility";
+import { toggleTheme, toggleSidebar } from "../../features/utilitySlice";
 
 const SideNav = () => {
   const dispatch = useDispatch();

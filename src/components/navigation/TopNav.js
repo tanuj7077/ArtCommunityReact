@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Wrapper } from "../../assets/wrappers/TopNav";
 import { CgMenu } from "../../commonImports/reactIcons";
 import { IoSearch } from "../../commonImports/reactIcons";
-import { toggleSidebar } from "../../features/utility";
+import { toggleSidebar } from "../../features/utilitySlice";
 
 const TopNav = () => {
   const dispatch = useDispatch();
