@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
   isSidebarOpen: false,
   isDarkMode: true,
+  isLoginModalOpen: false,
 };
 
 const utilitySlice = createSlice({
@@ -15,8 +16,12 @@ const utilitySlice = createSlice({
     toggleTheme: (state) => {
       state.isDarkMode = !state.isDarkMode;
     },
+    toggleLoginModal: (state) => {
+      state.isLoginModalOpen = !state.isLoginModalOpen;
+    },
   },
 });
 
-export const { toggleSidebar, toggleTheme } = utilitySlice.actions;
+export const { toggleSidebar, toggleTheme, toggleLoginModal } =
+  utilitySlice.actions;
 export default utilitySlice.reducer;

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Wrapper } from "../../assets/wrappers/TopNav";
 import { CgMenu } from "../../commonImports/reactIcons";
 import { IoSearch } from "../../commonImports/reactIcons";
-import { toggleSidebar } from "../../features/utilitySlice";
+import { toggleSidebar, toggleLoginModal } from "../../features/utilitySlice";
 
 const TopNav = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,9 @@ const TopNav = () => {
         <IoSearch className="icon" />{" "}
         <span className="text">Search and Discover</span>
       </p>
-      <button className="action">Login</button>
+      <button className="action" onClick={() => dispatch(toggleLoginModal())}>
+        Login
+      </button>
     </Wrapper>
   );
 };

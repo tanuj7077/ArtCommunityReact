@@ -21,11 +21,17 @@ import {
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./utils/themes";
 import { Wrapper } from "./assets/wrappers/App";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Modal from "./components/modals/Modal";
+import LoginModal from "./components/modals/LoginModal";
+import { toggleLoginModal } from "./features/utilitySlice";
 
 axios.defaults.withCredentials = true;
 function App() {
-  const { isDarkMode } = useSelector((store) => store.utility);
+  const dispatch = useDispatch();
+  const { isDarkMode, isLoginModalOpen } = useSelector(
+    (store) => store.utility
+  );
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
@@ -48,6 +54,15 @@ function App() {
             <Route path="landing" element={<Landing />} />
             <Route path="account/:id" element={<AccountSettingsPage />} />
           </Routes>
+          {isLoginModalOpen && (
+            <Modal
+              toggleHandler={() => {
+                dispatch(toggleLoginModal());
+              }}
+            >
+              <LoginModal />
+            </Modal>
+          )}
         </BrowserRouter>
       </Wrapper>
     </ThemeProvider>
