@@ -11,6 +11,7 @@ const lightTheme = {
   sideNavItemBgHover: "hsl(0, 0%, 80%)",
   sideNavFontColorHover: "hsl(0, 0%, 30%)",
   modalOverlay: "rgba(23, 28, 33,.5)",
+  loginModalBg: "black",
 };
 const darkTheme = {
   bodyBg: "black",
@@ -25,6 +26,7 @@ const darkTheme = {
   sideNavItemBgHover: "hsl(0, 0%, 10%)",
   sideNavFontColorHover: "#6ecf86",
   modalOverlay: "rgba(23, 28, 33,.5)",
+  loginModalBg: "white",
 };
 
 export { lightTheme, darkTheme };
