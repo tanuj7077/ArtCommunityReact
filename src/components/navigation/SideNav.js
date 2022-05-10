@@ -4,12 +4,13 @@ import { NavLink } from "react-router-dom";
 import { sideNavLinks } from "../../utils/sideNavLinks";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme, toggleSidebar } from "../../features/utilitySlice";
+import { logoutUser } from "../../features/userSlice";
 
 const SideNav = () => {
   const dispatch = useDispatch();
   const { isSidebarOpen, isDarkMode } = useSelector((store) => store.utility);
+  const { user } = useSelector((store) => store.user);
   const [links, setLinks] = useState(sideNavLinks);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const changeHoveredItem = (id) => {
     setLinks(
@@ -39,91 +40,105 @@ const SideNav = () => {
         className={`sideBarFull ${!isSidebarOpen ? "sideBarFull-hidden" : ""}`}
       >
         {links.map((item) => {
+          if (item.protected && !user) return null;
           return (
-            <>
+            <div key={`sideNavBig-${item.id}`}>
               {item.isLink ? (
                 <NavLink
                   to={item.path}
-                  key={`sideNavBig-${item.id}`}
                   onMouseEnter={() => changeHoveredItem(item.id)}
                   onMouseLeave={() => removeHoveredItem(item.id)}
                   onClick={() => {
                     if (item.changeAble) {
                       dispatch(toggleTheme());
                     }
+                    if (item.type === "logout") {
+                      dispatch(logoutUser("Logging out..."));
+                      removeHoveredItem(item.id);
+                    }
                     isSidebarOpen && dispatch(toggleSidebar());
                   }}
                   className={`sideNavItem ${
-                    item.protected && !isLoggedIn ? "sideNavItem-hidden" : ""
-                  } ${item.isHovered ? "sideNavItem-hovered" : ""}`}
+                    item.isHovered ? "sideNavItem-hovered" : ""
+                  }`}
                 >
                   <div className="icon">{item.icon}</div>
                   <div className="text">{item.text}</div>
                 </NavLink>
               ) : (
                 <div
-                  key={`sideNavBig-${item.id}`}
                   onClick={() => {
                     if (item.changeAble) {
                       dispatch(toggleTheme());
+                    }
+                    if (item.type === "logout") {
+                      dispatch(logoutUser("Logging out..."));
+                      removeHoveredItem(item.id);
                     }
                     isSidebarOpen && dispatch(toggleSidebar());
                   }}
                   onMouseEnter={() => changeHoveredItem(item.id)}
                   onMouseLeave={() => removeHoveredItem(item.id)}
                   className={`sideNavItem ${
-                    item.protected && !isLoggedIn ? "sideNavItem-hidden" : ""
-                  } ${item.isHovered ? "sideNavItem-hovered" : ""}`}
+                    item.isHovered ? "sideNavItem-hovered" : ""
+                  }`}
                 >
                   <div className="icon">{item.icon}</div>
                   <div className="text">{item.text}</div>
                 </div>
               )}
-            </>
+            </div>
           );
         })}
       </div>
       <div className="sideBarMinimal">
         {links.map((item) => {
+          if (item.protected && !user) return null;
           return (
-            <>
+            <div key={`sideNavMinimal-${item.id}`}>
               {item.isLink ? (
                 <NavLink
                   to={item.path}
-                  key={`sideNavBig-${item.id}`}
                   onMouseEnter={() => changeHoveredItem(item.id)}
                   onMouseLeave={() => removeHoveredItem(item.id)}
                   onClick={() => {
                     if (item.changeAble) {
                       dispatch(toggleTheme());
                     }
+                    if (item.type === "logout") {
+                      dispatch(logoutUser("Logging out..."));
+                      removeHoveredItem(item.id);
+                    }
                     isSidebarOpen && dispatch(toggleSidebar());
                   }}
                   className={`sideNavItem ${
-                    item.protected && !isLoggedIn ? "sideNavItem-hidden" : ""
-                  } ${item.isHovered ? "sideNavItem-hovered" : ""}`}
+                    item.isHovered ? "sideNavItem-hovered" : ""
+                  }`}
                 >
                   <div className="icon">{item.icon}</div>
                 </NavLink>
               ) : (
                 <div
-                  key={`sideNavBig-${item.id}`}
                   onMouseEnter={() => changeHoveredItem(item.id)}
                   onMouseLeave={() => removeHoveredItem(item.id)}
                   onClick={() => {
                     if (item.changeAble) {
                       dispatch(toggleTheme());
                     }
+                    if (item.type === "logout") {
+                      dispatch(logoutUser("Logging out..."));
+                      removeHoveredItem(item.id);
+                    }
                     isSidebarOpen && dispatch(toggleSidebar());
                   }}
                   className={`sideNavItem ${
-                    item.protected && !isLoggedIn ? "sideNavItem-hidden" : ""
-                  } ${item.isHovered ? "sideNavItem-hovered" : ""}`}
+                    item.isHovered ? "sideNavItem-hovered" : ""
+                  }`}
                 >
                   <div className="icon">{item.icon}</div>
                 </div>
               )}
-            </>
+            </div>
           );
         })}
       </div>

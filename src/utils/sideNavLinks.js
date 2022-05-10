@@ -18,6 +18,7 @@ export const sideNavLinks = [
     changeAble: false,
     protected: false,
     isHovered: false,
+    type: "link",
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ export const sideNavLinks = [
     changeAble: false,
     protected: false,
     isHovered: false,
+    type: "link",
   },
   {
     id: 3,
@@ -38,6 +40,7 @@ export const sideNavLinks = [
     changeAble: false,
     protected: true,
     isHovered: false,
+    type: "link",
   },
   {
     id: 4,
@@ -48,6 +51,7 @@ export const sideNavLinks = [
     changeAble: false,
     protected: true,
     isHovered: false,
+    type: "link",
   },
   {
     id: 5,
@@ -60,6 +64,7 @@ export const sideNavLinks = [
     changeAble: true,
     protected: false,
     isHovered: false,
+    type: "theme",
   },
   {
     id: 6,
@@ -69,5 +74,6 @@ export const sideNavLinks = [
     changeAble: false,
     protected: true,
     isHovered: false,
+    type: "logout",
   },
 ];

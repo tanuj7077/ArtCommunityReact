@@ -25,6 +25,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Modal from "./components/modals/Modal";
 import LoginModal from "./components/modals/LoginModal";
 import { toggleLoginModal } from "./features/utilitySlice";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -63,6 +65,7 @@ function App() {
               <LoginModal />
             </Modal>
           )}
+          <ToastContainer position="top-center" />
         </BrowserRouter>
       </Wrapper>
     </ThemeProvider>

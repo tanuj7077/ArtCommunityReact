@@ -6,12 +6,12 @@ import { toggleLoginModal } from "../../features/utilitySlice";
 import { useDispatch } from "react-redux";
 import { Wrapper } from "../../assets/wrappers/LoginModal";
 import FormRow from "../inputs/FormRow";
+import { loginUser, registerUser } from "../../features/userSlice";
 const initialState = {
   email: "",
   password: "",
   username: "",
   fullname: "",
-  password: "",
   passwordConfirm: "",
   isMember: true,
 };
@@ -26,6 +26,16 @@ const LoginModal = () => {
     const name = e.target.name;
     const value = e.target.value;
     setValues({ ...values, [name]: value });
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const { email, password, username, fullname, passwordConfirm, isMember } =
+      values;
+    if (isMember) {
+      //   dispatch(loginUser({ email: email, password: password }));
+      return;
+    }
+    // dispatch(registerUser({ name, email, password }));
   };
   return (
     <Wrapper>
@@ -70,7 +80,7 @@ const LoginModal = () => {
               </button>
             </p>
           </div>
-          <form className="right-content-form">
+          <form className="right-content-form" onSubmit={onSubmit}>
             {/* Email */}
             <FormRow
               type="email"
@@ -131,46 +141,50 @@ const LoginModal = () => {
               </div>
             )}
             <div className="combined">
-              <button type="submit" className="btn btn-login">
+              <button
+                type="submit"
+                className="btn btn-login"
+                onClick={() => {
+                  if (values.isMember) {
+                    dispatch(
+                      loginUser({
+                        email: values.email,
+                        password: values.password,
+                      })
+                    );
+                    return;
+                  }
+                  dispatch(
+                    registerUser({
+                      username: values.username,
+                      fullname: values.fullname,
+                      email: values.email,
+                      password: values.password,
+                      password_confirmation: values.passwordConfirm,
+                    })
+                  );
+                }}
+              >
                 Submit
               </button>
-              <button type="button" className="btn btn-login">
+              <button
+                type="button"
+                className="btn btn-login"
+                onClick={() => {
+                  dispatch(
+                    loginUser({
+                      email: "demo@user.com",
+                      password: "demoPassword",
+                    })
+                  );
+                }}
+              >
                 Demo Login
               </button>
             </div>
           </form>
         </div>
       </div>
-      {/* <div className="right">
-        {values.isMember ? (
-          <div className="right-content login">
-            <div className="right-content-headingSection">
-              <p className="heading">Log in to your account</p>
-              <p className="subheading">
-                <span className="subheading-text">Not a Member?</span>
-                <span className="subheading-alternative" onClick={toggleMember}>
-                  Register
-                </span>
-              </p>
-            </div>
-            <form className="right-content-form">
-            </form>
-          </div>
-        ) : (
-          <div className="right-content signup">
-            <div className="right-content-headingSection">
-              <p className="heading">Create new account</p>
-              <p className="subheading">
-                <span className="subheading-text">Already a Member?</span>
-                <span className="subheading-alternative" onClick={toggleMember}>
-                  Log In
-                </span>
-              </p>
-            </div>
-            <div className="right-content-form"></div>
-          </div>
-        )}
-      </div> */}
     </Wrapper>
   );
 };

@@ -1,11 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Wrapper } from "../../assets/wrappers/TopNav";
 import { CgMenu } from "../../commonImports/reactIcons";
 import { IoSearch } from "../../commonImports/reactIcons";
 import { toggleSidebar, toggleLoginModal } from "../../features/utilitySlice";
 
 const TopNav = () => {
+  const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   return (
     <Wrapper>
@@ -16,9 +17,15 @@ const TopNav = () => {
         <IoSearch className="icon" />{" "}
         <span className="text">Search and Discover</span>
       </p>
-      <button className="action" onClick={() => dispatch(toggleLoginModal())}>
-        Login
-      </button>
+      {!user ? (
+        <button className="action" onClick={() => dispatch(toggleLoginModal())}>
+          Login
+        </button>
+      ) : (
+        <button className="action" onClick={() => console.log("submit")}>
+          Submit
+        </button>
+      )}
     </Wrapper>
   );
 };
