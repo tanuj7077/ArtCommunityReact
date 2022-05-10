@@ -36,10 +36,17 @@ export const Wrapper = styled.nav`
     .icon {
       width: 2rem;
       height: 2rem;
+      @media only screen and (max-width: 37.5em) {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
     }
     .text {
       text-transform: uppercase;
       font-size: 1.6rem;
+      @media only screen and (max-width: 37.5em) {
+        font-size: 1.2rem;
+      }
     }
     &:hover {
       cursor: pointer;

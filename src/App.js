@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Modal from "./components/modals/Modal";
 import LoginModal from "./components/modals/LoginModal";
 import { toggleLoginModal } from "./features/utilitySlice";
+import FloatingBtn from "./components/buttons/FloatingBtn";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -66,6 +67,7 @@ function App() {
             </Modal>
           )}
           <ToastContainer position="top-center" />
+          <FloatingBtn />
         </BrowserRouter>
       </Wrapper>
     </ThemeProvider>
