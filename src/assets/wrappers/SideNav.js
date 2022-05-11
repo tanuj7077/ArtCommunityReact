@@ -7,7 +7,8 @@ export const Wrapper = styled.nav`
     top: 5.4rem;
     left: 0;
     border-right: 4px solid ${(props) => props.theme.topNavBorder};
-    transition: all 0.3s ease;
+    background-color: ${(props) => props.theme.sideNavBg};
+    transition: transform 0.3s ease;
     &-hidden {
       transform: translateX(calc(-100% + 6.5rem + 4px));
       @media only screen and (max-width: 37.5em) {

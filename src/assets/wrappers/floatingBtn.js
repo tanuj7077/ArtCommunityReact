@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 export const Wrapper = styled.button`
   position: fixed;
-  bottom: 3rem;
-  right: 3rem;
+  bottom: 2rem;
+  right: 2rem;
   border: none;
   outline: none;
   background-color: #20bf6b;
   border-radius: 50%;
   /* display: grid;
   place-items: center; */
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   color: white;
   display: none;
   @media only screen and (max-width: 37.5em) {

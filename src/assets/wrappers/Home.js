@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  min-height: 100vh;
-  width: 100%;
+  margin: 5.4rem 0 10rem 6.5rem;
+  color: white;
 `;
