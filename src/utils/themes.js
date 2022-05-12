@@ -1,6 +1,7 @@
 const lightTheme = {
-  bodyBg: "white",
+  bodyBg: "hsl(0,0%,90%)",
   fontColor: "black",
+  fontColorRev: "white",
   accentColor: "#6ecf86",
   accentColorDark: "#20bf6b",
   topNavBg: "white",
@@ -12,14 +13,18 @@ const lightTheme = {
   sideNavFontColorHover: "hsl(0, 0%, 30%)",
   modalOverlay: "rgba(23, 28, 33,.5)",
   loginModalBg: "black",
+  homePageAllTagTagBg: "hsl(0,0%,90%)",
+  homePageAllTagTagBorder: "hsl(0,0%,50%)",
+  homePageAllTagsTagColor: "hsl(0,0%,10%)",
 };
 const darkTheme = {
-  bodyBg: "black",
+  bodyBg: "hsl(0,0%,10%)",
   fontColor: "white",
+  fontColorRev: "black",
   accentColor: "#6ecf86",
   accentColorDark: "#20bf6b",
   topNavBg: "black",
-  topNavBorder: "rgba(23, 28, 33)",
+  topNavBorder: "rgb(23, 28, 33)",
   navIconColor: "white",
   sideNavBg: "black",
   sideNavFontColor: "white",
@@ -27,6 +32,9 @@ const darkTheme = {
   sideNavFontColorHover: "#6ecf86",
   modalOverlay: "rgba(23, 28, 33,.5)",
   loginModalBg: "white",
+  homePageAllTagTagBg: "hsl(0,0%,10%)",
+  homePageAllTagTagBorder: "hsl(0,0%,50%)",
+  homePageAllTagsTagColor: "hsl(0,0%,70%)",
 };
 
 export { lightTheme, darkTheme };

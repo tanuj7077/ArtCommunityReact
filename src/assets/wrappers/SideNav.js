@@ -6,9 +6,10 @@ export const Wrapper = styled.nav`
     height: calc(100vh - 5.5rem);
     top: 5.4rem;
     left: 0;
-    border-right: 4px solid ${(props) => props.theme.topNavBorder};
+    border-right: 2px solid ${(props) => props.theme.topNavBorder};
     background-color: ${(props) => props.theme.sideNavBg};
     transition: transform 0.3s ease;
+    z-index: 3;
     &-hidden {
       transform: translateX(calc(-100% + 6.5rem + 4px));
       @media only screen and (max-width: 37.5em) {
@@ -52,6 +53,7 @@ export const Wrapper = styled.nav`
     height: calc(100vh - 5.5rem);
     top: 5.4rem;
     left: 0;
+    z-index: 4;
     @media only screen and (max-width: 37.5em) {
       display: none;
     }

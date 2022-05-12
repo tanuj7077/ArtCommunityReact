@@ -52,7 +52,7 @@ function App() {
               <Route path="explore" element={<ExplorePage />} />
               <Route path="followed" element={<FollowedPage />} />
               <Route path="popular" element={<PopularPage />} />
-              <Route path="TagSearchPage" element={<TagSearchPage />} />
+              <Route path="tagSearch/:name" element={<TagSearchPage />} />
             </Route>
             <Route path="landing" element={<Landing />} />
             <Route path="account/:id" element={<AccountSettingsPage />} />

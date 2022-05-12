@@ -7,7 +7,8 @@ export const Wrapper = styled.nav`
   height: 5.4rem;
   width: 100%;
   background-color: ${(props) => props.theme.topNavBg};
-  border-bottom: 4px solid ${(props) => props.theme.topNavBorder};
+  border-bottom: 2px solid ${(props) => props.theme.topNavBorder};
+  z-index: 10;
 
   .navigationIcon {
     position: absolute;

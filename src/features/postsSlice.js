@@ -4,6 +4,8 @@ import { customFetch } from "../utils/axios";
 const initialState = {
   homePageExploreTags: [],
   homePageExploreTagsLoading: false,
+  allTags: [],
+  allTagsLoading: false,
 };
 
 export const getHomePageExploreTags = createAsyncThunk(
@@ -11,6 +13,17 @@ export const getHomePageExploreTags = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const resp = await customFetch.get("/tags/randomTags");
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue("Cannot get homepage tags");
+    }
+  }
+);
+export const getAllTags = createAsyncThunk(
+  "posts/getAllTags",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get("/tags/exploreTags");
       console.log(resp.data);
       return resp.data;
     } catch (error) {
@@ -33,6 +46,16 @@ const postsSlice = createSlice({
     },
     [getHomePageExploreTags.rejected]: (state) => {
       state.homePageExploreTagsLoading = false;
+    },
+    [getAllTags.pending]: (state) => {
+      state.allTagsLoading = true;
+    },
+    [getAllTags.fulfilled]: (state, { payload }) => {
+      state.allTagsLoading = false;
+      state.allTags = payload;
+    },
+    [getAllTags.rejected]: (state) => {
+      state.allTagsLoading = false;
     },
   },
 });

@@ -9,7 +9,7 @@ const Explore = () => {
     (store) => store.posts
   );
   useEffect(() => {
-    if (homePageExploreTags?.length === 0) dispatch(getHomePageExploreTags());
+    if (homePageExploreTags.length === 0) dispatch(getHomePageExploreTags());
   }, []);
   return (
     <Wrapper>
