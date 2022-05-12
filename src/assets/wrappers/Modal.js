@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   width: 100vw;
   display: grid;
   place-items: center;
+  z-index: 10;
   .overlay {
     position: absolute;
     width: 100%;
@@ -18,6 +19,6 @@ export const Wrapper = styled.div`
     backdrop-filter: blur(5px);
   }
   .modal {
-    z-index: 2;
+    z-index: 11;
   }
 `;
