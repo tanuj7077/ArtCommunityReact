@@ -15,7 +15,9 @@ const lightTheme = {
   loginModalBg: "black",
   homePageAllTagTagBg: "hsl(0,0%,90%)",
   homePageAllTagTagBorder: "hsl(0,0%,50%)",
-  homePageAllTagsTagColor: "hsl(0,0%,10%)",
+  homePageAllTagsTagColor: "hsl(0,0%,30%)",
+  homePageChevronColor: "hsl(0,0%,40%)",
+  homePageChevronHoveredColor: "hsl(0,0%,10%)",
 };
 const darkTheme = {
   bodyBg: "hsl(0,0%,10%)",
@@ -35,6 +37,8 @@ const darkTheme = {
   homePageAllTagTagBg: "hsl(0,0%,10%)",
   homePageAllTagTagBorder: "hsl(0,0%,50%)",
   homePageAllTagsTagColor: "hsl(0,0%,70%)",
+  homePageChevronColor: "hsl(0,0%,60%)",
+  homePageChevronHoveredColor: "hsl(0,0%,90%)",
 };
 
 export { lightTheme, darkTheme };
