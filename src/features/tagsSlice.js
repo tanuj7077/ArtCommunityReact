@@ -32,7 +32,7 @@ export const getAllTags = createAsyncThunk(
   }
 );
 
-const postsSlice = createSlice({
+const tagsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {},
@@ -60,4 +60,4 @@ const postsSlice = createSlice({
   },
 });
 
-export default postsSlice.reducer;
+export default tagsSlice.reducer;

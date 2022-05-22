@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getAllTags } from "../features/postsSlice";
+import { getAllTags } from "../features/tagsSlice";
 import AllTags from "./HomePage/AllTags";
 import Banner from "./HomePage/Banner";
 import Explore from "./HomePage/Explore";
