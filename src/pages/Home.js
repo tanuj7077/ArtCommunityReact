@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { allTags, allTagsLoading } = useSelector((store) => store.posts);
+  const { allTags, allTagsLoading } = useSelector((store) => store.tags);
   const [isAllTagsVisible, setIsAllTagsVisible] = useState(false);
   const exploreRef = useRef(null);
   useEffect(() => {

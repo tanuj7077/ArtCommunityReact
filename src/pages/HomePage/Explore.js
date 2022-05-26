@@ -6,7 +6,7 @@ import { getHomePageExploreTags } from "../../features/tagsSlice";
 const Explore = () => {
   const dispatch = useDispatch();
   const { homePageExploreTags, homePageExploreTagsLoading } = useSelector(
-    (store) => store.posts
+    (store) => store.tags
   );
   useEffect(() => {
     if (homePageExploreTags.length === 0) dispatch(getHomePageExploreTags());

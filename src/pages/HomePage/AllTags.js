@@ -8,7 +8,7 @@ import {
 } from "../../commonImports/reactIcons";
 
 const AllTags = ({ appear }) => {
-  const { allTags } = useSelector((store) => store.posts);
+  const { allTags } = useSelector((store) => store.tags);
 
   const tagListRef = useRef(null);
   const listStartItemRef = useRef(null);

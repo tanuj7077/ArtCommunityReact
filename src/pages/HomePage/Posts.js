@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getHomePosts, getHomePostsCount } from "../../features/postsSlice";
 import styled from "styled-components";
+
 const Wrapper = styled.div`
   margin-top: 6rem;
   padding: 0 3rem;
@@ -8,20 +11,27 @@ const Wrapper = styled.div`
     color: grey;
   }
 `;
-
 const Posts = () => {
+  const dispatch = useDispatch();
+  const { isLoading, homePostsPagem, homePosts } = useSelector(
+    (store) => store.posts
+  );
+  useEffect(() => {
+    dispatch(getHomePosts());
+  }, []);
   return (
     <Wrapper>
-      <h1>Posts</h1>
-      <h1>Posts</h1>
-      <h1>Posts</h1>
-      <h1>Posts</h1>
-      <h1>Posts</h1>
-      <h1>Posts</h1>
-      <h1>Posts</h1>
-      <h1>Posts</h1>
-      <h1>Posts</h1>
-      <h1>Posts</h1>
+      {homePosts && (
+        <div className="container">
+          {homePosts.map((post) => {
+            return (
+              <div key={post._id} className="post">
+                <h1>Posts</h1>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </Wrapper>
   );
 };
