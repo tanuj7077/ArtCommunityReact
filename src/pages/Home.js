@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getAllTags } from "../features/tagsSlice";
 import AllTags from "./HomePage/AllTags";
 import Banner from "./HomePage/Banner";
 import Explore from "./HomePage/Explore";
+import ExploreSection from "./HomePage/ExploreSection";
 import Posts from "./HomePage/Posts";
 
 const Wrapper = styled.div`
@@ -16,36 +16,10 @@ const Wrapper = styled.div`
 `;
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const { allTags, allTagsLoading } = useSelector((store) => store.tags);
-  const [isAllTagsVisible, setIsAllTagsVisible] = useState(false);
-  const exploreRef = useRef(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setIsAllTagsVisible(!entry.isIntersecting);
-      },
-      {
-        rootMargin: "-54px",
-      }
-    );
-    observer.observe(exploreRef.current);
-  }, []);
-  useEffect(() => {
-    if (allTags.length === 0) {
-      dispatch(getAllTags());
-    }
-  }, []);
   return (
     <Wrapper>
       <Banner />
-      <div ref={exploreRef}>
-        <Explore />
-      </div>
-      {allTags.length > 0 && !allTagsLoading && (
-        <AllTags appear={isAllTagsVisible} />
-      )}
+      <ExploreSection />
       <Posts />
     </Wrapper>
   );
