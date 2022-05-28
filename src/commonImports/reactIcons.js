@@ -11,6 +11,7 @@ import {
   AiFillHome,
   AiOutlineLink,
   AiFillLike,
+  AiOutlineInfoCircle,
 } from "react-icons/ai";
 import {
   MdEdit,
@@ -85,4 +86,5 @@ export {
   AiFillLike,
   MdDarkMode,
   BsFillSunFill,
+  AiOutlineInfoCircle,
 };
