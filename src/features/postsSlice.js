@@ -3,18 +3,22 @@ import { PAGE_LIMIT } from "../constants";
 import { customFetch } from "../utils/axios";
 
 const initialState = {
-  isLoading: false,
+  isHomePostsLoading: false,
   homePostsPage: 1,
   homePosts: [],
-  homePostsCount: 1,
+  allHomePostsLoaded: false,
 };
 
 export const getHomePosts = createAsyncThunk(
   "posts/getHomePosts",
   async (_, thunkAPI) => {
+    if (thunkAPI.getState().posts.allHomePostsLoaded) return [];
     try {
+      console.log("called");
       const resp = await customFetch.get(
-        `/posts/postList?page=${initialState.homePostsPage}&limit=${PAGE_LIMIT}`
+        `/posts/postList?page=${
+          thunkAPI.getState().posts.homePostsPage
+        }&limit=${PAGE_LIMIT}`
       );
       return resp.data;
     } catch (error) {
@@ -22,44 +26,31 @@ export const getHomePosts = createAsyncThunk(
     }
   }
 );
-export const getHomePostsCount = createAsyncThunk(
-  "posts/getHomePostsCount",
-  async (_, thunkAPI) => {
-    try {
-      const resp = await customFetch.get("/posts/totalPosts");
-      return resp.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue("Cannot get post count");
-    }
-  }
-);
 
 const postsSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    increaseHomePostsPageCount: (state) => {
+      state.homePostsPage += 1;
+    },
+  },
   extraReducers: {
     [getHomePosts.pending]: (state) => {
-      state.isLoading = true;
+      state.isHomePostsLoading = true;
     },
     [getHomePosts.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
-      state.homePosts = payload;
+      state.isHomePostsLoading = false;
+      state.homePosts = [...state.homePosts, ...payload];
+      if (payload.length === 0) {
+        state.allHomePostsLoaded = true;
+      }
     },
     [getHomePosts.rejected]: (state) => {
-      state.isLoading = false;
+      state.isHomePostsLoading = false;
     },
-    /*[getHomePostsCount.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [getHomePostsCount.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
-      state.homePostsCount = payload;
-    },
-    [getHomePostsCount.rejected]: (state) => {
-      state.isLoading = false;
-    },*/
   },
 });
+export const { increaseHomePostsPageCount } = postsSlice.actions;
 
 export default postsSlice.reducer;
