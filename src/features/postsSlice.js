@@ -14,7 +14,6 @@ export const getHomePosts = createAsyncThunk(
   async (_, thunkAPI) => {
     if (thunkAPI.getState().posts.allHomePostsLoaded) return [];
     try {
-      console.log("called");
       const resp = await customFetch.get(
         `/posts/postList?page=${
           thunkAPI.getState().posts.homePostsPage

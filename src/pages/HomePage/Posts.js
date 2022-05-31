@@ -157,7 +157,9 @@ const Posts = () => {
             return (
               <HomePost
                 key={post._id}
+                postId={post._id}
                 postImageThumb={post.imageThumb}
+                postImageMd={post.imageMd}
                 postName={post.name}
                 postAuthorName={post.author.username}
                 postLikes={post.likesArray.length}
