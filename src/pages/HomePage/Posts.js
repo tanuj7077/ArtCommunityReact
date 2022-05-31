@@ -6,35 +6,14 @@ import {
 } from "../../features/postsSlice";
 import styled from "styled-components";
 import HomePost from "../../components/cards/HomePost";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 const Wrapper = styled.div`
   margin-top: 6rem;
   padding: 0 3rem;
-  .container {
-    columns: 5;
-    /* column-gap: 1rem; */
-    gap: 1.5rem;
-    @media only screen and (max-width: 131.25em) {
-      columns: 5;
-      /* gap: 2.5rem; */
-    }
-    @media only screen and (max-width: 112em) {
-      columns: 4;
-    }
-    @media only screen and (max-width: 75em) {
-      columns: 3;
-    }
-    @media only screen and (max-width: 56.25em) {
-      columns: 2;
-    }
-    @media only screen and (max-width: 37.5em) {
-      columns: 1;
-    }
-  }
   .post {
     width: 100%;
     height: max-content;
-    margin-bottom: 1.5rem;
     position: relative;
     background-color: black;
     color: white;
@@ -122,6 +101,15 @@ const Wrapper = styled.div`
     margin-bottom: 1.5rem;
     border-radius: 4px;
   }
+  .message {
+    margin-top: 2rem;
+    width: 100%;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 2px;
+  }
   .loader {
     width: 100%;
     height: 1px;
@@ -129,8 +117,9 @@ const Wrapper = styled.div`
 `;
 const Posts = () => {
   const dispatch = useDispatch();
-  const { isHomePostsLoading, homePostsPage, allHomePostsLoaded, homePosts } =
-    useSelector((store) => store.posts);
+  const { isHomePostsLoading, allHomePostsLoaded, homePosts } = useSelector(
+    (store) => store.posts
+  );
   const { user } = useSelector((store) => store.user);
   const loaderRef = useRef(null);
   useEffect(() => {
@@ -150,16 +139,26 @@ const Posts = () => {
   }, []);
   return (
     <Wrapper>
-      <div className="container">
-        {homePosts?.map((post) => {
-          return (
-            <div key={post._id} className="post">
-              <HomePost user={user} post={post} />
-            </div>
-          );
-        })}
+      <ResponsiveMasonry
+        columnsCountBreakPoints={{
+          350: 1,
+          600: 2,
+          750: 2,
+          1000: 3,
+          1440: 4,
+          2560: 5,
+        }}
+      >
+        <Masonry gutter="15px">
+          {homePosts?.map((post) => {
+            return <HomePost key={post._id} user={user} post={post} />;
+          })}
+        </Masonry>
+      </ResponsiveMasonry>
+      <div className="message">
+        {isHomePostsLoading && "Loading..."}
+        {allHomePostsLoaded && "That's All Folks"}
       </div>
-      {allHomePostsLoaded && <div className="test">That's All Folks</div>}
       <div className="loader" ref={loaderRef}></div>
     </Wrapper>
   );

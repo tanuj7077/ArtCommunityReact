@@ -6,9 +6,9 @@ import {
 } from "../../commonImports/reactIcons";
 
 const HomePost = ({ post, user }) => {
-  //console.log("post");
+  // console.log("post");
   return (
-    <>
+    <div className="post">
       <img src={post.imageThumb} alt="" className="img" />
       <div className="backdrop">
         <div className="top">
@@ -30,7 +30,7 @@ const HomePost = ({ post, user }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
