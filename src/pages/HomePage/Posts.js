@@ -11,6 +11,9 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 const Wrapper = styled.div`
   margin-top: 6rem;
   padding: 0 3rem;
+  @media only screen and (max-width: 37.5em) {
+    padding: 0 1rem;
+  }
   .post {
     width: 100%;
     height: max-content;
@@ -151,7 +154,17 @@ const Posts = () => {
       >
         <Masonry gutter="15px">
           {homePosts?.map((post) => {
-            return <HomePost key={post._id} user={user} post={post} />;
+            return (
+              <HomePost
+                key={post._id}
+                postImageThumb={post.imageThumb}
+                postName={post.name}
+                postAuthorName={post.author.username}
+                postLikes={post.likesArray.length}
+                postComments={post.comments.length}
+                userLiked={user?.likedPosts.includes(post._id) ? true : false}
+              />
+            );
           })}
         </Masonry>
       </ResponsiveMasonry>

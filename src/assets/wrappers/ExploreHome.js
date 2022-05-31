@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Wrapper = styled.section`
   margin-top: 3rem;
   padding: 0 3rem;
+  @media only screen and (max-width: 37.5em) {
+    padding: 0 1rem;
+  }
   .subheading {
     color: ${(props) => props.theme.fontColor};
     font-size: 2rem;

@@ -5,28 +5,32 @@ import {
   MdComment,
 } from "../../commonImports/reactIcons";
 
-const HomePost = ({ post, user }) => {
-  // console.log("post");
+const HomePost = ({
+  postImageThumb,
+  postName,
+  postAuthorName,
+  postLikes,
+  postComments,
+  userLiked,
+}) => {
   return (
     <div className="post">
-      <img src={post.imageThumb} alt="" className="img" />
+      <img src={postImageThumb} alt="" className="img" />
       <div className="backdrop">
         <div className="top">
-          <p className="name">{post.name}</p>
-          <p className="author">{post.author.username}</p>
+          <p className="name">{postName}</p>
+          <p className="author">{postAuthorName}</p>
         </div>
         <div className="bottom">
           <div className="info">
             <AiTwotoneHeart
-              className={`icon like ${
-                user?.likedPosts.includes(post?._id) ? "liked" : ""
-              }`}
+              className={`icon like ${userLiked ? "liked" : ""}`}
             />
-            <p className="likes">{post.likesArray.length}</p>
+            <p className="likes">{postLikes}</p>
           </div>
           <div className="info">
             <MdComment className="icon" />
-            <p className="comments">{post.comments.length}</p>
+            <p className="comments">{postComments}</p>
           </div>
         </div>
       </div>
@@ -34,4 +38,4 @@ const HomePost = ({ post, user }) => {
   );
 };
 
-export default HomePost;
+export default React.memo(HomePost);
