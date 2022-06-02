@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import {
   AiOutlineInfoCircle,
   AiTwotoneHeart,
@@ -53,7 +54,9 @@ const HomePost = ({
       />
       <div className="backdrop">
         <div className="top">
-          <p className="name">{postName}</p>
+          <NavLink to={`/post/${postId}`} className="name">
+            {postName}
+          </NavLink>
           <p className="author">{postAuthorName}</p>
         </div>
         <div className="bottom">

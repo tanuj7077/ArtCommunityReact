@@ -12,6 +12,8 @@ import {
   AiOutlineLink,
   AiFillLike,
   AiOutlineInfoCircle,
+  AiOutlineExpandAlt,
+  AiFillEye,
 } from "react-icons/ai";
 import {
   MdEdit,
@@ -40,7 +42,7 @@ import { GoPlus } from "react-icons/go";
 import { CgMenu, CgGenderFemale, CgGenderMale } from "react-icons/cg";
 import { BsHeartFill, BsFillSunFill } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
-import {} from "react-icons/md";
+import { TbViewportWide } from "react-icons/tb";
 // import { BsFillSunFill } from "react-icons/bs";
 
 export {
@@ -87,4 +89,7 @@ export {
   MdDarkMode,
   BsFillSunFill,
   AiOutlineInfoCircle,
+  AiOutlineExpandAlt,
+  TbViewportWide,
+  AiFillEye,
 };
