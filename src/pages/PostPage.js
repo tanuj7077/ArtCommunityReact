@@ -360,7 +360,7 @@ const PostPage = () => {
   };
   const getRecommended = async (tags) => {
     try {
-      const res = await customFetch.post(`posts/recommendedPosts2/9`, {
+      const res = await customFetch.post(`posts/recommendedPosts/9`, {
         tags: tags,
       });
       setRecommended(res.data);
