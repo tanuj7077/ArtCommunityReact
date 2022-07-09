@@ -4,10 +4,13 @@ export const Wrapper = styled.div`
   padding: calc(5.4rem + 1px) 0 0 calc(6.5rem + 2px);
   display: flex;
   background-color: hsl(0, 0%, 7%);
-
   flex-flow: ${(props) => {
     if (props.mode === "theater") return "column";
     return "row";
+  }};
+  align-items: ${(props) => {
+    if (props.mode === "theater") return "center";
+    return "start";
   }};
   @media only screen and (max-width: 75em) {
     flex-flow: column;
@@ -37,7 +40,11 @@ export const Wrapper = styled.div`
         rgba(8, 8, 8, 1) 0%,
         rgba(18, 18, 18, 1) 100%
       );
-      height: 50rem;
+      //height: 50rem;
+      height: ${(props) => {
+        if (props.mode === "theater") return "calc(100vh - 15rem)";
+        return "50rem";
+      }};
       display: grid;
       place-items: center;
       position: relative;
@@ -51,6 +58,10 @@ export const Wrapper = styled.div`
       img {
         max-width: 90%;
         max-height: 45rem;
+        max-height: ${(props) => {
+          if (props.mode === "theater") return "calc(100vh - 25rem)";
+          return "45rem";
+        }};
         border-radius: 4px;
         box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px,
           rgba(0, 0, 0, 0.5) 0px 10px 10px;
@@ -276,13 +287,19 @@ export const Wrapper = styled.div`
   .extras {
     //width: 37.5em;
     width: ${(props) => {
-      if (props.mode === "theater") return "100%";
+      if (props.mode === "theater") return "95rem";
       return "37.5em";
     }};
     padding: ${(props) => {
       if (props.mode === "theater") return "1.5rem 5rem";
       return "0";
     }};
+    @media only screen and (max-width: 90.25em) {
+      width: ${(props) => {
+        if (props.mode === "theater") return "100%";
+        return "37.5em";
+      }};
+    }
     @media only screen and (max-width: 75em) {
       width: 100%;
       padding: 1.5rem 5rem;
@@ -310,7 +327,7 @@ export const Wrapper = styled.div`
         .imgContainer {
           //width: calc(100% / 3 - 2rem / 3);
           width: ${(props) => {
-            if (props.mode === "theater") return "calc(100% / 6 - 5rem / 6)";
+            if (props.mode === "theater") return "calc(95rem / 6 - 5rem / 6)";
             return "calc(100% / 3 - 2rem / 3)";
           }};
           @media only screen and (max-width: 75em) {
