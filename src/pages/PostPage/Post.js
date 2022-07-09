@@ -8,8 +8,7 @@ import {
 } from "../../commonImports/reactIcons";
 import placeholderUserImg from "../../assets/images/blankProfile.png";
 
-const Post = ({ post }) => {
-  console.log("post");
+const Post = ({ post, toggleMode }) => {
   return (
     <>
       <div className="postContainer">
@@ -27,7 +26,7 @@ const Post = ({ post }) => {
           </div>
         </div>
         <div className="actions-right">
-          <TbViewportWide className="icon theatre" />
+          <TbViewportWide className="icon theatre" onClick={toggleMode} />
           <AiOutlineExpandAlt className="icon expand" />
         </div>
       </div>

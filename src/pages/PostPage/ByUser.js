@@ -3,8 +3,7 @@ import { NavLink } from "react-router-dom";
 import { customFetch } from "../../utils/axios";
 
 const ByUser = ({ postId, authorId, postAuthorName }) => {
-  console.log("by user", postId);
-  //const [isPostsByUserLoading, setIsPostsByUserLoading] = useState(false);
+  const [isPostsByUserLoading, setIsPostsByUserLoading] = useState(false);
   const [postsByUser, setPostsByUser] = useState([]);
   const getPostByUser = async (authorId) => {
     //setIsPostsByUserLoading(true);

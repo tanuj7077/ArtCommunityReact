@@ -2,12 +2,8 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { customFetch } from "../../utils/axios";
 const Recommended = ({ postId, tags }) => {
-  console.log("recommended");
-  // const { recommended, getRecommended, post } = usePostPageContext();
-  //const { post } = usePostPageContext();
-  //const [isRecommendedLoading, setIsRecommendedLoading] = useState(false);
+  const [isRecommendedLoading, setIsRecommendedLoading] = useState(false);
   const [recommended, setRecommended] = useState([]);
-  //const { isRecommendedLoading, recommended, post } = useSelector((store) => store.postPage);
   const getRecommended = async (tags) => {
     //setIsRecommendedLoading(true);
     try {
@@ -22,11 +18,6 @@ const Recommended = ({ postId, tags }) => {
       console.log(error);
     }
   };
-  /*useEffect(() => {
-    if (post?.author?.id) {
-      getRecommended(post.tags);
-    }
-  }, [post?._id]);*/
   useEffect(() => {
     getRecommended(tags);
   }, [postId]);
