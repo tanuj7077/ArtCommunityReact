@@ -18,6 +18,7 @@ const lightTheme = {
   homePageAllTagsTagColor: "hsl(0,0%,30%)",
   homePageChevronColor: "hsl(0,0%,40%)",
   homePageChevronHoveredColor: "hsl(0,0%,10%)",
+  postPageLoadingBg: "hsl(0,0%,80%)",
 };
 const darkTheme = {
   bodyBg: "hsl(0,0%,10%)",
@@ -39,6 +40,7 @@ const darkTheme = {
   homePageAllTagsTagColor: "hsl(0,0%,70%)",
   homePageChevronColor: "hsl(0,0%,60%)",
   homePageChevronHoveredColor: "hsl(0,0%,90%)",
+  postPageLoadingBg: "hsl(0,0%,20%)",
 };
 
 export { lightTheme, darkTheme };

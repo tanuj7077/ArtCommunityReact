@@ -6,22 +6,34 @@ const ByUser = ({ postId, authorId, postAuthorName }) => {
   const [isPostsByUserLoading, setIsPostsByUserLoading] = useState(false);
   const [postsByUser, setPostsByUser] = useState([]);
   const getPostByUser = async (authorId) => {
-    //setIsPostsByUserLoading(true);
+    setIsPostsByUserLoading(true);
     try {
       const res = await customFetch.get(
         `posts/postByUser/${authorId}?page=1&limit=9`
       );
       const postByUserData = res.data.filter((item) => item._id !== postId);
       setPostsByUser(postByUserData);
-      //setIsPostsByUserLoading(false);
+      setIsPostsByUserLoading(false);
     } catch (error) {
-      //setIsPostsByUserLoading(false);
+      setIsPostsByUserLoading(false);
       console.log(error);
     }
   };
   useEffect(() => {
     getPostByUser(authorId);
   }, [postId]);
+  if (isPostsByUserLoading) {
+    return (
+      <>
+        <div className="extras-content extras-content-loading">
+          <h2 className="title">
+            More by <span>{postAuthorName}</span>
+          </h2>
+          <div className="loading"></div>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       {postId && postsByUser && postsByUser.length > 1 && (

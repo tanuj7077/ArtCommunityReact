@@ -21,7 +21,6 @@ export const Wrapper = styled.div`
   }
   .post {
     background-color: hsl(0, 0%, 3%);
-    width: calc(100% - 37.5em);
     width: ${(props) => {
       if (props.mode === "theater") return "100%";
       return "calc(100% - 37.5em)";
@@ -30,6 +29,7 @@ export const Wrapper = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
+    align-self: stretch;
     @media only screen and (max-width: 75em) {
       width: 100%;
       min-height: max-content;
@@ -49,6 +49,7 @@ export const Wrapper = styled.div`
       place-items: center;
       position: relative;
       width: 100%;
+      font-size: 3rem;
       /* @media only screen and (max-width: 75em) {
         height: 50rem;
       } */
@@ -149,6 +150,30 @@ export const Wrapper = styled.div`
       @media only screen and (max-width: 37.5em) {
         padding: 1rem 2rem;
       }
+      &-loading {
+        .img {
+          border-radius: 50%;
+          background-color: ${(props) => props.theme.postPageLoadingBg};
+        }
+        .title {
+          width: 35rem;
+          height: 2rem;
+          border-radius: 4px;
+          background-color: ${(props) => props.theme.postPageLoadingBg};
+        }
+        .author {
+          margin-top: 1rem;
+          width: 15rem;
+          height: 1.4rem;
+          border-radius: 4px;
+          background-color: ${(props) => props.theme.postPageLoadingBg};
+        }
+        .description {
+          border-radius: 4px;
+          background-color: ${(props) => props.theme.postPageLoadingBg};
+          height: 10rem;
+        }
+      }
       .titleContainer {
         display: flex;
         justify-content: space-between;
@@ -165,7 +190,7 @@ export const Wrapper = styled.div`
           @media only screen and (max-width: 37.5em) {
             width: 100%;
           }
-          img {
+          .img {
             width: 5rem;
             height: 5rem;
             @media only screen and (max-width: 56.25em) {
@@ -178,7 +203,7 @@ export const Wrapper = styled.div`
             }
           }
           .title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
             color: hsl(0, 0%, 100%);
             @media only screen and (max-width: 37.5em) {
@@ -347,6 +372,13 @@ export const Wrapper = styled.div`
           object-position: center;
           border-radius: 4px;
         }
+      }
+      .loading {
+        margin-top: 1rem;
+        width: 100%;
+        height: 20rem;
+        border-radius: 4px;
+        background-color: ${(props) => props.theme.postPageLoadingBg};
       }
     }
   }

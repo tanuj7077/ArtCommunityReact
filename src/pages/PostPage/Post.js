@@ -8,7 +8,57 @@ import {
 } from "../../commonImports/reactIcons";
 import placeholderUserImg from "../../assets/images/blankProfile.png";
 
-const Post = ({ post, toggleMode }) => {
+const Post = ({ post, toggleMode, isPostLoading }) => {
+  if (isPostLoading) {
+    return (
+      <>
+        <div className="postContainer">Loading...</div>
+        <div className="actions">
+          <div className="actions-left">
+            <div className="action-item likes">
+              <AiTwotoneHeart className="icon" />
+              <div className="text">Add to Favourites</div>
+            </div>
+            <div className="action-item comments">
+              <MdComment className="icon" />
+              <div className="text">Comment</div>
+            </div>
+          </div>
+          <div className="actions-right">
+            <TbViewportWide className="icon theatre" />
+            <AiOutlineExpandAlt className="icon expand" />
+          </div>
+        </div>
+        <div className="postInfo postInfo-loading">
+          <div className="titleContainer">
+            <div className="left">
+              <div className="img"></div>
+              <div className="titleSection">
+                <p className="title"></p>
+                <p className="author"></p>
+              </div>
+            </div>
+            <div className="right">Published: --/--/--</div>
+          </div>
+          <div className="otherInfo">
+            <div className="item">
+              <AiTwotoneHeart className="icon" />
+              <div className="count">- Favourites</div>
+            </div>
+            <div className="item">
+              <MdComment className="icon" />
+              <div className="count">- Comments</div>
+            </div>
+            <div className="item">
+              <AiFillEye className="icon" />
+              <div className="count">- Views</div>
+            </div>
+          </div>
+          <div className="description"></div>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <div className="postContainer">

@@ -12,12 +12,12 @@ const PostPageContainer = ({ id }) => {
 
   const getPost = async (id) => {
     try {
-      //setIsPostLoading(true);
+      setIsPostLoading(true);
       const res = await customFetch.get(`posts/post1/${id}`);
       setPost(res.data);
-      //setIsPostLoading(false);
+      setIsPostLoading(false);
     } catch (error) {
-      //setIsPostLoading(false);
+      setIsPostLoading(false);
       console.log(error);
     }
   };
@@ -30,14 +30,24 @@ const PostPageContainer = ({ id }) => {
     setMode("theater");
   };
 
-  //const { getPost } = usePostPageContext();
   useEffect(() => {
     getPost(id);
   }, [id]);
   return (
     <Wrapper mode={mode}>
       <section className="post">
-        {post && <Post post={post} toggleMode={toggleMode} />}
+        {/* {post && (
+          <Post
+            post={post}
+            toggleMode={toggleMode}
+            isPostLoading={isPostLoading}
+          />
+        )} */}
+        <Post
+          post={post}
+          toggleMode={toggleMode}
+          isPostLoading={isPostLoading}
+        />
         <div className="comments"></div>
       </section>
       {post && (
