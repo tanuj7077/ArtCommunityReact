@@ -8,7 +8,7 @@ import {
 } from "../../commonImports/reactIcons";
 import placeholderUserImg from "../../assets/images/blankProfile.png";
 
-const Post = ({ post, toggleMode, isPostLoading }) => {
+const Post = ({ post, toggleMode, isPostLoading, toggleFullscreen }) => {
   if (isPostLoading) {
     return (
       <>
@@ -77,7 +77,12 @@ const Post = ({ post, toggleMode, isPostLoading }) => {
         </div>
         <div className="actions-right">
           <TbViewportWide className="icon theatre" onClick={toggleMode} />
-          <AiOutlineExpandAlt className="icon expand" />
+          {!isPostLoading && (
+            <AiOutlineExpandAlt
+              className="icon expand"
+              onClick={toggleFullscreen}
+            />
+          )}
         </div>
       </div>
       {post?.name && (

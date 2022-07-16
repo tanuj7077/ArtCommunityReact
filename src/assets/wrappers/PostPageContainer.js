@@ -157,6 +157,7 @@ export const Wrapper = styled.div`
         }
         .title {
           width: 35rem;
+          max-width: 35vw;
           height: 2rem;
           border-radius: 4px;
           background-color: ${(props) => props.theme.postPageLoadingBg};
@@ -164,6 +165,7 @@ export const Wrapper = styled.div`
         .author {
           margin-top: 1rem;
           width: 15rem;
+          max-width: 25vw;
           height: 1.4rem;
           border-radius: 4px;
           background-color: ${(props) => props.theme.postPageLoadingBg};

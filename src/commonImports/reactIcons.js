@@ -1,6 +1,6 @@
 import { BsChevronRight } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
-import { RiProfileLine } from "react-icons/ri";
+import { RiFullscreenExitLine, RiProfileLine } from "react-icons/ri";
 import { IoColorPalette, IoClose, IoPeople, IoSearch } from "react-icons/io5";
 import { IoMdPower } from "react-icons/io";
 import {
@@ -43,6 +43,7 @@ import { CgMenu, CgGenderFemale, CgGenderMale } from "react-icons/cg";
 import { BsHeartFill, BsFillSunFill } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { TbViewportWide } from "react-icons/tb";
+
 // import { BsFillSunFill } from "react-icons/bs";
 
 export {
@@ -92,4 +93,5 @@ export {
   AiOutlineExpandAlt,
   TbViewportWide,
   AiFillEye,
+  RiFullscreenExitLine,
 };
