@@ -7,6 +7,8 @@ const initialState = {
   homePostsPage: 1,
   homePosts: [],
   allHomePostsLoaded: false,
+  homeBanner: null,
+  isBannerLoading: false,
 };
 
 export const getHomePosts = createAsyncThunk(
@@ -22,6 +24,17 @@ export const getHomePosts = createAsyncThunk(
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue("Cannot get posts");
+    }
+  }
+);
+export const getBannerData = createAsyncThunk(
+  "posts/getBannerData",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get(`/posts/getRandomPost`);
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue("Cannot get banner data");
     }
   }
 );
@@ -47,6 +60,16 @@ const postsSlice = createSlice({
     },
     [getHomePosts.rejected]: (state) => {
       state.isHomePostsLoading = false;
+    },
+    [getBannerData.pending]: (state) => {
+      state.isBannerLoading = true;
+    },
+    [getBannerData.fulfilled]: (state, { payload }) => {
+      state.isBannerLoading = false;
+      state.homeBanner = payload;
+    },
+    [getBannerData.rejected]: (state) => {
+      state.isBannerLoading = false;
     },
   },
 });
